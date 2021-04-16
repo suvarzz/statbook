@@ -1,5 +1,7 @@
 # Statistics R functions reference
 
+## Get data
+
 ## Data inspection
 ```{r, eval = FALSE}
 head(df)
@@ -13,7 +15,15 @@ names(df)   # names of columns
 colnames(df) # also column names
 ```
 
-# Analysis of the distribution
+## Plots
+```{r, eval=FALSE}
+plot(x ~ y)
+barplot(df)
+hist(x)
+pie(groupsize, labels, col, ...)
+```
+
+## Analysis of the distribution
 ```{r, eval = FALSE}
 # mode
 getmode <- function(v) {

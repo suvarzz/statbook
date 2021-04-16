@@ -1,4 +1,5 @@
 # Hypothesis testing
+## Hypothesis testing theory
 
 Null hypothesis (H<sub>0</sub>):  
 1. H<sub>0</sub>: m = μ  
@@ -10,7 +11,7 @@ Alternative hypotheses (H<sub>a</sub>):
 2. H<sub>a</sub>:m > μ (greater)  
 3. H<sub>a</sub>:m < μ (less)  
 
-Note: Hypothesis 1. are called **two-tailed tests** and hypotheses 2. & 3. are called **one-tailed tests**.  
+*Note*: Hypothesis 1. are called **two-tailed tests** and hypotheses 2. & 3. are called **one-tailed tests**.  
 
 The p-value is the probability that the observed data could happen, under the condition that the null hypothesis is true.  
 

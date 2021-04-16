@@ -1,0 +1,40 @@
+# Statistical distributions
+## Normal Distribution
+
+```{r, eval=TRUE}
+x <- seq(-6, 6, length=100)
+y1 <- dnorm(x)
+y2 <- dnorm(x, sd=0.5)
+y3 <- dnorm(x, sd=2)
+par(mfrow=c(1,1))
+plot(x, y1, 
+     xlim=c(-6,6),
+     ylim=c(0,0.8),
+     type="l",
+     lwd=2,
+     xlab="x value",
+     ylab="Density",
+     main="Normal distribution")
+lines(x, y2, col="red")
+lines(x, y3, col="green")
+legend("topright", legend=c("sd = 1", "sd = 0.5", "sd = 2"),
+       col=c("black", "red", "green"), 
+       lty=c(1,1,1), lwd=2)
+
+# Area under the curve
+# For normal distribution auc = 1 (probability for all)
+library(DescTools)
+AUC(x, y1)
+AUC(x,y2)
+AUC(x,y3) # to broad distribution, some samples out of the area
+```
+
+## Bernoulli Distribution
+## Binomial Distribution
+## Geometric Distribution
+## Uniform Distributions
+## Poisson Distribution
+## Exponential Distribution
+
+**Sources**  
+Seven Must-Know Statistical Distributions and Their Simulations for Data Science [https://towardsdatascience.com/seven-must-know-statistical-distributions-and-their-simulations-for-data-science-681c5ac41e32#:~:text=A%20statistical%20distribution%20is%20a,the%20random%20value%20it%20models.]

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 17 Machine Learning Functions Reference | R statistics</title>
+  <title>Chapter 4 Primary analysis | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 17 Machine Learning Functions Reference | R statistics" />
+  <meta property="og:title" content="Chapter 4 Primary analysis | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 17 Machine Learning Functions Reference | R statistics" />
+  <meta name="twitter:title" content="Chapter 4 Primary analysis | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="methods-and-algorithms-of-machine-learning.html"/>
-<link rel="next" href="split-data-into-train-and-test-subsets.html"/>
+<link rel="prev" href="basic-statistics.html"/>
+<link rel="next" href="statistical-distributions.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -273,98 +273,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="machine-learning-functions-reference" class="section level1" number="17">
-<h1><span class="header-section-number">Chapter 17</span> Machine Learning Functions Reference</h1>
-<div id="linear-regression" class="section level2" number="17.1">
-<h2><span class="header-section-number">17.1</span> Linear Regression</h2>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="machine-learning-functions-reference.html#cb83-1" aria-hidden="true" tabindex="-1"></a>lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y ∼ x1 <span class="sc">+</span> x2, <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2)))</span>
-<span id="cb83-2"><a href="machine-learning-functions-reference.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_model)</span>
-<span id="cb83-3"><a href="machine-learning-functions-reference.html#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-4"><a href="machine-learning-functions-reference.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3)     <span class="co"># multiple linear regression</span></span>
-<span id="cb83-5"><a href="machine-learning-functions-reference.html#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-6"><a href="machine-learning-functions-reference.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="fu">log</span>(y) <span class="sc">~</span> x)           <span class="co"># log transformed</span></span>
-<span id="cb83-7"><a href="machine-learning-functions-reference.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="fu">sqrt</span>(y) <span class="sc">~</span> x)          <span class="co"># sqrt transformed</span></span>
-<span id="cb83-8"><a href="machine-learning-functions-reference.html#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>( y <span class="sc">~</span> <span class="fu">log</span>(x))          <span class="co"># fields transformed</span></span>
-<span id="cb83-9"><a href="machine-learning-functions-reference.html#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="fu">llm</span>(<span class="fu">log</span>(y) <span class="sc">~</span> <span class="fu">log</span>(x))     <span class="co"># everything is transformed</span></span>
-<span id="cb83-10"><a href="machine-learning-functions-reference.html#cb83-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-11"><a href="machine-learning-functions-reference.html#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> .)                <span class="co"># use all fields for regression model</span></span>
-<span id="cb83-12"><a href="machine-learning-functions-reference.html#cb83-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-13"><a href="machine-learning-functions-reference.html#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> <span class="dv">0</span>)            <span class="co"># forced zero intercept</span></span>
-<span id="cb83-14"><a href="machine-learning-functions-reference.html#cb83-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-15"><a href="machine-learning-functions-reference.html#cb83-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x<span class="sc">*</span>k)              <span class="co"># interaction of two variables</span></span>
-<span id="cb83-16"><a href="machine-learning-functions-reference.html#cb83-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-17"><a href="machine-learning-functions-reference.html#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> k <span class="sc">+</span> x<span class="sc">:</span>k)      <span class="co"># product of xkl but without interaction</span></span>
-<span id="cb83-18"><a href="machine-learning-functions-reference.html#cb83-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-19"><a href="machine-learning-functions-reference.html#cb83-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> (x <span class="sc">+</span> k <span class="sc">+</span> ... <span class="sc">+</span> l)<span class="sc">^</span><span class="dv">2</span>) <span class="co"># all first order interactions</span></span>
-<span id="cb83-20"><a href="machine-learning-functions-reference.html#cb83-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-21"><a href="machine-learning-functions-reference.html#cb83-21" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">I</span>(x1 <span class="sc">+</span> x2))       <span class="co"># sum of variables</span></span>
-<span id="cb83-22"><a href="machine-learning-functions-reference.html#cb83-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">I</span>(x1<span class="sc">^</span><span class="dv">2</span>))          <span class="co"># product of variables (not interation)</span></span>
-<span id="cb83-23"><a href="machine-learning-functions-reference.html#cb83-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-24"><a href="machine-learning-functions-reference.html#cb83-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">3</span>)) <span class="co"># polynomial regression</span></span>
-<span id="cb83-25"><a href="machine-learning-functions-reference.html#cb83-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x,<span class="dv">3</span>))           <span class="co"># same as previous</span></span>
-<span id="cb83-26"><a href="machine-learning-functions-reference.html#cb83-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-27"><a href="machine-learning-functions-reference.html#cb83-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Forward/backward stepwise regression</span></span>
-<span id="cb83-28"><a href="machine-learning-functions-reference.html#cb83-28" aria-hidden="true" tabindex="-1"></a><span class="co"># improve model</span></span>
-<span id="cb83-29"><a href="machine-learning-functions-reference.html#cb83-29" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
-<span id="cb83-30"><a href="machine-learning-functions-reference.html#cb83-30" aria-hidden="true" tabindex="-1"></a>bwd.fit <span class="ot">&lt;-</span> <span class="fu">step</span>(fit, <span class="at">direction =</span> <span class="st">&#39;backward&#39;</span>)</span>
-<span id="cb83-31"><a href="machine-learning-functions-reference.html#cb83-31" aria-hidden="true" tabindex="-1"></a>fwd.fit <span class="ot">&lt;-</span> <span class="fu">step</span>(fit, <span class="at">direction =</span> <span class="st">&#39;forward&#39;</span>, <span class="fu">scope</span>( <span class="sc">~</span> x1 <span class="sc">+</span> x2))</span>
-<span id="cb83-32"><a href="machine-learning-functions-reference.html#cb83-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-33"><a href="machine-learning-functions-reference.html#cb83-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Test linear model</span></span>
-<span id="cb83-34"><a href="machine-learning-functions-reference.html#cb83-34" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)            <span class="co"># plot residuals</span></span>
-<span id="cb83-35"><a href="machine-learning-functions-reference.html#cb83-35" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">outlier.test</span>(m)</span>
-<span id="cb83-36"><a href="machine-learning-functions-reference.html#cb83-36" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(m)          <span class="co"># Durbin-Watson Test of the model residuals</span></span>
-<span id="cb83-37"><a href="machine-learning-functions-reference.html#cb83-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-38"><a href="machine-learning-functions-reference.html#cb83-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction</span></span>
-<span id="cb83-39"><a href="machine-learning-functions-reference.html#cb83-39" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_model, <span class="at">newdata=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(x1_test, x2_test)))</span>
-<span id="cb83-40"><a href="machine-learning-functions-reference.html#cb83-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-41"><a href="machine-learning-functions-reference.html#cb83-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Apriori</span></span>
-<span id="cb83-42"><a href="machine-learning-functions-reference.html#cb83-42" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Datasets</span><span class="sc">\\</span><span class="st">mushroom.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb83-43"><a href="machine-learning-functions-reference.html#cb83-43" aria-hidden="true" tabindex="-1"></a>mushroom_rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(<span class="fu">as.matrix</span>(dataset), <span class="at">parameter =</span> <span class="fu">list</span>(<span class="at">supp =</span> <span class="fl">0.8</span>, <span class="at">conf =</span> <span class="fl">0.9</span>))</span>
-<span id="cb83-44"><a href="machine-learning-functions-reference.html#cb83-44" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mushroom_rules)</span>
-<span id="cb83-45"><a href="machine-learning-functions-reference.html#cb83-45" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(mushroom_rules)</span>
-<span id="cb83-46"><a href="machine-learning-functions-reference.html#cb83-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-47"><a href="machine-learning-functions-reference.html#cb83-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic Regression</span></span>
-<span id="cb83-48"><a href="machine-learning-functions-reference.html#cb83-48" aria-hidden="true" tabindex="-1"></a>glm_mod <span class="ot">&lt;-</span><span class="fu">glm</span>(y ∼ x1<span class="sc">+</span>x2, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>), <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2))) </span>
-<span id="cb83-49"><a href="machine-learning-functions-reference.html#cb83-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-50"><a href="machine-learning-functions-reference.html#cb83-50" aria-hidden="true" tabindex="-1"></a><span class="co"># K-Means Clustering</span></span>
-<span id="cb83-51"><a href="machine-learning-functions-reference.html#cb83-51" aria-hidden="true" tabindex="-1"></a>kmeans_model <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(<span class="at">x=</span>X, <span class="at">centers=</span>m)</span>
-<span id="cb83-52"><a href="machine-learning-functions-reference.html#cb83-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-53"><a href="machine-learning-functions-reference.html#cb83-53" aria-hidden="true" tabindex="-1"></a><span class="co"># k-Nearest Neighbor Classification</span></span>
-<span id="cb83-54"><a href="machine-learning-functions-reference.html#cb83-54" aria-hidden="true" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train=</span>X_train, <span class="at">test=</span>X_test, <span class="at">cl=</span><span class="fu">as.factor</span>(labels), <span class="at">k=</span>K)</span>
-<span id="cb83-55"><a href="machine-learning-functions-reference.html#cb83-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-56"><a href="machine-learning-functions-reference.html#cb83-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Naıve Bayes</span></span>
-<span id="cb83-57"><a href="machine-learning-functions-reference.html#cb83-57" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
-<span id="cb83-58"><a href="machine-learning-functions-reference.html#cb83-58" aria-hidden="true" tabindex="-1"></a>nB_model <span class="ot">&lt;-</span> <span class="fu">naiveBayes</span>(y ∼ x1 <span class="sc">+</span> x2, <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2)))</span>
-<span id="cb83-59"><a href="machine-learning-functions-reference.html#cb83-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-60"><a href="machine-learning-functions-reference.html#cb83-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision Trees (CART)</span></span>
-<span id="cb83-61"><a href="machine-learning-functions-reference.html#cb83-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
-<span id="cb83-62"><a href="machine-learning-functions-reference.html#cb83-62" aria-hidden="true" tabindex="-1"></a>cart_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(y ∼ x1 <span class="sc">+</span> x2, <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2)), <span class="at">method=</span><span class="st">&quot;class&quot;</span>)</span>
-<span id="cb83-63"><a href="machine-learning-functions-reference.html#cb83-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-64"><a href="machine-learning-functions-reference.html#cb83-64" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.rpart</span>(cart_model)</span>
-<span id="cb83-65"><a href="machine-learning-functions-reference.html#cb83-65" aria-hidden="true" tabindex="-1"></a><span class="fu">text.rpart</span>(cart_model)</span>
-<span id="cb83-66"><a href="machine-learning-functions-reference.html#cb83-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-67"><a href="machine-learning-functions-reference.html#cb83-67" aria-hidden="true" tabindex="-1"></a><span class="co"># AdaBoost</span></span>
-<span id="cb83-68"><a href="machine-learning-functions-reference.html#cb83-68" aria-hidden="true" tabindex="-1"></a><span class="co"># boosting functions - uses decision trees as base classifiers</span></span>
-<span id="cb83-69"><a href="machine-learning-functions-reference.html#cb83-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
-<span id="cb83-70"><a href="machine-learning-functions-reference.html#cb83-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ada)</span>
-<span id="cb83-71"><a href="machine-learning-functions-reference.html#cb83-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Let X be the matrix of features, and labels be a vector of 0-1 class labels.</span></span>
-<span id="cb83-72"><a href="machine-learning-functions-reference.html#cb83-72" aria-hidden="true" tabindex="-1"></a>boost_model <span class="ot">&lt;-</span> <span class="fu">ada</span>(<span class="at">x=</span>X, <span class="at">y=</span>labels)</span>
-<span id="cb83-73"><a href="machine-learning-functions-reference.html#cb83-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-74"><a href="machine-learning-functions-reference.html#cb83-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Support Vector Machines (SVM)</span></span>
-<span id="cb83-75"><a href="machine-learning-functions-reference.html#cb83-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
-<span id="cb83-76"><a href="machine-learning-functions-reference.html#cb83-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Let X be the matrix of features, and labels be a vector of 0-1 class labels. Let the regularization parameter be C. Use the following commands to generate the SVM model and view details:</span></span>
-<span id="cb83-77"><a href="machine-learning-functions-reference.html#cb83-77" aria-hidden="true" tabindex="-1"></a>svm_model <span class="ot">&lt;-</span> <span class="fu">svm</span>(<span class="at">x=</span>X, <span class="at">y=</span><span class="fu">as.factor</span>(labels), <span class="at">kernel =</span><span class="st">&quot;radial&quot;</span>, <span class="at">cost=</span>C)</span>
-<span id="cb83-78"><a href="machine-learning-functions-reference.html#cb83-78" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(svm_model)</span></code></pre></div>
+<div id="primary-analysis-1" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Primary analysis</h1>
+<p>Abbakumov, 2016, lectures</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="primary-analysis-1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA</span></span>
+<span id="cb12-2"><a href="primary-analysis-1.html#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./DATA/Swiss_Bank_Notes.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot; &quot;</span>, <span class="at">dec=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb12-3"><a href="primary-analysis-1.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb12-4"><a href="primary-analysis-1.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="primary-analysis-1.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data explanation: parameters of Swiss Banknotes</span></span>
+<span id="cb12-6"><a href="primary-analysis-1.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Size of data: 200 (100 are real, 100 are false)</span></span>
+<span id="cb12-7"><a href="primary-analysis-1.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Length - length</span></span>
+<span id="cb12-8"><a href="primary-analysis-1.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># H_l - height left</span></span>
+<span id="cb12-9"><a href="primary-analysis-1.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># H_r - height right</span></span>
+<span id="cb12-10"><a href="primary-analysis-1.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># dist_l - border left</span></span>
+<span id="cb12-11"><a href="primary-analysis-1.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dist_up - border up</span></span>
+<span id="cb12-12"><a href="primary-analysis-1.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Diag - diagonal</span></span>
+<span id="cb12-13"><a href="primary-analysis-1.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ? Find false banknotes</span></span>
+<span id="cb12-14"><a href="primary-analysis-1.html#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="primary-analysis-1.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Let&#39;s add a column with 100 filled 0 and 100 filled with 1.</span></span>
+<span id="cb12-16"><a href="primary-analysis-1.html#cb12-16" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb12-17"><a href="primary-analysis-1.html#cb12-17" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(df, origin)</span>
+<span id="cb12-18"><a href="primary-analysis-1.html#cb12-18" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>origin[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>] <span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb12-19"><a href="primary-analysis-1.html#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set origin as factor - binary data (0,1)</span></span>
+<span id="cb12-20"><a href="primary-analysis-1.html#cb12-20" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>origin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>origin)</span>
+<span id="cb12-21"><a href="primary-analysis-1.html#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(df<span class="sc">$</span>origin)</span>
+<span id="cb12-22"><a href="primary-analysis-1.html#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="primary-analysis-1.html#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Visual inspection of given data</span></span>
+<span id="cb12-24"><a href="primary-analysis-1.html#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb12-25"><a href="primary-analysis-1.html#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df)  <span class="co"># data type</span></span>
+<span id="cb12-26"><a href="primary-analysis-1.html#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)     <span class="co"># dimention</span></span>
+<span id="cb12-27"><a href="primary-analysis-1.html#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span>
+<span id="cb12-28"><a href="primary-analysis-1.html#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span>
+<span id="cb12-29"><a href="primary-analysis-1.html#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span>
+<span id="cb12-30"><a href="primary-analysis-1.html#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span>
+<span id="cb12-31"><a href="primary-analysis-1.html#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)   <span class="co"># names of columns</span></span>
+<span id="cb12-32"><a href="primary-analysis-1.html#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="co"># also names of columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="primary-analysis-1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. HISTORGRAM</span></span>
+<span id="cb13-2"><a href="primary-analysis-1.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">colnames</span>(df))<span class="sc">/</span><span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb13-3"><a href="primary-analysis-1.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">colnames</span>(df))) { <span class="fu">hist</span>(df[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(df)[i])) }</span>
+<span id="cb13-4"><a href="primary-analysis-1.html#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="primary-analysis-1.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for Diagonals</span></span>
+<span id="cb13-6"><a href="primary-analysis-1.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb13-7"><a href="primary-analysis-1.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>Diag, <span class="at">breaks=</span><span class="dv">18</span>, <span class="at">probability=</span><span class="cn">TRUE</span>)</span>
+<span id="cb13-8"><a href="primary-analysis-1.html#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="primary-analysis-1.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot</span></span>
+<span id="cb13-10"><a href="primary-analysis-1.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(VADeaths, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend=</span><span class="cn">TRUE</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb13-11"><a href="primary-analysis-1.html#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Deaths per 1000&quot;</span>, <span class="at">main=</span><span class="st">&quot;Death rates in Virginia&quot;</span>)</span>
+<span id="cb13-12"><a href="primary-analysis-1.html#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="primary-analysis-1.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pieplot</span></span>
+<span id="cb13-14"><a href="primary-analysis-1.html#cb13-14" aria-hidden="true" tabindex="-1"></a>groupsize <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb13-15"><a href="primary-analysis-1.html#cb13-15" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
+<span id="cb13-16"><a href="primary-analysis-1.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(groupsize, labels, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;grey&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb13-17"><a href="primary-analysis-1.html#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="primary-analysis-1.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># All pairs of data scatter plot</span></span>
+<span id="cb13-19"><a href="primary-analysis-1.html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df)</span>
+<span id="cb13-20"><a href="primary-analysis-1.html#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="primary-analysis-1.html#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Length ~ Dial</span></span>
+<span id="cb13-22"><a href="primary-analysis-1.html#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>Length, df<span class="sc">$</span>Diag)</span>
+<span id="cb13-23"><a href="primary-analysis-1.html#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># true notes</span></span>
+<span id="cb13-24"><a href="primary-analysis-1.html#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">1</span>],</span>
+<span id="cb13-25"><a href="primary-analysis-1.html#cb13-25" aria-hidden="true" tabindex="-1"></a>       df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">0</span>], <span class="at">pch=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
+<span id="cb13-26"><a href="primary-analysis-1.html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># false notes</span></span>
+<span id="cb13-27"><a href="primary-analysis-1.html#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">1</span>],</span>
+<span id="cb13-28"><a href="primary-analysis-1.html#cb13-28" aria-hidden="true" tabindex="-1"></a>       df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">0</span>], <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb13-29"><a href="primary-analysis-1.html#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="primary-analysis-1.html#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co"># If factors are given, plot makes boxplot</span></span>
+<span id="cb13-31"><a href="primary-analysis-1.html#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>origin, df<span class="sc">$</span>Diag)</span>
+<span id="cb13-32"><a href="primary-analysis-1.html#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Swiss Bank Notes&quot;</span>)</span>
+<span id="cb13-33"><a href="primary-analysis-1.html#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="primary-analysis-1.html#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA - TOWNS</span></span>
+<span id="cb13-35"><a href="primary-analysis-1.html#cb13-35" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/town_1959_2.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb13-36"><a href="primary-analysis-1.html#cb13-36" aria-hidden="true" tabindex="-1"></a>town</span>
+<span id="cb13-37"><a href="primary-analysis-1.html#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town)</span>
+<span id="cb13-38"><a href="primary-analysis-1.html#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Median is more stable to outliers</span></span>
+<span id="cb13-39"><a href="primary-analysis-1.html#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb13-40"><a href="primary-analysis-1.html#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="co"># lets remove 2 first towns from the data</span></span>
+<span id="cb13-41"><a href="primary-analysis-1.html#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town[<span class="dv">3</span><span class="sc">:</span><span class="dv">1004</span>,<span class="dv">3</span>])</span>
+<span id="cb13-42"><a href="primary-analysis-1.html#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb13-43"><a href="primary-analysis-1.html#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-44"><a href="primary-analysis-1.html#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co"># log scale allows us to see outliers better</span></span>
+<span id="cb13-45"><a href="primary-analysis-1.html#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(town[,<span class="dv">3</span>]), <span class="at">breaks=</span><span class="dv">50</span>)</span>
+<span id="cb13-46"><a href="primary-analysis-1.html#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="primary-analysis-1.html#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncated mean is better than mean</span></span>
+<span id="cb13-48"><a href="primary-analysis-1.html#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(town[,<span class="dv">3</span>], <span class="at">trim=</span><span class="fl">0.05</span>)</span>
+<span id="cb13-49"><a href="primary-analysis-1.html#cb13-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-50"><a href="primary-analysis-1.html#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA - BASKETBALL</span></span>
+<span id="cb13-51"><a href="primary-analysis-1.html#cb13-51" aria-hidden="true" tabindex="-1"></a>bb <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/basketball.csv&quot;</span>, <span class="at">header=</span>F, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb13-52"><a href="primary-analysis-1.html#cb13-52" aria-hidden="true" tabindex="-1"></a>bb</span>
+<span id="cb13-53"><a href="primary-analysis-1.html#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="co"># NBA Player characteristics:</span></span>
+<span id="cb13-54"><a href="primary-analysis-1.html#cb13-54" aria-hidden="true" tabindex="-1"></a><span class="co"># percent of positives vs:</span></span>
+<span id="cb13-55"><a href="primary-analysis-1.html#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="co"># SF - light forvard</span></span>
+<span id="cb13-56"><a href="primary-analysis-1.html#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="co"># PF - heavy forvard</span></span>
+<span id="cb13-57"><a href="primary-analysis-1.html#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="co"># C - center</span></span>
+<span id="cb13-58"><a href="primary-analysis-1.html#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="co"># G - defender</span></span>
+<span id="cb13-59"><a href="primary-analysis-1.html#cb13-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-60"><a href="primary-analysis-1.html#cb13-60" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bb[,<span class="dv">1</span>])</span>
+<span id="cb13-61"><a href="primary-analysis-1.html#cb13-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-62"><a href="primary-analysis-1.html#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb13-63"><a href="primary-analysis-1.html#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bb[,<span class="dv">1</span>]<span class="sc">~</span>bb[,<span class="dv">2</span>])</span>
+<span id="cb13-64"><a href="primary-analysis-1.html#cb13-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="primary-analysis-1.html#cb13-65" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb13-66"><a href="primary-analysis-1.html#cb13-66" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) { <span class="fu">hist</span>(bb[,<span class="dv">1</span>], <span class="at">breaks=</span><span class="dv">5</span><span class="sc">*</span>i, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">&quot;Breaks&quot;</span>, <span class="dv">5</span><span class="sc">*</span>i), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>) }</span>
+<span id="cb13-67"><a href="primary-analysis-1.html#cb13-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-68"><a href="primary-analysis-1.html#cb13-68" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(bb[,<span class="dv">2</span>])) {</span>
+<span id="cb13-69"><a href="primary-analysis-1.html#cb13-69" aria-hidden="true" tabindex="-1"></a>     <span class="fu">hist</span>(bb[bb[,<span class="dv">2</span>]<span class="sc">==</span>i ,<span class="dv">1</span>],  <span class="at">breaks=</span><span class="dv">6</span>, </span>
+<span id="cb13-70"><a href="primary-analysis-1.html#cb13-70" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(bb[,<span class="dv">1</span>])<span class="sc">-</span><span class="dv">5</span>, <span class="fu">max</span>(bb[,<span class="dv">1</span>]<span class="sc">+</span><span class="dv">5</span>)), <span class="at">col=</span><span class="st">&quot;white&quot;</span>, <span class="at">main=</span>i, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb13-71"><a href="primary-analysis-1.html#cb13-71" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-72"><a href="primary-analysis-1.html#cb13-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Conclusion: for several groups of data boxplots may be more informative than histograms</span></span></code></pre></div>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="methods-and-algorithms-of-machine-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="split-data-into-train-and-test-subsets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basic-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="statistical-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -395,7 +419,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/21_ml_fun_ref.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03_primary_analysis.Rmd",
 "text": "Edit"
 },
 "history": {
