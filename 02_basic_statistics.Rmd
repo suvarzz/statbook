@@ -10,10 +10,10 @@
 
 ## Primary analysis
 ```{r, eval=FALSE}
-v <- c(185, 175, 170, 169, 171, 172, 175, 157, 170, 172,
-       167, 173, 168, 167, 166, 167, 169, 172, 177, 178,
-       165, 161, 179, 159, 164, 178, 172, 170, 173, 171)
+# sample of random integers
+v <- round(rnorm(n=50, sd=5, mean=100))
 
+par(mfrow=c(1,2))
 stripchart(v, method = "stack", pch=19, cex=2, offset=.5, at=.15,
            main = "Dotplot of random value", xlab = "Random value")
 
@@ -56,7 +56,7 @@ Outliers can be identified visually using a boxplot.
 ## Normality
 It is possible to use histogram to estimate normality of the distribution.  
 
-```{r, eval=FALSE}
+```{r }
 # QQ-plot - fit normal distibution
 qqnorm(v); qqline(v)
 
@@ -81,11 +81,8 @@ hist(vs)
 
 ## Confidence interval
 ```{r}
-x <- c(102, 91, 99, 100, 103, 98, 99, 101, 106, 88, 103, 97, 103, 101,
-       101, 91, 104, 105, 105, 100, 101, 91, 99, 98, 107, 102, 100, 97,
-       98, 104, 100, 98, 102, 99, 95, 103, 104, 97, 99, 102, 98, 107, 
-       101, 93, 98, 101, 93, 91, 107, 102, 96, 93, 100, 105, 103, 107, 
-       99, 102, 106, 102, 94, 104, 103, 102)
+# sample of random integers
+x <- round(rnorm(n=50, sd=5, mean=100))
 
 # Confidence interval for normal distribution with p=0.95
 m <- mean(x)

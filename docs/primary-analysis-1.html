@@ -276,110 +276,110 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="primary-analysis-1" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Primary analysis</h1>
 <p>Abbakumov, 2016, lectures</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="primary-analysis-1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA</span></span>
-<span id="cb12-2"><a href="primary-analysis-1.html#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./DATA/Swiss_Bank_Notes.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot; &quot;</span>, <span class="at">dec=</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb12-3"><a href="primary-analysis-1.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb12-4"><a href="primary-analysis-1.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="primary-analysis-1.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data explanation: parameters of Swiss Banknotes</span></span>
-<span id="cb12-6"><a href="primary-analysis-1.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Size of data: 200 (100 are real, 100 are false)</span></span>
-<span id="cb12-7"><a href="primary-analysis-1.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Length - length</span></span>
-<span id="cb12-8"><a href="primary-analysis-1.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># H_l - height left</span></span>
-<span id="cb12-9"><a href="primary-analysis-1.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># H_r - height right</span></span>
-<span id="cb12-10"><a href="primary-analysis-1.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># dist_l - border left</span></span>
-<span id="cb12-11"><a href="primary-analysis-1.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dist_up - border up</span></span>
-<span id="cb12-12"><a href="primary-analysis-1.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Diag - diagonal</span></span>
-<span id="cb12-13"><a href="primary-analysis-1.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ? Find false banknotes</span></span>
-<span id="cb12-14"><a href="primary-analysis-1.html#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="primary-analysis-1.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Let&#39;s add a column with 100 filled 0 and 100 filled with 1.</span></span>
-<span id="cb12-16"><a href="primary-analysis-1.html#cb12-16" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb12-17"><a href="primary-analysis-1.html#cb12-17" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(df, origin)</span>
-<span id="cb12-18"><a href="primary-analysis-1.html#cb12-18" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>origin[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>] <span class="ot">&lt;-</span><span class="dv">1</span></span>
-<span id="cb12-19"><a href="primary-analysis-1.html#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set origin as factor - binary data (0,1)</span></span>
-<span id="cb12-20"><a href="primary-analysis-1.html#cb12-20" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>origin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>origin)</span>
-<span id="cb12-21"><a href="primary-analysis-1.html#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(df<span class="sc">$</span>origin)</span>
-<span id="cb12-22"><a href="primary-analysis-1.html#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="primary-analysis-1.html#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Visual inspection of given data</span></span>
-<span id="cb12-24"><a href="primary-analysis-1.html#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb12-25"><a href="primary-analysis-1.html#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df)  <span class="co"># data type</span></span>
-<span id="cb12-26"><a href="primary-analysis-1.html#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)     <span class="co"># dimention</span></span>
-<span id="cb12-27"><a href="primary-analysis-1.html#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span>
-<span id="cb12-28"><a href="primary-analysis-1.html#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span>
-<span id="cb12-29"><a href="primary-analysis-1.html#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span>
-<span id="cb12-30"><a href="primary-analysis-1.html#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span>
-<span id="cb12-31"><a href="primary-analysis-1.html#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)   <span class="co"># names of columns</span></span>
-<span id="cb12-32"><a href="primary-analysis-1.html#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="co"># also names of columns</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="primary-analysis-1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. HISTORGRAM</span></span>
-<span id="cb13-2"><a href="primary-analysis-1.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">colnames</span>(df))<span class="sc">/</span><span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb13-3"><a href="primary-analysis-1.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">colnames</span>(df))) { <span class="fu">hist</span>(df[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(df)[i])) }</span>
-<span id="cb13-4"><a href="primary-analysis-1.html#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="primary-analysis-1.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for Diagonals</span></span>
-<span id="cb13-6"><a href="primary-analysis-1.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb13-7"><a href="primary-analysis-1.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>Diag, <span class="at">breaks=</span><span class="dv">18</span>, <span class="at">probability=</span><span class="cn">TRUE</span>)</span>
-<span id="cb13-8"><a href="primary-analysis-1.html#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="primary-analysis-1.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot</span></span>
-<span id="cb13-10"><a href="primary-analysis-1.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(VADeaths, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend=</span><span class="cn">TRUE</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
-<span id="cb13-11"><a href="primary-analysis-1.html#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Deaths per 1000&quot;</span>, <span class="at">main=</span><span class="st">&quot;Death rates in Virginia&quot;</span>)</span>
-<span id="cb13-12"><a href="primary-analysis-1.html#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="primary-analysis-1.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pieplot</span></span>
-<span id="cb13-14"><a href="primary-analysis-1.html#cb13-14" aria-hidden="true" tabindex="-1"></a>groupsize <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
-<span id="cb13-15"><a href="primary-analysis-1.html#cb13-15" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
-<span id="cb13-16"><a href="primary-analysis-1.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(groupsize, labels, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;grey&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
-<span id="cb13-17"><a href="primary-analysis-1.html#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="primary-analysis-1.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># All pairs of data scatter plot</span></span>
-<span id="cb13-19"><a href="primary-analysis-1.html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df)</span>
-<span id="cb13-20"><a href="primary-analysis-1.html#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="primary-analysis-1.html#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Length ~ Dial</span></span>
-<span id="cb13-22"><a href="primary-analysis-1.html#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>Length, df<span class="sc">$</span>Diag)</span>
-<span id="cb13-23"><a href="primary-analysis-1.html#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># true notes</span></span>
-<span id="cb13-24"><a href="primary-analysis-1.html#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">1</span>],</span>
-<span id="cb13-25"><a href="primary-analysis-1.html#cb13-25" aria-hidden="true" tabindex="-1"></a>       df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">0</span>], <span class="at">pch=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
-<span id="cb13-26"><a href="primary-analysis-1.html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># false notes</span></span>
-<span id="cb13-27"><a href="primary-analysis-1.html#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">1</span>],</span>
-<span id="cb13-28"><a href="primary-analysis-1.html#cb13-28" aria-hidden="true" tabindex="-1"></a>       df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">0</span>], <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb13-29"><a href="primary-analysis-1.html#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-30"><a href="primary-analysis-1.html#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co"># If factors are given, plot makes boxplot</span></span>
-<span id="cb13-31"><a href="primary-analysis-1.html#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>origin, df<span class="sc">$</span>Diag)</span>
-<span id="cb13-32"><a href="primary-analysis-1.html#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Swiss Bank Notes&quot;</span>)</span>
-<span id="cb13-33"><a href="primary-analysis-1.html#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-34"><a href="primary-analysis-1.html#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA - TOWNS</span></span>
-<span id="cb13-35"><a href="primary-analysis-1.html#cb13-35" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/town_1959_2.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
-<span id="cb13-36"><a href="primary-analysis-1.html#cb13-36" aria-hidden="true" tabindex="-1"></a>town</span>
-<span id="cb13-37"><a href="primary-analysis-1.html#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town)</span>
-<span id="cb13-38"><a href="primary-analysis-1.html#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Median is more stable to outliers</span></span>
-<span id="cb13-39"><a href="primary-analysis-1.html#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town[,<span class="dv">3</span>])</span>
-<span id="cb13-40"><a href="primary-analysis-1.html#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="co"># lets remove 2 first towns from the data</span></span>
-<span id="cb13-41"><a href="primary-analysis-1.html#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town[<span class="dv">3</span><span class="sc">:</span><span class="dv">1004</span>,<span class="dv">3</span>])</span>
-<span id="cb13-42"><a href="primary-analysis-1.html#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(town[,<span class="dv">3</span>])</span>
-<span id="cb13-43"><a href="primary-analysis-1.html#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-44"><a href="primary-analysis-1.html#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co"># log scale allows us to see outliers better</span></span>
-<span id="cb13-45"><a href="primary-analysis-1.html#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(town[,<span class="dv">3</span>]), <span class="at">breaks=</span><span class="dv">50</span>)</span>
-<span id="cb13-46"><a href="primary-analysis-1.html#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-47"><a href="primary-analysis-1.html#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncated mean is better than mean</span></span>
-<span id="cb13-48"><a href="primary-analysis-1.html#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(town[,<span class="dv">3</span>], <span class="at">trim=</span><span class="fl">0.05</span>)</span>
-<span id="cb13-49"><a href="primary-analysis-1.html#cb13-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-50"><a href="primary-analysis-1.html#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA - BASKETBALL</span></span>
-<span id="cb13-51"><a href="primary-analysis-1.html#cb13-51" aria-hidden="true" tabindex="-1"></a>bb <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/basketball.csv&quot;</span>, <span class="at">header=</span>F, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
-<span id="cb13-52"><a href="primary-analysis-1.html#cb13-52" aria-hidden="true" tabindex="-1"></a>bb</span>
-<span id="cb13-53"><a href="primary-analysis-1.html#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="co"># NBA Player characteristics:</span></span>
-<span id="cb13-54"><a href="primary-analysis-1.html#cb13-54" aria-hidden="true" tabindex="-1"></a><span class="co"># percent of positives vs:</span></span>
-<span id="cb13-55"><a href="primary-analysis-1.html#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="co"># SF - light forvard</span></span>
-<span id="cb13-56"><a href="primary-analysis-1.html#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="co"># PF - heavy forvard</span></span>
-<span id="cb13-57"><a href="primary-analysis-1.html#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="co"># C - center</span></span>
-<span id="cb13-58"><a href="primary-analysis-1.html#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="co"># G - defender</span></span>
-<span id="cb13-59"><a href="primary-analysis-1.html#cb13-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-60"><a href="primary-analysis-1.html#cb13-60" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bb[,<span class="dv">1</span>])</span>
-<span id="cb13-61"><a href="primary-analysis-1.html#cb13-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-62"><a href="primary-analysis-1.html#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb13-63"><a href="primary-analysis-1.html#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bb[,<span class="dv">1</span>]<span class="sc">~</span>bb[,<span class="dv">2</span>])</span>
-<span id="cb13-64"><a href="primary-analysis-1.html#cb13-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-65"><a href="primary-analysis-1.html#cb13-65" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb13-66"><a href="primary-analysis-1.html#cb13-66" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) { <span class="fu">hist</span>(bb[,<span class="dv">1</span>], <span class="at">breaks=</span><span class="dv">5</span><span class="sc">*</span>i, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">&quot;Breaks&quot;</span>, <span class="dv">5</span><span class="sc">*</span>i), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>) }</span>
-<span id="cb13-67"><a href="primary-analysis-1.html#cb13-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-68"><a href="primary-analysis-1.html#cb13-68" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(bb[,<span class="dv">2</span>])) {</span>
-<span id="cb13-69"><a href="primary-analysis-1.html#cb13-69" aria-hidden="true" tabindex="-1"></a>     <span class="fu">hist</span>(bb[bb[,<span class="dv">2</span>]<span class="sc">==</span>i ,<span class="dv">1</span>],  <span class="at">breaks=</span><span class="dv">6</span>, </span>
-<span id="cb13-70"><a href="primary-analysis-1.html#cb13-70" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(bb[,<span class="dv">1</span>])<span class="sc">-</span><span class="dv">5</span>, <span class="fu">max</span>(bb[,<span class="dv">1</span>]<span class="sc">+</span><span class="dv">5</span>)), <span class="at">col=</span><span class="st">&quot;white&quot;</span>, <span class="at">main=</span>i, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb13-71"><a href="primary-analysis-1.html#cb13-71" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-72"><a href="primary-analysis-1.html#cb13-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Conclusion: for several groups of data boxplots may be more informative than histograms</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="primary-analysis-1.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA</span></span>
+<span id="cb23-2"><a href="primary-analysis-1.html#cb23-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./DATA/Swiss_Bank_Notes.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot; &quot;</span>, <span class="at">dec=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb23-3"><a href="primary-analysis-1.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb23-4"><a href="primary-analysis-1.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="primary-analysis-1.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data explanation: parameters of Swiss Banknotes</span></span>
+<span id="cb23-6"><a href="primary-analysis-1.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Size of data: 200 (100 are real, 100 are false)</span></span>
+<span id="cb23-7"><a href="primary-analysis-1.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Length - length</span></span>
+<span id="cb23-8"><a href="primary-analysis-1.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># H_l - height left</span></span>
+<span id="cb23-9"><a href="primary-analysis-1.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># H_r - height right</span></span>
+<span id="cb23-10"><a href="primary-analysis-1.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># dist_l - border left</span></span>
+<span id="cb23-11"><a href="primary-analysis-1.html#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dist_up - border up</span></span>
+<span id="cb23-12"><a href="primary-analysis-1.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Diag - diagonal</span></span>
+<span id="cb23-13"><a href="primary-analysis-1.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ? Find false banknotes</span></span>
+<span id="cb23-14"><a href="primary-analysis-1.html#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="primary-analysis-1.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Let&#39;s add a column with 100 filled 0 and 100 filled with 1.</span></span>
+<span id="cb23-16"><a href="primary-analysis-1.html#cb23-16" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb23-17"><a href="primary-analysis-1.html#cb23-17" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(df, origin)</span>
+<span id="cb23-18"><a href="primary-analysis-1.html#cb23-18" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>origin[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>] <span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb23-19"><a href="primary-analysis-1.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set origin as factor - binary data (0,1)</span></span>
+<span id="cb23-20"><a href="primary-analysis-1.html#cb23-20" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>origin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>origin)</span>
+<span id="cb23-21"><a href="primary-analysis-1.html#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(df<span class="sc">$</span>origin)</span>
+<span id="cb23-22"><a href="primary-analysis-1.html#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-23"><a href="primary-analysis-1.html#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Visual inspection of given data</span></span>
+<span id="cb23-24"><a href="primary-analysis-1.html#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb23-25"><a href="primary-analysis-1.html#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df)  <span class="co"># data type</span></span>
+<span id="cb23-26"><a href="primary-analysis-1.html#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)     <span class="co"># dimention</span></span>
+<span id="cb23-27"><a href="primary-analysis-1.html#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span>
+<span id="cb23-28"><a href="primary-analysis-1.html#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span>
+<span id="cb23-29"><a href="primary-analysis-1.html#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span>
+<span id="cb23-30"><a href="primary-analysis-1.html#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span>
+<span id="cb23-31"><a href="primary-analysis-1.html#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)   <span class="co"># names of columns</span></span>
+<span id="cb23-32"><a href="primary-analysis-1.html#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="co"># also names of columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="primary-analysis-1.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. HISTORGRAM</span></span>
+<span id="cb24-2"><a href="primary-analysis-1.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">colnames</span>(df))<span class="sc">/</span><span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb24-3"><a href="primary-analysis-1.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">colnames</span>(df))) { <span class="fu">hist</span>(df[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(df)[i])) }</span>
+<span id="cb24-4"><a href="primary-analysis-1.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="primary-analysis-1.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for Diagonals</span></span>
+<span id="cb24-6"><a href="primary-analysis-1.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb24-7"><a href="primary-analysis-1.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>Diag, <span class="at">breaks=</span><span class="dv">18</span>, <span class="at">probability=</span><span class="cn">TRUE</span>)</span>
+<span id="cb24-8"><a href="primary-analysis-1.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="primary-analysis-1.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot</span></span>
+<span id="cb24-10"><a href="primary-analysis-1.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(VADeaths, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend=</span><span class="cn">TRUE</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb24-11"><a href="primary-analysis-1.html#cb24-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Deaths per 1000&quot;</span>, <span class="at">main=</span><span class="st">&quot;Death rates in Virginia&quot;</span>)</span>
+<span id="cb24-12"><a href="primary-analysis-1.html#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="primary-analysis-1.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pieplot</span></span>
+<span id="cb24-14"><a href="primary-analysis-1.html#cb24-14" aria-hidden="true" tabindex="-1"></a>groupsize <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb24-15"><a href="primary-analysis-1.html#cb24-15" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
+<span id="cb24-16"><a href="primary-analysis-1.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(groupsize, labels, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;grey&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb24-17"><a href="primary-analysis-1.html#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="primary-analysis-1.html#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co"># All pairs of data scatter plot</span></span>
+<span id="cb24-19"><a href="primary-analysis-1.html#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df)</span>
+<span id="cb24-20"><a href="primary-analysis-1.html#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-21"><a href="primary-analysis-1.html#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Length ~ Dial</span></span>
+<span id="cb24-22"><a href="primary-analysis-1.html#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>Length, df<span class="sc">$</span>Diag)</span>
+<span id="cb24-23"><a href="primary-analysis-1.html#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># true notes</span></span>
+<span id="cb24-24"><a href="primary-analysis-1.html#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">1</span>],</span>
+<span id="cb24-25"><a href="primary-analysis-1.html#cb24-25" aria-hidden="true" tabindex="-1"></a>       df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">0</span>], <span class="at">pch=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
+<span id="cb24-26"><a href="primary-analysis-1.html#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co"># false notes</span></span>
+<span id="cb24-27"><a href="primary-analysis-1.html#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">1</span>],</span>
+<span id="cb24-28"><a href="primary-analysis-1.html#cb24-28" aria-hidden="true" tabindex="-1"></a>       df<span class="sc">$</span>Length[df<span class="sc">$</span>origin<span class="sc">==</span><span class="dv">0</span>], <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb24-29"><a href="primary-analysis-1.html#cb24-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-30"><a href="primary-analysis-1.html#cb24-30" aria-hidden="true" tabindex="-1"></a><span class="co"># If factors are given, plot makes boxplot</span></span>
+<span id="cb24-31"><a href="primary-analysis-1.html#cb24-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>origin, df<span class="sc">$</span>Diag)</span>
+<span id="cb24-32"><a href="primary-analysis-1.html#cb24-32" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Swiss Bank Notes&quot;</span>)</span>
+<span id="cb24-33"><a href="primary-analysis-1.html#cb24-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-34"><a href="primary-analysis-1.html#cb24-34" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA - TOWNS</span></span>
+<span id="cb24-35"><a href="primary-analysis-1.html#cb24-35" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/town_1959_2.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb24-36"><a href="primary-analysis-1.html#cb24-36" aria-hidden="true" tabindex="-1"></a>town</span>
+<span id="cb24-37"><a href="primary-analysis-1.html#cb24-37" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town)</span>
+<span id="cb24-38"><a href="primary-analysis-1.html#cb24-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Median is more stable to outliers</span></span>
+<span id="cb24-39"><a href="primary-analysis-1.html#cb24-39" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb24-40"><a href="primary-analysis-1.html#cb24-40" aria-hidden="true" tabindex="-1"></a><span class="co"># lets remove 2 first towns from the data</span></span>
+<span id="cb24-41"><a href="primary-analysis-1.html#cb24-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(town[<span class="dv">3</span><span class="sc">:</span><span class="dv">1004</span>,<span class="dv">3</span>])</span>
+<span id="cb24-42"><a href="primary-analysis-1.html#cb24-42" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb24-43"><a href="primary-analysis-1.html#cb24-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-44"><a href="primary-analysis-1.html#cb24-44" aria-hidden="true" tabindex="-1"></a><span class="co"># log scale allows us to see outliers better</span></span>
+<span id="cb24-45"><a href="primary-analysis-1.html#cb24-45" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(town[,<span class="dv">3</span>]), <span class="at">breaks=</span><span class="dv">50</span>)</span>
+<span id="cb24-46"><a href="primary-analysis-1.html#cb24-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-47"><a href="primary-analysis-1.html#cb24-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncated mean is better than mean</span></span>
+<span id="cb24-48"><a href="primary-analysis-1.html#cb24-48" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(town[,<span class="dv">3</span>], <span class="at">trim=</span><span class="fl">0.05</span>)</span>
+<span id="cb24-49"><a href="primary-analysis-1.html#cb24-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-50"><a href="primary-analysis-1.html#cb24-50" aria-hidden="true" tabindex="-1"></a><span class="co"># GET DATA - BASKETBALL</span></span>
+<span id="cb24-51"><a href="primary-analysis-1.html#cb24-51" aria-hidden="true" tabindex="-1"></a>bb <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/basketball.csv&quot;</span>, <span class="at">header=</span>F, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb24-52"><a href="primary-analysis-1.html#cb24-52" aria-hidden="true" tabindex="-1"></a>bb</span>
+<span id="cb24-53"><a href="primary-analysis-1.html#cb24-53" aria-hidden="true" tabindex="-1"></a><span class="co"># NBA Player characteristics:</span></span>
+<span id="cb24-54"><a href="primary-analysis-1.html#cb24-54" aria-hidden="true" tabindex="-1"></a><span class="co"># percent of positives vs:</span></span>
+<span id="cb24-55"><a href="primary-analysis-1.html#cb24-55" aria-hidden="true" tabindex="-1"></a><span class="co"># SF - light forvard</span></span>
+<span id="cb24-56"><a href="primary-analysis-1.html#cb24-56" aria-hidden="true" tabindex="-1"></a><span class="co"># PF - heavy forvard</span></span>
+<span id="cb24-57"><a href="primary-analysis-1.html#cb24-57" aria-hidden="true" tabindex="-1"></a><span class="co"># C - center</span></span>
+<span id="cb24-58"><a href="primary-analysis-1.html#cb24-58" aria-hidden="true" tabindex="-1"></a><span class="co"># G - defender</span></span>
+<span id="cb24-59"><a href="primary-analysis-1.html#cb24-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-60"><a href="primary-analysis-1.html#cb24-60" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bb[,<span class="dv">1</span>])</span>
+<span id="cb24-61"><a href="primary-analysis-1.html#cb24-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-62"><a href="primary-analysis-1.html#cb24-62" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb24-63"><a href="primary-analysis-1.html#cb24-63" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bb[,<span class="dv">1</span>]<span class="sc">~</span>bb[,<span class="dv">2</span>])</span>
+<span id="cb24-64"><a href="primary-analysis-1.html#cb24-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-65"><a href="primary-analysis-1.html#cb24-65" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb24-66"><a href="primary-analysis-1.html#cb24-66" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) { <span class="fu">hist</span>(bb[,<span class="dv">1</span>], <span class="at">breaks=</span><span class="dv">5</span><span class="sc">*</span>i, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">&quot;Breaks&quot;</span>, <span class="dv">5</span><span class="sc">*</span>i), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>) }</span>
+<span id="cb24-67"><a href="primary-analysis-1.html#cb24-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-68"><a href="primary-analysis-1.html#cb24-68" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(bb[,<span class="dv">2</span>])) {</span>
+<span id="cb24-69"><a href="primary-analysis-1.html#cb24-69" aria-hidden="true" tabindex="-1"></a>     <span class="fu">hist</span>(bb[bb[,<span class="dv">2</span>]<span class="sc">==</span>i ,<span class="dv">1</span>],  <span class="at">breaks=</span><span class="dv">6</span>, </span>
+<span id="cb24-70"><a href="primary-analysis-1.html#cb24-70" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(bb[,<span class="dv">1</span>])<span class="sc">-</span><span class="dv">5</span>, <span class="fu">max</span>(bb[,<span class="dv">1</span>]<span class="sc">+</span><span class="dv">5</span>)), <span class="at">col=</span><span class="st">&quot;white&quot;</span>, <span class="at">main=</span>i, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb24-71"><a href="primary-analysis-1.html#cb24-71" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-72"><a href="primary-analysis-1.html#cb24-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Conclusion: for several groups of data boxplots may be more informative than histograms</span></span></code></pre></div>
 
 </div>
             </section>

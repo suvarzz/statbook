@@ -275,40 +275,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="correlation" class="section level1" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Correlation</h1>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="correlation.html#cb74-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mtcars</span>
-<span id="cb74-2"><a href="correlation.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation miles per galon of petrol ~ horse power</span></span>
-<span id="cb74-3"><a href="correlation.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
-<span id="cb74-4"><a href="correlation.html#cb74-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-5"><a href="correlation.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get parameters of analysed correlation</span></span>
-<span id="cb74-6"><a href="correlation.html#cb74-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
-<span id="cb74-7"><a href="correlation.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fit)</span>
-<span id="cb74-8"><a href="correlation.html#cb74-8" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>p.value</span>
-<span id="cb74-9"><a href="correlation.html#cb74-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-10"><a href="correlation.html#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the same correlation in &#39;formula&#39; form (see. ?cor.test)</span></span>
-<span id="cb74-11"><a href="correlation.html#cb74-11" aria-hidden="true" tabindex="-1"></a>?cor.test</span>
-<span id="cb74-12"><a href="correlation.html#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span>mpg<span class="sc">+</span>hp, df)</span>
-<span id="cb74-13"><a href="correlation.html#cb74-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-14"><a href="correlation.html#cb74-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot using generic plot function of ggplot from ggplot2 package</span></span>
-<span id="cb74-15"><a href="correlation.html#cb74-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
-<span id="cb74-16"><a href="correlation.html#cb74-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-17"><a href="correlation.html#cb74-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb74-18"><a href="correlation.html#cb74-18" aria-hidden="true" tabindex="-1"></a><span class="co"># add color by number of engine&#39;s cylinders</span></span>
-<span id="cb74-19"><a href="correlation.html#cb74-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">col =</span> <span class="fu">factor</span>(cyl)))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">5</span>)</span>
-<span id="cb74-20"><a href="correlation.html#cb74-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-21"><a href="correlation.html#cb74-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset of necessary data from mtcars</span></span>
-<span id="cb74-22"><a href="correlation.html#cb74-22" aria-hidden="true" tabindex="-1"></a>df.sub <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>)]</span>
-<span id="cb74-23"><a href="correlation.html#cb74-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplots for all pairs of variables</span></span>
-<span id="cb74-24"><a href="correlation.html#cb74-24" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(df.sub)</span>
-<span id="cb74-25"><a href="correlation.html#cb74-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-26"><a href="correlation.html#cb74-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlations of all pairs of variables</span></span>
-<span id="cb74-27"><a href="correlation.html#cb74-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df.sub)</span>
-<span id="cb74-28"><a href="correlation.html#cb74-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-29"><a href="correlation.html#cb74-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation using corr.test function from &#39;psych&#39; package</span></span>
-<span id="cb74-30"><a href="correlation.html#cb74-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation for all pairs of variables</span></span>
-<span id="cb74-31"><a href="correlation.html#cb74-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb74-32"><a href="correlation.html#cb74-32" aria-hidden="true" tabindex="-1"></a>fit.sub <span class="ot">&lt;-</span> <span class="fu">corr.test</span>(df.sub)</span>
-<span id="cb74-33"><a href="correlation.html#cb74-33" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>r    <span class="co"># correlations</span></span>
-<span id="cb74-34"><a href="correlation.html#cb74-34" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>p    <span class="co"># dependecies of variables</span></span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="correlation.html#cb84-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb84-2"><a href="correlation.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation miles per galon of petrol ~ horse power</span></span>
+<span id="cb84-3"><a href="correlation.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
+<span id="cb84-4"><a href="correlation.html#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="correlation.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get parameters of analysed correlation</span></span>
+<span id="cb84-6"><a href="correlation.html#cb84-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
+<span id="cb84-7"><a href="correlation.html#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fit)</span>
+<span id="cb84-8"><a href="correlation.html#cb84-8" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>p.value</span>
+<span id="cb84-9"><a href="correlation.html#cb84-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-10"><a href="correlation.html#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the same correlation in &#39;formula&#39; form (see. ?cor.test)</span></span>
+<span id="cb84-11"><a href="correlation.html#cb84-11" aria-hidden="true" tabindex="-1"></a>?cor.test</span>
+<span id="cb84-12"><a href="correlation.html#cb84-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span>mpg<span class="sc">+</span>hp, df)</span>
+<span id="cb84-13"><a href="correlation.html#cb84-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-14"><a href="correlation.html#cb84-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot using generic plot function of ggplot from ggplot2 package</span></span>
+<span id="cb84-15"><a href="correlation.html#cb84-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
+<span id="cb84-16"><a href="correlation.html#cb84-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-17"><a href="correlation.html#cb84-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb84-18"><a href="correlation.html#cb84-18" aria-hidden="true" tabindex="-1"></a><span class="co"># add color by number of engine&#39;s cylinders</span></span>
+<span id="cb84-19"><a href="correlation.html#cb84-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">col =</span> <span class="fu">factor</span>(cyl)))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">5</span>)</span>
+<span id="cb84-20"><a href="correlation.html#cb84-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-21"><a href="correlation.html#cb84-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset of necessary data from mtcars</span></span>
+<span id="cb84-22"><a href="correlation.html#cb84-22" aria-hidden="true" tabindex="-1"></a>df.sub <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>)]</span>
+<span id="cb84-23"><a href="correlation.html#cb84-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplots for all pairs of variables</span></span>
+<span id="cb84-24"><a href="correlation.html#cb84-24" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(df.sub)</span>
+<span id="cb84-25"><a href="correlation.html#cb84-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-26"><a href="correlation.html#cb84-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlations of all pairs of variables</span></span>
+<span id="cb84-27"><a href="correlation.html#cb84-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df.sub)</span>
+<span id="cb84-28"><a href="correlation.html#cb84-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-29"><a href="correlation.html#cb84-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation using corr.test function from &#39;psych&#39; package</span></span>
+<span id="cb84-30"><a href="correlation.html#cb84-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation for all pairs of variables</span></span>
+<span id="cb84-31"><a href="correlation.html#cb84-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb84-32"><a href="correlation.html#cb84-32" aria-hidden="true" tabindex="-1"></a>fit.sub <span class="ot">&lt;-</span> <span class="fu">corr.test</span>(df.sub)</span>
+<span id="cb84-33"><a href="correlation.html#cb84-33" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>r    <span class="co"># correlations</span></span>
+<span id="cb84-34"><a href="correlation.html#cb84-34" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>p    <span class="co"># dependecies of variables</span></span></code></pre></div>
 
 </div>
             </section>
