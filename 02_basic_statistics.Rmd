@@ -9,7 +9,7 @@
 **variables** - discret, continuous, ordinal (ранговая)  
 
 ## Primary analysis
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 # sample of random integers
 v <- round(rnorm(n=50, sd=5, mean=100))
 
@@ -23,26 +23,6 @@ hist(v)
 x <- density(v)$x
 y <- (10/max(density(v)$y))*density(v)$y  # scale y to plot with histogram
 lines(x, y, col="red", lwd=2)
-
-# mode function
-getmode <- function(v) {
-   uniqv <- unique(v)
-   uniqv[which.max(tabulate(match(v, uniqv)))]
-}
-
-getmode(v)        # mode
-mean(v)           # mean
-mean(v, trim=0.1) # trimmed mean
-median(v)         # median
-
-min(v)
-max(v)
-range(v)
-max(v)-min(v)   # range
-
-quantile(v)
-boxplot(v)
-# median, 50% quantile and center of boxplot is the same value.
 ```
 
 ## Outliers

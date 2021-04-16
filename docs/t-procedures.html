@@ -33,7 +33,6 @@
   
 <link rel="prev" href="hypothesis-testing.html"/>
 <link rel="next" href="tests-for-categorical-variables.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,27 +53,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,8 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
-<ul>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a><ul>
 <li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#get-data"><i class="fa fa-check"></i><b>2.1</b> Get data</a></li>
 <li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
 <li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
@@ -144,8 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.5</b> t-Test</a></li>
 <li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.6</b> ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
-<ul>
+<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a><ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
 <li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#primary-analysis"><i class="fa fa-check"></i><b>3.2</b> Primary analysis</a></li>
 <li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3</b> Outliers</a></li>
@@ -153,8 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.5</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-analysis-1.html"><a href="primary-analysis-1.html"><i class="fa fa-check"></i><b>4</b> Primary analysis</a></li>
-<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a>
-<ul>
+<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a><ul>
 <li class="chapter" data-level="5.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>5.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="5.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>5.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="5.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>5.3</b> Binomial Distribution</a></li>
@@ -163,13 +157,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>5.6</b> Poisson Distribution</a></li>
 <li class="chapter" data-level="5.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>5.7</b> Exponential Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
-<ul>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a><ul>
 <li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>6.1</b> Hypothesis testing theory</a></li>
 <li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.2</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
-<ul>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a><ul>
 <li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
 <li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
@@ -179,43 +171,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
 <li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
-<ul>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a><ul>
 <li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
-<ul>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a><ul>
 <li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
-<ul>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a><ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
-<ul>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a><ul>
 <li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
 <li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Correlation</a></li>
 <li class="chapter" data-level="13" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>13</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a>
-<ul>
+<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a><ul>
 <li class="chapter" data-level="14.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>14.1</b> Next part</a></li>
 <li class="chapter" data-level="14.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>14.2</b> Example</a></li>
 <li class="chapter" data-level="14.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>14.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>15</b> Support Vector Machine</a></li>
 <li class="chapter" data-level="16" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>16</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a>
-<ul>
+<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a><ul>
 <li class="chapter" data-level="17.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>17.1</b> Linear Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>18</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a>
-<ul>
+<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a><ul>
 <li class="chapter" data-level="19.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>19.1</b> Generate Random Data Set a Linear Model</a></li>
 <li class="chapter" data-level="19.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>19.2</b> Linear regression - theory</a></li>
 <li class="chapter" data-level="19.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>19.3</b> Practical example</a></li>
@@ -225,14 +209,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>19.7</b> Practical examples for linear model regression</a></li>
 <li class="chapter" data-level="19.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>19.8</b> NEXT part</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a>
-<ul>
+<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a><ul>
 <li class="chapter" data-level="20.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>20.1</b> NEXT part</a></li>
 <li class="chapter" data-level="20.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>20.2</b> NEXT Part</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>21</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a>
-<ul>
+<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a><ul>
 <li class="chapter" data-level="22.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>22.1</b> Generate dataset from a given function</a></li>
 <li class="chapter" data-level="22.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>22.2</b> Split data for train and test</a></li>
 <li class="chapter" data-level="22.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>22.3</b> Diagram of the given function and generated datasets</a></li>
@@ -241,15 +223,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="22.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>22.6</b> Build optimal model and plot for the model</a></li>
 <li class="chapter" data-level="22.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>22.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a>
-<ul>
+<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a><ul>
 <li class="chapter" data-level="23.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>23.1</b> Next part</a></li>
 <li class="chapter" data-level="23.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
 <li class="chapter" data-level="23.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>23.3</b> NExt part</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a>
-<ul>
+<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a><ul>
 <li class="chapter" data-level="25.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>25.0.1</b> Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="26" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>26</b> Naive Bayes</a></li>
@@ -273,9 +253,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="t-procedures" class="section level1" number="7">
+<div id="t-procedures" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> t-Procedures</h1>
-<div id="t-test-and-normal-distribution" class="section level2" number="7.1">
+<div id="t-test-and-normal-distribution" class="section level2">
 <h2><span class="header-section-number">7.1</span> t-test and normal distribution</h2>
 <p>t-distribution assumes that the observations are <strong>independent</strong> and that they follow a <strong>normal distribution</strong>.
 If the data are <strong>dependent</strong>, then p-values will likely be totally wrong (e.g., for positive correlation, too optimistic). Type II errors?<br />
@@ -283,7 +263,7 @@ It is good to test if observations are normally distributed. Otherwise we assume
 Independence of observations is usually not testable, but can be reasonably assumed if the data collection process was random without replacement.</p>
 <p>FIXME: I do not understand this. Deviation data from normalyty will lead to type-I errors. I data is deviated from normal distribution, use <strong>Wilcoxon test</strong> or <strong>permutation tests</strong>.</p>
 </div>
-<div id="one-sample-t-test" class="section level2" number="7.2">
+<div id="one-sample-t-test" class="section level2">
 <h2><span class="header-section-number">7.2</span> One-sample t-test</h2>
 <p>One-sample t-test is used to compare the mean of one sample to a known standard (or theoretical/hypothetical) mean (μ).<br />
 t-statistics:
@@ -297,11 +277,11 @@ Q: What is the difference between t-test and ANOVA?<br />
 Q: What is the smallest sample size which can be tested by t-test?<br />
 Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided tests.</p>
 </div>
-<div id="practical-example-t-test-in-r" class="section level2" number="7.3">
+<div id="practical-example-t-test-in-r" class="section level2">
 <h2><span class="header-section-number">7.3</span> Practical example: t-test in R</h2>
 <p>We want to test if <strong>N</strong> is different from given mean <strong>μ</strong>=0:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="t-procedures.html#cb36-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.01</span>, <span class="fl">0.65</span>, <span class="sc">-</span><span class="fl">0.17</span>, <span class="fl">1.77</span>, <span class="fl">0.76</span>, <span class="sc">-</span><span class="fl">0.16</span>, <span class="fl">0.88</span>, <span class="fl">1.09</span>, <span class="fl">0.96</span>, <span class="fl">0.25</span>)</span>
-<span id="cb36-2"><a href="t-procedures.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">N =<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.01</span>, <span class="fl">0.65</span>, <span class="fl">-0.17</span>, <span class="fl">1.77</span>, <span class="fl">0.76</span>, <span class="fl">-0.16</span>, <span class="fl">0.88</span>, <span class="fl">1.09</span>, <span class="fl">0.96</span>, <span class="fl">0.25</span>)</a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="kw">t.test</span>(N, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -313,7 +293,7 @@ Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided t
 ## sample estimates:
 ## mean of x 
 ##     0.602</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="t-procedures.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">t.test</span>(N, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -325,7 +305,7 @@ Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided t
 ## sample estimates:
 ## mean of x 
 ##     0.602</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="t-procedures.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">t.test</span>(N, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -339,7 +319,7 @@ Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided t
 ##     0.602</code></pre>
 <p>FIXME: why it accepts all alternatives at the same time (less and greater?)</p>
 </div>
-<div id="two-samples-t-test" class="section level2" number="7.4">
+<div id="two-samples-t-test" class="section level2">
 <h2><span class="header-section-number">7.4</span> Two samples t-test</h2>
 <p>Do two different samples have the same mean?<br />
 H<sub>0</sub>:<br />
@@ -369,34 +349,34 @@ If H<sub>0</sub> is correct, test statistic follows a t-distribution with n+m-2 
 <p>To apply t-test samples must be tested if they have equal variance:<br />
 equal variance (homoscedastic). Type 3 means two samples, unequal variance (heteroscedastic).</p>
 </div>
-<div id="compare-students-t-and-normal-distributions" class="section level2" number="7.5">
+<div id="compare-students-t-and-normal-distributions" class="section level2">
 <h2><span class="header-section-number">7.5</span> Compare Student’s t and normal distributions</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="t-procedures.html#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length=</span><span class="dv">100</span>)</span>
-<span id="cb42-2"><a href="t-procedures.html#cb42-2" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
-<span id="cb42-3"><a href="t-procedures.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="t-procedures.html#cb42-4" aria-hidden="true" tabindex="-1"></a>degf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">30</span>)</span>
-<span id="cb42-5"><a href="t-procedures.html#cb42-5" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb42-6"><a href="t-procedures.html#cb42-6" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;df=1&quot;</span>, <span class="st">&quot;df=3&quot;</span>, <span class="st">&quot;df=8&quot;</span>, <span class="st">&quot;df=30&quot;</span>, <span class="st">&quot;normal&quot;</span>)</span>
-<span id="cb42-7"><a href="t-procedures.html#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="t-procedures.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, hx, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">xlab=</span><span class="st">&quot;x value&quot;</span>,</span>
-<span id="cb42-9"><a href="t-procedures.html#cb42-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Density&quot;</span>, <span class="at">main=</span><span class="st">&quot;Comparison of t Distributions&quot;</span>)</span>
-<span id="cb42-10"><a href="t-procedures.html#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="t-procedures.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
-<span id="cb42-12"><a href="t-procedures.html#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(x, <span class="fu">dt</span>(x,degf[i]), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span>colors[i])</span>
-<span id="cb42-13"><a href="t-procedures.html#cb42-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb42-14"><a href="t-procedures.html#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-15"><a href="t-procedures.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">inset=</span>.<span class="dv">05</span>, <span class="at">title=</span><span class="st">&quot;Distributions&quot;</span>,</span>
-<span id="cb42-16"><a href="t-procedures.html#cb42-16" aria-hidden="true" tabindex="-1"></a>       labels, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col=</span>colors)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb39-2" title="2">hx &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x)</a>
+<a class="sourceLine" id="cb39-3" title="3"></a>
+<a class="sourceLine" id="cb39-4" title="4">degf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb39-5" title="5">colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)</a>
+<a class="sourceLine" id="cb39-6" title="6">labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;df=1&quot;</span>, <span class="st">&quot;df=3&quot;</span>, <span class="st">&quot;df=8&quot;</span>, <span class="st">&quot;df=30&quot;</span>, <span class="st">&quot;normal&quot;</span>)</a>
+<a class="sourceLine" id="cb39-7" title="7"></a>
+<a class="sourceLine" id="cb39-8" title="8"><span class="kw">plot</span>(x, hx, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">xlab=</span><span class="st">&quot;x value&quot;</span>,</a>
+<a class="sourceLine" id="cb39-9" title="9">     <span class="dt">ylab=</span><span class="st">&quot;Density&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Comparison of t Distributions&quot;</span>)</a>
+<a class="sourceLine" id="cb39-10" title="10"></a>
+<a class="sourceLine" id="cb39-11" title="11"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>){</a>
+<a class="sourceLine" id="cb39-12" title="12">    <span class="kw">lines</span>(x, <span class="kw">dt</span>(x,degf[i]), <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span>colors[i])</a>
+<a class="sourceLine" id="cb39-13" title="13">}</a>
+<a class="sourceLine" id="cb39-14" title="14"></a>
+<a class="sourceLine" id="cb39-15" title="15"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset=</span>.<span class="dv">05</span>, <span class="dt">title=</span><span class="st">&quot;Distributions&quot;</span>,</a>
+<a class="sourceLine" id="cb39-16" title="16">       labels, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col=</span>colors)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>To generate data with known mean and sd:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="t-procedures.html#cb43-1" aria-hidden="true" tabindex="-1"></a>rnorm2 <span class="ot">&lt;-</span> <span class="cf">function</span>(n,mean,sd) { mean<span class="sc">+</span>sd<span class="sc">*</span><span class="fu">scale</span>(<span class="fu">rnorm</span>(n)) }</span>
-<span id="cb43-2"><a href="t-procedures.html#cb43-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rnorm2</span>(<span class="dv">100</span>,<span class="dv">4</span>,<span class="dv">1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="t-procedures.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">### t-test</span></span>
-<span id="cb44-2"><a href="t-procedures.html#cb44-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">175</span>, <span class="dv">168</span>, <span class="dv">168</span>, <span class="dv">190</span>, <span class="dv">156</span>, <span class="dv">181</span>, <span class="dv">182</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>)</span>
-<span id="cb44-3"><a href="t-procedures.html#cb44-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">185</span>, <span class="dv">169</span>, <span class="dv">173</span>, <span class="dv">173</span>, <span class="dv">188</span>, <span class="dv">186</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>, <span class="dv">180</span>)</span>
-<span id="cb44-4"><a href="t-procedures.html#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="t-procedures.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># test homogeneity of variances using Fisher’s F-test</span></span>
-<span id="cb44-6"><a href="t-procedures.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(a,b)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">rnorm2 &lt;-<span class="st"> </span><span class="cf">function</span>(n,mean,sd) { mean<span class="op">+</span>sd<span class="op">*</span><span class="kw">scale</span>(<span class="kw">rnorm</span>(n)) }</a>
+<a class="sourceLine" id="cb40-2" title="2">r &lt;-<span class="st"> </span><span class="kw">rnorm2</span>(<span class="dv">100</span>,<span class="dv">4</span>,<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co">### t-test</span></a>
+<a class="sourceLine" id="cb41-2" title="2">a =<span class="st"> </span><span class="kw">c</span>(<span class="dv">175</span>, <span class="dv">168</span>, <span class="dv">168</span>, <span class="dv">190</span>, <span class="dv">156</span>, <span class="dv">181</span>, <span class="dv">182</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>)</a>
+<a class="sourceLine" id="cb41-3" title="3">b =<span class="st"> </span><span class="kw">c</span>(<span class="dv">185</span>, <span class="dv">169</span>, <span class="dv">173</span>, <span class="dv">173</span>, <span class="dv">188</span>, <span class="dv">186</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>, <span class="dv">180</span>)</a>
+<a class="sourceLine" id="cb41-4" title="4"></a>
+<a class="sourceLine" id="cb41-5" title="5"><span class="co"># test homogeneity of variances using Fisher’s F-test</span></a>
+<a class="sourceLine" id="cb41-6" title="6"><span class="kw">var.test</span>(a,b)</a></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
@@ -408,12 +388,12 @@ equal variance (homoscedastic). Type 3 means two samples, unequal variance (hete
 ## sample estimates:
 ## ratio of variances 
 ##           2.102784</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="t-procedures.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance is homogene (can use var.equal=T in t.test)</span></span>
-<span id="cb46-2"><a href="t-procedures.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="t-procedures.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test</span></span>
-<span id="cb46-4"><a href="t-procedures.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(a,b, </span>
-<span id="cb46-5"><a href="t-procedures.html#cb46-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>,   <span class="co"># variance is homogene (tested by var.test(a,b)) </span></span>
-<span id="cb46-6"><a href="t-procedures.html#cb46-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">FALSE</span>)     <span class="co"># samples are independent</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># variance is homogene (can use var.equal=T in t.test)</span></a>
+<a class="sourceLine" id="cb43-2" title="2"></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="co"># t-test</span></a>
+<a class="sourceLine" id="cb43-4" title="4"><span class="kw">t.test</span>(a,b, </a>
+<a class="sourceLine" id="cb43-5" title="5">       <span class="dt">var.equal=</span><span class="ot">TRUE</span>,   <span class="co"># variance is homogene (tested by var.test(a,b)) </span></a>
+<a class="sourceLine" id="cb43-6" title="6">       <span class="dt">paired=</span><span class="ot">FALSE</span>)     <span class="co"># samples are independent</span></a></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -426,10 +406,10 @@ equal variance (homoscedastic). Type 3 means two samples, unequal variance (hete
 ## mean of x mean of y 
 ##     174.8     178.2</code></pre>
 </div>
-<div id="non-parametric-tests" class="section level2" number="7.6">
+<div id="non-parametric-tests" class="section level2">
 <h2><span class="header-section-number">7.6</span> Non-parametric tests</h2>
 </div>
-<div id="mann-whitney-u-rank-sum-test" class="section level2" number="7.7">
+<div id="mann-whitney-u-rank-sum-test" class="section level2">
 <h2><span class="header-section-number">7.7</span> Mann-Whitney U Rank Sum Test</h2>
 <ol style="list-style-type: decimal">
 <li>The dependent variable is ordinal or continuous.<br />
@@ -439,7 +419,7 @@ equal variance (homoscedastic). Type 3 means two samples, unequal variance (hete
 <li>The dependent variables for the two independent groups share a similar shape.</li>
 </ol>
 </div>
-<div id="wilcoxon-test" class="section level2" number="7.8">
+<div id="wilcoxon-test" class="section level2">
 <h2><span class="header-section-number">7.8</span> Wilcoxon test</h2>
 <p>The <strong>Wilcoxon</strong> is a <strong>non-parametric test</strong> which works on normal and non-normal data. However, we usually prefer not to use it if we can assume that the data is normally distributed. The non-parametric test comes with less statistical power, this is a price that one has to pay for more flexible assumptions.</p>
 </div>

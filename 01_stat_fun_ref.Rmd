@@ -19,6 +19,7 @@ colnames(df) # also column names
 ```{r, eval=FALSE}
 plot(x ~ y)
 barplot(df)
+boxplot(v)
 hist(x)
 pie(groupsize, labels, col, ...)
 ```
@@ -38,11 +39,12 @@ median(v)         # median
 
 min(v)
 max(v)
-range(v)          # max(v) - min(v)
+range(v)          # c(mun(v), max(v))
+max(v)-min(v)   # range
 
 sort(v)
 rank(v)
-sample(v)
+sample(v)        # subsample
 sample(v, size)
 
 var(v)            # variance
