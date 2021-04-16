@@ -1,0 +1,82 @@
+# Machine Learning Functions Reference
+## Linear Regression
+```{r, eval=FALSE}
+lm_model <- lm(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)))
+summary(lm_model)
+
+lm(y ~ x1 + x2 + x3)     # multiple linear regression
+
+lm(log(y) ~ x)           # log transformed
+lm(sqrt(y) ~ x)          # sqrt transformed
+lm( y ~ log(x))          # fields transformed
+llm(log(y) ~ log(x))     # everything is transformed
+
+lm(y ~ .)                # use all fields for regression model
+
+lm(y ~ x + 0)            # forced zero intercept
+
+lm(y ~ x*k)              # interaction of two variables
+
+lm(y ~ x + k + x:k)      # product of xkl but without interaction
+
+lm(y ~ (x + k + ... + l)^2) # all first order interactions
+
+lm(y ~ I(x1 + x2))       # sum of variables
+lm(y ~ I(x1^2))          # product of variables (not interation)
+
+lm(y ~ x + I(x^2) + I(x^3)) # polynomial regression
+lm(y ~ poly(x,3))           # same as previous
+
+# Forward/backward stepwise regression
+# improve model
+fit <- lm(y ~ x1 + x2)
+bwd.fit <- step(fit, direction = 'backward')
+fwd.fit <- step(fit, direction = 'forward', scope( ~ x1 + x2))
+
+# Test linear model
+plot(m)            # plot residuals
+car::outlier.test(m)
+dwtest(m)          # Durbin-Watson Test of the model residuals
+
+# Prediction
+predicted_values <- predict(lm_model, newdata=as.data.frame(cbind(x1_test, x2_test)))
+
+# Apriori
+dataset <- read.csv("C:\\Datasets\\mushroom.csv", header = TRUE)
+mushroom_rules <- apriori(as.matrix(dataset), parameter = list(supp = 0.8, conf = 0.9))
+summary(mushroom_rules)
+inspect(mushroom_rules)
+
+# Logistic Regression
+glm_mod <-glm(y ∼ x1+x2, family=binomial(link="logit"), data=as.data.frame(cbind(y,x1,x2))) 
+
+# K-Means Clustering
+kmeans_model <- kmeans(x=X, centers=m)
+
+# k-Nearest Neighbor Classification
+knn_model <- knn(train=X_train, test=X_test, cl=as.factor(labels), k=K)
+
+# Naıve Bayes
+library(e1071)
+nB_model <- naiveBayes(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)))
+
+# Decision Trees (CART)
+library(rpart)
+cart_model <- rpart(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)), method="class")
+
+plot.rpart(cart_model)
+text.rpart(cart_model)
+
+# AdaBoost
+# boosting functions - uses decision trees as base classifiers
+library(rpart)
+library(ada)
+# Let X be the matrix of features, and labels be a vector of 0-1 class labels.
+boost_model <- ada(x=X, y=labels)
+
+# Support Vector Machines (SVM)
+library(e1071)
+# Let X be the matrix of features, and labels be a vector of 0-1 class labels. Let the regularization parameter be C. Use the following commands to generate the SVM model and view details:
+svm_model <- svm(x=X, y=as.factor(labels), kernel ="radial", cost=C)
+summary(svm_model)
+```

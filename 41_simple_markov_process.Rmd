@@ -1,0 +1,92 @@
+# Simple Markov process
+
+
+Here, we will consider a simple example of Markov process with implementation in R.  
+The following example is taken from [Bodo Winter website](http://www.bodowinter.com).  
+
+A **Markov process** is characterized by (1) **a finite set of states** and (2) **fixed transition probabilities between the states**.  
+
+Let's consider an example. Assume you have a classroom, with students who could be either in the state **alert** or in the state **bored**. And	 then, at any given time point, there's a certain probability of an alert student becoming bored (say 0.2), and there's a probability of a  bored student becoming alert (say 0.25).  
+
+Let's say there are 20 alert and 80 bored students in a particular class. This is your initial condition at time point	$t$. Given the	transition probabilities above,	what's the number of alert and bored students at the next point in time, $t+1$?  	
+Multiply 20 by 0.2 (=4) and these will be the alert students that	turn bored.	 
+And	then multiply 80 by 0.25 (=20) and these will be the bored students that turn alert.  
+So, at $t+1$, there's going to be 20-4+20 alert students. And there's going to be 80+4-20 bored students. Before, 80% of the students were bored and now, only 64% of the students are bored. Conversely, 36% are alert.  
+
+A handy way of representing this Markov process is by defining a transition probability matrix:  
+
+|           | A   | B    |
+|-----------|-----|------|
+| A$_{t+1}$ | 0.8 | 0.25 |
+| B$_{t+1}$ | 0.2 | 0.75 |
+
+What this matrix says is: A proportion of 0.8 of the people who are in state A (alert) will also be at state A at time point $t+1$. And, a proportion of 0.25 of the people who are in state B (bored) will switch to alert at t+1. This is what the first row says. The next row is simply one minus the probabilities of the first row, because probabilities (or proportions) have to add up to 1. Now think about multiplying this matrix with the initial proportions of alert and bored students that we had above. 0.8 are bored and 0.2 are alert. In linear algebra this would look the following way:  
+
+<div>
+$$
+\begin{bmatrix}
+ 0.8 & 0.25 \\
+ 0.2 & 0.75
+\end{bmatrix}\times\begin{bmatrix}
+ 0.2 \\
+ 0.8
+\end{bmatrix} = \begin{bmatrix}
+ 0.8\times0.2 + 0.25\times0.8 \\
+ 0.2\times0.2 + 0.75\times0.8
+\end{bmatrix} = \begin{bmatrix}
+0.36 \\
+0.64
+\end{bmatrix}
+$$
+</div>
+
+The results of these calculations are exactly the proportions that we saw above: 36% alert student and 64% bored students.  
+
+Now, you might ask yourself: What happens if this process continues? What happens at $t+2$, $t+3$ etc.? Will it be the case that at one point there are no bored students any more? Let's simulate this in R and find out! Let's call this **tpm** for **transition probability matrix**:  
+
+```{R}
+tpm = matrix(c(0.8,0.25, 0.2,0.75), nrow=2, byrow=TRUE)
+colnames(tpm) = c('A','B')
+rownames(tpm) = c('At+1', 'Bt+1')
+tpm
+```
+
+Again this matrix shows that 0.8 students who were in state A at time point t will still be in state A at $t+1$. And 0.25 students who were in state B at time point t will be in state A at $t+1$. The second row has a similar interpretation for alert and bored students becoming bored at $t+1$. Remember that Markov processes assume fixed transition probabilities. This means that in the simulation that we'll be doing, we leave the transition probability matrix unchanged. However, we will define a vector of the actual proportions – and these are allowed to change. In time, we expect more and more students to become alert, because the transition probability from B to A (which, to remind you, was 0.25) is higher than from A to B (which was 0.2).  
+
+Let's start our simulation by setting the initial condition as 0.1 students are alert and 0.9 students are bored and define a matrix called **sm** (short for **student matrix**):  
+```{R}
+sm = as.matrix(c(0.1, 0.9))
+rownames(sm)= c('A', 'B')
+sm
+```
+Now let's repeat by looping:
+
+```{R}
+for(i in 1:10){
+    sm = tpm %*% sm
+    }
+```
+Here, we're looping 10 times and on each iteration, we multiply the matrix **tpm** with the student matrix **sm**. We take this result and store it in **sm**. This means that at the next iteration, our fixed **transition probability matrix** will be multiplied by a different student matrix, allowing for the proportions to slowly change over time.  
+R operator '%*%' is used for matrix multiplication
+
+Outcome of our ten loop iterations:
+```{R}
+sm
+```
+
+So, after 10 iterations of the Markov process, we now have about 55% alert students and 45% bored ones. What is interesting to me is that even though 80% of the people who are alert at one time point remain alert at the next time point, the process only converged on 55% alert and 45% bored after 10 iterations.
+
+Let's reset our initial condition to (0.1 alert and 0.9 bored students) and run a thousand iterations. 
+```{R}
+for(i in 1:1000){
+    sm = tpm %*% sm
+    }
+sm
+```
+
+A 1000 iterations, and we seem to be zoning in onto ~55% and ~44%. This phenomenon is called **Markov convergence**. You could run even more iterations, and your outcome would get closer and closer to 0.5555 (to infinity). So, the model converges on an equilibrium. However, this is not a fixed equilibrium. It's not the case that the Markov process comes to a hold or that nobody changes states between alertness and boredness any more. The equilibrium that we're dealing with here is a statistical equilibrium, where the proportions of alert and bored students remain the same. but there still is constant change (at each time step, 0.2 alert students become bored and 0.25 bored students become alert). Markov models always converge to a statistical equilibrium if the conditions (1) and (2) above are met, and if you can get from any state within your Markov model to any other state (in the case of just two states, that clearly is the case). What's so cool about this is that it is, at first sight, fairly counterintuitive.
+
+At least when I thought about the transition probabilities for the first time, I somehow expected all students to become alert but as we saw, that's not the case. Moreover, this process is not sensitive to initial conditions. That means that when you start with any proportion of alert or bored students (even extreme ones such as 0.0001 alert students), the process will reach the statistical equilibrium – albeit sometimes a little faster or slower. You can play around with different values for the **sm** object to explore this property of Markov convergence. Another interesting thing is that the process is impervious to intervention: Say, you introduced something that made more students alert – the Markov model would quickly get back to equilibrium. So Markov processes are essentially ahistorical processes: history doesn't matter. Even with extreme initial conditions or extreme interventions, the process quickly converges to the equilibrium defined by the transition probabilities. The only way to persistently change the system is to change the transition probabilities. Finally, what I find so cool about Markov processes is their computational simplicity.  
+
+### Sources
+[Bodo Winter website](http://www.bodowinter.com)

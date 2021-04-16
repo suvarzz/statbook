@@ -1,0 +1,162 @@
+# Hypothesis testing
+
+Null hypothesis (H<sub>0</sub>):  
+1. H<sub>0</sub>: m = μ  
+2. H<sub>0</sub>: m \(\leq\) μ  
+3. H<sub>0</sub>: m \(\geq\) μ  
+
+Alternative hypotheses (H<sub>a</sub>):  
+1. H<sub>a</sub>:m ≠ μ (different)  
+2. H<sub>a</sub>:m > μ (greater)  
+3. H<sub>a</sub>:m < μ (less)  
+
+Note: Hypothesis 1. are called **two-tailed tests** and hypotheses 2. & 3. are called **one-tailed tests**.  
+
+The p-value is the probability that the observed data could happen, under the condition that the null hypothesis is true.  
+
+*Note*: p-value is not the probability that the null hypothesis is true.  
+*Note*: Absence of evidence ⧧ evidence of absence.  
+
+Cutoffs for hypothesis testing \*p < 0.05, \**p < 0.01, \***p < 0.001.  
+If p value is less than significance level alpha (0.05), the hull hypothesies is rejected.  
+
+|                     | not rejected ('negative')      | rejected ('positive')         |
+|---------------------|--------------------------------|-------------------------------|
+| H<sub>0</sub> true  | True negative (specificity)    | False Positive (Type I error) |
+| H<sub>0</sub> false | False Negative (Type II error) | True positive (sensitivity)   |
+
+Type II errors are usually more dangerous.  
+
+
+
+## Hypothesis test (Practice)
+
+1. Check distribution (is normal?): shapiro.test()  
+2. Distribution uniformity (are both normal?)  
+3. Dependence of variable (are x and y dependent?)  
+4. Difference of distribution parameters (are means different?)  
+
+```{r, eval=FALSE}
+###. 1 Is distribution normal?
+town <- read.table("~/DataAnalysis/DATA/town_1959_2.csv", header=T, sep="\t", dec=".")
+town
+# histogram
+hist(town[,3])
+
+# log scale
+hist(log(town[,3]), breaks=50)
+
+# ? Is log scaled number of sitizens per town is normally distributed?
+# test for normal distribution of dataset
+data <- log(town[,3])
+shapiro.test(data)
+
+# H0: data is normally distributed
+# W = 0.97467 - 
+# p-value = 3.15e-12 -> p < alpha (0.01) - H0 is incorrect
+# Our distripution is not normal
+
+# Different tests for normality in package "nortest"
+install.packages("nortest")
+library(nortest)
+ad.test(data)   # Anderson-Darling test
+lillie.test(data) # Lilliefors (Kolmogorov-Smirnov) test
+
+# Emperical rule: if n < 2000 -> shapiro.test, else -> lillie.test
+
+# In theory it is possible to use method for normally distributed data, 
+# even if they are not normal, but almost normal:
+# 1. No outlayers
+# 2. Symmetry of histogram
+# 3. Bell-shaped form of histogram
+
+# Method to make normal from not-normal distribution
+# 1. Remove outlayers
+# 2. Transform data to get symmetry: log, Boxcox
+# 3. Bimodality: split samples into groups
+
+# Boxcox transformation
+install.packages("AID")
+library(AID)
+bctr = boxcoxnc(data)
+bctr$results
+
+### 2. Compair centers of two distributions
+# Emperical rule: if notmal -> mean, else -> median
+# if median -> Mann–Whitney-Wilcoxon (MWW) test
+# if mean -> one of Student's tests
+
+# Student t-test
+# t.test(x,y, alternative="two.sided", paired=FALSE, var.equal=FALSE)
+
+# How to compair if dispersions are the same?
+# Fligner-Killeen test
+# Brown-Forsythe test
+#fligner.test(x~g, data=data.table)
+
+# Example
+x <- read.table ("~/DataAnalysis/R_data_analysis/DATA/Albuquerque Home Prices_data.txt", header=T)
+
+names(x)
+summary(x)
+
+# Change -9999 to NA
+x$AGE[x$AGE==-9999] <- NA
+x$TAX[x$TAX==-9999] <- NA
+
+fligner.test(PRICE~COR, data=x)
+# Dispersion is the same for both distribution
+# p > alpha (0.01)
+
+t.test(x$PRICE[x$COR==1], x$PRICE[x$COR==0],
+       alternative="less",
+       paired=FALSE,
+       var.equal=TRUE)
+# p-value = 0.1977 (H0 is true)
+
+# Mood's median test
+names(x)
+x1 <- x[x$NE==1,1]
+x2 <- x[x$NE==0,1]
+m <- median(c(x1,x2))
+f11 <- sum(x1>m)
+f12 <- sum(x2>m)
+f21 <- sum(x1<=m)
+f22 <- sum(x2<=m)
+table <- matrix(c(f11,f12, f21, f22), nrow=2,ncol=2)
+chisq.test(table)
+# p=0.47 > alpha=0.05: H0 is true
+# medians are the same
+
+## Mann–Whitney-Wilcoxon (MWW) test
+# Check if medians are the same
+# U1 = n1*n2+{n1*(n1+1)/2 - T1}
+# U1 = n1*n2+{n2*(n2+1)/2 - T2}
+# U=min(U1,U2)
+# Ti - сумма рангов в объединенной выборке наблюдений из выборки i
+# n1, n2 - размеры выборок
+
+wilcox.test(x,y,
+            alternative="two.sided",
+            paired=FALSE,
+            exact=TRUE,
+            correct=FALSE)
+
+###. 3. Dependency of variables
+# H0: x, y independent
+# Correlation analysis
+# Correlation (pearson) mesure linear dependency!
+# Correlation k depends on outlayers (must be removed)
+
+plot(x$SQFT, x$TAX)
+
+cor(x$SQFT, x$TAX, use = "complete.obs")
+
+cor(x$SQFT, x$TAX, use = "complete.obs", method = "spearman")
+
+cor(x, use = "complete.obs", method = "spearman")
+
+cor(x, use = "complete.obs", method = "pearson")
+
+cor.test(x$SQFT, x$TAX, use = "complete.obs")
+```

@@ -1,0 +1,38 @@
+# Correlation
+
+```{r, eval=FALSE}
+df <- mtcars
+# correlation miles per galon of petrol ~ horse power
+cor.test(x = df$mpg, y = df$hp)
+
+# get parameters of analysed correlation
+fit <- cor.test(x = df$mpg, y = df$hp)
+str(fit)
+fit$p.value
+
+# the same correlation in 'formula' form (see. ?cor.test)
+?cor.test
+cor.test(~mpg+hp, df)
+
+# Plot using generic plot function of ggplot from ggplot2 package
+plot(x = df$mpg, y = df$hp)
+
+library(ggplot2)
+# add color by number of engine's cylinders
+ggplot(df, aes(x = mpg, y = hp, col = factor(cyl)))+geom_point(size=5)
+
+# Subset of necessary data from mtcars
+df.sub <- df[,c(1,3:7)]
+# Scatterplots for all pairs of variables
+pairs(df.sub)
+
+# Correlations of all pairs of variables
+cor(df.sub)
+
+# Correlation using corr.test function from 'psych' package
+# Correlation for all pairs of variables
+library(psych)
+fit.sub <- corr.test(df.sub)
+fit.sub$r    # correlations
+fit.sub$p    # dependecies of variables
+```

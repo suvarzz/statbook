@@ -1,0 +1,7 @@
+# t-test ANOVA difference
+The t-test and ANOVA examine whether group means differ from one another. The t-test compares two groups, while ANOVA can do more than two groups.
+The t-test ANOVA have three assumptions: independence assumption (the elements of one sample are not related to those of the other sample), normality assumption (samples are randomly drawn from the normally distributed populstions with unknown population means; otherwise the means are no longer best measures of central tendency, thus test will not be valid), and equal variance assumption (the population variances of the two groups are equal)
+ANCOVA (analysis of covariance) includes covariates, interval independent variables, in the right-hand side to control their impacts. MANOVA (multivariate analysis of variance) has more than one left-hand side variable.  
+
+![t-test and ANOVA usage.](./_bookdown_files/images/anova.gif)
+

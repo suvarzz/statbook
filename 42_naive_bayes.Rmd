@@ -1,0 +1,7 @@
+# Naive Bayes
+
+$P(c|x) = \frac{P(x|c)(P(c))}{P(x)}$, where  
+$P(c|x)$ - posteriour probability  
+$P(x|c)$ - Likelihood  
+$P(c)$ - Class Prior Probbility  
+$P(x)$ - Predictor Prior Probability  

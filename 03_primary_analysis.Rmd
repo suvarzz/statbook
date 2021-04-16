@@ -1,0 +1,115 @@
+# Primary analysis
+
+Abbakumov, 2016, lectures  
+
+```{r, eval=FALSE}
+
+# GET DATA
+df <- read.table("./DATA/Swiss_Bank_Notes.csv", header=T, sep=" ", dec=",")
+head(df)
+
+# Data explanation: parameters of Swiss Banknotes
+# Size of data: 200 (100 are real, 100 are false)
+# Length - length
+# H_l - height left
+# H_r - height right
+# dist_l - border left
+# dist_up - border up
+# Diag - diagonal
+# ? Find false banknotes
+
+# 1. Let's add a column with 100 filled 0 and 100 filled with 1.
+origin <- 0
+df <- data.frame(df, origin)
+df$origin[1:100] <-1
+# Set origin as factor - binary data (0,1)
+df$origin <- as.factor(df$origin)
+is.factor(df$origin)
+
+# 2. Visual inspection of given data
+head(df)
+typeof(df)  # data type
+dim(df)     # dimention
+nrow(df)
+ncol(df)
+str(df)
+summary(df)
+names(df)   # names of columns
+colnames(df) # also names of columns
+
+```
+
+```{r, eval=FALSE}
+# 2. HISTORGRAM
+par(mfrow=c(length(colnames(df))/2,2))
+for (i in 1:length(colnames(df))) { hist(df[,i], main = paste(colnames(df)[i])) }
+
+# Histogram for Diagonals
+par(mfrow=c(1,1))
+hist(df$Diag, breaks=18, probability=TRUE)
+
+# Barplot
+barplot(VADeaths, beside=TRUE, legend=TRUE, ylim=c(0, 100),
+        ylab="Deaths per 1000", main="Death rates in Virginia")
+
+# Pieplot
+groupsize <- c(18, 30, 32, 10, 10)
+labels <- c("A", "B", "C", "D", "F")
+pie(groupsize, labels, col=c("red", "white", "grey", "black", "blue"))
+
+# All pairs of data scatter plot
+plot(df)
+
+# Length ~ Dial
+plot(df$Length, df$Diag)
+# true notes
+points(df$Length[df$origin==1],
+       df$Length[df$origin==0], pch=3, col="green")
+# false notes
+points(df$Length[df$origin==1],
+       df$Length[df$origin==0], pch=1, col="red")
+
+# If factors are given, plot makes boxplot
+plot(df$origin, df$Diag)
+title("Swiss Bank Notes")
+
+# GET DATA - TOWNS
+town <- read.table("DATA/town_1959_2.csv", header=T, sep="\t", dec=".")
+town
+summary(town)
+# Median is more stable to outliers
+summary(town[,3])
+# lets remove 2 first towns from the data
+summary(town[3:1004,3])
+hist(town[,3])
+
+# log scale allows us to see outliers better
+hist(log(town[,3]), breaks=50)
+
+# Truncated mean is better than mean
+mean(town[,3], trim=0.05)
+
+# GET DATA - BASKETBALL
+bb <- read.table("DATA/basketball.csv", header=F, sep=";", dec=".")
+bb
+# NBA Player characteristics:
+# percent of positives vs:
+# SF - light forvard
+# PF - heavy forvard
+# C - center
+# G - defender
+
+summary(bb[,1])
+
+par(mfrow=c(1,1))
+plot(bb[,1]~bb[,2])
+
+par(mfrow=c(2,2))
+for (i in 1:4) { hist(bb[,1], breaks=5*i, main=paste("Breaks", 5*i), ylab="") }
+
+for (i in unique(bb[,2])) {
+     hist(bb[bb[,2]==i ,1],  breaks=6, 
+     xlim=c(min(bb[,1])-5, max(bb[,1]+5)), col="white", main=i, ylab="")
+}
+# Conclusion: for several groups of data boxplots may be more informative than histograms
+```

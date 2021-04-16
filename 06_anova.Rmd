@@ -1,0 +1,67 @@
+# Analysis of Variance (ANOVA)
+## One-way ANOVA
+**variance** = SS/df, where SS - sum of squares and df - degree of freedom  
+\(SS = \displaystyle\sum_{i=1}^{n}{(x_i - \mu)^2}\), where  
+\(\mu\) is the sample **mean**  
+**n** is the sample **size** 
+
+\(var(x) = \frac{1}{n}{\displaystyle\sum_{i=1}^{n}{(x_i - \mu)^2}}\)  
+
+
+
+SST = SSE + SSC = W + B, where  
+SST - Total Sum of Squares  
+SSE - Error Sum of Squares - within (W)  
+SSC - Sum of Squares Columns (treatmens) - between (B)
+
+C - columns (treatments)  
+N - total number of observations  
+
+Mean squared of columns - MSC = SSC/df_columns, where df_columns = C-1  
+Mean squared of error - MSE = SSE/df_error, where df_error = N-C  
+Sum of squares (total) - SST, where df_total = N-1
+F-statistics - F = MSC/MSE
+
+Let's calculate degree of freedom for our example:  
+df_columns = 3-1 = 2, MSC = SSC/2  
+df_error = 21-3 = 18, MSE = SSE/18  
+df_total = 21-1 = 20
+
+```{r}
+# 3 groups of students with scores (1-100):
+a = c(82,93,61,74,69,70,53)
+b = c(71,62,85,94,78,66,71)
+c = c(64,73,87,91,56,78,87)
+
+sq = function(x) { sum((x - mean(x))^2) }
+
+sq(a)
+sq(b)
+sq(c)
+
+```
+
+Using R packages:
+```{r}
+# data
+# Number of calories consumed by month:
+may <- c(2166, 1568, 2233, 1882, 2019)
+sep <- c(2279, 2075, 2131, 2009, 1793)
+dec <- c(2226, 2154, 2583, 2010, 2190)
+
+d <- stack(list(may=may, sep=sep, dec=dec))
+d
+names(d)
+
+oneway.test(values ~ ind, data=d, var.equal=TRUE)
+```
+
+```{r}
+# alternative using aov
+res <- aov(values ~ ind, data = d)
+res
+summary(res)
+```
+
+## Sources
+Example for one-way ANOVA: [youtube](https://www.youtube.com/playlist?list=PLIeGtxpvyG-KA-BLkL391X__r0kU4_hm5) by Brandon Foltz  

@@ -1,0 +1,70 @@
+# Statistics R functions reference
+
+## Data inspection
+```{r, eval = FALSE}
+head(df)
+typeof(df)  # data type
+dim(df)     # dimention
+nrow(df)    # number of rows
+ncol(df)    # number of columns
+str(df)     # data structure
+summary(df) # data summary
+names(df)   # names of columns
+colnames(df) # also column names
+```
+
+# Analysis of the distribution
+```{r, eval = FALSE}
+# mode
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+getmode(v)        # mode
+mean(v)           # mean
+mean(v, trim=0.1) # trimmed mean
+median(v)         # median
+
+min(v)
+max(v)
+range(v)          # max(v) - min(v)
+
+sort(v)
+rank(v)
+sample(v)
+sample(v, size)
+
+var(v)            # variance
+sd(v)             # standard deviation
+cor(v)            # correlation
+cov(v)            # covariation
+scale(v)          # z-scores
+
+quantile(v)
+IQR(v)            # interquantile range: IQR = Q3 – Q1
+
+qqnorm(v)         # normal probability plot
+qqline(v)         # adds a line to a normal probability plot passing through 1Q and 3Q
+```
+
+## t-Test
+```{r, eval = FALSE}
+t.test(x, mu = 0, alternative = c("two.sided", "less", "greater"), 
+       paired = FALSE, var.equal = FALSE, conf.level = 0.95)
+t.test(v, mu)     # one-sample t-test, mu - null hypothesized value
+t.test(v1, v2)    # two-sample t-test
+t.test(v1, v2, var.equal=T)
+t.test(var1, var2, paired=T)
+wilcox.test(v1, v2, paired=T)
+```
+
+## ANOVA
+```{r, eval = FALSE}
+# One way ANOVA
+oneway.test(x ~ f)
+aov(x ~ f)
+
+anova(m1, m2)      # compair two models
+```
+

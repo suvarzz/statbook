@@ -1,0 +1,33 @@
+# Learning Vector Quantization
+
+Learning Vector Quantiztion (LVQ) is a supervised classification algorithm for binary and multiclass problems. LVQ is a special case of a neural network.  
+LVQ model creates codebook vectors by learning training dataset. Codebook vectors represent class regions. They contain elements that placed around the respective class according to their matching level. If the element matches, it comes closer to the target class, if it does not match, it moves farther from it. With this codebooks, the model classifies new data.
+[Here](http://jsalatas.ictpro.gr/implementation-of-competitive-learning-networks-for-weka/) is a nice explanation how it works.
+
+There are several versions of **LVQ** function:  
+`lvq1()`, `olvq1()`, `lvq2()`, `lvq3()`, `dlvq()`.    
+
+```{r}
+library(class) # olvq1()
+library(caret) # to split data
+
+# generate dataset
+df <- iris
+
+id = caret::createDataPartition(df$Species, p = .8, list = F)
+
+train = df[id, ]
+test = df[-id, ]
+
+# initialize an LVQ codebook
+cb = class::lvqinit(train[1:4], train$Species)
+
+# training set in a codebook.
+build.cb = class::olvq1(train[1:4], train$Species, cb)
+
+# classify test set from LVQ Codebook for test data
+predict = class::lvqtest(build.cb, test[1:4])
+
+# confusion matrix.
+caret::confusionMatrix(test$Species, predict)
+```

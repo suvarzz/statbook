@@ -1,0 +1,52 @@
+# Split data into train and test subsets
+  
+Here you can find several simple approaches to split data into train and test subset to fit and to test parameters of your model. 
+We want to take 0.8 of our initial data to train our model.  
+Data: `datasets::iris`.
+
+1. First approach is to create a **vector containing randomly selected row ids** and to apply this vector to split data.  
+
+```{r}
+inTrain = sample(nrow(iris), nrow(iris)*0.8)
+
+# split data
+train = iris[inTrain, ]
+test = iris[-inTrain, ]
+```
+
+2. The same idea to split data as before using `caret` package.  
+The advantage is that `createDataPartition` function allows to split data many `times` and  use these subsets to estimate parameters of our model.  
+```{r, message=F}
+library(caret)
+trainIndex <- createDataPartition(iris$Species, p=.8,
+                                  list = FALSE,        # if FALSE - create a vector/matrix, if TRUE - create a list
+                                  times = 1)           # how many subsets
+# split data
+train <- iris[trainIndex, ]
+test <- iris[-trainIndex, ]
+```
+
+3. Another approch is to create a **logical vecotor** containing randomly distributed true/false and apply this vector to subset data.  
+```{r}
+inTrain = sample(c(TRUE, FALSE), nrow(iris), replace = T, prob = c(0.8,0.2))
+
+# select data
+train = iris[inTrain, ]
+test = iris[!inTrain, ]
+```
+
+4. Using [`caTools`](https://cran.r-project.org/web/packages/caTools/index.html).
+```{r}
+library(caTools)
+inTrain = sample.split(iris, SplitRatio = .8)
+train = subset(iris, inTrain == TRUE)
+test  = subset(iris, inTrain == FALSE)
+```
+
+5. Using [`dplyr`](https://cran.r-project.org/web/packages/dplyr/)
+```{r, message=F}
+library(dplyr)
+iris$id <- 1:nrow(iris)
+train <- iris %>% dplyr::sample_frac(.8)
+test  <- dplyr::anti_join(iris, train, by = 'id')
+```

@@ -1,0 +1,134 @@
+# Basic Statistics
+
+**population** - all existing samples  
+**sample** - subset of statistical population  
+**simple random sample** - random subset  
+**stratified sample** - fist clustering, than random sample from  
+**cluster sample** - random choosing from several existing clusters  
+**variables** - discret, continuous, ordinal (ранговая)  
+
+```{r, eval=FALSE}
+v <- c(185, 175, 170, 169, 171, 172, 175, 157, 170, 172,
+       167, 173, 168, 167, 166, 167, 169, 172, 177, 178,
+       165, 161, 179, 159, 164, 178, 172, 170, 173, 171)
+
+stripchart(v, method = "stack", pch=19, cex=2, offset=.5, at=.15,
+           main = "Dotplot of random value", xlab = "Random value")
+
+hist(v)
+
+# add density
+x <- density(v)$x
+y <- (10/max(density(v)$y))*density(v)$y  # scale y to plot with histogram
+lines(x, y, col="red", lwd=2)
+
+# mode function
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+getmode(v)        # mode
+mean(v)           # mean
+mean(v, trim=0.1) # trimmed mean
+median(v)         # median
+
+min(v)
+max(v)
+range(v)
+max(v)-min(v)   # range
+
+quantile(v)
+boxplot(v)
+# median, 50% quantile and center of boxplot is the same value.
+```
+
+## Outliers
+Outliers are rare values that appear far away from the majority of the data. 
+Outliers can bias the results and potentially lead to incorrect conclusions if not handled properly. 
+One method for dealing with outliers is to simply remove them. 
+However, removing data points can introduce other types of bias into the results, and potentially result in losing critical information. 
+If outliers seem to have a lot of influence on the results, a nonparametric test such as the **Wilcoxon Signed Rank Test** may be appropriate to use instead. 
+Outliers can be identified visually using a boxplot.  
+
+## Normality
+It is possible to use histogram to estimate normality of the distribution.  
+
+```{r, eval=FALSE}
+# QQ-plot - fit normal distibution
+qqnorm(v); qqline(v)
+
+var(v)     # variance: sd = sqrt(var)
+sd(v)      # standard deviation
+
+sd(v)/sqrt(length(v))  # standard error sd/sqrt(n)
+
+# Z-score (standartization)
+# transform distribution to mean=0, variance=1
+# z = (x - mean(n))/sd
+scale(v)     # z-score
+vs <- scale(v)[,1]
+vs
+
+par(mfrow=c(1,2))
+hist(v)
+hist(vs)
+```
+
+## Normal Distribution
+```{r, eval=FALSE}
+x <- seq(-6, 6, length=100)
+y1 <- dnorm(x)
+y2 <- dnorm(x, sd=0.5)
+y3 <- dnorm(x, sd=2)
+par(mfrow=c(1,1))
+plot(x, y1, 
+     xlim=c(-6,6),
+     ylim=c(0,0.8),
+     type="l",
+     lwd=2,
+     xlab="x value",
+     ylab="Density",
+     main="Normal distribution")
+lines(x, y2, col="red")
+lines(x, y3, col="green")
+legend("topright", legend=c("sd = 1", "sd = 0.5", "sd = 2"),
+       col=c("black", "red", "green"), 
+       lty=c(1,1,1), lwd=2)
+
+# Area under the curve
+# For normal distribution auc = 1 (probability for all)
+library(DescTools)
+AUC(x, y1)
+AUC(x,y2)
+AUC(x,y3) # to broad distribution, some samples out of the area
+```
+
+## Confidence interval
+```{r}
+x <- c(102, 91, 99, 100, 103, 98, 99, 101, 106, 88, 103, 97, 103, 101,
+       101, 91, 104, 105, 105, 100, 101, 91, 99, 98, 107, 102, 100, 97,
+       98, 104, 100, 98, 102, 99, 95, 103, 104, 97, 99, 102, 98, 107, 
+       101, 93, 98, 101, 93, 91, 107, 102, 96, 93, 100, 105, 103, 107, 
+       99, 102, 106, 102, 94, 104, 103, 102)
+
+# Confidence interval for normal distribution with p=0.95
+m <- mean(x)
+s <- sd(x)
+n <- length(x)
+error <- qnorm(0.95)*s/sqrt(n)
+confidence <- c(m-error, m+error)
+confidence
+
+# Confidence interval for t-distribution with p=0.95
+a <- 5
+s <- 2
+n <- 20
+error <- qt(0.975,df=n-1)*s/sqrt(n)
+# confidence interval
+c(left=a-error, right=a+error)
+```
+
+
+
+

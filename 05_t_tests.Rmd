@@ -1,0 +1,206 @@
+# t-Procedures
+## t-test and normal distribution
+t-distribution assumes that the observations are **independent** and that they follow a **normal distribution**.
+If the data are **dependent**, then p-values will likely be totally wrong (e.g., for positive correlation, too optimistic). Type II errors?  
+It is good to test if observations are normally distributed. Otherwise we assume that data is normally distributed.  
+Independence of observations is usually not testable, but can be reasonably assumed if the data collection process was random without replacement.  
+
+FIXME: I do not understand this. Deviation data from normalyty will lead to type-I errors. I data is deviated from normal distribution, use **Wilcoxon test** or **permutation tests**.  
+
+## One-sample t-test
+One-sample t-test is used to compare the mean of one sample to a known standard (or theoretical/hypothetical) mean (μ).  
+t-statistics:
+\(t = \frac{m - \mu}{s/\sqrt{n}}\), where  
+**m** is the sample **mean**  
+**n** is the sample **size**  
+**s** is the sample **standard deviation** with n−1 **degrees of freedom**  
+**μ** is the **theoretical value**  
+
+
+Q: And what should I do with this t-statistics?  
+Q: What is the difference between t-test and ANOVA?  
+Q: What is the smallest sample size which can be tested by t-test?  
+Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided tests.
+
+## Practical example: t-test in R  
+
+We want to test if **N** is different from given mean **μ**=0:  
+```{R}
+N = c(-0.01, 0.65, -0.17, 1.77, 0.76, -0.16, 0.88, 1.09, 0.96, 0.25)
+t.test(N, mu = 0, alternative = "less")
+t.test(N, mu = 0, alternative = "two.sided")
+t.test(N, mu = 0, alternative = "greater")
+```
+FIXME: why it accepts all alternatives at the same time (less and greater?)  
+
+## Two samples t-test
+Do two different samples have the same mean?  
+H<sub>0</sub>:  
+1. H<sub>0</sub>: m<sub>1</sub> - m<sub>2</sub> = 0  
+2. H<sub>0</sub>: m<sub>1</sub> - m<sub>2</sub> \(\leq\) 0  
+3. H<sub>0</sub>: m<sub>1</sub> - m<sub>2</sub> \(\geq\) 0  
+
+H<sub>a</sub>:  
+1. H<sub>a</sub>: m<sub>1</sub> - m<sub>2</sub> ≠ 0 (different)  
+2. H<sub>a</sub>: m<sub>1</sub> - m<sub>2</sub> > 0 (greater)  
+3. H<sub>a</sub>: m<sub>1</sub> - m<sub>2</sub> < 0 (less)  
+
+The paired sample t-test has four main assumptions:
+
+1. The dependent variable must be **continuous** (interval/ratio).  
+2. The observations are **independent** of one another.  
+3. The dependent variable should be approximately **normally distributed**.  
+4. The dependent variable should not contain any **outliers**.  
+
+Continuous data can take on any value within a range (income, height, weight, etc.). The opposite of continuous data is discrete data, which can only take on a few values (Low, Medium, High, etc.). Occasionally, discrete data can be used to approximate a continuous scale, such as with **Likert-type scales**.  
+
+t-statistics:
+\(t=\frac{y - x}{SE}\), where
+y and x are the samples means.
+SE is the standard error for the difference.
+If H<sub>0</sub> is correct, test statistic follows a t-distribution with n+m-2 degrees of freedom (n, m the number of observations in each sample).  
+
+To apply t-test samples must be tested if they have equal variance:  
+equal variance (homoscedastic). Type 3 means two samples, unequal variance (heteroscedastic).  
+
+## Compare Student's t and normal distributions
+
+```{r}
+x <- seq(-4, 4, length=100)
+hx <- dnorm(x)
+
+degf <- c(1, 3, 8, 30)
+colors <- c("red", "blue", "darkgreen", "gold", "black")
+labels <- c("df=1", "df=3", "df=8", "df=30", "normal")
+
+plot(x, hx, type="l", lty=2, xlab="x value",
+     ylab="Density", main="Comparison of t Distributions")
+
+for (i in 1:4){
+    lines(x, dt(x,degf[i]), lwd=2, col=colors[i])
+}
+
+legend("topright", inset=.05, title="Distributions",
+       labels, lwd=2, lty=c(1, 1, 1, 1, 2), col=colors)
+```
+
+
+To generate data with known mean and sd:  
+```{r}
+rnorm2 <- function(n,mean,sd) { mean+sd*scale(rnorm(n)) }
+r <- rnorm2(100,4,1)
+```
+
+```{R}
+### t-test
+a = c(175, 168, 168, 190, 156, 181, 182, 175, 174, 179)
+b = c(185, 169, 173, 173, 188, 186, 175, 174, 179, 180)
+
+# test homogeneity of variances using Fisher’s F-test
+var.test(a,b)
+# variance is homogene (can use var.equal=T in t.test)
+
+# t-test
+t.test(a,b, 
+       var.equal=TRUE,   # variance is homogene (tested by var.test(a,b)) 
+       paired=FALSE)     # samples are independent
+```
+
+## Non-parametric tests
+## Mann-Whitney U Rank Sum Test
+1. The dependent variable is ordinal or continuous.  
+2. The data consist of a randomly selected sample of independent observations from two independent groups.  
+3. The dependent variables for the two independent groups share a similar shape.  
+
+## Wilcoxon test
+The **Wilcoxon** is a **non-parametric test** which works on normal and non-normal data. However, we usually prefer not to use it if we can assume that the data is normally distributed. The non-parametric test comes with less statistical power, this is a price that one has to pay for more flexible assumptions.  
+
+# Tests for categorical variables
+**Categorical variable** can take fixed number of possible values, assigning each individual or other unit of observation to a particular group or nominal category on the basis of some qualitative property.
+
+## Chi-squared tests
+The chi-squared test is most suited to large datasets. As a general rule, the chi-squared test is appropriate if at least 80% of the cells have an expected frequency of 5 or greater. In addition, none of the cells should have an expected frequency less than 1. If the expected values are very small, categories may be combined (if it makes sense to do so) to create fewer larger categories. Alternatively, Fisher’s exact test can be used.  
+
+```{R}
+data = rbind(c(83,35), c(92,43))
+data
+chisq.test(data, correct=F)
+```
+ chisq.test(testor,correct=F)
+## Fisher’s Exact test
+R Example:  
+
+| Group       | TumourShrinkage-No | TumourShrinkage-Yes | Total |
+|-------------|--------------------|---------------------|-------|
+| 1 Treatment | 8                  | 3                   | 11    |
+| 2 Placebo   | 9                  | 4                   | 13    |
+| 3 Total     | 17                 | 7                   | 24    |
+
+The **null hypothesis** is that there is **no association** between treatment and tumour shrinkage.  
+The **alternative hypothesis** is that there is **some association** between treatment group and tumour shrinkage.  
+
+```{R}
+data = rbind(c(8,3), c(9,4))
+data
+fisher.test(data)
+```
+The output Fisher’s exact test tells us that the probability of observing such an extreme combination of frequencies is high, our p-value is 1.000 which is clearly greater than 0.05. In this case, there is **no evidence of an association** between treatment group and tumour shrinkage.  
+
+# Multiple testing
+When performing a large number of tests, the type I error is inflated: for α=0.05 and performing n tests, the probability of no false positive result is: 
+0.095 x 0.95 x ... (n-times) <<< 0.095  
+The larger the number of tests performed, the higher the probability of a false rejection!  
+Many data analysis approaches in genomics rely on itemby-item (i.e. multiple) testing:  
+Microarray or RNA-Seq expression profiles of “normal” vs “perturbed” samples: gene-by-gene  
+ChIP-chip: locus-by-locus  
+RNAi and chemical compound screens  
+Genome-wide association studies: marker-by-marker  
+QTL analysis: marker-by-marker and trait-by-trait  
+
+**False positive rate** (FPR) - the proportion of false positives among all resulst.  
+
+**False discovery rate** (FDR) - the proportion of false positives among all significant results.  
+
+Example: 20,000 genes, 100 hits, 10 of them wrong.  
+FPR: 0.05%  
+FDR: 10%  
+
+## The Bonferroni correction
+The Bonferroni correction sets the significance cut-off at α/n.  
+
+# Sources
+[One-Sample T-test in R](http://www.sthda.com/english/wiki/one-sample-t-test-in-r)
+
+## t-test
+
+The data set shows energy expend in two groups of women: stature
+```{r include=TRUE}
+library(ISwR)
+data(energy)
+attach(energy)
+head(energy)
+tapply(expend, stature, mean)
+```
+
+H~0~: there is no difference in averages between lean and obese.  
+```{r include=TRUE}
+t.test(expend ~ stature)
+```
+Alternative hypothesis is true - means are different.  
+Mean difference is in between -3.5 and 1.0 with a probability 95%.  
+The risk of error is 0.15%
+
+### Two-tailed test
+Compair two sets of variables.
+```{r include=TRUE}
+data(intake) # from package ISwR
+attach(intake)
+head(intake)
+mean(post - pre)
+```
+Is difference of means significant?  
+```{r include=TRUE}
+t.test(pre, post, paired=TRUE)
+```
+The difference is significant with a probability 95%.  
+The difference is in between 1074.1 and 1566.8 kJ/day  
