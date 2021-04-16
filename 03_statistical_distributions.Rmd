@@ -3,17 +3,13 @@
 
 ```{r, eval=TRUE}
 x <- seq(-6, 6, length=100)
-y1 <- dnorm(x)
+y1 <- dnorm(x, sd=1)
 y2 <- dnorm(x, sd=0.5)
 y3 <- dnorm(x, sd=2)
-par(mfrow=c(1,1))
 plot(x, y1, 
-     xlim=c(-6,6),
-     ylim=c(0,0.8),
-     type="l",
-     lwd=2,
-     xlab="x value",
-     ylab="Density",
+     xlim=c(-6,6), ylim=c(0,0.8),
+     type="l", lwd=2,
+     xlab="x value", ylab="Density",
      main="Normal distribution")
 lines(x, y2, col="red")
 lines(x, y3, col="green")
@@ -37,4 +33,4 @@ AUC(x,y3) # to broad distribution, some samples out of the area
 ## Exponential Distribution
 
 **Sources**  
-Seven Must-Know Statistical Distributions and Their Simulations for Data Science [https://towardsdatascience.com/seven-must-know-statistical-distributions-and-their-simulations-for-data-science-681c5ac41e32#:~:text=A%20statistical%20distribution%20is%20a,the%20random%20value%20it%20models.]
+[Seven Must-Know Statistical Distributions and Their Simulations for Data Science](https://towardsdatascience.com/seven-must-know-statistical-distributions-and-their-simulations-for-data-science-681c5ac41e32#:~:text=A%20statistical%20distribution%20is%20a,the%20random%20value%20it%20models.)
