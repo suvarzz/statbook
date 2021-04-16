@@ -33,7 +33,6 @@
   
 <link rel="prev" href="nonlinear-regression.html"/>
 <link rel="next" href="logistic-regression.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,27 +53,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,29 +132,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
-<ul>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a><ul>
 <li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.1</b> Data inspection</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html"><i class="fa fa-check"></i><b>3</b> Analysis of the distribution</a>
-<ul>
+<li class="chapter" data-level="3" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html"><i class="fa fa-check"></i><b>3</b> Analysis of the distribution</a><ul>
 <li class="chapter" data-level="3.1" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#t-test"><i class="fa fa-check"></i><b>3.1</b> t-Test</a></li>
 <li class="chapter" data-level="3.2" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#anova"><i class="fa fa-check"></i><b>3.2</b> ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>4</b> Basic Statistics</a>
-<ul>
+<li class="chapter" data-level="4" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>4</b> Basic Statistics</a><ul>
 <li class="chapter" data-level="4.1" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>4.1</b> Outliers</a></li>
 <li class="chapter" data-level="4.2" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>4.2</b> Normality</a></li>
 <li class="chapter" data-level="4.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Normal Distribution</a></li>
 <li class="chapter" data-level="4.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>4.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary analysis</a></li>
-<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
-<ul>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a><ul>
 <li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.1</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
-<ul>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a><ul>
 <li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
 <li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
@@ -167,43 +159,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
 <li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
-<ul>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a><ul>
 <li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
-<ul>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a><ul>
 <li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
-<ul>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a><ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
-<ul>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a><ul>
 <li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
 <li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Correlation</a></li>
 <li class="chapter" data-level="13" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>13</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a>
-<ul>
+<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a><ul>
 <li class="chapter" data-level="14.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>14.1</b> Next part</a></li>
 <li class="chapter" data-level="14.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>14.2</b> Example</a></li>
 <li class="chapter" data-level="14.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>14.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>15</b> Support Vector Machine</a></li>
 <li class="chapter" data-level="16" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>16</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a>
-<ul>
+<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a><ul>
 <li class="chapter" data-level="17.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>17.1</b> Linear Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>18</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a>
-<ul>
+<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a><ul>
 <li class="chapter" data-level="19.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>19.1</b> Generate Random Data Set a Linear Model</a></li>
 <li class="chapter" data-level="19.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>19.2</b> Linear regression - theory</a></li>
 <li class="chapter" data-level="19.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>19.3</b> Practical example</a></li>
@@ -213,14 +197,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>19.7</b> Practical examples for linear model regression</a></li>
 <li class="chapter" data-level="19.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>19.8</b> NEXT part</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a>
-<ul>
+<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a><ul>
 <li class="chapter" data-level="20.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>20.1</b> NEXT part</a></li>
 <li class="chapter" data-level="20.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>20.2</b> NEXT Part</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>21</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a>
-<ul>
+<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a><ul>
 <li class="chapter" data-level="22.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>22.1</b> Generate dataset from a given function</a></li>
 <li class="chapter" data-level="22.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>22.2</b> Split data for train and test</a></li>
 <li class="chapter" data-level="22.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>22.3</b> Diagram of the given function and generated datasets</a></li>
@@ -229,15 +211,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="22.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>22.6</b> Build optimal model and plot for the model</a></li>
 <li class="chapter" data-level="22.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>22.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a>
-<ul>
+<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a><ul>
 <li class="chapter" data-level="23.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>23.1</b> Next part</a></li>
 <li class="chapter" data-level="23.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
 <li class="chapter" data-level="23.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>23.3</b> NExt part</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a>
-<ul>
+<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a><ul>
 <li class="chapter" data-level="25.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>25.0.1</b> Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="26" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>26</b> Naive Bayes</a></li>
@@ -261,186 +241,186 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="spline-model" class="section level1" number="22">
+<div id="spline-model" class="section level1">
 <h1><span class="header-section-number">Chapter 22</span> Spline model</h1>
 <p>In this example we will generate data from a given function and then build a model using splines and estimate quality of the model.</p>
-<div id="generate-dataset-from-a-given-function" class="section level2" number="22.1">
+<div id="generate-dataset-from-a-given-function" class="section level2">
 <h2><span class="header-section-number">22.1</span> Generate dataset from a given function</h2>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="spline-model.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters to generate a dataset</span></span>
-<span id="cb101-2"><a href="spline-model.html#cb101-2" aria-hidden="true" tabindex="-1"></a>n.all <span class="ot">&lt;-</span> <span class="dv">100</span>             <span class="co"># number of observations</span></span>
-<span id="cb101-3"><a href="spline-model.html#cb101-3" aria-hidden="true" tabindex="-1"></a>train.percent <span class="ot">&lt;-</span> <span class="fl">0.85</span>    <span class="co"># portion of the data for training</span></span>
-<span id="cb101-4"><a href="spline-model.html#cb101-4" aria-hidden="true" tabindex="-1"></a>res.sd <span class="ot">&lt;-</span> <span class="dv">1</span>              <span class="co"># standard deviation of noise</span></span>
-<span id="cb101-5"><a href="spline-model.html#cb101-5" aria-hidden="true" tabindex="-1"></a>x.min <span class="ot">&lt;-</span> <span class="dv">5</span>               <span class="co"># min limit of the data</span></span>
-<span id="cb101-6"><a href="spline-model.html#cb101-6" aria-hidden="true" tabindex="-1"></a>x.max <span class="ot">&lt;-</span> <span class="dv">105</span>             <span class="co"># max limit of the data</span></span>
-<span id="cb101-7"><a href="spline-model.html#cb101-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-8"><a href="spline-model.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="co"># generate x</span></span>
-<span id="cb101-9"><a href="spline-model.html#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)       <span class="co"># to get reproducible results by randomizer</span></span>
-<span id="cb101-10"><a href="spline-model.html#cb101-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(x.min, x.max, <span class="at">n =</span> n.all)</span>
-<span id="cb101-11"><a href="spline-model.html#cb101-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-12"><a href="spline-model.html#cb101-12" aria-hidden="true" tabindex="-1"></a><span class="co"># noise from normal destibution</span></span>
-<span id="cb101-13"><a href="spline-model.html#cb101-13" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb101-14"><a href="spline-model.html#cb101-14" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> res.sd, <span class="at">n =</span> n.all)</span>
-<span id="cb101-15"><a href="spline-model.html#cb101-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-16"><a href="spline-model.html#cb101-16" aria-hidden="true" tabindex="-1"></a><span class="co"># generate y using a given function</span></span>
-<span id="cb101-17"><a href="spline-model.html#cb101-17" aria-hidden="true" tabindex="-1"></a>y.func <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">4</span> <span class="sc">-</span> <span class="fl">2e-02</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">5.5e-03</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">4.9e-05</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span>}</span>
-<span id="cb101-18"><a href="spline-model.html#cb101-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-19"><a href="spline-model.html#cb101-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add noise</span></span>
-<span id="cb101-20"><a href="spline-model.html#cb101-20" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">y.func</span>(x) <span class="sc">+</span> res</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="co"># parameters to generate a dataset</span></a>
+<a class="sourceLine" id="cb101-2" title="2">n.all &lt;-<span class="st"> </span><span class="dv">100</span>             <span class="co"># number of observations</span></a>
+<a class="sourceLine" id="cb101-3" title="3">train.percent &lt;-<span class="st"> </span><span class="fl">0.85</span>    <span class="co"># portion of the data for training</span></a>
+<a class="sourceLine" id="cb101-4" title="4">res.sd &lt;-<span class="st"> </span><span class="dv">1</span>              <span class="co"># standard deviation of noise</span></a>
+<a class="sourceLine" id="cb101-5" title="5">x.min &lt;-<span class="st"> </span><span class="dv">5</span>               <span class="co"># min limit of the data</span></a>
+<a class="sourceLine" id="cb101-6" title="6">x.max &lt;-<span class="st"> </span><span class="dv">105</span>             <span class="co"># max limit of the data</span></a>
+<a class="sourceLine" id="cb101-7" title="7"></a>
+<a class="sourceLine" id="cb101-8" title="8"><span class="co"># generate x</span></a>
+<a class="sourceLine" id="cb101-9" title="9"><span class="kw">set.seed</span>(<span class="dv">1</span>)       <span class="co"># to get reproducible results by randomizer</span></a>
+<a class="sourceLine" id="cb101-10" title="10">x &lt;-<span class="st"> </span><span class="kw">runif</span>(x.min, x.max, <span class="dt">n =</span> n.all)</a>
+<a class="sourceLine" id="cb101-11" title="11"></a>
+<a class="sourceLine" id="cb101-12" title="12"><span class="co"># noise from normal destibution</span></a>
+<a class="sourceLine" id="cb101-13" title="13"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb101-14" title="14">res &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> res.sd, <span class="dt">n =</span> n.all)</a>
+<a class="sourceLine" id="cb101-15" title="15"></a>
+<a class="sourceLine" id="cb101-16" title="16"><span class="co"># generate y using a given function</span></a>
+<a class="sourceLine" id="cb101-17" title="17">y.func &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="dv">4</span> <span class="op">-</span><span class="st"> </span><span class="fl">2e-02</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="fl">5.5e-03</span><span class="op">*</span>x<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="fl">4.9e-05</span><span class="op">*</span>x<span class="op">^</span><span class="dv">3</span>}</a>
+<a class="sourceLine" id="cb101-18" title="18"></a>
+<a class="sourceLine" id="cb101-19" title="19"><span class="co"># add noise</span></a>
+<a class="sourceLine" id="cb101-20" title="20">y &lt;-<span class="st"> </span><span class="kw">y.func</span>(x) <span class="op">+</span><span class="st"> </span>res</a></code></pre></div>
 </div>
-<div id="split-data-for-train-and-test" class="section level2" number="22.2">
+<div id="split-data-for-train-and-test" class="section level2">
 <h2><span class="header-section-number">22.2</span> Split data for train and test</h2>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="spline-model.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># split dataset for training and test</span></span>
-<span id="cb102-2"><a href="spline-model.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb102-3"><a href="spline-model.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co"># generate vector of chosen x for train data</span></span>
-<span id="cb102-4"><a href="spline-model.html#cb102-4" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_along</span>(x), <span class="at">size =</span> train.percent<span class="sc">*</span>n.all)</span>
-<span id="cb102-5"><a href="spline-model.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-6"><a href="spline-model.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co"># train data set</span></span>
-<span id="cb102-7"><a href="spline-model.html#cb102-7" aria-hidden="true" tabindex="-1"></a>x.train <span class="ot">&lt;-</span> x[inTrain]</span>
-<span id="cb102-8"><a href="spline-model.html#cb102-8" aria-hidden="true" tabindex="-1"></a>y.train <span class="ot">&lt;-</span> y[inTrain]</span>
-<span id="cb102-9"><a href="spline-model.html#cb102-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-10"><a href="spline-model.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test data set</span></span>
-<span id="cb102-11"><a href="spline-model.html#cb102-11" aria-hidden="true" tabindex="-1"></a>x.test <span class="ot">&lt;-</span> x[<span class="sc">-</span>inTrain]</span>
-<span id="cb102-12"><a href="spline-model.html#cb102-12" aria-hidden="true" tabindex="-1"></a>y.test <span class="ot">&lt;-</span> y[<span class="sc">-</span>inTrain]</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="co"># split dataset for training and test</span></a>
+<a class="sourceLine" id="cb102-2" title="2"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb102-3" title="3"><span class="co"># generate vector of chosen x for train data</span></a>
+<a class="sourceLine" id="cb102-4" title="4">inTrain &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">seq_along</span>(x), <span class="dt">size =</span> train.percent<span class="op">*</span>n.all)</a>
+<a class="sourceLine" id="cb102-5" title="5"></a>
+<a class="sourceLine" id="cb102-6" title="6"><span class="co"># train data set</span></a>
+<a class="sourceLine" id="cb102-7" title="7">x.train &lt;-<span class="st"> </span>x[inTrain]</a>
+<a class="sourceLine" id="cb102-8" title="8">y.train &lt;-<span class="st"> </span>y[inTrain]</a>
+<a class="sourceLine" id="cb102-9" title="9"></a>
+<a class="sourceLine" id="cb102-10" title="10"><span class="co"># test data set</span></a>
+<a class="sourceLine" id="cb102-11" title="11">x.test &lt;-<span class="st"> </span>x[<span class="op">-</span>inTrain]</a>
+<a class="sourceLine" id="cb102-12" title="12">y.test &lt;-<span class="st"> </span>y[<span class="op">-</span>inTrain]</a></code></pre></div>
 </div>
-<div id="diagram-of-the-given-function-and-generated-datasets" class="section level2" number="22.3">
+<div id="diagram-of-the-given-function-and-generated-datasets" class="section level2">
 <h2><span class="header-section-number">22.3</span> Diagram of the given function and generated datasets</h2>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="spline-model.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lines of generated data for plot</span></span>
-<span id="cb103-2"><a href="spline-model.html#cb103-2" aria-hidden="true" tabindex="-1"></a>x.line <span class="ot">&lt;-</span> <span class="fu">seq</span>(x.min, x.max, <span class="at">length =</span> n.all)</span>
-<span id="cb103-3"><a href="spline-model.html#cb103-3" aria-hidden="true" tabindex="-1"></a>y.line <span class="ot">&lt;-</span> <span class="fu">y.func</span>(x.line)</span>
-<span id="cb103-4"><a href="spline-model.html#cb103-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-5"><a href="spline-model.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="co"># PLOT</span></span>
-<span id="cb103-6"><a href="spline-model.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co"># generate plot by train data</span></span>
-<span id="cb103-7"><a href="spline-model.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># reduce margins (optional)</span></span>
-<span id="cb103-8"><a href="spline-model.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.train, y.train,</span>
-<span id="cb103-9"><a href="spline-model.html#cb103-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Generated data and original function&#39;</span>,</span>
-<span id="cb103-10"><a href="spline-model.html#cb103-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">bg =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb103-11"><a href="spline-model.html#cb103-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Y&#39;</span>, </span>
-<span id="cb103-12"><a href="spline-model.html#cb103-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(x.min, x.max),</span>
-<span id="cb103-13"><a href="spline-model.html#cb103-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(y), <span class="fu">max</span>(y)), </span>
-<span id="cb103-14"><a href="spline-model.html#cb103-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">cex.axis =</span> <span class="fl">1.2</span>)</span>
-<span id="cb103-15"><a href="spline-model.html#cb103-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-16"><a href="spline-model.html#cb103-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add points of test data</span></span>
-<span id="cb103-17"><a href="spline-model.html#cb103-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x.test, y.test, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">bg =</span> <span class="st">&#39;red&#39;</span>, <span class="at">pch =</span> <span class="dv">21</span>)</span>
-<span id="cb103-18"><a href="spline-model.html#cb103-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-19"><a href="spline-model.html#cb103-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add the given function</span></span>
-<span id="cb103-20"><a href="spline-model.html#cb103-20" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.line, y.line, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb103-21"><a href="spline-model.html#cb103-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-22"><a href="spline-model.html#cb103-22" aria-hidden="true" tabindex="-1"></a><span class="co"># add legend</span></span>
-<span id="cb103-23"><a href="spline-model.html#cb103-23" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>, <span class="st">&#39;f(X)&#39;</span>),</span>
-<span id="cb103-24"><a href="spline-model.html#cb103-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>, <span class="cn">NA</span>), </span>
-<span id="cb103-25"><a href="spline-model.html#cb103-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>, <span class="st">&#39;black&#39;</span>),  </span>
-<span id="cb103-26"><a href="spline-model.html#cb103-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co"># lines of generated data for plot</span></a>
+<a class="sourceLine" id="cb103-2" title="2">x.line &lt;-<span class="st"> </span><span class="kw">seq</span>(x.min, x.max, <span class="dt">length =</span> n.all)</a>
+<a class="sourceLine" id="cb103-3" title="3">y.line &lt;-<span class="st"> </span><span class="kw">y.func</span>(x.line)</a>
+<a class="sourceLine" id="cb103-4" title="4"></a>
+<a class="sourceLine" id="cb103-5" title="5"><span class="co"># PLOT</span></a>
+<a class="sourceLine" id="cb103-6" title="6"><span class="co"># generate plot by train data</span></a>
+<a class="sourceLine" id="cb103-7" title="7"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># reduce margins (optional)</span></a>
+<a class="sourceLine" id="cb103-8" title="8"><span class="kw">plot</span>(x.train, y.train,</a>
+<a class="sourceLine" id="cb103-9" title="9">     <span class="dt">main =</span> <span class="st">&#39;Generated data and original function&#39;</span>,</a>
+<a class="sourceLine" id="cb103-10" title="10">     <span class="dt">col =</span> <span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="dt">bg =</span> <span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="dt">pch =</span> <span class="dv">21</span>,</a>
+<a class="sourceLine" id="cb103-11" title="11">     <span class="dt">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Y&#39;</span>, </a>
+<a class="sourceLine" id="cb103-12" title="12">     <span class="dt">xlim =</span> <span class="kw">c</span>(x.min, x.max),</a>
+<a class="sourceLine" id="cb103-13" title="13">     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="kw">min</span>(y), <span class="kw">max</span>(y)), </a>
+<a class="sourceLine" id="cb103-14" title="14">     <span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">cex.lab =</span> <span class="fl">1.2</span>, <span class="dt">cex.axis =</span> <span class="fl">1.2</span>)</a>
+<a class="sourceLine" id="cb103-15" title="15"></a>
+<a class="sourceLine" id="cb103-16" title="16"><span class="co"># add points of test data</span></a>
+<a class="sourceLine" id="cb103-17" title="17"><span class="kw">points</span>(x.test, y.test, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">bg =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">pch =</span> <span class="dv">21</span>)</a>
+<a class="sourceLine" id="cb103-18" title="18"></a>
+<a class="sourceLine" id="cb103-19" title="19"><span class="co"># add the given function</span></a>
+<a class="sourceLine" id="cb103-20" title="20"><span class="kw">lines</span>(x.line, y.line, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb103-21" title="21"></a>
+<a class="sourceLine" id="cb103-22" title="22"><span class="co"># add legend</span></a>
+<a class="sourceLine" id="cb103-23" title="23"><span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>, <span class="st">&#39;f(X)&#39;</span>),</a>
+<a class="sourceLine" id="cb103-24" title="24">       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">16</span>, <span class="ot">NA</span>), </a>
+<a class="sourceLine" id="cb103-25" title="25">       <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>, <span class="st">&#39;black&#39;</span>),  </a>
+<a class="sourceLine" id="cb103-26" title="26">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">cex =</span> <span class="fl">1.2</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 </div>
-<div id="build-a-model-using-splines" class="section level2" number="22.4">
+<div id="build-a-model-using-splines" class="section level2">
 <h2><span class="header-section-number">22.4</span> Build a model using splines</h2>
 <p>We will compair sevaral models with degree of freedoms (df) from 2 to 40, where 2 correspond to a linear model.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="spline-model.html#cb104-1" aria-hidden="true" tabindex="-1"></a>max.df <span class="ot">&lt;-</span> <span class="dv">40</span>                       <span class="co"># max degree of freedom (df)</span></span>
-<span id="cb104-2"><a href="spline-model.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb104-3"><a href="spline-model.html#cb104-3" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">df =</span> <span class="dv">2</span><span class="sc">:</span>max.df)   <span class="co"># data frame for writing errors</span></span>
-<span id="cb104-4"><a href="spline-model.html#cb104-4" aria-hidden="true" tabindex="-1"></a>tbl<span class="sc">$</span>MSE.train <span class="ot">&lt;-</span> <span class="dv">0</span>                 <span class="co"># column 1: errors of train data</span></span>
-<span id="cb104-5"><a href="spline-model.html#cb104-5" aria-hidden="true" tabindex="-1"></a>tbl<span class="sc">$</span>MSE.test <span class="ot">&lt;-</span> <span class="dv">0</span>                  <span class="co"># сcolumn 2: errors of test data</span></span>
-<span id="cb104-6"><a href="spline-model.html#cb104-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-7"><a href="spline-model.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co"># generate models using for cycle</span></span>
-<span id="cb104-8"><a href="spline-model.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>max.df) {</span>
-<span id="cb104-9"><a href="spline-model.html#cb104-9" aria-hidden="true" tabindex="-1"></a>    mod <span class="ot">&lt;-</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> x.train, <span class="at">y =</span> y.train, <span class="at">df =</span> i)</span>
-<span id="cb104-10"><a href="spline-model.html#cb104-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb104-11"><a href="spline-model.html#cb104-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># predicted values for train and test data using built model</span></span>
-<span id="cb104-12"><a href="spline-model.html#cb104-12" aria-hidden="true" tabindex="-1"></a>    y.model.train <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod, <span class="fu">data.frame</span>(<span class="at">x =</span> x.train))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
-<span id="cb104-13"><a href="spline-model.html#cb104-13" aria-hidden="true" tabindex="-1"></a>    y.model.test <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod, <span class="fu">data.frame</span>(<span class="at">x =</span> x.test))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
-<span id="cb104-14"><a href="spline-model.html#cb104-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb104-15"><a href="spline-model.html#cb104-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># MSE errors for train and test data</span></span>
-<span id="cb104-16"><a href="spline-model.html#cb104-16" aria-hidden="true" tabindex="-1"></a>    MSE <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">sum</span>((y.train <span class="sc">-</span> y.model.train)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(x.train),</span>
-<span id="cb104-17"><a href="spline-model.html#cb104-17" aria-hidden="true" tabindex="-1"></a>             <span class="fu">sum</span>((y.test <span class="sc">-</span> y.model.test)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(x.test))</span>
-<span id="cb104-18"><a href="spline-model.html#cb104-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb104-19"><a href="spline-model.html#cb104-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># write errors to the previously created data frame</span></span>
-<span id="cb104-20"><a href="spline-model.html#cb104-20" aria-hidden="true" tabindex="-1"></a>    tbl[tbl<span class="sc">$</span>df <span class="sc">==</span> i, <span class="fu">c</span>(<span class="st">&#39;MSE.train&#39;</span>, <span class="st">&#39;MSE.test&#39;</span>)] <span class="ot">&lt;-</span> MSE</span>
-<span id="cb104-21"><a href="spline-model.html#cb104-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb104-22"><a href="spline-model.html#cb104-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-23"><a href="spline-model.html#cb104-23" aria-hidden="true" tabindex="-1"></a><span class="co"># view first rows of the table</span></span>
-<span id="cb104-24"><a href="spline-model.html#cb104-24" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">max.df &lt;-<span class="st"> </span><span class="dv">40</span>                       <span class="co"># max degree of freedom (df)</span></a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb104-3" title="3">tbl &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">df =</span> <span class="dv">2</span><span class="op">:</span>max.df)   <span class="co"># data frame for writing errors</span></a>
+<a class="sourceLine" id="cb104-4" title="4">tbl<span class="op">$</span>MSE.train &lt;-<span class="st"> </span><span class="dv">0</span>                 <span class="co"># column 1: errors of train data</span></a>
+<a class="sourceLine" id="cb104-5" title="5">tbl<span class="op">$</span>MSE.test &lt;-<span class="st"> </span><span class="dv">0</span>                  <span class="co"># сcolumn 2: errors of test data</span></a>
+<a class="sourceLine" id="cb104-6" title="6"></a>
+<a class="sourceLine" id="cb104-7" title="7"><span class="co"># generate models using for cycle</span></a>
+<a class="sourceLine" id="cb104-8" title="8"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>max.df) {</a>
+<a class="sourceLine" id="cb104-9" title="9">    mod &lt;-<span class="st"> </span><span class="kw">smooth.spline</span>(<span class="dt">x =</span> x.train, <span class="dt">y =</span> y.train, <span class="dt">df =</span> i)</a>
+<a class="sourceLine" id="cb104-10" title="10">    </a>
+<a class="sourceLine" id="cb104-11" title="11">    <span class="co"># predicted values for train and test data using built model</span></a>
+<a class="sourceLine" id="cb104-12" title="12">    y.model.train &lt;-<span class="st"> </span><span class="kw">predict</span>(mod, <span class="kw">data.frame</span>(<span class="dt">x =</span> x.train))<span class="op">$</span>y[, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb104-13" title="13">    y.model.test &lt;-<span class="st"> </span><span class="kw">predict</span>(mod, <span class="kw">data.frame</span>(<span class="dt">x =</span> x.test))<span class="op">$</span>y[, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb104-14" title="14">    </a>
+<a class="sourceLine" id="cb104-15" title="15">    <span class="co"># MSE errors for train and test data</span></a>
+<a class="sourceLine" id="cb104-16" title="16">    MSE &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">sum</span>((y.train <span class="op">-</span><span class="st"> </span>y.model.train)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x.train),</a>
+<a class="sourceLine" id="cb104-17" title="17">             <span class="kw">sum</span>((y.test <span class="op">-</span><span class="st"> </span>y.model.test)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x.test))</a>
+<a class="sourceLine" id="cb104-18" title="18">    </a>
+<a class="sourceLine" id="cb104-19" title="19">    <span class="co"># write errors to the previously created data frame</span></a>
+<a class="sourceLine" id="cb104-20" title="20">    tbl[tbl<span class="op">$</span>df <span class="op">==</span><span class="st"> </span>i, <span class="kw">c</span>(<span class="st">&#39;MSE.train&#39;</span>, <span class="st">&#39;MSE.test&#39;</span>)] &lt;-<span class="st"> </span>MSE</a>
+<a class="sourceLine" id="cb104-21" title="21">}</a>
+<a class="sourceLine" id="cb104-22" title="22"></a>
+<a class="sourceLine" id="cb104-23" title="23"><span class="co"># view first rows of the table</span></a>
+<a class="sourceLine" id="cb104-24" title="24"><span class="kw">head</span>(tbl, <span class="dv">4</span>)</a></code></pre></div>
 <pre><code>##   df MSE.train  MSE.test
 ## 1  2 3.6484333 3.3336892
 ## 2  3 1.5185881 1.1532857
 ## 3  4 0.8999800 0.8874002
 ## 4  5 0.7477105 0.9483290</code></pre>
 </div>
-<div id="diagram-of-mse-for-train-and-test-data" class="section level2" number="22.5">
+<div id="diagram-of-mse-for-train-and-test-data" class="section level2">
 <h2><span class="header-section-number">22.5</span> Diagram of MSE for train and test data</h2>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="spline-model.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot MSE from our table</span></span>
-<span id="cb106-2"><a href="spline-model.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> tbl<span class="sc">$</span>df, <span class="at">y =</span> tbl<span class="sc">$</span>MSE.test,</span>
-<span id="cb106-3"><a href="spline-model.html#cb106-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Changes of MSE from degrees of freedom&quot;</span>,</span>
-<span id="cb106-4"><a href="spline-model.html#cb106-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb106-5"><a href="spline-model.html#cb106-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;spline degree of freedom&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;MSE&#39;</span>,</span>
-<span id="cb106-6"><a href="spline-model.html#cb106-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(tbl<span class="sc">$</span>MSE.train, tbl<span class="sc">$</span>MSE.test), </span>
-<span id="cb106-7"><a href="spline-model.html#cb106-7" aria-hidden="true" tabindex="-1"></a>              <span class="fu">max</span>(tbl<span class="sc">$</span>MSE.train, tbl<span class="sc">$</span>MSE.test)),</span>
-<span id="cb106-8"><a href="spline-model.html#cb106-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">cex.axis =</span> <span class="fl">1.2</span>)</span>
-<span id="cb106-9"><a href="spline-model.html#cb106-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-10"><a href="spline-model.html#cb106-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add </span></span>
-<span id="cb106-11"><a href="spline-model.html#cb106-11" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> tbl<span class="sc">$</span>df, <span class="at">y =</span> tbl<span class="sc">$</span>MSE.test,</span>
-<span id="cb106-12"><a href="spline-model.html#cb106-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">bg =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb106-13"><a href="spline-model.html#cb106-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> tbl<span class="sc">$</span>df, <span class="at">y =</span> tbl<span class="sc">$</span>MSE.train, <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.3</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb106-14"><a href="spline-model.html#cb106-14" aria-hidden="true" tabindex="-1"></a><span class="co"># minimal MSE</span></span>
-<span id="cb106-15"><a href="spline-model.html#cb106-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> res.sd, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.4</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb106-16"><a href="spline-model.html#cb106-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-17"><a href="spline-model.html#cb106-17" aria-hidden="true" tabindex="-1"></a><span class="co"># add legend</span></span>
-<span id="cb106-18"><a href="spline-model.html#cb106-18" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>),</span>
-<span id="cb106-19"><a href="spline-model.html#cb106-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">16</span>), </span>
-<span id="cb106-20"><a href="spline-model.html#cb106-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>),  </span>
-<span id="cb106-21"><a href="spline-model.html#cb106-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb106-22"><a href="spline-model.html#cb106-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-23"><a href="spline-model.html#cb106-23" aria-hidden="true" tabindex="-1"></a><span class="co"># df of minimal MSE for test data</span></span>
-<span id="cb106-24"><a href="spline-model.html#cb106-24" aria-hidden="true" tabindex="-1"></a>min.MSE.test <span class="ot">&lt;-</span> <span class="fu">min</span>(tbl<span class="sc">$</span>MSE.test)</span>
-<span id="cb106-25"><a href="spline-model.html#cb106-25" aria-hidden="true" tabindex="-1"></a>df.min.MSE.test <span class="ot">&lt;-</span> tbl[tbl<span class="sc">$</span>MSE.test <span class="sc">==</span> min.MSE.test, <span class="st">&#39;df&#39;</span>]</span>
-<span id="cb106-26"><a href="spline-model.html#cb106-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-27"><a href="spline-model.html#cb106-27" aria-hidden="true" tabindex="-1"></a><span class="co"># optimal df for precise model and maximal simplicity</span></span>
-<span id="cb106-28"><a href="spline-model.html#cb106-28" aria-hidden="true" tabindex="-1"></a>df.my.MSE.test <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb106-29"><a href="spline-model.html#cb106-29" aria-hidden="true" tabindex="-1"></a>my.MSE.test <span class="ot">&lt;-</span> tbl[tbl<span class="sc">$</span>df <span class="sc">==</span> df.my.MSE.test, <span class="st">&#39;MSE.test&#39;</span>]</span>
-<span id="cb106-30"><a href="spline-model.html#cb106-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-31"><a href="spline-model.html#cb106-31" aria-hidden="true" tabindex="-1"></a><span class="co"># show the optimal solution</span></span>
-<span id="cb106-32"><a href="spline-model.html#cb106-32" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> df.my.MSE.test, </span>
-<span id="cb106-33"><a href="spline-model.html#cb106-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb106-34"><a href="spline-model.html#cb106-34" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> df.my.MSE.test, <span class="at">y =</span> my.MSE.test, </span>
-<span id="cb106-35"><a href="spline-model.html#cb106-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb106-36"><a href="spline-model.html#cb106-36" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(df.my.MSE.test, </span>
-<span id="cb106-37"><a href="spline-model.html#cb106-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">side =</span> <span class="dv">1</span>, <span class="at">line =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">at =</span> df.my.MSE.test, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># plot MSE from our table</span></a>
+<a class="sourceLine" id="cb106-2" title="2"><span class="kw">plot</span>(<span class="dt">x =</span> tbl<span class="op">$</span>df, <span class="dt">y =</span> tbl<span class="op">$</span>MSE.test,</a>
+<a class="sourceLine" id="cb106-3" title="3">     <span class="dt">main =</span> <span class="st">&quot;Changes of MSE from degrees of freedom&quot;</span>,</a>
+<a class="sourceLine" id="cb106-4" title="4">     <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb106-5" title="5">     <span class="dt">xlab =</span> <span class="st">&#39;spline degree of freedom&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;MSE&#39;</span>,</a>
+<a class="sourceLine" id="cb106-6" title="6">     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="kw">min</span>(tbl<span class="op">$</span>MSE.train, tbl<span class="op">$</span>MSE.test), </a>
+<a class="sourceLine" id="cb106-7" title="7">              <span class="kw">max</span>(tbl<span class="op">$</span>MSE.train, tbl<span class="op">$</span>MSE.test)),</a>
+<a class="sourceLine" id="cb106-8" title="8">     <span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">cex.lab =</span> <span class="fl">1.2</span>, <span class="dt">cex.axis =</span> <span class="fl">1.2</span>)</a>
+<a class="sourceLine" id="cb106-9" title="9"></a>
+<a class="sourceLine" id="cb106-10" title="10"><span class="co"># add </span></a>
+<a class="sourceLine" id="cb106-11" title="11"><span class="kw">points</span>(<span class="dt">x =</span> tbl<span class="op">$</span>df, <span class="dt">y =</span> tbl<span class="op">$</span>MSE.test,</a>
+<a class="sourceLine" id="cb106-12" title="12">       <span class="dt">pch =</span> <span class="dv">21</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">bg =</span> <span class="st">&#39;red&#39;</span>)</a>
+<a class="sourceLine" id="cb106-13" title="13"><span class="kw">lines</span>(<span class="dt">x =</span> tbl<span class="op">$</span>df, <span class="dt">y =</span> tbl<span class="op">$</span>MSE.train, <span class="dt">col =</span> <span class="kw">grey</span>(<span class="fl">0.3</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb106-14" title="14"><span class="co"># minimal MSE</span></a>
+<a class="sourceLine" id="cb106-15" title="15"><span class="kw">abline</span>(<span class="dt">h =</span> res.sd, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">grey</span>(<span class="fl">0.4</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb106-16" title="16"></a>
+<a class="sourceLine" id="cb106-17" title="17"><span class="co"># add legend</span></a>
+<a class="sourceLine" id="cb106-18" title="18"><span class="kw">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>),</a>
+<a class="sourceLine" id="cb106-19" title="19">       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">16</span>), </a>
+<a class="sourceLine" id="cb106-20" title="20">       <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>),  </a>
+<a class="sourceLine" id="cb106-21" title="21">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">cex =</span> <span class="fl">1.2</span>)</a>
+<a class="sourceLine" id="cb106-22" title="22"></a>
+<a class="sourceLine" id="cb106-23" title="23"><span class="co"># df of minimal MSE for test data</span></a>
+<a class="sourceLine" id="cb106-24" title="24">min.MSE.test &lt;-<span class="st"> </span><span class="kw">min</span>(tbl<span class="op">$</span>MSE.test)</a>
+<a class="sourceLine" id="cb106-25" title="25">df.min.MSE.test &lt;-<span class="st"> </span>tbl[tbl<span class="op">$</span>MSE.test <span class="op">==</span><span class="st"> </span>min.MSE.test, <span class="st">&#39;df&#39;</span>]</a>
+<a class="sourceLine" id="cb106-26" title="26"></a>
+<a class="sourceLine" id="cb106-27" title="27"><span class="co"># optimal df for precise model and maximal simplicity</span></a>
+<a class="sourceLine" id="cb106-28" title="28">df.my.MSE.test &lt;-<span class="st"> </span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb106-29" title="29">my.MSE.test &lt;-<span class="st"> </span>tbl[tbl<span class="op">$</span>df <span class="op">==</span><span class="st"> </span>df.my.MSE.test, <span class="st">&#39;MSE.test&#39;</span>]</a>
+<a class="sourceLine" id="cb106-30" title="30"></a>
+<a class="sourceLine" id="cb106-31" title="31"><span class="co"># show the optimal solution</span></a>
+<a class="sourceLine" id="cb106-32" title="32"><span class="kw">abline</span>(<span class="dt">v =</span> df.my.MSE.test, </a>
+<a class="sourceLine" id="cb106-33" title="33">       <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb106-34" title="34"><span class="kw">points</span>(<span class="dt">x =</span> df.my.MSE.test, <span class="dt">y =</span> my.MSE.test, </a>
+<a class="sourceLine" id="cb106-35" title="35">       <span class="dt">pch =</span> <span class="dv">15</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)</a>
+<a class="sourceLine" id="cb106-36" title="36"><span class="kw">mtext</span>(df.my.MSE.test, </a>
+<a class="sourceLine" id="cb106-37" title="37">      <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">line =</span> <span class="dv">-1</span>, <span class="dt">at =</span> df.my.MSE.test, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">cex =</span> <span class="fl">1.2</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 </div>
-<div id="build-optimal-model-and-plot-for-the-model" class="section level2" number="22.6">
+<div id="build-optimal-model-and-plot-for-the-model" class="section level2">
 <h2><span class="header-section-number">22.6</span> Build optimal model and plot for the model</h2>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="spline-model.html#cb107-1" aria-hidden="true" tabindex="-1"></a>mod.MSE.test <span class="ot">&lt;-</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> x.train, <span class="at">y =</span> y.train, <span class="at">df =</span> df.my.MSE.test)</span>
-<span id="cb107-2"><a href="spline-model.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="spline-model.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="co"># predict data for 250 x&#39;s to get smoothed curve</span></span>
-<span id="cb107-4"><a href="spline-model.html#cb107-4" aria-hidden="true" tabindex="-1"></a>x.model.plot <span class="ot">&lt;-</span> <span class="fu">seq</span>(x.min, x.max, <span class="at">length =</span> <span class="dv">250</span>)</span>
-<span id="cb107-5"><a href="spline-model.html#cb107-5" aria-hidden="true" tabindex="-1"></a>y.model.plot <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.MSE.test, <span class="fu">data.frame</span>(<span class="at">x =</span> x.model.plot))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
-<span id="cb107-6"><a href="spline-model.html#cb107-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-7"><a href="spline-model.html#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot train data</span></span>
-<span id="cb107-8"><a href="spline-model.html#cb107-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb107-9"><a href="spline-model.html#cb107-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.train, y.train,</span>
-<span id="cb107-10"><a href="spline-model.html#cb107-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Initial data and the best fit model&quot;</span>,</span>
-<span id="cb107-11"><a href="spline-model.html#cb107-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">bg =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb107-12"><a href="spline-model.html#cb107-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Y&#39;</span>, </span>
-<span id="cb107-13"><a href="spline-model.html#cb107-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(x.min, x.max),</span>
-<span id="cb107-14"><a href="spline-model.html#cb107-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(y), <span class="fu">max</span>(y)), </span>
-<span id="cb107-15"><a href="spline-model.html#cb107-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">cex.axis =</span> <span class="fl">1.2</span>)</span>
-<span id="cb107-16"><a href="spline-model.html#cb107-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-17"><a href="spline-model.html#cb107-17" aria-hidden="true" tabindex="-1"></a><span class="co"># add test data</span></span>
-<span id="cb107-18"><a href="spline-model.html#cb107-18" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x.test, y.test, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">bg =</span> <span class="st">&#39;red&#39;</span>, <span class="at">pch =</span> <span class="dv">21</span>)</span>
-<span id="cb107-19"><a href="spline-model.html#cb107-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-20"><a href="spline-model.html#cb107-20" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
-<span id="cb107-21"><a href="spline-model.html#cb107-21" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.line, y.line,<span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb107-22"><a href="spline-model.html#cb107-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-23"><a href="spline-model.html#cb107-23" aria-hidden="true" tabindex="-1"></a><span class="co"># add model</span></span>
-<span id="cb107-24"><a href="spline-model.html#cb107-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.model.plot, y.model.plot, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb107-25"><a href="spline-model.html#cb107-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-26"><a href="spline-model.html#cb107-26" aria-hidden="true" tabindex="-1"></a><span class="co"># legend</span></span>
-<span id="cb107-27"><a href="spline-model.html#cb107-27" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>, <span class="st">&#39;f(X)&#39;</span>, <span class="st">&#39;model&#39;</span>),</span>
-<span id="cb107-28"><a href="spline-model.html#cb107-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>, <span class="cn">NA</span>, <span class="cn">NA</span>), </span>
-<span id="cb107-29"><a href="spline-model.html#cb107-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;blue&#39;</span>),  </span>
-<span id="cb107-30"><a href="spline-model.html#cb107-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">mod.MSE.test &lt;-<span class="st"> </span><span class="kw">smooth.spline</span>(<span class="dt">x =</span> x.train, <span class="dt">y =</span> y.train, <span class="dt">df =</span> df.my.MSE.test)</a>
+<a class="sourceLine" id="cb107-2" title="2"></a>
+<a class="sourceLine" id="cb107-3" title="3"><span class="co"># predict data for 250 x&#39;s to get smoothed curve</span></a>
+<a class="sourceLine" id="cb107-4" title="4">x.model.plot &lt;-<span class="st"> </span><span class="kw">seq</span>(x.min, x.max, <span class="dt">length =</span> <span class="dv">250</span>)</a>
+<a class="sourceLine" id="cb107-5" title="5">y.model.plot &lt;-<span class="st"> </span><span class="kw">predict</span>(mod.MSE.test, <span class="kw">data.frame</span>(<span class="dt">x =</span> x.model.plot))<span class="op">$</span>y[, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb107-6" title="6"></a>
+<a class="sourceLine" id="cb107-7" title="7"><span class="co"># plot train data</span></a>
+<a class="sourceLine" id="cb107-8" title="8"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb107-9" title="9"><span class="kw">plot</span>(x.train, y.train,</a>
+<a class="sourceLine" id="cb107-10" title="10">     <span class="dt">main =</span> <span class="st">&quot;Initial data and the best fit model&quot;</span>,</a>
+<a class="sourceLine" id="cb107-11" title="11">     <span class="dt">col =</span> <span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="dt">bg =</span> <span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="dt">pch =</span> <span class="dv">21</span>,</a>
+<a class="sourceLine" id="cb107-12" title="12">     <span class="dt">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Y&#39;</span>, </a>
+<a class="sourceLine" id="cb107-13" title="13">     <span class="dt">xlim =</span> <span class="kw">c</span>(x.min, x.max),</a>
+<a class="sourceLine" id="cb107-14" title="14">     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="kw">min</span>(y), <span class="kw">max</span>(y)), </a>
+<a class="sourceLine" id="cb107-15" title="15">     <span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">cex.lab =</span> <span class="fl">1.2</span>, <span class="dt">cex.axis =</span> <span class="fl">1.2</span>)</a>
+<a class="sourceLine" id="cb107-16" title="16"></a>
+<a class="sourceLine" id="cb107-17" title="17"><span class="co"># add test data</span></a>
+<a class="sourceLine" id="cb107-18" title="18"><span class="kw">points</span>(x.test, y.test, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">bg =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">pch =</span> <span class="dv">21</span>)</a>
+<a class="sourceLine" id="cb107-19" title="19"></a>
+<a class="sourceLine" id="cb107-20" title="20"><span class="co"># function</span></a>
+<a class="sourceLine" id="cb107-21" title="21"><span class="kw">lines</span>(x.line, y.line,<span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb107-22" title="22"></a>
+<a class="sourceLine" id="cb107-23" title="23"><span class="co"># add model</span></a>
+<a class="sourceLine" id="cb107-24" title="24"><span class="kw">lines</span>(x.model.plot, y.model.plot, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)</a>
+<a class="sourceLine" id="cb107-25" title="25"></a>
+<a class="sourceLine" id="cb107-26" title="26"><span class="co"># legend</span></a>
+<a class="sourceLine" id="cb107-27" title="27"><span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>, <span class="st">&#39;f(X)&#39;</span>, <span class="st">&#39;model&#39;</span>),</a>
+<a class="sourceLine" id="cb107-28" title="28">       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">16</span>, <span class="ot">NA</span>, <span class="ot">NA</span>), </a>
+<a class="sourceLine" id="cb107-29" title="29">       <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;blue&#39;</span>),  </a>
+<a class="sourceLine" id="cb107-30" title="30">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="dt">lwd =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">cex =</span> <span class="fl">1.2</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 </div>
-<div id="bibliograpy" class="section level2" number="22.7">
+<div id="bibliograpy" class="section level2">
 <h2><span class="header-section-number">22.7</span> Bibliograpy</h2>
 <p><a href="http://faculty.marshall.usc.edu/gareth-james/">An Introduction to Statistical Learning by Gareth James</a></p>
 

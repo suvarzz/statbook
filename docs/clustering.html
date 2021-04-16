@@ -33,7 +33,6 @@
   
 <link rel="prev" href="t-test-anova-difference.html"/>
 <link rel="next" href="support-vector-machine.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,27 +53,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,29 +132,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
-<ul>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a><ul>
 <li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.1</b> Data inspection</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html"><i class="fa fa-check"></i><b>3</b> Analysis of the distribution</a>
-<ul>
+<li class="chapter" data-level="3" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html"><i class="fa fa-check"></i><b>3</b> Analysis of the distribution</a><ul>
 <li class="chapter" data-level="3.1" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#t-test"><i class="fa fa-check"></i><b>3.1</b> t-Test</a></li>
 <li class="chapter" data-level="3.2" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#anova"><i class="fa fa-check"></i><b>3.2</b> ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>4</b> Basic Statistics</a>
-<ul>
+<li class="chapter" data-level="4" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>4</b> Basic Statistics</a><ul>
 <li class="chapter" data-level="4.1" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>4.1</b> Outliers</a></li>
 <li class="chapter" data-level="4.2" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>4.2</b> Normality</a></li>
 <li class="chapter" data-level="4.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Normal Distribution</a></li>
 <li class="chapter" data-level="4.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>4.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary analysis</a></li>
-<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
-<ul>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a><ul>
 <li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.1</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
-<ul>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a><ul>
 <li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
 <li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
@@ -167,43 +159,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
 <li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
-<ul>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a><ul>
 <li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
-<ul>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a><ul>
 <li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
-<ul>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a><ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
-<ul>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a><ul>
 <li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
 <li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Correlation</a></li>
 <li class="chapter" data-level="13" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>13</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a>
-<ul>
+<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a><ul>
 <li class="chapter" data-level="14.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>14.1</b> Next part</a></li>
 <li class="chapter" data-level="14.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>14.2</b> Example</a></li>
 <li class="chapter" data-level="14.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>14.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>15</b> Support Vector Machine</a></li>
 <li class="chapter" data-level="16" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>16</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a>
-<ul>
+<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a><ul>
 <li class="chapter" data-level="17.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>17.1</b> Linear Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>18</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a>
-<ul>
+<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a><ul>
 <li class="chapter" data-level="19.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>19.1</b> Generate Random Data Set a Linear Model</a></li>
 <li class="chapter" data-level="19.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>19.2</b> Linear regression - theory</a></li>
 <li class="chapter" data-level="19.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>19.3</b> Practical example</a></li>
@@ -213,14 +197,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>19.7</b> Practical examples for linear model regression</a></li>
 <li class="chapter" data-level="19.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>19.8</b> NEXT part</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a>
-<ul>
+<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a><ul>
 <li class="chapter" data-level="20.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>20.1</b> NEXT part</a></li>
 <li class="chapter" data-level="20.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>20.2</b> NEXT Part</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>21</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a>
-<ul>
+<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a><ul>
 <li class="chapter" data-level="22.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>22.1</b> Generate dataset from a given function</a></li>
 <li class="chapter" data-level="22.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>22.2</b> Split data for train and test</a></li>
 <li class="chapter" data-level="22.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>22.3</b> Diagram of the given function and generated datasets</a></li>
@@ -229,15 +211,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="22.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>22.6</b> Build optimal model and plot for the model</a></li>
 <li class="chapter" data-level="22.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>22.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a>
-<ul>
+<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a><ul>
 <li class="chapter" data-level="23.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>23.1</b> Next part</a></li>
 <li class="chapter" data-level="23.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
 <li class="chapter" data-level="23.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>23.3</b> NExt part</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a>
-<ul>
+<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a><ul>
 <li class="chapter" data-level="25.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>25.0.1</b> Sources</a></li>
 </ul></li>
 <li class="chapter" data-level="26" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>26</b> Naive Bayes</a></li>
@@ -261,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="clustering" class="section level1" number="14">
+<div id="clustering" class="section level1">
 <h1><span class="header-section-number">Chapter 14</span> Clustering</h1>
 <p>5 classes of clustering methods:<br />
 1. <strong>Partitioning methods</strong> - split into k-groups (k-means, k-dedoids (PAM), CLARA)<br />
@@ -269,208 +249,208 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 3. <strong>Fuzzy clustering</strong><br />
 4. <strong>Density-based clustering</strong><br />
 5. <strong>Model-based clustering</strong></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="clustering.html#cb64-1" aria-hidden="true" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./DATA/beverage.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)  </span>
-<span id="cb64-2"><a href="clustering.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bv)  </span>
-<span id="cb64-3"><a href="clustering.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># no needs to normalize because all data is binary (0,1)</span></span>
-<span id="cb64-4"><a href="clustering.html#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-5"><a href="clustering.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Hierarchical clustering</span></span>
-<span id="cb64-6"><a href="clustering.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co"># dist - calculate distances</span></span>
-<span id="cb64-7"><a href="clustering.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co"># hclust - hierarchical clustering</span></span>
-<span id="cb64-8"><a href="clustering.html#cb64-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-9"><a href="clustering.html#cb64-9" aria-hidden="true" tabindex="-1"></a>clust.bv <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>]), <span class="st">&quot;ward.D&quot;</span>)</span>
-<span id="cb64-10"><a href="clustering.html#cb64-10" aria-hidden="true" tabindex="-1"></a>clust.bv</span>
-<span id="cb64-11"><a href="clustering.html#cb64-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-12"><a href="clustering.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot clusters</span></span>
-<span id="cb64-13"><a href="clustering.html#cb64-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clust.bv)</span>
-<span id="cb64-14"><a href="clustering.html#cb64-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clust.bv, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb64-15"><a href="clustering.html#cb64-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.hclust</span>(clust.bv, <span class="at">k=</span><span class="dv">3</span>, <span class="at">border=</span><span class="st">&quot;red&quot;</span>) </span>
-<span id="cb64-16"><a href="clustering.html#cb64-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-17"><a href="clustering.html#cb64-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by clusters</span></span>
-<span id="cb64-18"><a href="clustering.html#cb64-18" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">cutree</span>(clust.bv, <span class="at">k=</span><span class="dv">3</span>)</span>
-<span id="cb64-19"><a href="clustering.html#cb64-19" aria-hidden="true" tabindex="-1"></a>groups</span>
-<span id="cb64-20"><a href="clustering.html#cb64-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-21"><a href="clustering.html#cb64-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage in broups by drinking different beverages</span></span>
-<span id="cb64-22"><a href="clustering.html#cb64-22" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(bv[groups<span class="sc">==</span><span class="dv">1</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>])<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb64-23"><a href="clustering.html#cb64-23" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(bv[groups<span class="sc">==</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>])<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb64-24"><a href="clustering.html#cb64-24" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(bv[groups<span class="sc">==</span><span class="dv">3</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>])<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb64-25"><a href="clustering.html#cb64-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-26"><a href="clustering.html#cb64-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Interpretation</span></span>
-<span id="cb64-27"><a href="clustering.html#cb64-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. People who does not have specific preference</span></span>
-<span id="cb64-28"><a href="clustering.html#cb64-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. People who prefers cola and pepsi</span></span>
-<span id="cb64-29"><a href="clustering.html#cb64-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Not clear (others)</span></span>
-<span id="cb64-30"><a href="clustering.html#cb64-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-31"><a href="clustering.html#cb64-31" aria-hidden="true" tabindex="-1"></a><span class="co"># atributes of cluster analysis</span></span>
-<span id="cb64-32"><a href="clustering.html#cb64-32" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(clust.bv)</span>
-<span id="cb64-33"><a href="clustering.html#cb64-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-34"><a href="clustering.html#cb64-34" aria-hidden="true" tabindex="-1"></a><span class="co"># chronic of combining</span></span>
-<span id="cb64-35"><a href="clustering.html#cb64-35" aria-hidden="true" tabindex="-1"></a>clust.bv<span class="sc">$</span>merge</span>
-<span id="cb64-36"><a href="clustering.html#cb64-36" aria-hidden="true" tabindex="-1"></a>clust.bv[<span class="dv">1</span>]</span>
-<span id="cb64-37"><a href="clustering.html#cb64-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-38"><a href="clustering.html#cb64-38" aria-hidden="true" tabindex="-1"></a>clust.bv<span class="sc">$</span>height</span>
-<span id="cb64-39"><a href="clustering.html#cb64-39" aria-hidden="true" tabindex="-1"></a>clust.bv<span class="sc">$</span>order</span>
-<span id="cb64-40"><a href="clustering.html#cb64-40" aria-hidden="true" tabindex="-1"></a>clust.bv<span class="sc">$</span>labels</span>
-<span id="cb64-41"><a href="clustering.html#cb64-41" aria-hidden="true" tabindex="-1"></a>clust.bv<span class="sc">$</span>method</span>
-<span id="cb64-42"><a href="clustering.html#cb64-42" aria-hidden="true" tabindex="-1"></a>clust.bv<span class="sc">$</span>call</span>
-<span id="cb64-43"><a href="clustering.html#cb64-43" aria-hidden="true" tabindex="-1"></a>clust.bv<span class="sc">$</span>dist.method</span>
-<span id="cb64-44"><a href="clustering.html#cb64-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-45"><a href="clustering.html#cb64-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Detect the best choice for number of cluster by elbow-plot</span></span>
-<span id="cb64-46"><a href="clustering.html#cb64-46" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">33</span>, clust.bv<span class="sc">$</span>height, <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb64-47"><a href="clustering.html#cb64-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-48"><a href="clustering.html#cb64-48" aria-hidden="true" tabindex="-1"></a><span class="do">### Task. Analyse data and find groups of people</span></span>
-<span id="cb64-49"><a href="clustering.html#cb64-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Scores (0,10) of 10 tests for candidates to get a job.</span></span>
-<span id="cb64-50"><a href="clustering.html#cb64-50" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Memorizing numbers</span></span>
-<span id="cb64-51"><a href="clustering.html#cb64-51" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Math task</span></span>
-<span id="cb64-52"><a href="clustering.html#cb64-52" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Solving tasks in dialoge</span></span>
-<span id="cb64-53"><a href="clustering.html#cb64-53" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Algorithms</span></span>
-<span id="cb64-54"><a href="clustering.html#cb64-54" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Self confidence</span></span>
-<span id="cb64-55"><a href="clustering.html#cb64-55" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Work in group</span></span>
-<span id="cb64-56"><a href="clustering.html#cb64-56" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Find solution</span></span>
-<span id="cb64-57"><a href="clustering.html#cb64-57" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Collaboration</span></span>
-<span id="cb64-58"><a href="clustering.html#cb64-58" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. Acceptance by others</span></span>
-<span id="cb64-59"><a href="clustering.html#cb64-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-60"><a href="clustering.html#cb64-60" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</span>
-<span id="cb64-61"><a href="clustering.html#cb64-61" aria-hidden="true" tabindex="-1"></a>job <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/assess.dat&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
-<span id="cb64-62"><a href="clustering.html#cb64-62" aria-hidden="true" tabindex="-1"></a>job</span>
-<span id="cb64-63"><a href="clustering.html#cb64-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-64"><a href="clustering.html#cb64-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Clustering</span></span>
-<span id="cb64-65"><a href="clustering.html#cb64-65" aria-hidden="true" tabindex="-1"></a>clust.job <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(job[,<span class="dv">3</span><span class="sc">:</span><span class="fu">ncol</span>(job)]), <span class="st">&quot;ward.D&quot;</span>)</span>
-<span id="cb64-66"><a href="clustering.html#cb64-66" aria-hidden="true" tabindex="-1"></a><span class="co"># no needs to normalize, because all numbers have the same min, max</span></span>
-<span id="cb64-67"><a href="clustering.html#cb64-67" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clust.job)  <span class="co"># visual number of clusters is 4</span></span>
-<span id="cb64-68"><a href="clustering.html#cb64-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-69"><a href="clustering.html#cb64-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by clusters</span></span>
-<span id="cb64-70"><a href="clustering.html#cb64-70" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">cutree</span>(clust.job, <span class="at">k=</span><span class="dv">4</span>)</span>
-<span id="cb64-71"><a href="clustering.html#cb64-71" aria-hidden="true" tabindex="-1"></a>groups</span>
-<span id="cb64-72"><a href="clustering.html#cb64-72" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(job[groups<span class="sc">==</span><span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">12</span>])<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb64-73"><a href="clustering.html#cb64-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-74"><a href="clustering.html#cb64-74" aria-hidden="true" tabindex="-1"></a><span class="do">### Find clusters using k-means method</span></span>
-<span id="cb64-75"><a href="clustering.html#cb64-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-76"><a href="clustering.html#cb64-76" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</span>
-<span id="cb64-77"><a href="clustering.html#cb64-77" aria-hidden="true" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;DATA/beverage.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span>
-<span id="cb64-78"><a href="clustering.html#cb64-78" aria-hidden="true" tabindex="-1"></a>bv</span>
-<span id="cb64-79"><a href="clustering.html#cb64-79" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(bv)</span>
-<span id="cb64-80"><a href="clustering.html#cb64-80" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(bv)</span>
-<span id="cb64-81"><a href="clustering.html#cb64-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-82"><a href="clustering.html#cb64-82" aria-hidden="true" tabindex="-1"></a><span class="co"># k-means clustering, with initial 3 clusters</span></span>
-<span id="cb64-83"><a href="clustering.html#cb64-83" aria-hidden="true" tabindex="-1"></a><span class="co"># nstart = x - run x times with different initial clusters</span></span>
-<span id="cb64-84"><a href="clustering.html#cb64-84" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span> <span class="ot">=</span> <span class="fu">kmeans</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="at">iter.max =</span> <span class="dv">100</span>)</span>
-<span id="cb64-85"><a href="clustering.html#cb64-85" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(summ<span class="fl">.1</span>)</span>
-<span id="cb64-86"><a href="clustering.html#cb64-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-87"><a href="clustering.html#cb64-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Objects by clusters</span></span>
-<span id="cb64-88"><a href="clustering.html#cb64-88" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span><span class="sc">$</span>cluster</span>
-<span id="cb64-89"><a href="clustering.html#cb64-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-90"><a href="clustering.html#cb64-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Centers of clusters</span></span>
-<span id="cb64-91"><a href="clustering.html#cb64-91" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span><span class="sc">$</span>centers</span>
-<span id="cb64-92"><a href="clustering.html#cb64-92" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 digits after point</span></span>
-<span id="cb64-93"><a href="clustering.html#cb64-93" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">2</span>)</span>
-<span id="cb64-94"><a href="clustering.html#cb64-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-95"><a href="clustering.html#cb64-95" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(summ<span class="fl">.1</span><span class="sc">$</span>centers)</span>
-<span id="cb64-96"><a href="clustering.html#cb64-96" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">7</span>)</span>
-<span id="cb64-97"><a href="clustering.html#cb64-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-98"><a href="clustering.html#cb64-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Square summs</span></span>
-<span id="cb64-99"><a href="clustering.html#cb64-99" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span><span class="sc">$</span>withinss</span>
-<span id="cb64-100"><a href="clustering.html#cb64-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-101"><a href="clustering.html#cb64-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Summ of elements of vector</span></span>
-<span id="cb64-102"><a href="clustering.html#cb64-102" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span><span class="sc">$</span>tot.withinss</span>
-<span id="cb64-103"><a href="clustering.html#cb64-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-104"><a href="clustering.html#cb64-104" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(33*(apply(bv[,2:9], 2, sd))^2)</span></span>
-<span id="cb64-105"><a href="clustering.html#cb64-105" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span><span class="sc">$</span>totss</span>
-<span id="cb64-106"><a href="clustering.html#cb64-106" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span><span class="sc">$</span>tot.betweenss</span>
-<span id="cb64-107"><a href="clustering.html#cb64-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-108"><a href="clustering.html#cb64-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Size of clusters</span></span>
-<span id="cb64-109"><a href="clustering.html#cb64-109" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span><span class="sc">$</span>size</span>
-<span id="cb64-110"><a href="clustering.html#cb64-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-111"><a href="clustering.html#cb64-111" aria-hidden="true" tabindex="-1"></a><span class="co"># Elbow plot to detect optimal number of clusters</span></span>
-<span id="cb64-112"><a href="clustering.html#cb64-112" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>])<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">sum</span>(<span class="fu">apply</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</span>
-<span id="cb64-113"><a href="clustering.html#cb64-113" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">15</span>) { wss[i] <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>],</span>
-<span id="cb64-114"><a href="clustering.html#cb64-114" aria-hidden="true" tabindex="-1"></a>                <span class="at">centers=</span>i)<span class="sc">$</span>tot.withinss }</span>
-<span id="cb64-115"><a href="clustering.html#cb64-115" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, wss, <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</span>
-<span id="cb64-116"><a href="clustering.html#cb64-116" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</span>
-<span id="cb64-117"><a href="clustering.html#cb64-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-118"><a href="clustering.html#cb64-118" aria-hidden="true" tabindex="-1"></a><span class="co"># We can see that diagram is rough. This is because clusters are not allways optimal</span></span>
-<span id="cb64-119"><a href="clustering.html#cb64-119" aria-hidden="true" tabindex="-1"></a><span class="co"># To improve situation, we have to run many initiall start coordinates and choose the best</span></span>
-<span id="cb64-120"><a href="clustering.html#cb64-120" aria-hidden="true" tabindex="-1"></a><span class="co"># option (add nstart=500):</span></span>
-<span id="cb64-121"><a href="clustering.html#cb64-121" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>])<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">sum</span>(<span class="fu">apply</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</span>
-<span id="cb64-122"><a href="clustering.html#cb64-122" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">15</span>) { wss[i] <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>],</span>
-<span id="cb64-123"><a href="clustering.html#cb64-123" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">centers=</span>i, <span class="at">nstart=</span><span class="dv">500</span>)<span class="sc">$</span>tot.withinss }</span>
-<span id="cb64-124"><a href="clustering.html#cb64-124" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, wss, <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</span>
-<span id="cb64-125"><a href="clustering.html#cb64-125" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</span>
-<span id="cb64-126"><a href="clustering.html#cb64-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Warnings means that iterations were not finished for some cases.</span></span>
-<span id="cb64-127"><a href="clustering.html#cb64-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-128"><a href="clustering.html#cb64-128" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s compair results for 3 and 4 clusters</span></span>
-<span id="cb64-129"><a href="clustering.html#cb64-129" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.1</span> <span class="ot">=</span> <span class="fu">kmeans</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="at">iter.max=</span><span class="dv">100</span>)</span>
-<span id="cb64-130"><a href="clustering.html#cb64-130" aria-hidden="true" tabindex="-1"></a>summ<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">kmeans</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>], <span class="dv">4</span>, <span class="at">iter.max=</span><span class="dv">100</span>)</span>
-<span id="cb64-131"><a href="clustering.html#cb64-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-132"><a href="clustering.html#cb64-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Compair clusters. How many elements in each cluster</span></span>
-<span id="cb64-133"><a href="clustering.html#cb64-133" aria-hidden="true" tabindex="-1"></a><span class="co"># We can see how elements move if we take more clusters</span></span>
-<span id="cb64-134"><a href="clustering.html#cb64-134" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(summ<span class="fl">.1</span><span class="sc">$</span>cluster, summ<span class="fl">.2</span><span class="sc">$</span>cluster)</span>
-<span id="cb64-135"><a href="clustering.html#cb64-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-136"><a href="clustering.html#cb64-136" aria-hidden="true" tabindex="-1"></a><span class="co"># Multidimentional scaling</span></span>
-<span id="cb64-137"><a href="clustering.html#cb64-137" aria-hidden="true" tabindex="-1"></a><span class="co"># Project multidimentional data to 2d</span></span>
-<span id="cb64-138"><a href="clustering.html#cb64-138" aria-hidden="true" tabindex="-1"></a>bv.dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>])</span>
-<span id="cb64-139"><a href="clustering.html#cb64-139" aria-hidden="true" tabindex="-1"></a>bv.mds <span class="ot">&lt;-</span> <span class="fu">cmdscale</span>(bv.dist)</span>
-<span id="cb64-140"><a href="clustering.html#cb64-140" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bv.mds, <span class="at">col =</span> summ<span class="fl">.1</span><span class="sc">$</span>cluster, <span class="at">xlab=</span><span class="st">&quot;Index&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb64-141"><a href="clustering.html#cb64-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-142"><a href="clustering.html#cb64-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Detect optimal number of clusters</span></span>
-<span id="cb64-143"><a href="clustering.html#cb64-143" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;NbClust&quot;</span>)</span>
-<span id="cb64-144"><a href="clustering.html#cb64-144" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;NbClust&quot;</span>)</span>
-<span id="cb64-145"><a href="clustering.html#cb64-145" aria-hidden="true" tabindex="-1"></a>Best <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(bv[,<span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>],              <span class="co"># data </span></span>
-<span id="cb64-146"><a href="clustering.html#cb64-146" aria-hidden="true" tabindex="-1"></a>                <span class="at">distance=</span><span class="st">&quot;euclidean&quot;</span>,  <span class="co"># distance method</span></span>
-<span id="cb64-147"><a href="clustering.html#cb64-147" aria-hidden="true" tabindex="-1"></a>                <span class="at">min.nc=</span><span class="dv">2</span>,              <span class="co"># min number of clusters</span></span>
-<span id="cb64-148"><a href="clustering.html#cb64-148" aria-hidden="true" tabindex="-1"></a>                <span class="at">max.nc=</span><span class="dv">8</span>,             <span class="co"># max number of clusters</span></span>
-<span id="cb64-149"><a href="clustering.html#cb64-149" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;ward.D&quot;</span>,       <span class="co"># ward methodes </span></span>
-<span id="cb64-150"><a href="clustering.html#cb64-150" aria-hidden="true" tabindex="-1"></a>                <span class="at">index =</span> <span class="st">&quot;alllong&quot;</span> )    <span class="co"># choose indices</span></span></code></pre></div>
-<div id="next-part" class="section level2" number="14.1">
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">bv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./DATA/beverage.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)  </a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="kw">head</span>(bv)  </a>
+<a class="sourceLine" id="cb64-3" title="3"><span class="co"># no needs to normalize because all data is binary (0,1)</span></a>
+<a class="sourceLine" id="cb64-4" title="4"></a>
+<a class="sourceLine" id="cb64-5" title="5"><span class="co"># Hierarchical clustering</span></a>
+<a class="sourceLine" id="cb64-6" title="6"><span class="co"># dist - calculate distances</span></a>
+<a class="sourceLine" id="cb64-7" title="7"><span class="co"># hclust - hierarchical clustering</span></a>
+<a class="sourceLine" id="cb64-8" title="8"></a>
+<a class="sourceLine" id="cb64-9" title="9">clust.bv &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>]), <span class="st">&quot;ward.D&quot;</span>)</a>
+<a class="sourceLine" id="cb64-10" title="10">clust.bv</a>
+<a class="sourceLine" id="cb64-11" title="11"></a>
+<a class="sourceLine" id="cb64-12" title="12"><span class="co"># Plot clusters</span></a>
+<a class="sourceLine" id="cb64-13" title="13"><span class="kw">plot</span>(clust.bv)</a>
+<a class="sourceLine" id="cb64-14" title="14"><span class="kw">plot</span>(clust.bv, <span class="dt">hang =</span> <span class="dv">-1</span>)</a>
+<a class="sourceLine" id="cb64-15" title="15"><span class="kw">rect.hclust</span>(clust.bv, <span class="dt">k=</span><span class="dv">3</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>) </a>
+<a class="sourceLine" id="cb64-16" title="16"></a>
+<a class="sourceLine" id="cb64-17" title="17"><span class="co"># Group data by clusters</span></a>
+<a class="sourceLine" id="cb64-18" title="18">groups &lt;-<span class="st"> </span><span class="kw">cutree</span>(clust.bv, <span class="dt">k=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb64-19" title="19">groups</a>
+<a class="sourceLine" id="cb64-20" title="20"></a>
+<a class="sourceLine" id="cb64-21" title="21"><span class="co"># Percentage in broups by drinking different beverages</span></a>
+<a class="sourceLine" id="cb64-22" title="22"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb64-23" title="23"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb64-24" title="24"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">3</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb64-25" title="25"></a>
+<a class="sourceLine" id="cb64-26" title="26"><span class="co"># Interpretation</span></a>
+<a class="sourceLine" id="cb64-27" title="27"><span class="co"># 1. People who does not have specific preference</span></a>
+<a class="sourceLine" id="cb64-28" title="28"><span class="co"># 2. People who prefers cola and pepsi</span></a>
+<a class="sourceLine" id="cb64-29" title="29"><span class="co"># 3. Not clear (others)</span></a>
+<a class="sourceLine" id="cb64-30" title="30"></a>
+<a class="sourceLine" id="cb64-31" title="31"><span class="co"># atributes of cluster analysis</span></a>
+<a class="sourceLine" id="cb64-32" title="32"><span class="kw">names</span>(clust.bv)</a>
+<a class="sourceLine" id="cb64-33" title="33"></a>
+<a class="sourceLine" id="cb64-34" title="34"><span class="co"># chronic of combining</span></a>
+<a class="sourceLine" id="cb64-35" title="35">clust.bv<span class="op">$</span>merge</a>
+<a class="sourceLine" id="cb64-36" title="36">clust.bv[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb64-37" title="37"></a>
+<a class="sourceLine" id="cb64-38" title="38">clust.bv<span class="op">$</span>height</a>
+<a class="sourceLine" id="cb64-39" title="39">clust.bv<span class="op">$</span>order</a>
+<a class="sourceLine" id="cb64-40" title="40">clust.bv<span class="op">$</span>labels</a>
+<a class="sourceLine" id="cb64-41" title="41">clust.bv<span class="op">$</span>method</a>
+<a class="sourceLine" id="cb64-42" title="42">clust.bv<span class="op">$</span>call</a>
+<a class="sourceLine" id="cb64-43" title="43">clust.bv<span class="op">$</span>dist.method</a>
+<a class="sourceLine" id="cb64-44" title="44"></a>
+<a class="sourceLine" id="cb64-45" title="45"><span class="co"># Detect the best choice for number of cluster by elbow-plot</span></a>
+<a class="sourceLine" id="cb64-46" title="46"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">33</span>, clust.bv<span class="op">$</span>height, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</a>
+<a class="sourceLine" id="cb64-47" title="47"></a>
+<a class="sourceLine" id="cb64-48" title="48"><span class="co">### Task. Analyse data and find groups of people</span></a>
+<a class="sourceLine" id="cb64-49" title="49"><span class="co"># Scores (0,10) of 10 tests for candidates to get a job.</span></a>
+<a class="sourceLine" id="cb64-50" title="50"><span class="co"># 1. Memorizing numbers</span></a>
+<a class="sourceLine" id="cb64-51" title="51"><span class="co"># 2. Math task</span></a>
+<a class="sourceLine" id="cb64-52" title="52"><span class="co"># 3. Solving tasks in dialoge</span></a>
+<a class="sourceLine" id="cb64-53" title="53"><span class="co"># 4. Algorithms</span></a>
+<a class="sourceLine" id="cb64-54" title="54"><span class="co"># 5. Self confidence</span></a>
+<a class="sourceLine" id="cb64-55" title="55"><span class="co"># 6. Work in group</span></a>
+<a class="sourceLine" id="cb64-56" title="56"><span class="co"># 7. Find solution</span></a>
+<a class="sourceLine" id="cb64-57" title="57"><span class="co"># 8. Collaboration</span></a>
+<a class="sourceLine" id="cb64-58" title="58"><span class="co"># 9. Acceptance by others</span></a>
+<a class="sourceLine" id="cb64-59" title="59"></a>
+<a class="sourceLine" id="cb64-60" title="60"><span class="kw">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</a>
+<a class="sourceLine" id="cb64-61" title="61">job &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;DATA/assess.dat&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb64-62" title="62">job</a>
+<a class="sourceLine" id="cb64-63" title="63"></a>
+<a class="sourceLine" id="cb64-64" title="64"><span class="co"># Clustering</span></a>
+<a class="sourceLine" id="cb64-65" title="65">clust.job &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(job[,<span class="dv">3</span><span class="op">:</span><span class="kw">ncol</span>(job)]), <span class="st">&quot;ward.D&quot;</span>)</a>
+<a class="sourceLine" id="cb64-66" title="66"><span class="co"># no needs to normalize, because all numbers have the same min, max</span></a>
+<a class="sourceLine" id="cb64-67" title="67"><span class="kw">plot</span>(clust.job)  <span class="co"># visual number of clusters is 4</span></a>
+<a class="sourceLine" id="cb64-68" title="68"></a>
+<a class="sourceLine" id="cb64-69" title="69"><span class="co"># Group data by clusters</span></a>
+<a class="sourceLine" id="cb64-70" title="70">groups &lt;-<span class="st"> </span><span class="kw">cutree</span>(clust.job, <span class="dt">k=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb64-71" title="71">groups</a>
+<a class="sourceLine" id="cb64-72" title="72"><span class="kw">colMeans</span>(job[groups<span class="op">==</span><span class="dv">1</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">12</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb64-73" title="73"></a>
+<a class="sourceLine" id="cb64-74" title="74"><span class="co">### Find clusters using k-means method</span></a>
+<a class="sourceLine" id="cb64-75" title="75"></a>
+<a class="sourceLine" id="cb64-76" title="76"><span class="kw">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</a>
+<a class="sourceLine" id="cb64-77" title="77">bv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;DATA/beverage.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb64-78" title="78">bv</a>
+<a class="sourceLine" id="cb64-79" title="79"><span class="kw">dim</span>(bv)</a>
+<a class="sourceLine" id="cb64-80" title="80"><span class="kw">names</span>(bv)</a>
+<a class="sourceLine" id="cb64-81" title="81"></a>
+<a class="sourceLine" id="cb64-82" title="82"><span class="co"># k-means clustering, with initial 3 clusters</span></a>
+<a class="sourceLine" id="cb64-83" title="83"><span class="co"># nstart = x - run x times with different initial clusters</span></a>
+<a class="sourceLine" id="cb64-84" title="84">summ<span class="fl">.1</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="dt">iter.max =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb64-85" title="85"><span class="kw">names</span>(summ<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb64-86" title="86"></a>
+<a class="sourceLine" id="cb64-87" title="87"><span class="co"># Objects by clusters</span></a>
+<a class="sourceLine" id="cb64-88" title="88">summ<span class="fl">.1</span><span class="op">$</span>cluster</a>
+<a class="sourceLine" id="cb64-89" title="89"></a>
+<a class="sourceLine" id="cb64-90" title="90"><span class="co"># Centers of clusters</span></a>
+<a class="sourceLine" id="cb64-91" title="91">summ<span class="fl">.1</span><span class="op">$</span>centers</a>
+<a class="sourceLine" id="cb64-92" title="92"><span class="co"># 2 digits after point</span></a>
+<a class="sourceLine" id="cb64-93" title="93"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb64-94" title="94"></a>
+<a class="sourceLine" id="cb64-95" title="95"><span class="kw">t</span>(summ<span class="fl">.1</span><span class="op">$</span>centers)</a>
+<a class="sourceLine" id="cb64-96" title="96"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb64-97" title="97"></a>
+<a class="sourceLine" id="cb64-98" title="98"><span class="co"># Square summs</span></a>
+<a class="sourceLine" id="cb64-99" title="99">summ<span class="fl">.1</span><span class="op">$</span>withinss</a>
+<a class="sourceLine" id="cb64-100" title="100"></a>
+<a class="sourceLine" id="cb64-101" title="101"><span class="co"># Summ of elements of vector</span></a>
+<a class="sourceLine" id="cb64-102" title="102">summ<span class="fl">.1</span><span class="op">$</span>tot.withinss</a>
+<a class="sourceLine" id="cb64-103" title="103"></a>
+<a class="sourceLine" id="cb64-104" title="104"><span class="co"># sum(33*(apply(bv[,2:9], 2, sd))^2)</span></a>
+<a class="sourceLine" id="cb64-105" title="105">summ<span class="fl">.1</span><span class="op">$</span>totss</a>
+<a class="sourceLine" id="cb64-106" title="106">summ<span class="fl">.1</span><span class="op">$</span>tot.betweenss</a>
+<a class="sourceLine" id="cb64-107" title="107"></a>
+<a class="sourceLine" id="cb64-108" title="108"><span class="co"># Size of clusters</span></a>
+<a class="sourceLine" id="cb64-109" title="109">summ<span class="fl">.1</span><span class="op">$</span>size</a>
+<a class="sourceLine" id="cb64-110" title="110"></a>
+<a class="sourceLine" id="cb64-111" title="111"><span class="co"># Elbow plot to detect optimal number of clusters</span></a>
+<a class="sourceLine" id="cb64-112" title="112">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb64-113" title="113"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) { wss[i] &lt;-<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],</a>
+<a class="sourceLine" id="cb64-114" title="114">                <span class="dt">centers=</span>i)<span class="op">$</span>tot.withinss }</a>
+<a class="sourceLine" id="cb64-115" title="115"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
+<a class="sourceLine" id="cb64-116" title="116">     <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a>
+<a class="sourceLine" id="cb64-117" title="117"></a>
+<a class="sourceLine" id="cb64-118" title="118"><span class="co"># We can see that diagram is rough. This is because clusters are not allways optimal</span></a>
+<a class="sourceLine" id="cb64-119" title="119"><span class="co"># To improve situation, we have to run many initiall start coordinates and choose the best</span></a>
+<a class="sourceLine" id="cb64-120" title="120"><span class="co"># option (add nstart=500):</span></a>
+<a class="sourceLine" id="cb64-121" title="121">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb64-122" title="122"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) { wss[i] &lt;-<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],</a>
+<a class="sourceLine" id="cb64-123" title="123">                                   <span class="dt">centers=</span>i, <span class="dt">nstart=</span><span class="dv">500</span>)<span class="op">$</span>tot.withinss }</a>
+<a class="sourceLine" id="cb64-124" title="124"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
+<a class="sourceLine" id="cb64-125" title="125">     <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a>
+<a class="sourceLine" id="cb64-126" title="126"><span class="co"># Warnings means that iterations were not finished for some cases.</span></a>
+<a class="sourceLine" id="cb64-127" title="127"></a>
+<a class="sourceLine" id="cb64-128" title="128"><span class="co"># Let&#39;s compair results for 3 and 4 clusters</span></a>
+<a class="sourceLine" id="cb64-129" title="129">summ<span class="fl">.1</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="dt">iter.max=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb64-130" title="130">summ<span class="fl">.2</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">4</span>, <span class="dt">iter.max=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb64-131" title="131"></a>
+<a class="sourceLine" id="cb64-132" title="132"><span class="co"># Compair clusters. How many elements in each cluster</span></a>
+<a class="sourceLine" id="cb64-133" title="133"><span class="co"># We can see how elements move if we take more clusters</span></a>
+<a class="sourceLine" id="cb64-134" title="134"><span class="kw">table</span>(summ<span class="fl">.1</span><span class="op">$</span>cluster, summ<span class="fl">.2</span><span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb64-135" title="135"></a>
+<a class="sourceLine" id="cb64-136" title="136"><span class="co"># Multidimentional scaling</span></a>
+<a class="sourceLine" id="cb64-137" title="137"><span class="co"># Project multidimentional data to 2d</span></a>
+<a class="sourceLine" id="cb64-138" title="138">bv.dist &lt;-<span class="st"> </span><span class="kw">dist</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])</a>
+<a class="sourceLine" id="cb64-139" title="139">bv.mds &lt;-<span class="st"> </span><span class="kw">cmdscale</span>(bv.dist)</a>
+<a class="sourceLine" id="cb64-140" title="140"><span class="kw">plot</span>(bv.mds, <span class="dt">col =</span> summ<span class="fl">.1</span><span class="op">$</span>cluster, <span class="dt">xlab=</span><span class="st">&quot;Index&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb64-141" title="141"></a>
+<a class="sourceLine" id="cb64-142" title="142"><span class="co"># Detect optimal number of clusters</span></a>
+<a class="sourceLine" id="cb64-143" title="143"><span class="kw">install.packages</span>(<span class="st">&quot;NbClust&quot;</span>)</a>
+<a class="sourceLine" id="cb64-144" title="144"><span class="kw">library</span>(<span class="st">&quot;NbClust&quot;</span>)</a>
+<a class="sourceLine" id="cb64-145" title="145">Best &lt;-<span class="st"> </span><span class="kw">NbClust</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],              <span class="co"># data </span></a>
+<a class="sourceLine" id="cb64-146" title="146">                <span class="dt">distance=</span><span class="st">&quot;euclidean&quot;</span>,  <span class="co"># distance method</span></a>
+<a class="sourceLine" id="cb64-147" title="147">                <span class="dt">min.nc=</span><span class="dv">2</span>,              <span class="co"># min number of clusters</span></a>
+<a class="sourceLine" id="cb64-148" title="148">                <span class="dt">max.nc=</span><span class="dv">8</span>,             <span class="co"># max number of clusters</span></a>
+<a class="sourceLine" id="cb64-149" title="149">                <span class="dt">method=</span><span class="st">&quot;ward.D&quot;</span>,       <span class="co"># ward methodes </span></a>
+<a class="sourceLine" id="cb64-150" title="150">                <span class="dt">index =</span> <span class="st">&quot;alllong&quot;</span> )    <span class="co"># choose indices</span></a></code></pre></div>
+<div id="next-part" class="section level2">
 <h2><span class="header-section-number">14.1</span> Next part</h2>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="clustering.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cluster)</span>
-<span id="cb65-2"><a href="clustering.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
-<span id="cb65-3"><a href="clustering.html#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-4"><a href="clustering.html#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-5"><a href="clustering.html#cb65-5" aria-hidden="true" tabindex="-1"></a>Distances<span class="sc">:</span></span>
-<span id="cb65-6"><a href="clustering.html#cb65-6" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">dist</span>()</span>
-<span id="cb65-7"><a href="clustering.html#cb65-7" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">get_dist</span>()   <span class="co"># compute a distance matrix between the rows of a data matrix</span></span>
-<span id="cb65-8"><a href="clustering.html#cb65-8" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_dist</span>()  <span class="co"># visualize distance matrix</span></span>
-<span id="cb65-9"><a href="clustering.html#cb65-9" aria-hidden="true" tabindex="-1"></a>cluster<span class="sc">::</span><span class="fu">daisy</span>()         <span class="co"># handle both numeric and not numeric (nominal, ordinal,...) data types</span></span>
-<span id="cb65-10"><a href="clustering.html#cb65-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-11"><a href="clustering.html#cb65-11" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> factoextra<span class="sc">::</span><span class="fu">get_dist</span>(USArrests, <span class="at">stand =</span> <span class="cn">TRUE</span>, <span class="at">method =</span> <span class="st">&#39;pearson&#39;</span>)</span>
-<span id="cb65-12"><a href="clustering.html#cb65-12" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_dist</span>(d, <span class="at">gradient =</span> <span class="fu">list</span>(<span class="at">low=</span><span class="st">&#39;blue&#39;</span>, <span class="at">mid=</span><span class="st">&#39;white&#39;</span>, <span class="at">high=</span><span class="st">&#39;red&#39;</span>))</span>
-<span id="cb65-13"><a href="clustering.html#cb65-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-14"><a href="clustering.html#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="do">#####</span></span>
-<span id="cb65-15"><a href="clustering.html#cb65-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb65-16"><a href="clustering.html#cb65-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cluster)</span>
-<span id="cb65-17"><a href="clustering.html#cb65-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
-<span id="cb65-18"><a href="clustering.html#cb65-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-19"><a href="clustering.html#cb65-19" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> USArrests <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span> <span class="fu">scale</span>()</span>
-<span id="cb65-20"><a href="clustering.html#cb65-20" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb65-21"><a href="clustering.html#cb65-21" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_nbclust</span>(data, kmeans, <span class="at">method =</span> <span class="st">&#39;gap_stat&#39;</span>)</span>
-<span id="cb65-22"><a href="clustering.html#cb65-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-23"><a href="clustering.html#cb65-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-24"><a href="clustering.html#cb65-24" aria-hidden="true" tabindex="-1"></a>km.res <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(data, <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
-<span id="cb65-25"><a href="clustering.html#cb65-25" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_cluster</span>(km.res, <span class="at">data =</span> data,</span>
-<span id="cb65-26"><a href="clustering.html#cb65-26" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ellipse.type =</span> <span class="st">&#39;convex&#39;</span>,</span>
-<span id="cb65-27"><a href="clustering.html#cb65-27" aria-hidden="true" tabindex="-1"></a>                         <span class="at">palette =</span> <span class="st">&#39;jco&#39;</span>,</span>
-<span id="cb65-28"><a href="clustering.html#cb65-28" aria-hidden="true" tabindex="-1"></a>                         <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb65-29"><a href="clustering.html#cb65-29" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ggtheme =</span> <span class="fu">theme_minimal</span>())</span>
-<span id="cb65-30"><a href="clustering.html#cb65-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-31"><a href="clustering.html#cb65-31" aria-hidden="true" tabindex="-1"></a><span class="co"># PAM clustering</span></span>
-<span id="cb65-32"><a href="clustering.html#cb65-32" aria-hidden="true" tabindex="-1"></a>pam.res <span class="ot">&lt;-</span> cluster<span class="sc">::</span><span class="fu">pam</span>(data, <span class="dv">4</span>)</span>
-<span id="cb65-33"><a href="clustering.html#cb65-33" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_cluster</span>(pam.res)</span>
-<span id="cb65-34"><a href="clustering.html#cb65-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-35"><a href="clustering.html#cb65-35" aria-hidden="true" tabindex="-1"></a><span class="co"># CLARA clustering</span></span>
-<span id="cb65-36"><a href="clustering.html#cb65-36" aria-hidden="true" tabindex="-1"></a>clara.res <span class="ot">&lt;-</span> <span class="fu">clara</span>(df, <span class="dv">2</span>, <span class="at">samples =</span> <span class="dv">50</span>, <span class="at">pamLike =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb65-37"><a href="clustering.html#cb65-37" aria-hidden="true" tabindex="-1"></a>clara.res</span>
-<span id="cb65-38"><a href="clustering.html#cb65-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-39"><a href="clustering.html#cb65-39" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df, <span class="at">cluster =</span> clara.res<span class="sc">$</span>cluster)</span>
-<span id="cb65-40"><a href="clustering.html#cb65-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-41"><a href="clustering.html#cb65-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Medoids</span></span>
-<span id="cb65-42"><a href="clustering.html#cb65-42" aria-hidden="true" tabindex="-1"></a>clara.res<span class="sc">$</span>medoids</span>
-<span id="cb65-43"><a href="clustering.html#cb65-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-44"><a href="clustering.html#cb65-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Clustering</span></span>
-<span id="cb65-45"><a href="clustering.html#cb65-45" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clara.res<span class="sc">$</span>clustering,<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">library</span>(cluster)</a>
+<a class="sourceLine" id="cb65-2" title="2"><span class="kw">library</span>(factoextra)</a>
+<a class="sourceLine" id="cb65-3" title="3"></a>
+<a class="sourceLine" id="cb65-4" title="4"></a>
+<a class="sourceLine" id="cb65-5" title="5">Distances<span class="op">:</span></a>
+<a class="sourceLine" id="cb65-6" title="6">stats<span class="op">::</span><span class="kw">dist</span>()</a>
+<a class="sourceLine" id="cb65-7" title="7">factoextra<span class="op">::</span><span class="kw">get_dist</span>()   <span class="co"># compute a distance matrix between the rows of a data matrix</span></a>
+<a class="sourceLine" id="cb65-8" title="8">factoextra<span class="op">::</span><span class="kw">fviz_dist</span>()  <span class="co"># visualize distance matrix</span></a>
+<a class="sourceLine" id="cb65-9" title="9">cluster<span class="op">::</span><span class="kw">daisy</span>()         <span class="co"># handle both numeric and not numeric (nominal, ordinal,...) data types</span></a>
+<a class="sourceLine" id="cb65-10" title="10"></a>
+<a class="sourceLine" id="cb65-11" title="11">d &lt;-<span class="st"> </span>factoextra<span class="op">::</span><span class="kw">get_dist</span>(USArrests, <span class="dt">stand =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&#39;pearson&#39;</span>)</a>
+<a class="sourceLine" id="cb65-12" title="12">factoextra<span class="op">::</span><span class="kw">fviz_dist</span>(d, <span class="dt">gradient =</span> <span class="kw">list</span>(<span class="dt">low=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">mid=</span><span class="st">&#39;white&#39;</span>, <span class="dt">high=</span><span class="st">&#39;red&#39;</span>))</a>
+<a class="sourceLine" id="cb65-13" title="13"></a>
+<a class="sourceLine" id="cb65-14" title="14"><span class="co">#####</span></a>
+<a class="sourceLine" id="cb65-15" title="15"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb65-16" title="16"><span class="kw">library</span>(cluster)</a>
+<a class="sourceLine" id="cb65-17" title="17"><span class="kw">library</span>(factoextra)</a>
+<a class="sourceLine" id="cb65-18" title="18"></a>
+<a class="sourceLine" id="cb65-19" title="19">data &lt;-<span class="st"> </span>USArrests <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">scale</span>()</a>
+<a class="sourceLine" id="cb65-20" title="20">data</a>
+<a class="sourceLine" id="cb65-21" title="21">factoextra<span class="op">::</span><span class="kw">fviz_nbclust</span>(data, kmeans, <span class="dt">method =</span> <span class="st">&#39;gap_stat&#39;</span>)</a>
+<a class="sourceLine" id="cb65-22" title="22"></a>
+<a class="sourceLine" id="cb65-23" title="23"></a>
+<a class="sourceLine" id="cb65-24" title="24">km.res &lt;-<span class="st"> </span><span class="kw">kmeans</span>(data, <span class="dv">3</span>, <span class="dt">nstart =</span> <span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb65-25" title="25">factoextra<span class="op">::</span><span class="kw">fviz_cluster</span>(km.res, <span class="dt">data =</span> data,</a>
+<a class="sourceLine" id="cb65-26" title="26">                         <span class="dt">ellipse.type =</span> <span class="st">&#39;convex&#39;</span>,</a>
+<a class="sourceLine" id="cb65-27" title="27">                         <span class="dt">palette =</span> <span class="st">&#39;jco&#39;</span>,</a>
+<a class="sourceLine" id="cb65-28" title="28">                         <span class="dt">repel =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb65-29" title="29">                         <span class="dt">ggtheme =</span> <span class="kw">theme_minimal</span>())</a>
+<a class="sourceLine" id="cb65-30" title="30"></a>
+<a class="sourceLine" id="cb65-31" title="31"><span class="co"># PAM clustering</span></a>
+<a class="sourceLine" id="cb65-32" title="32">pam.res &lt;-<span class="st"> </span>cluster<span class="op">::</span><span class="kw">pam</span>(data, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb65-33" title="33">factoextra<span class="op">::</span><span class="kw">fviz_cluster</span>(pam.res)</a>
+<a class="sourceLine" id="cb65-34" title="34"></a>
+<a class="sourceLine" id="cb65-35" title="35"><span class="co"># CLARA clustering</span></a>
+<a class="sourceLine" id="cb65-36" title="36">clara.res &lt;-<span class="st"> </span><span class="kw">clara</span>(df, <span class="dv">2</span>, <span class="dt">samples =</span> <span class="dv">50</span>, <span class="dt">pamLike =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb65-37" title="37">clara.res</a>
+<a class="sourceLine" id="cb65-38" title="38"></a>
+<a class="sourceLine" id="cb65-39" title="39">dd &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="dt">cluster =</span> clara.res<span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb65-40" title="40"></a>
+<a class="sourceLine" id="cb65-41" title="41"><span class="co"># Medoids</span></a>
+<a class="sourceLine" id="cb65-42" title="42">clara.res<span class="op">$</span>medoids</a>
+<a class="sourceLine" id="cb65-43" title="43"></a>
+<a class="sourceLine" id="cb65-44" title="44"><span class="co"># Clustering</span></a>
+<a class="sourceLine" id="cb65-45" title="45"><span class="kw">head</span>(clara.res<span class="op">$</span>clustering,<span class="dv">10</span>)</a></code></pre></div>
 </div>
-<div id="example" class="section level2" number="14.2">
+<div id="example" class="section level2">
 <h2><span class="header-section-number">14.2</span> Example</h2>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="clustering.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasets)</span>
-<span id="cb66-2"><a href="clustering.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">library</span>(datasets)</a>
+<a class="sourceLine" id="cb66-2" title="2"><span class="kw">head</span>(iris)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -478,22 +458,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="clustering.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Petal.Length ~ Petal.Width data</span></span>
-<span id="cb68-2"><a href="clustering.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Petal.Length <span class="sc">~</span> iris<span class="sc">$</span>Petal.Width)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="co"># Plot Petal.Length ~ Petal.Width data</span></a>
+<a class="sourceLine" id="cb68-2" title="2"><span class="kw">plot</span>(iris<span class="op">$</span>Petal.Length <span class="op">~</span><span class="st"> </span>iris<span class="op">$</span>Petal.Width)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/setup-1.png" width="672" /></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="clustering.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
-<span id="cb69-2"><a href="clustering.html#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="clustering.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Find number of clusters using wss</span></span>
-<span id="cb69-4"><a href="clustering.html#cb69-4" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(iris[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>])<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">sum</span>(<span class="fu">apply</span>(iris[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>],<span class="dv">2</span>,var))</span>
-<span id="cb69-5"><a href="clustering.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">15</span>) wss[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">kmeans</span>(iris[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], i)<span class="sc">$</span>withinss)</span>
-<span id="cb69-6"><a href="clustering.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, wss, <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">set.seed</span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb69-2" title="2"></a>
+<a class="sourceLine" id="cb69-3" title="3"><span class="co"># Find number of clusters using wss</span></a>
+<a class="sourceLine" id="cb69-4" title="4">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>],<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb69-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) wss[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">kmeans</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], i)<span class="op">$</span>withinss)</a>
+<a class="sourceLine" id="cb69-6" title="6"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/setup-2.png" width="672" /></p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="clustering.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#More than 3 clusters give no obvious advantages</span></span>
-<span id="cb70-2"><a href="clustering.html#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-3"><a href="clustering.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make k-means with 3 clasters</span></span>
-<span id="cb70-4"><a href="clustering.html#cb70-4" aria-hidden="true" tabindex="-1"></a>ncl <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb70-5"><a href="clustering.html#cb70-5" aria-hidden="true" tabindex="-1"></a>irisCluster <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(iris[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], ncl, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
-<span id="cb70-6"><a href="clustering.html#cb70-6" aria-hidden="true" tabindex="-1"></a>irisCluster</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co">#More than 3 clusters give no obvious advantages</span></a>
+<a class="sourceLine" id="cb70-2" title="2"></a>
+<a class="sourceLine" id="cb70-3" title="3"><span class="co"># Make k-means with 3 clasters</span></a>
+<a class="sourceLine" id="cb70-4" title="4">ncl &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb70-5" title="5">irisCluster &lt;-<span class="st"> </span><span class="kw">kmeans</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], ncl, <span class="dt">nstart =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb70-6" title="6">irisCluster</a></code></pre></div>
 <pre><code>## K-means clustering with 3 clusters of sizes 48, 50, 52
 ## 
 ## Cluster means:
@@ -503,9 +483,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3     4.269231    1.342308
 ## 
 ## Clustering vector:
-##   [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-##  [74] 3 3 3 3 1 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1
-## [147] 1 1 1 1
+##   [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+##  [38] 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+##  [75] 3 3 3 1 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 3 1 1 1 1
+## [112] 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1
+## [149] 1 1
 ## 
 ## Within cluster sum of squares by cluster:
 ## [1] 16.29167  2.02200 13.05769
@@ -513,85 +495,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Available components:
 ## 
-## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot; &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="clustering.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compair result of clustering with real data (3 species of iris are in analysis)</span></span>
-<span id="cb72-2"><a href="clustering.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(irisCluster<span class="sc">$</span>cluster, iris<span class="sc">$</span>Species)</span></code></pre></div>
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co"># Compair result of clustering with real data (3 species of iris are in analysis)</span></a>
+<a class="sourceLine" id="cb72-2" title="2"><span class="kw">table</span>(irisCluster<span class="op">$</span>cluster, iris<span class="op">$</span>Species)</a></code></pre></div>
 <pre><code>##    
 ##     setosa versicolor virginica
 ##   1      0          2        46
 ##   2     50          0         0
 ##   3      0         48         4</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="clustering.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data</span></span>
-<span id="cb74-2"><a href="clustering.html#cb74-2" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> <span class="fu">split.data.frame</span>(iris, irisCluster<span class="sc">$</span>cluster)</span>
-<span id="cb74-3"><a href="clustering.html#cb74-3" aria-hidden="true" tabindex="-1"></a>xlim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(iris<span class="sc">$</span>Petal.Width), <span class="fu">max</span>(iris<span class="sc">$</span>Petal.Width))</span>
-<span id="cb74-4"><a href="clustering.html#cb74-4" aria-hidden="true" tabindex="-1"></a>ylim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(iris<span class="sc">$</span>Petal.Length), <span class="fu">max</span>(iris<span class="sc">$</span>Petal.Length))</span>
-<span id="cb74-5"><a href="clustering.html#cb74-5" aria-hidden="true" tabindex="-1"></a>col <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb74-6"><a href="clustering.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlab=</span><span class="st">&#39;Petal width&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Petal length&#39;</span>, <span class="at">xlim=</span>xlim, <span class="at">ylim=</span>ylim)</span>
-<span id="cb74-7"><a href="clustering.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>ncl ) {</span>
-<span id="cb74-8"><a href="clustering.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(clusters[[i]]<span class="sc">$</span>Petal.Length <span class="sc">~</span> clusters[[i]]<span class="sc">$</span>Petal.Width, <span class="at">col=</span>col[i], <span class="at">xlim=</span>xlim, <span class="at">ylim=</span>ylim)</span>
-<span id="cb74-9"><a href="clustering.html#cb74-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="co"># Plot data</span></a>
+<a class="sourceLine" id="cb74-2" title="2">clusters &lt;-<span class="st"> </span><span class="kw">split.data.frame</span>(iris, irisCluster<span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb74-3" title="3">xlim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(iris<span class="op">$</span>Petal.Width), <span class="kw">max</span>(iris<span class="op">$</span>Petal.Width))</a>
+<a class="sourceLine" id="cb74-4" title="4">ylim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(iris<span class="op">$</span>Petal.Length), <span class="kw">max</span>(iris<span class="op">$</span>Petal.Length))</a>
+<a class="sourceLine" id="cb74-5" title="5">col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;blue&#39;</span>)</a>
+<a class="sourceLine" id="cb74-6" title="6"><span class="kw">plot</span>(<span class="dv">0</span>, <span class="dt">xlab=</span><span class="st">&#39;Petal width&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Petal length&#39;</span>, <span class="dt">xlim=</span>xlim, <span class="dt">ylim=</span>ylim)</a>
+<a class="sourceLine" id="cb74-7" title="7"><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ncl ) {</a>
+<a class="sourceLine" id="cb74-8" title="8"><span class="kw">points</span>(clusters[[i]]<span class="op">$</span>Petal.Length <span class="op">~</span><span class="st"> </span>clusters[[i]]<span class="op">$</span>Petal.Width, <span class="dt">col=</span>col[i], <span class="dt">xlim=</span>xlim, <span class="dt">ylim=</span>ylim)</a>
+<a class="sourceLine" id="cb74-9" title="9">}</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/setup-3.png" width="672" /></p>
 </div>
-<div id="next-part-1" class="section level2" number="14.3">
+<div id="next-part-1" class="section level2">
 <h2><span class="header-section-number">14.3</span> NEXT PART</h2>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="clustering.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># K-Nearest Neighbors or KNN is a clustering algorithm</span></span>
-<span id="cb75-2"><a href="clustering.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># k is known number of clusters (usually sqrt(N), between 3-10, but may be different)</span></span>
-<span id="cb75-3"><a href="clustering.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># samples must be normalized x = (x - min(x))/(max(x)-min(x))</span></span>
-<span id="cb75-4"><a href="clustering.html#cb75-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-5"><a href="clustering.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
-<span id="cb75-6"><a href="clustering.html#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris)   <span class="co"># detailed view of the data set</span></span>
-<span id="cb75-7"><a href="clustering.html#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)   <span class="co"># view data types, sample values, categorical values, etc</span></span>
-<span id="cb75-8"><a href="clustering.html#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris)</span>
-<span id="cb75-9"><a href="clustering.html#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-10"><a href="clustering.html#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="co">#normalization function</span></span>
-<span id="cb75-11"><a href="clustering.html#cb75-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-12"><a href="clustering.html#cb75-12" aria-hidden="true" tabindex="-1"></a>min_max_normalizer <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb75-13"><a href="clustering.html#cb75-13" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb75-14"><a href="clustering.html#cb75-14" aria-hidden="true" tabindex="-1"></a>    num <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="fu">min</span>(x) </span>
-<span id="cb75-15"><a href="clustering.html#cb75-15" aria-hidden="true" tabindex="-1"></a>    denom <span class="ot">&lt;-</span> <span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)</span>
-<span id="cb75-16"><a href="clustering.html#cb75-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> (num<span class="sc">/</span>denom)</span>
-<span id="cb75-17"><a href="clustering.html#cb75-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb75-18"><a href="clustering.html#cb75-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-19"><a href="clustering.html#cb75-19" aria-hidden="true" tabindex="-1"></a><span class="co">#normalizing iris data set</span></span>
-<span id="cb75-20"><a href="clustering.html#cb75-20" aria-hidden="true" tabindex="-1"></a>normalized_iris <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], min_max_normalizer))</span>
-<span id="cb75-21"><a href="clustering.html#cb75-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-22"><a href="clustering.html#cb75-22" aria-hidden="true" tabindex="-1"></a><span class="co">#viewing normalized data</span></span>
-<span id="cb75-23"><a href="clustering.html#cb75-23" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(normalized_iris)</span>
-<span id="cb75-24"><a href="clustering.html#cb75-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-25"><a href="clustering.html#cb75-25" aria-hidden="true" tabindex="-1"></a><span class="co">#checking the data constituency</span></span>
-<span id="cb75-26"><a href="clustering.html#cb75-26" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span>
-<span id="cb75-27"><a href="clustering.html#cb75-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-28"><a href="clustering.html#cb75-28" aria-hidden="true" tabindex="-1"></a><span class="co">#set seed for randomization</span></span>
-<span id="cb75-29"><a href="clustering.html#cb75-29" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb75-30"><a href="clustering.html#cb75-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-31"><a href="clustering.html#cb75-31" aria-hidden="true" tabindex="-1"></a><span class="co"># setting the training-test split to 67% and 33% respectively</span></span>
-<span id="cb75-32"><a href="clustering.html#cb75-32" aria-hidden="true" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">2</span>, <span class="fu">nrow</span>(iris), <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">prob=</span><span class="fu">c</span>(<span class="fl">0.67</span>, <span class="fl">0.33</span>))</span>
-<span id="cb75-33"><a href="clustering.html#cb75-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-34"><a href="clustering.html#cb75-34" aria-hidden="true" tabindex="-1"></a><span class="co"># training data set</span></span>
-<span id="cb75-35"><a href="clustering.html#cb75-35" aria-hidden="true" tabindex="-1"></a>iris.training <span class="ot">&lt;-</span> iris[</span>
-<span id="cb75-36"><a href="clustering.html#cb75-36" aria-hidden="true" tabindex="-1"></a>    random_samples <span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] </span>
-<span id="cb75-37"><a href="clustering.html#cb75-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-38"><a href="clustering.html#cb75-38" aria-hidden="true" tabindex="-1"></a><span class="co">#training labels</span></span>
-<span id="cb75-39"><a href="clustering.html#cb75-39" aria-hidden="true" tabindex="-1"></a>iris.trainLabels <span class="ot">&lt;-</span> iris[</span>
-<span id="cb75-40"><a href="clustering.html#cb75-40" aria-hidden="true" tabindex="-1"></a>    random_samples <span class="sc">==</span><span class="dv">1</span>, <span class="dv">5</span>]</span>
-<span id="cb75-41"><a href="clustering.html#cb75-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-42"><a href="clustering.html#cb75-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-43"><a href="clustering.html#cb75-43" aria-hidden="true" tabindex="-1"></a><span class="co"># test data set</span></span>
-<span id="cb75-44"><a href="clustering.html#cb75-44" aria-hidden="true" tabindex="-1"></a>iris.test <span class="ot">&lt;-</span> iris[</span>
-<span id="cb75-45"><a href="clustering.html#cb75-45" aria-hidden="true" tabindex="-1"></a>    random_samples <span class="sc">==</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
-<span id="cb75-46"><a href="clustering.html#cb75-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-47"><a href="clustering.html#cb75-47" aria-hidden="true" tabindex="-1"></a><span class="co">#testing labels</span></span>
-<span id="cb75-48"><a href="clustering.html#cb75-48" aria-hidden="true" tabindex="-1"></a>iris.testLabels <span class="ot">&lt;-</span> iris[</span>
-<span id="cb75-49"><a href="clustering.html#cb75-49" aria-hidden="true" tabindex="-1"></a>    random_samples <span class="sc">==</span><span class="dv">2</span>, <span class="dv">5</span>]</span>
-<span id="cb75-50"><a href="clustering.html#cb75-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-51"><a href="clustering.html#cb75-51" aria-hidden="true" tabindex="-1"></a><span class="co">#setting library</span></span>
-<span id="cb75-52"><a href="clustering.html#cb75-52" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class)</span>
-<span id="cb75-53"><a href="clustering.html#cb75-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-54"><a href="clustering.html#cb75-54" aria-hidden="true" tabindex="-1"></a><span class="co">#executing knn for k=3</span></span>
-<span id="cb75-55"><a href="clustering.html#cb75-55" aria-hidden="true" tabindex="-1"></a>iris_model <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> iris.training, <span class="at">test =</span> iris.test, <span class="at">cl =</span> iris.trainLabels, <span class="at">k=</span><span class="dv">3</span>)</span>
-<span id="cb75-56"><a href="clustering.html#cb75-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-57"><a href="clustering.html#cb75-57" aria-hidden="true" tabindex="-1"></a><span class="co">#summary of the model learnt</span></span>
-<span id="cb75-58"><a href="clustering.html#cb75-58" aria-hidden="true" tabindex="-1"></a>iris_model</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># K-Nearest Neighbors or KNN is a clustering algorithm</span></a>
+<a class="sourceLine" id="cb75-2" title="2"><span class="co"># k is known number of clusters (usually sqrt(N), between 3-10, but may be different)</span></a>
+<a class="sourceLine" id="cb75-3" title="3"><span class="co"># samples must be normalized x = (x - min(x))/(max(x)-min(x))</span></a>
+<a class="sourceLine" id="cb75-4" title="4"></a>
+<a class="sourceLine" id="cb75-5" title="5"><span class="kw">head</span>(iris)</a>
+<a class="sourceLine" id="cb75-6" title="6"><span class="kw">summary</span>(iris)   <span class="co"># detailed view of the data set</span></a>
+<a class="sourceLine" id="cb75-7" title="7"><span class="kw">str</span>(iris)   <span class="co"># view data types, sample values, categorical values, etc</span></a>
+<a class="sourceLine" id="cb75-8" title="8"><span class="kw">plot</span>(iris)</a>
+<a class="sourceLine" id="cb75-9" title="9"></a>
+<a class="sourceLine" id="cb75-10" title="10"><span class="co">#normalization function</span></a>
+<a class="sourceLine" id="cb75-11" title="11"></a>
+<a class="sourceLine" id="cb75-12" title="12">min_max_normalizer &lt;-<span class="st"> </span><span class="cf">function</span>(x)</a>
+<a class="sourceLine" id="cb75-13" title="13">{</a>
+<a class="sourceLine" id="cb75-14" title="14">    num &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x) </a>
+<a class="sourceLine" id="cb75-15" title="15">    denom &lt;-<span class="st"> </span><span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</a>
+<a class="sourceLine" id="cb75-16" title="16">    <span class="kw">return</span> (num<span class="op">/</span>denom)</a>
+<a class="sourceLine" id="cb75-17" title="17">}</a>
+<a class="sourceLine" id="cb75-18" title="18"></a>
+<a class="sourceLine" id="cb75-19" title="19"><span class="co">#normalizing iris data set</span></a>
+<a class="sourceLine" id="cb75-20" title="20">normalized_iris &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">lapply</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], min_max_normalizer))</a>
+<a class="sourceLine" id="cb75-21" title="21"></a>
+<a class="sourceLine" id="cb75-22" title="22"><span class="co">#viewing normalized data</span></a>
+<a class="sourceLine" id="cb75-23" title="23"><span class="kw">summary</span>(normalized_iris)</a>
+<a class="sourceLine" id="cb75-24" title="24"></a>
+<a class="sourceLine" id="cb75-25" title="25"><span class="co">#checking the data constituency</span></a>
+<a class="sourceLine" id="cb75-26" title="26"><span class="kw">table</span>(iris<span class="op">$</span>Species)</a>
+<a class="sourceLine" id="cb75-27" title="27"></a>
+<a class="sourceLine" id="cb75-28" title="28"><span class="co">#set seed for randomization</span></a>
+<a class="sourceLine" id="cb75-29" title="29"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb75-30" title="30"></a>
+<a class="sourceLine" id="cb75-31" title="31"><span class="co"># setting the training-test split to 67% and 33% respectively</span></a>
+<a class="sourceLine" id="cb75-32" title="32">random_samples &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>, <span class="kw">nrow</span>(iris), <span class="dt">replace=</span><span class="ot">TRUE</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.67</span>, <span class="fl">0.33</span>))</a>
+<a class="sourceLine" id="cb75-33" title="33"></a>
+<a class="sourceLine" id="cb75-34" title="34"><span class="co"># training data set</span></a>
+<a class="sourceLine" id="cb75-35" title="35">iris.training &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb75-36" title="36">    random_samples <span class="op">==</span><span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] </a>
+<a class="sourceLine" id="cb75-37" title="37"></a>
+<a class="sourceLine" id="cb75-38" title="38"><span class="co">#training labels</span></a>
+<a class="sourceLine" id="cb75-39" title="39">iris.trainLabels &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb75-40" title="40">    random_samples <span class="op">==</span><span class="dv">1</span>, <span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb75-41" title="41"></a>
+<a class="sourceLine" id="cb75-42" title="42"></a>
+<a class="sourceLine" id="cb75-43" title="43"><span class="co"># test data set</span></a>
+<a class="sourceLine" id="cb75-44" title="44">iris.test &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb75-45" title="45">    random_samples <span class="op">==</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb75-46" title="46"></a>
+<a class="sourceLine" id="cb75-47" title="47"><span class="co">#testing labels</span></a>
+<a class="sourceLine" id="cb75-48" title="48">iris.testLabels &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb75-49" title="49">    random_samples <span class="op">==</span><span class="dv">2</span>, <span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb75-50" title="50"></a>
+<a class="sourceLine" id="cb75-51" title="51"><span class="co">#setting library</span></a>
+<a class="sourceLine" id="cb75-52" title="52"><span class="kw">library</span>(class)</a>
+<a class="sourceLine" id="cb75-53" title="53"></a>
+<a class="sourceLine" id="cb75-54" title="54"><span class="co">#executing knn for k=3</span></a>
+<a class="sourceLine" id="cb75-55" title="55">iris_model &lt;-<span class="st"> </span><span class="kw">knn</span>(<span class="dt">train =</span> iris.training, <span class="dt">test =</span> iris.test, <span class="dt">cl =</span> iris.trainLabels, <span class="dt">k=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb75-56" title="56"></a>
+<a class="sourceLine" id="cb75-57" title="57"><span class="co">#summary of the model learnt</span></a>
+<a class="sourceLine" id="cb75-58" title="58">iris_model</a></code></pre></div>
 
 </div>
 </div>
