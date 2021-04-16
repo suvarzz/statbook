@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 23 Logistic Regression | R statistics</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 23 Logistic Regression | R statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 23 Logistic Regression | R statistics" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Mark Goldberg" />
+
+
+<meta name="date" content="2021-04-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="spline-model.html"/>
+<link rel="next" href="multiple-linear-regression.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.1</b> Data inspection</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html"><i class="fa fa-check"></i><b>3</b> Analysis of the distribution</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#t-test"><i class="fa fa-check"></i><b>3.1</b> t-Test</a></li>
+<li class="chapter" data-level="3.2" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#anova"><i class="fa fa-check"></i><b>3.2</b> ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>4</b> Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>4.1</b> Outliers</a></li>
+<li class="chapter" data-level="4.2" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>4.2</b> Normality</a></li>
+<li class="chapter" data-level="4.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Normal Distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>4.4</b> Confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary analysis</a></li>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.1</b> Hypothesis test (Practice)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="7.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>7.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="7.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>7.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="7.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>7.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Correlation</a></li>
+<li class="chapter" data-level="13" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>13</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>14.1</b> Next part</a></li>
+<li class="chapter" data-level="14.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>14.2</b> Example</a></li>
+<li class="chapter" data-level="14.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>14.3</b> NEXT PART</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>15</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="16" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>16</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>17.1</b> Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>18</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>19.1</b> Generate Random Data Set a Linear Model</a></li>
+<li class="chapter" data-level="19.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>19.2</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="19.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>19.3</b> Practical example</a></li>
+<li class="chapter" data-level="19.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>19.4</b> Example of linear regression</a></li>
+<li class="chapter" data-level="19.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>19.5</b> Standard error of train data</a></li>
+<li class="chapter" data-level="19.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>19.6</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="19.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>19.7</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="19.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>19.8</b> NEXT part</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>20.1</b> NEXT part</a></li>
+<li class="chapter" data-level="20.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>20.2</b> NEXT Part</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>21</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>22.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="22.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>22.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="22.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>22.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="22.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>22.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="22.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>22.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="22.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>22.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="22.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>22.7</b> Bibliograpy</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>23.1</b> Next part</a></li>
+<li class="chapter" data-level="23.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="23.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>23.3</b> NExt part</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="25.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>25.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>26</b> Naive Bayes</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="logistic-regression" class="section level1" number="23">
+<h1><span class="header-section-number">Chapter 23</span> Logistic Regression</h1>
+<p>glm()</p>
+<p>In statistics, the logistic model (or logit model) is a statistical model with input (independent variable) a continuous variable and output (dependent variable) a binary variable (discret choice, y/n or 1/0).</p>
+<p>Example: Student pass the exam.
+A group of 20 students spend between 0 and 6 hours studying for an exam. How does the number of hours spent studying affect the probability that the student will pass the exam?</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="logistic-regression.html#cb108-1" aria-hidden="true" tabindex="-1"></a>hours <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.25</span>, <span class="fl">1.5</span>, <span class="fl">1.75</span>, <span class="fl">1.75</span>, <span class="dv">2</span>, <span class="fl">2.25</span>, <span class="fl">2.5</span>, <span class="fl">2.75</span>, <span class="dv">3</span>, <span class="fl">3.25</span>, <span class="fl">3.5</span>, <span class="dv">4</span>, <span class="fl">4.25</span>, <span class="fl">4.5</span>, <span class="fl">4.75</span>, <span class="dv">5</span>, <span class="fl">5.5</span>)</span>
+<span id="cb108-2"><a href="logistic-regression.html#cb108-2" aria-hidden="true" tabindex="-1"></a>pass <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb108-3"><a href="logistic-regression.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pass<span class="sc">~</span>hours)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="logistic-regression.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(hours<span class="sc">~</span>pass)</span></code></pre></div>
+<pre><code>## 
+## Call:  glm(formula = hours ~ pass)
+## 
+## Coefficients:
+## (Intercept)         pass  
+##       1.775        2.025  
+## 
+## Degrees of Freedom: 19 Total (i.e. Null);  18 Residual
+## Null Deviance:       43.16 
+## Residual Deviance: 22.66     AIC: 65.25</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="logistic-regression.html#cb111-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.05</span>)</span>
+<span id="cb111-2"><a href="logistic-regression.html#cb111-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">probability=</span>p, <span class="at">odds=</span>p<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>p))</span>
+<span id="cb111-3"><a href="logistic-regression.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   probability       odds
+## 1        0.00 0.00000000
+## 2        0.05 0.05263158
+## 3        0.10 0.11111111
+## 4        0.15 0.17647059
+## 5        0.20 0.25000000
+## 6        0.25 0.33333333</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="logistic-regression.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>odds<span class="sc">~</span>data<span class="sc">$</span>probability, <span class="at">type=</span><span class="st">&#39;o&#39;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">xlab=</span><span class="st">&#39;Probability&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Odds&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="logistic-regression.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(data<span class="sc">$</span>odds)<span class="sc">~</span>data<span class="sc">$</span>odds, <span class="at">type=</span><span class="st">&#39;o&#39;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">xlab=</span><span class="st">&#39;Odds&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;log(odds)&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-53-2.png" width="672" /></p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="logistic-regression.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>probability<span class="sc">~</span><span class="fu">log</span>(data<span class="sc">$</span>odds), <span class="at">type=</span><span class="st">&#39;o&#39;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">xlab=</span><span class="st">&#39;log(odds)&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Probability&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-53-3.png" width="672" /></p>
+<div id="next-part-6" class="section level2" number="23.1">
+<h2><span class="header-section-number">23.1</span> Next part</h2>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="logistic-regression.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb116-2"><a href="logistic-regression.html#cb116-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;https://raw.githubusercontent.com/suvarzz/data/master/data_classification.csv&#39;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb116-3"><a href="logistic-regression.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb116-4"><a href="logistic-regression.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="logistic-regression.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df[pass<span class="sc">==</span><span class="dv">1</span>][,<span class="sc">!</span><span class="dv">3</span>], <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb116-6"><a href="logistic-regression.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df[pass<span class="sc">==</span><span class="dv">0</span>][,<span class="sc">!</span><span class="dv">3</span>], <span class="at">col=</span><span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb116-7"><a href="logistic-regression.html#cb116-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-8"><a href="logistic-regression.html#cb116-8" aria-hidden="true" tabindex="-1"></a>model.logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(pass <span class="sc">~</span> studied <span class="sc">+</span> slept, <span class="at">data =</span> df, <span class="at">family =</span> <span class="st">&#39;binomial&#39;</span>)</span>
+<span id="cb116-9"><a href="logistic-regression.html#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model.logit)</span>
+<span id="cb116-10"><a href="logistic-regression.html#cb116-10" aria-hidden="true" tabindex="-1"></a>p.lda <span class="ot">&lt;-</span> <span class="fu">predict</span>(model.logit, df, <span class="at">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb116-11"><a href="logistic-regression.html#cb116-11" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p.lda <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb116-12"><a href="logistic-regression.html#cb116-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb116-13"><a href="logistic-regression.html#cb116-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-14"><a href="logistic-regression.html#cb116-14" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="sc">-</span><span class="fu">coef</span>(model.logit)[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">coef</span>(model.logit)[<span class="dv">2</span>],</span>
+<span id="cb116-15"><a href="logistic-regression.html#cb116-15" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span><span class="sc">-</span><span class="fu">coef</span>(model.logit)[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">coef</span>(model.logit)[<span class="dv">3</span>]<span class="er">)</span></span>
+<span id="cb116-16"><a href="logistic-regression.html#cb116-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-17"><a href="logistic-regression.html#cb116-17" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="fu">coef</span>(model.logit)[<span class="dv">1</span>]</span>
+<span id="cb116-18"><a href="logistic-regression.html#cb116-18" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">=</span> mymodel<span class="sc">$</span>coefficients[[<span class="dv">2</span>]]</span>
+<span id="cb116-19"><a href="logistic-regression.html#cb116-19" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">=</span> mymodel<span class="sc">$</span>coefficients[[<span class="dv">3</span>]]</span>
+<span id="cb116-20"><a href="logistic-regression.html#cb116-20" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> b0 <span class="sc">+</span> (b1 <span class="sc">*</span> <span class="dv">1</span>) <span class="sc">+</span> (b2 <span class="sc">*</span> <span class="dv">4</span>)</span>
+<span id="cb116-21"><a href="logistic-regression.html#cb116-21" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>z))</span>
+<span id="cb116-22"><a href="logistic-regression.html#cb116-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-23"><a href="logistic-regression.html#cb116-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p<span class="ot">=</span><span class="fl">0.5</span> <span class="ot">=</span><span class="er">&gt;</span> z <span class="ot">=</span> <span class="dv">0</span> <span class="ot">=</span><span class="er">&gt;</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x <span class="sc">+</span> b2<span class="sc">*</span>y <span class="ot">=</span><span class="er">&gt;</span> </span>
+<span id="cb116-24"><a href="logistic-regression.html#cb116-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb116-25"><a href="logistic-regression.html#cb116-25" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(<span class="dv">0</span>,<span class="fl">10.87</span>,<span class="fl">9.26</span>,<span class="dv">0</span>)</span>
+<span id="cb116-26"><a href="logistic-regression.html#cb116-26" aria-hidden="true" tabindex="-1"></a>slept<span class="ot">=</span>(<span class="fl">3.77-0.474</span><span class="sc">*</span>studied)<span class="sc">/</span><span class="fl">0.338</span></span>
+<span id="cb116-27"><a href="logistic-regression.html#cb116-27" aria-hidden="true" tabindex="-1"></a>(<span class="dv">0</span>, <span class="fl">3.77</span><span class="sc">/</span><span class="fl">0.474</span>) <span class="ot">=</span> (<span class="fl">9.2</span>, <span class="dv">0</span>)</span>
+<span id="cb116-28"><a href="logistic-regression.html#cb116-28" aria-hidden="true" tabindex="-1"></a>(<span class="fl">3.77</span><span class="sc">/</span><span class="fl">0.474</span>,<span class="dv">0</span>) <span class="ot">=</span> (<span class="dv">0</span>, <span class="fl">10.87</span>)</span>
+<span id="cb116-29"><a href="logistic-regression.html#cb116-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-30"><a href="logistic-regression.html#cb116-30" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(<span class="fl">9.2</span>,<span class="dv">0</span>, <span class="dv">0</span>,<span class="fl">10.87</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb116-31"><a href="logistic-regression.html#cb116-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-32"><a href="logistic-regression.html#cb116-32" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span></span>
+<span id="cb116-33"><a href="logistic-regression.html#cb116-33" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>() operates on rows, whereas <span class="fu">select</span>() operates on columns</span>
+<span id="cb116-34"><a href="logistic-regression.html#cb116-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-35"><a href="logistic-regression.html#cb116-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb116-36"><a href="logistic-regression.html#cb116-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neuralnet)</span>
+<span id="cb116-37"><a href="logistic-regression.html#cb116-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-38"><a href="logistic-regression.html#cb116-38" aria-hidden="true" tabindex="-1"></a>Linear Discriminant <span class="fu">Analysis</span> ( LDA ) and Principal Component <span class="fu">Analysis</span> ( PCA )</span>
+<span id="cb116-39"><a href="logistic-regression.html#cb116-39" aria-hidden="true" tabindex="-1"></a>The basic difference between these two is that LDA uses information of classes to find new features <span class="cf">in</span> order to maximize its separability <span class="cf">while</span> PCA uses the variance of each feature to do the same. In this context, LDA can be consider a supervised algorithm and PCA an unsupervised algorithm.</span>
+<span id="cb116-40"><a href="logistic-regression.html#cb116-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-41"><a href="logistic-regression.html#cb116-41" aria-hidden="true" tabindex="-1"></a>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>BIMSBbioinfo<span class="sc">/</span>janggu or via</span></code></pre></div>
+</div>
+<div id="next-part-7" class="section level2" number="23.2">
+<h2><span class="header-section-number">23.2</span> NEXT Part</h2>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="logistic-regression.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For binary dependent variables build models:</span></span>
+<span id="cb117-2"><a href="logistic-regression.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. LR - Logistic regression</span></span>
+<span id="cb117-3"><a href="logistic-regression.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. LDA - Linear discriminant analysis</span></span>
+<span id="cb117-4"><a href="logistic-regression.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. QDA - quadrat discriminant analysis</span></span>
+<span id="cb117-5"><a href="logistic-regression.html#cb117-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-6"><a href="logistic-regression.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Detect border of decision, use ROC-curves</span></span>
+<span id="cb117-7"><a href="logistic-regression.html#cb117-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-8"><a href="logistic-regression.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: Course &#39;Math modeling&#39; practical work, State University of Management, Moscow</span></span>
+<span id="cb117-9"><a href="logistic-regression.html#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="co"># link: https://sites.google.com/a/kiber-guu.ru/r-practice/home</span></span>
+<span id="cb117-10"><a href="logistic-regression.html#cb117-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-11"><a href="logistic-regression.html#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;ISLR&#39;</span>)</span>
+<span id="cb117-12"><a href="logistic-regression.html#cb117-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;GGally&#39;</span>)</span>
+<span id="cb117-13"><a href="logistic-regression.html#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;MASS&#39;</span>)</span>
+<span id="cb117-14"><a href="logistic-regression.html#cb117-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-15"><a href="logistic-regression.html#cb117-15" aria-hidden="true" tabindex="-1"></a>my.seed <span class="ot">&lt;-</span> <span class="dv">12345</span></span>
+<span id="cb117-16"><a href="logistic-regression.html#cb117-16" aria-hidden="true" tabindex="-1"></a>train.percent <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
+<span id="cb117-17"><a href="logistic-regression.html#cb117-17" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;ggmatrix.progress.bar&quot;</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb117-18"><a href="logistic-regression.html#cb117-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-19"><a href="logistic-regression.html#cb117-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Data set from ISLR: is credits returned Y/N dependent on: student, average balance and income.</span></span>
+<span id="cb117-20"><a href="logistic-regression.html#cb117-20" aria-hidden="true" tabindex="-1"></a>?Default</span>
+<span id="cb117-21"><a href="logistic-regression.html#cb117-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Default)</span>
+<span id="cb117-22"><a href="logistic-regression.html#cb117-22" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Default)</span>
+<span id="cb117-23"><a href="logistic-regression.html#cb117-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-24"><a href="logistic-regression.html#cb117-24" aria-hidden="true" tabindex="-1"></a><span class="do">### Primary analysis</span></span>
+<span id="cb117-25"><a href="logistic-regression.html#cb117-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plots for primary analysis</span></span>
+<span id="cb117-26"><a href="logistic-regression.html#cb117-26" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(Default)</span>
+<span id="cb117-27"><a href="logistic-regression.html#cb117-27" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb117-28"><a href="logistic-regression.html#cb117-28" aria-hidden="true" tabindex="-1"></a><span class="co"># доли наблюдений в столбце default</span></span>
+<span id="cb117-29"><a href="logistic-regression.html#cb117-29" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Default<span class="sc">$</span>default) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">table</span>(Default<span class="sc">$</span>default))</span>
+<span id="cb117-30"><a href="logistic-regression.html#cb117-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-31"><a href="logistic-regression.html#cb117-31" aria-hidden="true" tabindex="-1"></a><span class="do">### Train data subset</span></span>
+<span id="cb117-32"><a href="logistic-regression.html#cb117-32" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb117-33"><a href="logistic-regression.html#cb117-33" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_along</span>(Default<span class="sc">$</span>default),</span>
+<span id="cb117-34"><a href="logistic-regression.html#cb117-34" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">nrow</span>(Default)<span class="sc">*</span>train.percent)</span>
+<span id="cb117-35"><a href="logistic-regression.html#cb117-35" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> Default[inTrain, ]</span>
+<span id="cb117-36"><a href="logistic-regression.html#cb117-36" aria-hidden="true" tabindex="-1"></a><span class="co"># фактические значения на обучающей выборке</span></span>
+<span id="cb117-37"><a href="logistic-regression.html#cb117-37" aria-hidden="true" tabindex="-1"></a>Факт <span class="ot">&lt;-</span> df<span class="sc">$</span>default</span>
+<span id="cb117-38"><a href="logistic-regression.html#cb117-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-39"><a href="logistic-regression.html#cb117-39" aria-hidden="true" tabindex="-1"></a><span class="do">### 1. Logistic regression modeling</span></span>
+<span id="cb117-40"><a href="logistic-regression.html#cb117-40" aria-hidden="true" tabindex="-1"></a>model.logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(default <span class="sc">~</span> balance, <span class="at">data =</span> df, <span class="at">family =</span> <span class="st">&#39;binomial&#39;</span>)</span>
+<span id="cb117-41"><a href="logistic-regression.html#cb117-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model.logit)</span>
+<span id="cb117-42"><a href="logistic-regression.html#cb117-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-43"><a href="logistic-regression.html#cb117-43" aria-hidden="true" tabindex="-1"></a><span class="co"># прогноз: вероятности принадлежности классу &#39;Yes&#39; (дефолт)</span></span>
+<span id="cb117-44"><a href="logistic-regression.html#cb117-44" aria-hidden="true" tabindex="-1"></a>p.logit <span class="ot">&lt;-</span> <span class="fu">predict</span>(model.logit, df, <span class="at">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb117-45"><a href="logistic-regression.html#cb117-45" aria-hidden="true" tabindex="-1"></a>Прогноз <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(p.logit <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb117-46"><a href="logistic-regression.html#cb117-46" aria-hidden="true" tabindex="-1"></a>                  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb117-47"><a href="logistic-regression.html#cb117-47" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;No&#39;</span>, <span class="st">&#39;Yes&#39;</span>))</span>
+<span id="cb117-48"><a href="logistic-regression.html#cb117-48" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица неточностей</span></span>
+<span id="cb117-49"><a href="logistic-regression.html#cb117-49" aria-hidden="true" tabindex="-1"></a>conf.m <span class="ot">&lt;-</span> <span class="fu">table</span>(Факт, Прогноз)</span>
+<span id="cb117-50"><a href="logistic-regression.html#cb117-50" aria-hidden="true" tabindex="-1"></a>conf.m</span>
+<span id="cb117-51"><a href="logistic-regression.html#cb117-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-52"><a href="logistic-regression.html#cb117-52" aria-hidden="true" tabindex="-1"></a><span class="co"># чувствительность</span></span>
+<span id="cb117-53"><a href="logistic-regression.html#cb117-53" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">2</span>, <span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">2</span>, ])</span>
+<span id="cb117-54"><a href="logistic-regression.html#cb117-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-55"><a href="logistic-regression.html#cb117-55" aria-hidden="true" tabindex="-1"></a><span class="co"># специфичность</span></span>
+<span id="cb117-56"><a href="logistic-regression.html#cb117-56" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">1</span>, ])</span>
+<span id="cb117-57"><a href="logistic-regression.html#cb117-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-58"><a href="logistic-regression.html#cb117-58" aria-hidden="true" tabindex="-1"></a><span class="co"># верность</span></span>
+<span id="cb117-59"><a href="logistic-regression.html#cb117-59" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">diag</span>(conf.m)) <span class="sc">/</span> <span class="fu">sum</span>(conf.m)</span>
+<span id="cb117-60"><a href="logistic-regression.html#cb117-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-61"><a href="logistic-regression.html#cb117-61" aria-hidden="true" tabindex="-1"></a><span class="do">###. 2. LDA model</span></span>
+<span id="cb117-62"><a href="logistic-regression.html#cb117-62" aria-hidden="true" tabindex="-1"></a>model.lda <span class="ot">&lt;-</span> <span class="fu">lda</span>(default <span class="sc">~</span> balance, <span class="at">data =</span> Default[inTrain, ])</span>
+<span id="cb117-63"><a href="logistic-regression.html#cb117-63" aria-hidden="true" tabindex="-1"></a>model.lda</span>
+<span id="cb117-64"><a href="logistic-regression.html#cb117-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-65"><a href="logistic-regression.html#cb117-65" aria-hidden="true" tabindex="-1"></a><span class="co"># прогноз: вероятности принадлежности классу &#39;Yes&#39; (дефолт)</span></span>
+<span id="cb117-66"><a href="logistic-regression.html#cb117-66" aria-hidden="true" tabindex="-1"></a>p.lda <span class="ot">&lt;-</span> <span class="fu">predict</span>(model.lda, df, <span class="at">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb117-67"><a href="logistic-regression.html#cb117-67" aria-hidden="true" tabindex="-1"></a>Прогноз <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(p.lda<span class="sc">$</span>posterior[, <span class="st">&#39;Yes&#39;</span>] <span class="sc">&gt;</span> <span class="fl">0.5</span>, </span>
+<span id="cb117-68"><a href="logistic-regression.html#cb117-68" aria-hidden="true" tabindex="-1"></a>                         <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb117-69"><a href="logistic-regression.html#cb117-69" aria-hidden="true" tabindex="-1"></a>                  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb117-70"><a href="logistic-regression.html#cb117-70" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;No&#39;</span>, <span class="st">&#39;Yes&#39;</span>))</span>
+<span id="cb117-71"><a href="logistic-regression.html#cb117-71" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица неточностей</span></span>
+<span id="cb117-72"><a href="logistic-regression.html#cb117-72" aria-hidden="true" tabindex="-1"></a>conf.m <span class="ot">&lt;-</span> <span class="fu">table</span>(Факт, Прогноз)</span>
+<span id="cb117-73"><a href="logistic-regression.html#cb117-73" aria-hidden="true" tabindex="-1"></a>conf.m</span>
+<span id="cb117-74"><a href="logistic-regression.html#cb117-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-75"><a href="logistic-regression.html#cb117-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-76"><a href="logistic-regression.html#cb117-76" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">2</span>, <span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">2</span>, ])   <span class="co"># sensitivity</span></span>
+<span id="cb117-77"><a href="logistic-regression.html#cb117-77" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">1</span>, ])   <span class="co"># specitivity</span></span>
+<span id="cb117-78"><a href="logistic-regression.html#cb117-78" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">diag</span>(conf.m)) <span class="sc">/</span> <span class="fu">sum</span>(conf.m)   <span class="co"># accurasy</span></span>
+<span id="cb117-79"><a href="logistic-regression.html#cb117-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-80"><a href="logistic-regression.html#cb117-80" aria-hidden="true" tabindex="-1"></a><span class="do">### 3. QDA modeling</span></span>
+<span id="cb117-81"><a href="logistic-regression.html#cb117-81" aria-hidden="true" tabindex="-1"></a>model.qda <span class="ot">&lt;-</span> <span class="fu">qda</span>(default <span class="sc">~</span> balance, <span class="at">data =</span> Default[inTrain, ])</span>
+<span id="cb117-82"><a href="logistic-regression.html#cb117-82" aria-hidden="true" tabindex="-1"></a>model.qda</span>
+<span id="cb117-83"><a href="logistic-regression.html#cb117-83" aria-hidden="true" tabindex="-1"></a><span class="co"># прогноз: вероятности принадлежности классу &#39;Yes&#39; (дефолт)</span></span>
+<span id="cb117-84"><a href="logistic-regression.html#cb117-84" aria-hidden="true" tabindex="-1"></a>p.qda <span class="ot">&lt;-</span> <span class="fu">predict</span>(model.qda, df, <span class="at">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb117-85"><a href="logistic-regression.html#cb117-85" aria-hidden="true" tabindex="-1"></a>Прогноз <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(p.qda<span class="sc">$</span>posterior[, <span class="st">&#39;Yes&#39;</span>] <span class="sc">&gt;</span> <span class="fl">0.5</span>, </span>
+<span id="cb117-86"><a href="logistic-regression.html#cb117-86" aria-hidden="true" tabindex="-1"></a>                         <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb117-87"><a href="logistic-regression.html#cb117-87" aria-hidden="true" tabindex="-1"></a>                  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb117-88"><a href="logistic-regression.html#cb117-88" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;No&#39;</span>, <span class="st">&#39;Yes&#39;</span>))</span>
+<span id="cb117-89"><a href="logistic-regression.html#cb117-89" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица неточностей</span></span>
+<span id="cb117-90"><a href="logistic-regression.html#cb117-90" aria-hidden="true" tabindex="-1"></a>conf.m <span class="ot">&lt;-</span> <span class="fu">table</span>(Факт, Прогноз)</span>
+<span id="cb117-91"><a href="logistic-regression.html#cb117-91" aria-hidden="true" tabindex="-1"></a>conf.m</span>
+<span id="cb117-92"><a href="logistic-regression.html#cb117-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-93"><a href="logistic-regression.html#cb117-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-94"><a href="logistic-regression.html#cb117-94" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">2</span>, <span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">2</span>, ]) <span class="co"># чувствительность</span></span>
+<span id="cb117-95"><a href="logistic-regression.html#cb117-95" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">1</span>, ]) <span class="co"># специфичность</span></span>
+<span id="cb117-96"><a href="logistic-regression.html#cb117-96" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">diag</span>(conf.m)) <span class="sc">/</span> <span class="fu">sum</span>(conf.m) <span class="co"># верность</span></span>
+<span id="cb117-97"><a href="logistic-regression.html#cb117-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-98"><a href="logistic-regression.html#cb117-98" aria-hidden="true" tabindex="-1"></a><span class="do">### 4. ROC-curve and detection of decision border</span></span>
+<span id="cb117-99"><a href="logistic-regression.html#cb117-99" aria-hidden="true" tabindex="-1"></a><span class="co"># считаем 1-SPC и TPR для всех вариантов границы отсечения</span></span>
+<span id="cb117-100"><a href="logistic-regression.html#cb117-100" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">NULL</span>    <span class="co"># для (1 - SPC)</span></span>
+<span id="cb117-101"><a href="logistic-regression.html#cb117-101" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="cn">NULL</span>    <span class="co"># для TPR</span></span>
+<span id="cb117-102"><a href="logistic-regression.html#cb117-102" aria-hidden="true" tabindex="-1"></a><span class="co"># заготовка под матрицу неточностей</span></span>
+<span id="cb117-103"><a href="logistic-regression.html#cb117-103" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">matrix</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb117-104"><a href="logistic-regression.html#cb117-104" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tbl) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;fact.No&#39;</span>, <span class="st">&#39;fact.Yes&#39;</span>)</span>
+<span id="cb117-105"><a href="logistic-regression.html#cb117-105" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tbl) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;predict.No&#39;</span>, <span class="st">&#39;predict.Yes&#39;</span>)</span>
+<span id="cb117-106"><a href="logistic-regression.html#cb117-106" aria-hidden="true" tabindex="-1"></a><span class="co"># вектор вероятностей для перебора</span></span>
+<span id="cb117-107"><a href="logistic-regression.html#cb117-107" aria-hidden="true" tabindex="-1"></a>p.vector <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> <span class="dv">501</span>)</span>
+<span id="cb117-108"><a href="logistic-regression.html#cb117-108" aria-hidden="true" tabindex="-1"></a><span class="co"># цикл по вероятностям отсечения</span></span>
+<span id="cb117-109"><a href="logistic-regression.html#cb117-109" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (p <span class="cf">in</span> p.vector){</span>
+<span id="cb117-110"><a href="logistic-regression.html#cb117-110" aria-hidden="true" tabindex="-1"></a>    <span class="co"># прогноз</span></span>
+<span id="cb117-111"><a href="logistic-regression.html#cb117-111" aria-hidden="true" tabindex="-1"></a>    Прогноз <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(p.lda<span class="sc">$</span>posterior[, <span class="st">&#39;Yes&#39;</span>] <span class="sc">&gt;</span> p, </span>
+<span id="cb117-112"><a href="logistic-regression.html#cb117-112" aria-hidden="true" tabindex="-1"></a>                             <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb117-113"><a href="logistic-regression.html#cb117-113" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb117-114"><a href="logistic-regression.html#cb117-114" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;No&#39;</span>, <span class="st">&#39;Yes&#39;</span>))</span>
+<span id="cb117-115"><a href="logistic-regression.html#cb117-115" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb117-116"><a href="logistic-regression.html#cb117-116" aria-hidden="true" tabindex="-1"></a>    <span class="co"># фрейм со сравнением факта и прогноза</span></span>
+<span id="cb117-117"><a href="logistic-regression.html#cb117-117" aria-hidden="true" tabindex="-1"></a>    df.compare <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Факт <span class="ot">=</span> Факт, Прогноз <span class="ot">=</span> Прогноз)</span>
+<span id="cb117-118"><a href="logistic-regression.html#cb117-118" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb117-119"><a href="logistic-regression.html#cb117-119" aria-hidden="true" tabindex="-1"></a>    <span class="co"># заполняем матрицу неточностей</span></span>
+<span id="cb117-120"><a href="logistic-regression.html#cb117-120" aria-hidden="true" tabindex="-1"></a>    tbl[<span class="dv">1</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df.compare[df.compare<span class="sc">$</span>Факт <span class="sc">==</span> <span class="st">&#39;No&#39;</span> <span class="sc">&amp;</span> df.compare<span class="sc">$</span>Прогноз <span class="sc">==</span> <span class="st">&#39;No&#39;</span>, ])</span>
+<span id="cb117-121"><a href="logistic-regression.html#cb117-121" aria-hidden="true" tabindex="-1"></a>    tbl[<span class="dv">2</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df.compare[df.compare<span class="sc">$</span>Факт <span class="sc">==</span> <span class="st">&#39;Yes&#39;</span> <span class="sc">&amp;</span> df.compare<span class="sc">$</span>Прогноз <span class="sc">==</span> <span class="st">&#39;Yes&#39;</span>, ])</span>
+<span id="cb117-122"><a href="logistic-regression.html#cb117-122" aria-hidden="true" tabindex="-1"></a>    tbl[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df.compare[df.compare<span class="sc">$</span>Факт <span class="sc">==</span> <span class="st">&#39;No&#39;</span> <span class="sc">&amp;</span> df.compare<span class="sc">$</span>Прогноз <span class="sc">==</span> <span class="st">&#39;Yes&#39;</span>, ])</span>
+<span id="cb117-123"><a href="logistic-regression.html#cb117-123" aria-hidden="true" tabindex="-1"></a>    tbl[<span class="dv">2</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df.compare[df.compare<span class="sc">$</span>Факт <span class="sc">==</span> <span class="st">&#39;Yes&#39;</span> <span class="sc">&amp;</span> df.compare<span class="sc">$</span>Прогноз <span class="sc">==</span> <span class="st">&#39;No&#39;</span>, ])</span>
+<span id="cb117-124"><a href="logistic-regression.html#cb117-124" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb117-125"><a href="logistic-regression.html#cb117-125" aria-hidden="true" tabindex="-1"></a>    <span class="co"># считаем характеристики</span></span>
+<span id="cb117-126"><a href="logistic-regression.html#cb117-126" aria-hidden="true" tabindex="-1"></a>    TPR <span class="ot">&lt;-</span> tbl[<span class="dv">2</span>, <span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(tbl[<span class="dv">2</span>, <span class="dv">2</span>] <span class="sc">+</span> tbl[<span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb117-127"><a href="logistic-regression.html#cb117-127" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">c</span>(y, TPR)</span>
+<span id="cb117-128"><a href="logistic-regression.html#cb117-128" aria-hidden="true" tabindex="-1"></a>    SPC <span class="ot">&lt;-</span> tbl[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(tbl[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">+</span> tbl[<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb117-129"><a href="logistic-regression.html#cb117-129" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="dv">1</span> <span class="sc">-</span> SPC)</span>
+<span id="cb117-130"><a href="logistic-regression.html#cb117-130" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb117-131"><a href="logistic-regression.html#cb117-131" aria-hidden="true" tabindex="-1"></a><span class="co"># строим ROC-кривую</span></span>
+<span id="cb117-132"><a href="logistic-regression.html#cb117-132" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb117-133"><a href="logistic-regression.html#cb117-133" aria-hidden="true" tabindex="-1"></a><span class="co"># кривая</span></span>
+<span id="cb117-134"><a href="logistic-regression.html#cb117-134" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">lwd =</span> <span class="dv">3</span>,</span>
+<span id="cb117-135"><a href="logistic-regression.html#cb117-135" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;(1 - SPC)&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;TPR&#39;</span>, </span>
+<span id="cb117-136"><a href="logistic-regression.html#cb117-136" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb117-137"><a href="logistic-regression.html#cb117-137" aria-hidden="true" tabindex="-1"></a><span class="co"># прямая случайного классификатора</span></span>
+<span id="cb117-138"><a href="logistic-regression.html#cb117-138" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb117-139"><a href="logistic-regression.html#cb117-139" aria-hidden="true" tabindex="-1"></a><span class="co"># точка для вероятности 0.5</span></span>
+<span id="cb117-140"><a href="logistic-regression.html#cb117-140" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x[p.vector <span class="sc">==</span> <span class="fl">0.5</span>], y[p.vector <span class="sc">==</span> <span class="fl">0.5</span>], <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb117-141"><a href="logistic-regression.html#cb117-141" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(x[p.vector <span class="sc">==</span> <span class="fl">0.5</span>], y[p.vector <span class="sc">==</span> <span class="fl">0.5</span>], <span class="st">&#39;p = 0.5&#39;</span>, <span class="at">pos =</span> <span class="dv">4</span>)</span>
+<span id="cb117-142"><a href="logistic-regression.html#cb117-142" aria-hidden="true" tabindex="-1"></a><span class="co"># точка для вероятности 0.2</span></span>
+<span id="cb117-143"><a href="logistic-regression.html#cb117-143" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x[p.vector <span class="sc">==</span> <span class="fl">0.2</span>], y[p.vector <span class="sc">==</span> <span class="fl">0.2</span>], <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb117-144"><a href="logistic-regression.html#cb117-144" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(x[p.vector <span class="sc">==</span> <span class="fl">0.2</span>], y[p.vector <span class="sc">==</span> <span class="fl">0.2</span>], <span class="st">&#39;p = 0.2&#39;</span>, <span class="at">pos =</span> <span class="dv">4</span>)</span>
+<span id="cb117-145"><a href="logistic-regression.html#cb117-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-146"><a href="logistic-regression.html#cb117-146" aria-hidden="true" tabindex="-1"></a>Прогноз <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(p.lda<span class="sc">$</span>posterior[, <span class="st">&#39;Yes&#39;</span>] <span class="sc">&gt;</span> <span class="fl">0.2</span>, </span>
+<span id="cb117-147"><a href="logistic-regression.html#cb117-147" aria-hidden="true" tabindex="-1"></a>                         <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb117-148"><a href="logistic-regression.html#cb117-148" aria-hidden="true" tabindex="-1"></a>                  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb117-149"><a href="logistic-regression.html#cb117-149" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;No&#39;</span>, <span class="st">&#39;Yes&#39;</span>))</span>
+<span id="cb117-150"><a href="logistic-regression.html#cb117-150" aria-hidden="true" tabindex="-1"></a>conf.m <span class="ot">&lt;-</span> <span class="fu">table</span>(Факт, Прогноз)</span>
+<span id="cb117-151"><a href="logistic-regression.html#cb117-151" aria-hidden="true" tabindex="-1"></a>conf.m</span>
+<span id="cb117-152"><a href="logistic-regression.html#cb117-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-153"><a href="logistic-regression.html#cb117-153" aria-hidden="true" tabindex="-1"></a><span class="co"># чувствительность</span></span>
+<span id="cb117-154"><a href="logistic-regression.html#cb117-154" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">2</span>, <span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">2</span>, ])</span>
+<span id="cb117-155"><a href="logistic-regression.html#cb117-155" aria-hidden="true" tabindex="-1"></a><span class="co"># специфичность</span></span>
+<span id="cb117-156"><a href="logistic-regression.html#cb117-156" aria-hidden="true" tabindex="-1"></a>conf.m[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(conf.m[<span class="dv">1</span>, ])</span>
+<span id="cb117-157"><a href="logistic-regression.html#cb117-157" aria-hidden="true" tabindex="-1"></a><span class="co"># верность</span></span>
+<span id="cb117-158"><a href="logistic-regression.html#cb117-158" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">diag</span>(conf.m)) <span class="sc">/</span> <span class="fu">sum</span>(conf.m)</span></code></pre></div>
+</div>
+<div id="next-part-8" class="section level2" number="23.3">
+<h2><span class="header-section-number">23.3</span> NExt part</h2>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="logistic-regression.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of logistic regression</span></span>
+<span id="cb118-2"><a href="logistic-regression.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: 17 - Анализ данных в R. Логистическая регрессия by Anatoliy Karpov</span></span>
+<span id="cb118-3"><a href="logistic-regression.html#cb118-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-4"><a href="logistic-regression.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data set train.csv:</span></span>
+<span id="cb118-5"><a href="logistic-regression.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistics of students in a school</span></span>
+<span id="cb118-6"><a href="logistic-regression.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co"># gender - male/femail</span></span>
+<span id="cb118-7"><a href="logistic-regression.html#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="co"># read, write, math - points for subjects</span></span>
+<span id="cb118-8"><a href="logistic-regression.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co"># hon - if honorary degree Y/N</span></span>
+<span id="cb118-9"><a href="logistic-regression.html#cb118-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-10"><a href="logistic-regression.html#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="co"># FIX combine train and test into one csv file. Split train and test inside this script</span></span>
+<span id="cb118-11"><a href="logistic-regression.html#cb118-11" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;~/RData&quot;</span>)</span>
+<span id="cb118-12"><a href="logistic-regression.html#cb118-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;train.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb118-13"><a href="logistic-regression.html#cb118-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-14"><a href="logistic-regression.html#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Visual inspection of the dataset</span></span>
+<span id="cb118-15"><a href="logistic-regression.html#cb118-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb118-16"><a href="logistic-regression.html#cb118-16" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span>
+<span id="cb118-17"><a href="logistic-regression.html#cb118-17" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(df)</span>
+<span id="cb118-18"><a href="logistic-regression.html#cb118-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-19"><a href="logistic-regression.html#cb118-19" aria-hidden="true" tabindex="-1"></a><span class="co"># N-not the best mark, Y-the best mark</span></span>
+<span id="cb118-20"><a href="logistic-regression.html#cb118-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb118-21"><a href="logistic-regression.html#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(read,math,<span class="at">col=</span>gender))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_grid</span>(.<span class="sc">~</span>hon)<span class="sc">+</span></span>
+<span id="cb118-22"><a href="logistic-regression.html#cb118-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">25</span>), <span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">25</span>, <span class="at">face=</span><span class="st">&#39;bold&#39;</span>))</span>
+<span id="cb118-23"><a href="logistic-regression.html#cb118-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-24"><a href="logistic-regression.html#cb118-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply logistic regression</span></span>
+<span id="cb118-25"><a href="logistic-regression.html#cb118-25" aria-hidden="true" tabindex="-1"></a><span class="co"># How hon depends on different variables: read, math, gender</span></span>
+<span id="cb118-26"><a href="logistic-regression.html#cb118-26" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(hon <span class="sc">~</span> read <span class="sc">+</span> math <span class="sc">+</span> gender, df, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb118-27"><a href="logistic-regression.html#cb118-27" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb118-28"><a href="logistic-regression.html#cb118-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-29"><a href="logistic-regression.html#cb118-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Meanings of coefficients:</span></span>
+<span id="cb118-30"><a href="logistic-regression.html#cb118-30" aria-hidden="true" tabindex="-1"></a><span class="co"># read-estimate: 0.06677 - if female, math is fixed, if read change to 1, then ln(odds) will be changed to 0.06677</span></span>
+<span id="cb118-31"><a href="logistic-regression.html#cb118-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-32"><a href="logistic-regression.html#cb118-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data from fit</span></span>
+<span id="cb118-33"><a href="logistic-regression.html#cb118-33" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(fit<span class="sc">$</span>coefficients)</span>
+<span id="cb118-34"><a href="logistic-regression.html#cb118-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-35"><a href="logistic-regression.html#cb118-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict model - ln(odds)</span></span>
+<span id="cb118-36"><a href="logistic-regression.html#cb118-36" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">predict</span>(<span class="at">object=</span>fit))</span>
+<span id="cb118-37"><a href="logistic-regression.html#cb118-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-38"><a href="logistic-regression.html#cb118-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict model - return probability to get the best mark for every person</span></span>
+<span id="cb118-39"><a href="logistic-regression.html#cb118-39" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">predict</span>(<span class="at">object =</span> fit, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>))</span>
+<span id="cb118-40"><a href="logistic-regression.html#cb118-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-41"><a href="logistic-regression.html#cb118-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Add probabilities to get the best mark for every person in df</span></span>
+<span id="cb118-42"><a href="logistic-regression.html#cb118-42" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object =</span> fit, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb118-43"><a href="logistic-regression.html#cb118-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-44"><a href="logistic-regression.html#cb118-44" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb118-45"><a href="logistic-regression.html#cb118-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-46"><a href="logistic-regression.html#cb118-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Part 2</span></span>
+<span id="cb118-47"><a href="logistic-regression.html#cb118-47" aria-hidden="true" tabindex="-1"></a><span class="co"># ROC-curve of predicted model</span></span>
+<span id="cb118-48"><a href="logistic-regression.html#cb118-48" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb118-49"><a href="logistic-regression.html#cb118-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted values and real values</span></span>
+<span id="cb118-50"><a href="logistic-regression.html#cb118-50" aria-hidden="true" tabindex="-1"></a>pred_fit <span class="ot">&lt;-</span> <span class="fu">prediction</span>(df<span class="sc">$</span>prob, df<span class="sc">$</span>hon)</span>
+<span id="cb118-51"><a href="logistic-regression.html#cb118-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-52"><a href="logistic-regression.html#cb118-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate tpr - true positive rate and fpr - false positive rate</span></span>
+<span id="cb118-53"><a href="logistic-regression.html#cb118-53" aria-hidden="true" tabindex="-1"></a>perf_fit <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_fit, <span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>)</span>
+<span id="cb118-54"><a href="logistic-regression.html#cb118-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-55"><a href="logistic-regression.html#cb118-55" aria-hidden="true" tabindex="-1"></a><span class="co"># plot ROC-curve</span></span>
+<span id="cb118-56"><a href="logistic-regression.html#cb118-56" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(perf_fit, <span class="at">colorize=</span>T, <span class="at">print.cutoffs.at =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.1</span>))</span>
+<span id="cb118-57"><a href="logistic-regression.html#cb118-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-58"><a href="logistic-regression.html#cb118-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Area under the curve: 0.87</span></span>
+<span id="cb118-59"><a href="logistic-regression.html#cb118-59" aria-hidden="true" tabindex="-1"></a>auc <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_fit, <span class="at">measure =</span> <span class="st">&quot;auc&quot;</span>)</span>
+<span id="cb118-60"><a href="logistic-regression.html#cb118-60" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(auc)</span>
+<span id="cb118-61"><a href="logistic-regression.html#cb118-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-62"><a href="logistic-regression.html#cb118-62" aria-hidden="true" tabindex="-1"></a><span class="co"># How to detect the border and make a decision if student will get honorary degree</span></span>
+<span id="cb118-63"><a href="logistic-regression.html#cb118-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Specificity - how good we can predict negative results</span></span>
+<span id="cb118-64"><a href="logistic-regression.html#cb118-64" aria-hidden="true" tabindex="-1"></a>perf3 <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_fit, <span class="at">x.measure =</span> <span class="st">&quot;cutoff&quot;</span>, <span class="at">measure =</span> <span class="st">&quot;spec&quot;</span>)</span>
+<span id="cb118-65"><a href="logistic-regression.html#cb118-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Sencitivity - how good we can predict positive results</span></span>
+<span id="cb118-66"><a href="logistic-regression.html#cb118-66" aria-hidden="true" tabindex="-1"></a>perf4 <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_fit, <span class="at">x.measure =</span> <span class="st">&quot;cutoff&quot;</span>, <span class="at">measure =</span> <span class="st">&quot;sens&quot;</span>)</span>
+<span id="cb118-67"><a href="logistic-regression.html#cb118-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Общая интенсивность классификатора</span></span>
+<span id="cb118-68"><a href="logistic-regression.html#cb118-68" aria-hidden="true" tabindex="-1"></a>perf5 <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_fit, <span class="at">x.measure =</span> <span class="st">&quot;cutoff&quot;</span>, <span class="at">measure =</span> <span class="st">&quot;acc&quot;</span>)</span>
+<span id="cb118-69"><a href="logistic-regression.html#cb118-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-70"><a href="logistic-regression.html#cb118-70" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(perf3, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb118-71"><a href="logistic-regression.html#cb118-71" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">add=</span>T, perf4, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb118-72"><a href="logistic-regression.html#cb118-72" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">add=</span>T, perf5, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb118-73"><a href="logistic-regression.html#cb118-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-74"><a href="logistic-regression.html#cb118-74" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="fl">0.6</span>, <span class="at">y =</span> <span class="fl">0.3</span>, <span class="fu">c</span>(<span class="st">&quot;spec&quot;</span>, <span class="st">&quot;sens&quot;</span>, <span class="st">&quot;accur&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb118-75"><a href="logistic-regression.html#cb118-75" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">&#39;n&#39;</span>, <span class="at">cex=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb118-76"><a href="logistic-regression.html#cb118-76" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.255</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb118-77"><a href="logistic-regression.html#cb118-77" aria-hidden="true" tabindex="-1"></a><span class="co"># The border is the intersection of all three curves</span></span>
+<span id="cb118-78"><a href="logistic-regression.html#cb118-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-79"><a href="logistic-regression.html#cb118-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Add column with prediced values Y/N</span></span>
+<span id="cb118-80"><a href="logistic-regression.html#cb118-80" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>pred_resp <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(df<span class="sc">$</span>prob <span class="sc">&gt;</span> <span class="fl">0.255</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;Y&quot;</span>))</span>
+<span id="cb118-81"><a href="logistic-regression.html#cb118-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-82"><a href="logistic-regression.html#cb118-82" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 if prediction is correct, 0 if not correct</span></span>
+<span id="cb118-83"><a href="logistic-regression.html#cb118-83" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>correct <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>pred_resp <span class="sc">==</span> df<span class="sc">$</span>hon, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb118-84"><a href="logistic-regression.html#cb118-84" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb118-85"><a href="logistic-regression.html#cb118-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-86"><a href="logistic-regression.html#cb118-86" aria-hidden="true" tabindex="-1"></a><span class="co"># blue - correct classified, red - incorrect classified</span></span>
+<span id="cb118-87"><a href="logistic-regression.html#cb118-87" aria-hidden="true" tabindex="-1"></a><span class="co"># it is more difficult to predict positive result</span></span>
+<span id="cb118-88"><a href="logistic-regression.html#cb118-88" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(prob, <span class="at">fill =</span> <span class="fu">factor</span>(correct)))<span class="sc">+</span></span>
+<span id="cb118-89"><a href="logistic-regression.html#cb118-89" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_dotplot</span>()<span class="sc">+</span></span>
+<span id="cb118-90"><a href="logistic-regression.html#cb118-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">25</span>),</span>
+<span id="cb118-91"><a href="logistic-regression.html#cb118-91" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">25</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb118-92"><a href="logistic-regression.html#cb118-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-93"><a href="logistic-regression.html#cb118-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Percent of positive predictions</span></span>
+<span id="cb118-94"><a href="logistic-regression.html#cb118-94" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>correct)</span>
+<span id="cb118-95"><a href="logistic-regression.html#cb118-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-96"><a href="logistic-regression.html#cb118-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Part 3 - Prediction using test data</span></span>
+<span id="cb118-97"><a href="logistic-regression.html#cb118-97" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;test.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb118-98"><a href="logistic-regression.html#cb118-98" aria-hidden="true" tabindex="-1"></a>test_df</span>
+<span id="cb118-99"><a href="logistic-regression.html#cb118-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-100"><a href="logistic-regression.html#cb118-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict honorary members</span></span>
+<span id="cb118-101"><a href="logistic-regression.html#cb118-101" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>prob_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata=</span>test_df, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb118-102"><a href="logistic-regression.html#cb118-102" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>pred_resp <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(test_df<span class="sc">$</span>prob_predict <span class="sc">&gt;</span> <span class="fl">0.255</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;Y&quot;</span>))</span>
+<span id="cb118-103"><a href="logistic-regression.html#cb118-103" aria-hidden="true" tabindex="-1"></a>test_df</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="spline-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multiple-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/38_logistic_regression.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 20 NEXT part | R statistics</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 20 NEXT part | R statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 20 NEXT part | R statistics" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Mark Goldberg" />
+
+
+<meta name="date" content="2021-04-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="linear-regression-1.html"/>
+<link rel="next" href="nonlinear-regression.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.1</b> Data inspection</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html"><i class="fa fa-check"></i><b>3</b> Analysis of the distribution</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#t-test"><i class="fa fa-check"></i><b>3.1</b> t-Test</a></li>
+<li class="chapter" data-level="3.2" data-path="analysis-of-the-distribution.html"><a href="analysis-of-the-distribution.html#anova"><i class="fa fa-check"></i><b>3.2</b> ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>4</b> Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>4.1</b> Outliers</a></li>
+<li class="chapter" data-level="4.2" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>4.2</b> Normality</a></li>
+<li class="chapter" data-level="4.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Normal Distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>4.4</b> Confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary analysis</a></li>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.1</b> Hypothesis test (Practice)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="7.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>7.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="7.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>7.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="7.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>7.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Correlation</a></li>
+<li class="chapter" data-level="13" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>13</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>14.1</b> Next part</a></li>
+<li class="chapter" data-level="14.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>14.2</b> Example</a></li>
+<li class="chapter" data-level="14.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>14.3</b> NEXT PART</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>15</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="16" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>16</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>17.1</b> Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>18</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>19.1</b> Generate Random Data Set a Linear Model</a></li>
+<li class="chapter" data-level="19.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>19.2</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="19.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>19.3</b> Practical example</a></li>
+<li class="chapter" data-level="19.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>19.4</b> Example of linear regression</a></li>
+<li class="chapter" data-level="19.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>19.5</b> Standard error of train data</a></li>
+<li class="chapter" data-level="19.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>19.6</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="19.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>19.7</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="19.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>19.8</b> NEXT part</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>20.1</b> NEXT part</a></li>
+<li class="chapter" data-level="20.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>20.2</b> NEXT Part</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>21</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>22.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="22.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>22.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="22.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>22.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="22.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>22.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="22.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>22.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="22.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>22.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="22.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>22.7</b> Bibliograpy</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>23.1</b> Next part</a></li>
+<li class="chapter" data-level="23.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="23.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>23.3</b> NExt part</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="25.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>25.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>26</b> Naive Bayes</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="next-part-3" class="section level1" number="20">
+<h1><span class="header-section-number">Chapter 20</span> NEXT part</h1>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="next-part-3.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="do">##### LINEAR REGRESSION</span></span>
+<span id="cb96-2"><a href="next-part-3.html#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="next-part-3.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model is a line y=ax+b, where sum of distances between all y=axi+b and given yi (sum of squares) is minimal.</span></span>
+<span id="cb96-4"><a href="next-part-3.html#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-5"><a href="next-part-3.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Example (from R Machine Learning by Example)</span></span>
+<span id="cb96-6"><a href="next-part-3.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Height and weight vectors for 19 children</span></span>
+<span id="cb96-7"><a href="next-part-3.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-8"><a href="next-part-3.html#cb96-8" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">69.1</span>,<span class="fl">56.4</span>,<span class="fl">65.3</span>,<span class="fl">62.8</span>,<span class="dv">63</span>,<span class="fl">57.3</span>,<span class="fl">59.8</span>,<span class="fl">62.5</span>,<span class="fl">62.5</span>,<span class="fl">59.0</span>,<span class="fl">51.3</span>,<span class="dv">64</span>,<span class="fl">56.4</span>,<span class="fl">66.5</span>,<span class="fl">72.2</span>,<span class="fl">65.0</span>,<span class="fl">67.0</span>,<span class="fl">57.6</span>,<span class="fl">66.6</span>)</span>
+<span id="cb96-9"><a href="next-part-3.html#cb96-9" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">113</span>,<span class="dv">84</span>,<span class="dv">99</span>,<span class="dv">103</span>,<span class="dv">102</span>,<span class="dv">83</span>,<span class="dv">85</span>,<span class="dv">113</span>,<span class="dv">84</span>,<span class="dv">99</span>,<span class="dv">51</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">112</span>,<span class="dv">150</span>,<span class="dv">128</span>,<span class="dv">133</span>,<span class="dv">85</span>,<span class="dv">112</span>)</span>
+<span id="cb96-10"><a href="next-part-3.html#cb96-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-11"><a href="next-part-3.html#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(height,weight)</span>
+<span id="cb96-12"><a href="next-part-3.html#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(height,weight)</span>
+<span id="cb96-13"><a href="next-part-3.html#cb96-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-14"><a href="next-part-3.html#cb96-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
+<span id="cb96-15"><a href="next-part-3.html#cb96-15" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> height) <span class="co"># weight = slope*weight + intercept</span></span>
+<span id="cb96-16"><a href="next-part-3.html#cb96-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-17"><a href="next-part-3.html#cb96-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model)   <span class="co"># Regression line</span></span>
+<span id="cb96-18"><a href="next-part-3.html#cb96-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-19"><a href="next-part-3.html#cb96-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data of model</span></span>
+<span id="cb96-20"><a href="next-part-3.html#cb96-20" aria-hidden="true" tabindex="-1"></a><span class="co">#get the intercept(b0) and the slope(b1) values</span></span>
+<span id="cb96-21"><a href="next-part-3.html#cb96-21" aria-hidden="true" tabindex="-1"></a>model</span>
+<span id="cb96-22"><a href="next-part-3.html#cb96-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-23"><a href="next-part-3.html#cb96-23" aria-hidden="true" tabindex="-1"></a><span class="co"># check all attributes calculated by lm</span></span>
+<span id="cb96-24"><a href="next-part-3.html#cb96-24" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(model)</span>
+<span id="cb96-25"><a href="next-part-3.html#cb96-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-26"><a href="next-part-3.html#cb96-26" aria-hidden="true" tabindex="-1"></a><span class="co"># getting only the intercept</span></span>
+<span id="cb96-27"><a href="next-part-3.html#cb96-27" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="co">#or model$coefficients[[1]]</span></span>
+<span id="cb96-28"><a href="next-part-3.html#cb96-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-29"><a href="next-part-3.html#cb96-29" aria-hidden="true" tabindex="-1"></a><span class="co"># getting only the slope</span></span>
+<span id="cb96-30"><a href="next-part-3.html#cb96-30" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="co">#or model$coefficients[[2]]</span></span>
+<span id="cb96-31"><a href="next-part-3.html#cb96-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-32"><a href="next-part-3.html#cb96-32" aria-hidden="true" tabindex="-1"></a><span class="co"># checking the residuals</span></span>
+<span id="cb96-33"><a href="next-part-3.html#cb96-33" aria-hidden="true" tabindex="-1"></a><span class="fu">residuals</span>(model)</span>
+<span id="cb96-34"><a href="next-part-3.html#cb96-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-35"><a href="next-part-3.html#cb96-35" aria-hidden="true" tabindex="-1"></a><span class="co"># predicting the weight for a given height, say 60 inches</span></span>
+<span id="cb96-36"><a href="next-part-3.html#cb96-36" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[[<span class="dv">2</span>]]<span class="sc">*</span><span class="dv">50</span> <span class="sc">+</span> model<span class="sc">$</span>coefficients[[<span class="dv">1</span>]]</span>
+<span id="cb96-37"><a href="next-part-3.html#cb96-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-38"><a href="next-part-3.html#cb96-38" aria-hidden="true" tabindex="-1"></a><span class="co"># detailed information about the model</span></span>
+<span id="cb96-39"><a href="next-part-3.html#cb96-39" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb96-40"><a href="next-part-3.html#cb96-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-41"><a href="next-part-3.html#cb96-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-42"><a href="next-part-3.html#cb96-42" aria-hidden="true" tabindex="-1"></a><span class="do">##### 2. Linear regression model for multiple parameters</span></span>
+<span id="cb96-43"><a href="next-part-3.html#cb96-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-44"><a href="next-part-3.html#cb96-44" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb96-45"><a href="next-part-3.html#cb96-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-46"><a href="next-part-3.html#cb96-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset of necessary data from mtcars</span></span>
+<span id="cb96-47"><a href="next-part-3.html#cb96-47" aria-hidden="true" tabindex="-1"></a>df.sub <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>)]</span>
+<span id="cb96-48"><a href="next-part-3.html#cb96-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-49"><a href="next-part-3.html#cb96-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model</span></span>
+<span id="cb96-50"><a href="next-part-3.html#cb96-50" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, df)</span>
+<span id="cb96-51"><a href="next-part-3.html#cb96-51" aria-hidden="true" tabindex="-1"></a>fit</span>
+<span id="cb96-52"><a href="next-part-3.html#cb96-52" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb96-53"><a href="next-part-3.html#cb96-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-54"><a href="next-part-3.html#cb96-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot regression models using ggplot</span></span>
+<span id="cb96-55"><a href="next-part-3.html#cb96-55" aria-hidden="true" tabindex="-1"></a><span class="co"># parameter geom_smooth builds regression model</span></span>
+<span id="cb96-56"><a href="next-part-3.html#cb96-56" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb96-57"><a href="next-part-3.html#cb96-57" aria-hidden="true" tabindex="-1"></a><span class="co"># auto model</span></span>
+<span id="cb96-58"><a href="next-part-3.html#cb96-58" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(hp, mpg))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">geom_smooth</span>()</span>
+<span id="cb96-59"><a href="next-part-3.html#cb96-59" aria-hidden="true" tabindex="-1"></a><span class="co"># for linear model: method = &#39;lm&#39;</span></span>
+<span id="cb96-60"><a href="next-part-3.html#cb96-60" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(hp, mpg))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb96-61"><a href="next-part-3.html#cb96-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-62"><a href="next-part-3.html#cb96-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data into two groups by am - Transmission (0 = automatic, 1 = manual)</span></span>
+<span id="cb96-63"><a href="next-part-3.html#cb96-63" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(hp, mpg, <span class="at">col=</span><span class="fu">factor</span>(am)))<span class="sc">+</span></span>
+<span id="cb96-64"><a href="next-part-3.html#cb96-64" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb96-65"><a href="next-part-3.html#cb96-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb96-66"><a href="next-part-3.html#cb96-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-67"><a href="next-part-3.html#cb96-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction of values using linear regression model</span></span>
+<span id="cb96-68"><a href="next-part-3.html#cb96-68" aria-hidden="true" tabindex="-1"></a>fitted_values_mpg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mpg=</span>df<span class="sc">$</span>mpg, <span class="at">fitted=</span>fit<span class="sc">$</span>fitted.values)</span>
+<span id="cb96-69"><a href="next-part-3.html#cb96-69" aria-hidden="true" tabindex="-1"></a>fitted_values_mpg</span>
+<span id="cb96-70"><a href="next-part-3.html#cb96-70" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(fitted_values_mpg)</span>
+<span id="cb96-71"><a href="next-part-3.html#cb96-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-72"><a href="next-part-3.html#cb96-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets predict galons of petrol for given horse powers</span></span>
+<span id="cb96-73"><a href="next-part-3.html#cb96-73" aria-hidden="true" tabindex="-1"></a>new_hp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hp=</span><span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">129</span>, <span class="dv">300</span>))</span>
+<span id="cb96-74"><a href="next-part-3.html#cb96-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-75"><a href="next-part-3.html#cb96-75" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, new_hp)</span>
+<span id="cb96-76"><a href="next-part-3.html#cb96-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-77"><a href="next-part-3.html#cb96-77" aria-hidden="true" tabindex="-1"></a>new_hp<span class="sc">$</span>mpg <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, new_hp)</span>
+<span id="cb96-78"><a href="next-part-3.html#cb96-78" aria-hidden="true" tabindex="-1"></a>new_hp</span>
+<span id="cb96-79"><a href="next-part-3.html#cb96-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-80"><a href="next-part-3.html#cb96-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets make regression model for cylinders as numeric (not factor)</span></span>
+<span id="cb96-81"><a href="next-part-3.html#cb96-81" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> cyl, df)</span>
+<span id="cb96-82"><a href="next-part-3.html#cb96-82" aria-hidden="true" tabindex="-1"></a>fit</span>
+<span id="cb96-83"><a href="next-part-3.html#cb96-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-84"><a href="next-part-3.html#cb96-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression line for cyclinders</span></span>
+<span id="cb96-85"><a href="next-part-3.html#cb96-85" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(cyl, mpg))<span class="sc">+</span></span>
+<span id="cb96-86"><a href="next-part-3.html#cb96-86" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb96-87"><a href="next-part-3.html#cb96-87" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb96-88"><a href="next-part-3.html#cb96-88" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">25</span>),</span>
+<span id="cb96-89"><a href="next-part-3.html#cb96-89" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">25</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb96-90"><a href="next-part-3.html#cb96-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-91"><a href="next-part-3.html#cb96-91" aria-hidden="true" tabindex="-1"></a><span class="do">##### 3. More complex example</span></span>
+<span id="cb96-92"><a href="next-part-3.html#cb96-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression modeling, compair with kNN</span></span>
+<span id="cb96-93"><a href="next-part-3.html#cb96-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-94"><a href="next-part-3.html#cb96-94" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: Course &#39;Math modeling&#39; practical work, State University of Management, Moscow</span></span>
+<span id="cb96-95"><a href="next-part-3.html#cb96-95" aria-hidden="true" tabindex="-1"></a><span class="co"># link: https://sites.google.com/a/kiber-guu.ru/r-practice/home</span></span>
+<span id="cb96-96"><a href="next-part-3.html#cb96-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-97"><a href="next-part-3.html#cb96-97" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;GGally&#39;</span>)</span>
+<span id="cb96-98"><a href="next-part-3.html#cb96-98" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;lmtest&#39;</span>)</span>
+<span id="cb96-99"><a href="next-part-3.html#cb96-99" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;FNN&#39;</span>)</span>
+<span id="cb96-100"><a href="next-part-3.html#cb96-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-101"><a href="next-part-3.html#cb96-101" aria-hidden="true" tabindex="-1"></a><span class="co"># variable</span></span>
+<span id="cb96-102"><a href="next-part-3.html#cb96-102" aria-hidden="true" tabindex="-1"></a>my.seed <span class="ot">&lt;-</span> <span class="dv">12345</span></span>
+<span id="cb96-103"><a href="next-part-3.html#cb96-103" aria-hidden="true" tabindex="-1"></a>train.percent <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
+<span id="cb96-104"><a href="next-part-3.html#cb96-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-105"><a href="next-part-3.html#cb96-105" aria-hidden="true" tabindex="-1"></a>wages.ru <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;~/Projects/data_analysis/DATA/salary.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>, </span>
+<span id="cb96-106"><a href="next-part-3.html#cb96-106" aria-hidden="true" tabindex="-1"></a>                     <span class="at">as.is =</span> T)  <span class="co"># transform data into factors when possible</span></span>
+<span id="cb96-107"><a href="next-part-3.html#cb96-107" aria-hidden="true" tabindex="-1"></a>wages.ru<span class="sc">$</span>male <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wages.ru<span class="sc">$</span>male)</span>
+<span id="cb96-108"><a href="next-part-3.html#cb96-108" aria-hidden="true" tabindex="-1"></a>wages.ru<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wages.ru<span class="sc">$</span>educ)</span>
+<span id="cb96-109"><a href="next-part-3.html#cb96-109" aria-hidden="true" tabindex="-1"></a>wages.ru<span class="sc">$</span>forlang <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wages.ru<span class="sc">$</span>forlang)</span>
+<span id="cb96-110"><a href="next-part-3.html#cb96-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-111"><a href="next-part-3.html#cb96-111" aria-hidden="true" tabindex="-1"></a><span class="co"># test data</span></span>
+<span id="cb96-112"><a href="next-part-3.html#cb96-112" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb96-113"><a href="next-part-3.html#cb96-113" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_along</span>(wages.ru<span class="sc">$</span>salary), </span>
+<span id="cb96-114"><a href="next-part-3.html#cb96-114" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">nrow</span>(wages.ru) <span class="sc">*</span> train.percent)</span>
+<span id="cb96-115"><a href="next-part-3.html#cb96-115" aria-hidden="true" tabindex="-1"></a>df.train <span class="ot">&lt;-</span> wages.ru[inTrain, <span class="fu">c</span>(<span class="fu">colnames</span>(wages.ru)[<span class="sc">-</span><span class="dv">1</span>], <span class="fu">colnames</span>(wages.ru)[<span class="dv">1</span>])]</span>
+<span id="cb96-116"><a href="next-part-3.html#cb96-116" aria-hidden="true" tabindex="-1"></a>df.test <span class="ot">&lt;-</span> wages.ru[<span class="sc">-</span>inTrain, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb96-117"><a href="next-part-3.html#cb96-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-118"><a href="next-part-3.html#cb96-118" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df.train)</span>
+<span id="cb96-119"><a href="next-part-3.html#cb96-119" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train)</span>
+<span id="cb96-120"><a href="next-part-3.html#cb96-120" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb96-121"><a href="next-part-3.html#cb96-121" aria-hidden="true" tabindex="-1"></a><span class="co"># цвета по фактору male</span></span>
+<span id="cb96-122"><a href="next-part-3.html#cb96-122" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train[, <span class="fu">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb96-123"><a href="next-part-3.html#cb96-123" aria-hidden="true" tabindex="-1"></a>               <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">color =</span> male))</span>
+<span id="cb96-124"><a href="next-part-3.html#cb96-124" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb96-125"><a href="next-part-3.html#cb96-125" aria-hidden="true" tabindex="-1"></a><span class="co"># цвета по фактору educ</span></span>
+<span id="cb96-126"><a href="next-part-3.html#cb96-126" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train[, <span class="fu">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;educ&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb96-127"><a href="next-part-3.html#cb96-127" aria-hidden="true" tabindex="-1"></a>               <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">color =</span> educ))</span>
+<span id="cb96-128"><a href="next-part-3.html#cb96-128" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb96-129"><a href="next-part-3.html#cb96-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-130"><a href="next-part-3.html#cb96-130" aria-hidden="true" tabindex="-1"></a><span class="co"># цвета по фактору forlang</span></span>
+<span id="cb96-131"><a href="next-part-3.html#cb96-131" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train[, <span class="fu">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;forlang&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb96-132"><a href="next-part-3.html#cb96-132" aria-hidden="true" tabindex="-1"></a>               <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">color =</span> forlang))</span>
+<span id="cb96-133"><a href="next-part-3.html#cb96-133" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb96-134"><a href="next-part-3.html#cb96-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-135"><a href="next-part-3.html#cb96-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model</span></span>
+<span id="cb96-136"><a href="next-part-3.html#cb96-136" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>educ <span class="sc">+</span> exper<span class="sc">:</span>forlang <span class="sc">+</span> exper<span class="sc">:</span>male, <span class="at">data =</span> df.train)</span>
+<span id="cb96-137"><a href="next-part-3.html#cb96-137" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.1</span>)</span>
+<span id="cb96-138"><a href="next-part-3.html#cb96-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-139"><a href="next-part-3.html#cb96-139" aria-hidden="true" tabindex="-1"></a><span class="do">## Exclude uninfluencial parameters</span></span>
+<span id="cb96-140"><a href="next-part-3.html#cb96-140" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude eper:educ as paramaeters are not important</span></span>
+<span id="cb96-141"><a href="next-part-3.html#cb96-141" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>forlang <span class="sc">+</span> exper<span class="sc">:</span>male, <span class="at">data =</span> df.train)</span>
+<span id="cb96-142"><a href="next-part-3.html#cb96-142" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.2</span>)</span>
+<span id="cb96-143"><a href="next-part-3.html#cb96-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-144"><a href="next-part-3.html#cb96-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude male1:exper</span></span>
+<span id="cb96-145"><a href="next-part-3.html#cb96-145" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>forlang, <span class="at">data =</span> df.train)</span>
+<span id="cb96-146"><a href="next-part-3.html#cb96-146" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.3</span>)</span>
+<span id="cb96-147"><a href="next-part-3.html#cb96-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-148"><a href="next-part-3.html#cb96-148" aria-hidden="true" tabindex="-1"></a><span class="co"># forlang1 is less important, has no sence</span></span>
+<span id="cb96-149"><a href="next-part-3.html#cb96-149" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> male <span class="sc">+</span> educ <span class="sc">+</span> exper, <span class="at">data =</span> df.train)</span>
+<span id="cb96-150"><a href="next-part-3.html#cb96-150" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.4</span>)</span>
+<span id="cb96-151"><a href="next-part-3.html#cb96-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-152"><a href="next-part-3.html#cb96-152" aria-hidden="true" tabindex="-1"></a>df.train<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df.train<span class="sc">$</span>educ)</span>
+<span id="cb96-153"><a href="next-part-3.html#cb96-153" aria-hidden="true" tabindex="-1"></a>df.test<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df.test<span class="sc">$</span>educ)</span>
+<span id="cb96-154"><a href="next-part-3.html#cb96-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-155"><a href="next-part-3.html#cb96-155" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.6</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> ., <span class="at">data =</span> df.train)</span>
+<span id="cb96-156"><a href="next-part-3.html#cb96-156" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.6</span>)</span>
+<span id="cb96-157"><a href="next-part-3.html#cb96-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-158"><a href="next-part-3.html#cb96-158" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 6 is week, let&#39;s add exper:male interactions</span></span>
+<span id="cb96-159"><a href="next-part-3.html#cb96-159" aria-hidden="true" tabindex="-1"></a>df.train<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df.train<span class="sc">$</span>educ)</span>
+<span id="cb96-160"><a href="next-part-3.html#cb96-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-161"><a href="next-part-3.html#cb96-161" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.7</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>male, <span class="at">data =</span> df.train)</span>
+<span id="cb96-162"><a href="next-part-3.html#cb96-162" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.7</span>)</span>
+<span id="cb96-163"><a href="next-part-3.html#cb96-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-164"><a href="next-part-3.html#cb96-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Obviously the best decision is not to use interactions for modeling</span></span>
+<span id="cb96-165"><a href="next-part-3.html#cb96-165" aria-hidden="true" tabindex="-1"></a><span class="co"># Test remainers</span></span>
+<span id="cb96-166"><a href="next-part-3.html#cb96-166" aria-hidden="true" tabindex="-1"></a><span class="co"># тест Бройша-Пагана</span></span>
+<span id="cb96-167"><a href="next-part-3.html#cb96-167" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(model<span class="fl">.6</span>)</span>
+<span id="cb96-168"><a href="next-part-3.html#cb96-168" aria-hidden="true" tabindex="-1"></a><span class="co"># статистика Дарбина-Уотсона</span></span>
+<span id="cb96-169"><a href="next-part-3.html#cb96-169" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(model<span class="fl">.6</span>)</span>
+<span id="cb96-170"><a href="next-part-3.html#cb96-170" aria-hidden="true" tabindex="-1"></a><span class="co"># графики остатков</span></span>
+<span id="cb96-171"><a href="next-part-3.html#cb96-171" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">4.5</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb96-172"><a href="next-part-3.html#cb96-172" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb96-173"><a href="next-part-3.html#cb96-173" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model<span class="fl">.7</span>, <span class="dv">1</span>)</span>
+<span id="cb96-174"><a href="next-part-3.html#cb96-174" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model<span class="fl">.7</span>, <span class="dv">4</span>)</span>
+<span id="cb96-175"><a href="next-part-3.html#cb96-175" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model<span class="fl">.7</span>, <span class="dv">5</span>)</span>
+<span id="cb96-176"><a href="next-part-3.html#cb96-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-177"><a href="next-part-3.html#cb96-177" aria-hidden="true" tabindex="-1"></a><span class="do">### Comparison with kNN-method</span></span>
+<span id="cb96-178"><a href="next-part-3.html#cb96-178" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb96-179"><a href="next-part-3.html#cb96-179" aria-hidden="true" tabindex="-1"></a><span class="co"># фактические значения y на тестовой выборке</span></span>
+<span id="cb96-180"><a href="next-part-3.html#cb96-180" aria-hidden="true" tabindex="-1"></a>y.fact <span class="ot">&lt;-</span> wages.ru[<span class="sc">-</span>inTrain, <span class="dv">1</span>]</span>
+<span id="cb96-181"><a href="next-part-3.html#cb96-181" aria-hidden="true" tabindex="-1"></a>y.model.lm <span class="ot">&lt;-</span> <span class="fu">predict</span>(model<span class="fl">.6</span>, df.test)</span>
+<span id="cb96-182"><a href="next-part-3.html#cb96-182" aria-hidden="true" tabindex="-1"></a>MSE.lm <span class="ot">&lt;-</span> <span class="fu">sum</span>((y.model.lm <span class="sc">-</span> y.fact)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(y.model.lm)</span>
+<span id="cb96-183"><a href="next-part-3.html#cb96-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-184"><a href="next-part-3.html#cb96-184" aria-hidden="true" tabindex="-1"></a><span class="co"># kNN требует на вход только числовые переменные</span></span>
+<span id="cb96-185"><a href="next-part-3.html#cb96-185" aria-hidden="true" tabindex="-1"></a>df.train.num <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">apply</span>(df.train, <span class="dv">2</span>, as.numeric))</span>
+<span id="cb96-186"><a href="next-part-3.html#cb96-186" aria-hidden="true" tabindex="-1"></a>df.test.num <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">apply</span>(df.test, <span class="dv">2</span>, as.numeric))</span>
+<span id="cb96-187"><a href="next-part-3.html#cb96-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-188"><a href="next-part-3.html#cb96-188" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>){</span>
+<span id="cb96-189"><a href="next-part-3.html#cb96-189" aria-hidden="true" tabindex="-1"></a>    model.knn <span class="ot">&lt;-</span> <span class="fu">knn.reg</span>(<span class="at">train =</span> df.train.num[, <span class="sc">!</span>(<span class="fu">colnames</span>(df.train.num) <span class="sc">%in%</span> <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb96-190"><a href="next-part-3.html#cb96-190" aria-hidden="true" tabindex="-1"></a>                         <span class="at">y =</span> df.train.num[, <span class="st">&#39;salary&#39;</span>], </span>
+<span id="cb96-191"><a href="next-part-3.html#cb96-191" aria-hidden="true" tabindex="-1"></a>                         <span class="at">test =</span> df.test.num, <span class="at">k =</span> i)</span>
+<span id="cb96-192"><a href="next-part-3.html#cb96-192" aria-hidden="true" tabindex="-1"></a>    y.model.knn <span class="ot">&lt;-</span> model.knn<span class="sc">$</span>pred</span>
+<span id="cb96-193"><a href="next-part-3.html#cb96-193" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">2</span>){</span>
+<span id="cb96-194"><a href="next-part-3.html#cb96-194" aria-hidden="true" tabindex="-1"></a>        MSE.knn <span class="ot">&lt;-</span> <span class="fu">sum</span>((y.model.knn <span class="sc">-</span> y.fact)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(y.model.knn)</span>
+<span id="cb96-195"><a href="next-part-3.html#cb96-195" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb96-196"><a href="next-part-3.html#cb96-196" aria-hidden="true" tabindex="-1"></a>        MSE.knn <span class="ot">&lt;-</span> <span class="fu">c</span>(MSE.knn, </span>
+<span id="cb96-197"><a href="next-part-3.html#cb96-197" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">sum</span>((y.model.knn <span class="sc">-</span> y.fact)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(y.model.knn))</span>
+<span id="cb96-198"><a href="next-part-3.html#cb96-198" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb96-199"><a href="next-part-3.html#cb96-199" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb96-200"><a href="next-part-3.html#cb96-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-201"><a href="next-part-3.html#cb96-201" aria-hidden="true" tabindex="-1"></a><span class="co"># график</span></span>
+<span id="cb96-202"><a href="next-part-3.html#cb96-202" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">4.5</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb96-203"><a href="next-part-3.html#cb96-203" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>, MSE.knn, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">col =</span> <span class="st">&#39;darkgreen&#39;</span>,</span>
+<span id="cb96-204"><a href="next-part-3.html#cb96-204" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;значение k&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;MSE на тестовой выборке&#39;</span>)</span>
+<span id="cb96-205"><a href="next-part-3.html#cb96-205" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">rep</span>(MSE.lm, <span class="dv">49</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb96-206"><a href="next-part-3.html#cb96-206" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>), </span>
+<span id="cb96-207"><a href="next-part-3.html#cb96-207" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;darkgreen&#39;</span>, <span class="fu">grey</span>(<span class="fl">0.2</span>)), </span>
+<span id="cb96-208"><a href="next-part-3.html#cb96-208" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;k ближайших соседа&#39;</span>, <span class="st">&#39;регрессия (все факторы)&#39;</span>), </span>
+<span id="cb96-209"><a href="next-part-3.html#cb96-209" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div id="next-part-4" class="section level2" number="20.1">
+<h2><span class="header-section-number">20.1</span> NEXT part</h2>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="next-part-3.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression (part 1)</span></span>
+<span id="cb97-2"><a href="next-part-3.html#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="next-part-3.html#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="next-part-3.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Regression (part 2)</span></span>
+<span id="cb97-5"><a href="next-part-3.html#cb97-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;~/DataAnalysis/R_data_analysis/DATA/Diamond.dat&quot;</span>, <span class="at">header=</span>T)</span>
+<span id="cb97-6"><a href="next-part-3.html#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-7"><a href="next-part-3.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check 3 models</span></span>
+<span id="cb97-8"><a href="next-part-3.html#cb97-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. ax+b</span></span>
+<span id="cb97-9"><a href="next-part-3.html#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. ax^2+b</span></span>
+<span id="cb97-10"><a href="next-part-3.html#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. ax^2+bx+c</span></span>
+<span id="cb97-11"><a href="next-part-3.html#cb97-11" aria-hidden="true" tabindex="-1"></a>res<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(x[,<span class="dv">2</span>]<span class="sc">~</span>x[,<span class="dv">1</span>])</span>
+<span id="cb97-12"><a href="next-part-3.html#cb97-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res<span class="fl">.1</span>)</span>
+<span id="cb97-13"><a href="next-part-3.html#cb97-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-14"><a href="next-part-3.html#cb97-14" aria-hidden="true" tabindex="-1"></a>ves2 <span class="ot">&lt;-</span> x[,<span class="dv">1</span>]<span class="sc">*</span>x[,<span class="dv">1</span>]</span>
+<span id="cb97-15"><a href="next-part-3.html#cb97-15" aria-hidden="true" tabindex="-1"></a>res<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(x[,<span class="dv">2</span>]<span class="sc">~</span>ves2)</span>
+<span id="cb97-16"><a href="next-part-3.html#cb97-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res<span class="fl">.2</span>)</span>
+<span id="cb97-17"><a href="next-part-3.html#cb97-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-18"><a href="next-part-3.html#cb97-18" aria-hidden="true" tabindex="-1"></a>res<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(x[,<span class="dv">2</span>]<span class="sc">~</span>x[,<span class="dv">1</span>]<span class="sc">+</span>ves2)</span>
+<span id="cb97-19"><a href="next-part-3.html#cb97-19" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res<span class="fl">.3</span>)</span>
+<span id="cb97-20"><a href="next-part-3.html#cb97-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-21"><a href="next-part-3.html#cb97-21" aria-hidden="true" tabindex="-1"></a><span class="co"># weight of diamands ~ weight^2</span></span>
+<span id="cb97-22"><a href="next-part-3.html#cb97-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x[,<span class="dv">1</span>]<span class="sc">~</span>ves2) </span>
+<span id="cb97-23"><a href="next-part-3.html#cb97-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-24"><a href="next-part-3.html#cb97-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Conclusion: from 3 models, the 2d is optimal</span></span>
+<span id="cb97-25"><a href="next-part-3.html#cb97-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-26"><a href="next-part-3.html#cb97-26" aria-hidden="true" tabindex="-1"></a><span class="do">### Временные ряды</span></span>
+<span id="cb97-27"><a href="next-part-3.html#cb97-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-28"><a href="next-part-3.html#cb97-28" aria-hidden="true" tabindex="-1"></a>ser.g<span class="fl">.01</span> <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;~/DataAnalysis/R_data_analysis/DATA/series_g.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb97-29"><a href="next-part-3.html#cb97-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-30"><a href="next-part-3.html#cb97-30" aria-hidden="true" tabindex="-1"></a><span class="co"># visual inspection</span></span>
+<span id="cb97-31"><a href="next-part-3.html#cb97-31" aria-hidden="true" tabindex="-1"></a>ser.g<span class="fl">.01</span></span>
+<span id="cb97-32"><a href="next-part-3.html#cb97-32" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ser.g<span class="fl">.01</span>)</span>
+<span id="cb97-33"><a href="next-part-3.html#cb97-33" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ser.g<span class="fl">.01</span>)</span>
+<span id="cb97-34"><a href="next-part-3.html#cb97-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-35"><a href="next-part-3.html#cb97-35" aria-hidden="true" tabindex="-1"></a><span class="co"># plot vaiable</span></span>
+<span id="cb97-36"><a href="next-part-3.html#cb97-36" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ser.g<span class="fl">.01</span><span class="sc">$</span>series_g, <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb97-37"><a href="next-part-3.html#cb97-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-38"><a href="next-part-3.html#cb97-38" aria-hidden="true" tabindex="-1"></a>log.ser.g <span class="ot">&lt;-</span> <span class="fu">log</span>(ser.g<span class="fl">.01</span><span class="sc">$</span>series_g)</span>
+<span id="cb97-39"><a href="next-part-3.html#cb97-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-40"><a href="next-part-3.html#cb97-40" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(log.ser.g, <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb97-41"><a href="next-part-3.html#cb97-41" aria-hidden="true" tabindex="-1"></a>time. <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">144</span><span class="sc">+</span><span class="dv">12</span>)</span>
+<span id="cb97-42"><a href="next-part-3.html#cb97-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-43"><a href="next-part-3.html#cb97-43" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.01</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-44"><a href="next-part-3.html#cb97-44" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.02</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-45"><a href="next-part-3.html#cb97-45" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.03</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-46"><a href="next-part-3.html#cb97-46" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.04</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-47"><a href="next-part-3.html#cb97-47" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.05</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-48"><a href="next-part-3.html#cb97-48" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.06</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-49"><a href="next-part-3.html#cb97-49" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.07</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-50"><a href="next-part-3.html#cb97-50" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.08</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-51"><a href="next-part-3.html#cb97-51" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.09</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-52"><a href="next-part-3.html#cb97-52" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.10</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-53"><a href="next-part-3.html#cb97-53" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.11</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-54"><a href="next-part-3.html#cb97-54" aria-hidden="true" tabindex="-1"></a>month<span class="fl">.12</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb97-55"><a href="next-part-3.html#cb97-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-56"><a href="next-part-3.html#cb97-56" aria-hidden="true" tabindex="-1"></a>log.ser.g[<span class="dv">145</span><span class="sc">:</span>(<span class="dv">144</span><span class="sc">+</span><span class="dv">12</span>)] <span class="ot">&lt;-</span><span class="cn">NA</span></span>
+<span id="cb97-57"><a href="next-part-3.html#cb97-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-58"><a href="next-part-3.html#cb97-58" aria-hidden="true" tabindex="-1"></a>ser.g<span class="fl">.02</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(log.ser.g, time., month<span class="fl">.01</span>, month<span class="fl">.02</span>, month<span class="fl">.03</span>, </span>
+<span id="cb97-59"><a href="next-part-3.html#cb97-59" aria-hidden="true" tabindex="-1"></a>                       month<span class="fl">.04</span>, month<span class="fl">.05</span>, month<span class="fl">.06</span>, month<span class="fl">.07</span>, month<span class="fl">.08</span>, month<span class="fl">.09</span>, month<span class="fl">.10</span>, </span>
+<span id="cb97-60"><a href="next-part-3.html#cb97-60" aria-hidden="true" tabindex="-1"></a>                       month<span class="fl">.11</span>, month<span class="fl">.12</span>)</span>
+<span id="cb97-61"><a href="next-part-3.html#cb97-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-62"><a href="next-part-3.html#cb97-62" aria-hidden="true" tabindex="-1"></a>ser.g<span class="fl">.02</span></span>
+<span id="cb97-63"><a href="next-part-3.html#cb97-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-64"><a href="next-part-3.html#cb97-64" aria-hidden="true" tabindex="-1"></a>res<span class="fl">.01</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(log.ser.g <span class="sc">~</span> time. <span class="sc">+</span>              month<span class="fl">.02</span> <span class="sc">+</span> month<span class="fl">.03</span> <span class="sc">+</span> month<span class="fl">.04</span> <span class="sc">+</span> </span>
+<span id="cb97-65"><a href="next-part-3.html#cb97-65" aria-hidden="true" tabindex="-1"></a>                 month<span class="fl">.05</span> <span class="sc">+</span> month<span class="fl">.06</span> <span class="sc">+</span> month<span class="fl">.07</span> <span class="sc">+</span> month<span class="fl">.08</span> <span class="sc">+</span> month<span class="fl">.09</span> <span class="sc">+</span> month<span class="fl">.10</span> <span class="sc">+</span> </span>
+<span id="cb97-66"><a href="next-part-3.html#cb97-66" aria-hidden="true" tabindex="-1"></a>                 month<span class="fl">.11</span> <span class="sc">+</span> month<span class="fl">.12</span>, ser.g<span class="fl">.02</span>)</span>
+<span id="cb97-67"><a href="next-part-3.html#cb97-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-68"><a href="next-part-3.html#cb97-68" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res<span class="fl">.01</span>)</span>
+<span id="cb97-69"><a href="next-part-3.html#cb97-69" aria-hidden="true" tabindex="-1"></a>res<span class="fl">.01</span><span class="sc">$</span>fitted.values</span>
+<span id="cb97-70"><a href="next-part-3.html#cb97-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-71"><a href="next-part-3.html#cb97-71" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ser.g<span class="fl">.02</span><span class="sc">$</span>log.ser.g, <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb97-72"><a href="next-part-3.html#cb97-72" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(res<span class="fl">.01</span><span class="sc">$</span>fitted.values)</span>
+<span id="cb97-73"><a href="next-part-3.html#cb97-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-74"><a href="next-part-3.html#cb97-74" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ser.g<span class="fl">.02</span><span class="sc">$</span>log.ser.g, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
+<span id="cb97-75"><a href="next-part-3.html#cb97-75" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(res<span class="fl">.01</span><span class="sc">$</span>fitted.values, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb97-76"><a href="next-part-3.html#cb97-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-77"><a href="next-part-3.html#cb97-77" aria-hidden="true" tabindex="-1"></a>x.lg <span class="ot">=</span> <span class="fu">predict.lm</span>(res<span class="fl">.01</span>, ser.g<span class="fl">.02</span>)</span>
+<span id="cb97-78"><a href="next-part-3.html#cb97-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-79"><a href="next-part-3.html#cb97-79" aria-hidden="true" tabindex="-1"></a>x.lg</span>
+<span id="cb97-80"><a href="next-part-3.html#cb97-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-81"><a href="next-part-3.html#cb97-81" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.lg, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb97-82"><a href="next-part-3.html#cb97-82" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ser.g<span class="fl">.02</span><span class="sc">$</span>log.ser.g, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
+<span id="cb97-83"><a href="next-part-3.html#cb97-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-84"><a href="next-part-3.html#cb97-84" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">exp</span>(x.lg)</span>
+<span id="cb97-85"><a href="next-part-3.html#cb97-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-86"><a href="next-part-3.html#cb97-86" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb97-87"><a href="next-part-3.html#cb97-87" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ser.g<span class="fl">.01</span><span class="sc">$</span>series_g, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span></code></pre></div>
+</div>
+<div id="next-part-5" class="section level2" number="20.2">
+<h2><span class="header-section-number">20.2</span> NEXT Part</h2>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="next-part-3.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># провести отбор оптимального подмножества переменных;</span></span>
+<span id="cb98-2"><a href="next-part-3.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># отобрать предикторы методами пошагового включения и исключения;</span></span>
+<span id="cb98-3"><a href="next-part-3.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="co"># как построить ридж- и лассо-регрессию;</span></span>
+<span id="cb98-4"><a href="next-part-3.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="co"># как использовать снижение размерности: PCR и PLS;</span></span>
+<span id="cb98-5"><a href="next-part-3.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="co"># как применять эти методы в сочетании с кросс-валидацией.</span></span>
+<span id="cb98-6"><a href="next-part-3.html#cb98-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-7"><a href="next-part-3.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;ISLR&#39;</span>)              <span class="co"># набор данных Hitters</span></span>
+<span id="cb98-8"><a href="next-part-3.html#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;leaps&#39;</span>)             <span class="co"># функция regsubset() -- отбор оптимального </span></span>
+<span id="cb98-9"><a href="next-part-3.html#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  подмножества переменных</span></span>
+<span id="cb98-10"><a href="next-part-3.html#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;glmnet&#39;</span>)            <span class="co"># функция glmnet() -- лассо</span></span>
+<span id="cb98-11"><a href="next-part-3.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;pls&#39;</span>)               <span class="co"># регрессия на главные компоненты -- pcr()</span></span>
+<span id="cb98-12"><a href="next-part-3.html#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  и частный МНК -- plsr()</span></span>
+<span id="cb98-13"><a href="next-part-3.html#cb98-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-14"><a href="next-part-3.html#cb98-14" aria-hidden="true" tabindex="-1"></a>my.seed <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb98-15"><a href="next-part-3.html#cb98-15" aria-hidden="true" tabindex="-1"></a>?Hitters</span>
+<span id="cb98-16"><a href="next-part-3.html#cb98-16" aria-hidden="true" tabindex="-1"></a><span class="fu">fix</span>(Hitters)</span>
+<span id="cb98-17"><a href="next-part-3.html#cb98-17" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Hitters)</span>
+<span id="cb98-18"><a href="next-part-3.html#cb98-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Hitters)</span>
+<span id="cb98-19"><a href="next-part-3.html#cb98-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(Hitters<span class="sc">$</span>Salary))</span>
+<span id="cb98-20"><a href="next-part-3.html#cb98-20" aria-hidden="true" tabindex="-1"></a>Hitters <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Hitters)</span>
+<span id="cb98-21"><a href="next-part-3.html#cb98-21" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Hitters)</span>
+<span id="cb98-22"><a href="next-part-3.html#cb98-22" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(Hitters<span class="sc">$</span>Salary))</span>
+<span id="cb98-23"><a href="next-part-3.html#cb98-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-24"><a href="next-part-3.html#cb98-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  Отбор оптимального подмножества</span></span>
+<span id="cb98-25"><a href="next-part-3.html#cb98-25" aria-hidden="true" tabindex="-1"></a><span class="co"># подгоняем модели с сочетаниями предикторов до 8 включительно</span></span>
+<span id="cb98-26"><a href="next-part-3.html#cb98-26" aria-hidden="true" tabindex="-1"></a>regfit.full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., Hitters)</span>
+<span id="cb98-27"><a href="next-part-3.html#cb98-27" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regfit.full)</span>
+<span id="cb98-28"><a href="next-part-3.html#cb98-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-29"><a href="next-part-3.html#cb98-29" aria-hidden="true" tabindex="-1"></a><span class="co"># подгоняем модели с сочетаниями предикторов до 19 (максимум в данных)</span></span>
+<span id="cb98-30"><a href="next-part-3.html#cb98-30" aria-hidden="true" tabindex="-1"></a>regfit.full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., Hitters, <span class="at">nvmax =</span> <span class="dv">19</span>)</span>
+<span id="cb98-31"><a href="next-part-3.html#cb98-31" aria-hidden="true" tabindex="-1"></a>reg.summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(regfit.full)</span>
+<span id="cb98-32"><a href="next-part-3.html#cb98-32" aria-hidden="true" tabindex="-1"></a>reg.summary</span>
+<span id="cb98-33"><a href="next-part-3.html#cb98-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-34"><a href="next-part-3.html#cb98-34" aria-hidden="true" tabindex="-1"></a><span class="co"># структура отчёта по модели (ищем характеристики качества)</span></span>
+<span id="cb98-35"><a href="next-part-3.html#cb98-35" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(reg.summary)</span>
+<span id="cb98-36"><a href="next-part-3.html#cb98-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-37"><a href="next-part-3.html#cb98-37" aria-hidden="true" tabindex="-1"></a><span class="co"># R^2 и скорректированный R^2</span></span>
+<span id="cb98-38"><a href="next-part-3.html#cb98-38" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(reg.summary<span class="sc">$</span>rsq, <span class="dv">3</span>)</span>
+<span id="cb98-39"><a href="next-part-3.html#cb98-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-40"><a href="next-part-3.html#cb98-40" aria-hidden="true" tabindex="-1"></a><span class="co"># на графике</span></span>
+<span id="cb98-41"><a href="next-part-3.html#cb98-41" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>, reg.summary<span class="sc">$</span>rsq, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>,</span>
+<span id="cb98-42"><a href="next-part-3.html#cb98-42" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Количество предикторов&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;R-квадрат&#39;</span>)</span>
+<span id="cb98-43"><a href="next-part-3.html#cb98-43" aria-hidden="true" tabindex="-1"></a><span class="co"># сода же добавим скорректированный R-квадрат</span></span>
+<span id="cb98-44"><a href="next-part-3.html#cb98-44" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>, reg.summary<span class="sc">$</span>adjr2, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb98-45"><a href="next-part-3.html#cb98-45" aria-hidden="true" tabindex="-1"></a><span class="co"># модель с максимальным скорректированным R-квадратом</span></span>
+<span id="cb98-46"><a href="next-part-3.html#cb98-46" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(reg.summary<span class="sc">$</span>adjr2)</span>
+<span id="cb98-47"><a href="next-part-3.html#cb98-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-48"><a href="next-part-3.html#cb98-48" aria-hidden="true" tabindex="-1"></a><span class="do">### 11</span></span>
+<span id="cb98-49"><a href="next-part-3.html#cb98-49" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which.max</span>(reg.summary<span class="sc">$</span>adjr2), </span>
+<span id="cb98-50"><a href="next-part-3.html#cb98-50" aria-hidden="true" tabindex="-1"></a>       reg.summary<span class="sc">$</span>adjr2[<span class="fu">which.max</span>(reg.summary<span class="sc">$</span>adjr2)],</span>
+<span id="cb98-51"><a href="next-part-3.html#cb98-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb98-52"><a href="next-part-3.html#cb98-52" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;R^2&#39;</span>, <span class="st">&#39;R^2_adg&#39;</span>),</span>
+<span id="cb98-53"><a href="next-part-3.html#cb98-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;black&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>),</span>
+<span id="cb98-54"><a href="next-part-3.html#cb98-54" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb98-55"><a href="next-part-3.html#cb98-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-56"><a href="next-part-3.html#cb98-56" aria-hidden="true" tabindex="-1"></a><span class="co"># C_p</span></span>
+<span id="cb98-57"><a href="next-part-3.html#cb98-57" aria-hidden="true" tabindex="-1"></a>reg.summary<span class="sc">$</span>cp</span>
+<span id="cb98-58"><a href="next-part-3.html#cb98-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-59"><a href="next-part-3.html#cb98-59" aria-hidden="true" tabindex="-1"></a><span class="co"># число предикторов у оптимального значения критерия</span></span>
+<span id="cb98-60"><a href="next-part-3.html#cb98-60" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(reg.summary<span class="sc">$</span>cp)</span>
+<span id="cb98-61"><a href="next-part-3.html#cb98-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-62"><a href="next-part-3.html#cb98-62" aria-hidden="true" tabindex="-1"></a><span class="do">### 10</span></span>
+<span id="cb98-63"><a href="next-part-3.html#cb98-63" aria-hidden="true" tabindex="-1"></a><span class="co"># график</span></span>
+<span id="cb98-64"><a href="next-part-3.html#cb98-64" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.summary<span class="sc">$</span>cp, <span class="at">xlab =</span> <span class="st">&#39;Число предикторов&#39;</span>,</span>
+<span id="cb98-65"><a href="next-part-3.html#cb98-65" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;C_p&#39;</span>, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>)</span>
+<span id="cb98-66"><a href="next-part-3.html#cb98-66" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which.min</span>(reg.summary<span class="sc">$</span>cp),</span>
+<span id="cb98-67"><a href="next-part-3.html#cb98-67" aria-hidden="true" tabindex="-1"></a>       reg.summary<span class="sc">$</span>cp[<span class="fu">which.min</span>(reg.summary<span class="sc">$</span>cp)], </span>
+<span id="cb98-68"><a href="next-part-3.html#cb98-68" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb98-69"><a href="next-part-3.html#cb98-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-70"><a href="next-part-3.html#cb98-70" aria-hidden="true" tabindex="-1"></a><span class="co"># BIC</span></span>
+<span id="cb98-71"><a href="next-part-3.html#cb98-71" aria-hidden="true" tabindex="-1"></a>reg.summary<span class="sc">$</span>bic</span>
+<span id="cb98-72"><a href="next-part-3.html#cb98-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-73"><a href="next-part-3.html#cb98-73" aria-hidden="true" tabindex="-1"></a><span class="co"># число предикторов у оптимального значения критерия</span></span>
+<span id="cb98-74"><a href="next-part-3.html#cb98-74" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(reg.summary<span class="sc">$</span>bic)</span>
+<span id="cb98-75"><a href="next-part-3.html#cb98-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-76"><a href="next-part-3.html#cb98-76" aria-hidden="true" tabindex="-1"></a><span class="do">### 6</span></span>
+<span id="cb98-77"><a href="next-part-3.html#cb98-77" aria-hidden="true" tabindex="-1"></a><span class="co"># график</span></span>
+<span id="cb98-78"><a href="next-part-3.html#cb98-78" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.summary<span class="sc">$</span>bic, <span class="at">xlab =</span> <span class="st">&#39;Число предикторов&#39;</span>,</span>
+<span id="cb98-79"><a href="next-part-3.html#cb98-79" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;BIC&#39;</span>, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>)</span>
+<span id="cb98-80"><a href="next-part-3.html#cb98-80" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which.min</span>(reg.summary<span class="sc">$</span>bic),</span>
+<span id="cb98-81"><a href="next-part-3.html#cb98-81" aria-hidden="true" tabindex="-1"></a>       reg.summary<span class="sc">$</span>bic[<span class="fu">which.min</span>(reg.summary<span class="sc">$</span>bic)], </span>
+<span id="cb98-82"><a href="next-part-3.html#cb98-82" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb98-83"><a href="next-part-3.html#cb98-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-84"><a href="next-part-3.html#cb98-84" aria-hidden="true" tabindex="-1"></a><span class="co"># метод plot для визуализации результатов</span></span>
+<span id="cb98-85"><a href="next-part-3.html#cb98-85" aria-hidden="true" tabindex="-1"></a>?plot.regsubsets</span>
+<span id="cb98-86"><a href="next-part-3.html#cb98-86" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(regfit.full, <span class="at">scale =</span> <span class="st">&#39;r2&#39;</span>)</span>
+<span id="cb98-87"><a href="next-part-3.html#cb98-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-88"><a href="next-part-3.html#cb98-88" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(regfit.full, <span class="at">scale =</span> <span class="st">&#39;adjr2&#39;</span>)</span>
+<span id="cb98-89"><a href="next-part-3.html#cb98-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-90"><a href="next-part-3.html#cb98-90" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(regfit.full, <span class="at">scale =</span> <span class="st">&#39;Cp&#39;</span>)</span>
+<span id="cb98-91"><a href="next-part-3.html#cb98-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-92"><a href="next-part-3.html#cb98-92" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(regfit.full, <span class="at">scale =</span> <span class="st">&#39;bic&#39;</span>)</span>
+<span id="cb98-93"><a href="next-part-3.html#cb98-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-94"><a href="next-part-3.html#cb98-94" aria-hidden="true" tabindex="-1"></a><span class="co"># коэффициенты модели с наименьшим BIC</span></span>
+<span id="cb98-95"><a href="next-part-3.html#cb98-95" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(regfit.full, <span class="dv">6</span>), <span class="dv">3</span>)</span>
+<span id="cb98-96"><a href="next-part-3.html#cb98-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-97"><a href="next-part-3.html#cb98-97" aria-hidden="true" tabindex="-1"></a><span class="do">##  Отбор путём пошагового включения и исключения переменных</span></span>
+<span id="cb98-98"><a href="next-part-3.html#cb98-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Пошаговое включение</span></span>
+<span id="cb98-99"><a href="next-part-3.html#cb98-99" aria-hidden="true" tabindex="-1"></a>regfit.fwd <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters, <span class="at">nvmax =</span> <span class="dv">19</span>, <span class="at">method =</span> <span class="st">&#39;forward&#39;</span>)</span>
+<span id="cb98-100"><a href="next-part-3.html#cb98-100" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regfit.fwd)</span>
+<span id="cb98-101"><a href="next-part-3.html#cb98-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-102"><a href="next-part-3.html#cb98-102" aria-hidden="true" tabindex="-1"></a>regfit.bwd <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters,</span>
+<span id="cb98-103"><a href="next-part-3.html#cb98-103" aria-hidden="true" tabindex="-1"></a>                         <span class="at">nvmax =</span> <span class="dv">19</span>, <span class="at">method =</span> <span class="st">&#39;backward&#39;</span>)</span>
+<span id="cb98-104"><a href="next-part-3.html#cb98-104" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regfit.bwd)</span>
+<span id="cb98-105"><a href="next-part-3.html#cb98-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-106"><a href="next-part-3.html#cb98-106" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(regfit.full, <span class="dv">7</span>), <span class="dv">3</span>)</span>
+<span id="cb98-107"><a href="next-part-3.html#cb98-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-108"><a href="next-part-3.html#cb98-108" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(regfit.fwd, <span class="dv">7</span>), <span class="dv">3</span>)</span>
+<span id="cb98-109"><a href="next-part-3.html#cb98-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-110"><a href="next-part-3.html#cb98-110" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(regfit.bwd, <span class="dv">7</span>), <span class="dv">3</span>)</span>
+<span id="cb98-111"><a href="next-part-3.html#cb98-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-112"><a href="next-part-3.html#cb98-112" aria-hidden="true" tabindex="-1"></a><span class="do">### Нахождение оптимальной модели при помощи методов проверочной выборки и перекрёстной проверки</span></span>
+<span id="cb98-113"><a href="next-part-3.html#cb98-113" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb98-114"><a href="next-part-3.html#cb98-114" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(T, F), <span class="fu">nrow</span>(Hitters), <span class="at">rep =</span> T)</span>
+<span id="cb98-115"><a href="next-part-3.html#cb98-115" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="sc">!</span>train</span>
+<span id="cb98-116"><a href="next-part-3.html#cb98-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-117"><a href="next-part-3.html#cb98-117" aria-hidden="true" tabindex="-1"></a><span class="co"># обучаем модели</span></span>
+<span id="cb98-118"><a href="next-part-3.html#cb98-118" aria-hidden="true" tabindex="-1"></a>regfit.best <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters[train, ],</span>
+<span id="cb98-119"><a href="next-part-3.html#cb98-119" aria-hidden="true" tabindex="-1"></a>                          <span class="at">nvmax =</span> <span class="dv">19</span>)</span>
+<span id="cb98-120"><a href="next-part-3.html#cb98-120" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица объясняющих переменных модели для тестовой выборки</span></span>
+<span id="cb98-121"><a href="next-part-3.html#cb98-121" aria-hidden="true" tabindex="-1"></a>test.mat <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters[test, ])</span>
+<span id="cb98-122"><a href="next-part-3.html#cb98-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-123"><a href="next-part-3.html#cb98-123" aria-hidden="true" tabindex="-1"></a><span class="co"># вектор ошибок</span></span>
+<span id="cb98-124"><a href="next-part-3.html#cb98-124" aria-hidden="true" tabindex="-1"></a>val.errors <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">19</span>)</span>
+<span id="cb98-125"><a href="next-part-3.html#cb98-125" aria-hidden="true" tabindex="-1"></a><span class="co"># цикл по количеству предикторов</span></span>
+<span id="cb98-126"><a href="next-part-3.html#cb98-126" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>){</span>
+<span id="cb98-127"><a href="next-part-3.html#cb98-127" aria-hidden="true" tabindex="-1"></a>    coefi <span class="ot">&lt;-</span> <span class="fu">coef</span>(regfit.best, <span class="at">id =</span> i)</span>
+<span id="cb98-128"><a href="next-part-3.html#cb98-128" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> test.mat[, <span class="fu">names</span>(coefi)] <span class="sc">%*%</span> coefi</span>
+<span id="cb98-129"><a href="next-part-3.html#cb98-129" aria-hidden="true" tabindex="-1"></a>    <span class="co"># записываем значение MSE на тестовой выборке в вектор</span></span>
+<span id="cb98-130"><a href="next-part-3.html#cb98-130" aria-hidden="true" tabindex="-1"></a>    val.errors[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>((Hitters<span class="sc">$</span>Salary[test] <span class="sc">-</span> pred)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb98-131"><a href="next-part-3.html#cb98-131" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-132"><a href="next-part-3.html#cb98-132" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(val.errors, <span class="dv">0</span>)</span>
+<span id="cb98-133"><a href="next-part-3.html#cb98-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-134"><a href="next-part-3.html#cb98-134" aria-hidden="true" tabindex="-1"></a><span class="co"># находим число предикторов у оптимальной модели</span></span>
+<span id="cb98-135"><a href="next-part-3.html#cb98-135" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(val.errors)</span>
+<span id="cb98-136"><a href="next-part-3.html#cb98-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-137"><a href="next-part-3.html#cb98-137" aria-hidden="true" tabindex="-1"></a><span class="do">### 10</span></span>
+<span id="cb98-138"><a href="next-part-3.html#cb98-138" aria-hidden="true" tabindex="-1"></a><span class="co"># коэффициенты оптимальной модели</span></span>
+<span id="cb98-139"><a href="next-part-3.html#cb98-139" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(regfit.best, <span class="dv">10</span>), <span class="dv">3</span>)</span>
+<span id="cb98-140"><a href="next-part-3.html#cb98-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-141"><a href="next-part-3.html#cb98-141" aria-hidden="true" tabindex="-1"></a><span class="co"># функция для прогноза для функции regsubset()</span></span>
+<span id="cb98-142"><a href="next-part-3.html#cb98-142" aria-hidden="true" tabindex="-1"></a>predict.regsubsets <span class="ot">&lt;-</span> <span class="cf">function</span>(object, newdata, id, ...){</span>
+<span id="cb98-143"><a href="next-part-3.html#cb98-143" aria-hidden="true" tabindex="-1"></a>    form <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(object<span class="sc">$</span>call[[<span class="dv">2</span>]])</span>
+<span id="cb98-144"><a href="next-part-3.html#cb98-144" aria-hidden="true" tabindex="-1"></a>    mat <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(form, newdata)</span>
+<span id="cb98-145"><a href="next-part-3.html#cb98-145" aria-hidden="true" tabindex="-1"></a>    coefi <span class="ot">&lt;-</span> <span class="fu">coef</span>(object, <span class="at">id =</span> id)</span>
+<span id="cb98-146"><a href="next-part-3.html#cb98-146" aria-hidden="true" tabindex="-1"></a>    xvars <span class="ot">&lt;-</span> <span class="fu">names</span>(coefi)</span>
+<span id="cb98-147"><a href="next-part-3.html#cb98-147" aria-hidden="true" tabindex="-1"></a>    mat[, xvars] <span class="sc">%*%</span> coefi</span>
+<span id="cb98-148"><a href="next-part-3.html#cb98-148" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-149"><a href="next-part-3.html#cb98-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-150"><a href="next-part-3.html#cb98-150" aria-hidden="true" tabindex="-1"></a><span class="co"># набор с оптимальным количеством переменных на полном наборе данных</span></span>
+<span id="cb98-151"><a href="next-part-3.html#cb98-151" aria-hidden="true" tabindex="-1"></a>regfit.best <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters,</span>
+<span id="cb98-152"><a href="next-part-3.html#cb98-152" aria-hidden="true" tabindex="-1"></a>                          <span class="at">nvmax =</span> <span class="dv">19</span>)</span>
+<span id="cb98-153"><a href="next-part-3.html#cb98-153" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(regfit.best, <span class="dv">10</span>), <span class="dv">3</span>)</span>
+<span id="cb98-154"><a href="next-part-3.html#cb98-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-155"><a href="next-part-3.html#cb98-155" aria-hidden="true" tabindex="-1"></a><span class="co"># k-кратная кросс-валидация</span></span>
+<span id="cb98-156"><a href="next-part-3.html#cb98-156" aria-hidden="true" tabindex="-1"></a><span class="co"># отбираем 10 блоков наблюдений</span></span>
+<span id="cb98-157"><a href="next-part-3.html#cb98-157" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb98-158"><a href="next-part-3.html#cb98-158" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb98-159"><a href="next-part-3.html#cb98-159" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="fu">nrow</span>(Hitters), <span class="at">replace =</span> T)</span>
+<span id="cb98-160"><a href="next-part-3.html#cb98-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-161"><a href="next-part-3.html#cb98-161" aria-hidden="true" tabindex="-1"></a><span class="co"># заготовка под матрицу с ошибками</span></span>
+<span id="cb98-162"><a href="next-part-3.html#cb98-162" aria-hidden="true" tabindex="-1"></a>cv.errors <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, k, <span class="dv">19</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="cn">NULL</span>, <span class="fu">paste</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>)))</span>
+<span id="cb98-163"><a href="next-part-3.html#cb98-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-164"><a href="next-part-3.html#cb98-164" aria-hidden="true" tabindex="-1"></a><span class="co"># заполняем матрицу в цикле по блокам данных</span></span>
+<span id="cb98-165"><a href="next-part-3.html#cb98-165" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k){</span>
+<span id="cb98-166"><a href="next-part-3.html#cb98-166" aria-hidden="true" tabindex="-1"></a>    best.fit <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters[folds <span class="sc">!=</span> j, ],</span>
+<span id="cb98-167"><a href="next-part-3.html#cb98-167" aria-hidden="true" tabindex="-1"></a>                           <span class="at">nvmax =</span> <span class="dv">19</span>)</span>
+<span id="cb98-168"><a href="next-part-3.html#cb98-168" aria-hidden="true" tabindex="-1"></a>    <span class="co"># теперь цикл по количеству объясняющих переменных</span></span>
+<span id="cb98-169"><a href="next-part-3.html#cb98-169" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>){</span>
+<span id="cb98-170"><a href="next-part-3.html#cb98-170" aria-hidden="true" tabindex="-1"></a>        <span class="co"># модельные значения Salary</span></span>
+<span id="cb98-171"><a href="next-part-3.html#cb98-171" aria-hidden="true" tabindex="-1"></a>        pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(best.fit, Hitters[folds <span class="sc">==</span> j, ], <span class="at">id =</span> i)</span>
+<span id="cb98-172"><a href="next-part-3.html#cb98-172" aria-hidden="true" tabindex="-1"></a>        <span class="co"># вписываем ошибку в матрицу</span></span>
+<span id="cb98-173"><a href="next-part-3.html#cb98-173" aria-hidden="true" tabindex="-1"></a>        cv.errors[j, i] <span class="ot">&lt;-</span> <span class="fu">mean</span>((Hitters<span class="sc">$</span>Salary[folds <span class="sc">==</span> j] <span class="sc">-</span> pred)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb98-174"><a href="next-part-3.html#cb98-174" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb98-175"><a href="next-part-3.html#cb98-175" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-176"><a href="next-part-3.html#cb98-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-177"><a href="next-part-3.html#cb98-177" aria-hidden="true" tabindex="-1"></a><span class="co"># усредняем матрицу по каждому столбцу (т.е. по блокам наблюдений), </span></span>
+<span id="cb98-178"><a href="next-part-3.html#cb98-178" aria-hidden="true" tabindex="-1"></a><span class="co">#  чтобы получить оценку MSE для каждой модели с фиксированным </span></span>
+<span id="cb98-179"><a href="next-part-3.html#cb98-179" aria-hidden="true" tabindex="-1"></a><span class="co">#  количеством объясняющих переменных</span></span>
+<span id="cb98-180"><a href="next-part-3.html#cb98-180" aria-hidden="true" tabindex="-1"></a>mean.cv.errors <span class="ot">&lt;-</span> <span class="fu">apply</span>(cv.errors, <span class="dv">2</span>, mean)</span>
+<span id="cb98-181"><a href="next-part-3.html#cb98-181" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(mean.cv.errors, <span class="dv">0</span>)</span>
+<span id="cb98-182"><a href="next-part-3.html#cb98-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-183"><a href="next-part-3.html#cb98-183" aria-hidden="true" tabindex="-1"></a><span class="co"># на графике</span></span>
+<span id="cb98-184"><a href="next-part-3.html#cb98-184" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean.cv.errors, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>)</span>
+<span id="cb98-185"><a href="next-part-3.html#cb98-185" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which.min</span>(mean.cv.errors), mean.cv.errors[<span class="fu">which.min</span>(mean.cv.errors)],</span>
+<span id="cb98-186"><a href="next-part-3.html#cb98-186" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb98-187"><a href="next-part-3.html#cb98-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-188"><a href="next-part-3.html#cb98-188" aria-hidden="true" tabindex="-1"></a><span class="co"># перестраиваем модель с 11 объясняющими переменными на всём наборе данных</span></span>
+<span id="cb98-189"><a href="next-part-3.html#cb98-189" aria-hidden="true" tabindex="-1"></a>reg.best <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters, <span class="at">nvmax =</span> <span class="dv">19</span>)</span>
+<span id="cb98-190"><a href="next-part-3.html#cb98-190" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(reg.best, <span class="dv">11</span>), <span class="dv">3</span>)</span>
+<span id="cb98-191"><a href="next-part-3.html#cb98-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-192"><a href="next-part-3.html#cb98-192" aria-hidden="true" tabindex="-1"></a><span class="co"># из-за синтаксиса glmnet() формируем явно матрицу объясняющих...</span></span>
+<span id="cb98-193"><a href="next-part-3.html#cb98-193" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(Salary <span class="sc">~</span> ., Hitters)[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb98-194"><a href="next-part-3.html#cb98-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-195"><a href="next-part-3.html#cb98-195" aria-hidden="true" tabindex="-1"></a><span class="co"># и вектор значений зависимой переменной</span></span>
+<span id="cb98-196"><a href="next-part-3.html#cb98-196" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> Hitters<span class="sc">$</span>Salary</span>
+<span id="cb98-197"><a href="next-part-3.html#cb98-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-198"><a href="next-part-3.html#cb98-198" aria-hidden="true" tabindex="-1"></a><span class="do">### Гребневая регрессия</span></span>
+<span id="cb98-199"><a href="next-part-3.html#cb98-199" aria-hidden="true" tabindex="-1"></a><span class="co"># вектор значений гиперпараметра лямбда</span></span>
+<span id="cb98-200"><a href="next-part-3.html#cb98-200" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">10</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb98-201"><a href="next-part-3.html#cb98-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-202"><a href="next-part-3.html#cb98-202" aria-hidden="true" tabindex="-1"></a><span class="co"># подгоняем серию моделей ридж-регрессии</span></span>
+<span id="cb98-203"><a href="next-part-3.html#cb98-203" aria-hidden="true" tabindex="-1"></a>ridge.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">lambda =</span> grid)</span>
+<span id="cb98-204"><a href="next-part-3.html#cb98-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-205"><a href="next-part-3.html#cb98-205" aria-hidden="true" tabindex="-1"></a><span class="co"># размерность матрицы коэффициентов моделей</span></span>
+<span id="cb98-206"><a href="next-part-3.html#cb98-206" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">coef</span>(ridge.mod))</span>
+<span id="cb98-207"><a href="next-part-3.html#cb98-207" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  20 100</span></span>
+<span id="cb98-208"><a href="next-part-3.html#cb98-208" aria-hidden="true" tabindex="-1"></a><span class="co"># значение лямбда под номером 50</span></span>
+<span id="cb98-209"><a href="next-part-3.html#cb98-209" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ridge.mod<span class="sc">$</span>lambda[<span class="dv">50</span>], <span class="dv">0</span>)</span>
+<span id="cb98-210"><a href="next-part-3.html#cb98-210" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11498</span></span>
+<span id="cb98-211"><a href="next-part-3.html#cb98-211" aria-hidden="true" tabindex="-1"></a><span class="co"># коэффициенты соответствующей модели</span></span>
+<span id="cb98-212"><a href="next-part-3.html#cb98-212" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(ridge.mod)[, <span class="dv">50</span>], <span class="dv">3</span>)</span>
+<span id="cb98-213"><a href="next-part-3.html#cb98-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-214"><a href="next-part-3.html#cb98-214" aria-hidden="true" tabindex="-1"></a><span class="co"># норма эль-два</span></span>
+<span id="cb98-215"><a href="next-part-3.html#cb98-215" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sqrt</span>(<span class="fu">sum</span>(<span class="fu">coef</span>(ridge.mod)[<span class="sc">-</span><span class="dv">1</span>, <span class="dv">50</span>]<span class="sc">^</span><span class="dv">2</span>)), <span class="dv">2</span>)</span>
+<span id="cb98-216"><a href="next-part-3.html#cb98-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-217"><a href="next-part-3.html#cb98-217" aria-hidden="true" tabindex="-1"></a><span class="co"># всё то же для лямбды под номером 60</span></span>
+<span id="cb98-218"><a href="next-part-3.html#cb98-218" aria-hidden="true" tabindex="-1"></a><span class="co"># значение лямбда под номером 50</span></span>
+<span id="cb98-219"><a href="next-part-3.html#cb98-219" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ridge.mod<span class="sc">$</span>lambda[<span class="dv">60</span>], <span class="dv">0</span>)</span>
+<span id="cb98-220"><a href="next-part-3.html#cb98-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-221"><a href="next-part-3.html#cb98-221" aria-hidden="true" tabindex="-1"></a><span class="co"># коэффициенты соответствующей модели</span></span>
+<span id="cb98-222"><a href="next-part-3.html#cb98-222" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coef</span>(ridge.mod)[, <span class="dv">60</span>], <span class="dv">3</span>)</span>
+<span id="cb98-223"><a href="next-part-3.html#cb98-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-224"><a href="next-part-3.html#cb98-224" aria-hidden="true" tabindex="-1"></a><span class="co"># норма эль-два</span></span>
+<span id="cb98-225"><a href="next-part-3.html#cb98-225" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sqrt</span>(<span class="fu">sum</span>(<span class="fu">coef</span>(ridge.mod)[<span class="sc">-</span><span class="dv">1</span>, <span class="dv">60</span>]<span class="sc">^</span><span class="dv">2</span>)), <span class="dv">1</span>)</span>
+<span id="cb98-226"><a href="next-part-3.html#cb98-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-227"><a href="next-part-3.html#cb98-227" aria-hidden="true" tabindex="-1"></a><span class="co"># мы можем получить значения коэффициентов для новой лямбды</span></span>
+<span id="cb98-228"><a href="next-part-3.html#cb98-228" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">predict</span>(ridge.mod, <span class="at">s =</span> <span class="dv">50</span>, <span class="at">type =</span> <span class="st">&#39;coefficients&#39;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, ], <span class="dv">3</span>)</span>
+<span id="cb98-229"><a href="next-part-3.html#cb98-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-230"><a href="next-part-3.html#cb98-230" aria-hidden="true" tabindex="-1"></a><span class="do">## Метод проверочной выборки</span></span>
+<span id="cb98-231"><a href="next-part-3.html#cb98-231" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb98-232"><a href="next-part-3.html#cb98-232" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x), <span class="fu">nrow</span>(x)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb98-233"><a href="next-part-3.html#cb98-233" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="sc">-</span>train</span>
+<span id="cb98-234"><a href="next-part-3.html#cb98-234" aria-hidden="true" tabindex="-1"></a>y.test <span class="ot">&lt;-</span> y[test]</span>
+<span id="cb98-235"><a href="next-part-3.html#cb98-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-236"><a href="next-part-3.html#cb98-236" aria-hidden="true" tabindex="-1"></a><span class="co"># подгоняем ридж-модели с большей точностью (thresh ниже значения по умолчанию)</span></span>
+<span id="cb98-237"><a href="next-part-3.html#cb98-237" aria-hidden="true" tabindex="-1"></a>ridge.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">lambda =</span> grid,</span>
+<span id="cb98-238"><a href="next-part-3.html#cb98-238" aria-hidden="true" tabindex="-1"></a>                    <span class="at">thresh =</span> <span class="fl">1e-12</span>)</span>
+<span id="cb98-239"><a href="next-part-3.html#cb98-239" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ridge.mod)</span>
+<span id="cb98-240"><a href="next-part-3.html#cb98-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-241"><a href="next-part-3.html#cb98-241" aria-hidden="true" tabindex="-1"></a><span class="co"># прогнозы для модели с лямбда = 4</span></span>
+<span id="cb98-242"><a href="next-part-3.html#cb98-242" aria-hidden="true" tabindex="-1"></a>ridge.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge.mod, <span class="at">s =</span> <span class="dv">4</span>, <span class="at">newx =</span> x[test, ])</span>
+<span id="cb98-243"><a href="next-part-3.html#cb98-243" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>((ridge.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>)</span>
+<span id="cb98-244"><a href="next-part-3.html#cb98-244" aria-hidden="true" tabindex="-1"></a><span class="co"># сравним с MSE для нулевой модели (прогноз = среднее)</span></span>
+<span id="cb98-245"><a href="next-part-3.html#cb98-245" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>((<span class="fu">mean</span>(y[train]) <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>)</span>
+<span id="cb98-246"><a href="next-part-3.html#cb98-246" aria-hidden="true" tabindex="-1"></a><span class="co"># насколько модель с лямбда = 4 отличается от обычной ПЛР</span></span>
+<span id="cb98-247"><a href="next-part-3.html#cb98-247" aria-hidden="true" tabindex="-1"></a>ridge.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge.mod, <span class="at">s =</span> <span class="dv">0</span>, <span class="at">newx =</span> x[test, ], <span class="at">exact =</span> T,</span>
+<span id="cb98-248"><a href="next-part-3.html#cb98-248" aria-hidden="true" tabindex="-1"></a>                      <span class="at">x =</span> x[train, ], <span class="at">y =</span> y[train])</span>
+<span id="cb98-249"><a href="next-part-3.html#cb98-249" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>((ridge.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>)</span>
+<span id="cb98-250"><a href="next-part-3.html#cb98-250" aria-hidden="true" tabindex="-1"></a><span class="co"># predict с лямбдой (s) = 0 даёт модель ПЛР</span></span>
+<span id="cb98-251"><a href="next-part-3.html#cb98-251" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">subset =</span> train)</span>
+<span id="cb98-252"><a href="next-part-3.html#cb98-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-253"><a href="next-part-3.html#cb98-253" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">predict</span>(ridge.mod, <span class="at">s =</span> <span class="dv">0</span>, <span class="at">exact =</span> T, <span class="at">type =</span> <span class="st">&#39;coefficients&#39;</span>,</span>
+<span id="cb98-254"><a href="next-part-3.html#cb98-254" aria-hidden="true" tabindex="-1"></a>              <span class="at">x =</span> x[train, ], <span class="at">y =</span> y[train])[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, ], <span class="dv">3</span>)</span>
+<span id="cb98-255"><a href="next-part-3.html#cb98-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-256"><a href="next-part-3.html#cb98-256" aria-hidden="true" tabindex="-1"></a><span class="do">## Подбор оптимального значения лямбда с помощью перекрёстной проверки</span></span>
+<span id="cb98-257"><a href="next-part-3.html#cb98-257" aria-hidden="true" tabindex="-1"></a><span class="co"># k-кратная кросс-валидация</span></span>
+<span id="cb98-258"><a href="next-part-3.html#cb98-258" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb98-259"><a href="next-part-3.html#cb98-259" aria-hidden="true" tabindex="-1"></a><span class="co"># оценка ошибки</span></span>
+<span id="cb98-260"><a href="next-part-3.html#cb98-260" aria-hidden="true" tabindex="-1"></a>cv.out <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">0</span>)</span>
+<span id="cb98-261"><a href="next-part-3.html#cb98-261" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv.out)</span>
+<span id="cb98-262"><a href="next-part-3.html#cb98-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-263"><a href="next-part-3.html#cb98-263" aria-hidden="true" tabindex="-1"></a><span class="co"># значение лямбда, обеспечивающее минимальную ошибку перекрёстной проверки</span></span>
+<span id="cb98-264"><a href="next-part-3.html#cb98-264" aria-hidden="true" tabindex="-1"></a>bestlam <span class="ot">&lt;-</span> cv.out<span class="sc">$</span>lambda.min</span>
+<span id="cb98-265"><a href="next-part-3.html#cb98-265" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(bestlam, <span class="dv">0</span>)</span>
+<span id="cb98-266"><a href="next-part-3.html#cb98-266" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 212</span></span>
+<span id="cb98-267"><a href="next-part-3.html#cb98-267" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE на тестовой для этого значения лямбды</span></span>
+<span id="cb98-268"><a href="next-part-3.html#cb98-268" aria-hidden="true" tabindex="-1"></a>ridge.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge.mod, <span class="at">s =</span> bestlam, <span class="at">newx =</span> x[test, ])</span>
+<span id="cb98-269"><a href="next-part-3.html#cb98-269" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>((ridge.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>)</span>
+<span id="cb98-270"><a href="next-part-3.html#cb98-270" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 96016</span></span>
+<span id="cb98-271"><a href="next-part-3.html#cb98-271" aria-hidden="true" tabindex="-1"></a><span class="co"># наконец, подгоняем модель для оптимальной лямбды, </span></span>
+<span id="cb98-272"><a href="next-part-3.html#cb98-272" aria-hidden="true" tabindex="-1"></a><span class="co">#  найденной по перекрёстной проверке</span></span>
+<span id="cb98-273"><a href="next-part-3.html#cb98-273" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">0</span>)</span>
+<span id="cb98-274"><a href="next-part-3.html#cb98-274" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">predict</span>(out, <span class="at">type =</span> <span class="st">&#39;coefficients&#39;</span>, <span class="at">s =</span> bestlam)[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, ], <span class="dv">3</span>)</span>
+<span id="cb98-275"><a href="next-part-3.html#cb98-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-276"><a href="next-part-3.html#cb98-276" aria-hidden="true" tabindex="-1"></a><span class="do">## Лассо</span></span>
+<span id="cb98-277"><a href="next-part-3.html#cb98-277" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">lambda =</span> grid)</span>
+<span id="cb98-278"><a href="next-part-3.html#cb98-278" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod)</span>
+<span id="cb98-279"><a href="next-part-3.html#cb98-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-280"><a href="next-part-3.html#cb98-280" aria-hidden="true" tabindex="-1"></a><span class="co"># Подбор оптимального значения лямбда с помощью перекрёстной проверки</span></span>
+<span id="cb98-281"><a href="next-part-3.html#cb98-281" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb98-282"><a href="next-part-3.html#cb98-282" aria-hidden="true" tabindex="-1"></a>cv.out <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb98-283"><a href="next-part-3.html#cb98-283" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv.out)</span>
+<span id="cb98-284"><a href="next-part-3.html#cb98-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-285"><a href="next-part-3.html#cb98-285" aria-hidden="true" tabindex="-1"></a>bestlam <span class="ot">&lt;-</span> cv.out<span class="sc">$</span>lambda.min</span>
+<span id="cb98-286"><a href="next-part-3.html#cb98-286" aria-hidden="true" tabindex="-1"></a>lasso.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.mod, <span class="at">s =</span> bestlam, <span class="at">newx =</span> x[test, ])</span>
+<span id="cb98-287"><a href="next-part-3.html#cb98-287" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>((lasso.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>)</span>
+<span id="cb98-288"><a href="next-part-3.html#cb98-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-289"><a href="next-part-3.html#cb98-289" aria-hidden="true" tabindex="-1"></a><span class="co"># коэффициенты лучшей модели</span></span>
+<span id="cb98-290"><a href="next-part-3.html#cb98-290" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">lambda =</span> grid)</span>
+<span id="cb98-291"><a href="next-part-3.html#cb98-291" aria-hidden="true" tabindex="-1"></a>lasso.coef <span class="ot">&lt;-</span> <span class="fu">predict</span>(out, <span class="at">type =</span> <span class="st">&#39;coefficients&#39;</span>, <span class="at">s =</span> bestlam)[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, ]</span>
+<span id="cb98-292"><a href="next-part-3.html#cb98-292" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(lasso.coef, <span class="dv">3</span>)</span>
+<span id="cb98-293"><a href="next-part-3.html#cb98-293" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(lasso.coef[lasso.coef <span class="sc">!=</span> <span class="dv">0</span>], <span class="dv">3</span>)</span>
+<span id="cb98-294"><a href="next-part-3.html#cb98-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-295"><a href="next-part-3.html#cb98-295" aria-hidden="true" tabindex="-1"></a><span class="do">### Лабораторная работа 3: регрессия при помощи методов PCR и PLS</span></span>
+<span id="cb98-296"><a href="next-part-3.html#cb98-296" aria-hidden="true" tabindex="-1"></a><span class="do">### 6.7.1 Регрессия на главные компоненты</span></span>
+<span id="cb98-297"><a href="next-part-3.html#cb98-297" aria-hidden="true" tabindex="-1"></a><span class="co"># кросс-валидация </span></span>
+<span id="cb98-298"><a href="next-part-3.html#cb98-298" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)   <span class="co"># непонятно почему они сменили зерно; похоже, опечатка</span></span>
+<span id="cb98-299"><a href="next-part-3.html#cb98-299" aria-hidden="true" tabindex="-1"></a>pcr.fit <span class="ot">&lt;-</span> <span class="fu">pcr</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters, <span class="at">scale =</span> T, <span class="at">validation =</span> <span class="st">&#39;CV&#39;</span>)</span>
+<span id="cb98-300"><a href="next-part-3.html#cb98-300" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pcr.fit)</span>
+<span id="cb98-301"><a href="next-part-3.html#cb98-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-302"><a href="next-part-3.html#cb98-302" aria-hidden="true" tabindex="-1"></a><span class="co"># график ошибок</span></span>
+<span id="cb98-303"><a href="next-part-3.html#cb98-303" aria-hidden="true" tabindex="-1"></a><span class="fu">validationplot</span>(pcr.fit, <span class="at">val.type =</span> <span class="st">&#39;MSEP&#39;</span>)</span>
+<span id="cb98-304"><a href="next-part-3.html#cb98-304" aria-hidden="true" tabindex="-1"></a><span class="co"># Подбор оптиального M: кросс-валидация на обучающей выборке</span></span>
+<span id="cb98-305"><a href="next-part-3.html#cb98-305" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb98-306"><a href="next-part-3.html#cb98-306" aria-hidden="true" tabindex="-1"></a>pcr.fit <span class="ot">&lt;-</span> <span class="fu">pcr</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters, <span class="at">subset =</span> train, <span class="at">scale =</span> T,</span>
+<span id="cb98-307"><a href="next-part-3.html#cb98-307" aria-hidden="true" tabindex="-1"></a>               <span class="at">validation =</span> <span class="st">&#39;CV&#39;</span>)</span>
+<span id="cb98-308"><a href="next-part-3.html#cb98-308" aria-hidden="true" tabindex="-1"></a><span class="fu">validationplot</span>(pcr.fit, <span class="at">val.type =</span> <span class="st">&#39;MSEP&#39;</span>)</span>
+<span id="cb98-309"><a href="next-part-3.html#cb98-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-310"><a href="next-part-3.html#cb98-310" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE на тестовой выборке</span></span>
+<span id="cb98-311"><a href="next-part-3.html#cb98-311" aria-hidden="true" tabindex="-1"></a>pcr.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(pcr.fit, x[test, ], <span class="at">ncomp =</span> <span class="dv">7</span>)</span>
+<span id="cb98-312"><a href="next-part-3.html#cb98-312" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>((pcr.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>)</span>
+<span id="cb98-313"><a href="next-part-3.html#cb98-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-314"><a href="next-part-3.html#cb98-314" aria-hidden="true" tabindex="-1"></a><span class="co"># подгоняем модель на всей выборке для M = 7 </span></span>
+<span id="cb98-315"><a href="next-part-3.html#cb98-315" aria-hidden="true" tabindex="-1"></a><span class="co">#  (оптимально по методу перекрёстной проверки)</span></span>
+<span id="cb98-316"><a href="next-part-3.html#cb98-316" aria-hidden="true" tabindex="-1"></a>pcr.fit <span class="ot">&lt;-</span> <span class="fu">pcr</span>(y <span class="sc">~</span> x, <span class="at">scale =</span> T, <span class="at">ncomp =</span> <span class="dv">7</span>)</span>
+<span id="cb98-317"><a href="next-part-3.html#cb98-317" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pcr.fit)</span>
+<span id="cb98-318"><a href="next-part-3.html#cb98-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-319"><a href="next-part-3.html#cb98-319" aria-hidden="true" tabindex="-1"></a><span class="co"># Регрессия по методу частных наименьших квадратов</span></span>
+<span id="cb98-320"><a href="next-part-3.html#cb98-320" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb98-321"><a href="next-part-3.html#cb98-321" aria-hidden="true" tabindex="-1"></a>pls.fit <span class="ot">&lt;-</span> <span class="fu">plsr</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters, <span class="at">subset =</span> train, <span class="at">scale =</span> T,</span>
+<span id="cb98-322"><a href="next-part-3.html#cb98-322" aria-hidden="true" tabindex="-1"></a>                <span class="at">validation =</span> <span class="st">&#39;CV&#39;</span>)</span>
+<span id="cb98-323"><a href="next-part-3.html#cb98-323" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pls.fit)</span>
+<span id="cb98-324"><a href="next-part-3.html#cb98-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-325"><a href="next-part-3.html#cb98-325" aria-hidden="true" tabindex="-1"></a><span class="co"># теперь подгоняем модель для найденного оптимального M = 2 </span></span>
+<span id="cb98-326"><a href="next-part-3.html#cb98-326" aria-hidden="true" tabindex="-1"></a><span class="co">#  и оцениваем MSE на тестовой</span></span>
+<span id="cb98-327"><a href="next-part-3.html#cb98-327" aria-hidden="true" tabindex="-1"></a>pls.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(pls.fit, x[test, ], <span class="at">ncomp =</span> <span class="dv">2</span>)</span>
+<span id="cb98-328"><a href="next-part-3.html#cb98-328" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>((pls.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>)</span>
+<span id="cb98-329"><a href="next-part-3.html#cb98-329" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 101417</span></span>
+<span id="cb98-330"><a href="next-part-3.html#cb98-330" aria-hidden="true" tabindex="-1"></a><span class="co"># подгоняем модель на всей выборке</span></span>
+<span id="cb98-331"><a href="next-part-3.html#cb98-331" aria-hidden="true" tabindex="-1"></a>pls.fit <span class="ot">&lt;-</span> <span class="fu">plsr</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> Hitters, <span class="at">scale =</span> T, <span class="at">ncomp =</span> <span class="dv">2</span>)</span>
+<span id="cb98-332"><a href="next-part-3.html#cb98-332" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pls.fit)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="linear-regression-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nonlinear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/30_linear_regression.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
