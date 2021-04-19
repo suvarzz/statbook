@@ -1,0 +1,43 @@
+corrplot.mixed(correlationMatrix)
+
+Rank Features By Importance
+The importance of features can be estimated from data by building a model. Some methods like decision trees have a built in mechanism to report on variable importance. For other algorithms, the importance can be estimated using a ROC curve analysis conducted for each attribute.
+
+The example below loads the Pima Indians Diabetes dataset and constructs an Learning Vector Quantization (LVQ) model. The varImp is then used to estimate the variable importance, which is printed and plotted. It shows that the glucose, mass and age attributes are the top 3 most important attributes in the dataset and the insulin attribute is the least important.
+
+# prepare training scheme
+control <- trainControl(method="repeatedcv", number=10, repeats=3)
+# train the model
+model <- train(diabetes~., data=PimaIndiansDiabetes, method="lvq", preProcess="scale", trControl=control)
+# estimate variable importance
+importance <- varImp(model, scale=FALSE)
+# summarize importance
+print(importance)
+
+# plot importance
+plot(importance)
+
+sudo apt-get remove -y 'r-cran-*'
+
+sudo apt-get --purge remove r-base-dev
+
+sudo gedit /etc/apt/sources.list
+
+r-base r-base-dev
+
+/etc/apt/preferences.d/pin-r35
+
+Package: r-*
+Pin: release a=bionic-cran35
+Pin: version 3.5*
+Pin-Priority: 800
+
+Package: r-cran-nlme
+Pin: release a=bionic-cran35
+Pin: version 3.1.139-1bionic0
+Pin-Priority: 800
+
+Package: r-cran-cluster
+Pin: release a=bionic-cran35
+Pin: version 2.0.8-1bionic0
+Pin-Priority: 800
