@@ -63,6 +63,7 @@ linear-regression
 split-data-into-train-and-test-subsets
 linear-regression-1
 linear-regression---theory
+confusion-matrix
 generate-random-data-set-for-the-linear-model
 practical-example
 linear-model-in-r
