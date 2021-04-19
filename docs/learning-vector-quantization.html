@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 25 Multiple linear regression | R statistics</title>
+  <title>Chapter 28 Learning Vector Quantization | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 25 Multiple linear regression | R statistics" />
+  <meta property="og:title" content="Chapter 28 Learning Vector Quantization | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 25 Multiple linear regression | R statistics" />
+  <meta name="twitter:title" content="Chapter 28 Learning Vector Quantization | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="logistic-regression.html"/>
-<link rel="next" href="spline-model.html"/>
+<link rel="prev" href="clustering.html"/>
+<link rel="next" href="naive-bayes.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -286,96 +286,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multiple-linear-regression" class="section level1" number="25">
-<h1><span class="header-section-number">Chapter 25</span> Multiple linear regression</h1>
-<p>Source: Анализ данных в R. Множественная линейная регрессия</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="multiple-linear-regression.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset swiss</span></span>
-<span id="cb138-2"><a href="multiple-linear-regression.html#cb138-2" aria-hidden="true" tabindex="-1"></a>?swiss</span>
-<span id="cb138-3"><a href="multiple-linear-regression.html#cb138-3" aria-hidden="true" tabindex="-1"></a>swiss <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(swiss)</span>
-<span id="cb138-4"><a href="multiple-linear-regression.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(swiss)</span>
-<span id="cb138-5"><a href="multiple-linear-regression.html#cb138-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-6"><a href="multiple-linear-regression.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of fertility</span></span>
-<span id="cb138-7"><a href="multiple-linear-regression.html#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(swiss<span class="sc">$</span>Fertility, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
-<span id="cb138-8"><a href="multiple-linear-regression.html#cb138-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-9"><a href="multiple-linear-regression.html#cb138-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric predictors for Fertility prediction</span></span>
-<span id="cb138-10"><a href="multiple-linear-regression.html#cb138-10" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination <span class="sc">+</span> Catholic, <span class="at">data =</span> swiss)</span>
-<span id="cb138-11"><a href="multiple-linear-regression.html#cb138-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
-<span id="cb138-12"><a href="multiple-linear-regression.html#cb138-12" aria-hidden="true" tabindex="-1"></a><span class="co"># the principal predictor is an &#39;examination&#39; with negative correlation.</span></span>
-<span id="cb138-13"><a href="multiple-linear-regression.html#cb138-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-14"><a href="multiple-linear-regression.html#cb138-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Interaction of variables &#39;examination&#39; and &#39;catholics&#39; &#39;*&#39;</span></span>
-<span id="cb138-15"><a href="multiple-linear-regression.html#cb138-15" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination<span class="sc">*</span>Catholic, <span class="at">data =</span> swiss)</span>
-<span id="cb138-16"><a href="multiple-linear-regression.html#cb138-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
-<span id="cb138-17"><a href="multiple-linear-regression.html#cb138-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-18"><a href="multiple-linear-regression.html#cb138-18" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit2)</span>
-<span id="cb138-19"><a href="multiple-linear-regression.html#cb138-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-20"><a href="multiple-linear-regression.html#cb138-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical predictors</span></span>
-<span id="cb138-21"><a href="multiple-linear-regression.html#cb138-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram obviously have two parts -&gt; we can split data for two factors</span></span>
-<span id="cb138-22"><a href="multiple-linear-regression.html#cb138-22" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(swiss<span class="sc">$</span>Catholic, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb138-23"><a href="multiple-linear-regression.html#cb138-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-24"><a href="multiple-linear-regression.html#cb138-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets split &#39;Catholics&#39; for two groups: with many &#39;lots&#39; and few &#39;few&#39;</span></span>
-<span id="cb138-25"><a href="multiple-linear-regression.html#cb138-25" aria-hidden="true" tabindex="-1"></a>swiss<span class="sc">$</span>religious <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(swiss<span class="sc">$</span>Catholic <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">&#39;Lots&#39;</span>, <span class="st">&#39;Few&#39;</span>)</span>
-<span id="cb138-26"><a href="multiple-linear-regression.html#cb138-26" aria-hidden="true" tabindex="-1"></a>swiss<span class="sc">$</span>religious <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(swiss<span class="sc">$</span>religious)</span>
-<span id="cb138-27"><a href="multiple-linear-regression.html#cb138-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-28"><a href="multiple-linear-regression.html#cb138-28" aria-hidden="true" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination <span class="sc">+</span> religious, <span class="at">data =</span> swiss)</span>
-<span id="cb138-29"><a href="multiple-linear-regression.html#cb138-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span>
-<span id="cb138-30"><a href="multiple-linear-regression.html#cb138-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-31"><a href="multiple-linear-regression.html#cb138-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Interaction of variables</span></span>
-<span id="cb138-32"><a href="multiple-linear-regression.html#cb138-32" aria-hidden="true" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> religious<span class="sc">*</span>Examination, <span class="at">data =</span> swiss)</span>
-<span id="cb138-33"><a href="multiple-linear-regression.html#cb138-33" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span>
-<span id="cb138-34"><a href="multiple-linear-regression.html#cb138-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-35"><a href="multiple-linear-regression.html#cb138-35" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
-<span id="cb138-36"><a href="multiple-linear-regression.html#cb138-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-37"><a href="multiple-linear-regression.html#cb138-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
-<span id="cb138-38"><a href="multiple-linear-regression.html#cb138-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb138-39"><a href="multiple-linear-regression.html#cb138-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-40"><a href="multiple-linear-regression.html#cb138-40" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
-<span id="cb138-41"><a href="multiple-linear-regression.html#cb138-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb138-42"><a href="multiple-linear-regression.html#cb138-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb138-43"><a href="multiple-linear-regression.html#cb138-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-44"><a href="multiple-linear-regression.html#cb138-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
-<span id="cb138-45"><a href="multiple-linear-regression.html#cb138-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb138-46"><a href="multiple-linear-regression.html#cb138-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
-<span id="cb138-47"><a href="multiple-linear-regression.html#cb138-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-48"><a href="multiple-linear-regression.html#cb138-48" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
-<span id="cb138-49"><a href="multiple-linear-regression.html#cb138-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb138-50"><a href="multiple-linear-regression.html#cb138-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-51"><a href="multiple-linear-regression.html#cb138-51" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
-<span id="cb138-52"><a href="multiple-linear-regression.html#cb138-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb138-53"><a href="multiple-linear-regression.html#cb138-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb138-54"><a href="multiple-linear-regression.html#cb138-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-55"><a href="multiple-linear-regression.html#cb138-55" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
-<span id="cb138-56"><a href="multiple-linear-regression.html#cb138-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb138-57"><a href="multiple-linear-regression.html#cb138-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
-<span id="cb138-58"><a href="multiple-linear-regression.html#cb138-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-59"><a href="multiple-linear-regression.html#cb138-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-60"><a href="multiple-linear-regression.html#cb138-60" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb138-61"><a href="multiple-linear-regression.html#cb138-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-62"><a href="multiple-linear-regression.html#cb138-62" aria-hidden="true" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> religious<span class="sc">*</span>Infant.Mortality<span class="sc">*</span>Examination, <span class="at">data =</span> swiss)</span>
-<span id="cb138-63"><a href="multiple-linear-regression.html#cb138-63" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit5)</span>
-<span id="cb138-64"><a href="multiple-linear-regression.html#cb138-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-65"><a href="multiple-linear-regression.html#cb138-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-66"><a href="multiple-linear-regression.html#cb138-66" aria-hidden="true" tabindex="-1"></a><span class="co"># model comparison</span></span>
-<span id="cb138-67"><a href="multiple-linear-regression.html#cb138-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-68"><a href="multiple-linear-regression.html#cb138-68" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(swiss)</span>
-<span id="cb138-69"><a href="multiple-linear-regression.html#cb138-69" aria-hidden="true" tabindex="-1"></a>swiss <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(swiss)</span>
-<span id="cb138-70"><a href="multiple-linear-regression.html#cb138-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-71"><a href="multiple-linear-regression.html#cb138-71" aria-hidden="true" tabindex="-1"></a>fit_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> ., <span class="at">data =</span> swiss)</span>
-<span id="cb138-72"><a href="multiple-linear-regression.html#cb138-72" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_full)</span>
-<span id="cb138-73"><a href="multiple-linear-regression.html#cb138-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-74"><a href="multiple-linear-regression.html#cb138-74" aria-hidden="true" tabindex="-1"></a>fit_reduced1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Infant.Mortality <span class="sc">+</span> Examination <span class="sc">+</span> Catholic <span class="sc">+</span> Education, <span class="at">data =</span> swiss)</span>
-<span id="cb138-75"><a href="multiple-linear-regression.html#cb138-75" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_reduced1)</span>
-<span id="cb138-76"><a href="multiple-linear-regression.html#cb138-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-77"><a href="multiple-linear-regression.html#cb138-77" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_full, fit_reduced1)</span>
-<span id="cb138-78"><a href="multiple-linear-regression.html#cb138-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-79"><a href="multiple-linear-regression.html#cb138-79" aria-hidden="true" tabindex="-1"></a>fit_reduced2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Infant.Mortality <span class="sc">+</span> Education <span class="sc">+</span> Catholic <span class="sc">+</span> Agriculture, <span class="at">data =</span> swiss)</span>
-<span id="cb138-80"><a href="multiple-linear-regression.html#cb138-80" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_reduced2)</span>
-<span id="cb138-81"><a href="multiple-linear-regression.html#cb138-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-82"><a href="multiple-linear-regression.html#cb138-82" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_full, fit_reduced2)</span>
-<span id="cb138-83"><a href="multiple-linear-regression.html#cb138-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-84"><a href="multiple-linear-regression.html#cb138-84" aria-hidden="true" tabindex="-1"></a><span class="co"># model selection</span></span>
-<span id="cb138-85"><a href="multiple-linear-regression.html#cb138-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-86"><a href="multiple-linear-regression.html#cb138-86" aria-hidden="true" tabindex="-1"></a>optimal_fit <span class="ot">&lt;-</span>  <span class="fu">step</span>(fit_full, <span class="at">direction =</span> <span class="st">&#39;backward&#39;</span>)</span>
-<span id="cb138-87"><a href="multiple-linear-regression.html#cb138-87" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(optimal_fit)</span></code></pre></div>
+<div id="learning-vector-quantization" class="section level1" number="28">
+<h1><span class="header-section-number">Chapter 28</span> Learning Vector Quantization</h1>
+<p>Learning Vector Quantiztion (LVQ) is a supervised classification algorithm for binary and multiclass problems. LVQ is a special case of a neural network.<br />
+LVQ model creates codebook vectors by learning training dataset. Codebook vectors represent class regions. They contain elements that placed around the respective class according to their matching level. If the element matches, it comes closer to the target class, if it does not match, it moves farther from it. With this codebooks, the model classifies new data.
+<a href="http://jsalatas.ictpro.gr/implementation-of-competitive-learning-networks-for-weka/">Here</a> is a nice explanation how it works.</p>
+<p>There are several versions of <strong>LVQ</strong> function:<br />
+<code>lvq1()</code>, <code>olvq1()</code>, <code>lvq2()</code>, <code>lvq3()</code>, <code>dlvq()</code>.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="learning-vector-quantization.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class) <span class="co"># olvq1()</span></span>
+<span id="cb158-2"><a href="learning-vector-quantization.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># to split data</span></span>
+<span id="cb158-3"><a href="learning-vector-quantization.html#cb158-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-4"><a href="learning-vector-quantization.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co"># generate dataset</span></span>
+<span id="cb158-5"><a href="learning-vector-quantization.html#cb158-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> iris</span>
+<span id="cb158-6"><a href="learning-vector-quantization.html#cb158-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-7"><a href="learning-vector-quantization.html#cb158-7" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df<span class="sc">$</span>Species, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> F)</span>
+<span id="cb158-8"><a href="learning-vector-quantization.html#cb158-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-9"><a href="learning-vector-quantization.html#cb158-9" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> df[id, ]</span>
+<span id="cb158-10"><a href="learning-vector-quantization.html#cb158-10" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> df[<span class="sc">-</span>id, ]</span>
+<span id="cb158-11"><a href="learning-vector-quantization.html#cb158-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-12"><a href="learning-vector-quantization.html#cb158-12" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize an LVQ codebook</span></span>
+<span id="cb158-13"><a href="learning-vector-quantization.html#cb158-13" aria-hidden="true" tabindex="-1"></a>cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqinit</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species)</span>
+<span id="cb158-14"><a href="learning-vector-quantization.html#cb158-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-15"><a href="learning-vector-quantization.html#cb158-15" aria-hidden="true" tabindex="-1"></a><span class="co"># training set in a codebook.</span></span>
+<span id="cb158-16"><a href="learning-vector-quantization.html#cb158-16" aria-hidden="true" tabindex="-1"></a>build.cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">olvq1</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species, cb)</span>
+<span id="cb158-17"><a href="learning-vector-quantization.html#cb158-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-18"><a href="learning-vector-quantization.html#cb158-18" aria-hidden="true" tabindex="-1"></a><span class="co"># classify test set from LVQ Codebook for test data</span></span>
+<span id="cb158-19"><a href="learning-vector-quantization.html#cb158-19" aria-hidden="true" tabindex="-1"></a>predict <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqtest</span>(build.cb, test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb158-20"><a href="learning-vector-quantization.html#cb158-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-21"><a href="learning-vector-quantization.html#cb158-21" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix.</span></span>
+<span id="cb158-22"><a href="learning-vector-quantization.html#cb158-22" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(test<span class="sc">$</span>Species, predict)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         10          0         0
+##   versicolor      0         10         0
+##   virginica       0          1         9
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9667          
+##                  95% CI : (0.8278, 0.9992)
+##     No Information Rate : 0.3667          
+##     P-Value [Acc &gt; NIR] : 4.476e-12       
+##                                           
+##                   Kappa : 0.95            
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            0.9091           1.0000
+## Specificity                 1.0000            1.0000           0.9524
+## Pos Pred Value              1.0000            1.0000           0.9000
+## Neg Pred Value              1.0000            0.9500           1.0000
+## Prevalence                  0.3333            0.3667           0.3000
+## Detection Rate              0.3333            0.3333           0.3000
+## Detection Prevalence        0.3333            0.3333           0.3333
+## Balanced Accuracy           1.0000            0.9545           0.9762</code></pre>
 
 </div>
             </section>
@@ -383,8 +352,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="logistic-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="spline-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="clustering.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="naive-bayes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -415,7 +384,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/26_multiple_regression.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/41_learning_vector_quantization.Rmd",
 "text": "Edit"
 },
 "history": {

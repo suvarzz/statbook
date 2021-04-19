@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 20 Machine Learning Functions Reference | R statistics</title>
+  <title>Chapter 19 Machine Learning Functions Reference | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 20 Machine Learning Functions Reference | R statistics" />
+  <meta property="og:title" content="Chapter 19 Machine Learning Functions Reference | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 20 Machine Learning Functions Reference | R statistics" />
+  <meta name="twitter:title" content="Chapter 19 Machine Learning Functions Reference | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="methods-and-algorithms-of-machine-learning.html"/>
 <link rel="next" href="split-data-into-train-and-test-subsets.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,7 +135,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a><ul>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#get-data"><i class="fa fa-check"></i><b>2.1</b> Get data</a></li>
 <li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
 <li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
@@ -141,9 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
 <li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a><ul>
+<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a><ul>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
 <li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
 <li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
@@ -151,7 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>4</b> Primary analysis</a></li>
-<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a><ul>
+<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>5.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="5.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>5.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="5.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>5.3</b> Binomial Distribution</a></li>
@@ -161,88 +168,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>5.7</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="5.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>5.8</b> Chi-squared Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>6.1</b> Hypothesis testing theory</a></li>
 <li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.2</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>7</b> Non-parametric Methods</a></li>
-<li class="chapter" data-level="8" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>8</b> t-Procedures</a><ul>
-<li class="chapter" data-level="8.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>8.1</b> t-test and normal distribution</a></li>
-<li class="chapter" data-level="8.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>8.2</b> One-sample t-test</a></li>
-<li class="chapter" data-level="8.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>8.3</b> Practical example: t-test in R</a></li>
-<li class="chapter" data-level="8.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>8.4</b> Two samples t-test</a></li>
-<li class="chapter" data-level="8.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>8.5</b> Compare Student’s t and normal distributions</a></li>
-<li class="chapter" data-level="8.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>8.6</b> Non-parametric tests</a></li>
-<li class="chapter" data-level="8.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>8.7</b> Mann-Whitney U Rank Sum Test</a></li>
-<li class="chapter" data-level="8.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>8.8</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="7.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>7.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="7.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>7.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="7.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>7.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>9</b> Tests for categorical variables</a><ul>
-<li class="chapter" data-level="9.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>9.1</b> Chi-squared tests</a></li>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>10</b> Multiple testing</a><ul>
-<li class="chapter" data-level="10.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>10.1</b> The Bonferroni correction</a></li>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>11</b> Sources</a><ul>
-<li class="chapter" data-level="11.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>11.1</b> t-test</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>11.1.1</b> Two-tailed test</a></li>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>12</b> Wilcoxon signed-rank test</a></li>
-<li class="chapter" data-level="13" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>13</b> Analysis of Variance (ANOVA)</a><ul>
-<li class="chapter" data-level="13.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>13.1</b> One-way ANOVA</a></li>
-<li class="chapter" data-level="13.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>13.2</b> Sources</a></li>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>14</b> Correlation</a></li>
-<li class="chapter" data-level="15" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>15</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="16" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>16</b> Chi-squared test</a><ul>
-<li class="chapter" data-level="16.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>16.1</b> Multinomial Goodness of Fit</a></li>
+<li class="chapter" data-level="12" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>12</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="13" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>13</b> Chi-squared test</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>13.1</b> Multinomial Goodness of Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>17</b> Clustering</a><ul>
-<li class="chapter" data-level="17.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>17.1</b> Next part</a></li>
-<li class="chapter" data-level="17.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>17.2</b> Example</a></li>
-<li class="chapter" data-level="17.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>17.3</b> NEXT PART</a></li>
+<li class="chapter" data-level="14" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>14</b> Non-parametric Methods</a></li>
+<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="16" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>16</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="17" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>17</b> Correlation</a></li>
+<li class="chapter" data-level="18" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>18</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="19" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>19</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>19.1</b> Linear Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>18</b> Support Vector Machine</a></li>
-<li class="chapter" data-level="19" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>19</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="20" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>20</b> Machine Learning Functions Reference</a><ul>
-<li class="chapter" data-level="20.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>20.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="20" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>20</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="21" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>21</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>21.1</b> Generate Random Data Set a Linear Model</a></li>
+<li class="chapter" data-level="21.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>21.2</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="21.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>21.3</b> Practical example</a></li>
+<li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>21.4</b> Example of linear regression</a></li>
+<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>21.5</b> Standard error of train data</a></li>
+<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.6</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>21.7</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.8</b> NEXT part</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>21</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="22" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>22</b> Linear Regression</a><ul>
-<li class="chapter" data-level="22.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>22.1</b> Generate Random Data Set a Linear Model</a></li>
-<li class="chapter" data-level="22.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>22.2</b> Linear regression - theory</a></li>
-<li class="chapter" data-level="22.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>22.3</b> Practical example</a></li>
-<li class="chapter" data-level="22.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>22.4</b> Example of linear regression</a></li>
-<li class="chapter" data-level="22.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>22.5</b> Standard error of train data</a></li>
-<li class="chapter" data-level="22.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>22.6</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="22.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>22.7</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="22.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>22.8</b> NEXT part</a></li>
+<li class="chapter" data-level="22" data-path="next-part-1.html"><a href="next-part-1.html"><i class="fa fa-check"></i><b>22</b> NEXT part</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="next-part-1.html"><a href="next-part-1.html#next-part-2"><i class="fa fa-check"></i><b>22.1</b> NEXT part</a></li>
+<li class="chapter" data-level="22.2" data-path="next-part-1.html"><a href="next-part-1.html#next-part-3"><i class="fa fa-check"></i><b>22.2</b> NEXT Part</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>23</b> NEXT part</a><ul>
-<li class="chapter" data-level="23.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>23.1</b> NEXT part</a></li>
-<li class="chapter" data-level="23.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="23" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>23</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="24" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>24</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-4"><i class="fa fa-check"></i><b>24.1</b> Next part</a></li>
+<li class="chapter" data-level="24.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-5"><i class="fa fa-check"></i><b>24.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="24.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>24.3</b> NExt part</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>24</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="25" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>25</b> Spline model</a><ul>
-<li class="chapter" data-level="25.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>25.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="25.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>25.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="25.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>25.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="25.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>25.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="25.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>25.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="25.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>25.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="25.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>25.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="25" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>25</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="26" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>26</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>26.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="26.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>26.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="26.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>26.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="26.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>26.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="26.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>26.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="26.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>26.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="26.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>26.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>26</b> Logistic Regression</a><ul>
-<li class="chapter" data-level="26.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>26.1</b> Next part</a></li>
-<li class="chapter" data-level="26.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>26.2</b> NEXT Part</a></li>
-<li class="chapter" data-level="26.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>26.3</b> NExt part</a></li>
+<li class="chapter" data-level="27" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>27</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="clustering.html"><a href="clustering.html#next-part-7"><i class="fa fa-check"></i><b>27.1</b> Next part</a></li>
+<li class="chapter" data-level="27.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>27.2</b> Example</a></li>
+<li class="chapter" data-level="27.3" data-path="clustering.html"><a href="clustering.html#next-part-8"><i class="fa fa-check"></i><b>27.3</b> NEXT PART</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>27</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="28" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>28</b> Simple Markov process</a><ul>
-<li class="chapter" data-level="28.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>28.0.1</b> Sources</a></li>
-</ul></li>
+<li class="chapter" data-level="28" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>28</b> Learning Vector Quantization</a></li>
 <li class="chapter" data-level="29" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>29</b> Naive Bayes</a></li>
 <li class="chapter" data-level="30" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>30</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="31" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>31</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="31.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>31.0.1</b> Sources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -263,88 +286,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="machine-learning-functions-reference" class="section level1">
-<h1><span class="header-section-number">Chapter 20</span> Machine Learning Functions Reference</h1>
-<div id="linear-regression" class="section level2">
-<h2><span class="header-section-number">20.1</span> Linear Regression</h2>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">lm_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y ∼ x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data=</span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(y,x1,x2)))</a>
-<a class="sourceLine" id="cb114-2" title="2"><span class="kw">summary</span>(lm_model)</a>
-<a class="sourceLine" id="cb114-3" title="3"></a>
-<a class="sourceLine" id="cb114-4" title="4"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span>x3)     <span class="co"># multiple linear regression</span></a>
-<a class="sourceLine" id="cb114-5" title="5"></a>
-<a class="sourceLine" id="cb114-6" title="6"><span class="kw">lm</span>(<span class="kw">log</span>(y) <span class="op">~</span><span class="st"> </span>x)           <span class="co"># log transformed</span></a>
-<a class="sourceLine" id="cb114-7" title="7"><span class="kw">lm</span>(<span class="kw">sqrt</span>(y) <span class="op">~</span><span class="st"> </span>x)          <span class="co"># sqrt transformed</span></a>
-<a class="sourceLine" id="cb114-8" title="8"><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(x))          <span class="co"># fields transformed</span></a>
-<a class="sourceLine" id="cb114-9" title="9"><span class="kw">llm</span>(<span class="kw">log</span>(y) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(x))     <span class="co"># everything is transformed</span></a>
-<a class="sourceLine" id="cb114-10" title="10"></a>
-<a class="sourceLine" id="cb114-11" title="11"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>.)                <span class="co"># use all fields for regression model</span></a>
-<a class="sourceLine" id="cb114-12" title="12"></a>
-<a class="sourceLine" id="cb114-13" title="13"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">0</span>)            <span class="co"># forced zero intercept</span></a>
-<a class="sourceLine" id="cb114-14" title="14"></a>
-<a class="sourceLine" id="cb114-15" title="15"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x<span class="op">*</span>k)              <span class="co"># interaction of two variables</span></a>
-<a class="sourceLine" id="cb114-16" title="16"></a>
-<a class="sourceLine" id="cb114-17" title="17"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>k <span class="op">+</span><span class="st"> </span>x<span class="op">:</span>k)      <span class="co"># product of xkl but without interaction</span></a>
-<a class="sourceLine" id="cb114-18" title="18"></a>
-<a class="sourceLine" id="cb114-19" title="19"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>(x <span class="op">+</span><span class="st"> </span>k <span class="op">+</span><span class="st"> </span>... <span class="op">+</span><span class="st"> </span>l)<span class="op">^</span><span class="dv">2</span>) <span class="co"># all first order interactions</span></a>
-<a class="sourceLine" id="cb114-20" title="20"></a>
-<a class="sourceLine" id="cb114-21" title="21"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(x1 <span class="op">+</span><span class="st"> </span>x2))       <span class="co"># sum of variables</span></a>
-<a class="sourceLine" id="cb114-22" title="22"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(x1<span class="op">^</span><span class="dv">2</span>))          <span class="co"># product of variables (not interation)</span></a>
-<a class="sourceLine" id="cb114-23" title="23"></a>
-<a class="sourceLine" id="cb114-24" title="24"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(x<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(x<span class="op">^</span><span class="dv">3</span>)) <span class="co"># polynomial regression</span></a>
-<a class="sourceLine" id="cb114-25" title="25"><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(x,<span class="dv">3</span>))           <span class="co"># same as previous</span></a>
-<a class="sourceLine" id="cb114-26" title="26"></a>
-<a class="sourceLine" id="cb114-27" title="27"><span class="co"># Forward/backward stepwise regression</span></a>
-<a class="sourceLine" id="cb114-28" title="28"><span class="co"># improve model</span></a>
-<a class="sourceLine" id="cb114-29" title="29">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2)</a>
-<a class="sourceLine" id="cb114-30" title="30">bwd.fit &lt;-<span class="st"> </span><span class="kw">step</span>(fit, <span class="dt">direction =</span> <span class="st">&#39;backward&#39;</span>)</a>
-<a class="sourceLine" id="cb114-31" title="31">fwd.fit &lt;-<span class="st"> </span><span class="kw">step</span>(fit, <span class="dt">direction =</span> <span class="st">&#39;forward&#39;</span>, <span class="kw">scope</span>( <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2))</a>
-<a class="sourceLine" id="cb114-32" title="32"></a>
-<a class="sourceLine" id="cb114-33" title="33"><span class="co"># Test linear model</span></a>
-<a class="sourceLine" id="cb114-34" title="34"><span class="kw">plot</span>(m)            <span class="co"># plot residuals</span></a>
-<a class="sourceLine" id="cb114-35" title="35">car<span class="op">::</span><span class="kw">outlier.test</span>(m)</a>
-<a class="sourceLine" id="cb114-36" title="36"><span class="kw">dwtest</span>(m)          <span class="co"># Durbin-Watson Test of the model residuals</span></a>
-<a class="sourceLine" id="cb114-37" title="37"></a>
-<a class="sourceLine" id="cb114-38" title="38"><span class="co"># Prediction</span></a>
-<a class="sourceLine" id="cb114-39" title="39">predicted_values &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_model, <span class="dt">newdata=</span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(x1_test, x2_test)))</a>
-<a class="sourceLine" id="cb114-40" title="40"></a>
-<a class="sourceLine" id="cb114-41" title="41"><span class="co"># Apriori</span></a>
-<a class="sourceLine" id="cb114-42" title="42">dataset &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">Datasets</span><span class="ch">\\</span><span class="st">mushroom.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb114-43" title="43">mushroom_rules &lt;-<span class="st"> </span><span class="kw">apriori</span>(<span class="kw">as.matrix</span>(dataset), <span class="dt">parameter =</span> <span class="kw">list</span>(<span class="dt">supp =</span> <span class="fl">0.8</span>, <span class="dt">conf =</span> <span class="fl">0.9</span>))</a>
-<a class="sourceLine" id="cb114-44" title="44"><span class="kw">summary</span>(mushroom_rules)</a>
-<a class="sourceLine" id="cb114-45" title="45"><span class="kw">inspect</span>(mushroom_rules)</a>
-<a class="sourceLine" id="cb114-46" title="46"></a>
-<a class="sourceLine" id="cb114-47" title="47"><span class="co"># Logistic Regression</span></a>
-<a class="sourceLine" id="cb114-48" title="48">glm_mod &lt;-<span class="kw">glm</span>(y ∼ x1<span class="op">+</span>x2, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>), <span class="dt">data=</span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(y,x1,x2))) </a>
-<a class="sourceLine" id="cb114-49" title="49"></a>
-<a class="sourceLine" id="cb114-50" title="50"><span class="co"># K-Means Clustering</span></a>
-<a class="sourceLine" id="cb114-51" title="51">kmeans_model &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="dt">x=</span>X, <span class="dt">centers=</span>m)</a>
-<a class="sourceLine" id="cb114-52" title="52"></a>
-<a class="sourceLine" id="cb114-53" title="53"><span class="co"># k-Nearest Neighbor Classification</span></a>
-<a class="sourceLine" id="cb114-54" title="54">knn_model &lt;-<span class="st"> </span><span class="kw">knn</span>(<span class="dt">train=</span>X_train, <span class="dt">test=</span>X_test, <span class="dt">cl=</span><span class="kw">as.factor</span>(labels), <span class="dt">k=</span>K)</a>
-<a class="sourceLine" id="cb114-55" title="55"></a>
-<a class="sourceLine" id="cb114-56" title="56"><span class="co"># Naıve Bayes</span></a>
-<a class="sourceLine" id="cb114-57" title="57"><span class="kw">library</span>(e1071)</a>
-<a class="sourceLine" id="cb114-58" title="58">nB_model &lt;-<span class="st"> </span><span class="kw">naiveBayes</span>(y ∼ x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data=</span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(y,x1,x2)))</a>
-<a class="sourceLine" id="cb114-59" title="59"></a>
-<a class="sourceLine" id="cb114-60" title="60"><span class="co"># Decision Trees (CART)</span></a>
-<a class="sourceLine" id="cb114-61" title="61"><span class="kw">library</span>(rpart)</a>
-<a class="sourceLine" id="cb114-62" title="62">cart_model &lt;-<span class="st"> </span><span class="kw">rpart</span>(y ∼ x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data=</span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(y,x1,x2)), <span class="dt">method=</span><span class="st">&quot;class&quot;</span>)</a>
-<a class="sourceLine" id="cb114-63" title="63"></a>
-<a class="sourceLine" id="cb114-64" title="64"><span class="kw">plot.rpart</span>(cart_model)</a>
-<a class="sourceLine" id="cb114-65" title="65"><span class="kw">text.rpart</span>(cart_model)</a>
-<a class="sourceLine" id="cb114-66" title="66"></a>
-<a class="sourceLine" id="cb114-67" title="67"><span class="co"># AdaBoost</span></a>
-<a class="sourceLine" id="cb114-68" title="68"><span class="co"># boosting functions - uses decision trees as base classifiers</span></a>
-<a class="sourceLine" id="cb114-69" title="69"><span class="kw">library</span>(rpart)</a>
-<a class="sourceLine" id="cb114-70" title="70"><span class="kw">library</span>(ada)</a>
-<a class="sourceLine" id="cb114-71" title="71"><span class="co"># Let X be the matrix of features, and labels be a vector of 0-1 class labels.</span></a>
-<a class="sourceLine" id="cb114-72" title="72">boost_model &lt;-<span class="st"> </span><span class="kw">ada</span>(<span class="dt">x=</span>X, <span class="dt">y=</span>labels)</a>
-<a class="sourceLine" id="cb114-73" title="73"></a>
-<a class="sourceLine" id="cb114-74" title="74"><span class="co"># Support Vector Machines (SVM)</span></a>
-<a class="sourceLine" id="cb114-75" title="75"><span class="kw">library</span>(e1071)</a>
-<a class="sourceLine" id="cb114-76" title="76"><span class="co"># Let X be the matrix of features, and labels be a vector of 0-1 class labels. Let the regularization parameter be C. Use the following commands to generate the SVM model and view details:</span></a>
-<a class="sourceLine" id="cb114-77" title="77">svm_model &lt;-<span class="st"> </span><span class="kw">svm</span>(<span class="dt">x=</span>X, <span class="dt">y=</span><span class="kw">as.factor</span>(labels), <span class="dt">kernel =</span><span class="st">&quot;radial&quot;</span>, <span class="dt">cost=</span>C)</a>
-<a class="sourceLine" id="cb114-78" title="78"><span class="kw">summary</span>(svm_model)</a></code></pre></div>
+<div id="machine-learning-functions-reference" class="section level1" number="19">
+<h1><span class="header-section-number">Chapter 19</span> Machine Learning Functions Reference</h1>
+<div id="linear-regression" class="section level2" number="19.1">
+<h2><span class="header-section-number">19.1</span> Linear Regression</h2>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="machine-learning-functions-reference.html#cb102-1" aria-hidden="true" tabindex="-1"></a>lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y ∼ x1 <span class="sc">+</span> x2, <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2)))</span>
+<span id="cb102-2"><a href="machine-learning-functions-reference.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_model)</span>
+<span id="cb102-3"><a href="machine-learning-functions-reference.html#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="machine-learning-functions-reference.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3)     <span class="co"># multiple linear regression</span></span>
+<span id="cb102-5"><a href="machine-learning-functions-reference.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-6"><a href="machine-learning-functions-reference.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="fu">log</span>(y) <span class="sc">~</span> x)           <span class="co"># log transformed</span></span>
+<span id="cb102-7"><a href="machine-learning-functions-reference.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="fu">sqrt</span>(y) <span class="sc">~</span> x)          <span class="co"># sqrt transformed</span></span>
+<span id="cb102-8"><a href="machine-learning-functions-reference.html#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>( y <span class="sc">~</span> <span class="fu">log</span>(x))          <span class="co"># fields transformed</span></span>
+<span id="cb102-9"><a href="machine-learning-functions-reference.html#cb102-9" aria-hidden="true" tabindex="-1"></a><span class="fu">llm</span>(<span class="fu">log</span>(y) <span class="sc">~</span> <span class="fu">log</span>(x))     <span class="co"># everything is transformed</span></span>
+<span id="cb102-10"><a href="machine-learning-functions-reference.html#cb102-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-11"><a href="machine-learning-functions-reference.html#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> .)                <span class="co"># use all fields for regression model</span></span>
+<span id="cb102-12"><a href="machine-learning-functions-reference.html#cb102-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-13"><a href="machine-learning-functions-reference.html#cb102-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> <span class="dv">0</span>)            <span class="co"># forced zero intercept</span></span>
+<span id="cb102-14"><a href="machine-learning-functions-reference.html#cb102-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-15"><a href="machine-learning-functions-reference.html#cb102-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x<span class="sc">*</span>k)              <span class="co"># interaction of two variables</span></span>
+<span id="cb102-16"><a href="machine-learning-functions-reference.html#cb102-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-17"><a href="machine-learning-functions-reference.html#cb102-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> k <span class="sc">+</span> x<span class="sc">:</span>k)      <span class="co"># product of xkl but without interaction</span></span>
+<span id="cb102-18"><a href="machine-learning-functions-reference.html#cb102-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-19"><a href="machine-learning-functions-reference.html#cb102-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> (x <span class="sc">+</span> k <span class="sc">+</span> ... <span class="sc">+</span> l)<span class="sc">^</span><span class="dv">2</span>) <span class="co"># all first order interactions</span></span>
+<span id="cb102-20"><a href="machine-learning-functions-reference.html#cb102-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-21"><a href="machine-learning-functions-reference.html#cb102-21" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">I</span>(x1 <span class="sc">+</span> x2))       <span class="co"># sum of variables</span></span>
+<span id="cb102-22"><a href="machine-learning-functions-reference.html#cb102-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">I</span>(x1<span class="sc">^</span><span class="dv">2</span>))          <span class="co"># product of variables (not interation)</span></span>
+<span id="cb102-23"><a href="machine-learning-functions-reference.html#cb102-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-24"><a href="machine-learning-functions-reference.html#cb102-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">3</span>)) <span class="co"># polynomial regression</span></span>
+<span id="cb102-25"><a href="machine-learning-functions-reference.html#cb102-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x,<span class="dv">3</span>))           <span class="co"># same as previous</span></span>
+<span id="cb102-26"><a href="machine-learning-functions-reference.html#cb102-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-27"><a href="machine-learning-functions-reference.html#cb102-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Forward/backward stepwise regression</span></span>
+<span id="cb102-28"><a href="machine-learning-functions-reference.html#cb102-28" aria-hidden="true" tabindex="-1"></a><span class="co"># improve model</span></span>
+<span id="cb102-29"><a href="machine-learning-functions-reference.html#cb102-29" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
+<span id="cb102-30"><a href="machine-learning-functions-reference.html#cb102-30" aria-hidden="true" tabindex="-1"></a>bwd.fit <span class="ot">&lt;-</span> <span class="fu">step</span>(fit, <span class="at">direction =</span> <span class="st">&#39;backward&#39;</span>)</span>
+<span id="cb102-31"><a href="machine-learning-functions-reference.html#cb102-31" aria-hidden="true" tabindex="-1"></a>fwd.fit <span class="ot">&lt;-</span> <span class="fu">step</span>(fit, <span class="at">direction =</span> <span class="st">&#39;forward&#39;</span>, <span class="fu">scope</span>( <span class="sc">~</span> x1 <span class="sc">+</span> x2))</span>
+<span id="cb102-32"><a href="machine-learning-functions-reference.html#cb102-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-33"><a href="machine-learning-functions-reference.html#cb102-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Test linear model</span></span>
+<span id="cb102-34"><a href="machine-learning-functions-reference.html#cb102-34" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)            <span class="co"># plot residuals</span></span>
+<span id="cb102-35"><a href="machine-learning-functions-reference.html#cb102-35" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">outlier.test</span>(m)</span>
+<span id="cb102-36"><a href="machine-learning-functions-reference.html#cb102-36" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(m)          <span class="co"># Durbin-Watson Test of the model residuals</span></span>
+<span id="cb102-37"><a href="machine-learning-functions-reference.html#cb102-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-38"><a href="machine-learning-functions-reference.html#cb102-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction</span></span>
+<span id="cb102-39"><a href="machine-learning-functions-reference.html#cb102-39" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_model, <span class="at">newdata=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(x1_test, x2_test)))</span>
+<span id="cb102-40"><a href="machine-learning-functions-reference.html#cb102-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-41"><a href="machine-learning-functions-reference.html#cb102-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Apriori</span></span>
+<span id="cb102-42"><a href="machine-learning-functions-reference.html#cb102-42" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Datasets</span><span class="sc">\\</span><span class="st">mushroom.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb102-43"><a href="machine-learning-functions-reference.html#cb102-43" aria-hidden="true" tabindex="-1"></a>mushroom_rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(<span class="fu">as.matrix</span>(dataset), <span class="at">parameter =</span> <span class="fu">list</span>(<span class="at">supp =</span> <span class="fl">0.8</span>, <span class="at">conf =</span> <span class="fl">0.9</span>))</span>
+<span id="cb102-44"><a href="machine-learning-functions-reference.html#cb102-44" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mushroom_rules)</span>
+<span id="cb102-45"><a href="machine-learning-functions-reference.html#cb102-45" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(mushroom_rules)</span>
+<span id="cb102-46"><a href="machine-learning-functions-reference.html#cb102-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-47"><a href="machine-learning-functions-reference.html#cb102-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic Regression</span></span>
+<span id="cb102-48"><a href="machine-learning-functions-reference.html#cb102-48" aria-hidden="true" tabindex="-1"></a>glm_mod <span class="ot">&lt;-</span><span class="fu">glm</span>(y ∼ x1<span class="sc">+</span>x2, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>), <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2))) </span>
+<span id="cb102-49"><a href="machine-learning-functions-reference.html#cb102-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-50"><a href="machine-learning-functions-reference.html#cb102-50" aria-hidden="true" tabindex="-1"></a><span class="co"># K-Means Clustering</span></span>
+<span id="cb102-51"><a href="machine-learning-functions-reference.html#cb102-51" aria-hidden="true" tabindex="-1"></a>kmeans_model <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(<span class="at">x=</span>X, <span class="at">centers=</span>m)</span>
+<span id="cb102-52"><a href="machine-learning-functions-reference.html#cb102-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-53"><a href="machine-learning-functions-reference.html#cb102-53" aria-hidden="true" tabindex="-1"></a><span class="co"># k-Nearest Neighbor Classification</span></span>
+<span id="cb102-54"><a href="machine-learning-functions-reference.html#cb102-54" aria-hidden="true" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train=</span>X_train, <span class="at">test=</span>X_test, <span class="at">cl=</span><span class="fu">as.factor</span>(labels), <span class="at">k=</span>K)</span>
+<span id="cb102-55"><a href="machine-learning-functions-reference.html#cb102-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-56"><a href="machine-learning-functions-reference.html#cb102-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Naıve Bayes</span></span>
+<span id="cb102-57"><a href="machine-learning-functions-reference.html#cb102-57" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb102-58"><a href="machine-learning-functions-reference.html#cb102-58" aria-hidden="true" tabindex="-1"></a>nB_model <span class="ot">&lt;-</span> <span class="fu">naiveBayes</span>(y ∼ x1 <span class="sc">+</span> x2, <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2)))</span>
+<span id="cb102-59"><a href="machine-learning-functions-reference.html#cb102-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-60"><a href="machine-learning-functions-reference.html#cb102-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision Trees (CART)</span></span>
+<span id="cb102-61"><a href="machine-learning-functions-reference.html#cb102-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb102-62"><a href="machine-learning-functions-reference.html#cb102-62" aria-hidden="true" tabindex="-1"></a>cart_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(y ∼ x1 <span class="sc">+</span> x2, <span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(y,x1,x2)), <span class="at">method=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb102-63"><a href="machine-learning-functions-reference.html#cb102-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-64"><a href="machine-learning-functions-reference.html#cb102-64" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.rpart</span>(cart_model)</span>
+<span id="cb102-65"><a href="machine-learning-functions-reference.html#cb102-65" aria-hidden="true" tabindex="-1"></a><span class="fu">text.rpart</span>(cart_model)</span>
+<span id="cb102-66"><a href="machine-learning-functions-reference.html#cb102-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-67"><a href="machine-learning-functions-reference.html#cb102-67" aria-hidden="true" tabindex="-1"></a><span class="co"># AdaBoost</span></span>
+<span id="cb102-68"><a href="machine-learning-functions-reference.html#cb102-68" aria-hidden="true" tabindex="-1"></a><span class="co"># boosting functions - uses decision trees as base classifiers</span></span>
+<span id="cb102-69"><a href="machine-learning-functions-reference.html#cb102-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb102-70"><a href="machine-learning-functions-reference.html#cb102-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ada)</span>
+<span id="cb102-71"><a href="machine-learning-functions-reference.html#cb102-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Let X be the matrix of features, and labels be a vector of 0-1 class labels.</span></span>
+<span id="cb102-72"><a href="machine-learning-functions-reference.html#cb102-72" aria-hidden="true" tabindex="-1"></a>boost_model <span class="ot">&lt;-</span> <span class="fu">ada</span>(<span class="at">x=</span>X, <span class="at">y=</span>labels)</span>
+<span id="cb102-73"><a href="machine-learning-functions-reference.html#cb102-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-74"><a href="machine-learning-functions-reference.html#cb102-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Support Vector Machines (SVM)</span></span>
+<span id="cb102-75"><a href="machine-learning-functions-reference.html#cb102-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb102-76"><a href="machine-learning-functions-reference.html#cb102-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Let X be the matrix of features, and labels be a vector of 0-1 class labels. Let the regularization parameter be C. Use the following commands to generate the SVM model and view details:</span></span>
+<span id="cb102-77"><a href="machine-learning-functions-reference.html#cb102-77" aria-hidden="true" tabindex="-1"></a>svm_model <span class="ot">&lt;-</span> <span class="fu">svm</span>(<span class="at">x=</span>X, <span class="at">y=</span><span class="fu">as.factor</span>(labels), <span class="at">kernel =</span><span class="st">&quot;radial&quot;</span>, <span class="at">cost=</span>C)</span>
+<span id="cb102-78"><a href="machine-learning-functions-reference.html#cb102-78" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(svm_model)</span></code></pre></div>
 
 </div>
 </div>

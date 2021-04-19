@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 22 Linear Regression | R statistics</title>
+  <title>Chapter 21 Linear Regression | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 22 Linear Regression | R statistics" />
+  <meta property="og:title" content="Chapter 21 Linear Regression | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 22 Linear Regression | R statistics" />
+  <meta name="twitter:title" content="Chapter 21 Linear Regression | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -32,7 +32,8 @@
   
   
 <link rel="prev" href="split-data-into-train-and-test-subsets.html"/>
-<link rel="next" href="next-part-3.html"/>
+<link rel="next" href="next-part-1.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,7 +135,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a><ul>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#get-data"><i class="fa fa-check"></i><b>2.1</b> Get data</a></li>
 <li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
 <li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
@@ -141,9 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
 <li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a><ul>
+<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a><ul>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
 <li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
 <li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
@@ -151,7 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>4</b> Primary analysis</a></li>
-<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a><ul>
+<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>5.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="5.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>5.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="5.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>5.3</b> Binomial Distribution</a></li>
@@ -161,88 +168,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>5.7</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="5.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>5.8</b> Chi-squared Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>6.1</b> Hypothesis testing theory</a></li>
 <li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.2</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>7</b> Non-parametric Methods</a></li>
-<li class="chapter" data-level="8" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>8</b> t-Procedures</a><ul>
-<li class="chapter" data-level="8.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>8.1</b> t-test and normal distribution</a></li>
-<li class="chapter" data-level="8.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>8.2</b> One-sample t-test</a></li>
-<li class="chapter" data-level="8.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>8.3</b> Practical example: t-test in R</a></li>
-<li class="chapter" data-level="8.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>8.4</b> Two samples t-test</a></li>
-<li class="chapter" data-level="8.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>8.5</b> Compare Student’s t and normal distributions</a></li>
-<li class="chapter" data-level="8.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>8.6</b> Non-parametric tests</a></li>
-<li class="chapter" data-level="8.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>8.7</b> Mann-Whitney U Rank Sum Test</a></li>
-<li class="chapter" data-level="8.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>8.8</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="7.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>7.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="7.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>7.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="7.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>7.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>9</b> Tests for categorical variables</a><ul>
-<li class="chapter" data-level="9.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>9.1</b> Chi-squared tests</a></li>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>10</b> Multiple testing</a><ul>
-<li class="chapter" data-level="10.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>10.1</b> The Bonferroni correction</a></li>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>11</b> Sources</a><ul>
-<li class="chapter" data-level="11.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>11.1</b> t-test</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>11.1.1</b> Two-tailed test</a></li>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>12</b> Wilcoxon signed-rank test</a></li>
-<li class="chapter" data-level="13" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>13</b> Analysis of Variance (ANOVA)</a><ul>
-<li class="chapter" data-level="13.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>13.1</b> One-way ANOVA</a></li>
-<li class="chapter" data-level="13.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>13.2</b> Sources</a></li>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>14</b> Correlation</a></li>
-<li class="chapter" data-level="15" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>15</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="16" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>16</b> Chi-squared test</a><ul>
-<li class="chapter" data-level="16.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>16.1</b> Multinomial Goodness of Fit</a></li>
+<li class="chapter" data-level="12" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>12</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="13" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>13</b> Chi-squared test</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>13.1</b> Multinomial Goodness of Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>17</b> Clustering</a><ul>
-<li class="chapter" data-level="17.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>17.1</b> Next part</a></li>
-<li class="chapter" data-level="17.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>17.2</b> Example</a></li>
-<li class="chapter" data-level="17.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>17.3</b> NEXT PART</a></li>
+<li class="chapter" data-level="14" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>14</b> Non-parametric Methods</a></li>
+<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="16" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>16</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="17" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>17</b> Correlation</a></li>
+<li class="chapter" data-level="18" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>18</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="19" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>19</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>19.1</b> Linear Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>18</b> Support Vector Machine</a></li>
-<li class="chapter" data-level="19" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>19</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="20" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>20</b> Machine Learning Functions Reference</a><ul>
-<li class="chapter" data-level="20.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>20.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="20" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>20</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="21" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>21</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>21.1</b> Generate Random Data Set a Linear Model</a></li>
+<li class="chapter" data-level="21.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>21.2</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="21.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>21.3</b> Practical example</a></li>
+<li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>21.4</b> Example of linear regression</a></li>
+<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>21.5</b> Standard error of train data</a></li>
+<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.6</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>21.7</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.8</b> NEXT part</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>21</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="22" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>22</b> Linear Regression</a><ul>
-<li class="chapter" data-level="22.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>22.1</b> Generate Random Data Set a Linear Model</a></li>
-<li class="chapter" data-level="22.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>22.2</b> Linear regression - theory</a></li>
-<li class="chapter" data-level="22.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>22.3</b> Practical example</a></li>
-<li class="chapter" data-level="22.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>22.4</b> Example of linear regression</a></li>
-<li class="chapter" data-level="22.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>22.5</b> Standard error of train data</a></li>
-<li class="chapter" data-level="22.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>22.6</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="22.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>22.7</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="22.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>22.8</b> NEXT part</a></li>
+<li class="chapter" data-level="22" data-path="next-part-1.html"><a href="next-part-1.html"><i class="fa fa-check"></i><b>22</b> NEXT part</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="next-part-1.html"><a href="next-part-1.html#next-part-2"><i class="fa fa-check"></i><b>22.1</b> NEXT part</a></li>
+<li class="chapter" data-level="22.2" data-path="next-part-1.html"><a href="next-part-1.html#next-part-3"><i class="fa fa-check"></i><b>22.2</b> NEXT Part</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>23</b> NEXT part</a><ul>
-<li class="chapter" data-level="23.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>23.1</b> NEXT part</a></li>
-<li class="chapter" data-level="23.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="23" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>23</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="24" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>24</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-4"><i class="fa fa-check"></i><b>24.1</b> Next part</a></li>
+<li class="chapter" data-level="24.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-5"><i class="fa fa-check"></i><b>24.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="24.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>24.3</b> NExt part</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>24</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="25" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>25</b> Spline model</a><ul>
-<li class="chapter" data-level="25.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>25.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="25.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>25.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="25.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>25.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="25.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>25.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="25.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>25.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="25.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>25.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="25.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>25.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="25" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>25</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="26" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>26</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>26.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="26.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>26.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="26.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>26.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="26.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>26.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="26.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>26.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="26.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>26.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="26.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>26.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>26</b> Logistic Regression</a><ul>
-<li class="chapter" data-level="26.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>26.1</b> Next part</a></li>
-<li class="chapter" data-level="26.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>26.2</b> NEXT Part</a></li>
-<li class="chapter" data-level="26.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>26.3</b> NExt part</a></li>
+<li class="chapter" data-level="27" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>27</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="clustering.html"><a href="clustering.html#next-part-7"><i class="fa fa-check"></i><b>27.1</b> Next part</a></li>
+<li class="chapter" data-level="27.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>27.2</b> Example</a></li>
+<li class="chapter" data-level="27.3" data-path="clustering.html"><a href="clustering.html#next-part-8"><i class="fa fa-check"></i><b>27.3</b> NEXT PART</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>27</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="28" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>28</b> Simple Markov process</a><ul>
-<li class="chapter" data-level="28.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>28.0.1</b> Sources</a></li>
-</ul></li>
+<li class="chapter" data-level="28" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>28</b> Learning Vector Quantization</a></li>
 <li class="chapter" data-level="29" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>29</b> Naive Bayes</a></li>
 <li class="chapter" data-level="30" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>30</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="31" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>31</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="31.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>31.0.1</b> Sources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -263,25 +286,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="linear-regression-1" class="section level1">
-<h1><span class="header-section-number">Chapter 22</span> Linear Regression</h1>
-<div id="generate-random-data-set-a-linear-model" class="section level2">
-<h2><span class="header-section-number">22.1</span> Generate Random Data Set a Linear Model</h2>
+<div id="linear-regression-1" class="section level1" number="21">
+<h1><span class="header-section-number">Chapter 21</span> Linear Regression</h1>
+<div id="generate-random-data-set-a-linear-model" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> Generate Random Data Set a Linear Model</h2>
 <p>Suppose we want to simulate from the following linear model:
 y = <span class="math inline">\(\beta\)</span><sub>0</sub> + <span class="math inline">\(\beta\)</span><sub>1</sub>x + <span class="math inline">\(\epsilon\)</span>,<br />
 where <span class="math inline">\(\epsilon\)</span> ~ N(0,2<sup>2</sup>). Assume x ~ N(0,1<sup>2</sup>), <span class="math inline">\(\beta\)</span><sub>0</sub> = 0.5, <span class="math inline">\(\beta\)</span><sub>1</sub> = 2.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">set.seed</span>(<span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb120-2" title="2">x &lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb120-3" title="3">e &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb120-4" title="4">y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span>e</a>
-<a class="sourceLine" id="cb120-5" title="5"><span class="kw">summary</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="linear-regression-1.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
+<span id="cb108-2"><a href="linear-regression-1.html#cb108-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb108-3"><a href="linear-regression-1.html#cb108-3" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb108-4"><a href="linear-regression-1.html#cb108-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> e</span>
+<span id="cb108-5"><a href="linear-regression-1.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## -6.4084 -1.5402  0.6789  0.6893  2.9303  6.5052</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">plot</span>(x,y)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="linear-regression-1.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 </div>
-<div id="linear-regression---theory" class="section level2">
-<h2><span class="header-section-number">22.2</span> Linear regression - theory</h2>
+<div id="linear-regression---theory" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> Linear regression - theory</h2>
 <p>Assume that there is approximately a linear relationship between X and Y:<br />
 <span class="math display">\[ Y \approx \beta_0 + \beta_1X\]</span>
 where <span class="math inline">\(\beta\)</span><sub>0</sub> is an <strong>intercept</strong> and <span class="math inline">\(\beta\)</span><sub>1</sub> is a <strong>slope</strong></p>
@@ -289,11 +312,11 @@ where <span class="math inline">\(\beta\)</span><sub>0</sub> is an <strong>inter
 <p><span class="math display">\[\beta_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}{(x_i - \bar{x})^2}} \]</span>
 <span class="math display">\[\beta_0 = \bar{y} - \beta_1\bar{x} \]</span></p>
 </div>
-<div id="practical-example" class="section level2">
-<h2><span class="header-section-number">22.3</span> Practical example</h2>
+<div id="practical-example" class="section level2" number="21.3">
+<h2><span class="header-section-number">21.3</span> Practical example</h2>
 <p>Practical example from <a href="https://en.wikipedia.org/wiki/Linear_least_squares_(mathematics)">Wikipedia</a><br />
 Set of data: (1,6), (2,5), (3, 7), (4,10)</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p>We have to find the line corresponding to the minimal sum of errors (distances from the each point to this line):
 1. For all points:<br />
 <span class="math display">\[\beta_1 + 1\beta_2 = 6\]</span></p>
@@ -312,11 +335,11 @@ The line of best fit:<br />
 y = 3.5 + 1.4x<br />
 All possible regression lines goes through the intersection point <span class="math inline">\((\bar{x}, \bar{y})\)</span></p>
 </div>
-<div id="example-of-linear-regression" class="section level2">
-<h2><span class="header-section-number">22.4</span> Example of linear regression</h2>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb123-2" title="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb123-3" title="3"><span class="kw">lm</span>(y<span class="op">~</span>x)</a></code></pre></div>
+<div id="example-of-linear-regression" class="section level2" number="21.4">
+<h2><span class="header-section-number">21.4</span> Example of linear regression</h2>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="linear-regression-1.html#cb111-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb111-2"><a href="linear-regression-1.html#cb111-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>)</span>
+<span id="cb111-3"><a href="linear-regression-1.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y<span class="sc">~</span>x)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ x)
@@ -325,19 +348,19 @@ All possible regression lines goes through the intersection point <span class="m
 ## (Intercept)            x  
 ##         3.5          1.4</code></pre>
 </div>
-<div id="standard-error-of-train-data" class="section level2">
-<h2><span class="header-section-number">22.5</span> Standard error of train data</h2>
+<div id="standard-error-of-train-data" class="section level2" number="21.5">
+<h2><span class="header-section-number">21.5</span> Standard error of train data</h2>
 <p><span class="math display">\[MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{f}(x_i))^2\]</span>
 ## Standard error of learn data
 <span class="math display">\[MSE = \frac{1}{n_o}\sum_{i=1}^{n_o}(y_i^o - \hat{f}(x_i^o))^2\]</span></p>
 </div>
-<div id="practical-examples-for-linear-model-regression" class="section level2">
-<h2><span class="header-section-number">22.6</span> Practical examples for linear model regression</h2>
+<div id="practical-examples-for-linear-model-regression" class="section level2" number="21.6">
+<h2><span class="header-section-number">21.6</span> Practical examples for linear model regression</h2>
 <p>In this simple example we have 6 persons (3 males and 3 femails) and their score from 0 to 10.<br />
 We want to build a model to see the dependence of score on gender: score ~ gender + <span class="math inline">\(\epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is an error</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="co"># create data frame for the dataset</span></a>
-<a class="sourceLine" id="cb125-2" title="2">df =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gender=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)), <span class="dt">score=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">7</span>, <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb125-3" title="3">df</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="linear-regression-1.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data frame for the dataset</span></span>
+<span id="cb113-2"><a href="linear-regression-1.html#cb113-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">gender=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)), <span class="at">score=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">7</span>, <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb113-3"><a href="linear-regression-1.html#cb113-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   gender score
 ## 1      0    10
 ## 2      0     8
@@ -345,9 +368,9 @@ We want to build a model to see the dependence of score on gender: score ~ gende
 ## 4      1     1
 ## 5      1     3
 ## 6      1     2</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="co"># build linear model</span></a>
-<a class="sourceLine" id="cb127-2" title="2">x =<span class="st"> </span><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>gender, df)</a>
-<a class="sourceLine" id="cb127-3" title="3"><span class="kw">summary</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="linear-regression-1.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build linear model</span></span>
+<span id="cb115-2"><a href="linear-regression-1.html#cb115-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">lm</span>(score <span class="sc">~</span> gender, df)</span>
+<span id="cb115-3"><a href="linear-regression-1.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = score ~ gender, data = df)
@@ -367,13 +390,13 @@ We want to build a model to see the dependence of score on gender: score ~ gende
 ## Multiple R-squared:  0.9002, Adjusted R-squared:  0.8753 
 ## F-statistic:  36.1 on 1 and 4 DF,  p-value: 0.003863</code></pre>
 </div>
-<div id="practical-examples-for-linear-model-regression-1" class="section level2">
-<h2><span class="header-section-number">22.7</span> Practical examples for linear model regression</h2>
+<div id="practical-examples-for-linear-model-regression-1" class="section level2" number="21.7">
+<h2><span class="header-section-number">21.7</span> Practical examples for linear model regression</h2>
 <p>In this simple example we have 6 persons (3 males and 3 femails) and their score from 0 to 10.<br />
 We want to build a model to see the dependence of score on gender: score ~ gender + <span class="math inline">\(\epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is an error</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="co"># create data frame for the dataset</span></a>
-<a class="sourceLine" id="cb129-2" title="2">df =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gender=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)), <span class="dt">score=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">7</span>, <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb129-3" title="3">df</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="linear-regression-1.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data frame for the dataset</span></span>
+<span id="cb117-2"><a href="linear-regression-1.html#cb117-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">gender=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)), <span class="at">score=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">7</span>, <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb117-3"><a href="linear-regression-1.html#cb117-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   gender score
 ## 1      0    10
 ## 2      0     8
@@ -381,9 +404,9 @@ We want to build a model to see the dependence of score on gender: score ~ gende
 ## 4      1     1
 ## 5      1     3
 ## 6      1     2</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="co"># build linear model</span></a>
-<a class="sourceLine" id="cb131-2" title="2">x =<span class="st"> </span><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>gender, df)</a>
-<a class="sourceLine" id="cb131-3" title="3"><span class="kw">summary</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="linear-regression-1.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build linear model</span></span>
+<span id="cb119-2"><a href="linear-regression-1.html#cb119-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">lm</span>(score <span class="sc">~</span> gender, df)</span>
+<span id="cb119-3"><a href="linear-regression-1.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = score ~ gender, data = df)
@@ -403,141 +426,141 @@ We want to build a model to see the dependence of score on gender: score ~ gende
 ## Multiple R-squared:  0.9002, Adjusted R-squared:  0.8753 
 ## F-statistic:  36.1 on 1 and 4 DF,  p-value: 0.003863</code></pre>
 </div>
-<div id="next-part-2" class="section level2">
-<h2><span class="header-section-number">22.8</span> NEXT part</h2>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="co"># Linear regression modeling, compair with kNN</span></a>
-<a class="sourceLine" id="cb133-2" title="2"></a>
-<a class="sourceLine" id="cb133-3" title="3"><span class="co"># Source: Course &#39;Math modeling&#39; practical work, State University of Management, Moscow</span></a>
-<a class="sourceLine" id="cb133-4" title="4"><span class="co"># link: https://sites.google.com/a/kiber-guu.ru/r-practice/home</span></a>
-<a class="sourceLine" id="cb133-5" title="5"></a>
-<a class="sourceLine" id="cb133-6" title="6"><span class="kw">library</span>(<span class="st">&#39;GGally&#39;</span>)</a>
-<a class="sourceLine" id="cb133-7" title="7"><span class="kw">library</span>(<span class="st">&#39;lmtest&#39;</span>)</a>
-<a class="sourceLine" id="cb133-8" title="8"><span class="kw">library</span>(<span class="st">&#39;FNN&#39;</span>)</a>
-<a class="sourceLine" id="cb133-9" title="9"></a>
-<a class="sourceLine" id="cb133-10" title="10"><span class="co"># константы</span></a>
-<a class="sourceLine" id="cb133-11" title="11">my.seed &lt;-<span class="st"> </span><span class="dv">12345</span></a>
-<a class="sourceLine" id="cb133-12" title="12">train.percent &lt;-<span class="st"> </span><span class="fl">0.85</span></a>
-<a class="sourceLine" id="cb133-13" title="13"></a>
-<a class="sourceLine" id="cb133-14" title="14"><span class="co"># загрузка данных</span></a>
-<a class="sourceLine" id="cb133-15" title="15">fileURL &lt;-<span class="st"> &#39;https://sites.google.com/a/kiber-guu.ru/msep/mag-econ/salary_data.csv?attredirects=0&amp;d=1&#39;</span></a>
-<a class="sourceLine" id="cb133-16" title="16"></a>
-<a class="sourceLine" id="cb133-17" title="17"><span class="co"># преобразуем категориальные переменные в факторы</span></a>
-<a class="sourceLine" id="cb133-18" title="18">wages.ru &lt;-<span class="st"> </span><span class="kw">read.csv</span>(fileURL, <span class="dt">row.names =</span> <span class="dv">1</span>, <span class="dt">sep =</span> <span class="st">&#39;;&#39;</span>, <span class="dt">as.is =</span> T)</a>
-<a class="sourceLine" id="cb133-19" title="19">wages.ru<span class="op">$</span>male &lt;-<span class="st"> </span><span class="kw">as.factor</span>(wages.ru<span class="op">$</span>male)</a>
-<a class="sourceLine" id="cb133-20" title="20">wages.ru<span class="op">$</span>educ &lt;-<span class="st"> </span><span class="kw">as.factor</span>(wages.ru<span class="op">$</span>educ)</a>
-<a class="sourceLine" id="cb133-21" title="21">wages.ru<span class="op">$</span>forlang &lt;-<span class="st"> </span><span class="kw">as.factor</span>(wages.ru<span class="op">$</span>forlang)</a>
-<a class="sourceLine" id="cb133-22" title="22"></a>
-<a class="sourceLine" id="cb133-23" title="23"><span class="co"># обучающая выборка</span></a>
-<a class="sourceLine" id="cb133-24" title="24"><span class="kw">set.seed</span>(my.seed)</a>
-<a class="sourceLine" id="cb133-25" title="25">inTrain &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">seq_along</span>(wages.ru<span class="op">$</span>salary), </a>
-<a class="sourceLine" id="cb133-26" title="26">                  <span class="kw">nrow</span>(wages.ru) <span class="op">*</span><span class="st"> </span>train.percent)</a>
-<a class="sourceLine" id="cb133-27" title="27">df.train &lt;-<span class="st"> </span>wages.ru[inTrain, <span class="kw">c</span>(<span class="kw">colnames</span>(wages.ru)[<span class="op">-</span><span class="dv">1</span>], <span class="kw">colnames</span>(wages.ru)[<span class="dv">1</span>])]</a>
-<a class="sourceLine" id="cb133-28" title="28">df.test &lt;-<span class="st"> </span>wages.ru[<span class="op">-</span>inTrain, <span class="dv">-1</span>]</a>
-<a class="sourceLine" id="cb133-29" title="29"></a>
-<a class="sourceLine" id="cb133-30" title="30"><span class="co"># Variable description</span></a>
-<a class="sourceLine" id="cb133-31" title="31"><span class="co"># salary – среднемесячная зарплата после вычета налогов за последние 12 месяцев (рублей);</span></a>
-<a class="sourceLine" id="cb133-32" title="32"><span class="co"># male – пол: 1 – мужчина, 0 – женщина;</span></a>
-<a class="sourceLine" id="cb133-33" title="33"><span class="co"># educ – уровень образования:</span></a>
-<a class="sourceLine" id="cb133-34" title="34"><span class="co"># 1 – 0-6 классов,</span></a>
-<a class="sourceLine" id="cb133-35" title="35"><span class="co"># 2 – незаконченное среднее (7-8 классов),</span></a>
-<a class="sourceLine" id="cb133-36" title="36"><span class="co"># 3 - незаконченное среднее плюс что-то ещё,</span></a>
-<a class="sourceLine" id="cb133-37" title="37"><span class="co"># 4 – законченное среднее,</span></a>
-<a class="sourceLine" id="cb133-38" title="38"><span class="co"># 5 – законченное среднее специальное, 6 – законченное высшее образование и выше;</span></a>
-<a class="sourceLine" id="cb133-39" title="39"><span class="co"># forlang - иност. язык: 1 – владеет, 0 – нет;</span></a>
-<a class="sourceLine" id="cb133-40" title="40"><span class="co"># exper – официальный стаж c 1.01.2002 (лет).</span></a>
-<a class="sourceLine" id="cb133-41" title="41"></a>
-<a class="sourceLine" id="cb133-42" title="42"><span class="kw">summary</span>(df.train)</a>
-<a class="sourceLine" id="cb133-43" title="43">ggp &lt;-<span class="st"> </span><span class="kw">ggpairs</span>(df.train)</a>
-<a class="sourceLine" id="cb133-44" title="44"><span class="kw">print</span>(ggp, <span class="dt">progress =</span> F)</a>
-<a class="sourceLine" id="cb133-45" title="45"><span class="co"># цвета по фактору male</span></a>
-<a class="sourceLine" id="cb133-46" title="46">ggp &lt;-<span class="st"> </span><span class="kw">ggpairs</span>(df.train[, <span class="kw">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </a>
-<a class="sourceLine" id="cb133-47" title="47">               <span class="dt">mapping =</span> ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">color =</span> male))</a>
-<a class="sourceLine" id="cb133-48" title="48"><span class="kw">print</span>(ggp, <span class="dt">progress =</span> F)</a>
-<a class="sourceLine" id="cb133-49" title="49"><span class="co"># цвета по фактору educ</span></a>
-<a class="sourceLine" id="cb133-50" title="50">ggp &lt;-<span class="st"> </span><span class="kw">ggpairs</span>(df.train[, <span class="kw">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;educ&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </a>
-<a class="sourceLine" id="cb133-51" title="51">               <span class="dt">mapping =</span> ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">color =</span> educ))</a>
-<a class="sourceLine" id="cb133-52" title="52"><span class="kw">print</span>(ggp, <span class="dt">progress =</span> F)</a>
-<a class="sourceLine" id="cb133-53" title="53"></a>
-<a class="sourceLine" id="cb133-54" title="54"><span class="co"># цвета по фактору forlang</span></a>
-<a class="sourceLine" id="cb133-55" title="55">ggp &lt;-<span class="st"> </span><span class="kw">ggpairs</span>(df.train[, <span class="kw">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;forlang&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </a>
-<a class="sourceLine" id="cb133-56" title="56">               <span class="dt">mapping =</span> ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">color =</span> forlang))</a>
-<a class="sourceLine" id="cb133-57" title="57"><span class="kw">print</span>(ggp, <span class="dt">progress =</span> F)</a>
-<a class="sourceLine" id="cb133-58" title="58"></a>
-<a class="sourceLine" id="cb133-59" title="59"><span class="co"># Linear regression model</span></a>
-<a class="sourceLine" id="cb133-60" title="60">model<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(salary <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>exper<span class="op">:</span>educ <span class="op">+</span><span class="st"> </span>exper<span class="op">:</span>forlang <span class="op">+</span><span class="st"> </span>exper<span class="op">:</span>male, <span class="dt">data =</span> df.train)</a>
-<a class="sourceLine" id="cb133-61" title="61"><span class="kw">summary</span>(model<span class="fl">.1</span>)</a>
-<a class="sourceLine" id="cb133-62" title="62"></a>
-<a class="sourceLine" id="cb133-63" title="63"><span class="co">## Exclude uninfluencial parameters</span></a>
-<a class="sourceLine" id="cb133-64" title="64"><span class="co"># Exclude eper:educ as paramaeters are not important</span></a>
-<a class="sourceLine" id="cb133-65" title="65">model<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(salary <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>exper<span class="op">:</span>forlang <span class="op">+</span><span class="st"> </span>exper<span class="op">:</span>male, <span class="dt">data =</span> df.train)</a>
-<a class="sourceLine" id="cb133-66" title="66"><span class="kw">summary</span>(model<span class="fl">.2</span>)</a>
-<a class="sourceLine" id="cb133-67" title="67"></a>
-<a class="sourceLine" id="cb133-68" title="68"><span class="co"># Exclude male1:exper</span></a>
-<a class="sourceLine" id="cb133-69" title="69">model<span class="fl">.3</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(salary <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>exper<span class="op">:</span>forlang, <span class="dt">data =</span> df.train)</a>
-<a class="sourceLine" id="cb133-70" title="70"><span class="kw">summary</span>(model<span class="fl">.3</span>)</a>
-<a class="sourceLine" id="cb133-71" title="71"></a>
-<a class="sourceLine" id="cb133-72" title="72"><span class="co"># forlang1 is less important, has no sence</span></a>
-<a class="sourceLine" id="cb133-73" title="73">model<span class="fl">.4</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(salary <span class="op">~</span><span class="st"> </span>male <span class="op">+</span><span class="st"> </span>educ <span class="op">+</span><span class="st"> </span>exper, <span class="dt">data =</span> df.train)</a>
-<a class="sourceLine" id="cb133-74" title="74"><span class="kw">summary</span>(model<span class="fl">.4</span>)</a>
-<a class="sourceLine" id="cb133-75" title="75"></a>
-<a class="sourceLine" id="cb133-76" title="76">df.train<span class="op">$</span>educ &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(df.train<span class="op">$</span>educ)</a>
-<a class="sourceLine" id="cb133-77" title="77">df.test<span class="op">$</span>educ &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(df.test<span class="op">$</span>educ)</a>
-<a class="sourceLine" id="cb133-78" title="78"></a>
-<a class="sourceLine" id="cb133-79" title="79">model<span class="fl">.6</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(salary <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> df.train)</a>
-<a class="sourceLine" id="cb133-80" title="80"><span class="kw">summary</span>(model<span class="fl">.6</span>)</a>
-<a class="sourceLine" id="cb133-81" title="81"></a>
-<a class="sourceLine" id="cb133-82" title="82"><span class="co"># Model 6 is week, let&#39;s add exper:male interactions</span></a>
-<a class="sourceLine" id="cb133-83" title="83">df.train<span class="op">$</span>educ &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(df.train<span class="op">$</span>educ)</a>
-<a class="sourceLine" id="cb133-84" title="84"></a>
-<a class="sourceLine" id="cb133-85" title="85">model<span class="fl">.7</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(salary <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>exper<span class="op">:</span>male, <span class="dt">data =</span> df.train)</a>
-<a class="sourceLine" id="cb133-86" title="86"><span class="kw">summary</span>(model<span class="fl">.7</span>)</a>
-<a class="sourceLine" id="cb133-87" title="87"></a>
-<a class="sourceLine" id="cb133-88" title="88"><span class="co"># Obviously the best decision is not to use interactions for modeling</span></a>
-<a class="sourceLine" id="cb133-89" title="89"><span class="co"># Test remainers</span></a>
-<a class="sourceLine" id="cb133-90" title="90"><span class="co"># тест Бройша-Пагана</span></a>
-<a class="sourceLine" id="cb133-91" title="91"><span class="kw">bptest</span>(model<span class="fl">.6</span>)</a>
-<a class="sourceLine" id="cb133-92" title="92"><span class="co"># статистика Дарбина-Уотсона</span></a>
-<a class="sourceLine" id="cb133-93" title="93"><span class="kw">dwtest</span>(model<span class="fl">.6</span>)</a>
-<a class="sourceLine" id="cb133-94" title="94"><span class="co"># графики остатков</span></a>
-<a class="sourceLine" id="cb133-95" title="95"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">4.5</span>, <span class="dv">2</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb133-96" title="96"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb133-97" title="97"><span class="kw">plot</span>(model<span class="fl">.7</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb133-98" title="98"><span class="kw">plot</span>(model<span class="fl">.7</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb133-99" title="99"><span class="kw">plot</span>(model<span class="fl">.7</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb133-100" title="100"></a>
-<a class="sourceLine" id="cb133-101" title="101"><span class="co">### Comparison with kNN-method</span></a>
-<a class="sourceLine" id="cb133-102" title="102"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb133-103" title="103"><span class="co"># фактические значения y на тестовой выборке</span></a>
-<a class="sourceLine" id="cb133-104" title="104">y.fact &lt;-<span class="st"> </span>wages.ru[<span class="op">-</span>inTrain, <span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb133-105" title="105">y.model.lm &lt;-<span class="st"> </span><span class="kw">predict</span>(model<span class="fl">.6</span>, df.test)</a>
-<a class="sourceLine" id="cb133-106" title="106">MSE.lm &lt;-<span class="st"> </span><span class="kw">sum</span>((y.model.lm <span class="op">-</span><span class="st"> </span>y.fact)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(y.model.lm)</a>
-<a class="sourceLine" id="cb133-107" title="107"></a>
-<a class="sourceLine" id="cb133-108" title="108"><span class="co"># kNN требует на вход только числовые переменные</span></a>
-<a class="sourceLine" id="cb133-109" title="109">df.train.num &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">apply</span>(df.train, <span class="dv">2</span>, as.numeric))</a>
-<a class="sourceLine" id="cb133-110" title="110">df.test.num &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">apply</span>(df.test, <span class="dv">2</span>, as.numeric))</a>
-<a class="sourceLine" id="cb133-111" title="111"></a>
-<a class="sourceLine" id="cb133-112" title="112"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">50</span>){</a>
-<a class="sourceLine" id="cb133-113" title="113">    model.knn &lt;-<span class="st"> </span><span class="kw">knn.reg</span>(<span class="dt">train =</span> df.train.num[, <span class="op">!</span>(<span class="kw">colnames</span>(df.train.num) <span class="op">%in%</span><span class="st"> &#39;salary&#39;</span>)], </a>
-<a class="sourceLine" id="cb133-114" title="114">                         <span class="dt">y =</span> df.train.num[, <span class="st">&#39;salary&#39;</span>], </a>
-<a class="sourceLine" id="cb133-115" title="115">                         <span class="dt">test =</span> df.test.num, <span class="dt">k =</span> i)</a>
-<a class="sourceLine" id="cb133-116" title="116">    y.model.knn &lt;-<span class="st"> </span>model.knn<span class="op">$</span>pred</a>
-<a class="sourceLine" id="cb133-117" title="117">    <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">2</span>){</a>
-<a class="sourceLine" id="cb133-118" title="118">        MSE.knn &lt;-<span class="st"> </span><span class="kw">sum</span>((y.model.knn <span class="op">-</span><span class="st"> </span>y.fact)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(y.model.knn)</a>
-<a class="sourceLine" id="cb133-119" title="119">    } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb133-120" title="120">        MSE.knn &lt;-<span class="st"> </span><span class="kw">c</span>(MSE.knn, </a>
-<a class="sourceLine" id="cb133-121" title="121">                     <span class="kw">sum</span>((y.model.knn <span class="op">-</span><span class="st"> </span>y.fact)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(y.model.knn))</a>
-<a class="sourceLine" id="cb133-122" title="122">    }</a>
-<a class="sourceLine" id="cb133-123" title="123">}</a>
-<a class="sourceLine" id="cb133-124" title="124"></a>
-<a class="sourceLine" id="cb133-125" title="125"><span class="co"># график</span></a>
-<a class="sourceLine" id="cb133-126" title="126"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">4.5</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb133-127" title="127"><span class="kw">plot</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">50</span>, MSE.knn, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">col =</span> <span class="st">&#39;darkgreen&#39;</span>,</a>
-<a class="sourceLine" id="cb133-128" title="128">     <span class="dt">xlab =</span> <span class="st">&#39;значение k&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;MSE на тестовой выборке&#39;</span>)</a>
-<a class="sourceLine" id="cb133-129" title="129"><span class="kw">lines</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">50</span>, <span class="kw">rep</span>(MSE.lm, <span class="dv">49</span>), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">grey</span>(<span class="fl">0.2</span>), <span class="dt">lty =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb133-130" title="130"><span class="kw">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>), </a>
-<a class="sourceLine" id="cb133-131" title="131">       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;darkgreen&#39;</span>, <span class="kw">grey</span>(<span class="fl">0.2</span>)), </a>
-<a class="sourceLine" id="cb133-132" title="132">       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&#39;k ближайших соседа&#39;</span>, <span class="st">&#39;регрессия (все факторы)&#39;</span>), </a>
-<a class="sourceLine" id="cb133-133" title="133">       <span class="dt">lwd =</span> <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">2</span>))</a></code></pre></div>
+<div id="next-part" class="section level2" number="21.8">
+<h2><span class="header-section-number">21.8</span> NEXT part</h2>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="linear-regression-1.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression modeling, compair with kNN</span></span>
+<span id="cb121-2"><a href="linear-regression-1.html#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="linear-regression-1.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: Course &#39;Math modeling&#39; practical work, State University of Management, Moscow</span></span>
+<span id="cb121-4"><a href="linear-regression-1.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co"># link: https://sites.google.com/a/kiber-guu.ru/r-practice/home</span></span>
+<span id="cb121-5"><a href="linear-regression-1.html#cb121-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-6"><a href="linear-regression-1.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;GGally&#39;</span>)</span>
+<span id="cb121-7"><a href="linear-regression-1.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;lmtest&#39;</span>)</span>
+<span id="cb121-8"><a href="linear-regression-1.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;FNN&#39;</span>)</span>
+<span id="cb121-9"><a href="linear-regression-1.html#cb121-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-10"><a href="linear-regression-1.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co"># константы</span></span>
+<span id="cb121-11"><a href="linear-regression-1.html#cb121-11" aria-hidden="true" tabindex="-1"></a>my.seed <span class="ot">&lt;-</span> <span class="dv">12345</span></span>
+<span id="cb121-12"><a href="linear-regression-1.html#cb121-12" aria-hidden="true" tabindex="-1"></a>train.percent <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
+<span id="cb121-13"><a href="linear-regression-1.html#cb121-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-14"><a href="linear-regression-1.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="co"># загрузка данных</span></span>
+<span id="cb121-15"><a href="linear-regression-1.html#cb121-15" aria-hidden="true" tabindex="-1"></a>fileURL <span class="ot">&lt;-</span> <span class="st">&#39;https://sites.google.com/a/kiber-guu.ru/msep/mag-econ/salary_data.csv?attredirects=0&amp;d=1&#39;</span></span>
+<span id="cb121-16"><a href="linear-regression-1.html#cb121-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-17"><a href="linear-regression-1.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="co"># преобразуем категориальные переменные в факторы</span></span>
+<span id="cb121-18"><a href="linear-regression-1.html#cb121-18" aria-hidden="true" tabindex="-1"></a>wages.ru <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(fileURL, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">sep =</span> <span class="st">&#39;;&#39;</span>, <span class="at">as.is =</span> T)</span>
+<span id="cb121-19"><a href="linear-regression-1.html#cb121-19" aria-hidden="true" tabindex="-1"></a>wages.ru<span class="sc">$</span>male <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wages.ru<span class="sc">$</span>male)</span>
+<span id="cb121-20"><a href="linear-regression-1.html#cb121-20" aria-hidden="true" tabindex="-1"></a>wages.ru<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wages.ru<span class="sc">$</span>educ)</span>
+<span id="cb121-21"><a href="linear-regression-1.html#cb121-21" aria-hidden="true" tabindex="-1"></a>wages.ru<span class="sc">$</span>forlang <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wages.ru<span class="sc">$</span>forlang)</span>
+<span id="cb121-22"><a href="linear-regression-1.html#cb121-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-23"><a href="linear-regression-1.html#cb121-23" aria-hidden="true" tabindex="-1"></a><span class="co"># обучающая выборка</span></span>
+<span id="cb121-24"><a href="linear-regression-1.html#cb121-24" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb121-25"><a href="linear-regression-1.html#cb121-25" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_along</span>(wages.ru<span class="sc">$</span>salary), </span>
+<span id="cb121-26"><a href="linear-regression-1.html#cb121-26" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">nrow</span>(wages.ru) <span class="sc">*</span> train.percent)</span>
+<span id="cb121-27"><a href="linear-regression-1.html#cb121-27" aria-hidden="true" tabindex="-1"></a>df.train <span class="ot">&lt;-</span> wages.ru[inTrain, <span class="fu">c</span>(<span class="fu">colnames</span>(wages.ru)[<span class="sc">-</span><span class="dv">1</span>], <span class="fu">colnames</span>(wages.ru)[<span class="dv">1</span>])]</span>
+<span id="cb121-28"><a href="linear-regression-1.html#cb121-28" aria-hidden="true" tabindex="-1"></a>df.test <span class="ot">&lt;-</span> wages.ru[<span class="sc">-</span>inTrain, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb121-29"><a href="linear-regression-1.html#cb121-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-30"><a href="linear-regression-1.html#cb121-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable description</span></span>
+<span id="cb121-31"><a href="linear-regression-1.html#cb121-31" aria-hidden="true" tabindex="-1"></a><span class="co"># salary – среднемесячная зарплата после вычета налогов за последние 12 месяцев (рублей);</span></span>
+<span id="cb121-32"><a href="linear-regression-1.html#cb121-32" aria-hidden="true" tabindex="-1"></a><span class="co"># male – пол: 1 – мужчина, 0 – женщина;</span></span>
+<span id="cb121-33"><a href="linear-regression-1.html#cb121-33" aria-hidden="true" tabindex="-1"></a><span class="co"># educ – уровень образования:</span></span>
+<span id="cb121-34"><a href="linear-regression-1.html#cb121-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 – 0-6 классов,</span></span>
+<span id="cb121-35"><a href="linear-regression-1.html#cb121-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 – незаконченное среднее (7-8 классов),</span></span>
+<span id="cb121-36"><a href="linear-regression-1.html#cb121-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 - незаконченное среднее плюс что-то ещё,</span></span>
+<span id="cb121-37"><a href="linear-regression-1.html#cb121-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 – законченное среднее,</span></span>
+<span id="cb121-38"><a href="linear-regression-1.html#cb121-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 – законченное среднее специальное, 6 – законченное высшее образование и выше;</span></span>
+<span id="cb121-39"><a href="linear-regression-1.html#cb121-39" aria-hidden="true" tabindex="-1"></a><span class="co"># forlang - иност. язык: 1 – владеет, 0 – нет;</span></span>
+<span id="cb121-40"><a href="linear-regression-1.html#cb121-40" aria-hidden="true" tabindex="-1"></a><span class="co"># exper – официальный стаж c 1.01.2002 (лет).</span></span>
+<span id="cb121-41"><a href="linear-regression-1.html#cb121-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-42"><a href="linear-regression-1.html#cb121-42" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df.train)</span>
+<span id="cb121-43"><a href="linear-regression-1.html#cb121-43" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train)</span>
+<span id="cb121-44"><a href="linear-regression-1.html#cb121-44" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb121-45"><a href="linear-regression-1.html#cb121-45" aria-hidden="true" tabindex="-1"></a><span class="co"># цвета по фактору male</span></span>
+<span id="cb121-46"><a href="linear-regression-1.html#cb121-46" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train[, <span class="fu">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb121-47"><a href="linear-regression-1.html#cb121-47" aria-hidden="true" tabindex="-1"></a>               <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">color =</span> male))</span>
+<span id="cb121-48"><a href="linear-regression-1.html#cb121-48" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb121-49"><a href="linear-regression-1.html#cb121-49" aria-hidden="true" tabindex="-1"></a><span class="co"># цвета по фактору educ</span></span>
+<span id="cb121-50"><a href="linear-regression-1.html#cb121-50" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train[, <span class="fu">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;educ&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb121-51"><a href="linear-regression-1.html#cb121-51" aria-hidden="true" tabindex="-1"></a>               <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">color =</span> educ))</span>
+<span id="cb121-52"><a href="linear-regression-1.html#cb121-52" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb121-53"><a href="linear-regression-1.html#cb121-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-54"><a href="linear-regression-1.html#cb121-54" aria-hidden="true" tabindex="-1"></a><span class="co"># цвета по фактору forlang</span></span>
+<span id="cb121-55"><a href="linear-regression-1.html#cb121-55" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(df.train[, <span class="fu">c</span>(<span class="st">&#39;exper&#39;</span>, <span class="st">&#39;forlang&#39;</span>, <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb121-56"><a href="linear-regression-1.html#cb121-56" aria-hidden="true" tabindex="-1"></a>               <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">color =</span> forlang))</span>
+<span id="cb121-57"><a href="linear-regression-1.html#cb121-57" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ggp, <span class="at">progress =</span> F)</span>
+<span id="cb121-58"><a href="linear-regression-1.html#cb121-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-59"><a href="linear-regression-1.html#cb121-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model</span></span>
+<span id="cb121-60"><a href="linear-regression-1.html#cb121-60" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>educ <span class="sc">+</span> exper<span class="sc">:</span>forlang <span class="sc">+</span> exper<span class="sc">:</span>male, <span class="at">data =</span> df.train)</span>
+<span id="cb121-61"><a href="linear-regression-1.html#cb121-61" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.1</span>)</span>
+<span id="cb121-62"><a href="linear-regression-1.html#cb121-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-63"><a href="linear-regression-1.html#cb121-63" aria-hidden="true" tabindex="-1"></a><span class="do">## Exclude uninfluencial parameters</span></span>
+<span id="cb121-64"><a href="linear-regression-1.html#cb121-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude eper:educ as paramaeters are not important</span></span>
+<span id="cb121-65"><a href="linear-regression-1.html#cb121-65" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>forlang <span class="sc">+</span> exper<span class="sc">:</span>male, <span class="at">data =</span> df.train)</span>
+<span id="cb121-66"><a href="linear-regression-1.html#cb121-66" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.2</span>)</span>
+<span id="cb121-67"><a href="linear-regression-1.html#cb121-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-68"><a href="linear-regression-1.html#cb121-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude male1:exper</span></span>
+<span id="cb121-69"><a href="linear-regression-1.html#cb121-69" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>forlang, <span class="at">data =</span> df.train)</span>
+<span id="cb121-70"><a href="linear-regression-1.html#cb121-70" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.3</span>)</span>
+<span id="cb121-71"><a href="linear-regression-1.html#cb121-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-72"><a href="linear-regression-1.html#cb121-72" aria-hidden="true" tabindex="-1"></a><span class="co"># forlang1 is less important, has no sence</span></span>
+<span id="cb121-73"><a href="linear-regression-1.html#cb121-73" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> male <span class="sc">+</span> educ <span class="sc">+</span> exper, <span class="at">data =</span> df.train)</span>
+<span id="cb121-74"><a href="linear-regression-1.html#cb121-74" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.4</span>)</span>
+<span id="cb121-75"><a href="linear-regression-1.html#cb121-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-76"><a href="linear-regression-1.html#cb121-76" aria-hidden="true" tabindex="-1"></a>df.train<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df.train<span class="sc">$</span>educ)</span>
+<span id="cb121-77"><a href="linear-regression-1.html#cb121-77" aria-hidden="true" tabindex="-1"></a>df.test<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df.test<span class="sc">$</span>educ)</span>
+<span id="cb121-78"><a href="linear-regression-1.html#cb121-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-79"><a href="linear-regression-1.html#cb121-79" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.6</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> ., <span class="at">data =</span> df.train)</span>
+<span id="cb121-80"><a href="linear-regression-1.html#cb121-80" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.6</span>)</span>
+<span id="cb121-81"><a href="linear-regression-1.html#cb121-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-82"><a href="linear-regression-1.html#cb121-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 6 is week, let&#39;s add exper:male interactions</span></span>
+<span id="cb121-83"><a href="linear-regression-1.html#cb121-83" aria-hidden="true" tabindex="-1"></a>df.train<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df.train<span class="sc">$</span>educ)</span>
+<span id="cb121-84"><a href="linear-regression-1.html#cb121-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-85"><a href="linear-regression-1.html#cb121-85" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.7</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> . <span class="sc">+</span> exper<span class="sc">:</span>male, <span class="at">data =</span> df.train)</span>
+<span id="cb121-86"><a href="linear-regression-1.html#cb121-86" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.7</span>)</span>
+<span id="cb121-87"><a href="linear-regression-1.html#cb121-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-88"><a href="linear-regression-1.html#cb121-88" aria-hidden="true" tabindex="-1"></a><span class="co"># Obviously the best decision is not to use interactions for modeling</span></span>
+<span id="cb121-89"><a href="linear-regression-1.html#cb121-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Test remainers</span></span>
+<span id="cb121-90"><a href="linear-regression-1.html#cb121-90" aria-hidden="true" tabindex="-1"></a><span class="co"># тест Бройша-Пагана</span></span>
+<span id="cb121-91"><a href="linear-regression-1.html#cb121-91" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(model<span class="fl">.6</span>)</span>
+<span id="cb121-92"><a href="linear-regression-1.html#cb121-92" aria-hidden="true" tabindex="-1"></a><span class="co"># статистика Дарбина-Уотсона</span></span>
+<span id="cb121-93"><a href="linear-regression-1.html#cb121-93" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(model<span class="fl">.6</span>)</span>
+<span id="cb121-94"><a href="linear-regression-1.html#cb121-94" aria-hidden="true" tabindex="-1"></a><span class="co"># графики остатков</span></span>
+<span id="cb121-95"><a href="linear-regression-1.html#cb121-95" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">4.5</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb121-96"><a href="linear-regression-1.html#cb121-96" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb121-97"><a href="linear-regression-1.html#cb121-97" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model<span class="fl">.7</span>, <span class="dv">1</span>)</span>
+<span id="cb121-98"><a href="linear-regression-1.html#cb121-98" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model<span class="fl">.7</span>, <span class="dv">4</span>)</span>
+<span id="cb121-99"><a href="linear-regression-1.html#cb121-99" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model<span class="fl">.7</span>, <span class="dv">5</span>)</span>
+<span id="cb121-100"><a href="linear-regression-1.html#cb121-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-101"><a href="linear-regression-1.html#cb121-101" aria-hidden="true" tabindex="-1"></a><span class="do">### Comparison with kNN-method</span></span>
+<span id="cb121-102"><a href="linear-regression-1.html#cb121-102" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb121-103"><a href="linear-regression-1.html#cb121-103" aria-hidden="true" tabindex="-1"></a><span class="co"># фактические значения y на тестовой выборке</span></span>
+<span id="cb121-104"><a href="linear-regression-1.html#cb121-104" aria-hidden="true" tabindex="-1"></a>y.fact <span class="ot">&lt;-</span> wages.ru[<span class="sc">-</span>inTrain, <span class="dv">1</span>]</span>
+<span id="cb121-105"><a href="linear-regression-1.html#cb121-105" aria-hidden="true" tabindex="-1"></a>y.model.lm <span class="ot">&lt;-</span> <span class="fu">predict</span>(model<span class="fl">.6</span>, df.test)</span>
+<span id="cb121-106"><a href="linear-regression-1.html#cb121-106" aria-hidden="true" tabindex="-1"></a>MSE.lm <span class="ot">&lt;-</span> <span class="fu">sum</span>((y.model.lm <span class="sc">-</span> y.fact)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(y.model.lm)</span>
+<span id="cb121-107"><a href="linear-regression-1.html#cb121-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-108"><a href="linear-regression-1.html#cb121-108" aria-hidden="true" tabindex="-1"></a><span class="co"># kNN требует на вход только числовые переменные</span></span>
+<span id="cb121-109"><a href="linear-regression-1.html#cb121-109" aria-hidden="true" tabindex="-1"></a>df.train.num <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">apply</span>(df.train, <span class="dv">2</span>, as.numeric))</span>
+<span id="cb121-110"><a href="linear-regression-1.html#cb121-110" aria-hidden="true" tabindex="-1"></a>df.test.num <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">apply</span>(df.test, <span class="dv">2</span>, as.numeric))</span>
+<span id="cb121-111"><a href="linear-regression-1.html#cb121-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-112"><a href="linear-regression-1.html#cb121-112" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>){</span>
+<span id="cb121-113"><a href="linear-regression-1.html#cb121-113" aria-hidden="true" tabindex="-1"></a>    model.knn <span class="ot">&lt;-</span> <span class="fu">knn.reg</span>(<span class="at">train =</span> df.train.num[, <span class="sc">!</span>(<span class="fu">colnames</span>(df.train.num) <span class="sc">%in%</span> <span class="st">&#39;salary&#39;</span>)], </span>
+<span id="cb121-114"><a href="linear-regression-1.html#cb121-114" aria-hidden="true" tabindex="-1"></a>                         <span class="at">y =</span> df.train.num[, <span class="st">&#39;salary&#39;</span>], </span>
+<span id="cb121-115"><a href="linear-regression-1.html#cb121-115" aria-hidden="true" tabindex="-1"></a>                         <span class="at">test =</span> df.test.num, <span class="at">k =</span> i)</span>
+<span id="cb121-116"><a href="linear-regression-1.html#cb121-116" aria-hidden="true" tabindex="-1"></a>    y.model.knn <span class="ot">&lt;-</span> model.knn<span class="sc">$</span>pred</span>
+<span id="cb121-117"><a href="linear-regression-1.html#cb121-117" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">2</span>){</span>
+<span id="cb121-118"><a href="linear-regression-1.html#cb121-118" aria-hidden="true" tabindex="-1"></a>        MSE.knn <span class="ot">&lt;-</span> <span class="fu">sum</span>((y.model.knn <span class="sc">-</span> y.fact)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(y.model.knn)</span>
+<span id="cb121-119"><a href="linear-regression-1.html#cb121-119" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb121-120"><a href="linear-regression-1.html#cb121-120" aria-hidden="true" tabindex="-1"></a>        MSE.knn <span class="ot">&lt;-</span> <span class="fu">c</span>(MSE.knn, </span>
+<span id="cb121-121"><a href="linear-regression-1.html#cb121-121" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">sum</span>((y.model.knn <span class="sc">-</span> y.fact)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(y.model.knn))</span>
+<span id="cb121-122"><a href="linear-regression-1.html#cb121-122" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb121-123"><a href="linear-regression-1.html#cb121-123" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb121-124"><a href="linear-regression-1.html#cb121-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-125"><a href="linear-regression-1.html#cb121-125" aria-hidden="true" tabindex="-1"></a><span class="co"># график</span></span>
+<span id="cb121-126"><a href="linear-regression-1.html#cb121-126" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">4.5</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb121-127"><a href="linear-regression-1.html#cb121-127" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>, MSE.knn, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">col =</span> <span class="st">&#39;darkgreen&#39;</span>,</span>
+<span id="cb121-128"><a href="linear-regression-1.html#cb121-128" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;значение k&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;MSE на тестовой выборке&#39;</span>)</span>
+<span id="cb121-129"><a href="linear-regression-1.html#cb121-129" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">rep</span>(MSE.lm, <span class="dv">49</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb121-130"><a href="linear-regression-1.html#cb121-130" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>), </span>
+<span id="cb121-131"><a href="linear-regression-1.html#cb121-131" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;darkgreen&#39;</span>, <span class="fu">grey</span>(<span class="fl">0.2</span>)), </span>
+<span id="cb121-132"><a href="linear-regression-1.html#cb121-132" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;k ближайших соседа&#39;</span>, <span class="st">&#39;регрессия (все факторы)&#39;</span>), </span>
+<span id="cb121-133"><a href="linear-regression-1.html#cb121-133" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -546,7 +569,7 @@ We want to build a model to see the dependence of score on gender: score ~ gende
         </div>
       </div>
 <a href="split-data-into-train-and-test-subsets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="next-part-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="next-part-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -577,7 +600,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/30_linear_regression.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/23_linear_regression.Rmd",
 "text": "Edit"
 },
 "history": {

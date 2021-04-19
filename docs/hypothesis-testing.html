@@ -32,7 +32,8 @@
   
   
 <link rel="prev" href="statistical-distributions.html"/>
-<link rel="next" href="non-parametric-methods.html"/>
+<link rel="next" href="t-procedures.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,7 +135,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a><ul>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#get-data"><i class="fa fa-check"></i><b>2.1</b> Get data</a></li>
 <li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
 <li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
@@ -141,9 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
 <li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a><ul>
+<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a><ul>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
 <li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
 <li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
@@ -151,7 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>4</b> Primary analysis</a></li>
-<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a><ul>
+<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>5.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="5.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>5.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="5.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>5.3</b> Binomial Distribution</a></li>
@@ -161,88 +168,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>5.7</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="5.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>5.8</b> Chi-squared Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>6.1</b> Hypothesis testing theory</a></li>
 <li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.2</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>7</b> Non-parametric Methods</a></li>
-<li class="chapter" data-level="8" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>8</b> t-Procedures</a><ul>
-<li class="chapter" data-level="8.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>8.1</b> t-test and normal distribution</a></li>
-<li class="chapter" data-level="8.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>8.2</b> One-sample t-test</a></li>
-<li class="chapter" data-level="8.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>8.3</b> Practical example: t-test in R</a></li>
-<li class="chapter" data-level="8.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>8.4</b> Two samples t-test</a></li>
-<li class="chapter" data-level="8.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>8.5</b> Compare Student’s t and normal distributions</a></li>
-<li class="chapter" data-level="8.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>8.6</b> Non-parametric tests</a></li>
-<li class="chapter" data-level="8.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>8.7</b> Mann-Whitney U Rank Sum Test</a></li>
-<li class="chapter" data-level="8.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>8.8</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="7.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>7.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="7.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>7.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="7.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>7.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>9</b> Tests for categorical variables</a><ul>
-<li class="chapter" data-level="9.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>9.1</b> Chi-squared tests</a></li>
+<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>10</b> Multiple testing</a><ul>
-<li class="chapter" data-level="10.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>10.1</b> The Bonferroni correction</a></li>
+<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>11</b> Sources</a><ul>
-<li class="chapter" data-level="11.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>11.1</b> t-test</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>11.1.1</b> Two-tailed test</a></li>
+<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>12</b> Wilcoxon signed-rank test</a></li>
-<li class="chapter" data-level="13" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>13</b> Analysis of Variance (ANOVA)</a><ul>
-<li class="chapter" data-level="13.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>13.1</b> One-way ANOVA</a></li>
-<li class="chapter" data-level="13.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>13.2</b> Sources</a></li>
+<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>14</b> Correlation</a></li>
-<li class="chapter" data-level="15" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>15</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="16" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>16</b> Chi-squared test</a><ul>
-<li class="chapter" data-level="16.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>16.1</b> Multinomial Goodness of Fit</a></li>
+<li class="chapter" data-level="12" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>12</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="13" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>13</b> Chi-squared test</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>13.1</b> Multinomial Goodness of Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>17</b> Clustering</a><ul>
-<li class="chapter" data-level="17.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>17.1</b> Next part</a></li>
-<li class="chapter" data-level="17.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>17.2</b> Example</a></li>
-<li class="chapter" data-level="17.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>17.3</b> NEXT PART</a></li>
+<li class="chapter" data-level="14" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>14</b> Non-parametric Methods</a></li>
+<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="16" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>16</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="17" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>17</b> Correlation</a></li>
+<li class="chapter" data-level="18" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>18</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="19" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>19</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>19.1</b> Linear Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>18</b> Support Vector Machine</a></li>
-<li class="chapter" data-level="19" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>19</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="20" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>20</b> Machine Learning Functions Reference</a><ul>
-<li class="chapter" data-level="20.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>20.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="20" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>20</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="21" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>21</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>21.1</b> Generate Random Data Set a Linear Model</a></li>
+<li class="chapter" data-level="21.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>21.2</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="21.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>21.3</b> Practical example</a></li>
+<li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>21.4</b> Example of linear regression</a></li>
+<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>21.5</b> Standard error of train data</a></li>
+<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.6</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>21.7</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.8</b> NEXT part</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>21</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="22" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>22</b> Linear Regression</a><ul>
-<li class="chapter" data-level="22.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>22.1</b> Generate Random Data Set a Linear Model</a></li>
-<li class="chapter" data-level="22.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>22.2</b> Linear regression - theory</a></li>
-<li class="chapter" data-level="22.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>22.3</b> Practical example</a></li>
-<li class="chapter" data-level="22.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>22.4</b> Example of linear regression</a></li>
-<li class="chapter" data-level="22.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>22.5</b> Standard error of train data</a></li>
-<li class="chapter" data-level="22.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>22.6</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="22.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>22.7</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="22.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>22.8</b> NEXT part</a></li>
+<li class="chapter" data-level="22" data-path="next-part-1.html"><a href="next-part-1.html"><i class="fa fa-check"></i><b>22</b> NEXT part</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="next-part-1.html"><a href="next-part-1.html#next-part-2"><i class="fa fa-check"></i><b>22.1</b> NEXT part</a></li>
+<li class="chapter" data-level="22.2" data-path="next-part-1.html"><a href="next-part-1.html#next-part-3"><i class="fa fa-check"></i><b>22.2</b> NEXT Part</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>23</b> NEXT part</a><ul>
-<li class="chapter" data-level="23.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>23.1</b> NEXT part</a></li>
-<li class="chapter" data-level="23.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="23" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>23</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="24" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>24</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-4"><i class="fa fa-check"></i><b>24.1</b> Next part</a></li>
+<li class="chapter" data-level="24.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-5"><i class="fa fa-check"></i><b>24.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="24.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>24.3</b> NExt part</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>24</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="25" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>25</b> Spline model</a><ul>
-<li class="chapter" data-level="25.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>25.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="25.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>25.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="25.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>25.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="25.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>25.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="25.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>25.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="25.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>25.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="25.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>25.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="25" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>25</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="26" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>26</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>26.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="26.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>26.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="26.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>26.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="26.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>26.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="26.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>26.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="26.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>26.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="26.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>26.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>26</b> Logistic Regression</a><ul>
-<li class="chapter" data-level="26.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>26.1</b> Next part</a></li>
-<li class="chapter" data-level="26.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>26.2</b> NEXT Part</a></li>
-<li class="chapter" data-level="26.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>26.3</b> NExt part</a></li>
+<li class="chapter" data-level="27" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>27</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="clustering.html"><a href="clustering.html#next-part-7"><i class="fa fa-check"></i><b>27.1</b> Next part</a></li>
+<li class="chapter" data-level="27.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>27.2</b> Example</a></li>
+<li class="chapter" data-level="27.3" data-path="clustering.html"><a href="clustering.html#next-part-8"><i class="fa fa-check"></i><b>27.3</b> NEXT PART</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>27</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="28" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>28</b> Simple Markov process</a><ul>
-<li class="chapter" data-level="28.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>28.0.1</b> Sources</a></li>
-</ul></li>
+<li class="chapter" data-level="28" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>28</b> Learning Vector Quantization</a></li>
 <li class="chapter" data-level="29" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>29</b> Naive Bayes</a></li>
 <li class="chapter" data-level="30" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>30</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="31" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>31</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="31.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>31.0.1</b> Sources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -263,9 +286,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="hypothesis-testing" class="section level1">
+<div id="hypothesis-testing" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Hypothesis testing</h1>
-<div id="hypothesis-testing-theory" class="section level2">
+<div id="hypothesis-testing-theory" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Hypothesis testing theory</h2>
 <p>Null hypothesis (H<sub>0</sub>):<br />
 1. H<sub>0</sub>: m = μ<br />
@@ -305,7 +328,7 @@ If p value is less than significance level alpha (0.05), the hull hypothesies is
 <p>Type II errors are usually more dangerous.</p>
 <p>Significance level <span class="math inline">\(/alpha\)</span> is the probability of mistakenly rejecting the null hypothesis, if the null hypothesis is true. This is also called false positive and type I error.</p>
 </div>
-<div id="hypothesis-test-practice" class="section level2">
+<div id="hypothesis-test-practice" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Hypothesis test (Practice)</h2>
 <ol style="list-style-type: decimal">
 <li>Check distribution (is normal?): shapiro.test()<br />
@@ -316,128 +339,128 @@ If p value is less than significance level alpha (0.05), the hull hypothesies is
 </li>
 <li>Difference of distribution parameters (are means different?)</li>
 </ol>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co">###. 1 Is distribution normal?</span></a>
-<a class="sourceLine" id="cb40-2" title="2">town &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;~/DataAnalysis/DATA/town_1959_2.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb40-3" title="3">town</a>
-<a class="sourceLine" id="cb40-4" title="4"><span class="co"># histogram</span></a>
-<a class="sourceLine" id="cb40-5" title="5"><span class="kw">hist</span>(town[,<span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb40-6" title="6"></a>
-<a class="sourceLine" id="cb40-7" title="7"><span class="co"># log scale</span></a>
-<a class="sourceLine" id="cb40-8" title="8"><span class="kw">hist</span>(<span class="kw">log</span>(town[,<span class="dv">3</span>]), <span class="dt">breaks=</span><span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb40-9" title="9"></a>
-<a class="sourceLine" id="cb40-10" title="10"><span class="co"># ? Is log scaled number of sitizens per town is normally distributed?</span></a>
-<a class="sourceLine" id="cb40-11" title="11"><span class="co"># test for normal distribution of dataset</span></a>
-<a class="sourceLine" id="cb40-12" title="12">data &lt;-<span class="st"> </span><span class="kw">log</span>(town[,<span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb40-13" title="13"><span class="kw">shapiro.test</span>(data)</a>
-<a class="sourceLine" id="cb40-14" title="14"></a>
-<a class="sourceLine" id="cb40-15" title="15"><span class="co"># H0: data is normally distributed</span></a>
-<a class="sourceLine" id="cb40-16" title="16"><span class="co"># W = 0.97467 - </span></a>
-<a class="sourceLine" id="cb40-17" title="17"><span class="co"># p-value = 3.15e-12 -&gt; p &lt; alpha (0.01) - H0 is incorrect</span></a>
-<a class="sourceLine" id="cb40-18" title="18"><span class="co"># Our distripution is not normal</span></a>
-<a class="sourceLine" id="cb40-19" title="19"></a>
-<a class="sourceLine" id="cb40-20" title="20"><span class="co"># Different tests for normality in package &quot;nortest&quot;</span></a>
-<a class="sourceLine" id="cb40-21" title="21"><span class="kw">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</a>
-<a class="sourceLine" id="cb40-22" title="22"><span class="kw">library</span>(nortest)</a>
-<a class="sourceLine" id="cb40-23" title="23"><span class="kw">ad.test</span>(data)   <span class="co"># Anderson-Darling test</span></a>
-<a class="sourceLine" id="cb40-24" title="24"><span class="kw">lillie.test</span>(data) <span class="co"># Lilliefors (Kolmogorov-Smirnov) test</span></a>
-<a class="sourceLine" id="cb40-25" title="25"></a>
-<a class="sourceLine" id="cb40-26" title="26"><span class="co"># Emperical rule: if n &lt; 2000 -&gt; shapiro.test, else -&gt; lillie.test</span></a>
-<a class="sourceLine" id="cb40-27" title="27"></a>
-<a class="sourceLine" id="cb40-28" title="28"><span class="co"># In theory it is possible to use method for normally distributed data, </span></a>
-<a class="sourceLine" id="cb40-29" title="29"><span class="co"># even if they are not normal, but almost normal:</span></a>
-<a class="sourceLine" id="cb40-30" title="30"><span class="co"># 1. No outlayers</span></a>
-<a class="sourceLine" id="cb40-31" title="31"><span class="co"># 2. Symmetry of histogram</span></a>
-<a class="sourceLine" id="cb40-32" title="32"><span class="co"># 3. Bell-shaped form of histogram</span></a>
-<a class="sourceLine" id="cb40-33" title="33"></a>
-<a class="sourceLine" id="cb40-34" title="34"><span class="co"># Method to make normal from not-normal distribution</span></a>
-<a class="sourceLine" id="cb40-35" title="35"><span class="co"># 1. Remove outlayers</span></a>
-<a class="sourceLine" id="cb40-36" title="36"><span class="co"># 2. Transform data to get symmetry: log, Boxcox</span></a>
-<a class="sourceLine" id="cb40-37" title="37"><span class="co"># 3. Bimodality: split samples into groups</span></a>
-<a class="sourceLine" id="cb40-38" title="38"></a>
-<a class="sourceLine" id="cb40-39" title="39"><span class="co"># Boxcox transformation</span></a>
-<a class="sourceLine" id="cb40-40" title="40"><span class="kw">install.packages</span>(<span class="st">&quot;AID&quot;</span>)</a>
-<a class="sourceLine" id="cb40-41" title="41"><span class="kw">library</span>(AID)</a>
-<a class="sourceLine" id="cb40-42" title="42">bctr =<span class="st"> </span><span class="kw">boxcoxnc</span>(data)</a>
-<a class="sourceLine" id="cb40-43" title="43">bctr<span class="op">$</span>results</a>
-<a class="sourceLine" id="cb40-44" title="44"></a>
-<a class="sourceLine" id="cb40-45" title="45"><span class="co">### 2. Compair centers of two distributions</span></a>
-<a class="sourceLine" id="cb40-46" title="46"><span class="co"># Emperical rule: if notmal -&gt; mean, else -&gt; median</span></a>
-<a class="sourceLine" id="cb40-47" title="47"><span class="co"># if median -&gt; Mann–Whitney-Wilcoxon (MWW) test</span></a>
-<a class="sourceLine" id="cb40-48" title="48"><span class="co"># if mean -&gt; one of Student&#39;s tests</span></a>
-<a class="sourceLine" id="cb40-49" title="49"></a>
-<a class="sourceLine" id="cb40-50" title="50"><span class="co"># Student t-test</span></a>
-<a class="sourceLine" id="cb40-51" title="51"><span class="co"># t.test(x,y, alternative=&quot;two.sided&quot;, paired=FALSE, var.equal=FALSE)</span></a>
-<a class="sourceLine" id="cb40-52" title="52"></a>
-<a class="sourceLine" id="cb40-53" title="53"><span class="co"># How to compair if dispersions are the same?</span></a>
-<a class="sourceLine" id="cb40-54" title="54"><span class="co"># Fligner-Killeen test</span></a>
-<a class="sourceLine" id="cb40-55" title="55"><span class="co"># Brown-Forsythe test</span></a>
-<a class="sourceLine" id="cb40-56" title="56"><span class="co">#fligner.test(x~g, data=data.table)</span></a>
-<a class="sourceLine" id="cb40-57" title="57"></a>
-<a class="sourceLine" id="cb40-58" title="58"><span class="co"># Example</span></a>
-<a class="sourceLine" id="cb40-59" title="59">x &lt;-<span class="st"> </span><span class="kw">read.table</span> (<span class="st">&quot;~/DataAnalysis/R_data_analysis/DATA/Albuquerque Home Prices_data.txt&quot;</span>, <span class="dt">header=</span>T)</a>
-<a class="sourceLine" id="cb40-60" title="60"></a>
-<a class="sourceLine" id="cb40-61" title="61"><span class="kw">names</span>(x)</a>
-<a class="sourceLine" id="cb40-62" title="62"><span class="kw">summary</span>(x)</a>
-<a class="sourceLine" id="cb40-63" title="63"></a>
-<a class="sourceLine" id="cb40-64" title="64"><span class="co"># Change -9999 to NA</span></a>
-<a class="sourceLine" id="cb40-65" title="65">x<span class="op">$</span>AGE[x<span class="op">$</span>AGE<span class="op">==-</span><span class="dv">9999</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb40-66" title="66">x<span class="op">$</span>TAX[x<span class="op">$</span>TAX<span class="op">==-</span><span class="dv">9999</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb40-67" title="67"></a>
-<a class="sourceLine" id="cb40-68" title="68"><span class="kw">fligner.test</span>(PRICE<span class="op">~</span>COR, <span class="dt">data=</span>x)</a>
-<a class="sourceLine" id="cb40-69" title="69"><span class="co"># Dispersion is the same for both distribution</span></a>
-<a class="sourceLine" id="cb40-70" title="70"><span class="co"># p &gt; alpha (0.01)</span></a>
-<a class="sourceLine" id="cb40-71" title="71"></a>
-<a class="sourceLine" id="cb40-72" title="72"><span class="kw">t.test</span>(x<span class="op">$</span>PRICE[x<span class="op">$</span>COR<span class="op">==</span><span class="dv">1</span>], x<span class="op">$</span>PRICE[x<span class="op">$</span>COR<span class="op">==</span><span class="dv">0</span>],</a>
-<a class="sourceLine" id="cb40-73" title="73">       <span class="dt">alternative=</span><span class="st">&quot;less&quot;</span>,</a>
-<a class="sourceLine" id="cb40-74" title="74">       <span class="dt">paired=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb40-75" title="75">       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb40-76" title="76"><span class="co"># p-value = 0.1977 (H0 is true)</span></a>
-<a class="sourceLine" id="cb40-77" title="77"></a>
-<a class="sourceLine" id="cb40-78" title="78"><span class="co"># Mood&#39;s median test</span></a>
-<a class="sourceLine" id="cb40-79" title="79"><span class="kw">names</span>(x)</a>
-<a class="sourceLine" id="cb40-80" title="80">x1 &lt;-<span class="st"> </span>x[x<span class="op">$</span>NE<span class="op">==</span><span class="dv">1</span>,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb40-81" title="81">x2 &lt;-<span class="st"> </span>x[x<span class="op">$</span>NE<span class="op">==</span><span class="dv">0</span>,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb40-82" title="82">m &lt;-<span class="st"> </span><span class="kw">median</span>(<span class="kw">c</span>(x1,x2))</a>
-<a class="sourceLine" id="cb40-83" title="83">f11 &lt;-<span class="st"> </span><span class="kw">sum</span>(x1<span class="op">&gt;</span>m)</a>
-<a class="sourceLine" id="cb40-84" title="84">f12 &lt;-<span class="st"> </span><span class="kw">sum</span>(x2<span class="op">&gt;</span>m)</a>
-<a class="sourceLine" id="cb40-85" title="85">f21 &lt;-<span class="st"> </span><span class="kw">sum</span>(x1<span class="op">&lt;=</span>m)</a>
-<a class="sourceLine" id="cb40-86" title="86">f22 &lt;-<span class="st"> </span><span class="kw">sum</span>(x2<span class="op">&lt;=</span>m)</a>
-<a class="sourceLine" id="cb40-87" title="87">table &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(f11,f12, f21, f22), <span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">ncol=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb40-88" title="88"><span class="kw">chisq.test</span>(table)</a>
-<a class="sourceLine" id="cb40-89" title="89"><span class="co"># p=0.47 &gt; alpha=0.05: H0 is true</span></a>
-<a class="sourceLine" id="cb40-90" title="90"><span class="co"># medians are the same</span></a>
-<a class="sourceLine" id="cb40-91" title="91"></a>
-<a class="sourceLine" id="cb40-92" title="92"><span class="co">## Mann–Whitney-Wilcoxon (MWW) test</span></a>
-<a class="sourceLine" id="cb40-93" title="93"><span class="co"># Check if medians are the same</span></a>
-<a class="sourceLine" id="cb40-94" title="94"><span class="co"># U1 = n1*n2+{n1*(n1+1)/2 - T1}</span></a>
-<a class="sourceLine" id="cb40-95" title="95"><span class="co"># U1 = n1*n2+{n2*(n2+1)/2 - T2}</span></a>
-<a class="sourceLine" id="cb40-96" title="96"><span class="co"># U=min(U1,U2)</span></a>
-<a class="sourceLine" id="cb40-97" title="97"><span class="co"># Ti - сумма рангов в объединенной выборке наблюдений из выборки i</span></a>
-<a class="sourceLine" id="cb40-98" title="98"><span class="co"># n1, n2 - размеры выборок</span></a>
-<a class="sourceLine" id="cb40-99" title="99"></a>
-<a class="sourceLine" id="cb40-100" title="100"><span class="kw">wilcox.test</span>(x,y,</a>
-<a class="sourceLine" id="cb40-101" title="101">            <span class="dt">alternative=</span><span class="st">&quot;two.sided&quot;</span>,</a>
-<a class="sourceLine" id="cb40-102" title="102">            <span class="dt">paired=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb40-103" title="103">            <span class="dt">exact=</span><span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb40-104" title="104">            <span class="dt">correct=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb40-105" title="105"></a>
-<a class="sourceLine" id="cb40-106" title="106"><span class="co">###. 3. Dependency of variables</span></a>
-<a class="sourceLine" id="cb40-107" title="107"><span class="co"># H0: x, y independent</span></a>
-<a class="sourceLine" id="cb40-108" title="108"><span class="co"># Correlation analysis</span></a>
-<a class="sourceLine" id="cb40-109" title="109"><span class="co"># Correlation (pearson) mesure linear dependency!</span></a>
-<a class="sourceLine" id="cb40-110" title="110"><span class="co"># Correlation k depends on outlayers (must be removed)</span></a>
-<a class="sourceLine" id="cb40-111" title="111"></a>
-<a class="sourceLine" id="cb40-112" title="112"><span class="kw">plot</span>(x<span class="op">$</span>SQFT, x<span class="op">$</span>TAX)</a>
-<a class="sourceLine" id="cb40-113" title="113"></a>
-<a class="sourceLine" id="cb40-114" title="114"><span class="kw">cor</span>(x<span class="op">$</span>SQFT, x<span class="op">$</span>TAX, <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</a>
-<a class="sourceLine" id="cb40-115" title="115"></a>
-<a class="sourceLine" id="cb40-116" title="116"><span class="kw">cor</span>(x<span class="op">$</span>SQFT, x<span class="op">$</span>TAX, <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a>
-<a class="sourceLine" id="cb40-117" title="117"></a>
-<a class="sourceLine" id="cb40-118" title="118"><span class="kw">cor</span>(x, <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a>
-<a class="sourceLine" id="cb40-119" title="119"></a>
-<a class="sourceLine" id="cb40-120" title="120"><span class="kw">cor</span>(x, <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a>
-<a class="sourceLine" id="cb40-121" title="121"></a>
-<a class="sourceLine" id="cb40-122" title="122"><span class="kw">cor.test</span>(x<span class="op">$</span>SQFT, x<span class="op">$</span>TAX, <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="hypothesis-testing.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">###. 1 Is distribution normal?</span></span>
+<span id="cb40-2"><a href="hypothesis-testing.html#cb40-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;~/DataAnalysis/DATA/town_1959_2.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb40-3"><a href="hypothesis-testing.html#cb40-3" aria-hidden="true" tabindex="-1"></a>town</span>
+<span id="cb40-4"><a href="hypothesis-testing.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
+<span id="cb40-5"><a href="hypothesis-testing.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb40-6"><a href="hypothesis-testing.html#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="hypothesis-testing.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># log scale</span></span>
+<span id="cb40-8"><a href="hypothesis-testing.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(town[,<span class="dv">3</span>]), <span class="at">breaks=</span><span class="dv">50</span>)</span>
+<span id="cb40-9"><a href="hypothesis-testing.html#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="hypothesis-testing.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ? Is log scaled number of sitizens per town is normally distributed?</span></span>
+<span id="cb40-11"><a href="hypothesis-testing.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co"># test for normal distribution of dataset</span></span>
+<span id="cb40-12"><a href="hypothesis-testing.html#cb40-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">log</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb40-13"><a href="hypothesis-testing.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(data)</span>
+<span id="cb40-14"><a href="hypothesis-testing.html#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="hypothesis-testing.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: data is normally distributed</span></span>
+<span id="cb40-16"><a href="hypothesis-testing.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="co"># W = 0.97467 - </span></span>
+<span id="cb40-17"><a href="hypothesis-testing.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 3.15e-12 -&gt; p &lt; alpha (0.01) - H0 is incorrect</span></span>
+<span id="cb40-18"><a href="hypothesis-testing.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Our distripution is not normal</span></span>
+<span id="cb40-19"><a href="hypothesis-testing.html#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="hypothesis-testing.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Different tests for normality in package &quot;nortest&quot;</span></span>
+<span id="cb40-21"><a href="hypothesis-testing.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
+<span id="cb40-22"><a href="hypothesis-testing.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb40-23"><a href="hypothesis-testing.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ad.test</span>(data)   <span class="co"># Anderson-Darling test</span></span>
+<span id="cb40-24"><a href="hypothesis-testing.html#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lillie.test</span>(data) <span class="co"># Lilliefors (Kolmogorov-Smirnov) test</span></span>
+<span id="cb40-25"><a href="hypothesis-testing.html#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-26"><a href="hypothesis-testing.html#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if n &lt; 2000 -&gt; shapiro.test, else -&gt; lillie.test</span></span>
+<span id="cb40-27"><a href="hypothesis-testing.html#cb40-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-28"><a href="hypothesis-testing.html#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="co"># In theory it is possible to use method for normally distributed data, </span></span>
+<span id="cb40-29"><a href="hypothesis-testing.html#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="co"># even if they are not normal, but almost normal:</span></span>
+<span id="cb40-30"><a href="hypothesis-testing.html#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. No outlayers</span></span>
+<span id="cb40-31"><a href="hypothesis-testing.html#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Symmetry of histogram</span></span>
+<span id="cb40-32"><a href="hypothesis-testing.html#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bell-shaped form of histogram</span></span>
+<span id="cb40-33"><a href="hypothesis-testing.html#cb40-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-34"><a href="hypothesis-testing.html#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Method to make normal from not-normal distribution</span></span>
+<span id="cb40-35"><a href="hypothesis-testing.html#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Remove outlayers</span></span>
+<span id="cb40-36"><a href="hypothesis-testing.html#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Transform data to get symmetry: log, Boxcox</span></span>
+<span id="cb40-37"><a href="hypothesis-testing.html#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bimodality: split samples into groups</span></span>
+<span id="cb40-38"><a href="hypothesis-testing.html#cb40-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-39"><a href="hypothesis-testing.html#cb40-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxcox transformation</span></span>
+<span id="cb40-40"><a href="hypothesis-testing.html#cb40-40" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;AID&quot;</span>)</span>
+<span id="cb40-41"><a href="hypothesis-testing.html#cb40-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AID)</span>
+<span id="cb40-42"><a href="hypothesis-testing.html#cb40-42" aria-hidden="true" tabindex="-1"></a>bctr <span class="ot">=</span> <span class="fu">boxcoxnc</span>(data)</span>
+<span id="cb40-43"><a href="hypothesis-testing.html#cb40-43" aria-hidden="true" tabindex="-1"></a>bctr<span class="sc">$</span>results</span>
+<span id="cb40-44"><a href="hypothesis-testing.html#cb40-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-45"><a href="hypothesis-testing.html#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Compair centers of two distributions</span></span>
+<span id="cb40-46"><a href="hypothesis-testing.html#cb40-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if notmal -&gt; mean, else -&gt; median</span></span>
+<span id="cb40-47"><a href="hypothesis-testing.html#cb40-47" aria-hidden="true" tabindex="-1"></a><span class="co"># if median -&gt; Mann–Whitney-Wilcoxon (MWW) test</span></span>
+<span id="cb40-48"><a href="hypothesis-testing.html#cb40-48" aria-hidden="true" tabindex="-1"></a><span class="co"># if mean -&gt; one of Student&#39;s tests</span></span>
+<span id="cb40-49"><a href="hypothesis-testing.html#cb40-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-50"><a href="hypothesis-testing.html#cb40-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Student t-test</span></span>
+<span id="cb40-51"><a href="hypothesis-testing.html#cb40-51" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x,y, alternative=&quot;two.sided&quot;, paired=FALSE, var.equal=FALSE)</span></span>
+<span id="cb40-52"><a href="hypothesis-testing.html#cb40-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-53"><a href="hypothesis-testing.html#cb40-53" aria-hidden="true" tabindex="-1"></a><span class="co"># How to compair if dispersions are the same?</span></span>
+<span id="cb40-54"><a href="hypothesis-testing.html#cb40-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Fligner-Killeen test</span></span>
+<span id="cb40-55"><a href="hypothesis-testing.html#cb40-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Brown-Forsythe test</span></span>
+<span id="cb40-56"><a href="hypothesis-testing.html#cb40-56" aria-hidden="true" tabindex="-1"></a><span class="co">#fligner.test(x~g, data=data.table)</span></span>
+<span id="cb40-57"><a href="hypothesis-testing.html#cb40-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-58"><a href="hypothesis-testing.html#cb40-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb40-59"><a href="hypothesis-testing.html#cb40-59" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">read.table</span> (<span class="st">&quot;~/DataAnalysis/R_data_analysis/DATA/Albuquerque Home Prices_data.txt&quot;</span>, <span class="at">header=</span>T)</span>
+<span id="cb40-60"><a href="hypothesis-testing.html#cb40-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-61"><a href="hypothesis-testing.html#cb40-61" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
+<span id="cb40-62"><a href="hypothesis-testing.html#cb40-62" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span>
+<span id="cb40-63"><a href="hypothesis-testing.html#cb40-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-64"><a href="hypothesis-testing.html#cb40-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Change -9999 to NA</span></span>
+<span id="cb40-65"><a href="hypothesis-testing.html#cb40-65" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>AGE[x<span class="sc">$</span>AGE<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb40-66"><a href="hypothesis-testing.html#cb40-66" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>TAX[x<span class="sc">$</span>TAX<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb40-67"><a href="hypothesis-testing.html#cb40-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-68"><a href="hypothesis-testing.html#cb40-68" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(PRICE<span class="sc">~</span>COR, <span class="at">data=</span>x)</span>
+<span id="cb40-69"><a href="hypothesis-testing.html#cb40-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Dispersion is the same for both distribution</span></span>
+<span id="cb40-70"><a href="hypothesis-testing.html#cb40-70" aria-hidden="true" tabindex="-1"></a><span class="co"># p &gt; alpha (0.01)</span></span>
+<span id="cb40-71"><a href="hypothesis-testing.html#cb40-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-72"><a href="hypothesis-testing.html#cb40-72" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">1</span>], x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">0</span>],</span>
+<span id="cb40-73"><a href="hypothesis-testing.html#cb40-73" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative=</span><span class="st">&quot;less&quot;</span>,</span>
+<span id="cb40-74"><a href="hypothesis-testing.html#cb40-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
+<span id="cb40-75"><a href="hypothesis-testing.html#cb40-75" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
+<span id="cb40-76"><a href="hypothesis-testing.html#cb40-76" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 0.1977 (H0 is true)</span></span>
+<span id="cb40-77"><a href="hypothesis-testing.html#cb40-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-78"><a href="hypothesis-testing.html#cb40-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Mood&#39;s median test</span></span>
+<span id="cb40-79"><a href="hypothesis-testing.html#cb40-79" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
+<span id="cb40-80"><a href="hypothesis-testing.html#cb40-80" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb40-81"><a href="hypothesis-testing.html#cb40-81" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">0</span>,<span class="dv">1</span>]</span>
+<span id="cb40-82"><a href="hypothesis-testing.html#cb40-82" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">c</span>(x1,x2))</span>
+<span id="cb40-83"><a href="hypothesis-testing.html#cb40-83" aria-hidden="true" tabindex="-1"></a>f11 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&gt;</span>m)</span>
+<span id="cb40-84"><a href="hypothesis-testing.html#cb40-84" aria-hidden="true" tabindex="-1"></a>f12 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&gt;</span>m)</span>
+<span id="cb40-85"><a href="hypothesis-testing.html#cb40-85" aria-hidden="true" tabindex="-1"></a>f21 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&lt;=</span>m)</span>
+<span id="cb40-86"><a href="hypothesis-testing.html#cb40-86" aria-hidden="true" tabindex="-1"></a>f22 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&lt;=</span>m)</span>
+<span id="cb40-87"><a href="hypothesis-testing.html#cb40-87" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(f11,f12, f21, f22), <span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb40-88"><a href="hypothesis-testing.html#cb40-88" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table)</span>
+<span id="cb40-89"><a href="hypothesis-testing.html#cb40-89" aria-hidden="true" tabindex="-1"></a><span class="co"># p=0.47 &gt; alpha=0.05: H0 is true</span></span>
+<span id="cb40-90"><a href="hypothesis-testing.html#cb40-90" aria-hidden="true" tabindex="-1"></a><span class="co"># medians are the same</span></span>
+<span id="cb40-91"><a href="hypothesis-testing.html#cb40-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-92"><a href="hypothesis-testing.html#cb40-92" aria-hidden="true" tabindex="-1"></a><span class="do">## Mann–Whitney-Wilcoxon (MWW) test</span></span>
+<span id="cb40-93"><a href="hypothesis-testing.html#cb40-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if medians are the same</span></span>
+<span id="cb40-94"><a href="hypothesis-testing.html#cb40-94" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n1*(n1+1)/2 - T1}</span></span>
+<span id="cb40-95"><a href="hypothesis-testing.html#cb40-95" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n2*(n2+1)/2 - T2}</span></span>
+<span id="cb40-96"><a href="hypothesis-testing.html#cb40-96" aria-hidden="true" tabindex="-1"></a><span class="co"># U=min(U1,U2)</span></span>
+<span id="cb40-97"><a href="hypothesis-testing.html#cb40-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Ti - сумма рангов в объединенной выборке наблюдений из выборки i</span></span>
+<span id="cb40-98"><a href="hypothesis-testing.html#cb40-98" aria-hidden="true" tabindex="-1"></a><span class="co"># n1, n2 - размеры выборок</span></span>
+<span id="cb40-99"><a href="hypothesis-testing.html#cb40-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-100"><a href="hypothesis-testing.html#cb40-100" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(x,y,</span>
+<span id="cb40-101"><a href="hypothesis-testing.html#cb40-101" aria-hidden="true" tabindex="-1"></a>            <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb40-102"><a href="hypothesis-testing.html#cb40-102" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
+<span id="cb40-103"><a href="hypothesis-testing.html#cb40-103" aria-hidden="true" tabindex="-1"></a>            <span class="at">exact=</span><span class="cn">TRUE</span>,</span>
+<span id="cb40-104"><a href="hypothesis-testing.html#cb40-104" aria-hidden="true" tabindex="-1"></a>            <span class="at">correct=</span><span class="cn">FALSE</span>)</span>
+<span id="cb40-105"><a href="hypothesis-testing.html#cb40-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-106"><a href="hypothesis-testing.html#cb40-106" aria-hidden="true" tabindex="-1"></a><span class="do">###. 3. Dependency of variables</span></span>
+<span id="cb40-107"><a href="hypothesis-testing.html#cb40-107" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: x, y independent</span></span>
+<span id="cb40-108"><a href="hypothesis-testing.html#cb40-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation analysis</span></span>
+<span id="cb40-109"><a href="hypothesis-testing.html#cb40-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation (pearson) mesure linear dependency!</span></span>
+<span id="cb40-110"><a href="hypothesis-testing.html#cb40-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation k depends on outlayers (must be removed)</span></span>
+<span id="cb40-111"><a href="hypothesis-testing.html#cb40-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-112"><a href="hypothesis-testing.html#cb40-112" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX)</span>
+<span id="cb40-113"><a href="hypothesis-testing.html#cb40-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-114"><a href="hypothesis-testing.html#cb40-114" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span>
+<span id="cb40-115"><a href="hypothesis-testing.html#cb40-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-116"><a href="hypothesis-testing.html#cb40-116" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
+<span id="cb40-117"><a href="hypothesis-testing.html#cb40-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-118"><a href="hypothesis-testing.html#cb40-118" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
+<span id="cb40-119"><a href="hypothesis-testing.html#cb40-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-120"><a href="hypothesis-testing.html#cb40-120" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb40-121"><a href="hypothesis-testing.html#cb40-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-122"><a href="hypothesis-testing.html#cb40-122" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -447,7 +470,7 @@ If p value is less than significance level alpha (0.05), the hull hypothesies is
         </div>
       </div>
 <a href="statistical-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="non-parametric-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="t-procedures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -478,7 +501,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04_hypothesis_testing.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06_hypothesis_testing.Rmd",
 "text": "Edit"
 },
 "history": {
