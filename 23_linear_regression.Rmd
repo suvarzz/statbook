@@ -1,6 +1,16 @@
 # Linear Regression
 
-## Generate Random Data Set a Linear Model
+## Linear regression - theory
+Assume that there is approximately a linear relationship between X and Y:  
+$$ Y \approx \beta_0 + \beta_1X$$
+where \(\beta\)~0~ is an __intercept__ and \(\beta\)~1~ is a __slope__
+
+Parameters of the line could be calculated using __least squares methods__:
+
+$$\beta_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}{(x_i - \bar{x})^2}} $$
+$$\beta_0 = \bar{y} - \beta_1\bar{x} $$
+
+## Generate random data set for the linear model
 Suppose we want to simulate from the following linear model:
 y = \(\beta\)~0~ + \(\beta\)~1~x + \(\epsilon\),  
 where \(\epsilon\) ~ N(0,2^2^). Assume x ~ N(0,1^2^), \(\beta\)~0~ = 0.5, \(\beta\)~1~ = 2.  
@@ -13,16 +23,6 @@ y <- 0.5 + 2*x + e
 summary(y)
 plot(x,y)
 ```
-
-## Linear regression - theory
-Assume that there is approximately a linear relationship between X and Y:  
-$$ Y \approx \beta_0 + \beta_1X$$
-where \(\beta\)~0~ is an __intercept__ and \(\beta\)~1~ is a __slope__
-
-Parameters of the line could be calculated using __least squares methods__:
-
-$$\beta_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}{(x_i - \bar{x})^2}} $$
-$$\beta_0 = \bar{y} - \beta_1\bar{x} $$
 
 ## Practical example
 Practical example from [Wikipedia](https://en.wikipedia.org/wiki/Linear_least_squares_(mathematics))  

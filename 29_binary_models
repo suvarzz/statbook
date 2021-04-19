@@ -1,0 +1,172 @@
+# Models for binary Data
+
+For binary dependent variables build models:  
+1. LR - Logistic regression  
+2. LDA - Linear discriminant analysis  
+3. QDA - quadrat discriminant analysis  
+
+How to detect the border of decision, use ROC-curves  
+
+```{r, eval=TRUE}
+library('ISLR')
+library('GGally')
+library('MASS')
+
+my.seed <- 12345
+train.percent <- 0.85
+options("ggmatrix.progress.bar" = FALSE)
+
+# Data set from ISLR: is credits returned Y/N dependent on: student, average balance and income.
+head(Default)
+str(Default)
+
+### Primary analysis
+# Scatter plots for primary analysis
+ggp <- ggpairs(Default)
+print(ggp, progress = FALSE)
+# rate of variables in default column
+table(Default$default) / sum(table(Default$default))
+
+### Train data subset
+set.seed(my.seed)
+inTrain <- sample(seq_along(Default$default),
+                  nrow(Default)*train.percent)
+df <- Default[inTrain, ]
+# actual values on the train data
+fact <- df$default
+tail(fact, n=20)
+
+### 1. Logistic regression modeling
+model.logit <- glm(default ~ balance, data = df, family = 'binomial')
+summary(model.logit)
+
+# prognosis of probability belong to the class 'Yes'
+p.logit <- predict(model.logit, df, type = 'response')
+prognosis <- factor(ifelse(p.logit > 0.5, 2, 1),
+                  levels = c(1, 2),
+                  labels = c('No', 'Yes'))
+# confusion matrix 
+conf.m <- table(fact, prognosis)
+conf.m
+
+# sensitivity
+conf.m[2, 2] / sum(conf.m[2, ])
+
+# spesifisity
+conf.m[1, 1] / sum(conf.m[1, ])
+
+# accuracy
+sum(diag(conf.m)) / sum(conf.m)
+
+
+###. 2. LDA model
+model.lda <- lda(default ~ balance, data = Default[inTrain, ])
+model.lda
+
+# prognosis of probability belong to the class 'Yes'
+p.lda <- predict(model.lda, df, type = 'response')
+prognosis <- factor(ifelse(p.lda$posterior[, 'Yes'] > 0.5, 
+                         2, 1),
+                  levels = c(1, 2),
+                  labels = c('No', 'Yes'))
+# confusion matrix 
+conf.m <- table(fact, prognosis)
+conf.m
+
+
+conf.m[2, 2] / sum(conf.m[2, ])   # sensitivity
+conf.m[1, 1] / sum(conf.m[1, ])   # specitivity
+sum(diag(conf.m)) / sum(conf.m)   # accuracy
+
+
+### 3. QDA modeling
+model.qda <- qda(default ~ balance, data = Default[inTrain, ])
+model.qda
+# prognosis of probability belong to the class 'Yes'
+p.qda <- predict(model.qda, df, type = 'response')
+Прогноз <- factor(ifelse(p.qda$posterior[, 'Yes'] > 0.5, 
+                         2, 1),
+                  levels = c(1, 2),
+                  labels = c('No', 'Yes'))
+# confusion matrix
+conf.m <- table(Факт, Прогноз)
+conf.m
+
+
+conf.m[2, 2] / sum(conf.m[2, ]) # sensitivity
+conf.m[1, 1] / sum(conf.m[1, ]) # specitivity
+sum(diag(conf.m)) / sum(conf.m) # accuracy
+
+
+### 4. ROC-curve and detection of decision border
+# calculate 1-SPC and TPR for all varients for clipping boundary
+x <- NULL    # for (1 - SPC)
+y <- NULL    # for TPR
+
+# template for the confusion matrix
+tbl <- as.data.frame(matrix(rep(0, 4), 2, 2))
+rownames(tbl) <- c('fact.No', 'fact.Yes')
+colnames(tbl) <- c('predict.No', 'predict.Yes')
+
+# vector of probabilities
+p.vector <- seq(0, 1, length = 501)
+
+# go through the vector of probabilities
+for (p in p.vector){
+    # prognosis
+    prognosis <- factor(ifelse(p.lda$posterior[, 'Yes'] > p, 
+                             2, 1),
+                      levels = c(1, 2),
+                      labels = c('No', 'Yes'))
+    
+    # data frame containing fact and prognosis
+    df.compare <- data.frame(fact = fact, prognosis = prognosis)
+    
+    # fill the confusion matrix
+    tbl[1, 1] <- nrow(df.compare[df.compare$fact == 'No' & df.compare$prognosis == 'No', ])
+    tbl[2, 2] <- nrow(df.compare[df.compare$fact == 'Yes' & df.compare$prognosis == 'Yes', ])
+    tbl[1, 2] <- nrow(df.compare[df.compare$fact == 'No' & df.compare$prognosis == 'Yes', ])
+    tbl[2, 1] <- nrow(df.compare[df.compare$fact == 'Yes' & df.compare$prognosis == 'No', ])
+    
+    # calculate characteristics
+    TPR <- tbl[2, 2] / sum(tbl[2, 2] + tbl[2, 1])
+    y <- c(y, TPR)
+    SPC <- tbl[1, 1] / sum(tbl[1, 1] + tbl[1, 2])
+    x <- c(x, 1 - SPC)
+}
+# build ROC-curve
+par(mar = c(5, 5, 1, 1))
+# curve
+plot(x, y, type = 'l', col = 'blue', lwd = 3,
+     xlab = '(1 - SPC)', ylab = 'TPR', 
+     xlim = c(0, 1), ylim = c(0, 1))
+
+# line for the classifier
+abline(a = 0, b = 1, lty = 3, lwd = 2)
+
+# point for the probability 0.5
+points(x[p.vector == 0.5], y[p.vector == 0.5], pch = 16)
+text(x[p.vector == 0.5], y[p.vector == 0.5], 'p = 0.5', pos = 4)
+
+# point for the probability 0.2
+points(x[p.vector == 0.2], y[p.vector == 0.2], pch = 16)
+text(x[p.vector == 0.2], y[p.vector == 0.2], 'p = 0.2', pos = 4)
+
+prognosis <- factor(ifelse(p.lda$posterior[, 'Yes'] > 0.2, 
+                         2, 1),
+                  levels = c(1, 2),
+                  labels = c('No', 'Yes'))
+conf.m <- table(fact, prognosis)
+conf.m
+
+# sensitivity
+conf.m[2, 2] / sum(conf.m[2, ])
+# specificity
+conf.m[1, 1] / sum(conf.m[1, ])
+# accuracy
+sum(diag(conf.m)) / sum(conf.m)
+
+```
+
+**Sources**  
+[Course 'Math modeling' practical work, State University of Management, Moscow](https://sites.google.com/a/kiber-guu.ru/r-practice/home)

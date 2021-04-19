@@ -48,6 +48,7 @@ summary(mushroom_rules)
 inspect(mushroom_rules)
 
 # Logistic Regression
+glm()
 glm_mod <-glm(y ∼ x1+x2, family=binomial(link="logit"), data=as.data.frame(cbind(y,x1,x2))) 
 
 # K-Means Clustering
