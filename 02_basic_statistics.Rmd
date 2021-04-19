@@ -8,7 +8,8 @@
 **cluster sample** - random choosing from several existing clusters  
 **variables** - discret, continuous, ordinal (ранговая)  
 
-## Primary analysis
+## Analysis of sample distribution
+### Histogram
 ```{r, eval=TRUE}
 # sample of random integers
 v <- round(rnorm(n=50, sd=5, mean=100))
@@ -25,7 +26,7 @@ y <- (10/max(density(v)$y))*density(v)$y  # scale y to plot with histogram
 lines(x, y, col="red", lwd=2)
 ```
 
-## Outliers
+### Outliers
 Outliers are rare values that appear far away from the majority of the data. 
 Outliers can bias the results and potentially lead to incorrect conclusions if not handled properly. 
 One method for dealing with outliers is to simply remove them. 
@@ -33,7 +34,7 @@ However, removing data points can introduce other types of bias into the results
 If outliers seem to have a lot of influence on the results, a nonparametric test such as the **Wilcoxon Signed Rank Test** may be appropriate to use instead. 
 Outliers can be identified visually using a boxplot.  
 
-## Normality
+### Normality
 It is possible to use histogram to estimate normality of the distribution.  
 
 ```{r }
@@ -57,8 +58,6 @@ hist(v)
 hist(vs)
 ```
 
-
-
 ## Confidence interval
 ```{r}
 # sample of random integers
@@ -80,7 +79,3 @@ error <- qt(0.975,df=n-1)*s/sqrt(n)
 # confidence interval
 c(left=a-error, right=a+error)
 ```
-
-
-
-

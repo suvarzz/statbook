@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 14 Clustering | R statistics</title>
+  <title>Chapter 17 Clustering | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 14 Clustering | R statistics" />
+  <meta property="og:title" content="Chapter 17 Clustering | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 14 Clustering | R statistics" />
+  <meta name="twitter:title" content="Chapter 17 Clustering | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-16" />
+<meta name="date" content="2021-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="t-test-anova-difference.html"/>
+<link rel="prev" href="chi-squared-test.html"/>
 <link rel="next" href="support-vector-machine.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,17 +137,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
 <li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
 <li class="chapter" data-level="2.4" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#analysis-of-the-distribution"><i class="fa fa-check"></i><b>2.4</b> Analysis of the distribution</a></li>
-<li class="chapter" data-level="2.5" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.5</b> t-Test</a></li>
-<li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.6</b> ANOVA</a></li>
+<li class="chapter" data-level="2.5" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#distributions"><i class="fa fa-check"></i><b>2.5</b> Distributions</a></li>
+<li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
+<li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a><ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#primary-analysis"><i class="fa fa-check"></i><b>3.2</b> Primary analysis</a></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3</b> Outliers</a></li>
-<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.4</b> Normality</a></li>
-<li class="chapter" data-level="3.5" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.5</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="primary-analysis-1.html"><a href="primary-analysis-1.html"><i class="fa fa-check"></i><b>4</b> Primary analysis</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>4</b> Primary analysis</a></li>
 <li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a><ul>
 <li class="chapter" data-level="5.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>5.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="5.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>5.2</b> Bernoulli Distribution</a></li>
@@ -156,83 +159,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>5.5</b> Uniform Distributions</a></li>
 <li class="chapter" data-level="5.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>5.6</b> Poisson Distribution</a></li>
 <li class="chapter" data-level="5.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>5.7</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="5.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>5.8</b> Chi-squared Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a><ul>
 <li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>6.1</b> Hypothesis testing theory</a></li>
 <li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.2</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a><ul>
-<li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
-<li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
-<li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
-<li class="chapter" data-level="7.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>7.4</b> Two samples t-test</a></li>
-<li class="chapter" data-level="7.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>7.5</b> Compare Student’s t and normal distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>7.6</b> Non-parametric tests</a></li>
-<li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
-<li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="7" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>7</b> Non-parametric Methods</a></li>
+<li class="chapter" data-level="8" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>8</b> t-Procedures</a><ul>
+<li class="chapter" data-level="8.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>8.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="8.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>8.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="8.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>8.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="8.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>8.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="8.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>8.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="8.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>8.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="8.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>8.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="8.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>8.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a><ul>
-<li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
+<li class="chapter" data-level="9" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>9</b> Tests for categorical variables</a><ul>
+<li class="chapter" data-level="9.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>9.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a><ul>
-<li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
+<li class="chapter" data-level="10" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>10</b> Multiple testing</a><ul>
+<li class="chapter" data-level="10.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>10.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a><ul>
-<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
+<li class="chapter" data-level="11" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>11</b> Sources</a><ul>
+<li class="chapter" data-level="11.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>11.1</b> t-test</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>11.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a><ul>
-<li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
-<li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
+<li class="chapter" data-level="12" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>12</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="13" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>13</b> Analysis of Variance (ANOVA)</a><ul>
+<li class="chapter" data-level="13.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>13.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="13.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>13.2</b> Sources</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Correlation</a></li>
-<li class="chapter" data-level="13" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>13</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="14" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>14</b> Clustering</a><ul>
-<li class="chapter" data-level="14.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>14.1</b> Next part</a></li>
-<li class="chapter" data-level="14.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>14.2</b> Example</a></li>
-<li class="chapter" data-level="14.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>14.3</b> NEXT PART</a></li>
+<li class="chapter" data-level="14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>14</b> Correlation</a></li>
+<li class="chapter" data-level="15" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>15</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="16" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>16</b> Chi-squared test</a><ul>
+<li class="chapter" data-level="16.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>16.1</b> Multinomial Goodness of Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>15</b> Support Vector Machine</a></li>
-<li class="chapter" data-level="16" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>16</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="17" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>17</b> Machine Learning Functions Reference</a><ul>
-<li class="chapter" data-level="17.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>17.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="17" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>17</b> Clustering</a><ul>
+<li class="chapter" data-level="17.1" data-path="clustering.html"><a href="clustering.html#next-part"><i class="fa fa-check"></i><b>17.1</b> Next part</a></li>
+<li class="chapter" data-level="17.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>17.2</b> Example</a></li>
+<li class="chapter" data-level="17.3" data-path="clustering.html"><a href="clustering.html#next-part-1"><i class="fa fa-check"></i><b>17.3</b> NEXT PART</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>18</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="19" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>19</b> Linear Regression</a><ul>
-<li class="chapter" data-level="19.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>19.1</b> Generate Random Data Set a Linear Model</a></li>
-<li class="chapter" data-level="19.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>19.2</b> Linear regression - theory</a></li>
-<li class="chapter" data-level="19.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>19.3</b> Practical example</a></li>
-<li class="chapter" data-level="19.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>19.4</b> Example of linear regression</a></li>
-<li class="chapter" data-level="19.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>19.5</b> Standard error of train data</a></li>
-<li class="chapter" data-level="19.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>19.6</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="19.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>19.7</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="19.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>19.8</b> NEXT part</a></li>
+<li class="chapter" data-level="18" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>18</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="19" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>19</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="20" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>20</b> Machine Learning Functions Reference</a><ul>
+<li class="chapter" data-level="20.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>20.1</b> Linear Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>20</b> NEXT part</a><ul>
-<li class="chapter" data-level="20.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>20.1</b> NEXT part</a></li>
-<li class="chapter" data-level="20.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>20.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="21" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>21</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="22" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>22</b> Linear Regression</a><ul>
+<li class="chapter" data-level="22.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>22.1</b> Generate Random Data Set a Linear Model</a></li>
+<li class="chapter" data-level="22.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>22.2</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="22.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>22.3</b> Practical example</a></li>
+<li class="chapter" data-level="22.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#example-of-linear-regression"><i class="fa fa-check"></i><b>22.4</b> Example of linear regression</a></li>
+<li class="chapter" data-level="22.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>22.5</b> Standard error of train data</a></li>
+<li class="chapter" data-level="22.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>22.6</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="22.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression-1"><i class="fa fa-check"></i><b>22.7</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="22.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-2"><i class="fa fa-check"></i><b>22.8</b> NEXT part</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>21</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="22" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>22</b> Spline model</a><ul>
-<li class="chapter" data-level="22.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>22.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="22.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>22.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="22.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>22.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="22.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>22.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="22.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>22.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="22.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>22.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="22.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>22.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="23" data-path="next-part-3.html"><a href="next-part-3.html"><i class="fa fa-check"></i><b>23</b> NEXT part</a><ul>
+<li class="chapter" data-level="23.1" data-path="next-part-3.html"><a href="next-part-3.html#next-part-4"><i class="fa fa-check"></i><b>23.1</b> NEXT part</a></li>
+<li class="chapter" data-level="23.2" data-path="next-part-3.html"><a href="next-part-3.html#next-part-5"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a><ul>
-<li class="chapter" data-level="23.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>23.1</b> Next part</a></li>
-<li class="chapter" data-level="23.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
-<li class="chapter" data-level="23.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>23.3</b> NExt part</a></li>
+<li class="chapter" data-level="24" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>24</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="25" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>25</b> Spline model</a><ul>
+<li class="chapter" data-level="25.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>25.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="25.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>25.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="25.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>25.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="25.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>25.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="25.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>25.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="25.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>25.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="25.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>25.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="25" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>25</b> Simple Markov process</a><ul>
-<li class="chapter" data-level="25.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>25.0.1</b> Sources</a></li>
+<li class="chapter" data-level="26" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>26</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="26.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-6"><i class="fa fa-check"></i><b>26.1</b> Next part</a></li>
+<li class="chapter" data-level="26.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-7"><i class="fa fa-check"></i><b>26.2</b> NEXT Part</a></li>
+<li class="chapter" data-level="26.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-8"><i class="fa fa-check"></i><b>26.3</b> NExt part</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>26</b> Naive Bayes</a></li>
+<li class="chapter" data-level="27" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>27</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="28" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>28</b> Simple Markov process</a><ul>
+<li class="chapter" data-level="28.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>28.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>29</b> Naive Bayes</a></li>
+<li class="chapter" data-level="30" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>30</b> Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -254,215 +264,215 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="clustering" class="section level1">
-<h1><span class="header-section-number">Chapter 14</span> Clustering</h1>
+<h1><span class="header-section-number">Chapter 17</span> Clustering</h1>
 <p>5 classes of clustering methods:<br />
 1. <strong>Partitioning methods</strong> - split into k-groups (k-means, k-dedoids (PAM), CLARA)<br />
 2. <strong>Hierarchical clustering</strong><br />
 3. <strong>Fuzzy clustering</strong><br />
 4. <strong>Density-based clustering</strong><br />
 5. <strong>Model-based clustering</strong></p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">bv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./DATA/beverage.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)  </a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="kw">head</span>(bv)  </a>
-<a class="sourceLine" id="cb82-3" title="3"><span class="co"># no needs to normalize because all data is binary (0,1)</span></a>
-<a class="sourceLine" id="cb82-4" title="4"></a>
-<a class="sourceLine" id="cb82-5" title="5"><span class="co"># Hierarchical clustering</span></a>
-<a class="sourceLine" id="cb82-6" title="6"><span class="co"># dist - calculate distances</span></a>
-<a class="sourceLine" id="cb82-7" title="7"><span class="co"># hclust - hierarchical clustering</span></a>
-<a class="sourceLine" id="cb82-8" title="8"></a>
-<a class="sourceLine" id="cb82-9" title="9">clust.bv &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>]), <span class="st">&quot;ward.D&quot;</span>)</a>
-<a class="sourceLine" id="cb82-10" title="10">clust.bv</a>
-<a class="sourceLine" id="cb82-11" title="11"></a>
-<a class="sourceLine" id="cb82-12" title="12"><span class="co"># Plot clusters</span></a>
-<a class="sourceLine" id="cb82-13" title="13"><span class="kw">plot</span>(clust.bv)</a>
-<a class="sourceLine" id="cb82-14" title="14"><span class="kw">plot</span>(clust.bv, <span class="dt">hang =</span> <span class="dv">-1</span>)</a>
-<a class="sourceLine" id="cb82-15" title="15"><span class="kw">rect.hclust</span>(clust.bv, <span class="dt">k=</span><span class="dv">3</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>) </a>
-<a class="sourceLine" id="cb82-16" title="16"></a>
-<a class="sourceLine" id="cb82-17" title="17"><span class="co"># Group data by clusters</span></a>
-<a class="sourceLine" id="cb82-18" title="18">groups &lt;-<span class="st"> </span><span class="kw">cutree</span>(clust.bv, <span class="dt">k=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb82-19" title="19">groups</a>
-<a class="sourceLine" id="cb82-20" title="20"></a>
-<a class="sourceLine" id="cb82-21" title="21"><span class="co"># Percentage in broups by drinking different beverages</span></a>
-<a class="sourceLine" id="cb82-22" title="22"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb82-23" title="23"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb82-24" title="24"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">3</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb82-25" title="25"></a>
-<a class="sourceLine" id="cb82-26" title="26"><span class="co"># Interpretation</span></a>
-<a class="sourceLine" id="cb82-27" title="27"><span class="co"># 1. People who does not have specific preference</span></a>
-<a class="sourceLine" id="cb82-28" title="28"><span class="co"># 2. People who prefers cola and pepsi</span></a>
-<a class="sourceLine" id="cb82-29" title="29"><span class="co"># 3. Not clear (others)</span></a>
-<a class="sourceLine" id="cb82-30" title="30"></a>
-<a class="sourceLine" id="cb82-31" title="31"><span class="co"># atributes of cluster analysis</span></a>
-<a class="sourceLine" id="cb82-32" title="32"><span class="kw">names</span>(clust.bv)</a>
-<a class="sourceLine" id="cb82-33" title="33"></a>
-<a class="sourceLine" id="cb82-34" title="34"><span class="co"># chronic of combining</span></a>
-<a class="sourceLine" id="cb82-35" title="35">clust.bv<span class="op">$</span>merge</a>
-<a class="sourceLine" id="cb82-36" title="36">clust.bv[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb82-37" title="37"></a>
-<a class="sourceLine" id="cb82-38" title="38">clust.bv<span class="op">$</span>height</a>
-<a class="sourceLine" id="cb82-39" title="39">clust.bv<span class="op">$</span>order</a>
-<a class="sourceLine" id="cb82-40" title="40">clust.bv<span class="op">$</span>labels</a>
-<a class="sourceLine" id="cb82-41" title="41">clust.bv<span class="op">$</span>method</a>
-<a class="sourceLine" id="cb82-42" title="42">clust.bv<span class="op">$</span>call</a>
-<a class="sourceLine" id="cb82-43" title="43">clust.bv<span class="op">$</span>dist.method</a>
-<a class="sourceLine" id="cb82-44" title="44"></a>
-<a class="sourceLine" id="cb82-45" title="45"><span class="co"># Detect the best choice for number of cluster by elbow-plot</span></a>
-<a class="sourceLine" id="cb82-46" title="46"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">33</span>, clust.bv<span class="op">$</span>height, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</a>
-<a class="sourceLine" id="cb82-47" title="47"></a>
-<a class="sourceLine" id="cb82-48" title="48"><span class="co">### Task. Analyse data and find groups of people</span></a>
-<a class="sourceLine" id="cb82-49" title="49"><span class="co"># Scores (0,10) of 10 tests for candidates to get a job.</span></a>
-<a class="sourceLine" id="cb82-50" title="50"><span class="co"># 1. Memorizing numbers</span></a>
-<a class="sourceLine" id="cb82-51" title="51"><span class="co"># 2. Math task</span></a>
-<a class="sourceLine" id="cb82-52" title="52"><span class="co"># 3. Solving tasks in dialoge</span></a>
-<a class="sourceLine" id="cb82-53" title="53"><span class="co"># 4. Algorithms</span></a>
-<a class="sourceLine" id="cb82-54" title="54"><span class="co"># 5. Self confidence</span></a>
-<a class="sourceLine" id="cb82-55" title="55"><span class="co"># 6. Work in group</span></a>
-<a class="sourceLine" id="cb82-56" title="56"><span class="co"># 7. Find solution</span></a>
-<a class="sourceLine" id="cb82-57" title="57"><span class="co"># 8. Collaboration</span></a>
-<a class="sourceLine" id="cb82-58" title="58"><span class="co"># 9. Acceptance by others</span></a>
-<a class="sourceLine" id="cb82-59" title="59"></a>
-<a class="sourceLine" id="cb82-60" title="60"><span class="kw">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</a>
-<a class="sourceLine" id="cb82-61" title="61">job &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;DATA/assess.dat&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb82-62" title="62">job</a>
-<a class="sourceLine" id="cb82-63" title="63"></a>
-<a class="sourceLine" id="cb82-64" title="64"><span class="co"># Clustering</span></a>
-<a class="sourceLine" id="cb82-65" title="65">clust.job &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(job[,<span class="dv">3</span><span class="op">:</span><span class="kw">ncol</span>(job)]), <span class="st">&quot;ward.D&quot;</span>)</a>
-<a class="sourceLine" id="cb82-66" title="66"><span class="co"># no needs to normalize, because all numbers have the same min, max</span></a>
-<a class="sourceLine" id="cb82-67" title="67"><span class="kw">plot</span>(clust.job)  <span class="co"># visual number of clusters is 4</span></a>
-<a class="sourceLine" id="cb82-68" title="68"></a>
-<a class="sourceLine" id="cb82-69" title="69"><span class="co"># Group data by clusters</span></a>
-<a class="sourceLine" id="cb82-70" title="70">groups &lt;-<span class="st"> </span><span class="kw">cutree</span>(clust.job, <span class="dt">k=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb82-71" title="71">groups</a>
-<a class="sourceLine" id="cb82-72" title="72"><span class="kw">colMeans</span>(job[groups<span class="op">==</span><span class="dv">1</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">12</span>])<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb82-73" title="73"></a>
-<a class="sourceLine" id="cb82-74" title="74"><span class="co">### Find clusters using k-means method</span></a>
-<a class="sourceLine" id="cb82-75" title="75"></a>
-<a class="sourceLine" id="cb82-76" title="76"><span class="kw">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</a>
-<a class="sourceLine" id="cb82-77" title="77">bv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;DATA/beverage.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</a>
-<a class="sourceLine" id="cb82-78" title="78">bv</a>
-<a class="sourceLine" id="cb82-79" title="79"><span class="kw">dim</span>(bv)</a>
-<a class="sourceLine" id="cb82-80" title="80"><span class="kw">names</span>(bv)</a>
-<a class="sourceLine" id="cb82-81" title="81"></a>
-<a class="sourceLine" id="cb82-82" title="82"><span class="co"># k-means clustering, with initial 3 clusters</span></a>
-<a class="sourceLine" id="cb82-83" title="83"><span class="co"># nstart = x - run x times with different initial clusters</span></a>
-<a class="sourceLine" id="cb82-84" title="84">summ<span class="fl">.1</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="dt">iter.max =</span> <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb82-85" title="85"><span class="kw">names</span>(summ<span class="fl">.1</span>)</a>
-<a class="sourceLine" id="cb82-86" title="86"></a>
-<a class="sourceLine" id="cb82-87" title="87"><span class="co"># Objects by clusters</span></a>
-<a class="sourceLine" id="cb82-88" title="88">summ<span class="fl">.1</span><span class="op">$</span>cluster</a>
-<a class="sourceLine" id="cb82-89" title="89"></a>
-<a class="sourceLine" id="cb82-90" title="90"><span class="co"># Centers of clusters</span></a>
-<a class="sourceLine" id="cb82-91" title="91">summ<span class="fl">.1</span><span class="op">$</span>centers</a>
-<a class="sourceLine" id="cb82-92" title="92"><span class="co"># 2 digits after point</span></a>
-<a class="sourceLine" id="cb82-93" title="93"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb82-94" title="94"></a>
-<a class="sourceLine" id="cb82-95" title="95"><span class="kw">t</span>(summ<span class="fl">.1</span><span class="op">$</span>centers)</a>
-<a class="sourceLine" id="cb82-96" title="96"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb82-97" title="97"></a>
-<a class="sourceLine" id="cb82-98" title="98"><span class="co"># Square summs</span></a>
-<a class="sourceLine" id="cb82-99" title="99">summ<span class="fl">.1</span><span class="op">$</span>withinss</a>
-<a class="sourceLine" id="cb82-100" title="100"></a>
-<a class="sourceLine" id="cb82-101" title="101"><span class="co"># Summ of elements of vector</span></a>
-<a class="sourceLine" id="cb82-102" title="102">summ<span class="fl">.1</span><span class="op">$</span>tot.withinss</a>
-<a class="sourceLine" id="cb82-103" title="103"></a>
-<a class="sourceLine" id="cb82-104" title="104"><span class="co"># sum(33*(apply(bv[,2:9], 2, sd))^2)</span></a>
-<a class="sourceLine" id="cb82-105" title="105">summ<span class="fl">.1</span><span class="op">$</span>totss</a>
-<a class="sourceLine" id="cb82-106" title="106">summ<span class="fl">.1</span><span class="op">$</span>tot.betweenss</a>
-<a class="sourceLine" id="cb82-107" title="107"></a>
-<a class="sourceLine" id="cb82-108" title="108"><span class="co"># Size of clusters</span></a>
-<a class="sourceLine" id="cb82-109" title="109">summ<span class="fl">.1</span><span class="op">$</span>size</a>
-<a class="sourceLine" id="cb82-110" title="110"></a>
-<a class="sourceLine" id="cb82-111" title="111"><span class="co"># Elbow plot to detect optimal number of clusters</span></a>
-<a class="sourceLine" id="cb82-112" title="112">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</a>
-<a class="sourceLine" id="cb82-113" title="113"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) { wss[i] &lt;-<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],</a>
-<a class="sourceLine" id="cb82-114" title="114">                <span class="dt">centers=</span>i)<span class="op">$</span>tot.withinss }</a>
-<a class="sourceLine" id="cb82-115" title="115"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
-<a class="sourceLine" id="cb82-116" title="116">     <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a>
-<a class="sourceLine" id="cb82-117" title="117"></a>
-<a class="sourceLine" id="cb82-118" title="118"><span class="co"># We can see that diagram is rough. This is because clusters are not allways optimal</span></a>
-<a class="sourceLine" id="cb82-119" title="119"><span class="co"># To improve situation, we have to run many initiall start coordinates and choose the best</span></a>
-<a class="sourceLine" id="cb82-120" title="120"><span class="co"># option (add nstart=500):</span></a>
-<a class="sourceLine" id="cb82-121" title="121">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</a>
-<a class="sourceLine" id="cb82-122" title="122"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) { wss[i] &lt;-<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],</a>
-<a class="sourceLine" id="cb82-123" title="123">                                   <span class="dt">centers=</span>i, <span class="dt">nstart=</span><span class="dv">500</span>)<span class="op">$</span>tot.withinss }</a>
-<a class="sourceLine" id="cb82-124" title="124"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
-<a class="sourceLine" id="cb82-125" title="125">     <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a>
-<a class="sourceLine" id="cb82-126" title="126"><span class="co"># Warnings means that iterations were not finished for some cases.</span></a>
-<a class="sourceLine" id="cb82-127" title="127"></a>
-<a class="sourceLine" id="cb82-128" title="128"><span class="co"># Let&#39;s compair results for 3 and 4 clusters</span></a>
-<a class="sourceLine" id="cb82-129" title="129">summ<span class="fl">.1</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="dt">iter.max=</span><span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb82-130" title="130">summ<span class="fl">.2</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">4</span>, <span class="dt">iter.max=</span><span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb82-131" title="131"></a>
-<a class="sourceLine" id="cb82-132" title="132"><span class="co"># Compair clusters. How many elements in each cluster</span></a>
-<a class="sourceLine" id="cb82-133" title="133"><span class="co"># We can see how elements move if we take more clusters</span></a>
-<a class="sourceLine" id="cb82-134" title="134"><span class="kw">table</span>(summ<span class="fl">.1</span><span class="op">$</span>cluster, summ<span class="fl">.2</span><span class="op">$</span>cluster)</a>
-<a class="sourceLine" id="cb82-135" title="135"></a>
-<a class="sourceLine" id="cb82-136" title="136"><span class="co"># Multidimentional scaling</span></a>
-<a class="sourceLine" id="cb82-137" title="137"><span class="co"># Project multidimentional data to 2d</span></a>
-<a class="sourceLine" id="cb82-138" title="138">bv.dist &lt;-<span class="st"> </span><span class="kw">dist</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])</a>
-<a class="sourceLine" id="cb82-139" title="139">bv.mds &lt;-<span class="st"> </span><span class="kw">cmdscale</span>(bv.dist)</a>
-<a class="sourceLine" id="cb82-140" title="140"><span class="kw">plot</span>(bv.mds, <span class="dt">col =</span> summ<span class="fl">.1</span><span class="op">$</span>cluster, <span class="dt">xlab=</span><span class="st">&quot;Index&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb82-141" title="141"></a>
-<a class="sourceLine" id="cb82-142" title="142"><span class="co"># Detect optimal number of clusters</span></a>
-<a class="sourceLine" id="cb82-143" title="143"><span class="kw">install.packages</span>(<span class="st">&quot;NbClust&quot;</span>)</a>
-<a class="sourceLine" id="cb82-144" title="144"><span class="kw">library</span>(<span class="st">&quot;NbClust&quot;</span>)</a>
-<a class="sourceLine" id="cb82-145" title="145">Best &lt;-<span class="st"> </span><span class="kw">NbClust</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],              <span class="co"># data </span></a>
-<a class="sourceLine" id="cb82-146" title="146">                <span class="dt">distance=</span><span class="st">&quot;euclidean&quot;</span>,  <span class="co"># distance method</span></a>
-<a class="sourceLine" id="cb82-147" title="147">                <span class="dt">min.nc=</span><span class="dv">2</span>,              <span class="co"># min number of clusters</span></a>
-<a class="sourceLine" id="cb82-148" title="148">                <span class="dt">max.nc=</span><span class="dv">8</span>,             <span class="co"># max number of clusters</span></a>
-<a class="sourceLine" id="cb82-149" title="149">                <span class="dt">method=</span><span class="st">&quot;ward.D&quot;</span>,       <span class="co"># ward methodes </span></a>
-<a class="sourceLine" id="cb82-150" title="150">                <span class="dt">index =</span> <span class="st">&quot;alllong&quot;</span> )    <span class="co"># choose indices</span></a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1">bv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./DATA/beverage.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)  </a>
+<a class="sourceLine" id="cb102-2" title="2"><span class="kw">head</span>(bv)  </a>
+<a class="sourceLine" id="cb102-3" title="3"><span class="co"># no needs to normalize because all data is binary (0,1)</span></a>
+<a class="sourceLine" id="cb102-4" title="4"></a>
+<a class="sourceLine" id="cb102-5" title="5"><span class="co"># Hierarchical clustering</span></a>
+<a class="sourceLine" id="cb102-6" title="6"><span class="co"># dist - calculate distances</span></a>
+<a class="sourceLine" id="cb102-7" title="7"><span class="co"># hclust - hierarchical clustering</span></a>
+<a class="sourceLine" id="cb102-8" title="8"></a>
+<a class="sourceLine" id="cb102-9" title="9">clust.bv &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>]), <span class="st">&quot;ward.D&quot;</span>)</a>
+<a class="sourceLine" id="cb102-10" title="10">clust.bv</a>
+<a class="sourceLine" id="cb102-11" title="11"></a>
+<a class="sourceLine" id="cb102-12" title="12"><span class="co"># Plot clusters</span></a>
+<a class="sourceLine" id="cb102-13" title="13"><span class="kw">plot</span>(clust.bv)</a>
+<a class="sourceLine" id="cb102-14" title="14"><span class="kw">plot</span>(clust.bv, <span class="dt">hang =</span> <span class="dv">-1</span>)</a>
+<a class="sourceLine" id="cb102-15" title="15"><span class="kw">rect.hclust</span>(clust.bv, <span class="dt">k=</span><span class="dv">3</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>) </a>
+<a class="sourceLine" id="cb102-16" title="16"></a>
+<a class="sourceLine" id="cb102-17" title="17"><span class="co"># Group data by clusters</span></a>
+<a class="sourceLine" id="cb102-18" title="18">groups &lt;-<span class="st"> </span><span class="kw">cutree</span>(clust.bv, <span class="dt">k=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb102-19" title="19">groups</a>
+<a class="sourceLine" id="cb102-20" title="20"></a>
+<a class="sourceLine" id="cb102-21" title="21"><span class="co"># Percentage in broups by drinking different beverages</span></a>
+<a class="sourceLine" id="cb102-22" title="22"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb102-23" title="23"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb102-24" title="24"><span class="kw">colMeans</span>(bv[groups<span class="op">==</span><span class="dv">3</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb102-25" title="25"></a>
+<a class="sourceLine" id="cb102-26" title="26"><span class="co"># Interpretation</span></a>
+<a class="sourceLine" id="cb102-27" title="27"><span class="co"># 1. People who does not have specific preference</span></a>
+<a class="sourceLine" id="cb102-28" title="28"><span class="co"># 2. People who prefers cola and pepsi</span></a>
+<a class="sourceLine" id="cb102-29" title="29"><span class="co"># 3. Not clear (others)</span></a>
+<a class="sourceLine" id="cb102-30" title="30"></a>
+<a class="sourceLine" id="cb102-31" title="31"><span class="co"># atributes of cluster analysis</span></a>
+<a class="sourceLine" id="cb102-32" title="32"><span class="kw">names</span>(clust.bv)</a>
+<a class="sourceLine" id="cb102-33" title="33"></a>
+<a class="sourceLine" id="cb102-34" title="34"><span class="co"># chronic of combining</span></a>
+<a class="sourceLine" id="cb102-35" title="35">clust.bv<span class="op">$</span>merge</a>
+<a class="sourceLine" id="cb102-36" title="36">clust.bv[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb102-37" title="37"></a>
+<a class="sourceLine" id="cb102-38" title="38">clust.bv<span class="op">$</span>height</a>
+<a class="sourceLine" id="cb102-39" title="39">clust.bv<span class="op">$</span>order</a>
+<a class="sourceLine" id="cb102-40" title="40">clust.bv<span class="op">$</span>labels</a>
+<a class="sourceLine" id="cb102-41" title="41">clust.bv<span class="op">$</span>method</a>
+<a class="sourceLine" id="cb102-42" title="42">clust.bv<span class="op">$</span>call</a>
+<a class="sourceLine" id="cb102-43" title="43">clust.bv<span class="op">$</span>dist.method</a>
+<a class="sourceLine" id="cb102-44" title="44"></a>
+<a class="sourceLine" id="cb102-45" title="45"><span class="co"># Detect the best choice for number of cluster by elbow-plot</span></a>
+<a class="sourceLine" id="cb102-46" title="46"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">33</span>, clust.bv<span class="op">$</span>height, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</a>
+<a class="sourceLine" id="cb102-47" title="47"></a>
+<a class="sourceLine" id="cb102-48" title="48"><span class="co">### Task. Analyse data and find groups of people</span></a>
+<a class="sourceLine" id="cb102-49" title="49"><span class="co"># Scores (0,10) of 10 tests for candidates to get a job.</span></a>
+<a class="sourceLine" id="cb102-50" title="50"><span class="co"># 1. Memorizing numbers</span></a>
+<a class="sourceLine" id="cb102-51" title="51"><span class="co"># 2. Math task</span></a>
+<a class="sourceLine" id="cb102-52" title="52"><span class="co"># 3. Solving tasks in dialoge</span></a>
+<a class="sourceLine" id="cb102-53" title="53"><span class="co"># 4. Algorithms</span></a>
+<a class="sourceLine" id="cb102-54" title="54"><span class="co"># 5. Self confidence</span></a>
+<a class="sourceLine" id="cb102-55" title="55"><span class="co"># 6. Work in group</span></a>
+<a class="sourceLine" id="cb102-56" title="56"><span class="co"># 7. Find solution</span></a>
+<a class="sourceLine" id="cb102-57" title="57"><span class="co"># 8. Collaboration</span></a>
+<a class="sourceLine" id="cb102-58" title="58"><span class="co"># 9. Acceptance by others</span></a>
+<a class="sourceLine" id="cb102-59" title="59"></a>
+<a class="sourceLine" id="cb102-60" title="60"><span class="kw">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</a>
+<a class="sourceLine" id="cb102-61" title="61">job &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;DATA/assess.dat&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb102-62" title="62">job</a>
+<a class="sourceLine" id="cb102-63" title="63"></a>
+<a class="sourceLine" id="cb102-64" title="64"><span class="co"># Clustering</span></a>
+<a class="sourceLine" id="cb102-65" title="65">clust.job &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(job[,<span class="dv">3</span><span class="op">:</span><span class="kw">ncol</span>(job)]), <span class="st">&quot;ward.D&quot;</span>)</a>
+<a class="sourceLine" id="cb102-66" title="66"><span class="co"># no needs to normalize, because all numbers have the same min, max</span></a>
+<a class="sourceLine" id="cb102-67" title="67"><span class="kw">plot</span>(clust.job)  <span class="co"># visual number of clusters is 4</span></a>
+<a class="sourceLine" id="cb102-68" title="68"></a>
+<a class="sourceLine" id="cb102-69" title="69"><span class="co"># Group data by clusters</span></a>
+<a class="sourceLine" id="cb102-70" title="70">groups &lt;-<span class="st"> </span><span class="kw">cutree</span>(clust.job, <span class="dt">k=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb102-71" title="71">groups</a>
+<a class="sourceLine" id="cb102-72" title="72"><span class="kw">colMeans</span>(job[groups<span class="op">==</span><span class="dv">1</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">12</span>])<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb102-73" title="73"></a>
+<a class="sourceLine" id="cb102-74" title="74"><span class="co">### Find clusters using k-means method</span></a>
+<a class="sourceLine" id="cb102-75" title="75"></a>
+<a class="sourceLine" id="cb102-76" title="76"><span class="kw">setwd</span>(<span class="st">&quot;~/DataAnalysis&quot;</span>)</a>
+<a class="sourceLine" id="cb102-77" title="77">bv &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;DATA/beverage.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb102-78" title="78">bv</a>
+<a class="sourceLine" id="cb102-79" title="79"><span class="kw">dim</span>(bv)</a>
+<a class="sourceLine" id="cb102-80" title="80"><span class="kw">names</span>(bv)</a>
+<a class="sourceLine" id="cb102-81" title="81"></a>
+<a class="sourceLine" id="cb102-82" title="82"><span class="co"># k-means clustering, with initial 3 clusters</span></a>
+<a class="sourceLine" id="cb102-83" title="83"><span class="co"># nstart = x - run x times with different initial clusters</span></a>
+<a class="sourceLine" id="cb102-84" title="84">summ<span class="fl">.1</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="dt">iter.max =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb102-85" title="85"><span class="kw">names</span>(summ<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb102-86" title="86"></a>
+<a class="sourceLine" id="cb102-87" title="87"><span class="co"># Objects by clusters</span></a>
+<a class="sourceLine" id="cb102-88" title="88">summ<span class="fl">.1</span><span class="op">$</span>cluster</a>
+<a class="sourceLine" id="cb102-89" title="89"></a>
+<a class="sourceLine" id="cb102-90" title="90"><span class="co"># Centers of clusters</span></a>
+<a class="sourceLine" id="cb102-91" title="91">summ<span class="fl">.1</span><span class="op">$</span>centers</a>
+<a class="sourceLine" id="cb102-92" title="92"><span class="co"># 2 digits after point</span></a>
+<a class="sourceLine" id="cb102-93" title="93"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb102-94" title="94"></a>
+<a class="sourceLine" id="cb102-95" title="95"><span class="kw">t</span>(summ<span class="fl">.1</span><span class="op">$</span>centers)</a>
+<a class="sourceLine" id="cb102-96" title="96"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb102-97" title="97"></a>
+<a class="sourceLine" id="cb102-98" title="98"><span class="co"># Square summs</span></a>
+<a class="sourceLine" id="cb102-99" title="99">summ<span class="fl">.1</span><span class="op">$</span>withinss</a>
+<a class="sourceLine" id="cb102-100" title="100"></a>
+<a class="sourceLine" id="cb102-101" title="101"><span class="co"># Summ of elements of vector</span></a>
+<a class="sourceLine" id="cb102-102" title="102">summ<span class="fl">.1</span><span class="op">$</span>tot.withinss</a>
+<a class="sourceLine" id="cb102-103" title="103"></a>
+<a class="sourceLine" id="cb102-104" title="104"><span class="co"># sum(33*(apply(bv[,2:9], 2, sd))^2)</span></a>
+<a class="sourceLine" id="cb102-105" title="105">summ<span class="fl">.1</span><span class="op">$</span>totss</a>
+<a class="sourceLine" id="cb102-106" title="106">summ<span class="fl">.1</span><span class="op">$</span>tot.betweenss</a>
+<a class="sourceLine" id="cb102-107" title="107"></a>
+<a class="sourceLine" id="cb102-108" title="108"><span class="co"># Size of clusters</span></a>
+<a class="sourceLine" id="cb102-109" title="109">summ<span class="fl">.1</span><span class="op">$</span>size</a>
+<a class="sourceLine" id="cb102-110" title="110"></a>
+<a class="sourceLine" id="cb102-111" title="111"><span class="co"># Elbow plot to detect optimal number of clusters</span></a>
+<a class="sourceLine" id="cb102-112" title="112">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb102-113" title="113"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) { wss[i] &lt;-<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],</a>
+<a class="sourceLine" id="cb102-114" title="114">                <span class="dt">centers=</span>i)<span class="op">$</span>tot.withinss }</a>
+<a class="sourceLine" id="cb102-115" title="115"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
+<a class="sourceLine" id="cb102-116" title="116">     <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a>
+<a class="sourceLine" id="cb102-117" title="117"></a>
+<a class="sourceLine" id="cb102-118" title="118"><span class="co"># We can see that diagram is rough. This is because clusters are not allways optimal</span></a>
+<a class="sourceLine" id="cb102-119" title="119"><span class="co"># To improve situation, we have to run many initiall start coordinates and choose the best</span></a>
+<a class="sourceLine" id="cb102-120" title="120"><span class="co"># option (add nstart=500):</span></a>
+<a class="sourceLine" id="cb102-121" title="121">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb102-122" title="122"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) { wss[i] &lt;-<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],</a>
+<a class="sourceLine" id="cb102-123" title="123">                                   <span class="dt">centers=</span>i, <span class="dt">nstart=</span><span class="dv">500</span>)<span class="op">$</span>tot.withinss }</a>
+<a class="sourceLine" id="cb102-124" title="124"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
+<a class="sourceLine" id="cb102-125" title="125">     <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a>
+<a class="sourceLine" id="cb102-126" title="126"><span class="co"># Warnings means that iterations were not finished for some cases.</span></a>
+<a class="sourceLine" id="cb102-127" title="127"></a>
+<a class="sourceLine" id="cb102-128" title="128"><span class="co"># Let&#39;s compair results for 3 and 4 clusters</span></a>
+<a class="sourceLine" id="cb102-129" title="129">summ<span class="fl">.1</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">3</span>, <span class="dt">iter.max=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb102-130" title="130">summ<span class="fl">.2</span> =<span class="st"> </span><span class="kw">kmeans</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>], <span class="dv">4</span>, <span class="dt">iter.max=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb102-131" title="131"></a>
+<a class="sourceLine" id="cb102-132" title="132"><span class="co"># Compair clusters. How many elements in each cluster</span></a>
+<a class="sourceLine" id="cb102-133" title="133"><span class="co"># We can see how elements move if we take more clusters</span></a>
+<a class="sourceLine" id="cb102-134" title="134"><span class="kw">table</span>(summ<span class="fl">.1</span><span class="op">$</span>cluster, summ<span class="fl">.2</span><span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb102-135" title="135"></a>
+<a class="sourceLine" id="cb102-136" title="136"><span class="co"># Multidimentional scaling</span></a>
+<a class="sourceLine" id="cb102-137" title="137"><span class="co"># Project multidimentional data to 2d</span></a>
+<a class="sourceLine" id="cb102-138" title="138">bv.dist &lt;-<span class="st"> </span><span class="kw">dist</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])</a>
+<a class="sourceLine" id="cb102-139" title="139">bv.mds &lt;-<span class="st"> </span><span class="kw">cmdscale</span>(bv.dist)</a>
+<a class="sourceLine" id="cb102-140" title="140"><span class="kw">plot</span>(bv.mds, <span class="dt">col =</span> summ<span class="fl">.1</span><span class="op">$</span>cluster, <span class="dt">xlab=</span><span class="st">&quot;Index&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb102-141" title="141"></a>
+<a class="sourceLine" id="cb102-142" title="142"><span class="co"># Detect optimal number of clusters</span></a>
+<a class="sourceLine" id="cb102-143" title="143"><span class="kw">install.packages</span>(<span class="st">&quot;NbClust&quot;</span>)</a>
+<a class="sourceLine" id="cb102-144" title="144"><span class="kw">library</span>(<span class="st">&quot;NbClust&quot;</span>)</a>
+<a class="sourceLine" id="cb102-145" title="145">Best &lt;-<span class="st"> </span><span class="kw">NbClust</span>(bv[,<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>],              <span class="co"># data </span></a>
+<a class="sourceLine" id="cb102-146" title="146">                <span class="dt">distance=</span><span class="st">&quot;euclidean&quot;</span>,  <span class="co"># distance method</span></a>
+<a class="sourceLine" id="cb102-147" title="147">                <span class="dt">min.nc=</span><span class="dv">2</span>,              <span class="co"># min number of clusters</span></a>
+<a class="sourceLine" id="cb102-148" title="148">                <span class="dt">max.nc=</span><span class="dv">8</span>,             <span class="co"># max number of clusters</span></a>
+<a class="sourceLine" id="cb102-149" title="149">                <span class="dt">method=</span><span class="st">&quot;ward.D&quot;</span>,       <span class="co"># ward methodes </span></a>
+<a class="sourceLine" id="cb102-150" title="150">                <span class="dt">index =</span> <span class="st">&quot;alllong&quot;</span> )    <span class="co"># choose indices</span></a></code></pre></div>
 <div id="next-part" class="section level2">
-<h2><span class="header-section-number">14.1</span> Next part</h2>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">library</span>(cluster)</a>
-<a class="sourceLine" id="cb83-2" title="2"><span class="kw">library</span>(factoextra)</a>
-<a class="sourceLine" id="cb83-3" title="3"></a>
-<a class="sourceLine" id="cb83-4" title="4"></a>
-<a class="sourceLine" id="cb83-5" title="5">Distances<span class="op">:</span></a>
-<a class="sourceLine" id="cb83-6" title="6">stats<span class="op">::</span><span class="kw">dist</span>()</a>
-<a class="sourceLine" id="cb83-7" title="7">factoextra<span class="op">::</span><span class="kw">get_dist</span>()   <span class="co"># compute a distance matrix between the rows of a data matrix</span></a>
-<a class="sourceLine" id="cb83-8" title="8">factoextra<span class="op">::</span><span class="kw">fviz_dist</span>()  <span class="co"># visualize distance matrix</span></a>
-<a class="sourceLine" id="cb83-9" title="9">cluster<span class="op">::</span><span class="kw">daisy</span>()         <span class="co"># handle both numeric and not numeric (nominal, ordinal,...) data types</span></a>
-<a class="sourceLine" id="cb83-10" title="10"></a>
-<a class="sourceLine" id="cb83-11" title="11">d &lt;-<span class="st"> </span>factoextra<span class="op">::</span><span class="kw">get_dist</span>(USArrests, <span class="dt">stand =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&#39;pearson&#39;</span>)</a>
-<a class="sourceLine" id="cb83-12" title="12">factoextra<span class="op">::</span><span class="kw">fviz_dist</span>(d, <span class="dt">gradient =</span> <span class="kw">list</span>(<span class="dt">low=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">mid=</span><span class="st">&#39;white&#39;</span>, <span class="dt">high=</span><span class="st">&#39;red&#39;</span>))</a>
-<a class="sourceLine" id="cb83-13" title="13"></a>
-<a class="sourceLine" id="cb83-14" title="14"><span class="co">#####</span></a>
-<a class="sourceLine" id="cb83-15" title="15"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb83-16" title="16"><span class="kw">library</span>(cluster)</a>
-<a class="sourceLine" id="cb83-17" title="17"><span class="kw">library</span>(factoextra)</a>
-<a class="sourceLine" id="cb83-18" title="18"></a>
-<a class="sourceLine" id="cb83-19" title="19">data &lt;-<span class="st"> </span>USArrests <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">scale</span>()</a>
-<a class="sourceLine" id="cb83-20" title="20">data</a>
-<a class="sourceLine" id="cb83-21" title="21">factoextra<span class="op">::</span><span class="kw">fviz_nbclust</span>(data, kmeans, <span class="dt">method =</span> <span class="st">&#39;gap_stat&#39;</span>)</a>
-<a class="sourceLine" id="cb83-22" title="22"></a>
-<a class="sourceLine" id="cb83-23" title="23"></a>
-<a class="sourceLine" id="cb83-24" title="24">km.res &lt;-<span class="st"> </span><span class="kw">kmeans</span>(data, <span class="dv">3</span>, <span class="dt">nstart =</span> <span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb83-25" title="25">factoextra<span class="op">::</span><span class="kw">fviz_cluster</span>(km.res, <span class="dt">data =</span> data,</a>
-<a class="sourceLine" id="cb83-26" title="26">                         <span class="dt">ellipse.type =</span> <span class="st">&#39;convex&#39;</span>,</a>
-<a class="sourceLine" id="cb83-27" title="27">                         <span class="dt">palette =</span> <span class="st">&#39;jco&#39;</span>,</a>
-<a class="sourceLine" id="cb83-28" title="28">                         <span class="dt">repel =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb83-29" title="29">                         <span class="dt">ggtheme =</span> <span class="kw">theme_minimal</span>())</a>
-<a class="sourceLine" id="cb83-30" title="30"></a>
-<a class="sourceLine" id="cb83-31" title="31"><span class="co"># PAM clustering</span></a>
-<a class="sourceLine" id="cb83-32" title="32">pam.res &lt;-<span class="st"> </span>cluster<span class="op">::</span><span class="kw">pam</span>(data, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb83-33" title="33">factoextra<span class="op">::</span><span class="kw">fviz_cluster</span>(pam.res)</a>
-<a class="sourceLine" id="cb83-34" title="34"></a>
-<a class="sourceLine" id="cb83-35" title="35"><span class="co"># CLARA clustering</span></a>
-<a class="sourceLine" id="cb83-36" title="36">clara.res &lt;-<span class="st"> </span><span class="kw">clara</span>(df, <span class="dv">2</span>, <span class="dt">samples =</span> <span class="dv">50</span>, <span class="dt">pamLike =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb83-37" title="37">clara.res</a>
-<a class="sourceLine" id="cb83-38" title="38"></a>
-<a class="sourceLine" id="cb83-39" title="39">dd &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="dt">cluster =</span> clara.res<span class="op">$</span>cluster)</a>
-<a class="sourceLine" id="cb83-40" title="40"></a>
-<a class="sourceLine" id="cb83-41" title="41"><span class="co"># Medoids</span></a>
-<a class="sourceLine" id="cb83-42" title="42">clara.res<span class="op">$</span>medoids</a>
-<a class="sourceLine" id="cb83-43" title="43"></a>
-<a class="sourceLine" id="cb83-44" title="44"><span class="co"># Clustering</span></a>
-<a class="sourceLine" id="cb83-45" title="45"><span class="kw">head</span>(clara.res<span class="op">$</span>clustering,<span class="dv">10</span>)</a></code></pre></div>
+<h2><span class="header-section-number">17.1</span> Next part</h2>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="kw">library</span>(cluster)</a>
+<a class="sourceLine" id="cb103-2" title="2"><span class="kw">library</span>(factoextra)</a>
+<a class="sourceLine" id="cb103-3" title="3"></a>
+<a class="sourceLine" id="cb103-4" title="4"></a>
+<a class="sourceLine" id="cb103-5" title="5">Distances<span class="op">:</span></a>
+<a class="sourceLine" id="cb103-6" title="6">stats<span class="op">::</span><span class="kw">dist</span>()</a>
+<a class="sourceLine" id="cb103-7" title="7">factoextra<span class="op">::</span><span class="kw">get_dist</span>()   <span class="co"># compute a distance matrix between the rows of a data matrix</span></a>
+<a class="sourceLine" id="cb103-8" title="8">factoextra<span class="op">::</span><span class="kw">fviz_dist</span>()  <span class="co"># visualize distance matrix</span></a>
+<a class="sourceLine" id="cb103-9" title="9">cluster<span class="op">::</span><span class="kw">daisy</span>()         <span class="co"># handle both numeric and not numeric (nominal, ordinal,...) data types</span></a>
+<a class="sourceLine" id="cb103-10" title="10"></a>
+<a class="sourceLine" id="cb103-11" title="11">d &lt;-<span class="st"> </span>factoextra<span class="op">::</span><span class="kw">get_dist</span>(USArrests, <span class="dt">stand =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&#39;pearson&#39;</span>)</a>
+<a class="sourceLine" id="cb103-12" title="12">factoextra<span class="op">::</span><span class="kw">fviz_dist</span>(d, <span class="dt">gradient =</span> <span class="kw">list</span>(<span class="dt">low=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">mid=</span><span class="st">&#39;white&#39;</span>, <span class="dt">high=</span><span class="st">&#39;red&#39;</span>))</a>
+<a class="sourceLine" id="cb103-13" title="13"></a>
+<a class="sourceLine" id="cb103-14" title="14"><span class="co">#####</span></a>
+<a class="sourceLine" id="cb103-15" title="15"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb103-16" title="16"><span class="kw">library</span>(cluster)</a>
+<a class="sourceLine" id="cb103-17" title="17"><span class="kw">library</span>(factoextra)</a>
+<a class="sourceLine" id="cb103-18" title="18"></a>
+<a class="sourceLine" id="cb103-19" title="19">data &lt;-<span class="st"> </span>USArrests <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">scale</span>()</a>
+<a class="sourceLine" id="cb103-20" title="20">data</a>
+<a class="sourceLine" id="cb103-21" title="21">factoextra<span class="op">::</span><span class="kw">fviz_nbclust</span>(data, kmeans, <span class="dt">method =</span> <span class="st">&#39;gap_stat&#39;</span>)</a>
+<a class="sourceLine" id="cb103-22" title="22"></a>
+<a class="sourceLine" id="cb103-23" title="23"></a>
+<a class="sourceLine" id="cb103-24" title="24">km.res &lt;-<span class="st"> </span><span class="kw">kmeans</span>(data, <span class="dv">3</span>, <span class="dt">nstart =</span> <span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb103-25" title="25">factoextra<span class="op">::</span><span class="kw">fviz_cluster</span>(km.res, <span class="dt">data =</span> data,</a>
+<a class="sourceLine" id="cb103-26" title="26">                         <span class="dt">ellipse.type =</span> <span class="st">&#39;convex&#39;</span>,</a>
+<a class="sourceLine" id="cb103-27" title="27">                         <span class="dt">palette =</span> <span class="st">&#39;jco&#39;</span>,</a>
+<a class="sourceLine" id="cb103-28" title="28">                         <span class="dt">repel =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb103-29" title="29">                         <span class="dt">ggtheme =</span> <span class="kw">theme_minimal</span>())</a>
+<a class="sourceLine" id="cb103-30" title="30"></a>
+<a class="sourceLine" id="cb103-31" title="31"><span class="co"># PAM clustering</span></a>
+<a class="sourceLine" id="cb103-32" title="32">pam.res &lt;-<span class="st"> </span>cluster<span class="op">::</span><span class="kw">pam</span>(data, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb103-33" title="33">factoextra<span class="op">::</span><span class="kw">fviz_cluster</span>(pam.res)</a>
+<a class="sourceLine" id="cb103-34" title="34"></a>
+<a class="sourceLine" id="cb103-35" title="35"><span class="co"># CLARA clustering</span></a>
+<a class="sourceLine" id="cb103-36" title="36">clara.res &lt;-<span class="st"> </span><span class="kw">clara</span>(df, <span class="dv">2</span>, <span class="dt">samples =</span> <span class="dv">50</span>, <span class="dt">pamLike =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb103-37" title="37">clara.res</a>
+<a class="sourceLine" id="cb103-38" title="38"></a>
+<a class="sourceLine" id="cb103-39" title="39">dd &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="dt">cluster =</span> clara.res<span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb103-40" title="40"></a>
+<a class="sourceLine" id="cb103-41" title="41"><span class="co"># Medoids</span></a>
+<a class="sourceLine" id="cb103-42" title="42">clara.res<span class="op">$</span>medoids</a>
+<a class="sourceLine" id="cb103-43" title="43"></a>
+<a class="sourceLine" id="cb103-44" title="44"><span class="co"># Clustering</span></a>
+<a class="sourceLine" id="cb103-45" title="45"><span class="kw">head</span>(clara.res<span class="op">$</span>clustering,<span class="dv">10</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
-<h2><span class="header-section-number">14.2</span> Example</h2>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">library</span>(datasets)</a>
-<a class="sourceLine" id="cb84-2" title="2"><span class="kw">head</span>(iris)</a></code></pre></div>
+<h2><span class="header-section-number">17.2</span> Example</h2>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">library</span>(datasets)</a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="kw">head</span>(iris)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -470,22 +480,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="co"># Plot Petal.Length ~ Petal.Width data</span></a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="kw">plot</span>(iris<span class="op">$</span>Petal.Length <span class="op">~</span><span class="st"> </span>iris<span class="op">$</span>Petal.Width)</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># Plot Petal.Length ~ Petal.Width data</span></a>
+<a class="sourceLine" id="cb106-2" title="2"><span class="kw">plot</span>(iris<span class="op">$</span>Petal.Length <span class="op">~</span><span class="st"> </span>iris<span class="op">$</span>Petal.Width)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/setup-1.png" width="672" /></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">set.seed</span>(<span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb87-2" title="2"></a>
-<a class="sourceLine" id="cb87-3" title="3"><span class="co"># Find number of clusters using wss</span></a>
-<a class="sourceLine" id="cb87-4" title="4">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>],<span class="dv">2</span>,var))</a>
-<a class="sourceLine" id="cb87-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) wss[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">kmeans</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], i)<span class="op">$</span>withinss)</a>
-<a class="sourceLine" id="cb87-6" title="6"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">set.seed</span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb107-2" title="2"></a>
+<a class="sourceLine" id="cb107-3" title="3"><span class="co"># Find number of clusters using wss</span></a>
+<a class="sourceLine" id="cb107-4" title="4">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>])<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>],<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb107-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) wss[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">kmeans</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], i)<span class="op">$</span>withinss)</a>
+<a class="sourceLine" id="cb107-6" title="6"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/setup-2.png" width="672" /></p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="co">#More than 3 clusters give no obvious advantages</span></a>
-<a class="sourceLine" id="cb88-2" title="2"></a>
-<a class="sourceLine" id="cb88-3" title="3"><span class="co"># Make k-means with 3 clasters</span></a>
-<a class="sourceLine" id="cb88-4" title="4">ncl &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb88-5" title="5">irisCluster &lt;-<span class="st"> </span><span class="kw">kmeans</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], ncl, <span class="dt">nstart =</span> <span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb88-6" title="6">irisCluster</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co">#More than 3 clusters give no obvious advantages</span></a>
+<a class="sourceLine" id="cb108-2" title="2"></a>
+<a class="sourceLine" id="cb108-3" title="3"><span class="co"># Make k-means with 3 clasters</span></a>
+<a class="sourceLine" id="cb108-4" title="4">ncl &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb108-5" title="5">irisCluster &lt;-<span class="st"> </span><span class="kw">kmeans</span>(iris[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], ncl, <span class="dt">nstart =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb108-6" title="6">irisCluster</a></code></pre></div>
 <pre><code>## K-means clustering with 3 clusters of sizes 48, 50, 52
 ## 
 ## Cluster means:
@@ -495,9 +505,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3     4.269231    1.342308
 ## 
 ## Clustering vector:
-##   [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3
-##  [59] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1
-## [117] 1 1 1 3 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1
+##   [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+##  [38] 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+##  [75] 3 3 3 1 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 3 1 1 1 1
+## [112] 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1
+## [149] 1 1
 ## 
 ## Within cluster sum of squares by cluster:
 ## [1] 16.29167  2.02200 13.05769
@@ -505,86 +517,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Available components:
 ## 
-## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot; &quot;betweenss&quot;    &quot;size&quot;        
-## [8] &quot;iter&quot;         &quot;ifault&quot;</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co"># Compair result of clustering with real data (3 species of iris are in analysis)</span></a>
-<a class="sourceLine" id="cb90-2" title="2"><span class="kw">table</span>(irisCluster<span class="op">$</span>cluster, iris<span class="op">$</span>Species)</a></code></pre></div>
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="co"># Compair result of clustering with real data (3 species of iris are in analysis)</span></a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="kw">table</span>(irisCluster<span class="op">$</span>cluster, iris<span class="op">$</span>Species)</a></code></pre></div>
 <pre><code>##    
 ##     setosa versicolor virginica
 ##   1      0          2        46
 ##   2     50          0         0
 ##   3      0         48         4</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="co"># Plot data</span></a>
-<a class="sourceLine" id="cb92-2" title="2">clusters &lt;-<span class="st"> </span><span class="kw">split.data.frame</span>(iris, irisCluster<span class="op">$</span>cluster)</a>
-<a class="sourceLine" id="cb92-3" title="3">xlim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(iris<span class="op">$</span>Petal.Width), <span class="kw">max</span>(iris<span class="op">$</span>Petal.Width))</a>
-<a class="sourceLine" id="cb92-4" title="4">ylim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(iris<span class="op">$</span>Petal.Length), <span class="kw">max</span>(iris<span class="op">$</span>Petal.Length))</a>
-<a class="sourceLine" id="cb92-5" title="5">col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;blue&#39;</span>)</a>
-<a class="sourceLine" id="cb92-6" title="6"><span class="kw">plot</span>(<span class="dv">0</span>, <span class="dt">xlab=</span><span class="st">&#39;Petal width&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Petal length&#39;</span>, <span class="dt">xlim=</span>xlim, <span class="dt">ylim=</span>ylim)</a>
-<a class="sourceLine" id="cb92-7" title="7"><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ncl ) {</a>
-<a class="sourceLine" id="cb92-8" title="8"><span class="kw">points</span>(clusters[[i]]<span class="op">$</span>Petal.Length <span class="op">~</span><span class="st"> </span>clusters[[i]]<span class="op">$</span>Petal.Width, <span class="dt">col=</span>col[i], <span class="dt">xlim=</span>xlim, <span class="dt">ylim=</span>ylim)</a>
-<a class="sourceLine" id="cb92-9" title="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="co"># Plot data</span></a>
+<a class="sourceLine" id="cb112-2" title="2">clusters &lt;-<span class="st"> </span><span class="kw">split.data.frame</span>(iris, irisCluster<span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb112-3" title="3">xlim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(iris<span class="op">$</span>Petal.Width), <span class="kw">max</span>(iris<span class="op">$</span>Petal.Width))</a>
+<a class="sourceLine" id="cb112-4" title="4">ylim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(iris<span class="op">$</span>Petal.Length), <span class="kw">max</span>(iris<span class="op">$</span>Petal.Length))</a>
+<a class="sourceLine" id="cb112-5" title="5">col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;blue&#39;</span>)</a>
+<a class="sourceLine" id="cb112-6" title="6"><span class="kw">plot</span>(<span class="dv">0</span>, <span class="dt">xlab=</span><span class="st">&#39;Petal width&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Petal length&#39;</span>, <span class="dt">xlim=</span>xlim, <span class="dt">ylim=</span>ylim)</a>
+<a class="sourceLine" id="cb112-7" title="7"><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ncl ) {</a>
+<a class="sourceLine" id="cb112-8" title="8"><span class="kw">points</span>(clusters[[i]]<span class="op">$</span>Petal.Length <span class="op">~</span><span class="st"> </span>clusters[[i]]<span class="op">$</span>Petal.Width, <span class="dt">col=</span>col[i], <span class="dt">xlim=</span>xlim, <span class="dt">ylim=</span>ylim)</a>
+<a class="sourceLine" id="cb112-9" title="9">}</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/setup-3.png" width="672" /></p>
 </div>
 <div id="next-part-1" class="section level2">
-<h2><span class="header-section-number">14.3</span> NEXT PART</h2>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="co"># K-Nearest Neighbors or KNN is a clustering algorithm</span></a>
-<a class="sourceLine" id="cb93-2" title="2"><span class="co"># k is known number of clusters (usually sqrt(N), between 3-10, but may be different)</span></a>
-<a class="sourceLine" id="cb93-3" title="3"><span class="co"># samples must be normalized x = (x - min(x))/(max(x)-min(x))</span></a>
-<a class="sourceLine" id="cb93-4" title="4"></a>
-<a class="sourceLine" id="cb93-5" title="5"><span class="kw">head</span>(iris)</a>
-<a class="sourceLine" id="cb93-6" title="6"><span class="kw">summary</span>(iris)   <span class="co"># detailed view of the data set</span></a>
-<a class="sourceLine" id="cb93-7" title="7"><span class="kw">str</span>(iris)   <span class="co"># view data types, sample values, categorical values, etc</span></a>
-<a class="sourceLine" id="cb93-8" title="8"><span class="kw">plot</span>(iris)</a>
-<a class="sourceLine" id="cb93-9" title="9"></a>
-<a class="sourceLine" id="cb93-10" title="10"><span class="co">#normalization function</span></a>
-<a class="sourceLine" id="cb93-11" title="11"></a>
-<a class="sourceLine" id="cb93-12" title="12">min_max_normalizer &lt;-<span class="st"> </span><span class="cf">function</span>(x)</a>
-<a class="sourceLine" id="cb93-13" title="13">{</a>
-<a class="sourceLine" id="cb93-14" title="14">    num &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x) </a>
-<a class="sourceLine" id="cb93-15" title="15">    denom &lt;-<span class="st"> </span><span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</a>
-<a class="sourceLine" id="cb93-16" title="16">    <span class="kw">return</span> (num<span class="op">/</span>denom)</a>
-<a class="sourceLine" id="cb93-17" title="17">}</a>
-<a class="sourceLine" id="cb93-18" title="18"></a>
-<a class="sourceLine" id="cb93-19" title="19"><span class="co">#normalizing iris data set</span></a>
-<a class="sourceLine" id="cb93-20" title="20">normalized_iris &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">lapply</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], min_max_normalizer))</a>
-<a class="sourceLine" id="cb93-21" title="21"></a>
-<a class="sourceLine" id="cb93-22" title="22"><span class="co">#viewing normalized data</span></a>
-<a class="sourceLine" id="cb93-23" title="23"><span class="kw">summary</span>(normalized_iris)</a>
-<a class="sourceLine" id="cb93-24" title="24"></a>
-<a class="sourceLine" id="cb93-25" title="25"><span class="co">#checking the data constituency</span></a>
-<a class="sourceLine" id="cb93-26" title="26"><span class="kw">table</span>(iris<span class="op">$</span>Species)</a>
-<a class="sourceLine" id="cb93-27" title="27"></a>
-<a class="sourceLine" id="cb93-28" title="28"><span class="co">#set seed for randomization</span></a>
-<a class="sourceLine" id="cb93-29" title="29"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb93-30" title="30"></a>
-<a class="sourceLine" id="cb93-31" title="31"><span class="co"># setting the training-test split to 67% and 33% respectively</span></a>
-<a class="sourceLine" id="cb93-32" title="32">random_samples &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>, <span class="kw">nrow</span>(iris), <span class="dt">replace=</span><span class="ot">TRUE</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.67</span>, <span class="fl">0.33</span>))</a>
-<a class="sourceLine" id="cb93-33" title="33"></a>
-<a class="sourceLine" id="cb93-34" title="34"><span class="co"># training data set</span></a>
-<a class="sourceLine" id="cb93-35" title="35">iris.training &lt;-<span class="st"> </span>iris[</a>
-<a class="sourceLine" id="cb93-36" title="36">    random_samples <span class="op">==</span><span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] </a>
-<a class="sourceLine" id="cb93-37" title="37"></a>
-<a class="sourceLine" id="cb93-38" title="38"><span class="co">#training labels</span></a>
-<a class="sourceLine" id="cb93-39" title="39">iris.trainLabels &lt;-<span class="st"> </span>iris[</a>
-<a class="sourceLine" id="cb93-40" title="40">    random_samples <span class="op">==</span><span class="dv">1</span>, <span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb93-41" title="41"></a>
-<a class="sourceLine" id="cb93-42" title="42"></a>
-<a class="sourceLine" id="cb93-43" title="43"><span class="co"># test data set</span></a>
-<a class="sourceLine" id="cb93-44" title="44">iris.test &lt;-<span class="st"> </span>iris[</a>
-<a class="sourceLine" id="cb93-45" title="45">    random_samples <span class="op">==</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb93-46" title="46"></a>
-<a class="sourceLine" id="cb93-47" title="47"><span class="co">#testing labels</span></a>
-<a class="sourceLine" id="cb93-48" title="48">iris.testLabels &lt;-<span class="st"> </span>iris[</a>
-<a class="sourceLine" id="cb93-49" title="49">    random_samples <span class="op">==</span><span class="dv">2</span>, <span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb93-50" title="50"></a>
-<a class="sourceLine" id="cb93-51" title="51"><span class="co">#setting library</span></a>
-<a class="sourceLine" id="cb93-52" title="52"><span class="kw">library</span>(class)</a>
-<a class="sourceLine" id="cb93-53" title="53"></a>
-<a class="sourceLine" id="cb93-54" title="54"><span class="co">#executing knn for k=3</span></a>
-<a class="sourceLine" id="cb93-55" title="55">iris_model &lt;-<span class="st"> </span><span class="kw">knn</span>(<span class="dt">train =</span> iris.training, <span class="dt">test =</span> iris.test, <span class="dt">cl =</span> iris.trainLabels, <span class="dt">k=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb93-56" title="56"></a>
-<a class="sourceLine" id="cb93-57" title="57"><span class="co">#summary of the model learnt</span></a>
-<a class="sourceLine" id="cb93-58" title="58">iris_model</a></code></pre></div>
+<h2><span class="header-section-number">17.3</span> NEXT PART</h2>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="co"># K-Nearest Neighbors or KNN is a clustering algorithm</span></a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="co"># k is known number of clusters (usually sqrt(N), between 3-10, but may be different)</span></a>
+<a class="sourceLine" id="cb113-3" title="3"><span class="co"># samples must be normalized x = (x - min(x))/(max(x)-min(x))</span></a>
+<a class="sourceLine" id="cb113-4" title="4"></a>
+<a class="sourceLine" id="cb113-5" title="5"><span class="kw">head</span>(iris)</a>
+<a class="sourceLine" id="cb113-6" title="6"><span class="kw">summary</span>(iris)   <span class="co"># detailed view of the data set</span></a>
+<a class="sourceLine" id="cb113-7" title="7"><span class="kw">str</span>(iris)   <span class="co"># view data types, sample values, categorical values, etc</span></a>
+<a class="sourceLine" id="cb113-8" title="8"><span class="kw">plot</span>(iris)</a>
+<a class="sourceLine" id="cb113-9" title="9"></a>
+<a class="sourceLine" id="cb113-10" title="10"><span class="co">#normalization function</span></a>
+<a class="sourceLine" id="cb113-11" title="11"></a>
+<a class="sourceLine" id="cb113-12" title="12">min_max_normalizer &lt;-<span class="st"> </span><span class="cf">function</span>(x)</a>
+<a class="sourceLine" id="cb113-13" title="13">{</a>
+<a class="sourceLine" id="cb113-14" title="14">    num &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x) </a>
+<a class="sourceLine" id="cb113-15" title="15">    denom &lt;-<span class="st"> </span><span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</a>
+<a class="sourceLine" id="cb113-16" title="16">    <span class="kw">return</span> (num<span class="op">/</span>denom)</a>
+<a class="sourceLine" id="cb113-17" title="17">}</a>
+<a class="sourceLine" id="cb113-18" title="18"></a>
+<a class="sourceLine" id="cb113-19" title="19"><span class="co">#normalizing iris data set</span></a>
+<a class="sourceLine" id="cb113-20" title="20">normalized_iris &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">lapply</span>(iris[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], min_max_normalizer))</a>
+<a class="sourceLine" id="cb113-21" title="21"></a>
+<a class="sourceLine" id="cb113-22" title="22"><span class="co">#viewing normalized data</span></a>
+<a class="sourceLine" id="cb113-23" title="23"><span class="kw">summary</span>(normalized_iris)</a>
+<a class="sourceLine" id="cb113-24" title="24"></a>
+<a class="sourceLine" id="cb113-25" title="25"><span class="co">#checking the data constituency</span></a>
+<a class="sourceLine" id="cb113-26" title="26"><span class="kw">table</span>(iris<span class="op">$</span>Species)</a>
+<a class="sourceLine" id="cb113-27" title="27"></a>
+<a class="sourceLine" id="cb113-28" title="28"><span class="co">#set seed for randomization</span></a>
+<a class="sourceLine" id="cb113-29" title="29"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb113-30" title="30"></a>
+<a class="sourceLine" id="cb113-31" title="31"><span class="co"># setting the training-test split to 67% and 33% respectively</span></a>
+<a class="sourceLine" id="cb113-32" title="32">random_samples &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>, <span class="kw">nrow</span>(iris), <span class="dt">replace=</span><span class="ot">TRUE</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.67</span>, <span class="fl">0.33</span>))</a>
+<a class="sourceLine" id="cb113-33" title="33"></a>
+<a class="sourceLine" id="cb113-34" title="34"><span class="co"># training data set</span></a>
+<a class="sourceLine" id="cb113-35" title="35">iris.training &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb113-36" title="36">    random_samples <span class="op">==</span><span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] </a>
+<a class="sourceLine" id="cb113-37" title="37"></a>
+<a class="sourceLine" id="cb113-38" title="38"><span class="co">#training labels</span></a>
+<a class="sourceLine" id="cb113-39" title="39">iris.trainLabels &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb113-40" title="40">    random_samples <span class="op">==</span><span class="dv">1</span>, <span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb113-41" title="41"></a>
+<a class="sourceLine" id="cb113-42" title="42"></a>
+<a class="sourceLine" id="cb113-43" title="43"><span class="co"># test data set</span></a>
+<a class="sourceLine" id="cb113-44" title="44">iris.test &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb113-45" title="45">    random_samples <span class="op">==</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb113-46" title="46"></a>
+<a class="sourceLine" id="cb113-47" title="47"><span class="co">#testing labels</span></a>
+<a class="sourceLine" id="cb113-48" title="48">iris.testLabels &lt;-<span class="st"> </span>iris[</a>
+<a class="sourceLine" id="cb113-49" title="49">    random_samples <span class="op">==</span><span class="dv">2</span>, <span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb113-50" title="50"></a>
+<a class="sourceLine" id="cb113-51" title="51"><span class="co">#setting library</span></a>
+<a class="sourceLine" id="cb113-52" title="52"><span class="kw">library</span>(class)</a>
+<a class="sourceLine" id="cb113-53" title="53"></a>
+<a class="sourceLine" id="cb113-54" title="54"><span class="co">#executing knn for k=3</span></a>
+<a class="sourceLine" id="cb113-55" title="55">iris_model &lt;-<span class="st"> </span><span class="kw">knn</span>(<span class="dt">train =</span> iris.training, <span class="dt">test =</span> iris.test, <span class="dt">cl =</span> iris.trainLabels, <span class="dt">k=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb113-56" title="56"></a>
+<a class="sourceLine" id="cb113-57" title="57"><span class="co">#summary of the model learnt</span></a>
+<a class="sourceLine" id="cb113-58" title="58">iris_model</a></code></pre></div>
 
 </div>
 </div>
@@ -593,7 +605,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="t-test-anova-difference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chi-squared-test.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="support-vector-machine.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

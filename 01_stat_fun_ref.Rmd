@@ -13,6 +13,8 @@ str(df)     # data structure
 summary(df) # data summary
 names(df)   # names of columns
 colnames(df) # also column names
+
+table(df)	# frequency of categorical data
 ```
 
 ## Plots
@@ -58,6 +60,45 @@ IQR(v)            # interquantile range: IQR = Q3 – Q1
 
 qqnorm(v)         # normal probability plot
 qqline(v)         # adds a line to a normal probability plot passing through 1Q and 3Q
+```
+
+## Distributions
+
+**d** - probability density  
+**p** - cumulative distribution  
+**q** - quantile function (inverse cumulative distribution)  
+**r** - random variables from distribution  
+```{r, eval=FALSE}
+# Normal distribution
+dnorm(x, mean, sd)     # Probability Density Function (PDF)
+pnorm(q, mean, sd)     # Cumulative Distribution Function (CDF)
+qnorm(p, mean, sd)     # quantile function - inverse of pnorm
+rnorm(n, mean, sd)     # random numbers from normal distribution
+
+# Binomial
+dbinom(x)     # Probability Density Function (PDF)
+pbinom(q)     # Cumulative Distribution Function (CDF)
+qbinom(p)     # quantile function - inverse of pnorm
+rbinom(n)     # random numbers from normal distribution
+
+# Poisson
+dpois()
+ppois()
+qpois()
+rpois()
+
+# Exponential
+dexp()
+pexp()
+qexp()
+rexp()
+
+# Chi-squared distribution
+
+dchisq(v, df)     # density of the interval
+pchisq()          # distribution of the interval (AUC)
+qchisq()          # quantiles
+rchisq()          # random deviates
 ```
 
 ## t-Test

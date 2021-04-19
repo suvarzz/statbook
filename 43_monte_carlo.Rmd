@@ -1,0 +1,19 @@
+# Markov Chain Monte Carlo (MCMC)
+
+We have a seq of conditional probabilities:  
+$P(S_{t+1} | R_t) = 0.5$  
+$P(R_{t+1 | R_t) = 0.5$  
+$P(R_{t+1 | S_t) = 0.1$  
+$P(S_{t+1 | S_t) = 0.9$  
+
+
+What is the probability of sunny (S) or rainy (R) day?  
+Markov Chain 1:
+S-S-R-R-S-S-S-S-R-R-R-S-S-S
+
+Markov Chain 2:
+R-S-S-S-S-S-R-S-S-S-S-S-R-R
+
+After simulation we calculate:
+P(S) = 0.833
+P(R) = 0.167

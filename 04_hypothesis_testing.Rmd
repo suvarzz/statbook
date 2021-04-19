@@ -28,7 +28,7 @@ If p value is less than significance level alpha (0.05), the hull hypothesies is
 
 Type II errors are usually more dangerous.  
 
-
+Significance level $/alpha$ is the probability of mistakenly rejecting the null hypothesis, if the null hypothesis is true. This is also called false positive and type I error.
 
 ## Hypothesis test (Practice)
 

@@ -1,0 +1,37 @@
+# Chi-squared test
+
+
+## Multinomial Goodness of Fit
+A population is called multinomial if its data is categorical and belongs to a collection of discrete non-overlapping classes.
+
+The null hypothesis for goodness of fit test for multinomial distribution is that the observed frequency fi is equal to an expected count $$e_i$$ in each category. 
+It is to be rejected if the p-value of the following **Chi-squared test** statistics is less than a given significance level α.
+
+Example
+Survey response about the student’s smoking habit: "Heavy", "Regul" (regularly), "Occas" (occasionally) and "Never". 
+The Smoke data is multinomial.
+
+```{r}
+library(MASS)
+levels(survey$Smoke) 
+smoke_freq = table(survey$Smoke) 
+smoke_freq
+
+# estimated probabilities
+smoke_prob = c(heavy = .045, 
+               never = .795, 
+               occas = .085, 
+               regul = .075)
+```
+
+Determine whether the sample data in *smoke_freq* supports estimated probabilities in *smoke_prob* at .05 significance level.
+
+```{r}
+chisq.test(smoke_freq, p=smoke_prob)
+```
+
+As the p-value 0.991 is greater than the .05 significance level, we do not reject the null hypothesis that the sample data in survey supports the smoking statistics.  
+
+**Sources**
+
+[Multinomial Goodness of Fit](https://www.r-tutor.com/elementary-statistics/goodness-fit/multinomial-goodness-fit)

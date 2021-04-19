@@ -1,0 +1,11 @@
+# Non-parametric Methods
+A statistical method is called non-parametric if it makes no assumption on the population distribution or sample size.
+
+This is in contrast with most parametric methods in elementary statistics that assume the data is quantitative, the population has a normal distribution and the sample size is sufficiently large.
+
+In general, conclusions drawn from non-parametric methods are not as powerful as the parametric ones. However, as non-parametric methods make fewer assumptions, they are more flexible, more robust, and applicable to non-quantitative data.
+
+Sign Test
+Wilcoxon Signed-Rank Test
+Mann-Whitney-Wilcoxon Test
+Kruskal-Wallis Test
