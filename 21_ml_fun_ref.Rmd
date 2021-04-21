@@ -63,7 +63,28 @@ nB_model <- naiveBayes(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)))
 
 # Decision Trees (CART)
 library(rpart)
+# Tree-based models
+
+rpart(formula, data, method,control)
+
+formula	outcome~predictor1+predictor2+predictor3+etc.
+data    data frame
+method 'class' for a classification tree
+       'anova' for a regression tree
+control optional parameters for controlling tree growth.
+        minsplit = 50 - minimal number of observation in a node
+        cp=0.001 - cost coplexity factor
+
 cart_model <- rpart(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)), method="class")
+        
+printcp(fit)     # display cp table
+plotcp(fit)		 # plot cross-validation results
+rsq.rpart(fit)   # plot approximate R-squared and relative error for different splits (2 plots). labels are only appropriate for the "anova" method.
+print(fit)       # print results
+summary(fit)     # detailed results including surrogate splits
+plot(fit)        # plot decision tree
+text(fit)        # label the decision tree plot
+post(fit, file=) # create postscript plot of decision tree
 
 plot.rpart(cart_model)
 text.rpart(cart_model)

@@ -1,19 +1,21 @@
 # Markov Chain Monte Carlo (MCMC)
 
 We have a seq of conditional probabilities:  
+We know conditional probabilities for the weather tomorrow (t+1) depending of the weather today (t). R for raily day and S for sunny day.  
 $P(S_{t+1} | R_t) = 0.5$  
-$P(R_{t+1 | R_t) = 0.5$  
-$P(R_{t+1 | S_t) = 0.1$  
-$P(S_{t+1 | S_t) = 0.9$  
+$P(R_{t+1} | R_t) = 0.5$  
+$P(R_{t+1} | S_t) = 0.1$  
+$P(S_{t+1} | S_t) = 0.9$  
 
 
 What is the probability of sunny (S) or rainy (R) day?  
-Markov Chain 1:
+Simulate data using conditional probabilities:  
+Markov Chain 1:  
 S-S-R-R-S-S-S-S-R-R-R-S-S-S
 
-Markov Chain 2:
-R-S-S-S-S-S-R-S-S-S-S-S-R-R
+Markov Chain 2:  
+R-S-S-S-S-S-R-S-S-S-S-S-R-R  
 
-After simulation we calculate:
+After simulation we calculate probabilities of sunny (S) and rainy (R) days:  
 P(S) = 0.833
 P(R) = 0.167

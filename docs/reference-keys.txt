@@ -97,3 +97,6 @@ naive-bayes
 markov-chain-monte-carlo-mcmc
 simple-markov-process
 sources-2
+tree-based-models
+classification-tree-example
+regression-tree-example

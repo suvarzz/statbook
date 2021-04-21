@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 Chi-squared test | R statistics</title>
+  <title>Chapter 31 Tree-based models | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 Chi-squared test | R statistics" />
+  <meta property="og:title" content="Chapter 31 Tree-based models | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 Chi-squared test | R statistics" />
+  <meta name="twitter:title" content="Chapter 31 Tree-based models | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="t-test-anova-difference.html"/>
-<link rel="next" href="non-parametric-methods.html"/>
+<link rel="prev" href="simple-markov-process.html"/>
+
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -296,39 +296,337 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chi-squared-test" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> Chi-squared test</h1>
-<div id="multinomial-goodness-of-fit" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Multinomial Goodness of Fit</h2>
-<p>A population is called multinomial if its data is categorical and belongs to a collection of discrete non-overlapping classes.</p>
-<p>The null hypothesis for goodness of fit test for multinomial distribution is that the observed frequency fi is equal to an expected count <span class="math display">\[e_i\]</span> in each category.
-It is to be rejected if the p-value of the following <strong>Chi-squared test</strong> statistics is less than a given significance level α.</p>
-<p>Example
-Survey response about the student’s smoking habit: “Heavy,” “Regul” (regularly), “Occas” (occasionally) and “Never.”
-The Smoke data is multinomial.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="chi-squared-test.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb95-2"><a href="chi-squared-test.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(survey<span class="sc">$</span>Smoke) </span></code></pre></div>
-<pre><code>## [1] &quot;Heavy&quot; &quot;Never&quot; &quot;Occas&quot; &quot;Regul&quot;</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="chi-squared-test.html#cb97-1" aria-hidden="true" tabindex="-1"></a>smoke_freq <span class="ot">=</span> <span class="fu">table</span>(survey<span class="sc">$</span>Smoke) </span>
-<span id="cb97-2"><a href="chi-squared-test.html#cb97-2" aria-hidden="true" tabindex="-1"></a>smoke_freq</span></code></pre></div>
+<div id="tree-based-models" class="section level1" number="31">
+<h1><span class="header-section-number">Chapter 31</span> Tree-based models</h1>
+<p>Classification and regression trees (CART) are a non-parametric decision tree learning technique that produces either classification or regression trees, depending on whether the dependent variable is categorical or numeric, respectively.</p>
+<p>CART is both a generic term to describe tree algorithms and also a specific name for Breiman’s original algorithm for constructing classification and regression trees.</p>
+<ul>
+<li><strong>Decision Tree</strong>: A tree-shaped graph or model of decisions used to determine a course of action or show a statistical probability.<br />
+</li>
+<li><strong>Classification Tree</strong>: A decision tree that performs classification (predicts a categorical response).<br />
+</li>
+<li><strong>Regression Tree</strong>: A decision tree that performs regression (predicts a numeric response).<br />
+</li>
+<li><strong>Split Point</strong>: A split point occurs at each node of the tree where a decision is made (e.g. x &gt; 7 vs. x ≤ 7).<br />
+</li>
+<li><strong>Terminal Node</strong>: A terminal node is a node which has no descendants (child nodes). Also called a “leaf node.”</li>
+</ul>
+<p><strong>Properties of Trees</strong><br />
+* Can handle huge datasets.<br />
+* Can handle mixed predictors implicitly – numeric and categorical.<br />
+* Easily ignore redundant variables.<br />
+* Handle missing data elegantly through surrogate splits.<br />
+* Small trees are easy to interpret.<br />
+* Large trees are hard to interpret.<br />
+* Prediction performance is often poor (high variance).</p>
+<p><strong>Tree Algorithms</strong><br />
+There are a handful of different tree algorithms in addition to Breiman’s original CART algorithm. Namely, ID3, C4.5 and C5.0, all created by Ross Quinlan. C5.0 is an improvement over C4.5, however, the C4.5 algorithm is still quite popular since the multi-threaded version of C5.0 is proprietary (although the single threaded is released as GPL).</p>
+<p><strong>CART vs C4.5</strong><br />
+Here are some of the differences between CART and C4.5:</p>
+<ul>
+<li>Tests in CART are always binary, but C4.5 allows two or more outcomes.<br />
+</li>
+<li>CART uses the Gini diversity index to rank tests, whereas C4.5 uses information-based criteria.<br />
+</li>
+<li>CART prunes trees using a cost-complexity model whose parameters are estimated by cross-validation; C4.5 uses a single-pass algorithm derived from binomial confidence limits.<br />
+</li>
+<li>With respect to missing data, CART looks for surrogate tests that approximate the outcomes when the tested attribute has an unknown value, but C4.5 apportions the case probabilistically among the outcomes.</li>
+</ul>
+<p>Decision trees are formed by a collection of rules based on variables in the modeling data set:</p>
+<ol style="list-style-type: decimal">
+<li>Rules based on variables’ values are selected to get the best split to differentiate observations based on the dependent variable.<br />
+</li>
+<li>Once a rule is selected and splits a node into two, the same process is applied to each “child” node (i.e. it is a recursive procedure).<br />
+</li>
+<li>Splitting stops when CART detects no further gain can be made, or some pre-set stopping rules are met. (Alternatively, the data are split as much as possible and then the tree is later pruned.)</li>
+</ol>
+<p>Each branch of the tree ends in a terminal node. Each observation falls into one and exactly one terminal node, and each terminal node is uniquely defined by a set of rules.</p>
+<div id="classification-tree-example" class="section level2" number="31.1">
+<h2><span class="header-section-number">31.1</span> Classification Tree example</h2>
+<p>Let’s use the data frame kyphosis to predict a type of deformation (kyphosis) after surgery, from age in months (Age), number of vertebrae involved (Number), and the highest vertebrae operated on (Start).</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="tree-based-models.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification Tree with rpart</span></span>
+<span id="cb188-2"><a href="tree-based-models.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb188-3"><a href="tree-based-models.html#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-4"><a href="tree-based-models.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grow tree</span></span>
+<span id="cb188-5"><a href="tree-based-models.html#cb188-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Kyphosis <span class="sc">~</span> Age <span class="sc">+</span> Number <span class="sc">+</span> Start,</span>
+<span id="cb188-6"><a href="tree-based-models.html#cb188-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">method=</span><span class="st">&quot;class&quot;</span>, <span class="at">data=</span>kyphosis)</span>
+<span id="cb188-7"><a href="tree-based-models.html#cb188-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-8"><a href="tree-based-models.html#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(fit) <span class="co"># display the results</span></span></code></pre></div>
 <pre><code>## 
-## Heavy Never Occas Regul 
-##    11   189    19    17</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="chi-squared-test.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimated probabilities</span></span>
-<span id="cb99-2"><a href="chi-squared-test.html#cb99-2" aria-hidden="true" tabindex="-1"></a>smoke_prob <span class="ot">=</span> <span class="fu">c</span>(<span class="at">heavy =</span> .<span class="dv">045</span>, </span>
-<span id="cb99-3"><a href="chi-squared-test.html#cb99-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">never =</span> .<span class="dv">795</span>, </span>
-<span id="cb99-4"><a href="chi-squared-test.html#cb99-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">occas =</span> .<span class="dv">085</span>, </span>
-<span id="cb99-5"><a href="chi-squared-test.html#cb99-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">regul =</span> .<span class="dv">075</span>)</span></code></pre></div>
-<p>Determine whether the sample data in <em>smoke_freq</em> supports estimated probabilities in <em>smoke_prob</em> at .05 significance level.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chi-squared-test.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(smoke_freq, <span class="at">p=</span>smoke_prob)</span></code></pre></div>
-<pre><code>## 
-##  Chi-squared test for given probabilities
+## Classification tree:
+## rpart(formula = Kyphosis ~ Age + Number + Start, data = kyphosis, 
+##     method = &quot;class&quot;)
 ## 
-## data:  smoke_freq
-## X-squared = 0.10744, df = 3, p-value = 0.9909</code></pre>
-<p>As the p-value 0.991 is greater than the .05 significance level, we do not reject the null hypothesis that the sample data in survey supports the smoking statistics.</p>
-<p><strong>Sources</strong></p>
-<p><a href="https://www.r-tutor.com/elementary-statistics/goodness-fit/multinomial-goodness-fit">Multinomial Goodness of Fit</a></p>
+## Variables actually used in tree construction:
+## [1] Age   Start
+## 
+## Root node error: 17/81 = 0.20988
+## 
+## n= 81 
+## 
+##         CP nsplit rel error xerror    xstd
+## 1 0.176471      0   1.00000 1.0000 0.21559
+## 2 0.019608      1   0.82353 1.1176 0.22433
+## 3 0.010000      4   0.76471 1.1176 0.22433</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="tree-based-models.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="tree-based-models.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
+<pre><code>## Call:
+## rpart(formula = Kyphosis ~ Age + Number + Start, data = kyphosis, 
+##     method = &quot;class&quot;)
+##   n= 81 
+## 
+##           CP nsplit rel error   xerror      xstd
+## 1 0.17647059      0 1.0000000 1.000000 0.2155872
+## 2 0.01960784      1 0.8235294 1.117647 0.2243268
+## 3 0.01000000      4 0.7647059 1.117647 0.2243268
+## 
+## Variable importance
+##  Start    Age Number 
+##     64     24     12 
+## 
+## Node number 1: 81 observations,    complexity param=0.1764706
+##   predicted class=absent   expected loss=0.2098765  P(node) =1
+##     class counts:    64    17
+##    probabilities: 0.790 0.210 
+##   left son=2 (62 obs) right son=3 (19 obs)
+##   Primary splits:
+##       Start  &lt; 8.5  to the right, improve=6.762330, (0 missing)
+##       Number &lt; 5.5  to the left,  improve=2.866795, (0 missing)
+##       Age    &lt; 39.5 to the left,  improve=2.250212, (0 missing)
+##   Surrogate splits:
+##       Number &lt; 6.5  to the left,  agree=0.802, adj=0.158, (0 split)
+## 
+## Node number 2: 62 observations,    complexity param=0.01960784
+##   predicted class=absent   expected loss=0.09677419  P(node) =0.7654321
+##     class counts:    56     6
+##    probabilities: 0.903 0.097 
+##   left son=4 (29 obs) right son=5 (33 obs)
+##   Primary splits:
+##       Start  &lt; 14.5 to the right, improve=1.0205280, (0 missing)
+##       Age    &lt; 55   to the left,  improve=0.6848635, (0 missing)
+##       Number &lt; 4.5  to the left,  improve=0.2975332, (0 missing)
+##   Surrogate splits:
+##       Number &lt; 3.5  to the left,  agree=0.645, adj=0.241, (0 split)
+##       Age    &lt; 16   to the left,  agree=0.597, adj=0.138, (0 split)
+## 
+## Node number 3: 19 observations
+##   predicted class=present  expected loss=0.4210526  P(node) =0.2345679
+##     class counts:     8    11
+##    probabilities: 0.421 0.579 
+## 
+## Node number 4: 29 observations
+##   predicted class=absent   expected loss=0  P(node) =0.3580247
+##     class counts:    29     0
+##    probabilities: 1.000 0.000 
+## 
+## Node number 5: 33 observations,    complexity param=0.01960784
+##   predicted class=absent   expected loss=0.1818182  P(node) =0.4074074
+##     class counts:    27     6
+##    probabilities: 0.818 0.182 
+##   left son=10 (12 obs) right son=11 (21 obs)
+##   Primary splits:
+##       Age    &lt; 55   to the left,  improve=1.2467530, (0 missing)
+##       Start  &lt; 12.5 to the right, improve=0.2887701, (0 missing)
+##       Number &lt; 3.5  to the right, improve=0.1753247, (0 missing)
+##   Surrogate splits:
+##       Start  &lt; 9.5  to the left,  agree=0.758, adj=0.333, (0 split)
+##       Number &lt; 5.5  to the right, agree=0.697, adj=0.167, (0 split)
+## 
+## Node number 10: 12 observations
+##   predicted class=absent   expected loss=0  P(node) =0.1481481
+##     class counts:    12     0
+##    probabilities: 1.000 0.000 
+## 
+## Node number 11: 21 observations,    complexity param=0.01960784
+##   predicted class=absent   expected loss=0.2857143  P(node) =0.2592593
+##     class counts:    15     6
+##    probabilities: 0.714 0.286 
+##   left son=22 (14 obs) right son=23 (7 obs)
+##   Primary splits:
+##       Age    &lt; 111  to the right, improve=1.71428600, (0 missing)
+##       Start  &lt; 12.5 to the right, improve=0.79365080, (0 missing)
+##       Number &lt; 3.5  to the right, improve=0.07142857, (0 missing)
+## 
+## Node number 22: 14 observations
+##   predicted class=absent   expected loss=0.1428571  P(node) =0.1728395
+##     class counts:    12     2
+##    probabilities: 0.857 0.143 
+## 
+## Node number 23: 7 observations
+##   predicted class=present  expected loss=0.4285714  P(node) =0.08641975
+##     class counts:     3     4
+##    probabilities: 0.429 0.571</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="tree-based-models.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tree</span></span>
+<span id="cb193-2"><a href="tree-based-models.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
+<span id="cb193-3"><a href="tree-based-models.html#cb193-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
+<span id="cb193-4"><a href="tree-based-models.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(fit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-76-2.png" width="672" /></p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="tree-based-models.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create attractive postscript plot of tree</span></span>
+<span id="cb194-2"><a href="tree-based-models.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(fit, <span class="at">title =</span> <span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
+<span id="cb194-3"><a href="tree-based-models.html#cb194-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-4"><a href="tree-based-models.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="co"># prune the tree</span></span>
+<span id="cb194-5"><a href="tree-based-models.html#cb194-5" aria-hidden="true" tabindex="-1"></a>pfit<span class="ot">&lt;-</span> <span class="fu">prune</span>(fit, <span class="at">cp=</span>fit<span class="sc">$</span>cptable[<span class="fu">which.min</span>(fit<span class="sc">$</span>cptable[,<span class="st">&quot;xerror&quot;</span>]),<span class="st">&quot;CP&quot;</span>])</span>
+<span id="cb194-6"><a href="tree-based-models.html#cb194-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-7"><a href="tree-based-models.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the pruned tree</span></span>
+<span id="cb194-8"><a href="tree-based-models.html#cb194-8" aria-hidden="true" tabindex="-1"></a><span class="co">#FIXME: pfit is not a tree just a root error</span></span>
+<span id="cb194-9"><a href="tree-based-models.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(pfit, uniform=TRUE,</span></span>
+<span id="cb194-10"><a href="tree-based-models.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   main=&quot;Pruned Classification Tree for Kyphosis&quot;)</span></span>
+<span id="cb194-11"><a href="tree-based-models.html#cb194-11" aria-hidden="true" tabindex="-1"></a><span class="co">#text(pfit, use.n=TRUE, all=TRUE, cex=.8)</span></span>
+<span id="cb194-12"><a href="tree-based-models.html#cb194-12" aria-hidden="true" tabindex="-1"></a><span class="co">#post(pfit, file = &quot;c:/ptree.ps&quot;,</span></span>
+<span id="cb194-13"><a href="tree-based-models.html#cb194-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   title = &quot;Pruned Classification Tree for Kyphosis&quot;)</span></span></code></pre></div>
+</div>
+<div id="regression-tree-example" class="section level2" number="31.2">
+<h2><span class="header-section-number">31.2</span> Regression Tree example</h2>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="tree-based-models.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression Tree Example</span></span>
+<span id="cb195-2"><a href="tree-based-models.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb195-3"><a href="tree-based-models.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-4"><a href="tree-based-models.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grow tree</span></span>
+<span id="cb195-5"><a href="tree-based-models.html#cb195-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Mileage<span class="sc">~</span>Price <span class="sc">+</span> Country <span class="sc">+</span> Reliability <span class="sc">+</span> Type,</span>
+<span id="cb195-6"><a href="tree-based-models.html#cb195-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">method=</span><span class="st">&quot;anova&quot;</span>, <span class="at">data=</span>cu.summary)</span>
+<span id="cb195-7"><a href="tree-based-models.html#cb195-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-8"><a href="tree-based-models.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(fit) <span class="co"># display the results</span></span></code></pre></div>
+<pre><code>## 
+## Regression tree:
+## rpart(formula = Mileage ~ Price + Country + Reliability + Type, 
+##     data = cu.summary, method = &quot;anova&quot;)
+## 
+## Variables actually used in tree construction:
+## [1] Price Type 
+## 
+## Root node error: 1354.6/60 = 22.576
+## 
+## n=60 (57 observations deleted due to missingness)
+## 
+##         CP nsplit rel error  xerror     xstd
+## 1 0.622885      0   1.00000 1.03257 0.175924
+## 2 0.132061      1   0.37711 0.53199 0.105050
+## 3 0.025441      2   0.24505 0.36948 0.082559
+## 4 0.011604      3   0.21961 0.36433 0.077849
+## 5 0.010000      4   0.20801 0.37518 0.080670</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="tree-based-models.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="tree-based-models.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
+<pre><code>## Call:
+## rpart(formula = Mileage ~ Price + Country + Reliability + Type, 
+##     data = cu.summary, method = &quot;anova&quot;)
+##   n=60 (57 observations deleted due to missingness)
+## 
+##           CP nsplit rel error    xerror       xstd
+## 1 0.62288527      0 1.0000000 1.0325697 0.17592351
+## 2 0.13206061      1 0.3771147 0.5319912 0.10505027
+## 3 0.02544094      2 0.2450541 0.3694811 0.08255880
+## 4 0.01160389      3 0.2196132 0.3643252 0.07784854
+## 5 0.01000000      4 0.2080093 0.3751818 0.08066999
+## 
+## Variable importance
+##   Price    Type Country 
+##      48      42      10 
+## 
+## Node number 1: 60 observations,    complexity param=0.6228853
+##   mean=24.58333, MSE=22.57639 
+##   left son=2 (48 obs) right son=3 (12 obs)
+##   Primary splits:
+##       Price       &lt; 9446.5  to the right, improve=0.6228853, (0 missing)
+##       Type        splits as  LLLRLL,      improve=0.5044405, (0 missing)
+##       Reliability splits as  LLLRR,       improve=0.1263005, (11 missing)
+##       Country     splits as  --LRLRRRLL,  improve=0.1243525, (0 missing)
+##   Surrogate splits:
+##       Type    splits as  LLLRLL,     agree=0.950, adj=0.750, (0 split)
+##       Country splits as  --LLLLRRLL, agree=0.833, adj=0.167, (0 split)
+## 
+## Node number 2: 48 observations,    complexity param=0.1320606
+##   mean=22.70833, MSE=8.498264 
+##   left son=4 (23 obs) right son=5 (25 obs)
+##   Primary splits:
+##       Type        splits as  RLLRRL,      improve=0.43853830, (0 missing)
+##       Price       &lt; 12154.5 to the right, improve=0.25748500, (0 missing)
+##       Country     splits as  --RRLRL-LL,  improve=0.13345700, (0 missing)
+##       Reliability splits as  LLLRR,       improve=0.01637086, (10 missing)
+##   Surrogate splits:
+##       Price   &lt; 12215.5 to the right, agree=0.812, adj=0.609, (0 split)
+##       Country splits as  --RRLRL-RL,  agree=0.646, adj=0.261, (0 split)
+## 
+## Node number 3: 12 observations
+##   mean=32.08333, MSE=8.576389 
+## 
+## Node number 4: 23 observations,    complexity param=0.02544094
+##   mean=20.69565, MSE=2.907372 
+##   left son=8 (10 obs) right son=9 (13 obs)
+##   Primary splits:
+##       Type    splits as  -LR--L,      improve=0.515359600, (0 missing)
+##       Price   &lt; 14962   to the left,  improve=0.131259400, (0 missing)
+##       Country splits as  ----L-R--R,  improve=0.007022107, (0 missing)
+##   Surrogate splits:
+##       Price &lt; 13572   to the right, agree=0.609, adj=0.1, (0 split)
+## 
+## Node number 5: 25 observations,    complexity param=0.01160389
+##   mean=24.56, MSE=6.4864 
+##   left son=10 (14 obs) right son=11 (11 obs)
+##   Primary splits:
+##       Price       &lt; 11484.5 to the right, improve=0.09693168, (0 missing)
+##       Reliability splits as  LLRRR,       improve=0.07767167, (4 missing)
+##       Type        splits as  L--RR-,      improve=0.04209834, (0 missing)
+##       Country     splits as  --LRRR--LL,  improve=0.02201687, (0 missing)
+##   Surrogate splits:
+##       Country splits as  --LLLL--LR, agree=0.80, adj=0.545, (0 split)
+##       Type    splits as  L--RL-,     agree=0.64, adj=0.182, (0 split)
+## 
+## Node number 8: 10 observations
+##   mean=19.3, MSE=2.21 
+## 
+## Node number 9: 13 observations
+##   mean=21.76923, MSE=0.7928994 
+## 
+## Node number 10: 14 observations
+##   mean=23.85714, MSE=7.693878 
+## 
+## Node number 11: 11 observations
+##   mean=25.45455, MSE=3.520661</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="tree-based-models.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create additional plots</span></span>
+<span id="cb200-2"><a href="tree-based-models.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># two plots on one page</span></span>
+<span id="cb200-3"><a href="tree-based-models.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rsq.rpart</span>(fit) <span class="co"># visualize cross-validation results  </span></span></code></pre></div>
+<pre><code>## 
+## Regression tree:
+## rpart(formula = Mileage ~ Price + Country + Reliability + Type, 
+##     data = cu.summary, method = &quot;anova&quot;)
+## 
+## Variables actually used in tree construction:
+## [1] Price Type 
+## 
+## Root node error: 1354.6/60 = 22.576
+## 
+## n=60 (57 observations deleted due to missingness)
+## 
+##         CP nsplit rel error  xerror     xstd
+## 1 0.622885      0   1.00000 1.03257 0.175924
+## 2 0.132061      1   0.37711 0.53199 0.105050
+## 3 0.025441      2   0.24505 0.36948 0.082559
+## 4 0.011604      3   0.21961 0.36433 0.077849
+## 5 0.010000      4   0.20801 0.37518 0.080670</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-77-2.png" width="672" /></p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="tree-based-models.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tree</span></span>
+<span id="cb202-2"><a href="tree-based-models.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
+<span id="cb202-3"><a href="tree-based-models.html#cb202-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Regression Tree for Mileage &quot;</span>)</span>
+<span id="cb202-4"><a href="tree-based-models.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(fit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb202-5"><a href="tree-based-models.html#cb202-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-6"><a href="tree-based-models.html#cb202-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create attractive postcript plot of tree</span></span>
+<span id="cb202-7"><a href="tree-based-models.html#cb202-7" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(fit, <span class="at">file =</span> <span class="st">&quot;tree2.ps&quot;</span>,</span>
+<span id="cb202-8"><a href="tree-based-models.html#cb202-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Regression Tree for Mileage &quot;</span>)</span>
+<span id="cb202-9"><a href="tree-based-models.html#cb202-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-10"><a href="tree-based-models.html#cb202-10" aria-hidden="true" tabindex="-1"></a><span class="co"># prune the tree</span></span>
+<span id="cb202-11"><a href="tree-based-models.html#cb202-11" aria-hidden="true" tabindex="-1"></a>pfit<span class="ot">&lt;-</span> <span class="fu">prune</span>(fit, <span class="at">cp=</span><span class="fl">0.01160389</span>) <span class="co"># from cptable   </span></span>
+<span id="cb202-12"><a href="tree-based-models.html#cb202-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-13"><a href="tree-based-models.html#cb202-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the pruned tree</span></span>
+<span id="cb202-14"><a href="tree-based-models.html#cb202-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pfit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
+<span id="cb202-15"><a href="tree-based-models.html#cb202-15" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span>
+<span id="cb202-16"><a href="tree-based-models.html#cb202-16" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(pfit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-77-3.png" width="672" /></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="tree-based-models.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(pfit, <span class="at">file =</span> <span class="st">&quot;ptree2.ps&quot;</span>,</span>
+<span id="cb203-2"><a href="tree-based-models.html#cb203-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span></code></pre></div>
+<p><strong>Sources</strong><br />
+<a href="https://www.statmethods.net/advstats/cart.html">Tree-Based Models at Quick-R by datacamp</a><br />
+<a href="https://koalaverse.github.io/machine-learning-in-R/decision-trees.html">UseR! Machine Learnign Turorial</a></p>
 
 </div>
 </div>
@@ -337,8 +635,8 @@ The Smoke data is multinomial.</p>
           </div>
         </div>
       </div>
-<a href="t-test-anova-difference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="non-parametric-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="simple-markov-process.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -369,7 +667,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/08_chi_squared_test.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/46_tree-based_models.Rmd",
 "text": "Edit"
 },
 "history": {

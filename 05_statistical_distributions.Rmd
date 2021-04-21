@@ -26,8 +26,60 @@ AUC(x,y3) # to broad distribution, some samples out of the area
 ```
 
 ## Bernoulli Distribution
+**Bernoulli distribution** is the discrete probability distribution of a random variable which takes the value 1 with probability p and the value 0 with probability q=1-p (wiki)[https://en.wikipedia.org/wiki/Bernoulli_distribution].  
+Less formally, it can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes–no question.  
+The Bernoulli distribution is a special case of the binomial distribution with  n=1.  
+Bernoulli process, a random process consisting of a sequence of independent Bernoulli trials.  
 
 ## Binomial Distribution
+It describes the outcome of n independent trials in an experiment. Each trial is assumed to have only two outcomes, either success or failure. If the probability of a successful trial is p, then the probability of having x successful outcomes in an experiment of n independent trials is as follows.
+$$f(x) = p^x(1-p)^{(n-x)}$$
+where x = 0,1,2,3,4,.... 
+The binomial distribution is the basis for the popular binomial test of statistical significance.  
+
+Rules:
+1. Must be a fixed number of trials.  
+2. Trials must be independent (the outcome of one rial does not affect the others).  
+3. Each trial has only two outcomes: success or failure.  
+4. The probability of success remains the same in all trials.  
+
+$n$ - number of trials  
+$p$ - probability of successful outcome for each trial  
+$q$ - probability of failure outcome for each trial  
+$x$ - number of successes  
+$P(x) - probability of the number of successes  
+
+$q = 1 - p$  
+$p = 1 - q$  
+
+**Example**  
+
+Suppose there are twelve multiple choice questions in an English class quiz. Each question has five possible answers, and only one of them is correct. Find the probability of having four or less correct answers if a student attempts to answer every question at random.
+
+Solution  
+Since only one out of five possible answers is correct, the probability of answering a question correctly by random is 1/5=0.2. We can find the probability of having exactly 4 correct answers by random attempts as follows.  
+
+```{r}
+dbinom(4, size=12, prob=0.2) 
+```
+To find the probability of having four or less correct answers by random attempts, we apply the function dbinom with x = 0,…,4.  
+```{r}
+dbinom(0, size=12, prob=0.2) + 
+dbinom(1, size=12, prob=0.2) + 
+dbinom(2, size=12, prob=0.2) + 
+dbinom(3, size=12, prob=0.2) + 
+dbinom(4, size=12, prob=0.2)
+```
+Alternatively, we can use the cumulative probability function for binomial distribution pbinom.  
+```{r}
+pbinom(4, size=12, prob=0.2)
+```
+
+**Sources**  
+
+(Binomial Distribution)[http://www.r-tutor.com/elementary-statistics/probability-distributions/binomial-distribution]
+
+(Statistics Lecture 5.3: A study of Binomial Probability Distributions)[https://youtu.be/iGKSxMGX0Do]
 
 ## Geometric Distribution
 
@@ -50,11 +102,11 @@ Criteria of the Poisson process:
 3. Two events cannot occur at the same time.
 
 Models:  
-* Number of calls per minute in a call center.  
-* Number of decay events that occur from a radioactive source in a given observation period.  
-* The number of meteorites greater than 1 meter diameter that strike Earth in a year.  
-* The number of patients arriving in an emergency room between 10 and 11 pm.  
-* The number of laser photons hitting a detector in a particular time interval.
+- Number of calls per minute in a call center.  
+- Number of decay events that occur from a radioactive source in a given observation period.  
+- The number of meteorites greater than 1 meter diameter that strike Earth in a year.  
+- The number of patients arriving in an emergency room between 10 and 11 pm.  
+- The number of laser photons hitting a detector in a particular time interval.
 
 Example:  
 12 cars cross the bridge in 1 min in average. What is the probability that 17 or more cars will cross the bridge?  
