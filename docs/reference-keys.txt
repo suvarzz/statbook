@@ -65,15 +65,14 @@ linear-regression-1
 linear-regression---theory
 generate-random-data-set-for-the-linear-model
 practical-example
-linear-model-in-r
 standard-error-of-train-data
 standard-error-of-learn-data
-practical-examples-for-linear-model-regression
-another-example
+linear-model-in-r
 linear-regression-modeling-compair-with-knn
 more-complex-example
 next-part
 next-part-1
+practical-examples-for-linear-model-regression
 nonlinear-regression
 multiple-linear-regression
 spline-model

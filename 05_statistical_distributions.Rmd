@@ -26,7 +26,7 @@ AUC(x,y3) # to broad distribution, some samples out of the area
 ```
 
 ## Bernoulli Distribution
-**Bernoulli distribution** is the discrete probability distribution of a random variable which takes the value 1 with probability p and the value 0 with probability q=1-p (wiki)[https://en.wikipedia.org/wiki/Bernoulli_distribution].  
+**Bernoulli distribution** is the discrete probability distribution of a random variable which takes the value 1 with probability p and the value 0 with probability q=1-p [wiki](https://en.wikipedia.org/wiki/Bernoulli_distribution).  
 Less formally, it can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes–no question.  
 The Bernoulli distribution is a special case of the binomial distribution with  n=1.  
 Bernoulli process, a random process consisting of a sequence of independent Bernoulli trials.  
@@ -47,7 +47,7 @@ $n$ - number of trials
 $p$ - probability of successful outcome for each trial  
 $q$ - probability of failure outcome for each trial  
 $x$ - number of successes  
-$P(x) - probability of the number of successes  
+$P(x)$ - probability of the number of successes  
 
 $q = 1 - p$  
 $p = 1 - q$  
@@ -75,11 +75,14 @@ Alternatively, we can use the cumulative probability function for binomial distr
 pbinom(4, size=12, prob=0.2)
 ```
 
+**Tasks**  
+60% of people who purchase sports cars are men. If 10 sports car owners are randomly selected, find the probability that exactly 7 are men (A: 0.215).  
+
 **Sources**  
 
-(Binomial Distribution)[http://www.r-tutor.com/elementary-statistics/probability-distributions/binomial-distribution]
+[Binomial Distribution](http://www.r-tutor.com/elementary-statistics/probability-distributions/binomial-distribution)
 
-(Statistics Lecture 5.3: A study of Binomial Probability Distributions)[https://youtu.be/iGKSxMGX0Do]
+[Statistics Lecture 5.3: A study of Binomial Probability Distributions](https://youtu.be/iGKSxMGX0Do)
 
 ## Geometric Distribution
 
