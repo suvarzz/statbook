@@ -30,7 +30,7 @@ plot(x,y)
 Practical example from [Wikipedia](https://en.wikipedia.org/wiki/Linear_least_squares_(mathematics))  
 Set of data: (1,6), (2,5), (3, 7), (4,10)
 
-```{r echo=FALSE}
+```{r}
 x <- c(1,2,3,4)
 y <- c(6,5,7,10)
 plot(y~x, xlim=c(0,5), ylim=c(4,10))
@@ -58,23 +58,16 @@ The line of best fit:
 y = 3.5 + 1.4x  
 All possible regression lines goes through the intersection point $(\bar{x}, \bar{y})$
 
-## Standard error of train data
+## Mean squared error (MSE)
 
+**Standard error of train data**  
 $$MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{f}(x_i))^2$$
 
-## Standard error of learn data
-
+**Standard error of learn data**  
 $$MSE = \frac{1}{n_o}\sum_{i=1}^{n_o}(y_i^o - \hat{f}(x_i^o))^2$$
 
-## Linear model in R
-
 ```{r}
-# Example 1: linear model
-x <- c(1,2,3,4)
-y <- c(6,5,7,10)
-lm(y~x)
-
-# Example 2: linear model
+# Exampl: linear model
 # Height and weight vectors for 19 children
 height <- c(69.1,56.4,65.3,62.8,63,57.3,59.8,62.5,62.5,59.0,51.3,64,56.4,66.5,72.2,65.0,67.0,57.6,66.6)
 weight <- c(113,84,99,103,102,83,85,113,84,99,51,90,77,112,150,128,133,85,112)
@@ -110,12 +103,14 @@ residuals(model)
 # predicting the weight for a given height, say 60 inches
 model$coefficients[[2]]*50 + model$coefficients[[1]]
 
-# Standard e
+# Mean squared error (MSE)
+predicted.weights <- predict(model, newdata = as.data.frame(weight))
+mse <- mean(( weight - predicted.weights)^2, na.rm = TRUE)
+mse
 ```
 
+## Linear regression model for multiple parameters
 ```{r, eval = FALSE}
-##### 2. Linear regression model for multiple parameters
-
 df <- mtcars
 
 # Subset of necessary data from mtcars

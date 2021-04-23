@@ -230,14 +230,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>21.1</b> Linear regression - theory</a></li>
 <li class="chapter" data-level="21.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>21.2</b> Generate random data set for the linear model</a></li>
 <li class="chapter" data-level="21.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>21.3</b> Practical example</a></li>
-<li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>21.4</b> Standard error of train data</a></li>
-<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-learn-data"><i class="fa fa-check"></i><b>21.5</b> Standard error of learn data</a></li>
-<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>21.6</b> Linear model in R</a></li>
-<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>21.7</b> Linear regression modeling, compair with kNN</a></li>
-<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#more-complex-example"><i class="fa fa-check"></i><b>21.8</b> More complex example</a></li>
-<li class="chapter" data-level="21.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.9</b> NEXT part</a></li>
-<li class="chapter" data-level="21.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-1"><i class="fa fa-check"></i><b>21.10</b> NEXT Part</a></li>
-<li class="chapter" data-level="21.11" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.11</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>21.4</b> Mean squared error (MSE)</a></li>
+<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>21.5</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>21.6</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#more-complex-example"><i class="fa fa-check"></i><b>21.7</b> More complex example</a></li>
+<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.8</b> NEXT part</a></li>
+<li class="chapter" data-level="21.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-1"><i class="fa fa-check"></i><b>21.9</b> NEXT Part</a></li>
+<li class="chapter" data-level="21.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.10</b> Practical examples for linear model regression</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>22</b> Nonlinear regression</a></li>
 <li class="chapter" data-level="23" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>23</b> Multiple linear regression</a></li>
@@ -341,82 +340,77 @@ Outliers can be identified visually using a boxplot.</p>
 <span id="cb8-2"><a href="basic-statistics.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(v); <span class="fu">qqline</span>(v)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-statistics.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(v)     <span class="co"># variance: sd = sqrt(var)</span></span></code></pre></div>
-<pre><code>## [1] 23.6902</code></pre>
+<pre><code>## [1] 34.85714</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-statistics.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)      <span class="co"># standard deviation</span></span></code></pre></div>
-<pre><code>## [1] 4.867258</code></pre>
+<pre><code>## [1] 5.903994</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-statistics.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(v))  <span class="co"># standard error sd/sqrt(n)</span></span></code></pre></div>
-<pre><code>## [1] 0.6883343</code></pre>
+<pre><code>## [1] 0.8349508</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-statistics.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score (standartization)</span></span>
 <span id="cb15-2"><a href="basic-statistics.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># transform distribution to mean=0, variance=1</span></span>
 <span id="cb15-3"><a href="basic-statistics.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># z = (x - mean(n))/sd</span></span>
 <span id="cb15-4"><a href="basic-statistics.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(v)     <span class="co"># z-score</span></span></code></pre></div>
 <pre><code>##              [,1]
-##  [1,]  1.03959963
-##  [2,]  1.65596305
-##  [3,] -0.60403615
-##  [4,] -1.83676298
-##  [5,]  0.42323621
-##  [6,] -0.80949062
-##  [7,]  0.83414516
-##  [8,]  0.21778174
-##  [9,]  2.06687199
-## [10,] -0.80949062
-## [11,]  0.62869068
-## [12,]  0.42323621
-## [13,]  0.21778174
-## [14,]  1.24505410
-## [15,] -1.22039956
-## [16,] -1.01494509
-## [17,]  0.83414516
-## [18,] -0.80949062
-## [19,]  0.21778174
-## [20,] -0.80949062
-## [21,]  0.21778174
-## [22,] -1.01494509
-## [23,] -0.80949062
-## [24,]  1.24505410
-## [25,] -1.83676298
-## [26,]  0.42323621
-## [27,] -0.60403615
-## [28,] -1.01494509
-## [29,]  0.83414516
-## [30,] -1.42585404
-## [31,]  0.42323621
-## [32,]  0.62869068
-## [33,]  0.42323621
-## [34,]  1.03959963
-## [35,]  1.03959963
-## [36,]  1.45050857
-## [37,] -1.01494509
-## [38,]  0.83414516
-## [39,]  0.62869068
-## [40,] -1.63130851
-## [41,] -0.60403615
-## [42,]  0.01232727
-## [43,] -0.60403615
-## [44,]  0.21778174
-## [45,] -0.39858168
-## [46,] -2.04221745
-## [47,]  0.42323621
-## [48,]  0.01232727
-## [49,] -0.19312720
-## [50,]  1.45050857
+##  [1,] -0.30487837
+##  [2,] -0.81300898
+##  [3,]  0.71138286
+##  [4,] -0.64363211
+##  [5,]  2.06639783
+##  [6,] -0.47425524
+##  [7,]  0.88075973
+##  [8,] -1.49051647
+##  [9,]  0.37262912
+## [10,] -0.64363211
+## [11,]  0.71138286
+## [12,] -0.81300898
+## [13,] -0.30487837
+## [14,] -1.99864708
+## [15,] -0.98238585
+## [16,]  0.71138286
+## [17,] -0.64363211
+## [18,] -0.30487837
+## [19,]  0.71138286
+## [20,]  1.55826722
+## [21,] -0.47425524
+## [22,]  2.23577470
+## [23,]  0.88075973
+## [24,] -0.47425524
+## [25,]  0.03387537
+## [26,]  0.54200599
+## [27,] -1.49051647
+## [28,]  0.03387537
+## [29,]  0.20325225
+## [30,] -0.47425524
+## [31,]  1.72764409
+## [32,]  0.03387537
+## [33,]  0.20325225
+## [34,] -0.13550150
+## [35,] -0.13550150
+## [36,]  2.57452845
+## [37,] -1.65989334
+## [38,] -0.47425524
+## [39,] -0.81300898
+## [40,]  0.37262912
+## [41,]  0.03387537
+## [42,] -0.81300898
+## [43,]  0.20325225
+## [44,] -0.81300898
+## [45,] -1.32113960
+## [46,] -0.64363211
+## [47,] -0.30487837
+## [48,]  1.21951347
+## [49,]  0.20325225
+## [50,]  1.21951347
 ## attr(,&quot;scaled:center&quot;)
-## [1] 98.94
+## [1] 99.8
 ## attr(,&quot;scaled:scale&quot;)
-## [1] 4.867258</code></pre>
+## [1] 5.903994</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-statistics.html#cb17-1" aria-hidden="true" tabindex="-1"></a>vs <span class="ot">&lt;-</span> <span class="fu">scale</span>(v)[,<span class="dv">1</span>]</span>
 <span id="cb17-2"><a href="basic-statistics.html#cb17-2" aria-hidden="true" tabindex="-1"></a>vs</span></code></pre></div>
-<pre><code>##  [1]  1.03959963  1.65596305 -0.60403615 -1.83676298  0.42323621
-##  [6] -0.80949062  0.83414516  0.21778174  2.06687199 -0.80949062
-## [11]  0.62869068  0.42323621  0.21778174  1.24505410 -1.22039956
-## [16] -1.01494509  0.83414516 -0.80949062  0.21778174 -0.80949062
-## [21]  0.21778174 -1.01494509 -0.80949062  1.24505410 -1.83676298
-## [26]  0.42323621 -0.60403615 -1.01494509  0.83414516 -1.42585404
-## [31]  0.42323621  0.62869068  0.42323621  1.03959963  1.03959963
-## [36]  1.45050857 -1.01494509  0.83414516  0.62869068 -1.63130851
-## [41] -0.60403615  0.01232727 -0.60403615  0.21778174 -0.39858168
-## [46] -2.04221745  0.42323621  0.01232727 -0.19312720  1.45050857</code></pre>
+<pre><code>##  [1] -0.30487837 -0.81300898  0.71138286 -0.64363211  2.06639783 -0.47425524  0.88075973 -1.49051647  0.37262912 -0.64363211
+## [11]  0.71138286 -0.81300898 -0.30487837 -1.99864708 -0.98238585  0.71138286 -0.64363211 -0.30487837  0.71138286  1.55826722
+## [21] -0.47425524  2.23577470  0.88075973 -0.47425524  0.03387537  0.54200599 -1.49051647  0.03387537  0.20325225 -0.47425524
+## [31]  1.72764409  0.03387537  0.20325225 -0.13550150 -0.13550150  2.57452845 -1.65989334 -0.47425524 -0.81300898  0.37262912
+## [41]  0.03387537 -0.81300898  0.20325225 -0.81300898 -1.32113960 -0.64363211 -0.30487837  1.21951347  0.20325225  1.21951347</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-statistics.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb19-2"><a href="basic-statistics.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(v)</span>
 <span id="cb19-3"><a href="basic-statistics.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vs)</span></code></pre></div>
@@ -435,7 +429,7 @@ Outliers can be identified visually using a boxplot.</p>
 <span id="cb20-8"><a href="basic-statistics.html#cb20-8" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
 <span id="cb20-9"><a href="basic-statistics.html#cb20-9" aria-hidden="true" tabindex="-1"></a>confidence <span class="ot">&lt;-</span> <span class="fu">c</span>(m<span class="sc">-</span>error, m<span class="sc">+</span>error)</span>
 <span id="cb20-10"><a href="basic-statistics.html#cb20-10" aria-hidden="true" tabindex="-1"></a>confidence</span></code></pre></div>
-<pre><code>## [1] 100.0918 102.1482</code></pre>
+<pre><code>## [1]  99.45469 101.66531</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-statistics.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval for t-distribution with p=0.95</span></span>
 <span id="cb22-2"><a href="basic-statistics.html#cb22-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb22-3"><a href="basic-statistics.html#cb22-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">2</span></span>

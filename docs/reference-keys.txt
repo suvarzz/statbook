@@ -65,9 +65,8 @@ linear-regression-1
 linear-regression---theory
 generate-random-data-set-for-the-linear-model
 practical-example
-standard-error-of-train-data
-standard-error-of-learn-data
-linear-model-in-r
+mean-squared-error-mse
+linear-regression-model-for-multiple-parameters
 linear-regression-modeling-compair-with-knn
 more-complex-example
 next-part
