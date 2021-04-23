@@ -349,77 +349,77 @@ Outliers can be identified visually using a boxplot.</p>
 <span id="cb8-2"><a href="basic-statistics.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(v); <span class="fu">qqline</span>(v)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-statistics.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(v)     <span class="co"># variance: sd = sqrt(var)</span></span></code></pre></div>
-<pre><code>## [1] 34.85714</code></pre>
+<pre><code>## [1] 27.02408</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-statistics.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)      <span class="co"># standard deviation</span></span></code></pre></div>
-<pre><code>## [1] 5.903994</code></pre>
+<pre><code>## [1] 5.198469</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-statistics.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(v))  <span class="co"># standard error sd/sqrt(n)</span></span></code></pre></div>
-<pre><code>## [1] 0.8349508</code></pre>
+<pre><code>## [1] 0.7351746</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-statistics.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score (standartization)</span></span>
 <span id="cb15-2"><a href="basic-statistics.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># transform distribution to mean=0, variance=1</span></span>
 <span id="cb15-3"><a href="basic-statistics.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># z = (x - mean(n))/sd</span></span>
 <span id="cb15-4"><a href="basic-statistics.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(v)     <span class="co"># z-score</span></span></code></pre></div>
 <pre><code>##              [,1]
-##  [1,] -0.30487837
-##  [2,] -0.81300898
-##  [3,]  0.71138286
-##  [4,] -0.64363211
-##  [5,]  2.06639783
-##  [6,] -0.47425524
-##  [7,]  0.88075973
-##  [8,] -1.49051647
-##  [9,]  0.37262912
-## [10,] -0.64363211
-## [11,]  0.71138286
-## [12,] -0.81300898
-## [13,] -0.30487837
-## [14,] -1.99864708
-## [15,] -0.98238585
-## [16,]  0.71138286
-## [17,] -0.64363211
-## [18,] -0.30487837
-## [19,]  0.71138286
-## [20,]  1.55826722
-## [21,] -0.47425524
-## [22,]  2.23577470
-## [23,]  0.88075973
-## [24,] -0.47425524
-## [25,]  0.03387537
-## [26,]  0.54200599
-## [27,] -1.49051647
-## [28,]  0.03387537
-## [29,]  0.20325225
-## [30,] -0.47425524
-## [31,]  1.72764409
-## [32,]  0.03387537
-## [33,]  0.20325225
-## [34,] -0.13550150
-## [35,] -0.13550150
-## [36,]  2.57452845
-## [37,] -1.65989334
-## [38,] -0.47425524
-## [39,] -0.81300898
-## [40,]  0.37262912
-## [41,]  0.03387537
-## [42,] -0.81300898
-## [43,]  0.20325225
-## [44,] -0.81300898
-## [45,] -1.32113960
-## [46,] -0.64363211
-## [47,] -0.30487837
-## [48,]  1.21951347
-## [49,]  0.20325225
-## [50,]  1.21951347
+##  [1,]  0.68866428
+##  [2,]  1.84285021
+##  [3,]  0.30393563
+##  [4,] -0.08079302
+##  [5,] -0.27315734
+##  [6,]  0.11157131
+##  [7,] -0.85025031
+##  [8,] -0.85025031
+##  [9,]  0.88102860
+## [10,]  1.45812157
+## [11,]  1.07339292
+## [12,] -0.65788598
+## [13,]  1.07339292
+## [14,] -0.65788598
+## [15,] -1.23497895
+## [16,] -0.08079302
+## [17,] -1.04261463
+## [18,]  1.07339292
+## [19,] -0.85025031
+## [20,]  2.41994318
+## [21,] -1.42734328
+## [22,] -0.85025031
+## [23,]  0.68866428
+## [24,]  0.49629995
+## [25,] -0.46552166
+## [26,]  1.26575724
+## [27,] -0.08079302
+## [28,]  1.07339292
+## [29,] -0.08079302
+## [30,] -1.23497895
+## [31,] -0.08079302
+## [32,] -2.38916489
+## [33,] -0.08079302
+## [34,]  1.07339292
+## [35,] -1.04261463
+## [36,]  0.68866428
+## [37,] -0.85025031
+## [38,] -0.65788598
+## [39,] -0.08079302
+## [40,] -0.08079302
+## [41,] -1.04261463
+## [42,]  2.03521454
+## [43,] -1.23497895
+## [44,] -0.27315734
+## [45,]  0.68866428
+## [46,] -0.46552166
+## [47,] -0.27315734
+## [48,]  1.07339292
+## [49,]  0.11157131
+## [50,] -0.85025031
 ## attr(,&quot;scaled:center&quot;)
-## [1] 99.8
+## [1] 99.42
 ## attr(,&quot;scaled:scale&quot;)
-## [1] 5.903994</code></pre>
+## [1] 5.198469</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-statistics.html#cb17-1" aria-hidden="true" tabindex="-1"></a>vs <span class="ot">&lt;-</span> <span class="fu">scale</span>(v)[,<span class="dv">1</span>]</span>
 <span id="cb17-2"><a href="basic-statistics.html#cb17-2" aria-hidden="true" tabindex="-1"></a>vs</span></code></pre></div>
-<pre><code>##  [1] -0.30487837 -0.81300898  0.71138286 -0.64363211  2.06639783 -0.47425524  0.88075973 -1.49051647  0.37262912 -0.64363211  0.71138286 -0.81300898
-## [13] -0.30487837 -1.99864708 -0.98238585  0.71138286 -0.64363211 -0.30487837  0.71138286  1.55826722 -0.47425524  2.23577470  0.88075973 -0.47425524
-## [25]  0.03387537  0.54200599 -1.49051647  0.03387537  0.20325225 -0.47425524  1.72764409  0.03387537  0.20325225 -0.13550150 -0.13550150  2.57452845
-## [37] -1.65989334 -0.47425524 -0.81300898  0.37262912  0.03387537 -0.81300898  0.20325225 -0.81300898 -1.32113960 -0.64363211 -0.30487837  1.21951347
-## [49]  0.20325225  1.21951347</code></pre>
+<pre><code>##  [1]  0.68866428  1.84285021  0.30393563 -0.08079302 -0.27315734  0.11157131 -0.85025031 -0.85025031  0.88102860  1.45812157  1.07339292 -0.65788598
+## [13]  1.07339292 -0.65788598 -1.23497895 -0.08079302 -1.04261463  1.07339292 -0.85025031  2.41994318 -1.42734328 -0.85025031  0.68866428  0.49629995
+## [25] -0.46552166  1.26575724 -0.08079302  1.07339292 -0.08079302 -1.23497895 -0.08079302 -2.38916489 -0.08079302  1.07339292 -1.04261463  0.68866428
+## [37] -0.85025031 -0.65788598 -0.08079302 -0.08079302 -1.04261463  2.03521454 -1.23497895 -0.27315734  0.68866428 -0.46552166 -0.27315734  1.07339292
+## [49]  0.11157131 -0.85025031</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-statistics.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb19-2"><a href="basic-statistics.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(v)</span>
 <span id="cb19-3"><a href="basic-statistics.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vs)</span></code></pre></div>
@@ -438,7 +438,7 @@ Outliers can be identified visually using a boxplot.</p>
 <span id="cb20-8"><a href="basic-statistics.html#cb20-8" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
 <span id="cb20-9"><a href="basic-statistics.html#cb20-9" aria-hidden="true" tabindex="-1"></a>confidence <span class="ot">&lt;-</span> <span class="fu">c</span>(m<span class="sc">-</span>error, m<span class="sc">+</span>error)</span>
 <span id="cb20-10"><a href="basic-statistics.html#cb20-10" aria-hidden="true" tabindex="-1"></a>confidence</span></code></pre></div>
-<pre><code>## [1]  99.45469 101.66531</code></pre>
+<pre><code>## [1]  99.04942 101.07058</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-statistics.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval for t-distribution with p=0.95</span></span>
 <span id="cb22-2"><a href="basic-statistics.html#cb22-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb22-3"><a href="basic-statistics.html#cb22-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">2</span></span>

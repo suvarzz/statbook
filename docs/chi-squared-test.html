@@ -313,21 +313,21 @@ It is to be rejected if the p-value of the following <strong>Chi-squared test</s
 <p>Example
 Survey response about the student’s smoking habit: “Heavy,” “Regul” (regularly), “Occas” (occasionally) and “Never.”
 The Smoke data is multinomial.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="chi-squared-test.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb105-2"><a href="chi-squared-test.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(survey<span class="sc">$</span>Smoke) </span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chi-squared-test.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb107-2"><a href="chi-squared-test.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(survey<span class="sc">$</span>Smoke) </span></code></pre></div>
 <pre><code>## [1] &quot;Heavy&quot; &quot;Never&quot; &quot;Occas&quot; &quot;Regul&quot;</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chi-squared-test.html#cb107-1" aria-hidden="true" tabindex="-1"></a>smoke_freq <span class="ot">=</span> <span class="fu">table</span>(survey<span class="sc">$</span>Smoke) </span>
-<span id="cb107-2"><a href="chi-squared-test.html#cb107-2" aria-hidden="true" tabindex="-1"></a>smoke_freq</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chi-squared-test.html#cb109-1" aria-hidden="true" tabindex="-1"></a>smoke_freq <span class="ot">=</span> <span class="fu">table</span>(survey<span class="sc">$</span>Smoke) </span>
+<span id="cb109-2"><a href="chi-squared-test.html#cb109-2" aria-hidden="true" tabindex="-1"></a>smoke_freq</span></code></pre></div>
 <pre><code>## 
 ## Heavy Never Occas Regul 
 ##    11   189    19    17</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chi-squared-test.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimated probabilities</span></span>
-<span id="cb109-2"><a href="chi-squared-test.html#cb109-2" aria-hidden="true" tabindex="-1"></a>smoke_prob <span class="ot">=</span> <span class="fu">c</span>(<span class="at">heavy =</span> .<span class="dv">045</span>, </span>
-<span id="cb109-3"><a href="chi-squared-test.html#cb109-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">never =</span> .<span class="dv">795</span>, </span>
-<span id="cb109-4"><a href="chi-squared-test.html#cb109-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">occas =</span> .<span class="dv">085</span>, </span>
-<span id="cb109-5"><a href="chi-squared-test.html#cb109-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">regul =</span> .<span class="dv">075</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="chi-squared-test.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimated probabilities</span></span>
+<span id="cb111-2"><a href="chi-squared-test.html#cb111-2" aria-hidden="true" tabindex="-1"></a>smoke_prob <span class="ot">=</span> <span class="fu">c</span>(<span class="at">heavy =</span> .<span class="dv">045</span>, </span>
+<span id="cb111-3"><a href="chi-squared-test.html#cb111-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">never =</span> .<span class="dv">795</span>, </span>
+<span id="cb111-4"><a href="chi-squared-test.html#cb111-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">occas =</span> .<span class="dv">085</span>, </span>
+<span id="cb111-5"><a href="chi-squared-test.html#cb111-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">regul =</span> .<span class="dv">075</span>)</span></code></pre></div>
 <p>Determine whether the sample data in <em>smoke_freq</em> supports estimated probabilities in <em>smoke_prob</em> at .05 significance level.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="chi-squared-test.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(smoke_freq, <span class="at">p=</span>smoke_prob)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="chi-squared-test.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(smoke_freq, <span class="at">p=</span>smoke_prob)</span></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 

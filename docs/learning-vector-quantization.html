@@ -310,28 +310,28 @@ LVQ model creates codebook vectors by learning training dataset. Codebook vector
 <a href="http://jsalatas.ictpro.gr/implementation-of-competitive-learning-networks-for-weka/">Here</a> is a nice explanation how it works.</p>
 <p>There are several versions of <strong>LVQ</strong> function:<br />
 <code>lvq1()</code>, <code>olvq1()</code>, <code>lvq2()</code>, <code>lvq3()</code>, <code>dlvq()</code>.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="learning-vector-quantization.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class) <span class="co"># olvq1()</span></span>
-<span id="cb198-2"><a href="learning-vector-quantization.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># to split data</span></span>
-<span id="cb198-3"><a href="learning-vector-quantization.html#cb198-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-4"><a href="learning-vector-quantization.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="co"># generate dataset</span></span>
-<span id="cb198-5"><a href="learning-vector-quantization.html#cb198-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> iris</span>
-<span id="cb198-6"><a href="learning-vector-quantization.html#cb198-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-7"><a href="learning-vector-quantization.html#cb198-7" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df<span class="sc">$</span>Species, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> F)</span>
-<span id="cb198-8"><a href="learning-vector-quantization.html#cb198-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-9"><a href="learning-vector-quantization.html#cb198-9" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> df[id, ]</span>
-<span id="cb198-10"><a href="learning-vector-quantization.html#cb198-10" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> df[<span class="sc">-</span>id, ]</span>
-<span id="cb198-11"><a href="learning-vector-quantization.html#cb198-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-12"><a href="learning-vector-quantization.html#cb198-12" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize an LVQ codebook</span></span>
-<span id="cb198-13"><a href="learning-vector-quantization.html#cb198-13" aria-hidden="true" tabindex="-1"></a>cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqinit</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species)</span>
-<span id="cb198-14"><a href="learning-vector-quantization.html#cb198-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-15"><a href="learning-vector-quantization.html#cb198-15" aria-hidden="true" tabindex="-1"></a><span class="co"># training set in a codebook.</span></span>
-<span id="cb198-16"><a href="learning-vector-quantization.html#cb198-16" aria-hidden="true" tabindex="-1"></a>build.cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">olvq1</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species, cb)</span>
-<span id="cb198-17"><a href="learning-vector-quantization.html#cb198-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-18"><a href="learning-vector-quantization.html#cb198-18" aria-hidden="true" tabindex="-1"></a><span class="co"># classify test set from LVQ Codebook for test data</span></span>
-<span id="cb198-19"><a href="learning-vector-quantization.html#cb198-19" aria-hidden="true" tabindex="-1"></a>predict <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqtest</span>(build.cb, test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb198-20"><a href="learning-vector-quantization.html#cb198-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-21"><a href="learning-vector-quantization.html#cb198-21" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix.</span></span>
-<span id="cb198-22"><a href="learning-vector-quantization.html#cb198-22" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(test<span class="sc">$</span>Species, predict)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="learning-vector-quantization.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class) <span class="co"># olvq1()</span></span>
+<span id="cb200-2"><a href="learning-vector-quantization.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># to split data</span></span>
+<span id="cb200-3"><a href="learning-vector-quantization.html#cb200-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-4"><a href="learning-vector-quantization.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="co"># generate dataset</span></span>
+<span id="cb200-5"><a href="learning-vector-quantization.html#cb200-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> iris</span>
+<span id="cb200-6"><a href="learning-vector-quantization.html#cb200-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-7"><a href="learning-vector-quantization.html#cb200-7" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df<span class="sc">$</span>Species, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> F)</span>
+<span id="cb200-8"><a href="learning-vector-quantization.html#cb200-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-9"><a href="learning-vector-quantization.html#cb200-9" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> df[id, ]</span>
+<span id="cb200-10"><a href="learning-vector-quantization.html#cb200-10" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> df[<span class="sc">-</span>id, ]</span>
+<span id="cb200-11"><a href="learning-vector-quantization.html#cb200-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-12"><a href="learning-vector-quantization.html#cb200-12" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize an LVQ codebook</span></span>
+<span id="cb200-13"><a href="learning-vector-quantization.html#cb200-13" aria-hidden="true" tabindex="-1"></a>cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqinit</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species)</span>
+<span id="cb200-14"><a href="learning-vector-quantization.html#cb200-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-15"><a href="learning-vector-quantization.html#cb200-15" aria-hidden="true" tabindex="-1"></a><span class="co"># training set in a codebook.</span></span>
+<span id="cb200-16"><a href="learning-vector-quantization.html#cb200-16" aria-hidden="true" tabindex="-1"></a>build.cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">olvq1</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species, cb)</span>
+<span id="cb200-17"><a href="learning-vector-quantization.html#cb200-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-18"><a href="learning-vector-quantization.html#cb200-18" aria-hidden="true" tabindex="-1"></a><span class="co"># classify test set from LVQ Codebook for test data</span></span>
+<span id="cb200-19"><a href="learning-vector-quantization.html#cb200-19" aria-hidden="true" tabindex="-1"></a>predict <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqtest</span>(build.cb, test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb200-20"><a href="learning-vector-quantization.html#cb200-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-21"><a href="learning-vector-quantization.html#cb200-21" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix.</span></span>
+<span id="cb200-22"><a href="learning-vector-quantization.html#cb200-22" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(test<span class="sc">$</span>Species, predict)</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##             Reference
