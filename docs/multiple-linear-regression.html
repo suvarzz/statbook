@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 23 Multiple linear regression | R statistics</title>
+  <title>Chapter 24 Multiple linear regression | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 23 Multiple linear regression | R statistics" />
+  <meta property="og:title" content="Chapter 24 Multiple linear regression | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 23 Multiple linear regression | R statistics" />
+  <meta name="twitter:title" content="Chapter 24 Multiple linear regression | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -231,48 +231,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>21.2</b> Generate random data set for the linear model</a></li>
 <li class="chapter" data-level="21.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>21.3</b> Practical example</a></li>
 <li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>21.4</b> Mean squared error (MSE)</a></li>
-<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>21.5</b> Linear regression model for multiple parameters</a></li>
-<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>21.6</b> Linear regression modeling, compair with kNN</a></li>
-<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#more-complex-example"><i class="fa fa-check"></i><b>21.7</b> More complex example</a></li>
-<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.8</b> NEXT part</a></li>
-<li class="chapter" data-level="21.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-1"><i class="fa fa-check"></i><b>21.9</b> NEXT Part</a></li>
+<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>21.5</b> Linear model in R</a></li>
+<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>21.6</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>21.7</b> Choosing explanatory variables for the model</a></li>
+<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>21.8</b> Assessment of model performance for categorical data.</a></li>
+<li class="chapter" data-level="21.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>21.9</b> Confidence intervals for linear model</a></li>
 <li class="chapter" data-level="21.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.10</b> Practical examples for linear model regression</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>22</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="23" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>23</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="24" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>24</b> Spline model</a>
+<li class="chapter" data-level="22" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>22</b> Linear regression complex cases</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>24.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="24.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>24.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="24.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>24.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="24.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>24.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="24.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>24.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="24.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>24.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="24.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>24.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="22.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>22.1</b> Cars</a></li>
+<li class="chapter" data-level="22.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>22.2</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="22.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>22.3</b> More complex example</a></li>
+<li class="chapter" data-level="22.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>22.4</b> NEXT part</a></li>
+<li class="chapter" data-level="22.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>22.5</b> NEXT Part</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>25</b> Logistic Regression</a>
+<li class="chapter" data-level="23" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>23</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="25" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>25</b> Spline model</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>25.1</b> Confusion matrix</a></li>
-<li class="chapter" data-level="25.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>25.2</b> Next part</a></li>
-<li class="chapter" data-level="25.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>25.3</b> NExt part</a></li>
+<li class="chapter" data-level="25.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>25.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="25.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>25.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="25.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>25.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="25.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>25.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="25.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>25.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="25.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>25.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="25.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>25.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>26</b> Clustering</a>
+<li class="chapter" data-level="26" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>26</b> Logistic Regression</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="clustering.html"><a href="clustering.html#next-part-4"><i class="fa fa-check"></i><b>26.1</b> Next part</a></li>
-<li class="chapter" data-level="26.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>26.2</b> Example</a></li>
-<li class="chapter" data-level="26.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>26.3</b> NEXT PART</a></li>
+<li class="chapter" data-level="26.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>26.1</b> Confusion matrix</a></li>
+<li class="chapter" data-level="26.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>26.2</b> Next part</a></li>
+<li class="chapter" data-level="26.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>26.3</b> NExt part</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>27</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="28" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>28</b> Naive Bayes</a></li>
-<li class="chapter" data-level="29" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>29</b> Markov Chain Monte Carlo (MCMC)</a></li>
-<li class="chapter" data-level="30" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>30</b> Simple Markov process</a>
+<li class="chapter" data-level="27" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>27</b> Clustering</a>
 <ul>
-<li class="chapter" data-level="30.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>30.0.1</b> Sources</a></li>
+<li class="chapter" data-level="27.1" data-path="clustering.html"><a href="clustering.html#next-part-4"><i class="fa fa-check"></i><b>27.1</b> Next part</a></li>
+<li class="chapter" data-level="27.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>27.2</b> Example</a></li>
+<li class="chapter" data-level="27.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>27.3</b> NEXT PART</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>31</b> Tree-based models</a>
+<li class="chapter" data-level="28" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>28</b> Learning Vector Quantization</a></li>
+<li class="chapter" data-level="29" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>29</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="30" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>30</b> Naive Bayes</a></li>
+<li class="chapter" data-level="31" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>31</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="32" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>32</b> Simple Markov process</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>31.1</b> Classification Tree example</a></li>
-<li class="chapter" data-level="31.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>31.2</b> Regression Tree example</a></li>
+<li class="chapter" data-level="32.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>32.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>33</b> Tree-based models</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>33.1</b> Classification Tree example</a></li>
+<li class="chapter" data-level="33.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>33.2</b> Regression Tree example</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -294,96 +303,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multiple-linear-regression" class="section level1" number="23">
-<h1><span class="header-section-number">Chapter 23</span> Multiple linear regression</h1>
+<div id="multiple-linear-regression" class="section level1" number="24">
+<h1><span class="header-section-number">Chapter 24</span> Multiple linear regression</h1>
 <p>Source: Анализ данных в R. Множественная линейная регрессия</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="multiple-linear-regression.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset swiss</span></span>
-<span id="cb154-2"><a href="multiple-linear-regression.html#cb154-2" aria-hidden="true" tabindex="-1"></a>?swiss</span>
-<span id="cb154-3"><a href="multiple-linear-regression.html#cb154-3" aria-hidden="true" tabindex="-1"></a>swiss <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(swiss)</span>
-<span id="cb154-4"><a href="multiple-linear-regression.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(swiss)</span>
-<span id="cb154-5"><a href="multiple-linear-regression.html#cb154-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-6"><a href="multiple-linear-regression.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of fertility</span></span>
-<span id="cb154-7"><a href="multiple-linear-regression.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(swiss<span class="sc">$</span>Fertility, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
-<span id="cb154-8"><a href="multiple-linear-regression.html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-9"><a href="multiple-linear-regression.html#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric predictors for Fertility prediction</span></span>
-<span id="cb154-10"><a href="multiple-linear-regression.html#cb154-10" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination <span class="sc">+</span> Catholic, <span class="at">data =</span> swiss)</span>
-<span id="cb154-11"><a href="multiple-linear-regression.html#cb154-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
-<span id="cb154-12"><a href="multiple-linear-regression.html#cb154-12" aria-hidden="true" tabindex="-1"></a><span class="co"># the principal predictor is an &#39;examination&#39; with negative correlation.</span></span>
-<span id="cb154-13"><a href="multiple-linear-regression.html#cb154-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-14"><a href="multiple-linear-regression.html#cb154-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Interaction of variables &#39;examination&#39; and &#39;catholics&#39; &#39;*&#39;</span></span>
-<span id="cb154-15"><a href="multiple-linear-regression.html#cb154-15" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination<span class="sc">*</span>Catholic, <span class="at">data =</span> swiss)</span>
-<span id="cb154-16"><a href="multiple-linear-regression.html#cb154-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
-<span id="cb154-17"><a href="multiple-linear-regression.html#cb154-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-18"><a href="multiple-linear-regression.html#cb154-18" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit2)</span>
-<span id="cb154-19"><a href="multiple-linear-regression.html#cb154-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-20"><a href="multiple-linear-regression.html#cb154-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical predictors</span></span>
-<span id="cb154-21"><a href="multiple-linear-regression.html#cb154-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram obviously have two parts -&gt; we can split data for two factors</span></span>
-<span id="cb154-22"><a href="multiple-linear-regression.html#cb154-22" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(swiss<span class="sc">$</span>Catholic, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb154-23"><a href="multiple-linear-regression.html#cb154-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-24"><a href="multiple-linear-regression.html#cb154-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets split &#39;Catholics&#39; for two groups: with many &#39;lots&#39; and few &#39;few&#39;</span></span>
-<span id="cb154-25"><a href="multiple-linear-regression.html#cb154-25" aria-hidden="true" tabindex="-1"></a>swiss<span class="sc">$</span>religious <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(swiss<span class="sc">$</span>Catholic <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">&#39;Lots&#39;</span>, <span class="st">&#39;Few&#39;</span>)</span>
-<span id="cb154-26"><a href="multiple-linear-regression.html#cb154-26" aria-hidden="true" tabindex="-1"></a>swiss<span class="sc">$</span>religious <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(swiss<span class="sc">$</span>religious)</span>
-<span id="cb154-27"><a href="multiple-linear-regression.html#cb154-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-28"><a href="multiple-linear-regression.html#cb154-28" aria-hidden="true" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination <span class="sc">+</span> religious, <span class="at">data =</span> swiss)</span>
-<span id="cb154-29"><a href="multiple-linear-regression.html#cb154-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span>
-<span id="cb154-30"><a href="multiple-linear-regression.html#cb154-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-31"><a href="multiple-linear-regression.html#cb154-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Interaction of variables</span></span>
-<span id="cb154-32"><a href="multiple-linear-regression.html#cb154-32" aria-hidden="true" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> religious<span class="sc">*</span>Examination, <span class="at">data =</span> swiss)</span>
-<span id="cb154-33"><a href="multiple-linear-regression.html#cb154-33" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span>
-<span id="cb154-34"><a href="multiple-linear-regression.html#cb154-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-35"><a href="multiple-linear-regression.html#cb154-35" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
-<span id="cb154-36"><a href="multiple-linear-regression.html#cb154-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-37"><a href="multiple-linear-regression.html#cb154-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
-<span id="cb154-38"><a href="multiple-linear-regression.html#cb154-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb154-39"><a href="multiple-linear-regression.html#cb154-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-40"><a href="multiple-linear-regression.html#cb154-40" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
-<span id="cb154-41"><a href="multiple-linear-regression.html#cb154-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb154-42"><a href="multiple-linear-regression.html#cb154-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb154-43"><a href="multiple-linear-regression.html#cb154-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-44"><a href="multiple-linear-regression.html#cb154-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
-<span id="cb154-45"><a href="multiple-linear-regression.html#cb154-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb154-46"><a href="multiple-linear-regression.html#cb154-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
-<span id="cb154-47"><a href="multiple-linear-regression.html#cb154-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-48"><a href="multiple-linear-regression.html#cb154-48" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
-<span id="cb154-49"><a href="multiple-linear-regression.html#cb154-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb154-50"><a href="multiple-linear-regression.html#cb154-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-51"><a href="multiple-linear-regression.html#cb154-51" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
-<span id="cb154-52"><a href="multiple-linear-regression.html#cb154-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb154-53"><a href="multiple-linear-regression.html#cb154-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb154-54"><a href="multiple-linear-regression.html#cb154-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-55"><a href="multiple-linear-regression.html#cb154-55" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
-<span id="cb154-56"><a href="multiple-linear-regression.html#cb154-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
-<span id="cb154-57"><a href="multiple-linear-regression.html#cb154-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
-<span id="cb154-58"><a href="multiple-linear-regression.html#cb154-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-59"><a href="multiple-linear-regression.html#cb154-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-60"><a href="multiple-linear-regression.html#cb154-60" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb154-61"><a href="multiple-linear-regression.html#cb154-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-62"><a href="multiple-linear-regression.html#cb154-62" aria-hidden="true" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> religious<span class="sc">*</span>Infant.Mortality<span class="sc">*</span>Examination, <span class="at">data =</span> swiss)</span>
-<span id="cb154-63"><a href="multiple-linear-regression.html#cb154-63" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit5)</span>
-<span id="cb154-64"><a href="multiple-linear-regression.html#cb154-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-65"><a href="multiple-linear-regression.html#cb154-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-66"><a href="multiple-linear-regression.html#cb154-66" aria-hidden="true" tabindex="-1"></a><span class="co"># model comparison</span></span>
-<span id="cb154-67"><a href="multiple-linear-regression.html#cb154-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-68"><a href="multiple-linear-regression.html#cb154-68" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(swiss)</span>
-<span id="cb154-69"><a href="multiple-linear-regression.html#cb154-69" aria-hidden="true" tabindex="-1"></a>swiss <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(swiss)</span>
-<span id="cb154-70"><a href="multiple-linear-regression.html#cb154-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-71"><a href="multiple-linear-regression.html#cb154-71" aria-hidden="true" tabindex="-1"></a>fit_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> ., <span class="at">data =</span> swiss)</span>
-<span id="cb154-72"><a href="multiple-linear-regression.html#cb154-72" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_full)</span>
-<span id="cb154-73"><a href="multiple-linear-regression.html#cb154-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-74"><a href="multiple-linear-regression.html#cb154-74" aria-hidden="true" tabindex="-1"></a>fit_reduced1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Infant.Mortality <span class="sc">+</span> Examination <span class="sc">+</span> Catholic <span class="sc">+</span> Education, <span class="at">data =</span> swiss)</span>
-<span id="cb154-75"><a href="multiple-linear-regression.html#cb154-75" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_reduced1)</span>
-<span id="cb154-76"><a href="multiple-linear-regression.html#cb154-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-77"><a href="multiple-linear-regression.html#cb154-77" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_full, fit_reduced1)</span>
-<span id="cb154-78"><a href="multiple-linear-regression.html#cb154-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-79"><a href="multiple-linear-regression.html#cb154-79" aria-hidden="true" tabindex="-1"></a>fit_reduced2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Infant.Mortality <span class="sc">+</span> Education <span class="sc">+</span> Catholic <span class="sc">+</span> Agriculture, <span class="at">data =</span> swiss)</span>
-<span id="cb154-80"><a href="multiple-linear-regression.html#cb154-80" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_reduced2)</span>
-<span id="cb154-81"><a href="multiple-linear-regression.html#cb154-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-82"><a href="multiple-linear-regression.html#cb154-82" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_full, fit_reduced2)</span>
-<span id="cb154-83"><a href="multiple-linear-regression.html#cb154-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-84"><a href="multiple-linear-regression.html#cb154-84" aria-hidden="true" tabindex="-1"></a><span class="co"># model selection</span></span>
-<span id="cb154-85"><a href="multiple-linear-regression.html#cb154-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-86"><a href="multiple-linear-regression.html#cb154-86" aria-hidden="true" tabindex="-1"></a>optimal_fit <span class="ot">&lt;-</span>  <span class="fu">step</span>(fit_full, <span class="at">direction =</span> <span class="st">&#39;backward&#39;</span>)</span>
-<span id="cb154-87"><a href="multiple-linear-regression.html#cb154-87" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(optimal_fit)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="multiple-linear-regression.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset swiss</span></span>
+<span id="cb168-2"><a href="multiple-linear-regression.html#cb168-2" aria-hidden="true" tabindex="-1"></a>?swiss</span>
+<span id="cb168-3"><a href="multiple-linear-regression.html#cb168-3" aria-hidden="true" tabindex="-1"></a>swiss <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(swiss)</span>
+<span id="cb168-4"><a href="multiple-linear-regression.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(swiss)</span>
+<span id="cb168-5"><a href="multiple-linear-regression.html#cb168-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-6"><a href="multiple-linear-regression.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of fertility</span></span>
+<span id="cb168-7"><a href="multiple-linear-regression.html#cb168-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(swiss<span class="sc">$</span>Fertility, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb168-8"><a href="multiple-linear-regression.html#cb168-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-9"><a href="multiple-linear-regression.html#cb168-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric predictors for Fertility prediction</span></span>
+<span id="cb168-10"><a href="multiple-linear-regression.html#cb168-10" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination <span class="sc">+</span> Catholic, <span class="at">data =</span> swiss)</span>
+<span id="cb168-11"><a href="multiple-linear-regression.html#cb168-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb168-12"><a href="multiple-linear-regression.html#cb168-12" aria-hidden="true" tabindex="-1"></a><span class="co"># the principal predictor is an &#39;examination&#39; with negative correlation.</span></span>
+<span id="cb168-13"><a href="multiple-linear-regression.html#cb168-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-14"><a href="multiple-linear-regression.html#cb168-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Interaction of variables &#39;examination&#39; and &#39;catholics&#39; &#39;*&#39;</span></span>
+<span id="cb168-15"><a href="multiple-linear-regression.html#cb168-15" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination<span class="sc">*</span>Catholic, <span class="at">data =</span> swiss)</span>
+<span id="cb168-16"><a href="multiple-linear-regression.html#cb168-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
+<span id="cb168-17"><a href="multiple-linear-regression.html#cb168-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-18"><a href="multiple-linear-regression.html#cb168-18" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit2)</span>
+<span id="cb168-19"><a href="multiple-linear-regression.html#cb168-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-20"><a href="multiple-linear-regression.html#cb168-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical predictors</span></span>
+<span id="cb168-21"><a href="multiple-linear-regression.html#cb168-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram obviously have two parts -&gt; we can split data for two factors</span></span>
+<span id="cb168-22"><a href="multiple-linear-regression.html#cb168-22" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(swiss<span class="sc">$</span>Catholic, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb168-23"><a href="multiple-linear-regression.html#cb168-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-24"><a href="multiple-linear-regression.html#cb168-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets split &#39;Catholics&#39; for two groups: with many &#39;lots&#39; and few &#39;few&#39;</span></span>
+<span id="cb168-25"><a href="multiple-linear-regression.html#cb168-25" aria-hidden="true" tabindex="-1"></a>swiss<span class="sc">$</span>religious <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(swiss<span class="sc">$</span>Catholic <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">&#39;Lots&#39;</span>, <span class="st">&#39;Few&#39;</span>)</span>
+<span id="cb168-26"><a href="multiple-linear-regression.html#cb168-26" aria-hidden="true" tabindex="-1"></a>swiss<span class="sc">$</span>religious <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(swiss<span class="sc">$</span>religious)</span>
+<span id="cb168-27"><a href="multiple-linear-regression.html#cb168-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-28"><a href="multiple-linear-regression.html#cb168-28" aria-hidden="true" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Examination <span class="sc">+</span> religious, <span class="at">data =</span> swiss)</span>
+<span id="cb168-29"><a href="multiple-linear-regression.html#cb168-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span>
+<span id="cb168-30"><a href="multiple-linear-regression.html#cb168-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-31"><a href="multiple-linear-regression.html#cb168-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Interaction of variables</span></span>
+<span id="cb168-32"><a href="multiple-linear-regression.html#cb168-32" aria-hidden="true" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> religious<span class="sc">*</span>Examination, <span class="at">data =</span> swiss)</span>
+<span id="cb168-33"><a href="multiple-linear-regression.html#cb168-33" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span>
+<span id="cb168-34"><a href="multiple-linear-regression.html#cb168-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-35"><a href="multiple-linear-regression.html#cb168-35" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb168-36"><a href="multiple-linear-regression.html#cb168-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-37"><a href="multiple-linear-regression.html#cb168-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
+<span id="cb168-38"><a href="multiple-linear-regression.html#cb168-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb168-39"><a href="multiple-linear-regression.html#cb168-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-40"><a href="multiple-linear-regression.html#cb168-40" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
+<span id="cb168-41"><a href="multiple-linear-regression.html#cb168-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb168-42"><a href="multiple-linear-regression.html#cb168-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb168-43"><a href="multiple-linear-regression.html#cb168-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-44"><a href="multiple-linear-regression.html#cb168-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility)) <span class="sc">+</span> </span>
+<span id="cb168-45"><a href="multiple-linear-regression.html#cb168-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb168-46"><a href="multiple-linear-regression.html#cb168-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
+<span id="cb168-47"><a href="multiple-linear-regression.html#cb168-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-48"><a href="multiple-linear-regression.html#cb168-48" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
+<span id="cb168-49"><a href="multiple-linear-regression.html#cb168-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb168-50"><a href="multiple-linear-regression.html#cb168-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-51"><a href="multiple-linear-regression.html#cb168-51" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
+<span id="cb168-52"><a href="multiple-linear-regression.html#cb168-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb168-53"><a href="multiple-linear-regression.html#cb168-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb168-54"><a href="multiple-linear-regression.html#cb168-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-55"><a href="multiple-linear-regression.html#cb168-55" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swiss, <span class="fu">aes</span>(<span class="at">x =</span> Examination, <span class="at">y =</span> Fertility, <span class="at">col =</span> religious)) <span class="sc">+</span> </span>
+<span id="cb168-56"><a href="multiple-linear-regression.html#cb168-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb168-57"><a href="multiple-linear-regression.html#cb168-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
+<span id="cb168-58"><a href="multiple-linear-regression.html#cb168-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-59"><a href="multiple-linear-regression.html#cb168-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-60"><a href="multiple-linear-regression.html#cb168-60" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb168-61"><a href="multiple-linear-regression.html#cb168-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-62"><a href="multiple-linear-regression.html#cb168-62" aria-hidden="true" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> religious<span class="sc">*</span>Infant.Mortality<span class="sc">*</span>Examination, <span class="at">data =</span> swiss)</span>
+<span id="cb168-63"><a href="multiple-linear-regression.html#cb168-63" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit5)</span>
+<span id="cb168-64"><a href="multiple-linear-regression.html#cb168-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-65"><a href="multiple-linear-regression.html#cb168-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-66"><a href="multiple-linear-regression.html#cb168-66" aria-hidden="true" tabindex="-1"></a><span class="co"># model comparison</span></span>
+<span id="cb168-67"><a href="multiple-linear-regression.html#cb168-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-68"><a href="multiple-linear-regression.html#cb168-68" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(swiss)</span>
+<span id="cb168-69"><a href="multiple-linear-regression.html#cb168-69" aria-hidden="true" tabindex="-1"></a>swiss <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(swiss)</span>
+<span id="cb168-70"><a href="multiple-linear-regression.html#cb168-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-71"><a href="multiple-linear-regression.html#cb168-71" aria-hidden="true" tabindex="-1"></a>fit_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> ., <span class="at">data =</span> swiss)</span>
+<span id="cb168-72"><a href="multiple-linear-regression.html#cb168-72" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_full)</span>
+<span id="cb168-73"><a href="multiple-linear-regression.html#cb168-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-74"><a href="multiple-linear-regression.html#cb168-74" aria-hidden="true" tabindex="-1"></a>fit_reduced1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Infant.Mortality <span class="sc">+</span> Examination <span class="sc">+</span> Catholic <span class="sc">+</span> Education, <span class="at">data =</span> swiss)</span>
+<span id="cb168-75"><a href="multiple-linear-regression.html#cb168-75" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_reduced1)</span>
+<span id="cb168-76"><a href="multiple-linear-regression.html#cb168-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-77"><a href="multiple-linear-regression.html#cb168-77" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_full, fit_reduced1)</span>
+<span id="cb168-78"><a href="multiple-linear-regression.html#cb168-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-79"><a href="multiple-linear-regression.html#cb168-79" aria-hidden="true" tabindex="-1"></a>fit_reduced2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Infant.Mortality <span class="sc">+</span> Education <span class="sc">+</span> Catholic <span class="sc">+</span> Agriculture, <span class="at">data =</span> swiss)</span>
+<span id="cb168-80"><a href="multiple-linear-regression.html#cb168-80" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_reduced2)</span>
+<span id="cb168-81"><a href="multiple-linear-regression.html#cb168-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-82"><a href="multiple-linear-regression.html#cb168-82" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_full, fit_reduced2)</span>
+<span id="cb168-83"><a href="multiple-linear-regression.html#cb168-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-84"><a href="multiple-linear-regression.html#cb168-84" aria-hidden="true" tabindex="-1"></a><span class="co"># model selection</span></span>
+<span id="cb168-85"><a href="multiple-linear-regression.html#cb168-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-86"><a href="multiple-linear-regression.html#cb168-86" aria-hidden="true" tabindex="-1"></a>optimal_fit <span class="ot">&lt;-</span>  <span class="fu">step</span>(fit_full, <span class="at">direction =</span> <span class="st">&#39;backward&#39;</span>)</span>
+<span id="cb168-87"><a href="multiple-linear-regression.html#cb168-87" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(optimal_fit)</span></code></pre></div>
 
 </div>
             </section>

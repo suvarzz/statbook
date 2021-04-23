@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Hypothesis testing | R statistics</title>
+  <title>Chapter 29 Bayesian Statistics | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Hypothesis testing | R statistics" />
+  <meta property="og:title" content="Chapter 29 Bayesian Statistics | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Hypothesis testing | R statistics" />
+  <meta name="twitter:title" content="Chapter 29 Bayesian Statistics | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="statistical-distributions.html"/>
-<link rel="next" href="t-procedures.html"/>
+<link rel="prev" href="learning-vector-quantization.html"/>
+<link rel="next" href="naive-bayes.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -303,191 +303,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="hypothesis-testing" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Hypothesis testing</h1>
-<div id="hypothesis-testing-theory" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Hypothesis testing theory</h2>
-<p>Null hypothesis (H<sub>0</sub>):<br />
-1. H<sub>0</sub>: m = μ<br />
-2. H<sub>0</sub>: m <span class="math inline">\(\leq\)</span> μ<br />
-3. H<sub>0</sub>: m <span class="math inline">\(\geq\)</span> μ</p>
-<p>Alternative hypotheses (H<sub>a</sub>):<br />
-1. H<sub>a</sub>:m ≠ μ (different)<br />
-2. H<sub>a</sub>:m &gt; μ (greater)<br />
-3. H<sub>a</sub>:m &lt; μ (less)</p>
-<p><em>Note</em>: Hypothesis 1. are called <strong>two-tailed tests</strong> and hypotheses 2. &amp; 3. are called <strong>one-tailed tests</strong>.</p>
-<p>The p-value is the probability that the observed data could happen, under the condition that the null hypothesis is true.</p>
-<p><em>Note</em>: p-value is not the probability that the null hypothesis is true.<br />
-<em>Note</em>: Absence of evidence ⧧ evidence of absence.</p>
-<p>Cutoffs for hypothesis testing *p &lt; 0.05, **p &lt; 0.01, ***p &lt; 0.001.<br />
-If p value is less than significance level alpha (0.05), the hull hypothesies is rejected.</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>not rejected (‘negative’)</th>
-<th>rejected (‘positive’)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>H<sub>0</sub> true</td>
-<td>True negative (specificity)</td>
-<td>False Positive (Type I error)</td>
-</tr>
-<tr class="even">
-<td>H<sub>0</sub> false</td>
-<td>False Negative (Type II error)</td>
-<td>True positive (sensitivity)</td>
-</tr>
-</tbody>
-</table>
-<p>Type II errors are usually more dangerous.</p>
-<p>Significance level <span class="math inline">\(/alpha\)</span> is the probability of mistakenly rejecting the null hypothesis, if the null hypothesis is true. This is also called false positive and type I error.</p>
-</div>
-<div id="hypothesis-test-practice" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Hypothesis test (Practice)</h2>
-<ol style="list-style-type: decimal">
-<li>Check distribution (is normal?): shapiro.test()<br />
-</li>
-<li>Distribution uniformity (are both normal?)<br />
-</li>
-<li>Dependence of variable (are x and y dependent?)<br />
-</li>
-<li>Difference of distribution parameters (are means different?)</li>
-</ol>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="hypothesis-testing.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="do">###. 1 Is distribution normal?</span></span>
-<span id="cb46-2"><a href="hypothesis-testing.html#cb46-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;~/DataAnalysis/DATA/town_1959_2.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
-<span id="cb46-3"><a href="hypothesis-testing.html#cb46-3" aria-hidden="true" tabindex="-1"></a>town</span>
-<span id="cb46-4"><a href="hypothesis-testing.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
-<span id="cb46-5"><a href="hypothesis-testing.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(town[,<span class="dv">3</span>])</span>
-<span id="cb46-6"><a href="hypothesis-testing.html#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="hypothesis-testing.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># log scale</span></span>
-<span id="cb46-8"><a href="hypothesis-testing.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(town[,<span class="dv">3</span>]), <span class="at">breaks=</span><span class="dv">50</span>)</span>
-<span id="cb46-9"><a href="hypothesis-testing.html#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-10"><a href="hypothesis-testing.html#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ? Is log scaled number of sitizens per town is normally distributed?</span></span>
-<span id="cb46-11"><a href="hypothesis-testing.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co"># test for normal distribution of dataset</span></span>
-<span id="cb46-12"><a href="hypothesis-testing.html#cb46-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">log</span>(town[,<span class="dv">3</span>])</span>
-<span id="cb46-13"><a href="hypothesis-testing.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(data)</span>
-<span id="cb46-14"><a href="hypothesis-testing.html#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-15"><a href="hypothesis-testing.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: data is normally distributed</span></span>
-<span id="cb46-16"><a href="hypothesis-testing.html#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co"># W = 0.97467 - </span></span>
-<span id="cb46-17"><a href="hypothesis-testing.html#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 3.15e-12 -&gt; p &lt; alpha (0.01) - H0 is incorrect</span></span>
-<span id="cb46-18"><a href="hypothesis-testing.html#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Our distripution is not normal</span></span>
-<span id="cb46-19"><a href="hypothesis-testing.html#cb46-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-20"><a href="hypothesis-testing.html#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Different tests for normality in package &quot;nortest&quot;</span></span>
-<span id="cb46-21"><a href="hypothesis-testing.html#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
-<span id="cb46-22"><a href="hypothesis-testing.html#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
-<span id="cb46-23"><a href="hypothesis-testing.html#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ad.test</span>(data)   <span class="co"># Anderson-Darling test</span></span>
-<span id="cb46-24"><a href="hypothesis-testing.html#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lillie.test</span>(data) <span class="co"># Lilliefors (Kolmogorov-Smirnov) test</span></span>
-<span id="cb46-25"><a href="hypothesis-testing.html#cb46-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-26"><a href="hypothesis-testing.html#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if n &lt; 2000 -&gt; shapiro.test, else -&gt; lillie.test</span></span>
-<span id="cb46-27"><a href="hypothesis-testing.html#cb46-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-28"><a href="hypothesis-testing.html#cb46-28" aria-hidden="true" tabindex="-1"></a><span class="co"># In theory it is possible to use method for normally distributed data, </span></span>
-<span id="cb46-29"><a href="hypothesis-testing.html#cb46-29" aria-hidden="true" tabindex="-1"></a><span class="co"># even if they are not normal, but almost normal:</span></span>
-<span id="cb46-30"><a href="hypothesis-testing.html#cb46-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. No outlayers</span></span>
-<span id="cb46-31"><a href="hypothesis-testing.html#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Symmetry of histogram</span></span>
-<span id="cb46-32"><a href="hypothesis-testing.html#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bell-shaped form of histogram</span></span>
-<span id="cb46-33"><a href="hypothesis-testing.html#cb46-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-34"><a href="hypothesis-testing.html#cb46-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Method to make normal from not-normal distribution</span></span>
-<span id="cb46-35"><a href="hypothesis-testing.html#cb46-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Remove outlayers</span></span>
-<span id="cb46-36"><a href="hypothesis-testing.html#cb46-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Transform data to get symmetry: log, Boxcox</span></span>
-<span id="cb46-37"><a href="hypothesis-testing.html#cb46-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bimodality: split samples into groups</span></span>
-<span id="cb46-38"><a href="hypothesis-testing.html#cb46-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-39"><a href="hypothesis-testing.html#cb46-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxcox transformation</span></span>
-<span id="cb46-40"><a href="hypothesis-testing.html#cb46-40" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;AID&quot;</span>)</span>
-<span id="cb46-41"><a href="hypothesis-testing.html#cb46-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AID)</span>
-<span id="cb46-42"><a href="hypothesis-testing.html#cb46-42" aria-hidden="true" tabindex="-1"></a>bctr <span class="ot">=</span> <span class="fu">boxcoxnc</span>(data)</span>
-<span id="cb46-43"><a href="hypothesis-testing.html#cb46-43" aria-hidden="true" tabindex="-1"></a>bctr<span class="sc">$</span>results</span>
-<span id="cb46-44"><a href="hypothesis-testing.html#cb46-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-45"><a href="hypothesis-testing.html#cb46-45" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Compair centers of two distributions</span></span>
-<span id="cb46-46"><a href="hypothesis-testing.html#cb46-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if notmal -&gt; mean, else -&gt; median</span></span>
-<span id="cb46-47"><a href="hypothesis-testing.html#cb46-47" aria-hidden="true" tabindex="-1"></a><span class="co"># if median -&gt; Mann–Whitney-Wilcoxon (MWW) test</span></span>
-<span id="cb46-48"><a href="hypothesis-testing.html#cb46-48" aria-hidden="true" tabindex="-1"></a><span class="co"># if mean -&gt; one of Student&#39;s tests</span></span>
-<span id="cb46-49"><a href="hypothesis-testing.html#cb46-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-50"><a href="hypothesis-testing.html#cb46-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Student t-test</span></span>
-<span id="cb46-51"><a href="hypothesis-testing.html#cb46-51" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x,y, alternative=&quot;two.sided&quot;, paired=FALSE, var.equal=FALSE)</span></span>
-<span id="cb46-52"><a href="hypothesis-testing.html#cb46-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-53"><a href="hypothesis-testing.html#cb46-53" aria-hidden="true" tabindex="-1"></a><span class="co"># How to compair if dispersions are the same?</span></span>
-<span id="cb46-54"><a href="hypothesis-testing.html#cb46-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Fligner-Killeen test</span></span>
-<span id="cb46-55"><a href="hypothesis-testing.html#cb46-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Brown-Forsythe test</span></span>
-<span id="cb46-56"><a href="hypothesis-testing.html#cb46-56" aria-hidden="true" tabindex="-1"></a><span class="co">#fligner.test(x~g, data=data.table)</span></span>
-<span id="cb46-57"><a href="hypothesis-testing.html#cb46-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-58"><a href="hypothesis-testing.html#cb46-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
-<span id="cb46-59"><a href="hypothesis-testing.html#cb46-59" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">read.table</span> (<span class="st">&quot;~/DataAnalysis/R_data_analysis/DATA/Albuquerque Home Prices_data.txt&quot;</span>, <span class="at">header=</span>T)</span>
-<span id="cb46-60"><a href="hypothesis-testing.html#cb46-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-61"><a href="hypothesis-testing.html#cb46-61" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
-<span id="cb46-62"><a href="hypothesis-testing.html#cb46-62" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span>
-<span id="cb46-63"><a href="hypothesis-testing.html#cb46-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-64"><a href="hypothesis-testing.html#cb46-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Change -9999 to NA</span></span>
-<span id="cb46-65"><a href="hypothesis-testing.html#cb46-65" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>AGE[x<span class="sc">$</span>AGE<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb46-66"><a href="hypothesis-testing.html#cb46-66" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>TAX[x<span class="sc">$</span>TAX<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb46-67"><a href="hypothesis-testing.html#cb46-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-68"><a href="hypothesis-testing.html#cb46-68" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(PRICE<span class="sc">~</span>COR, <span class="at">data=</span>x)</span>
-<span id="cb46-69"><a href="hypothesis-testing.html#cb46-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Dispersion is the same for both distribution</span></span>
-<span id="cb46-70"><a href="hypothesis-testing.html#cb46-70" aria-hidden="true" tabindex="-1"></a><span class="co"># p &gt; alpha (0.01)</span></span>
-<span id="cb46-71"><a href="hypothesis-testing.html#cb46-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-72"><a href="hypothesis-testing.html#cb46-72" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">1</span>], x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">0</span>],</span>
-<span id="cb46-73"><a href="hypothesis-testing.html#cb46-73" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative=</span><span class="st">&quot;less&quot;</span>,</span>
-<span id="cb46-74"><a href="hypothesis-testing.html#cb46-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
-<span id="cb46-75"><a href="hypothesis-testing.html#cb46-75" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
-<span id="cb46-76"><a href="hypothesis-testing.html#cb46-76" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 0.1977 (H0 is true)</span></span>
-<span id="cb46-77"><a href="hypothesis-testing.html#cb46-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-78"><a href="hypothesis-testing.html#cb46-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Mood&#39;s median test</span></span>
-<span id="cb46-79"><a href="hypothesis-testing.html#cb46-79" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
-<span id="cb46-80"><a href="hypothesis-testing.html#cb46-80" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb46-81"><a href="hypothesis-testing.html#cb46-81" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">0</span>,<span class="dv">1</span>]</span>
-<span id="cb46-82"><a href="hypothesis-testing.html#cb46-82" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">c</span>(x1,x2))</span>
-<span id="cb46-83"><a href="hypothesis-testing.html#cb46-83" aria-hidden="true" tabindex="-1"></a>f11 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&gt;</span>m)</span>
-<span id="cb46-84"><a href="hypothesis-testing.html#cb46-84" aria-hidden="true" tabindex="-1"></a>f12 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&gt;</span>m)</span>
-<span id="cb46-85"><a href="hypothesis-testing.html#cb46-85" aria-hidden="true" tabindex="-1"></a>f21 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&lt;=</span>m)</span>
-<span id="cb46-86"><a href="hypothesis-testing.html#cb46-86" aria-hidden="true" tabindex="-1"></a>f22 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&lt;=</span>m)</span>
-<span id="cb46-87"><a href="hypothesis-testing.html#cb46-87" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(f11,f12, f21, f22), <span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
-<span id="cb46-88"><a href="hypothesis-testing.html#cb46-88" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table)</span>
-<span id="cb46-89"><a href="hypothesis-testing.html#cb46-89" aria-hidden="true" tabindex="-1"></a><span class="co"># p=0.47 &gt; alpha=0.05: H0 is true</span></span>
-<span id="cb46-90"><a href="hypothesis-testing.html#cb46-90" aria-hidden="true" tabindex="-1"></a><span class="co"># medians are the same</span></span>
-<span id="cb46-91"><a href="hypothesis-testing.html#cb46-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-92"><a href="hypothesis-testing.html#cb46-92" aria-hidden="true" tabindex="-1"></a><span class="do">## Mann–Whitney-Wilcoxon (MWW) test</span></span>
-<span id="cb46-93"><a href="hypothesis-testing.html#cb46-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if medians are the same</span></span>
-<span id="cb46-94"><a href="hypothesis-testing.html#cb46-94" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n1*(n1+1)/2 - T1}</span></span>
-<span id="cb46-95"><a href="hypothesis-testing.html#cb46-95" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n2*(n2+1)/2 - T2}</span></span>
-<span id="cb46-96"><a href="hypothesis-testing.html#cb46-96" aria-hidden="true" tabindex="-1"></a><span class="co"># U=min(U1,U2)</span></span>
-<span id="cb46-97"><a href="hypothesis-testing.html#cb46-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Ti - сумма рангов в объединенной выборке наблюдений из выборки i</span></span>
-<span id="cb46-98"><a href="hypothesis-testing.html#cb46-98" aria-hidden="true" tabindex="-1"></a><span class="co"># n1, n2 - размеры выборок</span></span>
-<span id="cb46-99"><a href="hypothesis-testing.html#cb46-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-100"><a href="hypothesis-testing.html#cb46-100" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(x,y,</span>
-<span id="cb46-101"><a href="hypothesis-testing.html#cb46-101" aria-hidden="true" tabindex="-1"></a>            <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>,</span>
-<span id="cb46-102"><a href="hypothesis-testing.html#cb46-102" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
-<span id="cb46-103"><a href="hypothesis-testing.html#cb46-103" aria-hidden="true" tabindex="-1"></a>            <span class="at">exact=</span><span class="cn">TRUE</span>,</span>
-<span id="cb46-104"><a href="hypothesis-testing.html#cb46-104" aria-hidden="true" tabindex="-1"></a>            <span class="at">correct=</span><span class="cn">FALSE</span>)</span>
-<span id="cb46-105"><a href="hypothesis-testing.html#cb46-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-106"><a href="hypothesis-testing.html#cb46-106" aria-hidden="true" tabindex="-1"></a><span class="do">###. 3. Dependency of variables</span></span>
-<span id="cb46-107"><a href="hypothesis-testing.html#cb46-107" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: x, y independent</span></span>
-<span id="cb46-108"><a href="hypothesis-testing.html#cb46-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation analysis</span></span>
-<span id="cb46-109"><a href="hypothesis-testing.html#cb46-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation (pearson) mesure linear dependency!</span></span>
-<span id="cb46-110"><a href="hypothesis-testing.html#cb46-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation k depends on outlayers (must be removed)</span></span>
-<span id="cb46-111"><a href="hypothesis-testing.html#cb46-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-112"><a href="hypothesis-testing.html#cb46-112" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX)</span>
-<span id="cb46-113"><a href="hypothesis-testing.html#cb46-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-114"><a href="hypothesis-testing.html#cb46-114" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span>
-<span id="cb46-115"><a href="hypothesis-testing.html#cb46-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-116"><a href="hypothesis-testing.html#cb46-116" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
-<span id="cb46-117"><a href="hypothesis-testing.html#cb46-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-118"><a href="hypothesis-testing.html#cb46-118" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
-<span id="cb46-119"><a href="hypothesis-testing.html#cb46-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-120"><a href="hypothesis-testing.html#cb46-120" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb46-121"><a href="hypothesis-testing.html#cb46-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-122"><a href="hypothesis-testing.html#cb46-122" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span></code></pre></div>
+<div id="bayesian-statistics" class="section level1" number="29">
+<h1><span class="header-section-number">Chapter 29</span> Bayesian Statistics</h1>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="bayesian-statistics.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggjoy)</span>
+<span id="cb200-2"><a href="bayesian-statistics.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb200-3"><a href="bayesian-statistics.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggjoy)</span>
+<span id="cb200-4"><a href="bayesian-statistics.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb200-5"><a href="bayesian-statistics.html#cb200-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-6"><a href="bayesian-statistics.html#cb200-6" aria-hidden="true" tabindex="-1"></a><span class="co"># prop_model function to visualize bayesian posterior distributions</span></span>
+<span id="cb200-7"><a href="bayesian-statistics.html#cb200-7" aria-hidden="true" tabindex="-1"></a>prop_model <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">data =</span> <span class="fu">c</span>(), <span class="at">prior_prop =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">n_draws =</span> <span class="dv">10000</span>, </span>
+<span id="cb200-8"><a href="bayesian-statistics.html#cb200-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">show_plot =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb200-9"><a href="bayesian-statistics.html#cb200-9" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb200-10"><a href="bayesian-statistics.html#cb200-10" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(data)</span>
+<span id="cb200-11"><a href="bayesian-statistics.html#cb200-11" aria-hidden="true" tabindex="-1"></a>    proportion_success <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>), <span class="dv">1</span>)</span>
+<span id="cb200-12"><a href="bayesian-statistics.html#cb200-12" aria-hidden="true" tabindex="-1"></a>    data_indices <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(data), <span class="at">length.out =</span> <span class="fu">min</span>(<span class="fu">length</span>(data) <span class="sc">+</span> </span>
+<span id="cb200-13"><a href="bayesian-statistics.html#cb200-13" aria-hidden="true" tabindex="-1"></a>                                                                    <span class="dv">1</span>, <span class="dv">20</span>)))</span>
+<span id="cb200-14"><a href="bayesian-statistics.html#cb200-14" aria-hidden="true" tabindex="-1"></a>    post_curves <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(data_indices, <span class="cf">function</span>(i) {</span>
+<span id="cb200-15"><a href="bayesian-statistics.html#cb200-15" aria-hidden="true" tabindex="-1"></a>        value <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(i <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;Prior&quot;</span>, <span class="fu">ifelse</span>(data[i], <span class="st">&quot;Success&quot;</span>, </span>
+<span id="cb200-16"><a href="bayesian-statistics.html#cb200-16" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">&quot;Failure&quot;</span>))</span>
+<span id="cb200-17"><a href="bayesian-statistics.html#cb200-17" aria-hidden="true" tabindex="-1"></a>        label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;n=&quot;</span>, i)</span>
+<span id="cb200-18"><a href="bayesian-statistics.html#cb200-18" aria-hidden="true" tabindex="-1"></a>        probability <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(proportion_success, prior_prop[<span class="dv">1</span>] <span class="sc">+</span> </span>
+<span id="cb200-19"><a href="bayesian-statistics.html#cb200-19" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">sum</span>(data[<span class="fu">seq_len</span>(i)]), prior_prop[<span class="dv">2</span>] <span class="sc">+</span> <span class="fu">sum</span>(<span class="sc">!</span>data[<span class="fu">seq_len</span>(i)]))</span>
+<span id="cb200-20"><a href="bayesian-statistics.html#cb200-20" aria-hidden="true" tabindex="-1"></a>        probability <span class="ot">&lt;-</span> probability<span class="sc">/</span><span class="fu">max</span>(probability)</span>
+<span id="cb200-21"><a href="bayesian-statistics.html#cb200-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tibble</span>(value, label, proportion_success, probability)</span>
+<span id="cb200-22"><a href="bayesian-statistics.html#cb200-22" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb200-23"><a href="bayesian-statistics.html#cb200-23" aria-hidden="true" tabindex="-1"></a>    post_curves<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="fu">fct_rev</span>(<span class="fu">factor</span>(post_curves<span class="sc">$</span>label, <span class="at">levels =</span> <span class="fu">paste0</span>(<span class="st">&quot;n=&quot;</span>, </span>
+<span id="cb200-24"><a href="bayesian-statistics.html#cb200-24" aria-hidden="true" tabindex="-1"></a>                                                                           data_indices)))</span>
+<span id="cb200-25"><a href="bayesian-statistics.html#cb200-25" aria-hidden="true" tabindex="-1"></a>    post_curves<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">factor</span>(post_curves<span class="sc">$</span>value, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Prior&quot;</span>, </span>
+<span id="cb200-26"><a href="bayesian-statistics.html#cb200-26" aria-hidden="true" tabindex="-1"></a>                                                              <span class="st">&quot;Success&quot;</span>, <span class="st">&quot;Failure&quot;</span>))</span>
+<span id="cb200-27"><a href="bayesian-statistics.html#cb200-27" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(post_curves, <span class="fu">aes</span>(<span class="at">x =</span> proportion_success, <span class="at">y =</span> label, </span>
+<span id="cb200-28"><a href="bayesian-statistics.html#cb200-28" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">height =</span> probability, <span class="at">fill =</span> value)) <span class="sc">+</span> <span class="fu">geom_joy</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
+<span id="cb200-29"><a href="bayesian-statistics.html#cb200-29" aria-hidden="true" tabindex="-1"></a>                                                                                 <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">panel_scaling =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb200-30"><a href="bayesian-statistics.html#cb200-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_discrete</span>(<span class="st">&quot;&quot;</span>, <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="st">&quot;Underlying proportion of success&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb200-31"><a href="bayesian-statistics.html#cb200-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">hcl</span>(<span class="dv">120</span> <span class="sc">*</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">0</span> <span class="sc">+</span> <span class="dv">15</span>, <span class="dv">100</span>, <span class="dv">65</span>), </span>
+<span id="cb200-32"><a href="bayesian-statistics.html#cb200-32" aria-hidden="true" tabindex="-1"></a>                          <span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Prior   &quot;</span>, <span class="st">&quot;Success   &quot;</span>, </span>
+<span id="cb200-33"><a href="bayesian-statistics.html#cb200-33" aria-hidden="true" tabindex="-1"></a>                                                              <span class="st">&quot;Failure   &quot;</span>)) <span class="sc">+</span> <span class="fu">theme_light</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span> </span>
+<span id="cb200-34"><a href="bayesian-statistics.html#cb200-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span>
+<span id="cb200-35"><a href="bayesian-statistics.html#cb200-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (show_plot) {</span>
+<span id="cb200-36"><a href="bayesian-statistics.html#cb200-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(p)</span>
+<span id="cb200-37"><a href="bayesian-statistics.html#cb200-37" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb200-38"><a href="bayesian-statistics.html#cb200-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">invisible</span>(<span class="fu">rbeta</span>(n_draws, prior_prop[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">sum</span>(data), prior_prop[<span class="dv">2</span>] <span class="sc">+</span> </span>
+<span id="cb200-39"><a href="bayesian-statistics.html#cb200-39" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">sum</span>(<span class="sc">!</span>data)))</span>
+<span id="cb200-40"><a href="bayesian-statistics.html#cb200-40" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb200-41"><a href="bayesian-statistics.html#cb200-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-42"><a href="bayesian-statistics.html#cb200-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 50 random binary data with P(1)=0.75</span></span>
+<span id="cb200-43"><a href="bayesian-statistics.html#cb200-43" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.75</span>, <span class="fl">0.25</span>),</span>
+<span id="cb200-44"><a href="bayesian-statistics.html#cb200-44" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb200-45"><a href="bayesian-statistics.html#cb200-45" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="fu">prop_model</span>(data)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="statistical-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="t-procedures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="learning-vector-quantization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="naive-bayes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -518,7 +390,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06_hypothesis_testing.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/42_bayesian_statistics.Rmd",
 "text": "Edit"
 },
 "history": {

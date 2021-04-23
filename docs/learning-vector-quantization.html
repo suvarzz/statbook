@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 27 Learning Vector Quantization | R statistics</title>
+  <title>Chapter 28 Learning Vector Quantization | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 27 Learning Vector Quantization | R statistics" />
+  <meta property="og:title" content="Chapter 28 Learning Vector Quantization | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 27 Learning Vector Quantization | R statistics" />
+  <meta name="twitter:title" content="Chapter 28 Learning Vector Quantization | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="clustering.html"/>
-<link rel="next" href="naive-bayes.html"/>
+<link rel="next" href="bayesian-statistics.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -231,48 +231,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>21.2</b> Generate random data set for the linear model</a></li>
 <li class="chapter" data-level="21.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>21.3</b> Practical example</a></li>
 <li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>21.4</b> Mean squared error (MSE)</a></li>
-<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>21.5</b> Linear regression model for multiple parameters</a></li>
-<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>21.6</b> Linear regression modeling, compair with kNN</a></li>
-<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#more-complex-example"><i class="fa fa-check"></i><b>21.7</b> More complex example</a></li>
-<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.8</b> NEXT part</a></li>
-<li class="chapter" data-level="21.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-1"><i class="fa fa-check"></i><b>21.9</b> NEXT Part</a></li>
+<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>21.5</b> Linear model in R</a></li>
+<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>21.6</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>21.7</b> Choosing explanatory variables for the model</a></li>
+<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>21.8</b> Assessment of model performance for categorical data.</a></li>
+<li class="chapter" data-level="21.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>21.9</b> Confidence intervals for linear model</a></li>
 <li class="chapter" data-level="21.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.10</b> Practical examples for linear model regression</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>22</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="23" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>23</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="24" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>24</b> Spline model</a>
+<li class="chapter" data-level="22" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>22</b> Linear regression complex cases</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>24.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="24.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>24.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="24.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>24.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="24.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>24.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="24.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>24.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="24.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>24.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="24.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>24.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="22.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>22.1</b> Cars</a></li>
+<li class="chapter" data-level="22.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>22.2</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="22.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>22.3</b> More complex example</a></li>
+<li class="chapter" data-level="22.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>22.4</b> NEXT part</a></li>
+<li class="chapter" data-level="22.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>22.5</b> NEXT Part</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>25</b> Logistic Regression</a>
+<li class="chapter" data-level="23" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>23</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="25" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>25</b> Spline model</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>25.1</b> Confusion matrix</a></li>
-<li class="chapter" data-level="25.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>25.2</b> Next part</a></li>
-<li class="chapter" data-level="25.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>25.3</b> NExt part</a></li>
+<li class="chapter" data-level="25.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>25.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="25.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>25.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="25.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>25.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="25.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>25.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="25.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>25.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="25.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>25.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="25.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>25.7</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>26</b> Clustering</a>
+<li class="chapter" data-level="26" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>26</b> Logistic Regression</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="clustering.html"><a href="clustering.html#next-part-4"><i class="fa fa-check"></i><b>26.1</b> Next part</a></li>
-<li class="chapter" data-level="26.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>26.2</b> Example</a></li>
-<li class="chapter" data-level="26.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>26.3</b> NEXT PART</a></li>
+<li class="chapter" data-level="26.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>26.1</b> Confusion matrix</a></li>
+<li class="chapter" data-level="26.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>26.2</b> Next part</a></li>
+<li class="chapter" data-level="26.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>26.3</b> NExt part</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>27</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="28" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>28</b> Naive Bayes</a></li>
-<li class="chapter" data-level="29" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>29</b> Markov Chain Monte Carlo (MCMC)</a></li>
-<li class="chapter" data-level="30" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>30</b> Simple Markov process</a>
+<li class="chapter" data-level="27" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>27</b> Clustering</a>
 <ul>
-<li class="chapter" data-level="30.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>30.0.1</b> Sources</a></li>
+<li class="chapter" data-level="27.1" data-path="clustering.html"><a href="clustering.html#next-part-4"><i class="fa fa-check"></i><b>27.1</b> Next part</a></li>
+<li class="chapter" data-level="27.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>27.2</b> Example</a></li>
+<li class="chapter" data-level="27.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>27.3</b> NEXT PART</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>31</b> Tree-based models</a>
+<li class="chapter" data-level="28" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>28</b> Learning Vector Quantization</a></li>
+<li class="chapter" data-level="29" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>29</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="30" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>30</b> Naive Bayes</a></li>
+<li class="chapter" data-level="31" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>31</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="32" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>32</b> Simple Markov process</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>31.1</b> Classification Tree example</a></li>
-<li class="chapter" data-level="31.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>31.2</b> Regression Tree example</a></li>
+<li class="chapter" data-level="32.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>32.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>33</b> Tree-based models</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>33.1</b> Classification Tree example</a></li>
+<li class="chapter" data-level="33.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>33.2</b> Regression Tree example</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -294,35 +303,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="learning-vector-quantization" class="section level1" number="27">
-<h1><span class="header-section-number">Chapter 27</span> Learning Vector Quantization</h1>
+<div id="learning-vector-quantization" class="section level1" number="28">
+<h1><span class="header-section-number">Chapter 28</span> Learning Vector Quantization</h1>
 <p>Learning Vector Quantiztion (LVQ) is a supervised classification algorithm for binary and multiclass problems. LVQ is a special case of a neural network.<br />
 LVQ model creates codebook vectors by learning training dataset. Codebook vectors represent class regions. They contain elements that placed around the respective class according to their matching level. If the element matches, it comes closer to the target class, if it does not match, it moves farther from it. With this codebooks, the model classifies new data.
 <a href="http://jsalatas.ictpro.gr/implementation-of-competitive-learning-networks-for-weka/">Here</a> is a nice explanation how it works.</p>
 <p>There are several versions of <strong>LVQ</strong> function:<br />
 <code>lvq1()</code>, <code>olvq1()</code>, <code>lvq2()</code>, <code>lvq3()</code>, <code>dlvq()</code>.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="learning-vector-quantization.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class) <span class="co"># olvq1()</span></span>
-<span id="cb184-2"><a href="learning-vector-quantization.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># to split data</span></span>
-<span id="cb184-3"><a href="learning-vector-quantization.html#cb184-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-4"><a href="learning-vector-quantization.html#cb184-4" aria-hidden="true" tabindex="-1"></a><span class="co"># generate dataset</span></span>
-<span id="cb184-5"><a href="learning-vector-quantization.html#cb184-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> iris</span>
-<span id="cb184-6"><a href="learning-vector-quantization.html#cb184-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-7"><a href="learning-vector-quantization.html#cb184-7" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df<span class="sc">$</span>Species, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> F)</span>
-<span id="cb184-8"><a href="learning-vector-quantization.html#cb184-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-9"><a href="learning-vector-quantization.html#cb184-9" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> df[id, ]</span>
-<span id="cb184-10"><a href="learning-vector-quantization.html#cb184-10" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> df[<span class="sc">-</span>id, ]</span>
-<span id="cb184-11"><a href="learning-vector-quantization.html#cb184-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-12"><a href="learning-vector-quantization.html#cb184-12" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize an LVQ codebook</span></span>
-<span id="cb184-13"><a href="learning-vector-quantization.html#cb184-13" aria-hidden="true" tabindex="-1"></a>cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqinit</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species)</span>
-<span id="cb184-14"><a href="learning-vector-quantization.html#cb184-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-15"><a href="learning-vector-quantization.html#cb184-15" aria-hidden="true" tabindex="-1"></a><span class="co"># training set in a codebook.</span></span>
-<span id="cb184-16"><a href="learning-vector-quantization.html#cb184-16" aria-hidden="true" tabindex="-1"></a>build.cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">olvq1</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species, cb)</span>
-<span id="cb184-17"><a href="learning-vector-quantization.html#cb184-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-18"><a href="learning-vector-quantization.html#cb184-18" aria-hidden="true" tabindex="-1"></a><span class="co"># classify test set from LVQ Codebook for test data</span></span>
-<span id="cb184-19"><a href="learning-vector-quantization.html#cb184-19" aria-hidden="true" tabindex="-1"></a>predict <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqtest</span>(build.cb, test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb184-20"><a href="learning-vector-quantization.html#cb184-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-21"><a href="learning-vector-quantization.html#cb184-21" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix.</span></span>
-<span id="cb184-22"><a href="learning-vector-quantization.html#cb184-22" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(test<span class="sc">$</span>Species, predict)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="learning-vector-quantization.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class) <span class="co"># olvq1()</span></span>
+<span id="cb198-2"><a href="learning-vector-quantization.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># to split data</span></span>
+<span id="cb198-3"><a href="learning-vector-quantization.html#cb198-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-4"><a href="learning-vector-quantization.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="co"># generate dataset</span></span>
+<span id="cb198-5"><a href="learning-vector-quantization.html#cb198-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> iris</span>
+<span id="cb198-6"><a href="learning-vector-quantization.html#cb198-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-7"><a href="learning-vector-quantization.html#cb198-7" aria-hidden="true" tabindex="-1"></a>id <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df<span class="sc">$</span>Species, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> F)</span>
+<span id="cb198-8"><a href="learning-vector-quantization.html#cb198-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-9"><a href="learning-vector-quantization.html#cb198-9" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> df[id, ]</span>
+<span id="cb198-10"><a href="learning-vector-quantization.html#cb198-10" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> df[<span class="sc">-</span>id, ]</span>
+<span id="cb198-11"><a href="learning-vector-quantization.html#cb198-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-12"><a href="learning-vector-quantization.html#cb198-12" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize an LVQ codebook</span></span>
+<span id="cb198-13"><a href="learning-vector-quantization.html#cb198-13" aria-hidden="true" tabindex="-1"></a>cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqinit</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species)</span>
+<span id="cb198-14"><a href="learning-vector-quantization.html#cb198-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-15"><a href="learning-vector-quantization.html#cb198-15" aria-hidden="true" tabindex="-1"></a><span class="co"># training set in a codebook.</span></span>
+<span id="cb198-16"><a href="learning-vector-quantization.html#cb198-16" aria-hidden="true" tabindex="-1"></a>build.cb <span class="ot">=</span> class<span class="sc">::</span><span class="fu">olvq1</span>(train[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], train<span class="sc">$</span>Species, cb)</span>
+<span id="cb198-17"><a href="learning-vector-quantization.html#cb198-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-18"><a href="learning-vector-quantization.html#cb198-18" aria-hidden="true" tabindex="-1"></a><span class="co"># classify test set from LVQ Codebook for test data</span></span>
+<span id="cb198-19"><a href="learning-vector-quantization.html#cb198-19" aria-hidden="true" tabindex="-1"></a>predict <span class="ot">=</span> class<span class="sc">::</span><span class="fu">lvqtest</span>(build.cb, test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb198-20"><a href="learning-vector-quantization.html#cb198-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-21"><a href="learning-vector-quantization.html#cb198-21" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix.</span></span>
+<span id="cb198-22"><a href="learning-vector-quantization.html#cb198-22" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(test<span class="sc">$</span>Species, predict)</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##             Reference
@@ -361,7 +370,7 @@ LVQ model creates codebook vectors by learning training dataset. Codebook vector
         </div>
       </div>
 <a href="clustering.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="naive-bayes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bayesian-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

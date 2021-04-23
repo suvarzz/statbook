@@ -66,12 +66,18 @@ linear-regression---theory
 generate-random-data-set-for-the-linear-model
 practical-example
 mean-squared-error-mse
+linear-model-in-r
 linear-regression-model-for-multiple-parameters
+choosing-explanatory-variables-for-the-model
+assessment-of-model-performance-for-categorical-data.
+confidence-intervals-for-linear-model
+practical-examples-for-linear-model-regression
+linear-regression-complex-cases
+cars
 linear-regression-modeling-compair-with-knn
 more-complex-example
 next-part
 next-part-1
-practical-examples-for-linear-model-regression
 nonlinear-regression
 multiple-linear-regression
 spline-model
@@ -91,6 +97,7 @@ next-part-4
 example
 next-part-5
 learning-vector-quantization
+bayesian-statistics
 naive-bayes
 markov-chain-monte-carlo-mcmc
 simple-markov-process
