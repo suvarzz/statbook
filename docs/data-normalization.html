@@ -155,6 +155,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#handling-missing-data"><i class="fa fa-check"></i><b>3.4</b> Handling missing data</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-statistics.html"><a href="basic-statistics.html#dealing-with-outliers"><i class="fa fa-check"></i><b>3.5</b> Dealing with outliers</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-normalization.html"><a href="data-normalization.html"><i class="fa fa-check"></i><b>4</b> Data normalization</a></li>
 <li class="chapter" data-level="5" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary analysis</a></li>
@@ -337,43 +339,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Normalized data may be on different scales.</li>
 </ul>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-normalization.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb24-2"><a href="data-normalization.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="data-normalization.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data with different ranges</span></span>
-<span id="cb24-4"><a href="data-normalization.html#cb24-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb24-5"><a href="data-normalization.html#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">length.out=</span><span class="dv">20</span>)),</span>
-<span id="cb24-6"><a href="data-normalization.html#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">500</span>, <span class="at">length.out=</span><span class="dv">20</span>)))</span>
-<span id="cb24-7"><a href="data-normalization.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># view data</span></span>
-<span id="cb24-8"><a href="data-normalization.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-normalization.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb29-2"><a href="data-normalization.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="data-normalization.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data with different ranges</span></span>
+<span id="cb29-4"><a href="data-normalization.html#cb29-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb29-5"><a href="data-normalization.html#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">length.out=</span><span class="dv">20</span>)),</span>
+<span id="cb29-6"><a href="data-normalization.html#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">500</span>, <span class="at">length.out=</span><span class="dv">20</span>)))</span>
+<span id="cb29-7"><a href="data-normalization.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># view data</span></span>
+<span id="cb29-8"><a href="data-normalization.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
 <pre><code>## Rows: 20
 ## Columns: 2
-## $ a [3m[90m&lt;dbl&gt;[39m[23m 0.0000000, 1.2631579, 1.0526316, 1.6842105, 0.…
-## $ b [3m[90m&lt;dbl&gt;[39m[23m 478.9474, 457.8947, 121.0526, 226.3158, 436.84…</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-normalization.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
-<span id="cb26-2"><a href="data-normalization.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
+## $ a [3m[90m&lt;dbl&gt;[39m[23m 0.0000000, 1.2631579, 1.0526316, 1.6842105, 0.6315789, 0.4210526, 0.9473684, 1.4736842, 0.7368421, 1.8947368, 0.5263158, 2.0000000, 1.5789474, 1.7894737, 1.1578947, 0.1052632, 0.2105263, 0.8421053, 1.…
+## $ b [3m[90m&lt;dbl&gt;[39m[23m 478.9474, 457.8947, 121.0526, 226.3158, 436.8421, 142.1053, 352.6316, 184.2105, 373.6842, 331.5789, 247.3684, 268.4211, 163.1579, 310.5263, 205.2632, 394.7368, 500.0000, 289.4737, 100.0000, 415.7895</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-normalization.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
+<span id="cb31-2"><a href="data-normalization.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
 <pre><code>##      a   b
 ## [1,] 0 100
 ## [2,] 2 500</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-normalization.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges are different =&gt; normalize</span></span>
-<span id="cb28-2"><a href="data-normalization.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply min-max and standardization</span></span>
-<span id="cb28-3"><a href="data-normalization.html#cb28-3" aria-hidden="true" tabindex="-1"></a>nrm <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb28-4"><a href="data-normalization.html#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">a_MinMax =</span> (a <span class="sc">-</span> <span class="fu">min</span>(a)) <span class="sc">/</span> (<span class="fu">max</span>(a) <span class="sc">-</span> <span class="fu">min</span>(a)), </span>
-<span id="cb28-5"><a href="data-normalization.html#cb28-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_MinMax =</span> (b <span class="sc">-</span> <span class="fu">min</span>(b)) <span class="sc">/</span> (<span class="fu">max</span>(b) <span class="sc">-</span> <span class="fu">min</span>(b)),</span>
-<span id="cb28-6"><a href="data-normalization.html#cb28-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">a_ZScore =</span> (a <span class="sc">-</span> <span class="fu">mean</span>(a)) <span class="sc">/</span> <span class="fu">sd</span>(a),</span>
-<span id="cb28-7"><a href="data-normalization.html#cb28-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_ZScore =</span> (b <span class="sc">-</span> <span class="fu">mean</span>(b)) <span class="sc">/</span> <span class="fu">sd</span>(b)</span>
-<span id="cb28-8"><a href="data-normalization.html#cb28-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb28-9"><a href="data-normalization.html#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="data-normalization.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges for normalized data</span></span>
-<span id="cb28-11"><a href="data-normalization.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(nrm, range)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-normalization.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges are different =&gt; normalize</span></span>
+<span id="cb33-2"><a href="data-normalization.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply min-max and standardization</span></span>
+<span id="cb33-3"><a href="data-normalization.html#cb33-3" aria-hidden="true" tabindex="-1"></a>nrm <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="data-normalization.html#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">a_MinMax =</span> (a <span class="sc">-</span> <span class="fu">min</span>(a)) <span class="sc">/</span> (<span class="fu">max</span>(a) <span class="sc">-</span> <span class="fu">min</span>(a)), </span>
+<span id="cb33-5"><a href="data-normalization.html#cb33-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_MinMax =</span> (b <span class="sc">-</span> <span class="fu">min</span>(b)) <span class="sc">/</span> (<span class="fu">max</span>(b) <span class="sc">-</span> <span class="fu">min</span>(b)),</span>
+<span id="cb33-6"><a href="data-normalization.html#cb33-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">a_ZScore =</span> (a <span class="sc">-</span> <span class="fu">mean</span>(a)) <span class="sc">/</span> <span class="fu">sd</span>(a),</span>
+<span id="cb33-7"><a href="data-normalization.html#cb33-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_ZScore =</span> (b <span class="sc">-</span> <span class="fu">mean</span>(b)) <span class="sc">/</span> <span class="fu">sd</span>(b)</span>
+<span id="cb33-8"><a href="data-normalization.html#cb33-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb33-9"><a href="data-normalization.html#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="data-normalization.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges for normalized data</span></span>
+<span id="cb33-11"><a href="data-normalization.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(nrm, range)</span></code></pre></div>
 <pre><code>##      a   b a_MinMax b_MinMax  a_ZScore  b_ZScore
 ## [1,] 0 100        0        0 -1.605793 -1.605793
 ## [2,] 2 500        1        1  1.605793  1.605793</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-normalization.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
-<span id="cb30-2"><a href="data-normalization.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb30-3"><a href="data-normalization.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">main =</span> <span class="st">&#39;Original&#39;</span>)</span>
-<span id="cb30-4"><a href="data-normalization.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&#39;Min-Max&#39;</span>)</span>
-<span id="cb30-5"><a href="data-normalization.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">main =</span> <span class="st">&#39;Z-Score&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-normalization.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb35-2"><a href="data-normalization.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb35-3"><a href="data-normalization.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">main =</span> <span class="st">&#39;Original&#39;</span>)</span>
+<span id="cb35-4"><a href="data-normalization.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&#39;Min-Max&#39;</span>)</span>
+<span id="cb35-5"><a href="data-normalization.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">main =</span> <span class="st">&#39;Z-Score&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <p><strong>Sources</strong><br />
 <a href="https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r">Practicing Machine Learning Interview Questions in R on DataCamp</a></p>
 
