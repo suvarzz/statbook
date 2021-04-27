@@ -1,0 +1,64 @@
+# Data normalization
+
+Data normalization (feature scaling) is not always needed for e.g. decision-tree-based models.  
+
+Data normalization is beneficial for:  
+- Support Vector Machines, K-narest neighbors, Logistic Regression  
+- Neural networks  
+- Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)  
+- feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)  
+
+**Min-max scaling**  
+- Maps a numerical value $x$ to the [0,1] interval  
+
+$$x' = \frac{x - min}{max - min}$$
+
+- Ensures that all features will share the exact same scale.  
+- Does not cope well with outliers.  
+
+**Standardization (Z-score normalization)**  
+- Maps a numerical value to $x$ to a new distribution with mean $\mu = 0$ and standard deviation $\sigma = 1$  
+
+$$x' = \frac{x - \mu}{\sigma}$$
+
+- More robust to outliers then min-max normalization.  
+- Normalized data may be on different scales.  
+
+The `min()`, `max()`, `mean()` and `sd()` R functions will help you normalize the data.  
+
+**Example**  
+```{r}
+library(dplyr)
+
+# generate data with different ranges
+df <- data.frame(
+    a = sample(seq(0, 2, length.out=20)),
+    b = sample(seq(100, 500, length.out=20)))
+# view data
+glimpse(df)
+
+# data ranges to see if normalization is needed
+sapply(df, range)
+
+
+# ranges are different => normalize
+# Apply min-max and standardization
+nrm <- df %>% 
+    mutate(a_MinMax = (a - min(a)) / (max(a) - min(a)), 
+           b_MinMax = (b - min(b)) / (max(b) - min(b)),
+           a_ZScore = (a - mean(a)) / sd(a),
+           b_ZScore = (b - mean(b)) / sd(b)
+    )
+
+# ranges for normalized data
+sapply(nrm, range)
+
+# plots
+par(mfrow=c(1,3))
+boxplot(nrm[, 1:2], main = 'Original')
+boxplot(nrm[, 3:4], main = 'Min-Max')
+boxplot(nrm[, 5:6], main = 'Z-Score')
+```
+
+**Sources**  
+(Practicing Machine Learning Interview Questions in R on DataCamp)[https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r]  

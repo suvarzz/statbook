@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Wilcoxon signed-rank test | R statistics</title>
+  <title>Chapter 4 Data normalization | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Wilcoxon signed-rank test | R statistics" />
+  <meta property="og:title" content="Chapter 4 Data normalization | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Wilcoxon signed-rank test | R statistics" />
+  <meta name="twitter:title" content="Chapter 4 Data normalization | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="non-parametric-methods.html"/>
-<link rel="next" href="support-vector-machine.html"/>
+<link rel="prev" href="basic-statistics.html"/>
+<link rel="next" href="primary-analysis.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -304,51 +304,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="wilcoxon-signed-rank-test-1" class="section level1" number="16">
-<h1><span class="header-section-number">Chapter 16</span> Wilcoxon signed-rank test</h1>
-<p>The Wilcoxon signed-rank test is a non-parametric statistical hypothesis test used to compare two related samples,
-matched samples, or repeated measurements on a single sample to assess whether their population mean ranks differ
-(i.e. it is a paired difference test). It can be used as an alternative to the paired Student’s t-test
-(also known as “t-test for matched pairs” or “t-test for dependent samples”) when the distribution of the
-difference between two samples’ means cannot be assumed to be normally distributed. A Wilcoxon signed-rank test can be
-used to determine whether two dependent samples were selected from populations having the same distribution.
-<a href="https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test">wiki</a></p>
-<p>Two data samples are matched if they come from repeated observations of the same subject.
-Using the Wilcoxon Signed-Rank Test, we can decide whether the corresponding data population distributions are
-identical without assuming them to follow the normal distribution.</p>
-<p>Example
-In the built-in data set named immer, the barley yield in years 1931 and 1932 of the same field are recorded.
-The yield data are presented in the data frame columns Y1 and Y2.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="wilcoxon-signed-rank-test-1.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb112-2"><a href="wilcoxon-signed-rank-test-1.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(immer)</span></code></pre></div>
-<pre><code>##   Loc Var    Y1    Y2
-## 1  UF   M  81.0  80.7
-## 2  UF   S 105.4  82.3
-## 3  UF   V 119.7  80.4
-## 4  UF   T 109.7  87.2
-## 5  UF   P  98.3  84.2
-## 6   W   M 146.6 100.4</code></pre>
-<p>Problem
-Without assuming the data to have normal distribution, test at .05 significance level if the barley yields of 1931 and 1932 in data set immer have identical data distributions.</p>
-<p>Solution
-The null hypothesis is that the barley yields of the two sample years are identical populations.
-To test the hypothesis, we apply the wilcox.test function to compare the matched samples.
-For the paired test, we set the “paired” argument as TRUE. As the p-value turns out to be 0.005318,
-and is less than the .05 significance level, we reject the null hypothesis.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="wilcoxon-signed-rank-test-1.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(immer<span class="sc">$</span>Y1, immer<span class="sc">$</span>Y2, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in wilcox.test.default(immer$Y1, immer$Y2, paired =
-## TRUE): cannot compute exact p-value with ties</code></pre>
-<pre><code>## 
-##  Wilcoxon signed rank test with continuity
-##  correction
-## 
-## data:  immer$Y1 and immer$Y2
-## V = 368.5, p-value = 0.005318
-## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<p>Answer
-At .05 significance level, we conclude that the barley yields of 1931 and 1932 from the data set immer are nonidentical populations.</p>
-<p><strong>Source</strong>
-<a href="http://www.r-tutor.com/elementary-statistics/non-parametric-methods/wilcoxon-signed-rank-test">Wilcoxon Signed-Rank Test</a></p>
+<div id="data-normalization" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Data normalization</h1>
+<p>Data normalization (feature scaling) is not always needed for e.g. decision-tree-based models.</p>
+<p>Data normalization is beneficial for:<br />
+- Support Vector Machines, K-narest neighbors, Logistic Regression<br />
+- Neural networks<br />
+- Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)<br />
+- feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)</p>
+<p><strong>Min-max scaling</strong><br />
+- Maps a numerical value <span class="math inline">\(x\)</span> to the [0,1] interval</p>
+<p><span class="math display">\[x&#39; = \frac{x - min}{max - min}\]</span></p>
+<ul>
+<li>Ensures that all features will share the exact same scale.<br />
+</li>
+<li>Does not cope well with outliers.</li>
+</ul>
+<p><strong>Standardization (Z-score normalization)</strong><br />
+- Maps a numerical value to <span class="math inline">\(x\)</span> to a new distribution with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span></p>
+<p><span class="math display">\[x&#39; = \frac{x - \mu}{\sigma}\]</span></p>
+<ul>
+<li>More robust to outliers then min-max normalization.<br />
+</li>
+<li>Normalized data may be on different scales.</li>
+</ul>
+<p>The <code>min()</code>, <code>max()</code>, <code>mean()</code> and <code>sd()</code> R functions will help you normalize the data.</p>
+<p><strong>Example</strong></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-normalization.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb24-2"><a href="data-normalization.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="data-normalization.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data with different ranges</span></span>
+<span id="cb24-4"><a href="data-normalization.html#cb24-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb24-5"><a href="data-normalization.html#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">length.out=</span><span class="dv">20</span>)),</span>
+<span id="cb24-6"><a href="data-normalization.html#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">500</span>, <span class="at">length.out=</span><span class="dv">20</span>)))</span>
+<span id="cb24-7"><a href="data-normalization.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># view data</span></span>
+<span id="cb24-8"><a href="data-normalization.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
+<pre><code>## Rows: 20
+## Columns: 2
+## $ a [3m[90m&lt;dbl&gt;[39m[23m 1.5789474, 0.6315789, 0.0000000, 2.0000000, 1.…
+## $ b [3m[90m&lt;dbl&gt;[39m[23m 184.2105, 247.3684, 100.0000, 121.0526, 415.78…</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-normalization.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
+<span id="cb26-2"><a href="data-normalization.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
+<pre><code>##      a   b
+## [1,] 0 100
+## [2,] 2 500</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-normalization.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges are different =&gt; normalize</span></span>
+<span id="cb28-2"><a href="data-normalization.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply min-max and standardization</span></span>
+<span id="cb28-3"><a href="data-normalization.html#cb28-3" aria-hidden="true" tabindex="-1"></a>nrm <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="data-normalization.html#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">a_MinMax =</span> (a <span class="sc">-</span> <span class="fu">min</span>(a)) <span class="sc">/</span> (<span class="fu">max</span>(a) <span class="sc">-</span> <span class="fu">min</span>(a)), </span>
+<span id="cb28-5"><a href="data-normalization.html#cb28-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_MinMax =</span> (b <span class="sc">-</span> <span class="fu">min</span>(b)) <span class="sc">/</span> (<span class="fu">max</span>(b) <span class="sc">-</span> <span class="fu">min</span>(b)),</span>
+<span id="cb28-6"><a href="data-normalization.html#cb28-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">a_ZScore =</span> (a <span class="sc">-</span> <span class="fu">mean</span>(a)) <span class="sc">/</span> <span class="fu">sd</span>(a),</span>
+<span id="cb28-7"><a href="data-normalization.html#cb28-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_ZScore =</span> (b <span class="sc">-</span> <span class="fu">mean</span>(b)) <span class="sc">/</span> <span class="fu">sd</span>(b)</span>
+<span id="cb28-8"><a href="data-normalization.html#cb28-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb28-9"><a href="data-normalization.html#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="data-normalization.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges for normalized data</span></span>
+<span id="cb28-11"><a href="data-normalization.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(nrm, range)</span></code></pre></div>
+<pre><code>##      a   b a_MinMax b_MinMax  a_ZScore  b_ZScore
+## [1,] 0 100        0        0 -1.605793 -1.605793
+## [2,] 2 500        1        1  1.605793  1.605793</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-normalization.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb30-2"><a href="data-normalization.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb30-3"><a href="data-normalization.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">main =</span> <span class="st">&#39;Original&#39;</span>)</span>
+<span id="cb30-4"><a href="data-normalization.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&#39;Min-Max&#39;</span>)</span>
+<span id="cb30-5"><a href="data-normalization.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">main =</span> <span class="st">&#39;Z-Score&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><strong>Sources</strong><br />
+(Practicing Machine Learning Interview Questions in R on DataCamp)[<a href="https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r" class="uri">https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r</a>]</p>
 
 </div>
             </section>
@@ -356,8 +376,8 @@ At .05 significance level, we conclude that the barley yields of 1931 and 1932 f
           </div>
         </div>
       </div>
-<a href="non-parametric-methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="support-vector-machine.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basic-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="primary-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -388,7 +408,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/09_wilcoxon_signed-rank_test.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04_normalizaiton.Rmd",
 "text": "Edit"
 },
 "history": {
