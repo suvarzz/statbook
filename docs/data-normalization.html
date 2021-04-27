@@ -308,12 +308,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> Data normalization</h1>
 <p>Data normalization (feature scaling) is not always needed for e.g. decision-tree-based models.</p>
 <p>Data normalization is beneficial for:<br />
-- Support Vector Machines, K-narest neighbors, Logistic Regression<br />
-- Neural networks<br />
-- Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)<br />
-- feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)</p>
+* Support Vector Machines, K-narest neighbors, Logistic Regression<br />
+( Neural networks<br />
+* Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)<br />
+* feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)</p>
 <p><strong>Min-max scaling</strong><br />
-- Maps a numerical value <span class="math inline">\(x\)</span> to the [0,1] interval</p>
+* Maps a numerical value <span class="math inline">\(x\)</span> to the [0,1] interval</p>
 <p><span class="math display">\[x&#39; = \frac{x - min}{max - min}\]</span></p>
 <ul>
 <li>Ensures that all features will share the exact same scale.<br />
@@ -321,14 +321,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Does not cope well with outliers.</li>
 </ul>
 <p><strong>Standardization (Z-score normalization)</strong><br />
-- Maps a numerical value to <span class="math inline">\(x\)</span> to a new distribution with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span></p>
+* Maps a numerical value to <span class="math inline">\(x\)</span> to a new distribution with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span></p>
 <p><span class="math display">\[x&#39; = \frac{x - \mu}{\sigma}\]</span></p>
 <ul>
 <li>More robust to outliers then min-max normalization.<br />
 </li>
 <li>Normalized data may be on different scales.</li>
 </ul>
-<p>The <code>min()</code>, <code>max()</code>, <code>mean()</code> and <code>sd()</code> R functions will help you normalize the data.</p>
 <p><strong>Example</strong></p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-normalization.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb24-2"><a href="data-normalization.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -340,8 +339,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb24-8"><a href="data-normalization.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
 <pre><code>## Rows: 20
 ## Columns: 2
-## $ a [3m[90m&lt;dbl&gt;[39m[23m 1.5789474, 0.6315789, 0.0000000, 2.0000000, 1.…
-## $ b [3m[90m&lt;dbl&gt;[39m[23m 184.2105, 247.3684, 100.0000, 121.0526, 415.78…</code></pre>
+## $ a [3m[90m&lt;dbl&gt;[39m[23m 0.0000000, 1.2631579, 1.0526316, 1.6842105, 0.…
+## $ b [3m[90m&lt;dbl&gt;[39m[23m 478.9474, 457.8947, 121.0526, 226.3158, 436.84…</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-normalization.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
 <span id="cb26-2"><a href="data-normalization.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
 <pre><code>##      a   b
@@ -368,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb30-5"><a href="data-normalization.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">main =</span> <span class="st">&#39;Z-Score&#39;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p><strong>Sources</strong><br />
-(Practicing Machine Learning Interview Questions in R on DataCamp)[<a href="https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r" class="uri">https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r</a>]</p>
+<a href="https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r">Practicing Machine Learning Interview Questions in R on DataCamp</a></p>
 
 </div>
             </section>

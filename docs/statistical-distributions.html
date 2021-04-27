@@ -321,13 +321,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb33-11"><a href="statistical-distributions.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y3, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
 <span id="cb33-12"><a href="statistical-distributions.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;sd = 1&quot;</span>, <span class="st">&quot;sd = 0.5&quot;</span>, <span class="st">&quot;sd = 2&quot;</span>),</span>
 <span id="cb33-13"><a href="statistical-distributions.html#cb33-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), </span>
-<span id="cb33-14"><a href="statistical-distributions.html#cb33-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb33-15"><a href="statistical-distributions.html#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-16"><a href="statistical-distributions.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Area under the curve</span></span>
-<span id="cb33-17"><a href="statistical-distributions.html#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co"># For normal distribution auc = 1 (probability for all)</span></span>
-<span id="cb33-18"><a href="statistical-distributions.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span></code></pre></div>
+<span id="cb33-14"><a href="statistical-distributions.html#cb33-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="statistical-distributions.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AUC</span>(x, y1)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="statistical-distributions.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area under the curve</span></span>
+<span id="cb34-2"><a href="statistical-distributions.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For normal distribution auc = 1 (probability for all)</span></span>
+<span id="cb34-3"><a href="statistical-distributions.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb34-4"><a href="statistical-distributions.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">AUC</span>(x, y1)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="statistical-distributions.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AUC</span>(x,y2)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
