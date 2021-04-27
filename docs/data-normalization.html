@@ -307,21 +307,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-normalization" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Data normalization</h1>
 <p>Data normalization (feature scaling) is not always needed for e.g. decision-tree-based models.</p>
-<p>Data normalization is beneficial for:<br />
-* Support Vector Machines, K-narest neighbors, Logistic Regression<br />
-( Neural networks<br />
-* Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)<br />
-* feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)</p>
-<p><strong>Min-max scaling</strong><br />
-* Maps a numerical value <span class="math inline">\(x\)</span> to the [0,1] interval</p>
+<p>Data normalization is beneficial for:</p>
+<ul>
+<li>Support Vector Machines, K-narest neighbors, Logistic Regression</li>
+<li>Neural networks<br />
+</li>
+<li>Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)<br />
+</li>
+<li>Feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)</li>
+</ul>
+<p><strong>Min-max scaling</strong></p>
+<ul>
+<li>Maps a numerical value <span class="math inline">\(x\)</span> to the [0,1] interval</li>
+</ul>
 <p><span class="math display">\[x&#39; = \frac{x - min}{max - min}\]</span></p>
 <ul>
 <li>Ensures that all features will share the exact same scale.<br />
 </li>
 <li>Does not cope well with outliers.</li>
 </ul>
-<p><strong>Standardization (Z-score normalization)</strong><br />
-* Maps a numerical value to <span class="math inline">\(x\)</span> to a new distribution with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span></p>
+<p><strong>Standardization (Z-score normalization)</strong></p>
+<ul>
+<li>Maps a numerical value to <span class="math inline">\(x\)</span> to a new distribution with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span></li>
+</ul>
 <p><span class="math display">\[x&#39; = \frac{x - \mu}{\sigma}\]</span></p>
 <ul>
 <li>More robust to outliers then min-max normalization.<br />

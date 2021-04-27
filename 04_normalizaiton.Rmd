@@ -3,12 +3,14 @@
 Data normalization (feature scaling) is not always needed for e.g. decision-tree-based models.  
 
 Data normalization is beneficial for:  
-* Support Vector Machines, K-narest neighbors, Logistic Regression  
-( Neural networks  
+
+* Support Vector Machines, K-narest neighbors, Logistic Regression
+* Neural networks  
 * Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)  
-* feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)  
+* Feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)  
 
 **Min-max scaling**  
+
 * Maps a numerical value $x$ to the [0,1] interval  
 
 $$x' = \frac{x - min}{max - min}$$
@@ -17,6 +19,7 @@ $$x' = \frac{x - min}{max - min}$$
 * Does not cope well with outliers.  
 
 **Standardization (Z-score normalization)**  
+
 * Maps a numerical value to $x$ to a new distribution with mean $\mu = 0$ and standard deviation $\sigma = 1$  
 
 $$x' = \frac{x - \mu}{\sigma}$$
