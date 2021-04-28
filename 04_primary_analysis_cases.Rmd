@@ -1,4 +1,5 @@
-# Primary analysis
+# Primary data analysis - Case studies
+
 
 Abbakumov, 2016, lectures  
 
@@ -25,18 +26,6 @@ df$origin[1:100] <-1
 # Set origin as factor - binary data (0,1)
 df$origin <- as.factor(df$origin)
 is.factor(df$origin)
-
-# 2. Visual inspection of given data
-head(df)
-typeof(df)  # data type
-dim(df)     # dimention
-nrow(df)
-ncol(df)
-str(df)
-summary(df)
-names(df)   # names of columns
-colnames(df) # also names of columns
-
 ```
 
 ```{r, eval=FALSE}

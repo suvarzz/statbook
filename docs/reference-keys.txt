@@ -14,10 +14,11 @@ histogram
 outliers
 normality
 confidence-interval
+primary-data-analysis---case-studies
+primary-data-analysis
 handling-missing-data
 dealing-with-outliers
 data-normalization
-primary-analysis
 statistical-distributions
 normal-distribution
 bernoulli-distribution

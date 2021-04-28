@@ -1,0 +1,255 @@
+# Primary data analysis
+
+## Handling missing data
+
+* **Ignore**: Discard samples with missing values.  
+* **Impute**: 'Fill in' the missing values with other values.  
+* **Accept**: Apply methods that are unaffected by the missing data.  
+
+```{r, eval=FALSE}
+library(naniar)
+mammographic <- read.csv('./DATA/mammographic.data')
+any_na(mammographic)
+# Replace ? with NAs: bands
+mammographic <- replace_with_na_all(mammographic, ~.x == '?')
+any_na(mammographic)
+miss_var_summary(mammographic)
+```
+
+**Vizualysing missing data**  
+```{r, eval = FALSE}
+library(ggpubr)
+
+a <- vis_miss(mammographic)
+# comulative
+b <- vis_miss(mammographic, cluster=TRUE)
+c <- gg_miss_case(mammographic)
+
+ggarrange(a, b, c + rremove("x.text"), 
+          labels = c("frame view", "cumulative", "missing"),
+          ncol = 3, nrow = 1)
+```
+
+**Missing data types**  
+- **MCAR**: Missing Completely At Random  
+- **MAR**: Missing At Random  
+- **MNAR**: Missing Not At Random  
+
+| **Type** | **Imputation**    | **Deletion**          | **Visual cues**                                                              |
+|----------|-------------------|-----------------------|------------------------------------------------------------------------------|
+| **MCAR** | Recommended       | Will not lead to bias | Random or noisy patterns in missingness clusters                             |
+| **MAR**  | Recommended       | May lead to bias      | Well-defined missingness clusters when arrangin for a particular variable(s) |
+| **MNAR** | Will lead to bias | Will lead to bias     | Neither visual pattern above holds                                           |
+
+It can be difficult to ascertain the missingness type using visual inspection!  
+
+**Internal evaluation**  
+Compair distributions with/without imputed values:  
+
+* Mean  
+* Variance  
+* Scale  
+
+**Exterlan evaluation**
+Build ML models with/without imputated values and evaluate impact of imputation method on ML model performance:  
+
+* Classification  
+* Regression  
+* Clustering  
+* etc.  
+
+Ideally imputation should not bring big differences.  
+
+**Mean and linear imputations**  
+```{r, eval=FALSE}
+library(naniar)
+library(simputation)
+
+# Impute with the mean
+imp_mean <- bands %>%
+    bind_shadow(only_miss = TRUE) %>% 
+    add_label_shadow() %>% 
+    impute_mean_all()
+
+# Impute with lm
+imp_lm <- bands %>%
+    bind_shadow(only_miss = TRUE) %>%
+    add_label_shadow() %>%
+    impute_lm(Blade_pressure ~ Ink_temperature) %>%
+    impute_lm(Roughness ~ Ink_temperature) %>%
+    impute_lm(Ink_pct ~ Ink_temperature)
+```
+
+**Combining multiple imputation models**  
+```{r, eval=FALSE}
+# Aggregate the imputation models
+imp_models <- bind_rows(mean = imp_mean,
+                        lm = lmp_lm,
+                        .id = "imp_model")
+head(imp_models)
+```
+
+## Dealing with outliers
+
+* The 3-sigma rule (for normally distributed data)  
+* The 1.5*IQR rule (more general)  
+
+Outliers:  
+
++ any value lower that $Q1 - 1.5 x IQR$  
++ or any higher than $Q3 + 1.5 x IQR$
+
+**Multivariate methods**  
+* **Distance-based**: K-nearest neighbors (kNN) distance  
+* **Density-based**: Local outlier factor (LOF)  
+
+**1.5*IQR rule**  
+Outliers:  
+
++ any value lower that $Q1 - 1.5 x IQR$  
++ or any higher than $Q3 + 1.5 x IQR$
+
+
+**Distance-based methods**  
+
+* Average distance to the K-nearest neighbors  
+
+**Density-based methods**  
+
+* Number of the neighboring points within a certain distance  
+
+Assumption: outliers often lie far from their neighbors  
+
+Local Outlier Factor (LOF)  
+* Measures the local deviation of a data point with respect to its neighbors.  
+* Outliers are observations with substantially lower density than their neighbors.  
+`get.knn()` from FNN package  
+
+* Each observation $x$ has an associated score LOF($x$)  
+LOF($x$) $\approx$ 1 similar density to its neighbors  
+LOF($x$) < 1 higher density than neighbors (inlier)  
+LOF($x$) > 1 lower density than neighbors (outlier)   
+
+`lof()` function from `dbscan` package
+
+**What to do with outlier observations?**  
+1. **Retention**: Keep them in your dataset and, if possible, use algorithms that are robust to outliers.
+- e.g. K nearest-neighbors (kNN), tree-based methods (decision tree, random forest)  
+2. **Imputation**: Use an imputation method to replace their value with a less extreme observation.  
+- e.g. mode imputation, linear imputation, kNN imputation.  
+3. **Capping**: Replace them with the value of the 5-th percentile (lower limit) or 95-th percentile (upper limit).  
+4. **Exclusion**: Not recommended, especially in small datasets or those where a normal distribution cannot be assumed.  
+
+```{r}
+cars <- read.csv('./DATA/cars.csv')
+cars <- cars[,1:3]
+head(cars)
+boxplot(cars$consume)
+consume_quartiles <- quantile(cars$consume)
+consume_quartiles
+
+# Scale data and create scatterplot: cars_scaled
+glimpse(cars)
+cars_scaled <- as.data.frame(scale(cars))
+plot(distance ~ consume, data = cars_scaled, 
+     main = 'Fuel consumption vs. distance')
+
+# Calculate upper threshold: upper_th
+upper_th <- consume_quartiles[4] + 
+    1.5 * (consume_quartiles[4] - consume_quartiles[2])
+upper_th
+# Print the sorted vector of distinct potential outliers
+sort(unique(cars$consume[cars$consume > upper_th]))
+
+library(FNN)
+# Compute KNN score
+cars_knn <- get.knn(data = cars_scaled, k = 7)
+cars1 <- cars
+cars1$knn_score <- rowMeans(cars_knn$nn.dist)
+
+# Print top 5 KNN scores and data point indices: top5_knn
+(top5_knn <- order(cars1$knn_score, decreasing = TRUE)[1:5])
+print(cars1$knn_score[top5_knn])
+
+# Plot variables using KNN score as size of points
+plot(distance ~ consume, data = cars1, cex = knn_score, pch = 20)
+
+library(dbscan)
+# Add lof_score column to cars1
+cars1 <- cars
+cars1$lof_score <- lof(cars_scaled, minPts = 7)
+
+# Print top 5 LOF scores and data point indices: top5_lof
+(top5_lof <- order(cars1$lof_score, decreasing = TRUE)[1:5])
+print(cars1$lof_score[top5_lof])
+
+# Plot variables using LOF score as size of points
+plot(distance ~ consume, data = cars1, 
+     cex = lof_score, pch = 20)
+```
+
+# Data normalization
+
+Data normalization (feature scaling) is not always needed for e.g. decision-tree-based models.  
+
+Data normalization is beneficial for:  
+
+* Support Vector Machines, K-narest neighbors, Logistic Regression
+* Neural networks  
+* Clustering algorithms (K-means, K-medoids, DBSCAN, etc.)  
+* Feature extraction (Principal Component Analysis, Linear Discriminant Analysis, etc)  
+
+**Min-max scaling**  
+
+* Maps a numerical value $x$ to the [0,1] interval  
+
+$$x' = \frac{x - min}{max - min}$$
+
+* Ensures that all features will share the exact same scale.  
+* Does not cope well with outliers.  
+
+**Standardization (Z-score normalization)**  
+
+* Maps a numerical value to $x$ to a new distribution with mean $\mu = 0$ and standard deviation $\sigma = 1$  
+
+$$x' = \frac{x - \mu}{\sigma}$$
+
+* More robust to outliers then min-max normalization.  
+* Normalized data may be on different scales.  
+
+**Example**  
+```{r}
+library(dplyr)
+
+# generate data with different ranges
+df <- data.frame(
+    a = sample(seq(0, 2, length.out=20)),
+    b = sample(seq(100, 500, length.out=20)))
+# view data
+glimpse(df)
+
+# data ranges to see if normalization is needed
+sapply(df, range)
+
+
+# ranges are different => normalize
+# Apply min-max and standardization
+nrm <- df %>% 
+    mutate(a_MinMax = (a - min(a)) / (max(a) - min(a)), 
+           b_MinMax = (b - min(b)) / (max(b) - min(b)),
+           a_ZScore = (a - mean(a)) / sd(a),
+           b_ZScore = (b - mean(b)) / sd(b)
+    )
+
+# ranges for normalized data
+sapply(nrm, range)
+
+# plots
+par(mfrow=c(1,3))
+boxplot(nrm[, 1:2], main = 'Original')
+boxplot(nrm[, 3:4], main = 'Min-Max')
+boxplot(nrm[, 5:6], main = 'Z-Score')
+```
+
+**Sources**  
+[Practicing Machine Learning Interview Questions in R on DataCamp](https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r)  
