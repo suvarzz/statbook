@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-28" />
+<meta name="date" content="2021-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,11 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.4</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.5</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.6</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.7</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.8</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a>
 <ul>
@@ -277,7 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>29.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="30" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>30</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+</ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="chapter" data-level="34" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>34</b> Simple Markov process</a>
@@ -311,40 +316,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="correlation" class="section level1" number="19">
 <h1><span class="header-section-number">Chapter 19</span> Correlation</h1>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="correlation.html#cb143-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mtcars</span>
-<span id="cb143-2"><a href="correlation.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation miles per galon of petrol ~ horse power</span></span>
-<span id="cb143-3"><a href="correlation.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
-<span id="cb143-4"><a href="correlation.html#cb143-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-5"><a href="correlation.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get parameters of analysed correlation</span></span>
-<span id="cb143-6"><a href="correlation.html#cb143-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
-<span id="cb143-7"><a href="correlation.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fit)</span>
-<span id="cb143-8"><a href="correlation.html#cb143-8" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>p.value</span>
-<span id="cb143-9"><a href="correlation.html#cb143-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-10"><a href="correlation.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the same correlation in &#39;formula&#39; form (see. ?cor.test)</span></span>
-<span id="cb143-11"><a href="correlation.html#cb143-11" aria-hidden="true" tabindex="-1"></a>?cor.test</span>
-<span id="cb143-12"><a href="correlation.html#cb143-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span>mpg<span class="sc">+</span>hp, df)</span>
-<span id="cb143-13"><a href="correlation.html#cb143-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-14"><a href="correlation.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot using generic plot function of ggplot from ggplot2 package</span></span>
-<span id="cb143-15"><a href="correlation.html#cb143-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
-<span id="cb143-16"><a href="correlation.html#cb143-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-17"><a href="correlation.html#cb143-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb143-18"><a href="correlation.html#cb143-18" aria-hidden="true" tabindex="-1"></a><span class="co"># add color by number of engine&#39;s cylinders</span></span>
-<span id="cb143-19"><a href="correlation.html#cb143-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">col =</span> <span class="fu">factor</span>(cyl)))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">5</span>)</span>
-<span id="cb143-20"><a href="correlation.html#cb143-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-21"><a href="correlation.html#cb143-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset of necessary data from mtcars</span></span>
-<span id="cb143-22"><a href="correlation.html#cb143-22" aria-hidden="true" tabindex="-1"></a>df.sub <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>)]</span>
-<span id="cb143-23"><a href="correlation.html#cb143-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplots for all pairs of variables</span></span>
-<span id="cb143-24"><a href="correlation.html#cb143-24" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(df.sub)</span>
-<span id="cb143-25"><a href="correlation.html#cb143-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-26"><a href="correlation.html#cb143-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlations of all pairs of variables</span></span>
-<span id="cb143-27"><a href="correlation.html#cb143-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df.sub)</span>
-<span id="cb143-28"><a href="correlation.html#cb143-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-29"><a href="correlation.html#cb143-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation using corr.test function from &#39;psych&#39; package</span></span>
-<span id="cb143-30"><a href="correlation.html#cb143-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation for all pairs of variables</span></span>
-<span id="cb143-31"><a href="correlation.html#cb143-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb143-32"><a href="correlation.html#cb143-32" aria-hidden="true" tabindex="-1"></a>fit.sub <span class="ot">&lt;-</span> <span class="fu">corr.test</span>(df.sub)</span>
-<span id="cb143-33"><a href="correlation.html#cb143-33" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>r    <span class="co"># correlations</span></span>
-<span id="cb143-34"><a href="correlation.html#cb143-34" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>p    <span class="co"># dependecies of variables</span></span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="correlation.html#cb151-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb151-2"><a href="correlation.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation miles per galon of petrol ~ horse power</span></span>
+<span id="cb151-3"><a href="correlation.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
+<span id="cb151-4"><a href="correlation.html#cb151-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-5"><a href="correlation.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get parameters of analysed correlation</span></span>
+<span id="cb151-6"><a href="correlation.html#cb151-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
+<span id="cb151-7"><a href="correlation.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fit)</span>
+<span id="cb151-8"><a href="correlation.html#cb151-8" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>p.value</span>
+<span id="cb151-9"><a href="correlation.html#cb151-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-10"><a href="correlation.html#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the same correlation in &#39;formula&#39; form (see. ?cor.test)</span></span>
+<span id="cb151-11"><a href="correlation.html#cb151-11" aria-hidden="true" tabindex="-1"></a>?cor.test</span>
+<span id="cb151-12"><a href="correlation.html#cb151-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span>mpg<span class="sc">+</span>hp, df)</span>
+<span id="cb151-13"><a href="correlation.html#cb151-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-14"><a href="correlation.html#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot using generic plot function of ggplot from ggplot2 package</span></span>
+<span id="cb151-15"><a href="correlation.html#cb151-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> df<span class="sc">$</span>mpg, <span class="at">y =</span> df<span class="sc">$</span>hp)</span>
+<span id="cb151-16"><a href="correlation.html#cb151-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-17"><a href="correlation.html#cb151-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb151-18"><a href="correlation.html#cb151-18" aria-hidden="true" tabindex="-1"></a><span class="co"># add color by number of engine&#39;s cylinders</span></span>
+<span id="cb151-19"><a href="correlation.html#cb151-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp, <span class="at">col =</span> <span class="fu">factor</span>(cyl)))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">5</span>)</span>
+<span id="cb151-20"><a href="correlation.html#cb151-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-21"><a href="correlation.html#cb151-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset of necessary data from mtcars</span></span>
+<span id="cb151-22"><a href="correlation.html#cb151-22" aria-hidden="true" tabindex="-1"></a>df.sub <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>)]</span>
+<span id="cb151-23"><a href="correlation.html#cb151-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplots for all pairs of variables</span></span>
+<span id="cb151-24"><a href="correlation.html#cb151-24" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(df.sub)</span>
+<span id="cb151-25"><a href="correlation.html#cb151-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-26"><a href="correlation.html#cb151-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlations of all pairs of variables</span></span>
+<span id="cb151-27"><a href="correlation.html#cb151-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df.sub)</span>
+<span id="cb151-28"><a href="correlation.html#cb151-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-29"><a href="correlation.html#cb151-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation using corr.test function from &#39;psych&#39; package</span></span>
+<span id="cb151-30"><a href="correlation.html#cb151-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation for all pairs of variables</span></span>
+<span id="cb151-31"><a href="correlation.html#cb151-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb151-32"><a href="correlation.html#cb151-32" aria-hidden="true" tabindex="-1"></a>fit.sub <span class="ot">&lt;-</span> <span class="fu">corr.test</span>(df.sub)</span>
+<span id="cb151-33"><a href="correlation.html#cb151-33" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>r    <span class="co"># correlations</span></span>
+<span id="cb151-34"><a href="correlation.html#cb151-34" aria-hidden="true" tabindex="-1"></a>fit.sub<span class="sc">$</span>p    <span class="co"># dependecies of variables</span></span></code></pre></div>
 
 </div>
             </section>

@@ -149,6 +149,7 @@ consume_quartiles <- quantile(cars$consume)
 consume_quartiles
 
 # Scale data and create scatterplot: cars_scaled
+require(dplyr)
 glimpse(cars)
 cars_scaled <- as.data.frame(scale(cars))
 plot(distance ~ consume, data = cars_scaled, 

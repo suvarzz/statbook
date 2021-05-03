@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-28" />
+<meta name="date" content="2021-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,11 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.4</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.5</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.6</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.7</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.8</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a>
 <ul>
@@ -277,7 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>29.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="30" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>30</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+</ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="chapter" data-level="34" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>34</b> Simple Markov process</a>
@@ -315,10 +320,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="t-test-1" class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> t-test</h2>
 <p>The data set shows energy expend in two groups of women: stature</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="sources.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISwR)</span>
-<span id="cb100-2"><a href="sources.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(energy)</span>
-<span id="cb100-3"><a href="sources.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(energy)</span>
-<span id="cb100-4"><a href="sources.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="sources.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISwR)</span>
+<span id="cb103-2"><a href="sources.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(energy)</span>
+<span id="cb103-3"><a href="sources.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(energy)</span></code></pre></div>
+<pre><code>## The following objects are masked from energy (pos = 4):
+## 
+##     expend, stature</code></pre>
+<pre><code>## The following objects are masked from energy (pos = 6):
+## 
+##     expend, stature</code></pre>
+<pre><code>## The following objects are masked from energy (pos = 25):
+## 
+##     expend, stature</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="sources.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy)</span></code></pre></div>
 <pre><code>##   expend stature
 ## 1   9.21   obese
 ## 2   7.53    lean
@@ -326,11 +340,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   8.08    lean
 ## 5   8.09    lean
 ## 6  10.15    lean</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="sources.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(expend, stature, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="sources.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(expend, stature, mean)</span></code></pre></div>
 <pre><code>##      lean     obese 
 ##  8.066154 10.297778</code></pre>
 <p>H<sub>0</sub>: there is no difference in averages between lean and obese.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="sources.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(expend <span class="sc">~</span> stature)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="sources.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(expend <span class="sc">~</span> stature)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -348,9 +362,18 @@ The risk of error is 0.15%</p>
 <div id="two-tailed-test" class="section level3" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> Two-tailed test</h3>
 <p>Compair two sets of variables.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="sources.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(intake) <span class="co"># from package ISwR</span></span>
-<span id="cb106-2"><a href="sources.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(intake)</span>
-<span id="cb106-3"><a href="sources.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(intake)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="sources.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(intake) <span class="co"># from package ISwR</span></span>
+<span id="cb113-2"><a href="sources.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(intake)</span></code></pre></div>
+<pre><code>## The following objects are masked from intake (pos = 4):
+## 
+##     post, pre</code></pre>
+<pre><code>## The following objects are masked from intake (pos = 6):
+## 
+##     post, pre</code></pre>
+<pre><code>## The following objects are masked from intake (pos = 25):
+## 
+##     post, pre</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="sources.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(intake)</span></code></pre></div>
 <pre><code>##    pre post
 ## 1 5260 3910
 ## 2 5470 4220
@@ -358,10 +381,10 @@ The risk of error is 0.15%</p>
 ## 4 6180 5160
 ## 5 6390 5645
 ## 6 6515 4680</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="sources.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(post <span class="sc">-</span> pre)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="sources.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(post <span class="sc">-</span> pre)</span></code></pre></div>
 <pre><code>## [1] -1320.455</code></pre>
 <p>Is difference of means significant?</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="sources.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pre, post, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="sources.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pre, post, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 

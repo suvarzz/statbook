@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-28" />
+<meta name="date" content="2021-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,11 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.4</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.5</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.6</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.7</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.8</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a>
 <ul>
@@ -277,7 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>29.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="30" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>30</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+</ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="chapter" data-level="34" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>34</b> Simple Markov process</a>
@@ -311,56 +316,571 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="bayesian-statistics" class="section level1" number="31">
 <h1><span class="header-section-number">Chapter 31</span> Bayesian Statistics</h1>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="bayesian-statistics.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggjoy)</span></code></pre></div>
-<pre><code>## Loading required package: ggridges</code></pre>
-<pre><code>## The ggjoy package has been deprecated. Please switch over to the ggridges package, which provides the same functionality. Porting guidelines
-## can be found here: https://github.com/clauswilke/ggjoy/blob/master/README.md</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="bayesian-statistics.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
-<span id="cb232-2"><a href="bayesian-statistics.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggjoy)</span>
-<span id="cb232-3"><a href="bayesian-statistics.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb232-4"><a href="bayesian-statistics.html#cb232-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-5"><a href="bayesian-statistics.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="co"># prop_model function to visualize bayesian posterior distributions</span></span>
-<span id="cb232-6"><a href="bayesian-statistics.html#cb232-6" aria-hidden="true" tabindex="-1"></a>prop_model <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">data =</span> <span class="fu">c</span>(), <span class="at">prior_prop =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">n_draws =</span> <span class="dv">10000</span>, </span>
-<span id="cb232-7"><a href="bayesian-statistics.html#cb232-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">show_plot =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb232-8"><a href="bayesian-statistics.html#cb232-8" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb232-9"><a href="bayesian-statistics.html#cb232-9" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(data)</span>
-<span id="cb232-10"><a href="bayesian-statistics.html#cb232-10" aria-hidden="true" tabindex="-1"></a>    proportion_success <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>), <span class="dv">1</span>)</span>
-<span id="cb232-11"><a href="bayesian-statistics.html#cb232-11" aria-hidden="true" tabindex="-1"></a>    data_indices <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(data), <span class="at">length.out =</span> <span class="fu">min</span>(<span class="fu">length</span>(data) <span class="sc">+</span> </span>
-<span id="cb232-12"><a href="bayesian-statistics.html#cb232-12" aria-hidden="true" tabindex="-1"></a>                                                                    <span class="dv">1</span>, <span class="dv">20</span>)))</span>
-<span id="cb232-13"><a href="bayesian-statistics.html#cb232-13" aria-hidden="true" tabindex="-1"></a>    post_curves <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(data_indices, <span class="cf">function</span>(i) {</span>
-<span id="cb232-14"><a href="bayesian-statistics.html#cb232-14" aria-hidden="true" tabindex="-1"></a>        value <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(i <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;Prior&quot;</span>, <span class="fu">ifelse</span>(data[i], <span class="st">&quot;Success&quot;</span>, </span>
-<span id="cb232-15"><a href="bayesian-statistics.html#cb232-15" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">&quot;Failure&quot;</span>))</span>
-<span id="cb232-16"><a href="bayesian-statistics.html#cb232-16" aria-hidden="true" tabindex="-1"></a>        label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;n=&quot;</span>, i)</span>
-<span id="cb232-17"><a href="bayesian-statistics.html#cb232-17" aria-hidden="true" tabindex="-1"></a>        probability <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(proportion_success, prior_prop[<span class="dv">1</span>] <span class="sc">+</span> </span>
-<span id="cb232-18"><a href="bayesian-statistics.html#cb232-18" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">sum</span>(data[<span class="fu">seq_len</span>(i)]), prior_prop[<span class="dv">2</span>] <span class="sc">+</span> <span class="fu">sum</span>(<span class="sc">!</span>data[<span class="fu">seq_len</span>(i)]))</span>
-<span id="cb232-19"><a href="bayesian-statistics.html#cb232-19" aria-hidden="true" tabindex="-1"></a>        probability <span class="ot">&lt;-</span> probability<span class="sc">/</span><span class="fu">max</span>(probability)</span>
-<span id="cb232-20"><a href="bayesian-statistics.html#cb232-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tibble</span>(value, label, proportion_success, probability)</span>
-<span id="cb232-21"><a href="bayesian-statistics.html#cb232-21" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb232-22"><a href="bayesian-statistics.html#cb232-22" aria-hidden="true" tabindex="-1"></a>    post_curves<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="fu">fct_rev</span>(<span class="fu">factor</span>(post_curves<span class="sc">$</span>label, <span class="at">levels =</span> <span class="fu">paste0</span>(<span class="st">&quot;n=&quot;</span>, </span>
-<span id="cb232-23"><a href="bayesian-statistics.html#cb232-23" aria-hidden="true" tabindex="-1"></a>                                                                           data_indices)))</span>
-<span id="cb232-24"><a href="bayesian-statistics.html#cb232-24" aria-hidden="true" tabindex="-1"></a>    post_curves<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">factor</span>(post_curves<span class="sc">$</span>value, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Prior&quot;</span>, </span>
-<span id="cb232-25"><a href="bayesian-statistics.html#cb232-25" aria-hidden="true" tabindex="-1"></a>                                                              <span class="st">&quot;Success&quot;</span>, <span class="st">&quot;Failure&quot;</span>))</span>
-<span id="cb232-26"><a href="bayesian-statistics.html#cb232-26" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(post_curves, <span class="fu">aes</span>(<span class="at">x =</span> proportion_success, <span class="at">y =</span> label, </span>
-<span id="cb232-27"><a href="bayesian-statistics.html#cb232-27" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">height =</span> probability, <span class="at">fill =</span> value)) <span class="sc">+</span> <span class="fu">geom_joy</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
-<span id="cb232-28"><a href="bayesian-statistics.html#cb232-28" aria-hidden="true" tabindex="-1"></a>                                                                                 <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">panel_scaling =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb232-29"><a href="bayesian-statistics.html#cb232-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_discrete</span>(<span class="st">&quot;&quot;</span>, <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="st">&quot;Underlying proportion of success&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb232-30"><a href="bayesian-statistics.html#cb232-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">hcl</span>(<span class="dv">120</span> <span class="sc">*</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">0</span> <span class="sc">+</span> <span class="dv">15</span>, <span class="dv">100</span>, <span class="dv">65</span>), </span>
-<span id="cb232-31"><a href="bayesian-statistics.html#cb232-31" aria-hidden="true" tabindex="-1"></a>                          <span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Prior   &quot;</span>, <span class="st">&quot;Success   &quot;</span>, </span>
-<span id="cb232-32"><a href="bayesian-statistics.html#cb232-32" aria-hidden="true" tabindex="-1"></a>                                                              <span class="st">&quot;Failure   &quot;</span>)) <span class="sc">+</span> <span class="fu">theme_light</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span> </span>
-<span id="cb232-33"><a href="bayesian-statistics.html#cb232-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span>
-<span id="cb232-34"><a href="bayesian-statistics.html#cb232-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (show_plot) {</span>
-<span id="cb232-35"><a href="bayesian-statistics.html#cb232-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(p)</span>
-<span id="cb232-36"><a href="bayesian-statistics.html#cb232-36" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb232-37"><a href="bayesian-statistics.html#cb232-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">invisible</span>(<span class="fu">rbeta</span>(n_draws, prior_prop[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">sum</span>(data), prior_prop[<span class="dv">2</span>] <span class="sc">+</span> </span>
-<span id="cb232-38"><a href="bayesian-statistics.html#cb232-38" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">sum</span>(<span class="sc">!</span>data)))</span>
-<span id="cb232-39"><a href="bayesian-statistics.html#cb232-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb232-40"><a href="bayesian-statistics.html#cb232-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-41"><a href="bayesian-statistics.html#cb232-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 50 random binary data with P(1)=0.75</span></span>
-<span id="cb232-42"><a href="bayesian-statistics.html#cb232-42" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.75</span>, <span class="fl">0.25</span>),</span>
-<span id="cb232-43"><a href="bayesian-statistics.html#cb232-43" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb232-44"><a href="bayesian-statistics.html#cb232-44" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="fu">prop_model</span>(data)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p><strong>Bayesian data analysis</strong> the use of Bayesian inference to learn from data.</p>
+<p><strong>Bayesian inference</strong> is a method for figuring out unobservable quantities given known facts that uses probability to describe the uncertainty over what the values of the unknown quantities could be.<br />
+<strong>Bayesian inference</strong> is conditioning on data, in order to learn about parameter values.</p>
+<ul>
+<li>A <strong>prior</strong> is a probability distribution that represents what the model knows before seeing the data.<br />
+</li>
+<li>A <strong>posterior</strong> is a probability distribution that represents what the model knows after having seen the data.</li>
+</ul>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="bayesian-statistics.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization function of Bayesian inference for binary data </span></span>
+<span id="cb234-2"><a href="bayesian-statistics.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggjoy)</span>
+<span id="cb234-3"><a href="bayesian-statistics.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb234-4"><a href="bayesian-statistics.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggjoy)</span>
+<span id="cb234-5"><a href="bayesian-statistics.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb234-6"><a href="bayesian-statistics.html#cb234-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-7"><a href="bayesian-statistics.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="co"># prop_model function to visualize bayesian posterior distributions</span></span>
+<span id="cb234-8"><a href="bayesian-statistics.html#cb234-8" aria-hidden="true" tabindex="-1"></a>prop_model <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">data =</span> <span class="fu">c</span>(), <span class="at">prior_prop =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">n_draws =</span> <span class="dv">10000</span>, </span>
+<span id="cb234-9"><a href="bayesian-statistics.html#cb234-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">show_plot =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb234-10"><a href="bayesian-statistics.html#cb234-10" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb234-11"><a href="bayesian-statistics.html#cb234-11" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(data)</span>
+<span id="cb234-12"><a href="bayesian-statistics.html#cb234-12" aria-hidden="true" tabindex="-1"></a>    proportion_success <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>), <span class="dv">1</span>)</span>
+<span id="cb234-13"><a href="bayesian-statistics.html#cb234-13" aria-hidden="true" tabindex="-1"></a>    data_indices <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">length</span>(data), <span class="at">length.out =</span> <span class="fu">min</span>(<span class="fu">length</span>(data) <span class="sc">+</span> </span>
+<span id="cb234-14"><a href="bayesian-statistics.html#cb234-14" aria-hidden="true" tabindex="-1"></a>                                                                    <span class="dv">1</span>, <span class="dv">20</span>)))</span>
+<span id="cb234-15"><a href="bayesian-statistics.html#cb234-15" aria-hidden="true" tabindex="-1"></a>    post_curves <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(data_indices, <span class="cf">function</span>(i) {</span>
+<span id="cb234-16"><a href="bayesian-statistics.html#cb234-16" aria-hidden="true" tabindex="-1"></a>        value <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(i <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;Prior&quot;</span>, <span class="fu">ifelse</span>(data[i], <span class="st">&quot;Success&quot;</span>, </span>
+<span id="cb234-17"><a href="bayesian-statistics.html#cb234-17" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">&quot;Failure&quot;</span>))</span>
+<span id="cb234-18"><a href="bayesian-statistics.html#cb234-18" aria-hidden="true" tabindex="-1"></a>        label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;n=&quot;</span>, i)</span>
+<span id="cb234-19"><a href="bayesian-statistics.html#cb234-19" aria-hidden="true" tabindex="-1"></a>        probability <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(proportion_success, prior_prop[<span class="dv">1</span>] <span class="sc">+</span> </span>
+<span id="cb234-20"><a href="bayesian-statistics.html#cb234-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">sum</span>(data[<span class="fu">seq_len</span>(i)]), prior_prop[<span class="dv">2</span>] <span class="sc">+</span> <span class="fu">sum</span>(<span class="sc">!</span>data[<span class="fu">seq_len</span>(i)]))</span>
+<span id="cb234-21"><a href="bayesian-statistics.html#cb234-21" aria-hidden="true" tabindex="-1"></a>        probability <span class="ot">&lt;-</span> probability<span class="sc">/</span><span class="fu">max</span>(probability)</span>
+<span id="cb234-22"><a href="bayesian-statistics.html#cb234-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tibble</span>(value, label, proportion_success, probability)</span>
+<span id="cb234-23"><a href="bayesian-statistics.html#cb234-23" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb234-24"><a href="bayesian-statistics.html#cb234-24" aria-hidden="true" tabindex="-1"></a>    post_curves<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="fu">fct_rev</span>(<span class="fu">factor</span>(post_curves<span class="sc">$</span>label, <span class="at">levels =</span> <span class="fu">paste0</span>(<span class="st">&quot;n=&quot;</span>, </span>
+<span id="cb234-25"><a href="bayesian-statistics.html#cb234-25" aria-hidden="true" tabindex="-1"></a>                                                                           data_indices)))</span>
+<span id="cb234-26"><a href="bayesian-statistics.html#cb234-26" aria-hidden="true" tabindex="-1"></a>    post_curves<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">factor</span>(post_curves<span class="sc">$</span>value, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Prior&quot;</span>, </span>
+<span id="cb234-27"><a href="bayesian-statistics.html#cb234-27" aria-hidden="true" tabindex="-1"></a>                                                              <span class="st">&quot;Success&quot;</span>, <span class="st">&quot;Failure&quot;</span>))</span>
+<span id="cb234-28"><a href="bayesian-statistics.html#cb234-28" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(post_curves, <span class="fu">aes</span>(<span class="at">x =</span> proportion_success, <span class="at">y =</span> label, </span>
+<span id="cb234-29"><a href="bayesian-statistics.html#cb234-29" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">height =</span> probability, <span class="at">fill =</span> value)) <span class="sc">+</span> <span class="fu">geom_joy</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
+<span id="cb234-30"><a href="bayesian-statistics.html#cb234-30" aria-hidden="true" tabindex="-1"></a>                                                                                 <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">panel_scaling =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb234-31"><a href="bayesian-statistics.html#cb234-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_discrete</span>(<span class="st">&quot;&quot;</span>, <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="st">&quot;Underlying proportion of success&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb234-32"><a href="bayesian-statistics.html#cb234-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">hcl</span>(<span class="dv">120</span> <span class="sc">*</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">0</span> <span class="sc">+</span> <span class="dv">15</span>, <span class="dv">100</span>, <span class="dv">65</span>), </span>
+<span id="cb234-33"><a href="bayesian-statistics.html#cb234-33" aria-hidden="true" tabindex="-1"></a>                          <span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Prior   &quot;</span>, <span class="st">&quot;Success   &quot;</span>, </span>
+<span id="cb234-34"><a href="bayesian-statistics.html#cb234-34" aria-hidden="true" tabindex="-1"></a>                                                              <span class="st">&quot;Failure   &quot;</span>)) <span class="sc">+</span> <span class="fu">theme_light</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span> </span>
+<span id="cb234-35"><a href="bayesian-statistics.html#cb234-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span>
+<span id="cb234-36"><a href="bayesian-statistics.html#cb234-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (show_plot) {</span>
+<span id="cb234-37"><a href="bayesian-statistics.html#cb234-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(p)</span>
+<span id="cb234-38"><a href="bayesian-statistics.html#cb234-38" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb234-39"><a href="bayesian-statistics.html#cb234-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">invisible</span>(<span class="fu">rbeta</span>(n_draws, prior_prop[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">sum</span>(data), prior_prop[<span class="dv">2</span>] <span class="sc">+</span> </span>
+<span id="cb234-40"><a href="bayesian-statistics.html#cb234-40" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">sum</span>(<span class="sc">!</span>data)))</span>
+<span id="cb234-41"><a href="bayesian-statistics.html#cb234-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="simple-model-with-one-binary-parameter" class="section level2" number="31.1">
+<h2><span class="header-section-number">31.1</span> Simple model with one binary parameter</h2>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="bayesian-statistics.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 50 random binary data with P(1)=0.75</span></span>
+<span id="cb235-2"><a href="bayesian-statistics.html#cb235-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.75</span>, <span class="fl">0.25</span>),</span>
+<span id="cb235-3"><a href="bayesian-statistics.html#cb235-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb235-4"><a href="bayesian-statistics.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and explore the posterior</span></span>
+<span id="cb235-5"><a href="bayesian-statistics.html#cb235-5" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="fu">prop_model</span>(data)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="bayesian-statistics.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(posterior)</span></code></pre></div>
+<pre><code>## [1] 0.6907880 0.6526425 0.4462395 0.6992505 0.5693596 0.5330336</code></pre>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="bayesian-statistics.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram of the posterior</span></span>
+<span id="cb238-2"><a href="bayesian-statistics.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">breaks=</span><span class="dv">30</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-2.png" width="672" /></p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="bayesian-statistics.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median</span></span>
+<span id="cb239-2"><a href="bayesian-statistics.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(posterior)</span></code></pre></div>
+<pre><code>## [1] 0.5882531</code></pre>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="bayesian-statistics.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the credible interval (CI)</span></span>
+<span id="cb241-2"><a href="bayesian-statistics.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(posterior, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>))</span></code></pre></div>
+<pre><code>##        5%       95% 
+## 0.3505923 0.7977435</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="bayesian-statistics.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of successes in our distribution &gt; 0.07</span></span>
+<span id="cb243-2"><a href="bayesian-statistics.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(posterior <span class="sc">&gt;</span> <span class="fl">0.07</span>) <span class="sc">/</span> <span class="fu">length</span>(posterior)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p><strong>Generate binomial data</strong></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="bayesian-statistics.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
+<span id="cb245-2"><a href="bayesian-statistics.html#cb245-2" aria-hidden="true" tabindex="-1"></a>p_success <span class="ot">&lt;-</span> <span class="fl">0.42</span>     <span class="co"># probability of success</span></span>
+<span id="cb245-3"><a href="bayesian-statistics.html#cb245-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span>              <span class="co"># number of observations</span></span>
+<span id="cb245-4"><a href="bayesian-statistics.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co"># logical vector with false if Uniform distribution </span></span>
+<span id="cb245-5"><a href="bayesian-statistics.html#cb245-5" aria-hidden="true" tabindex="-1"></a><span class="co"># generates value less then probability of success</span></span>
+<span id="cb245-6"><a href="bayesian-statistics.html#cb245-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb245-7"><a href="bayesian-statistics.html#cb245-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb245-8"><a href="bayesian-statistics.html#cb245-8" aria-hidden="true" tabindex="-1"></a>    data[i] <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>) <span class="sc">&lt;</span> p_success</span>
+<span id="cb245-9"><a href="bayesian-statistics.html#cb245-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb245-10"><a href="bayesian-statistics.html#cb245-10" aria-hidden="true" tabindex="-1"></a><span class="co"># convert logical to numeric 0/1</span></span>
+<span id="cb245-11"><a href="bayesian-statistics.html#cb245-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data)</span>
+<span id="cb245-12"><a href="bayesian-statistics.html#cb245-12" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<pre><code>##   [1] 0 0 1 0 1 1 0 0 0 0 1 1 0 0 0 0 1 1 0 1 1 1 0 1 1 1 1 0 1 0 0 1 0 0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 0 1 0 1 0 1 0 1 0 1 0 0 1 1 0 1 1 0 1 1 0 1 0 0 0 1 1 1 0 0 0 0 0 0 1 1
+##  [85] 0 1 0 1 1 0 0 0 1 1 0 0 1 0 0 0</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="bayesian-statistics.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same vector using rbinom distribution</span></span>
+<span id="cb247-2"><a href="bayesian-statistics.html#cb247-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb247-3"><a href="bayesian-statistics.html#cb247-3" aria-hidden="true" tabindex="-1"></a>size <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb247-4"><a href="bayesian-statistics.html#cb247-4" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">=</span> <span class="fl">0.42</span></span>
+<span id="cb247-5"><a href="bayesian-statistics.html#cb247-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(n, size, prob)</span></code></pre></div>
+<pre><code>##   [1] 1 0 1 0 1 0 1 0 0 1 1 0 1 0 0 0 1 1 0 1 0 0 1 0 0 1 0 0 0 1 1 1 0 0 0 1 0 1 0 1 1 0 1 1 1 0 1 1 1 0 1 0 1 0 1 1 0 0 0 0 0 1 0 0 0 1 0 0 1 0 1 1 0 0 0 1 1 1 1 1 0 0 1 1
+##  [85] 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 1</code></pre>
+</div>
+<div id="website-visitors-model" class="section level2" number="31.2">
+<h2><span class="header-section-number">31.2</span> Website visitors model</h2>
+<p>To get more visitors to your website you are considering paying for an ad to be
+shown 100 times on a popular social media site. According to the social media site,
+their ads get clicked on 10% of the time. How many visitors could your site get?</p>
+<p>We can fix % of clicks as 0.1 but we do not know exactly how many clicks people do (uncertain).
+We suggest the % of cliks is uniformly distributed between 0 and 20.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="bayesian-statistics.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
+<span id="cb249-2"><a href="bayesian-statistics.html#cb249-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100000</span>          <span class="co"># number of simulations</span></span>
+<span id="cb249-3"><a href="bayesian-statistics.html#cb249-3" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span>   <span class="co"># number of shown adds</span></span>
+<span id="cb249-4"><a href="bayesian-statistics.html#cb249-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb249-5"><a href="bayesian-statistics.html#cb249-5" aria-hidden="true" tabindex="-1"></a><span class="co"># probability that add will be clicked</span></span>
+<span id="cb249-6"><a href="bayesian-statistics.html#cb249-6" aria-hidden="true" tabindex="-1"></a>p_clicks <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="fl">0.0</span>, <span class="at">max =</span> <span class="fl">0.2</span>)  </span>
+<span id="cb249-7"><a href="bayesian-statistics.html#cb249-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb249-8"><a href="bayesian-statistics.html#cb249-8" aria-hidden="true" tabindex="-1"></a><span class="co"># MODEL: We assume that the binomial distribution is a reasonable generative model</span></span>
+<span id="cb249-9"><a href="bayesian-statistics.html#cb249-9" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, </span>
+<span id="cb249-10"><a href="bayesian-statistics.html#cb249-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">size =</span> n_ads_shown, </span>
+<span id="cb249-11"><a href="bayesian-statistics.html#cb249-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">prob =</span> p_clicks)</span>
+<span id="cb249-12"><a href="bayesian-statistics.html#cb249-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb249-13"><a href="bayesian-statistics.html#cb249-13" aria-hidden="true" tabindex="-1"></a><span class="co">#---&gt; Visualize the prior model simulation</span></span>
+<span id="cb249-14"><a href="bayesian-statistics.html#cb249-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb249-15"><a href="bayesian-statistics.html#cb249-15" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> n_visitors, <span class="at">y =</span> p_clicks)</span>
+<span id="cb249-16"><a href="bayesian-statistics.html#cb249-16" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(n_visitors, p_clicks)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb249-17"><a href="bayesian-statistics.html#cb249-17" aria-hidden="true" tabindex="-1"></a>ggExtra<span class="sc">::</span><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">&quot;histogram&quot;</span>,  <span class="at">bins =</span> <span class="dv">18</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="bayesian-statistics.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&lt;---</span></span></code></pre></div>
+<p>Updated Bayesian model<br />
+New data: 13 people clicked and visited site when the ad was shown 100 times.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="bayesian-statistics.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prior distribution</span></span>
+<span id="cb251-2"><a href="bayesian-statistics.html#cb251-2" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_clicks, n_visitors)</span>
+<span id="cb251-3"><a href="bayesian-statistics.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The posterior subset</span></span>
+<span id="cb251-4"><a href="bayesian-statistics.html#cb251-4" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> prior[prior<span class="sc">$</span>n_visitors <span class="sc">==</span> <span class="dv">13</span>, ]</span>
+<span id="cb251-5"><a href="bayesian-statistics.html#cb251-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(posterior)</span></code></pre></div>
+<pre><code>##     p_clicks n_visitors
+## 6  0.1650342         13
+## 11 0.1480911         13
+## 20 0.1011115         13
+## 23 0.1511866         13
+## 40 0.1314564         13
+## 51 0.1263088         13</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="bayesian-statistics.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># posterior distribution for 13 visitors</span></span>
+<span id="cb253-2"><a href="bayesian-statistics.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>p_clicks)</span>
+<span id="cb253-3"><a href="bayesian-statistics.html#cb253-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb253-4"><a href="bayesian-statistics.html#cb253-4" aria-hidden="true" tabindex="-1"></a><span class="co"># update</span></span>
+<span id="cb253-5"><a href="bayesian-statistics.html#cb253-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign posterior to a new variable called prior</span></span>
+<span id="cb253-6"><a href="bayesian-statistics.html#cb253-6" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> posterior</span>
+<span id="cb253-7"><a href="bayesian-statistics.html#cb253-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prior)</span></code></pre></div>
+<pre><code>##     p_clicks n_visitors
+## 6  0.1650342         13
+## 11 0.1480911         13
+## 20 0.1011115         13
+## 23 0.1511866         13
+## 40 0.1314564         13
+## 51 0.1263088         13</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="bayesian-statistics.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---&gt; plot of subset distribution taken from data</span></span>
+<span id="cb255-2"><a href="bayesian-statistics.html#cb255-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> prior</span>
+<span id="cb255-3"><a href="bayesian-statistics.html#cb255-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(n_visitors, p_clicks)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb255-4"><a href="bayesian-statistics.html#cb255-4" aria-hidden="true" tabindex="-1"></a>ggExtra<span class="sc">::</span><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">&quot;histogram&quot;</span>,  <span class="at">bins =</span> <span class="dv">18</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="bayesian-statistics.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&lt;---</span></span>
+<span id="cb256-2"><a href="bayesian-statistics.html#cb256-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb256-3"><a href="bayesian-statistics.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace prior$n_visitors with a new sample and visualize the result</span></span>
+<span id="cb256-4"><a href="bayesian-statistics.html#cb256-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span>  <span class="fu">nrow</span>(prior)</span>
+<span id="cb256-5"><a href="bayesian-statistics.html#cb256-5" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb256-6"><a href="bayesian-statistics.html#cb256-6" aria-hidden="true" tabindex="-1"></a>prior<span class="sc">$</span>n_visitors <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> n_ads_shown, <span class="at">prob =</span> prior<span class="sc">$</span>p_clicks)</span>
+<span id="cb256-7"><a href="bayesian-statistics.html#cb256-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(prior<span class="sc">$</span>n_visitors)</span>
+<span id="cb256-8"><a href="bayesian-statistics.html#cb256-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb256-9"><a href="bayesian-statistics.html#cb256-9" aria-hidden="true" tabindex="-1"></a><span class="co">#---&gt; plot of distributions</span></span>
+<span id="cb256-10"><a href="bayesian-statistics.html#cb256-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> prior</span>
+<span id="cb256-11"><a href="bayesian-statistics.html#cb256-11" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(n_visitors, p_clicks)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb256-12"><a href="bayesian-statistics.html#cb256-12" aria-hidden="true" tabindex="-1"></a>ggExtra<span class="sc">::</span><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">&quot;histogram&quot;</span>,  <span class="at">bins =</span> <span class="dv">18</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-2.png" width="672" /></p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="bayesian-statistics.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&lt;---</span></span></code></pre></div>
+<p>Use result of the model for prediction:<br />
+Calculate the probability that you will get 5 or more visitors.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="bayesian-statistics.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(prior<span class="sc">$</span>n_visitors <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">/</span> <span class="fu">length</span>(prior<span class="sc">$</span>n_visitors)</span></code></pre></div>
+<pre><code>## [1] 0.9863665</code></pre>
+<p>Now we update prior and will use <strong>beta distribution</strong>.</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="bayesian-statistics.html#cb260-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb260-2"><a href="bayesian-statistics.html#cb260-2" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb260-3"><a href="bayesian-statistics.html#cb260-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-4"><a href="bayesian-statistics.html#cb260-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the prior on proportion_clicks</span></span>
+<span id="cb260-5"><a href="bayesian-statistics.html#cb260-5" aria-hidden="true" tabindex="-1"></a>p_clicks <span class="ot">&lt;-</span> <span class="fu">rbeta</span>(n, <span class="at">shape1 =</span> <span class="dv">5</span>, <span class="at">shape2 =</span> <span class="dv">95</span>)</span>
+<span id="cb260-6"><a href="bayesian-statistics.html#cb260-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(p_clicks)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="bayesian-statistics.html#cb261-1" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n,</span>
+<span id="cb261-2"><a href="bayesian-statistics.html#cb261-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">size =</span> n_ads_shown, </span>
+<span id="cb261-3"><a href="bayesian-statistics.html#cb261-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">prob =</span> p_clicks)</span>
+<span id="cb261-4"><a href="bayesian-statistics.html#cb261-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb261-5"><a href="bayesian-statistics.html#cb261-5" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_clicks, n_visitors)</span>
+<span id="cb261-6"><a href="bayesian-statistics.html#cb261-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb261-7"><a href="bayesian-statistics.html#cb261-7" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> prior[prior<span class="sc">$</span>n_visitors <span class="sc">==</span> <span class="dv">13</span>, ]</span>
+<span id="cb261-8"><a href="bayesian-statistics.html#cb261-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb261-9"><a href="bayesian-statistics.html#cb261-9" aria-hidden="true" tabindex="-1"></a><span class="co"># This plots the prior and the posterior in the same plot</span></span>
+<span id="cb261-10"><a href="bayesian-statistics.html#cb261-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb261-11"><a href="bayesian-statistics.html#cb261-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(prior<span class="sc">$</span>p_clicks, </span>
+<span id="cb261-12"><a href="bayesian-statistics.html#cb261-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>))</span>
+<span id="cb261-13"><a href="bayesian-statistics.html#cb261-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>p_clicks, </span>
+<span id="cb261-14"><a href="bayesian-statistics.html#cb261-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-2.png" width="672" /></p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="bayesian-statistics.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grid.arrange(hist_top, empty, scatter, hist_right, ncol=2, nrow=2, widths=c(4, 1), heights=c(1, 4))</span></span></code></pre></div>
+<p>Let’s fit the binomial model to both the video ad data (13 out of 100 clicked) and
+the new text ad data (6 out of a 100 clicked).</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="bayesian-statistics.html#cb263-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb263-2"><a href="bayesian-statistics.html#cb263-2" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb263-3"><a href="bayesian-statistics.html#cb263-3" aria-hidden="true" tabindex="-1"></a>p_clicks <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="fl">0.0</span>, <span class="at">max =</span> <span class="fl">0.2</span>)</span>
+<span id="cb263-4"><a href="bayesian-statistics.html#cb263-4" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, <span class="at">size =</span> n_ads_shown, </span>
+<span id="cb263-5"><a href="bayesian-statistics.html#cb263-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">prob =</span> p_clicks)</span>
+<span id="cb263-6"><a href="bayesian-statistics.html#cb263-6" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_clicks, n_visitors)</span>
+<span id="cb263-7"><a href="bayesian-statistics.html#cb263-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-8"><a href="bayesian-statistics.html#cb263-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the posteriors for video and text ads</span></span>
+<span id="cb263-9"><a href="bayesian-statistics.html#cb263-9" aria-hidden="true" tabindex="-1"></a>posterior_video <span class="ot">&lt;-</span> prior[prior<span class="sc">$</span>n_visitors <span class="sc">==</span> <span class="dv">13</span>, ]</span>
+<span id="cb263-10"><a href="bayesian-statistics.html#cb263-10" aria-hidden="true" tabindex="-1"></a>posterior_text <span class="ot">&lt;-</span> prior[prior<span class="sc">$</span>n_visitors <span class="sc">==</span> <span class="dv">6</span>, ]</span>
+<span id="cb263-11"><a href="bayesian-statistics.html#cb263-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-12"><a href="bayesian-statistics.html#cb263-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb263-13"><a href="bayesian-statistics.html#cb263-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the posteriors</span></span>
+<span id="cb263-14"><a href="bayesian-statistics.html#cb263-14" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior_video<span class="sc">$</span>p_clicks, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>))</span>
+<span id="cb263-15"><a href="bayesian-statistics.html#cb263-15" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior_text<span class="sc">$</span>p_clicks, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="bayesian-statistics.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine data into dataframe</span></span>
+<span id="cb264-2"><a href="bayesian-statistics.html#cb264-2" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">video_prop =</span> posterior_video<span class="sc">$</span>p_clicks[<span class="dv">1</span><span class="sc">:</span><span class="dv">4000</span>],</span>
+<span id="cb264-3"><a href="bayesian-statistics.html#cb264-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">text_prop =</span> posterior_text<span class="sc">$</span>p_click[<span class="dv">1</span><span class="sc">:</span><span class="dv">4000</span>])</span>
+<span id="cb264-4"><a href="bayesian-statistics.html#cb264-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-5"><a href="bayesian-statistics.html#cb264-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the posterior difference: video_prop - text_prop</span></span>
+<span id="cb264-6"><a href="bayesian-statistics.html#cb264-6" aria-hidden="true" tabindex="-1"></a>posterior<span class="sc">$</span>prop_diff <span class="ot">&lt;-</span> posterior<span class="sc">$</span>video_prop <span class="sc">-</span> posterior<span class="sc">$</span>text_prop</span>
+<span id="cb264-7"><a href="bayesian-statistics.html#cb264-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-8"><a href="bayesian-statistics.html#cb264-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize prop_diff</span></span>
+<span id="cb264-9"><a href="bayesian-statistics.html#cb264-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>prop_diff)</span>
+<span id="cb264-10"><a href="bayesian-statistics.html#cb264-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-11"><a href="bayesian-statistics.html#cb264-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median of prop_diff</span></span>
+<span id="cb264-12"><a href="bayesian-statistics.html#cb264-12" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(posterior<span class="sc">$</span>prop_diff)</span></code></pre></div>
+<pre><code>## [1] 0.06563094</code></pre>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="bayesian-statistics.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the proportion</span></span>
+<span id="cb266-2"><a href="bayesian-statistics.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(posterior<span class="sc">$</span>prop_diff <span class="sc">&gt;</span> <span class="fl">0.0</span>)</span></code></pre></div>
+<pre><code>## [1] 0.94825</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-85-2.png" width="672" /></p>
+<p>A small decision analysis<br />
+Each visitor spends $2.53 on average, a video ad costs $0.25 and a text ad
+costs $0.05. Let’s figure out the probable profit when using video ads and text ads!</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="bayesian-statistics.html#cb268-1" aria-hidden="true" tabindex="-1"></a>visitor_spend <span class="ot">&lt;-</span> <span class="fl">2.53</span></span>
+<span id="cb268-2"><a href="bayesian-statistics.html#cb268-2" aria-hidden="true" tabindex="-1"></a>video_cost <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb268-3"><a href="bayesian-statistics.html#cb268-3" aria-hidden="true" tabindex="-1"></a>text_cost <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb268-4"><a href="bayesian-statistics.html#cb268-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-5"><a href="bayesian-statistics.html#cb268-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the column posterior$video_profit</span></span>
+<span id="cb268-6"><a href="bayesian-statistics.html#cb268-6" aria-hidden="true" tabindex="-1"></a>posterior<span class="sc">$</span>video_profit <span class="ot">&lt;-</span> posterior<span class="sc">$</span>video_prop <span class="sc">*</span> visitor_spend <span class="sc">-</span> video_cost</span>
+<span id="cb268-7"><a href="bayesian-statistics.html#cb268-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-8"><a href="bayesian-statistics.html#cb268-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the column posterior$text_profit</span></span>
+<span id="cb268-9"><a href="bayesian-statistics.html#cb268-9" aria-hidden="true" tabindex="-1"></a>posterior<span class="sc">$</span>text_profit <span class="ot">&lt;-</span> posterior<span class="sc">$</span>text_prop <span class="sc">*</span> visitor_spend <span class="sc">-</span> text_cost</span>
+<span id="cb268-10"><a href="bayesian-statistics.html#cb268-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-11"><a href="bayesian-statistics.html#cb268-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(posterior)</span></code></pre></div>
+<pre><code>##   video_prop  text_prop  prop_diff video_profit text_profit
+## 1  0.1991635 0.03699197 0.16217154   0.25388368  0.04358969
+## 2  0.1931784 0.09495372 0.09822467   0.23874133  0.19023292
+## 3  0.1316657 0.05753025 0.07413544   0.08311420  0.09555153
+## 4  0.1654641 0.06146723 0.10399688   0.16862420  0.10551210
+## 5  0.1260397 0.07971197 0.04632772   0.06888041  0.15167129
+## 6  0.1152924 0.05278979 0.06250263   0.04168981  0.08355816</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="bayesian-statistics.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the video_profit and text_profit columns</span></span>
+<span id="cb270-2"><a href="bayesian-statistics.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb270-3"><a href="bayesian-statistics.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>video_profit)</span>
+<span id="cb270-4"><a href="bayesian-statistics.html#cb270-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>text_profit)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="bayesian-statistics.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the column posterior$profit_diff</span></span>
+<span id="cb271-2"><a href="bayesian-statistics.html#cb271-2" aria-hidden="true" tabindex="-1"></a>posterior<span class="sc">$</span>profit_diff <span class="ot">&lt;-</span> posterior<span class="sc">$</span>video_profit <span class="sc">-</span> posterior<span class="sc">$</span>text_profit</span>
+<span id="cb271-3"><a href="bayesian-statistics.html#cb271-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-4"><a href="bayesian-statistics.html#cb271-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize posterior$profit_diff</span></span>
+<span id="cb271-5"><a href="bayesian-statistics.html#cb271-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>profit_diff)</span>
+<span id="cb271-6"><a href="bayesian-statistics.html#cb271-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-7"><a href="bayesian-statistics.html#cb271-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the column posterior$profit_diff</span></span>
+<span id="cb271-8"><a href="bayesian-statistics.html#cb271-8" aria-hidden="true" tabindex="-1"></a>posterior<span class="sc">$</span>profit_diff <span class="ot">&lt;-</span> posterior<span class="sc">$</span>video_profit <span class="sc">-</span> posterior<span class="sc">$</span>text_profit</span>
+<span id="cb271-9"><a href="bayesian-statistics.html#cb271-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-10"><a href="bayesian-statistics.html#cb271-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize posterior$profit_diff</span></span>
+<span id="cb271-11"><a href="bayesian-statistics.html#cb271-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>profit_diff)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-86-2.png" width="672" /></p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="bayesian-statistics.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate a &quot;best guess&quot; for the difference in profits</span></span>
+<span id="cb272-2"><a href="bayesian-statistics.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(posterior<span class="sc">$</span>profit_diff)</span></code></pre></div>
+<pre><code>## [1] -0.03395372</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="bayesian-statistics.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability that text ads are better than video ads</span></span>
+<span id="cb274-2"><a href="bayesian-statistics.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(posterior<span class="sc">$</span>profit_diff <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] 0.63125</code></pre>
+<p>When you put up a banner on your friend’s site you got 19 clicks in a day, how many daily clicks should you expect this banner to generate on average? Now, modify your model, one piece at a time, to calculate this.<br />
+Start by replacing the prior distribution over proportion_clicks by a prior over mean_clicks. Make the prior a uniform (runif) distribution from 0 to 80 clicks per day.</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="bayesian-statistics.html#cb276-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb276-2"><a href="bayesian-statistics.html#cb276-2" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb276-3"><a href="bayesian-statistics.html#cb276-3" aria-hidden="true" tabindex="-1"></a>mean_clicks <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">80</span>)</span>
+<span id="cb276-4"><a href="bayesian-statistics.html#cb276-4" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> n_ads_shown, </span>
+<span id="cb276-5"><a href="bayesian-statistics.html#cb276-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">prob =</span> p_clicks)</span>
+<span id="cb276-6"><a href="bayesian-statistics.html#cb276-6" aria-hidden="true" tabindex="-1"></a>                     </span>
+<span id="cb276-7"><a href="bayesian-statistics.html#cb276-7" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_clicks, n_visitors)</span>
+<span id="cb276-8"><a href="bayesian-statistics.html#cb276-8" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> prior[prior<span class="sc">$</span>n_visitors <span class="sc">==</span> <span class="dv">13</span>, ]</span></code></pre></div>
+<p>Clicks per day instead of clicks per ad
+When you put up a banner on your friend’s site you got 19 clicks in a day, how many daily clicks should you expect this banner to generate on average? Now, modify your model, one piece at a time, to calculate this.</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="bayesian-statistics.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change this model so that it uses a Poisson distribution</span></span>
+<span id="cb277-2"><a href="bayesian-statistics.html#cb277-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb277-3"><a href="bayesian-statistics.html#cb277-3" aria-hidden="true" tabindex="-1"></a>mean_clicks <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">80</span>)</span>
+<span id="cb277-4"><a href="bayesian-statistics.html#cb277-4" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="at">n =</span> n, mean_clicks)</span>
+<span id="cb277-5"><a href="bayesian-statistics.html#cb277-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb277-6"><a href="bayesian-statistics.html#cb277-6" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mean_clicks, n_visitors)</span>
+<span id="cb277-7"><a href="bayesian-statistics.html#cb277-7" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> prior[prior<span class="sc">$</span>n_visitors <span class="sc">==</span> <span class="dv">13</span>, ]</span>
+<span id="cb277-8"><a href="bayesian-statistics.html#cb277-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb277-9"><a href="bayesian-statistics.html#cb277-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(prior<span class="sc">$</span>mean_clicks)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="bayesian-statistics.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior<span class="sc">$</span>mean_clicks)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-88-2.png" width="672" /></p>
+<p>A standard French-suited deck of playing cards contains 52 cards; 13 each of hearts (♥), spades (♠), clubs (♦), and diamonds (♣). Assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92%.<br />
+Calculate the probability of drawing any of the four aces! That is, calculate the probability of drawing 🂡 or 🂱 or 🃁 or 🃑 using the sum rule and assign it to prob_to_draw_ace.</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="bayesian-statistics.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of drawing any of the four aces</span></span>
+<span id="cb279-2"><a href="bayesian-statistics.html#cb279-2" aria-hidden="true" tabindex="-1"></a>prob_to_draw_ace <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span></span></code></pre></div>
+<p>Cards and the product rule
+Again, assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92% . The probability of drawing any of the four aces is 1/52 + 1/52 + 1/52 + 1/52 = 4/52. Once an ace has been drawn, the probability of picking any of the remaining three is 3/51. If another ace is drawn the probability of picking any of the remaining two is 2/50, and so on.<br />
+Use the product rule to calculate the probability of picking the four aces in a row from the top of a well-shuffled deck and assign it to prob_to_draw_four_aces.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="bayesian-statistics.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of picking four aces in a row</span></span>
+<span id="cb280-2"><a href="bayesian-statistics.html#cb280-2" aria-hidden="true" tabindex="-1"></a>prob_to_draw_four_aces <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">*</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">51</span> <span class="sc">*</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">50</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">49</span></span></code></pre></div>
+<p>Simulates the number of clicks/visitors (n_clicks) from 100 shown ads using the rbinom function given that the underlying proportion of clicks is 10%.
+Calculates the probability of getting 13 visitors (prob_13_visitors).
+That is, in probability notation it’s calculating P(n_visitors = 13 | proportion_clicks = 10%).</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="bayesian-statistics.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rewrite this code so that it uses dbinom instead of rbinom</span></span>
+<span id="cb281-2"><a href="bayesian-statistics.html#cb281-2" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb281-3"><a href="bayesian-statistics.html#cb281-3" aria-hidden="true" tabindex="-1"></a>proportion_clicks <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb281-4"><a href="bayesian-statistics.html#cb281-4" aria-hidden="true" tabindex="-1"></a>prob_13_visitors <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">13</span>, </span>
+<span id="cb281-5"><a href="bayesian-statistics.html#cb281-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n_ads_shown, <span class="at">prob =</span> proportion_clicks)</span>
+<span id="cb281-6"><a href="bayesian-statistics.html#cb281-6" aria-hidden="true" tabindex="-1"></a>prob_13_visitors</span></code></pre></div>
+<pre><code>## [1] 0.07430209</code></pre>
+<p>Currently the code calculates P(n_visitors = 13 | proportion_clicks = 10%): The probability of getting 13 visitors given that the proportion of clicks is 10%.</p>
+<p>Change the code to instead calculate P(n_visitors | proportion_clicks = 10%): The probability distribution over all possible numbers of visitors.
+Tip: As dbinom is vectorized it suffices to change the value of n_visitors into a vector with the numbers 0, 1, 2, …, 100.</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="bayesian-statistics.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore using dbinom to calculate probability distributions</span></span>
+<span id="cb283-2"><a href="bayesian-statistics.html#cb283-2" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb283-3"><a href="bayesian-statistics.html#cb283-3" aria-hidden="true" tabindex="-1"></a>proportion_clicks <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb283-4"><a href="bayesian-statistics.html#cb283-4" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb283-5"><a href="bayesian-statistics.html#cb283-5" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(n_visitors, </span>
+<span id="cb283-6"><a href="bayesian-statistics.html#cb283-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n_ads_shown, <span class="at">prob =</span> proportion_clicks)</span>
+<span id="cb283-7"><a href="bayesian-statistics.html#cb283-7" aria-hidden="true" tabindex="-1"></a>prob</span></code></pre></div>
+<pre><code>##   [1]  2.656140e-05  2.951267e-04  1.623197e-03  5.891602e-03  1.587460e-02  3.386580e-02  5.957873e-02  8.889525e-02  1.148230e-01  1.304163e-01  1.318653e-01  1.198776e-01
+##  [13]  9.878801e-02  7.430209e-02  5.130383e-02  3.268244e-02  1.929172e-02  1.059153e-02  5.426525e-03  2.602193e-03  1.170987e-03  4.956559e-04  1.977617e-04  7.451890e-05
+##  [25]  2.656461e-05  8.972934e-06  2.875940e-06  8.758007e-07  2.537042e-07  6.998736e-08  1.840408e-08  4.617512e-09  1.106279e-09  2.532895e-10  5.545880e-11  1.161994e-11
+##  [37]  2.331161e-12  4.480309e-13  8.253201e-14  1.457830e-14  2.470212e-15  4.016606e-16  6.269305e-17  9.395858e-18  1.352434e-18  1.870032e-19  2.484342e-20  3.171501e-21
+##  [49]  3.890962e-22  4.587982e-23  5.199713e-24  5.664175e-25  5.930440e-26  5.967739e-27  5.771270e-28  5.363200e-29  4.788572e-30  4.107157e-31  3.383290e-32  2.676049e-33
+##  [61]  2.031815e-34  1.480375e-35  1.034671e-36  6.934301e-38  4.454325e-39  2.741123e-40  1.615140e-41  9.106926e-43  4.910597e-44  2.530420e-45  1.245128e-46  5.845669e-48
+##  [73]  2.616117e-49  1.114936e-50  4.520010e-52  1.741041e-53  6.363454e-55  2.203794e-56  7.220406e-58  2.234162e-59  6.516307e-61  1.787738e-62  4.602579e-64  1.109055e-65
+##  [85]  2.493907e-67  5.216014e-69  1.010856e-70  1.807405e-72  2.966699e-74  4.444493e-76  6.035732e-78  7.369636e-80  8.010474e-82  7.656367e-84  6.335055e-86  4.445653e-88
+##  [97]  2.572716e-90  1.178793e-92  4.009500e-95  9.000000e-98 1.000000e-100</code></pre>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="bayesian-statistics.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the distribution</span></span>
+<span id="cb285-2"><a href="bayesian-statistics.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n_visitors, prob, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p>Calculating a joint distribution<br />
+Add the column pars$probability: The probability of each proportion_clicks and n_visitors combination.
+This should be calculated by multiplying the likelihood by the prior.</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="bayesian-statistics.html#cb286-1" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb286-2"><a href="bayesian-statistics.html#cb286-2" aria-hidden="true" tabindex="-1"></a>p_clicks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb286-3"><a href="bayesian-statistics.html#cb286-3" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb286-4"><a href="bayesian-statistics.html#cb286-4" aria-hidden="true" tabindex="-1"></a>pars <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">proportion_clicks =</span> p_clicks,</span>
+<span id="cb286-5"><a href="bayesian-statistics.html#cb286-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">n_visitors =</span> n_visitors)</span>
+<span id="cb286-6"><a href="bayesian-statistics.html#cb286-6" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>prior <span class="ot">&lt;-</span> <span class="fu">dunif</span>(pars<span class="sc">$</span>proportion_clicks, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="fl">0.2</span>)</span>
+<span id="cb286-7"><a href="bayesian-statistics.html#cb286-7" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>likelihood <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(pars<span class="sc">$</span>n_visitors, </span>
+<span id="cb286-8"><a href="bayesian-statistics.html#cb286-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n_ads_shown, <span class="at">prob =</span> pars<span class="sc">$</span>proportion_clicks)</span>
+<span id="cb286-9"><a href="bayesian-statistics.html#cb286-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb286-10"><a href="bayesian-statistics.html#cb286-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the column pars$probability and normalize it</span></span>
+<span id="cb286-11"><a href="bayesian-statistics.html#cb286-11" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>likelihood <span class="sc">*</span> pars<span class="sc">$</span>prior</span>
+<span id="cb286-12"><a href="bayesian-statistics.html#cb286-12" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>probability <span class="sc">/</span> <span class="fu">sum</span>(pars<span class="sc">$</span>probability)</span></code></pre></div>
+<p>Conditioning on the data<br />
+Let’s resurrect the site example where you tested text ads.
+Out of a 100 impressions of the text ad, 6 out of a 100 clicked and
+visited your site.<br />
+pars is currently the joint distribution over all combinations of
+proportion_clicks and n_visitors.<br />
+Condition on the data and keep only the rows in pars where n_visitors == 6.
+Normalize pars<span class="math inline">\(probability again, to make sure it sums to 1.0. Plot the posterior pars\)</span>probability using plot(x = , y = , type = “h”)
+with pars<span class="math inline">\(proportion_clicks on the x-axis and pars\)</span>probability on the y-axis.</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="bayesian-statistics.html#cb287-1" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb287-2"><a href="bayesian-statistics.html#cb287-2" aria-hidden="true" tabindex="-1"></a>proportion_clicks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb287-3"><a href="bayesian-statistics.html#cb287-3" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb287-4"><a href="bayesian-statistics.html#cb287-4" aria-hidden="true" tabindex="-1"></a>pars <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">proportion_clicks =</span> proportion_clicks,</span>
+<span id="cb287-5"><a href="bayesian-statistics.html#cb287-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">n_visitors =</span> n_visitors)</span>
+<span id="cb287-6"><a href="bayesian-statistics.html#cb287-6" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>prior <span class="ot">&lt;-</span> <span class="fu">dunif</span>(pars<span class="sc">$</span>proportion_clicks, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="fl">0.2</span>)</span>
+<span id="cb287-7"><a href="bayesian-statistics.html#cb287-7" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>likelihood <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(pars<span class="sc">$</span>n_visitors, </span>
+<span id="cb287-8"><a href="bayesian-statistics.html#cb287-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n_ads_shown, <span class="at">prob =</span> pars<span class="sc">$</span>proportion_clicks)</span>
+<span id="cb287-9"><a href="bayesian-statistics.html#cb287-9" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>likelihood <span class="sc">*</span> pars<span class="sc">$</span>prior</span>
+<span id="cb287-10"><a href="bayesian-statistics.html#cb287-10" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>probability <span class="sc">/</span> <span class="fu">sum</span>(pars<span class="sc">$</span>probability)</span>
+<span id="cb287-11"><a href="bayesian-statistics.html#cb287-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Condition on the data </span></span>
+<span id="cb287-12"><a href="bayesian-statistics.html#cb287-12" aria-hidden="true" tabindex="-1"></a>pars <span class="ot">&lt;-</span> pars[pars<span class="sc">$</span>n_visitors <span class="sc">==</span> <span class="dv">6</span>, ]</span>
+<span id="cb287-13"><a href="bayesian-statistics.html#cb287-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize again</span></span>
+<span id="cb287-14"><a href="bayesian-statistics.html#cb287-14" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>probability <span class="sc">/</span> <span class="fu">sum</span>(pars<span class="sc">$</span>probability)</span>
+<span id="cb287-15"><a href="bayesian-statistics.html#cb287-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the posterior pars$probability</span></span>
+<span id="cb287-16"><a href="bayesian-statistics.html#cb287-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pars<span class="sc">$</span>proportion_clicks, pars<span class="sc">$</span>probability, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p>Set n_visitors directly to 6, just replace the seq-statement.
+Now you can remove the line that conditions on the data, and the line after that, that normalizes pars$probability.
+Take an extra look at the final code and convince yourself that the result of this modified code will be the same as before.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="bayesian-statistics.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplify the code below by directly conditioning on the data</span></span>
+<span id="cb288-2"><a href="bayesian-statistics.html#cb288-2" aria-hidden="true" tabindex="-1"></a>n_ads_shown <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb288-3"><a href="bayesian-statistics.html#cb288-3" aria-hidden="true" tabindex="-1"></a>proportion_clicks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb288-4"><a href="bayesian-statistics.html#cb288-4" aria-hidden="true" tabindex="-1"></a>n_visitors <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb288-5"><a href="bayesian-statistics.html#cb288-5" aria-hidden="true" tabindex="-1"></a>pars <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">proportion_clicks =</span> proportion_clicks)</span>
+<span id="cb288-6"><a href="bayesian-statistics.html#cb288-6" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>prior <span class="ot">&lt;-</span> <span class="fu">dunif</span>(pars<span class="sc">$</span>proportion_clicks, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="fl">0.2</span>) </span>
+<span id="cb288-7"><a href="bayesian-statistics.html#cb288-7" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>likelihood <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(n_visitors, </span>
+<span id="cb288-8"><a href="bayesian-statistics.html#cb288-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n_ads_shown, <span class="at">prob =</span> pars<span class="sc">$</span>proportion_clicks)</span>
+<span id="cb288-9"><a href="bayesian-statistics.html#cb288-9" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>likelihood <span class="sc">*</span> pars<span class="sc">$</span>prior</span>
+<span id="cb288-10"><a href="bayesian-statistics.html#cb288-10" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>probability <span class="sc">/</span> <span class="fu">sum</span>(pars<span class="sc">$</span>probability)</span>
+<span id="cb288-11"><a href="bayesian-statistics.html#cb288-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pars<span class="sc">$</span>proportion_clicks, pars<span class="sc">$</span>probability, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<p>Let’s assume that the Normal distribution is a decent model of birth weight data.</p>
+<p>Given the birth weight data, what would be reasonable values of the mean (mu) and standard deviation (sigma) that generated this data?
+Assign these value to mu and sigma.
+No need to do anything fancy here, just eyeball the data and try to come up with something reasonable.</p>
+<p>Remember: The standard deviation sigma describes the spread of the distribution, where around 70% of the drawn values will be within one standard deviation from the mean.</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="bayesian-statistics.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign mu and sigma</span></span>
+<span id="cb289-2"><a href="bayesian-statistics.html#cb289-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">3500</span></span>
+<span id="cb289-3"><a href="bayesian-statistics.html#cb289-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">600</span></span>
+<span id="cb289-4"><a href="bayesian-statistics.html#cb289-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb289-5"><a href="bayesian-statistics.html#cb289-5" aria-hidden="true" tabindex="-1"></a>weight_distr <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100000</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb289-6"><a href="bayesian-statistics.html#cb289-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(weight_distr, <span class="dv">60</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6000</span>), <span class="at">col =</span> <span class="st">&quot;lightgreen&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-96-1.png" width="672" />
+Here is a small data set with the birth weights of six newborn babies in grams.<br />
+<code>c(3164, 3362, 4435, 3542, 3578, 4529)</code><br />
+The resulting histogram gives you a sense of the uncertainty over the birth weight of newborns. Let’s recreate this plot, but calculating the distribution using dnorm instead of simulating using rnorm.</p>
+<p>Create a vector called weight that should contain all values from 0 to 6000 in increments of 100, that is, 0, 100, 200, …, 5900, 6000.
+Tip: use seq(from = , to = , by = )</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="bayesian-statistics.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign mu and sigma</span></span>
+<span id="cb290-2"><a href="bayesian-statistics.html#cb290-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">3500</span></span>
+<span id="cb290-3"><a href="bayesian-statistics.html#cb290-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">600</span></span>
+<span id="cb290-4"><a href="bayesian-statistics.html#cb290-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-5"><a href="bayesian-statistics.html#cb290-5" aria-hidden="true" tabindex="-1"></a>weight_distr <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100000</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb290-6"><a href="bayesian-statistics.html#cb290-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(weight_distr, <span class="dv">60</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6000</span>), <span class="at">col =</span> <span class="st">&quot;lightgreen&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="bayesian-statistics.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create weight</span></span>
+<span id="cb291-2"><a href="bayesian-statistics.html#cb291-2" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6000</span>, <span class="at">by =</span> <span class="dv">100</span>)</span>
+<span id="cb291-3"><a href="bayesian-statistics.html#cb291-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb291-4"><a href="bayesian-statistics.html#cb291-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate likelihood</span></span>
+<span id="cb291-5"><a href="bayesian-statistics.html#cb291-5" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(weight, mu, sigma)</span>
+<span id="cb291-6"><a href="bayesian-statistics.html#cb291-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb291-7"><a href="bayesian-statistics.html#cb291-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the distribution of weight</span></span>
+<span id="cb291-8"><a href="bayesian-statistics.html#cb291-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight, likelihood, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-97-2.png" width="672" /></p>
+<p>A Bayesian model of Zombie IQ
+Zombies are stupid, and you and your colleagues at the National Zombie
+Research Laboratory are interested in how stupid they are. To the right,
+you have the Normal model we developed in the last video, but with the
+temperature data switched out with some zombie IQs fresh from the lab.
+What we’re interested in is how much we can learn about the mean zombie
+IQ from this data. The model is complete, save for that we need to calculate
+the probability of each parameter combination in pars.<br />
+Use Bayes Theorem to calculate these probabilities and assign them to pars$probability to complete the model.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="bayesian-statistics.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The IQ of a bunch of zombies</span></span>
+<span id="cb292-2"><a href="bayesian-statistics.html#cb292-2" aria-hidden="true" tabindex="-1"></a>iq <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">44</span>, <span class="dv">34</span>, <span class="dv">18</span>, <span class="dv">51</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">49</span>, <span class="dv">48</span>, <span class="dv">46</span>)</span>
+<span id="cb292-3"><a href="bayesian-statistics.html#cb292-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining the parameter grid</span></span>
+<span id="cb292-4"><a href="bayesian-statistics.html#cb292-4" aria-hidden="true" tabindex="-1"></a>pars <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">mu =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">150</span>, <span class="at">length.out =</span> <span class="dv">100</span>), </span>
+<span id="cb292-5"><a href="bayesian-statistics.html#cb292-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sigma =</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">50</span>, <span class="at">length.out =</span> <span class="dv">100</span>))</span>
+<span id="cb292-6"><a href="bayesian-statistics.html#cb292-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining and calculating the prior density for each parameter combination</span></span>
+<span id="cb292-7"><a href="bayesian-statistics.html#cb292-7" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>mu_prior <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(pars<span class="sc">$</span>mu, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">100</span>)</span>
+<span id="cb292-8"><a href="bayesian-statistics.html#cb292-8" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>sigma_prior <span class="ot">&lt;-</span> <span class="fu">dunif</span>(pars<span class="sc">$</span>sigma, <span class="at">min =</span> <span class="fl">0.1</span>, <span class="at">max =</span> <span class="dv">50</span>)</span>
+<span id="cb292-9"><a href="bayesian-statistics.html#cb292-9" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>prior <span class="ot">&lt;-</span> pars<span class="sc">$</span>mu_prior <span class="sc">*</span> pars<span class="sc">$</span>sigma_prior</span>
+<span id="cb292-10"><a href="bayesian-statistics.html#cb292-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the likelihood for each parameter combination</span></span>
+<span id="cb292-11"><a href="bayesian-statistics.html#cb292-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(pars)) {</span>
+<span id="cb292-12"><a href="bayesian-statistics.html#cb292-12" aria-hidden="true" tabindex="-1"></a>  likelihoods <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(iq, pars<span class="sc">$</span>mu[i], pars<span class="sc">$</span>sigma[i])</span>
+<span id="cb292-13"><a href="bayesian-statistics.html#cb292-13" aria-hidden="true" tabindex="-1"></a>  pars<span class="sc">$</span>likelihood[i] <span class="ot">&lt;-</span> <span class="fu">prod</span>(likelihoods)</span>
+<span id="cb292-14"><a href="bayesian-statistics.html#cb292-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb292-15"><a href="bayesian-statistics.html#cb292-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of each parameter combination</span></span>
+<span id="cb292-16"><a href="bayesian-statistics.html#cb292-16" aria-hidden="true" tabindex="-1"></a>pars<span class="sc">$</span>probability <span class="ot">&lt;-</span> pars<span class="sc">$</span>likelihood <span class="sc">*</span> pars<span class="sc">$</span>prior <span class="sc">/</span> <span class="fu">sum</span>(pars<span class="sc">$</span>likelihood <span class="sc">*</span> pars<span class="sc">$</span>prior)</span></code></pre></div>
+<p>Sampling from the zombie posterior
+Again pars contains the data frame representing the posterior
+zombie IQ distribution you calculated earlier.
+The code to the right draws sample_indices: a sample of row
+numbers (a.k.a. indices) from the posterior. Now, let’s sample
+from pars to calculate some new measures!<br />
+Use sample_indices to create a new data frame pars_sample from pars with the columns mu and sigma drawn from the rows indicated by sample_indices.
+Tip: If df is a data frame with many rows and columns here is how you would extract rows 1, 3 and 1 (again), and the columns named “height” and “weight”:</p>
+<p>df[c(1,3,1), c(“height,”“weight”)]</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="bayesian-statistics.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pars)</span></code></pre></div>
+<pre><code>##         mu sigma    mu_prior sigma_prior        prior likelihood probability
+## 1 0.000000   0.1 0.002419707  0.02004008 4.849113e-05          0           0
+## 2 1.515152   0.1 0.002456367  0.02004008 4.922578e-05          0           0
+## 3 3.030303   0.1 0.002493009  0.02004008 4.996010e-05          0           0
+## 4 4.545455   0.1 0.002529617  0.02004008 5.069373e-05          0           0
+## 5 6.060606   0.1 0.002566174  0.02004008 5.142633e-05          0           0
+## 6 7.575758   0.1 0.002602661  0.02004008 5.215754e-05          0           0</code></pre>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="bayesian-statistics.html#cb295-1" aria-hidden="true" tabindex="-1"></a>sample_indices <span class="ot">&lt;-</span> <span class="fu">sample</span>( <span class="fu">nrow</span>(pars), <span class="at">size =</span> <span class="dv">10000</span>,</span>
+<span id="cb295-2"><a href="bayesian-statistics.html#cb295-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> pars<span class="sc">$</span>probability)</span>
+<span id="cb295-3"><a href="bayesian-statistics.html#cb295-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample_indices)</span></code></pre></div>
+<pre><code>## [1] 1932 2030 2426 1628 1928 2529</code></pre>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="bayesian-statistics.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample from pars to calculate some new measures</span></span>
+<span id="cb297-2"><a href="bayesian-statistics.html#cb297-2" aria-hidden="true" tabindex="-1"></a>pars_sample <span class="ot">&lt;-</span> pars[sample_indices, <span class="fu">c</span>(<span class="st">&quot;mu&quot;</span>, <span class="st">&quot;sigma&quot;</span>)]</span>
+<span id="cb297-3"><a href="bayesian-statistics.html#cb297-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb297-4"><a href="bayesian-statistics.html#cb297-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the mean IQ</span></span>
+<span id="cb297-5"><a href="bayesian-statistics.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pars_sample<span class="sc">$</span>mu)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="bayesian-statistics.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the mean IQ</span></span>
+<span id="cb298-2"><a href="bayesian-statistics.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pars_sample<span class="sc">$</span>mu, <span class="dv">100</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="bayesian-statistics.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate quantiles</span></span>
+<span id="cb299-2"><a href="bayesian-statistics.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(pars_sample<span class="sc">$</span>mu, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>))</span></code></pre></div>
+<pre><code>##     2.5%      50%    97.5% 
+## 34.84848 42.42424 50.00000</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="bayesian-statistics.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pars_sample)</span></code></pre></div>
+<pre><code>##            mu     sigma
+## 1932 46.96970  9.676768
+## 2030 43.93939 10.180808
+## 2426 37.87879 12.196970
+## 1628 40.90909  8.164646
+## 1928 40.90909  9.676768
+## 2529 42.42424 12.701010</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="bayesian-statistics.html#cb303-1" aria-hidden="true" tabindex="-1"></a>pred_iq <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> pars_sample<span class="sc">$</span>mu, </span>
+<span id="cb303-2"><a href="bayesian-statistics.html#cb303-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sd =</span> pars_sample<span class="sc">$</span>sigma)</span>
+<span id="cb303-3"><a href="bayesian-statistics.html#cb303-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb303-4"><a href="bayesian-statistics.html#cb303-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize pred_iq</span></span>
+<span id="cb303-5"><a href="bayesian-statistics.html#cb303-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pred_iq)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-99-3.png" width="672" /></p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="bayesian-statistics.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of a zombie being &quot;smart&quot; (+60 IQ)</span></span>
+<span id="cb304-2"><a href="bayesian-statistics.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pred_iq <span class="sc">&gt;=</span> <span class="dv">60</span>) <span class="sc">/</span> <span class="fu">length</span>(pred_iq)</span></code></pre></div>
+<pre><code>## [1] 0.089</code></pre>
+<p>The BEST models and zombies on a diet<br />
+The t-test is a classical statistical procedure used to compare the
+means of two data sets. In 2013 John Kruschke developed a souped-up
+Bayesian version of the t-test he named BEST (standing for Bayesian
+Estimation Supersedes the t-test). Let’s try out BEST as implemented
+in the BEST package.</p>
+<p>Zombies are stupid, but you and your colleagues at the National Zombie
+Research Laboratory are interested in how diet affects zombie intelligence.
+You have done a small experiment where you measured the IQ of 10 zombies
+on a regular diet and 10 zombies on a brain-based diet. The hypothesis
+is that zombies that eat more brains perform better on IQ tests.
+To the right, the data from the experiment is put into the variables
+iq_brains and iq_regular.</p>
+<p>Calculate the mean difference in IQ between the two groups by taking
+the mean of iq_brains minus the mean of iq_regular.
+Remember that mean(iq_brains) calculates the sample mean of iq_brains.</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="bayesian-statistics.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The IQ of zombies on a regular diet and a brain based diet.</span></span>
+<span id="cb306-2"><a href="bayesian-statistics.html#cb306-2" aria-hidden="true" tabindex="-1"></a>iq_brains <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">42</span>, <span class="dv">66</span>, <span class="dv">53</span>, <span class="dv">42</span>, <span class="dv">55</span>, <span class="dv">57</span>, <span class="dv">56</span>, <span class="dv">51</span>)</span>
+<span id="cb306-3"><a href="bayesian-statistics.html#cb306-3" aria-hidden="true" tabindex="-1"></a>iq_regular <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">44</span>, <span class="dv">34</span>, <span class="dv">18</span>, <span class="dv">51</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">49</span>, <span class="dv">48</span>, <span class="dv">46</span>)</span>
+<span id="cb306-4"><a href="bayesian-statistics.html#cb306-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb306-5"><a href="bayesian-statistics.html#cb306-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean difference in IQ between the two groups</span></span>
+<span id="cb306-6"><a href="bayesian-statistics.html#cb306-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iq_brains) <span class="sc">-</span> <span class="fu">mean</span>(iq_regular)</span></code></pre></div>
+<pre><code>## [1] 9.3</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="bayesian-statistics.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the BEST model to the data from both groups</span></span>
+<span id="cb308-2"><a href="bayesian-statistics.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(BEST)</span></code></pre></div>
+<pre><code>## Loading required package: BEST</code></pre>
+<pre><code>## Loading required package: HDInterval</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="bayesian-statistics.html#cb311-1" aria-hidden="true" tabindex="-1"></a>best_posterior <span class="ot">&lt;-</span> <span class="fu">BESTmcmc</span>(iq_brains, iq_regular)</span></code></pre></div>
+<pre><code>## Waiting for parallel processing to complete...</code></pre>
+<pre><code>## done.</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="bayesian-statistics.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the model result</span></span>
+<span id="cb314-2"><a href="bayesian-statistics.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(best_posterior)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p>The Bayesian model behind BEST assumes that the generative model for
+the data is a t-distribution; a more flexible distribution than the normal
+distribution as it assumes that data points might be outliers to some degree.
+This makes BEST’s estimate of the mean difference robust to outliers in the data.</p>
+<p>Assume that a super smart mutant zombie (IQ = 150) got into the iq_regular group by
+mistake. This might mess up the results as you and your colleagues really were
+interested in how diet affects normal zombies.</p>
+<p>Replace the last value in iq_regular with 150.
+Again, calculate the difference in means between the two groups using the mean()
+function, that is, the mean of iq_brains minus the mean of iq_regular.</p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="bayesian-statistics.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The IQ of zombies given a regular diet and a brain based diet.</span></span>
+<span id="cb315-2"><a href="bayesian-statistics.html#cb315-2" aria-hidden="true" tabindex="-1"></a>iq_brains <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">42</span>, <span class="dv">66</span>, <span class="dv">53</span>, <span class="dv">42</span>, <span class="dv">55</span>, <span class="dv">57</span>, <span class="dv">56</span>, <span class="dv">51</span>)</span>
+<span id="cb315-3"><a href="bayesian-statistics.html#cb315-3" aria-hidden="true" tabindex="-1"></a>iq_regular <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">44</span>, <span class="dv">34</span>, <span class="dv">18</span>, <span class="dv">51</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">49</span>, <span class="dv">48</span>, <span class="dv">150</span>)</span>
+<span id="cb315-4"><a href="bayesian-statistics.html#cb315-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb315-5"><a href="bayesian-statistics.html#cb315-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the data above and calculate the difference in means</span></span>
+<span id="cb315-6"><a href="bayesian-statistics.html#cb315-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iq_brains) <span class="sc">-</span> <span class="fu">mean</span>(iq_regular)</span></code></pre></div>
+<pre><code>## [1] -1.1</code></pre>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="bayesian-statistics.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the BEST model to the modified data and plot the result</span></span>
+<span id="cb317-2"><a href="bayesian-statistics.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(BEST)</span>
+<span id="cb317-3"><a href="bayesian-statistics.html#cb317-3" aria-hidden="true" tabindex="-1"></a>best_posterior <span class="ot">&lt;-</span> BEST<span class="sc">::</span><span class="fu">BESTmcmc</span>(iq_brains, iq_regular)</span></code></pre></div>
+<pre><code>## Waiting for parallel processing to complete...done.</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="bayesian-statistics.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(best_posterior)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-101-1.png" width="672" />
+<strong>Sources</strong><br />
+<a href="https://learn.datacamp.com/courses/fundamentals-of-bayesian-data-analysis-in-r">Fundamentals of Bayesian Data Analysis in R on Datacamp</a></p>
 
+</div>
 </div>
             </section>
 

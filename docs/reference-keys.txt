@@ -23,6 +23,7 @@ statistical-distributions
 normal-distribution
 bernoulli-distribution
 binomial-distribution
+beta-distribution
 geometric-distribution
 uniform-distributions
 poisson-distribution
@@ -102,6 +103,8 @@ example
 next-part-5
 learning-vector-quantization
 bayesian-statistics
+simple-model-with-one-binary-parameter
+website-visitors-model
 naive-bayes
 markov-chain-monte-carlo-mcmc
 simple-markov-process

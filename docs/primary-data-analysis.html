@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-28" />
+<meta name="date" content="2021-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,11 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.4</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.5</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.6</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.7</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.8</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a>
 <ul>
@@ -277,7 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>29.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="30" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>30</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+</ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="chapter" data-level="34" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>34</b> Simple Markov process</a>
@@ -491,12 +496,13 @@ LOF(<span class="math inline">\(x\)</span>) &gt; 1 lower density than neighbors 
 <pre><code>##   0%  25%  50%  75% 100% 
 ##    4   41   46   52  122</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="primary-data-analysis.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale data and create scatterplot: cars_scaled</span></span>
-<span id="cb35-2"><a href="primary-data-analysis.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cars)</span></code></pre></div>
+<span id="cb35-2"><a href="primary-data-analysis.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb35-3"><a href="primary-data-analysis.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cars)</span></code></pre></div>
 <pre><code>## Rows: 388
 ## Columns: 3
-## $ distance [3m[90m&lt;int&gt;[39m[23m 28, 12, 112, 129, 185, 83, 78, 123, 49, 119, 124, 118, 123, 247, 124, 173, 334, 118, 259, 118, 253, 142, 179, 118, 123, 124, 184, 184, 183, 1…
-## $ consume  [3m[90m&lt;int&gt;[39m[23m 5, 42, 55, 39, 45, 64, 44, 5, 64, 53, 56, 46, 59, 51, 47, 51, 56, 51, 49, 47, 55, 59, 57, 47, 59, 41, 57, 58, 55, 57, 53, 5, 56, 48, 43, 57, …
-## $ speed    [3m[90m&lt;int&gt;[39m[23m 26, 30, 38, 36, 46, 50, 43, 40, 26, 30, 42, 38, 59, 58, 46, 24, 36, 32, 39, 40, 32, 38, 37, 36, 62, 57, 21, 28, 29, 35, 51, 29, 58, 40, 36, 3…</code></pre>
+## $ distance &lt;int&gt; 28, 12, 112, 129, 185, 83, 78, 123, 49, 119, 124, 118, 123, 247, 124, 173, 334, 118, 259, 118, 253, 142, 179, 118, 123, 124, 184, 184, 183, 184, 123, 118,…
+## $ consume  &lt;int&gt; 5, 42, 55, 39, 45, 64, 44, 5, 64, 53, 56, 46, 59, 51, 47, 51, 56, 51, 49, 47, 55, 59, 57, 47, 59, 41, 57, 58, 55, 57, 53, 5, 56, 48, 43, 57, 52, 74, 48, 6…
+## $ speed    &lt;int&gt; 26, 30, 38, 36, 46, 50, 43, 40, 26, 30, 42, 38, 59, 58, 46, 24, 36, 32, 39, 40, 32, 38, 37, 36, 62, 57, 21, 28, 29, 35, 51, 29, 58, 40, 36, 36, 37, 26, 23…</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="primary-data-analysis.html#cb37-1" aria-hidden="true" tabindex="-1"></a>cars_scaled <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">scale</span>(cars))</span>
 <span id="cb37-2"><a href="primary-data-analysis.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(distance <span class="sc">~</span> consume, <span class="at">data =</span> cars_scaled, </span>
 <span id="cb37-3"><a href="primary-data-analysis.html#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Fuel consumption vs. distance&#39;</span>)</span></code></pre></div>

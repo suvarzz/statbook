@@ -1,6 +1,14 @@
 # Bayesian Statistics
 
+**Bayesian data analysis** the use of Bayesian inference to learn from data.  
+
+**Bayesian inference** is a method for figuring out unobservable quantities given known facts that uses probability to describe the uncertainty over what the values of the unknown quantities could be.  
+**Bayesian inference** is  conditioning on data, in order to learn about parameter values.  
+
+- A **prior** is a probability distribution that represents what the model knows before seeing the data.  
+- A **posterior** is a probability distribution that represents what the model knows after having seen the data.  
 ```{r}
+# Visualization function of Bayesian inference for binary data 
 library(ggjoy)
 library(ggExtra)
 library(ggjoy)
@@ -41,9 +49,534 @@ prop_model <- function(data = c(), prior_prop = c(1, 1), n_draws = 10000,
     invisible(rbeta(n_draws, prior_prop[1] + sum(data), prior_prop[2] + 
                         sum(!data)))
 }
+```
 
+## Simple model with one binary parameter
+
+```{r}
 # Generate 50 random binary data with P(1)=0.75
 data <- sample(c(1, 0), prob = c(0.75, 0.25),
-                   size = 50, replace = TRUE)
+                   size = 10, replace = TRUE)
+# Extract and explore the posterior
 posterior <- prop_model(data)
+head(posterior)
+# Plot the histogram of the posterior
+hist(posterior, xlim = c(0, 1), breaks=30)
+# Calculate the median
+median(posterior)
+# Calculate the credible interval (CI)
+quantile(posterior, c(0.05, 0.95))
+# Probability of successes in our distribution > 0.07
+sum(posterior > 0.07) / length(posterior)
 ```
+
+**Generate binomial data**  
+```{r}
+# Parameters
+p_success <- 0.42     # probability of success
+n <- 100              # number of observations
+# logical vector with false if Uniform distribution 
+# generates value less then probability of success
+data <- c()
+for (i in 1:n) {
+    data[i] <- runif(1, min = 0, max = 1) < p_success
+}
+# convert logical to numeric 0/1
+data <- as.numeric(data)
+data
+
+# the same vector using rbinom distribution
+n = 100
+size = 1
+prob = 0.42
+rbinom(n, size, prob)
+```
+
+## Website visitors model
+
+To get more visitors to your website you are considering paying for an ad to be 
+shown 100 times on a popular social media site. According to the social media site, 
+their ads get clicked on 10% of the time. How many visitors could your site get?  
+
+We can fix % of clicks as 0.1 but we do not know exactly how many clicks people do (uncertain). 
+We suggest the % of cliks is uniformly distributed between 0 and 20.  
+
+```{r}
+# Parameters
+n <- 100000          # number of simulations
+n_ads_shown <- 100   # number of shown adds
+
+# probability that add will be clicked
+p_clicks <- runif(n, min = 0.0, max = 0.2)  
+
+# MODEL: We assume that the binomial distribution is a reasonable generative model
+n_visitors <- rbinom(n = n, 
+                     size = n_ads_shown, 
+                     prob = p_clicks)
+
+#---> Visualize the prior model simulation
+library(ggplot2)
+df <- data.frame(x = n_visitors, y = p_clicks)
+p <- ggplot(df, aes(n_visitors, p_clicks)) + geom_point() + theme_classic()
+ggExtra::ggMarginal(p, type = "histogram",  bins = 18)
+#<---
+```
+Updated Bayesian model  
+New data: 13 people clicked and visited site when the ad was shown 100 times.  
+
+```{r}
+# Prior distribution
+prior <- data.frame(p_clicks, n_visitors)
+# The posterior subset
+posterior <- prior[prior$n_visitors == 13, ]
+head(posterior)
+# posterior distribution for 13 visitors
+hist(posterior$p_clicks)
+
+# update
+# Assign posterior to a new variable called prior
+prior <- posterior
+head(prior)
+
+#---> plot of subset distribution taken from data
+df <- prior
+p <- ggplot(df, aes(n_visitors, p_clicks)) + geom_point() + theme_classic()
+ggExtra::ggMarginal(p, type = "histogram",  bins = 18)
+#<---
+
+# Replace prior$n_visitors with a new sample and visualize the result
+n <-  nrow(prior)
+n_ads_shown <- 100
+prior$n_visitors <- rbinom(n, size = n_ads_shown, prob = prior$p_clicks)
+hist(prior$n_visitors)
+
+#---> plot of distributions
+df <- prior
+p <- ggplot(df, aes(n_visitors, p_clicks)) + geom_point() + theme_classic()
+ggExtra::ggMarginal(p, type = "histogram",  bins = 18)
+#<---
+```
+Use result of the model for prediction:  
+Calculate the probability that you will get 5 or more visitors.  
+
+```{r}
+sum(prior$n_visitors >= 5) / length(prior$n_visitors)
+```
+
+Now we update prior and will use **beta distribution**.    
+
+```{r}
+n <- 100000
+n_ads_shown <- 100
+
+# Change the prior on proportion_clicks
+p_clicks <- rbeta(n, shape1 = 5, shape2 = 95)
+hist(p_clicks)
+
+n_visitors <- rbinom(n = n,
+                     size = n_ads_shown, 
+                     prob = p_clicks)
+
+prior <- data.frame(p_clicks, n_visitors)
+
+posterior <- prior[prior$n_visitors == 13, ]
+
+# This plots the prior and the posterior in the same plot
+par(mfcol = c(1, 2))
+hist(prior$p_clicks, 
+     xlim = c(0, 0.25))
+hist(posterior$p_clicks, 
+     xlim = c(0, 0.25))
+#grid.arrange(hist_top, empty, scatter, hist_right, ncol=2, nrow=2, widths=c(4, 1), heights=c(1, 4))
+```
+
+Let's fit the binomial model to both the video ad data (13 out of 100 clicked) and 
+the new text ad data (6 out of a 100 clicked).  
+
+```{r}
+n <- 100000
+n_ads_shown <- 100
+p_clicks <- runif(n, min = 0.0, max = 0.2)
+n_visitors <- rbinom(n = n, size = n_ads_shown, 
+                     prob = p_clicks)
+prior <- data.frame(p_clicks, n_visitors)
+
+# Create the posteriors for video and text ads
+posterior_video <- prior[prior$n_visitors == 13, ]
+posterior_text <- prior[prior$n_visitors == 6, ]
+
+par(mfrow=c(1,2))
+# Visualize the posteriors
+hist(posterior_video$p_clicks, xlim = c(0, 0.25))
+hist(posterior_text$p_clicks, xlim = c(0, 0.25))
+
+# combine data into dataframe
+posterior <- data.frame(video_prop = posterior_video$p_clicks[1:4000],
+                        text_prop = posterior_text$p_click[1:4000])
+
+# Calculate the posterior difference: video_prop - text_prop
+posterior$prop_diff <- posterior$video_prop - posterior$text_prop
+
+# Visualize prop_diff
+hist(posterior$prop_diff)
+
+# Calculate the median of prop_diff
+median(posterior$prop_diff)
+
+# Calculate the proportion
+mean(posterior$prop_diff > 0.0)
+```
+
+A small decision analysis  
+Each visitor spends $2.53 on average, a video ad costs $0.25 and a text ad 
+costs $0.05. Let's figure out the probable profit when using video ads and text ads!  
+
+```{r}
+visitor_spend <- 2.53
+video_cost <- 0.25
+text_cost <- 0.05
+
+# Add the column posterior$video_profit
+posterior$video_profit <- posterior$video_prop * visitor_spend - video_cost
+
+# Add the column posterior$text_profit
+posterior$text_profit <- posterior$text_prop * visitor_spend - text_cost
+
+head(posterior)
+
+# Visualize the video_profit and text_profit columns
+par(mfrow=c(1,2))
+hist(posterior$video_profit)
+hist(posterior$text_profit)
+
+# Add the column posterior$profit_diff
+posterior$profit_diff <- posterior$video_profit - posterior$text_profit
+
+# Visualize posterior$profit_diff
+hist(posterior$profit_diff)
+
+# Add the column posterior$profit_diff
+posterior$profit_diff <- posterior$video_profit - posterior$text_profit
+
+# Visualize posterior$profit_diff
+hist(posterior$profit_diff)
+
+# Calculate a "best guess" for the difference in profits
+median(posterior$profit_diff)
+
+# Calculate the probability that text ads are better than video ads
+mean(posterior$profit_diff < 0)
+```
+When you put up a banner on your friend's site you got 19 clicks in a day, how many daily clicks should you expect this banner to generate on average? Now, modify your model, one piece at a time, to calculate this.  
+Start by replacing the prior distribution over proportion_clicks by a prior over mean_clicks. Make the prior a uniform (runif) distribution from 0 to 80 clicks per day.  
+```{r}
+n <- 100000
+n_ads_shown <- 100
+mean_clicks <- runif(n, min = 0, max = 80)
+n_visitors <- rbinom(n, size = n_ads_shown, 
+                     prob = p_clicks)
+                     
+prior <- data.frame(p_clicks, n_visitors)
+posterior <- prior[prior$n_visitors == 13, ]
+```
+Clicks per day instead of clicks per ad
+When you put up a banner on your friend's site you got 19 clicks in a day, how many daily clicks should you expect this banner to generate on average? Now, modify your model, one piece at a time, to calculate this.  
+
+```{r}
+# Change this model so that it uses a Poisson distribution
+n <- 100000
+mean_clicks <- runif(n, min = 0, max = 80)
+n_visitors <- rpois(n = n, mean_clicks)
+
+prior <- data.frame(mean_clicks, n_visitors)
+posterior <- prior[prior$n_visitors == 13, ]
+
+hist(prior$mean_clicks)
+hist(posterior$mean_clicks)
+```
+
+A standard French-suited deck of playing cards contains 52 cards; 13 each of hearts (♥), spades (♠), clubs (♦), and diamonds (♣). Assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92%.  
+Calculate the probability of drawing any of the four aces! That is, calculate the probability of drawing 🂡 or 🂱 or 🃁 or 🃑 using the sum rule and assign it to prob_to_draw_ace.  
+
+```{r}
+# Calculate the probability of drawing any of the four aces
+prob_to_draw_ace <- 1/52 + 1/52 + 1/52 + 1/52
+```
+Cards and the product rule
+Again, assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92% . The probability of drawing any of the four aces is 1/52 + 1/52 + 1/52 + 1/52 = 4/52. Once an ace has been drawn, the probability of picking any of the remaining three is 3/51. If another ace is drawn the probability of picking any of the remaining two is 2/50, and so on.  
+Use the product rule to calculate the probability of picking the four aces in a row from the top of a well-shuffled deck and assign it to prob_to_draw_four_aces.  
+```{r}
+# Calculate the probability of picking four aces in a row
+prob_to_draw_four_aces <- 4/52 * 3/51 * 2/50 * 1/49
+```
+
+Simulates the number of clicks/visitors (n_clicks) from 100 shown ads using the rbinom function given that the underlying proportion of clicks is 10%.
+Calculates the probability of getting 13 visitors (prob_13_visitors).
+That is, in probability notation it's calculating P(n_visitors = 13 | proportion_clicks = 10%).  
+
+```{r}
+# Rewrite this code so that it uses dbinom instead of rbinom
+n_ads_shown <- 100
+proportion_clicks <- 0.1
+prob_13_visitors <- dbinom(13, 
+    size = n_ads_shown, prob = proportion_clicks)
+prob_13_visitors
+```
+
+Currently the code calculates P(n_visitors = 13 | proportion_clicks = 10%): The probability of getting 13 visitors given that the proportion of clicks is 10%.
+
+Change the code to instead calculate P(n_visitors | proportion_clicks = 10%): The probability distribution over all possible numbers of visitors.
+Tip: As dbinom is vectorized it suffices to change the value of n_visitors into a vector with the numbers 0, 1, 2, …, 100.   
+
+```{r}
+# Explore using dbinom to calculate probability distributions
+n_ads_shown <- 100
+proportion_clicks <- 0.1
+n_visitors <- seq(0, 100)
+prob <- dbinom(n_visitors, 
+    size = n_ads_shown, prob = proportion_clicks)
+prob
+
+# Plot the distribution
+plot(n_visitors, prob, type = "h")
+```
+
+Calculating a joint distribution  
+Add the column pars$probability: The probability of each proportion_clicks and n_visitors combination. 
+This should be calculated by multiplying the likelihood by the prior.  
+```{r}
+n_ads_shown <- 100
+p_clicks <- seq(0, 1, by = 0.01)
+n_visitors <- seq(0, 100, by = 1)
+pars <- expand.grid(proportion_clicks = p_clicks,
+                    n_visitors = n_visitors)
+pars$prior <- dunif(pars$proportion_clicks, min = 0, max = 0.2)
+pars$likelihood <- dbinom(pars$n_visitors, 
+    size = n_ads_shown, prob = pars$proportion_clicks)
+
+# Add the column pars$probability and normalize it
+pars$probability <- pars$likelihood * pars$prior
+pars$probability <- pars$probability / sum(pars$probability)
+```
+
+Conditioning on the data  
+Let's resurrect the site example where you tested text ads. 
+Out of a 100 impressions of the text ad, 6 out of a 100 clicked and 
+visited your site.  
+pars is currently the joint distribution over all combinations of 
+proportion_clicks and n_visitors.  
+Condition on the data and keep only the rows in pars where n_visitors == 6. 
+Normalize pars$probability again, to make sure it sums to 1.0.
+Plot the posterior pars$probability using plot(x = , y = , type = "h") 
+with pars$proportion_clicks on the x-axis and pars$probability on the y-axis.  
+
+```{r}
+n_ads_shown <- 100
+proportion_clicks <- seq(0, 1, by = 0.01)
+n_visitors <- seq(0, 100, by = 1)
+pars <- expand.grid(proportion_clicks = proportion_clicks,
+                    n_visitors = n_visitors)
+pars$prior <- dunif(pars$proportion_clicks, min = 0, max = 0.2)
+pars$likelihood <- dbinom(pars$n_visitors, 
+    size = n_ads_shown, prob = pars$proportion_clicks)
+pars$probability <- pars$likelihood * pars$prior
+pars$probability <- pars$probability / sum(pars$probability)
+# Condition on the data 
+pars <- pars[pars$n_visitors == 6, ]
+# Normalize again
+pars$probability <- pars$probability / sum(pars$probability)
+# Plot the posterior pars$probability
+plot(pars$proportion_clicks, pars$probability, type = "h")
+```
+
+Set n_visitors directly to 6, just replace the seq-statement.
+Now you can remove the line that conditions on the data, and the line after that, that normalizes pars$probability.
+Take an extra look at the final code and convince yourself that the result of this modified code will be the same as before.
+
+```{r}
+# Simplify the code below by directly conditioning on the data
+n_ads_shown <- 100
+proportion_clicks <- seq(0, 1, by = 0.01)
+n_visitors <- 6
+pars <- expand.grid(proportion_clicks = proportion_clicks)
+pars$prior <- dunif(pars$proportion_clicks, min = 0, max = 0.2) 
+pars$likelihood <- dbinom(n_visitors, 
+    size = n_ads_shown, prob = pars$proportion_clicks)
+pars$probability <- pars$likelihood * pars$prior
+pars$probability <- pars$probability / sum(pars$probability)
+plot(pars$proportion_clicks, pars$probability, type = "h")
+```
+
+Let's assume that the Normal distribution is a decent model of birth weight data.
+
+Given the birth weight data, what would be reasonable values of the mean (mu) and standard deviation (sigma) that generated this data?
+Assign these value to mu and sigma.
+No need to do anything fancy here, just eyeball the data and try to come up with something reasonable.
+
+Remember: The standard deviation sigma describes the spread of the distribution, where around 70% of the drawn values will be within one standard deviation from the mean.  
+
+```{r}
+# Assign mu and sigma
+mu <- 3500
+sigma <- 600
+
+weight_distr <- rnorm(n = 100000, mean = mu, sd = sigma)
+hist(weight_distr, 60, xlim = c(0, 6000), col = "lightgreen")
+```
+Here is a small data set with the birth weights of six newborn babies in grams.  
+`c(3164, 3362, 4435, 3542, 3578, 4529)`  
+The resulting histogram gives you a sense of the uncertainty over the birth weight of newborns. Let's recreate this plot, but calculating the distribution using dnorm instead of simulating using rnorm.
+
+Create a vector called weight that should contain all values from 0 to 6000 in increments of 100, that is, 0, 100, 200, …, 5900, 6000.
+Tip: use seq(from = , to = , by = )
+
+```{r}
+# Assign mu and sigma
+mu <- 3500
+sigma <- 600
+
+weight_distr <- rnorm(n = 100000, mean = mu, sd = sigma)
+hist(weight_distr, 60, xlim = c(0, 6000), col = "lightgreen")
+
+# Create weight
+weight <- seq(0, 6000, by = 100)
+
+# Calculate likelihood
+likelihood <- dnorm(weight, mu, sigma)
+
+# Plot the distribution of weight
+plot(weight, likelihood, type = "h")
+```
+
+A Bayesian model of Zombie IQ
+Zombies are stupid, and you and your colleagues at the National Zombie 
+Research Laboratory are interested in how stupid they are. To the right, 
+you have the Normal model we developed in the last video, but with the 
+temperature data switched out with some zombie IQs fresh from the lab. 
+What we're interested in is how much we can learn about the mean zombie 
+IQ from this data. The model is complete, save for that we need to calculate 
+the probability of each parameter combination in pars.  
+Use Bayes Theorem to calculate these probabilities and assign them to pars$probability to complete the model.  
+
+```{r}
+# The IQ of a bunch of zombies
+iq <- c(55, 44, 34, 18, 51, 40, 40, 49, 48, 46)
+# Defining the parameter grid
+pars <- expand.grid(mu = seq(0, 150, length.out = 100), 
+                    sigma = seq(0.1, 50, length.out = 100))
+# Defining and calculating the prior density for each parameter combination
+pars$mu_prior <- dnorm(pars$mu, mean = 100, sd = 100)
+pars$sigma_prior <- dunif(pars$sigma, min = 0.1, max = 50)
+pars$prior <- pars$mu_prior * pars$sigma_prior
+# Calculating the likelihood for each parameter combination
+for(i in 1:nrow(pars)) {
+  likelihoods <- dnorm(iq, pars$mu[i], pars$sigma[i])
+  pars$likelihood[i] <- prod(likelihoods)
+}
+# Calculate the probability of each parameter combination
+pars$probability <- pars$likelihood * pars$prior / sum(pars$likelihood * pars$prior)
+```
+
+Sampling from the zombie posterior
+Again pars contains the data frame representing the posterior 
+zombie IQ distribution you calculated earlier. 
+The code to the right draws sample_indices: a sample of row 
+numbers (a.k.a. indices) from the posterior. Now, let's sample 
+from pars to calculate some new measures!  
+Use sample_indices to create a new data frame pars_sample from pars with the columns mu and sigma drawn from the rows indicated by sample_indices.
+Tip: If df is a data frame with many rows and columns here is how you would extract rows 1, 3 and 1 (again), and the columns named "height" and "weight":
+
+df[c(1,3,1), c("height","weight")]  
+
+```{r}
+head(pars)
+sample_indices <- sample( nrow(pars), size = 10000,
+    replace = TRUE, prob = pars$probability)
+head(sample_indices)
+
+# Sample from pars to calculate some new measures
+pars_sample <- pars[sample_indices, c("mu", "sigma")]
+
+# Visualize the mean IQ
+hist(pars_sample$mu)
+
+# Visualize the mean IQ
+hist(pars_sample$mu, 100, col = 'blue')
+
+# Calculate quantiles
+quantile(pars_sample$mu, c(0.025, 0.5, 0.975))
+
+head(pars_sample)
+pred_iq <- rnorm(10000, mean = pars_sample$mu, 
+                 sd = pars_sample$sigma)
+
+# Visualize pred_iq
+hist(pred_iq)
+
+# Calculate the probability of a zombie being "smart" (+60 IQ)
+sum(pred_iq >= 60) / length(pred_iq)
+```
+
+The BEST models and zombies on a diet  
+The t-test is a classical statistical procedure used to compare the 
+means of two data sets. In 2013 John Kruschke developed a souped-up 
+Bayesian version of the t-test he named BEST (standing for Bayesian 
+Estimation Supersedes the t-test). Let's try out BEST as implemented 
+in the BEST package.  
+
+Zombies are stupid, but you and your colleagues at the National Zombie 
+Research Laboratory are interested in how diet affects zombie intelligence. 
+You have done a small experiment where you measured the IQ of 10 zombies 
+on a regular diet and 10 zombies on a brain-based diet. The hypothesis 
+is that zombies that eat more brains perform better on IQ tests. 
+To the right, the data from the experiment is put into the variables 
+iq_brains and iq_regular.  
+
+Calculate the mean difference in IQ between the two groups by taking 
+the mean of iq_brains minus the mean of iq_regular. 
+Remember that mean(iq_brains) calculates the sample mean of iq_brains.  
+
+```{r}
+# The IQ of zombies on a regular diet and a brain based diet.
+iq_brains <- c(44, 52, 42, 66, 53, 42, 55, 57, 56, 51)
+iq_regular <- c(55, 44, 34, 18, 51, 40, 40, 49, 48, 46)
+
+# Calculate the mean difference in IQ between the two groups
+mean(iq_brains) - mean(iq_regular)
+
+# Fit the BEST model to the data from both groups
+require(BEST)
+best_posterior <- BESTmcmc(iq_brains, iq_regular)
+
+# Plot the model result
+plot(best_posterior)
+```
+
+The Bayesian model behind BEST assumes that the generative model for 
+the data is a t-distribution; a more flexible distribution than the normal 
+distribution as it assumes that data points might be outliers to some degree. 
+This makes BEST's estimate of the mean difference robust to outliers in the data.  
+
+Assume that a super smart mutant zombie (IQ = 150) got into the iq_regular group by 
+mistake. This might mess up the results as you and your colleagues really were 
+interested in how diet affects normal zombies.
+
+Replace the last value in iq_regular with 150.
+Again, calculate the difference in means between the two groups using the mean() 
+function, that is, the mean of iq_brains minus the mean of iq_regular.  
+
+```{r}
+# The IQ of zombies given a regular diet and a brain based diet.
+iq_brains <- c(44, 52, 42, 66, 53, 42, 55, 57, 56, 51)
+iq_regular <- c(55, 44, 34, 18, 51, 40, 40, 49, 48, 150)
+
+# Modify the data above and calculate the difference in means
+mean(iq_brains) - mean(iq_regular)
+
+# Fit the BEST model to the modified data and plot the result
+require(BEST)
+best_posterior <- BEST::BESTmcmc(iq_brains, iq_regular)
+plot(best_posterior)
+```
+**Sources**  
+[Fundamentals of Bayesian Data Analysis in R on Datacamp](https://learn.datacamp.com/courses/fundamentals-of-bayesian-data-analysis-in-r)

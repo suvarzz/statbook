@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-28" />
+<meta name="date" content="2021-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,11 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.4</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.5</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.6</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.7</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.8</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a>
 <ul>
@@ -277,7 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>29.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="30" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>30</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+</ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="chapter" data-level="34" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>34</b> Simple Markov process</a>
@@ -352,8 +357,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb52-8"><a href="data-normalization.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
 <pre><code>## Rows: 20
 ## Columns: 2
-## $ a [3m[90m&lt;dbl&gt;[39m[23m 1.6842105, 1.0526316, 0.8421053, 0.5263158, 2.0000000, 0.4210526, 1.1578947, 0.7368421, 1.2631579, 1.3684211, 0.6315789, 1.8947368, 0.0000000, 0.947…
-## $ b [3m[90m&lt;dbl&gt;[39m[23m 352.6316, 226.3158, 184.2105, 247.3684, 268.4211, 205.2632, 500.0000, 478.9474, 121.0526, 310.5263, 394.7368, 457.8947, 163.1579, 289.4737, 100.0000…</code></pre>
+## $ a &lt;dbl&gt; 2.0000000, 1.3684211, 1.2631579, 0.9473684, 0.2105263, 0.4210526, 1.6842105, 1.1578947, 1.8947368, 0.7368421, 1.4736842, 0.6315789, 0.8421053, 0.3157895, 1.57894…
+## $ b &lt;dbl&gt; 289.4737, 184.2105, 436.8421, 457.8947, 205.2632, 163.1579, 373.6842, 352.6316, 394.7368, 142.1053, 500.0000, 100.0000, 226.3158, 478.9474, 121.0526, 268.4211, 3…</code></pre>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-normalization.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
 <span id="cb54-2"><a href="data-normalization.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
 <pre><code>##      a   b

@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-28" />
+<meta name="date" content="2021-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,11 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
 <li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.4</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.5</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.6</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.7</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.8</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a>
 <ul>
@@ -277,7 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.3" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>29.3</b> NEXT PART</a></li>
 </ul></li>
 <li class="chapter" data-level="30" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>30</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="31" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>31</b> Bayesian Statistics</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+</ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="chapter" data-level="34" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>34</b> Simple Markov process</a>
@@ -355,76 +360,76 @@ Outliers can be identified visually using a boxplot.</p>
 <span id="cb8-2"><a href="basic-statistics.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(v); <span class="fu">qqline</span>(v)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-statistics.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(v)     <span class="co"># variance: sd = sqrt(var)</span></span></code></pre></div>
-<pre><code>## [1] 26.85755</code></pre>
+<pre><code>## [1] 19.39143</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-statistics.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)      <span class="co"># standard deviation</span></span></code></pre></div>
-<pre><code>## [1] 5.182427</code></pre>
+<pre><code>## [1] 4.40357</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-statistics.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(v))  <span class="co"># standard error sd/sqrt(n)</span></span></code></pre></div>
-<pre><code>## [1] 0.7329059</code></pre>
+<pre><code>## [1] 0.6227588</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-statistics.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score (standartization)</span></span>
 <span id="cb15-2"><a href="basic-statistics.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># transform distribution to mean=0, variance=1</span></span>
 <span id="cb15-3"><a href="basic-statistics.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># z = (x - mean(n))/sd</span></span>
 <span id="cb15-4"><a href="basic-statistics.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(v)     <span class="co"># z-score</span></span></code></pre></div>
 <pre><code>##              [,1]
-##  [1,] -0.41293393
-##  [2,]  0.74482475
-##  [3,]  0.74482475
-##  [4,] -0.99181327
-##  [5,] -0.99181327
-##  [6,] -0.02701437
-##  [7,] -2.72845129
-##  [8,] -1.57069261
-##  [9,] -0.41293393
-## [10,]  0.74482475
-## [11,] -1.37773283
-## [12,] -0.02701437
-## [13,]  0.55186497
-## [14,] -0.21997415
-## [15,] -1.18477305
-## [16,]  0.35890519
-## [17,] -0.21997415
-## [18,]  0.93778453
-## [19,]  0.93778453
-## [20,] -1.18477305
-## [21,]  0.16594541
-## [22,]  0.16594541
-## [23,]  0.55186497
-## [24,] -0.60589371
-## [25,]  0.35890519
-## [26,] -0.21997415
-## [27,] -0.99181327
-## [28,] -0.41293393
-## [29,]  0.35890519
-## [30,] -1.37773283
-## [31,]  1.70962365
-## [32,] -0.41293393
-## [33,]  1.13074431
-## [34,]  0.16594541
-## [35,] -0.60589371
-## [36,]  1.70962365
-## [37,]  0.74482475
-## [38,]  1.90258343
-## [39,] -0.02701437
-## [40,]  0.93778453
-## [41,]  1.13074431
-## [42,] -0.41293393
-## [43,]  0.93778453
-## [44,]  1.13074431
-## [45,] -2.14957195
-## [46,]  0.35890519
-## [47,]  0.16594541
-## [48,]  1.32370409
-## [49,] -0.41293393
-## [50,] -0.99181327
+##  [1,] -1.45790802
+##  [2,]  1.49424218
+##  [3,] -2.13917345
+##  [4,] -0.54955411
+##  [5,] -0.77664259
+##  [6,] -1.23081955
+##  [7,] -1.45790802
+##  [8,]  0.58588827
+##  [9,]  0.35879979
+## [10,]  0.35879979
+## [11,]  0.35879979
+## [12,] -0.32246564
+## [13,]  1.04006522
+## [14,] -0.09537716
+## [15,] -0.77664259
+## [16,]  1.72133066
+## [17,]  0.13171132
+## [18,]  0.58588827
+## [19,] -0.09537716
+## [20,] -0.09537716
+## [21,] -1.91208498
+## [22,]  0.58588827
+## [23,] -1.00373107
+## [24,]  1.04006522
+## [25,] -1.68499650
+## [26,]  1.94841913
+## [27,]  1.49424218
+## [28,] -0.32246564
+## [29,] -0.77664259
+## [30,]  1.04006522
+## [31,] -0.77664259
+## [32,] -0.09537716
+## [33,]  1.04006522
+## [34,]  0.13171132
+## [35,]  2.17550761
+## [36,]  0.58588827
+## [37,] -1.00373107
+## [38,] -0.32246564
+## [39,]  0.35879979
+## [40,] -0.09537716
+## [41,] -0.09537716
+## [42,] -0.32246564
+## [43,] -1.23081955
+## [44,]  0.35879979
+## [45,]  0.81297675
+## [46,] -0.54955411
+## [47,] -0.32246564
+## [48,]  1.04006522
+## [49,] -0.54955411
+## [50,]  0.81297675
 ## attr(,&quot;scaled:center&quot;)
-## [1] 100.14
+## [1] 100.42
 ## attr(,&quot;scaled:scale&quot;)
-## [1] 5.182427</code></pre>
+## [1] 4.40357</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-statistics.html#cb17-1" aria-hidden="true" tabindex="-1"></a>vs <span class="ot">&lt;-</span> <span class="fu">scale</span>(v)[,<span class="dv">1</span>]</span>
 <span id="cb17-2"><a href="basic-statistics.html#cb17-2" aria-hidden="true" tabindex="-1"></a>vs</span></code></pre></div>
-<pre><code>##  [1] -0.41293393  0.74482475  0.74482475 -0.99181327 -0.99181327 -0.02701437 -2.72845129 -1.57069261 -0.41293393  0.74482475 -1.37773283 -0.02701437  0.55186497
-## [14] -0.21997415 -1.18477305  0.35890519 -0.21997415  0.93778453  0.93778453 -1.18477305  0.16594541  0.16594541  0.55186497 -0.60589371  0.35890519 -0.21997415
-## [27] -0.99181327 -0.41293393  0.35890519 -1.37773283  1.70962365 -0.41293393  1.13074431  0.16594541 -0.60589371  1.70962365  0.74482475  1.90258343 -0.02701437
-## [40]  0.93778453  1.13074431 -0.41293393  0.93778453  1.13074431 -2.14957195  0.35890519  0.16594541  1.32370409 -0.41293393 -0.99181327</code></pre>
+<pre><code>##  [1] -1.45790802  1.49424218 -2.13917345 -0.54955411 -0.77664259 -1.23081955 -1.45790802  0.58588827  0.35879979  0.35879979  0.35879979 -0.32246564  1.04006522 -0.09537716
+## [15] -0.77664259  1.72133066  0.13171132  0.58588827 -0.09537716 -0.09537716 -1.91208498  0.58588827 -1.00373107  1.04006522 -1.68499650  1.94841913  1.49424218 -0.32246564
+## [29] -0.77664259  1.04006522 -0.77664259 -0.09537716  1.04006522  0.13171132  2.17550761  0.58588827 -1.00373107 -0.32246564  0.35879979 -0.09537716 -0.09537716 -0.32246564
+## [43] -1.23081955  0.35879979  0.81297675 -0.54955411 -0.32246564  1.04006522 -0.54955411  0.81297675</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-statistics.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb19-2"><a href="basic-statistics.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(v)</span>
 <span id="cb19-3"><a href="basic-statistics.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vs)</span></code></pre></div>
@@ -443,7 +448,7 @@ Outliers can be identified visually using a boxplot.</p>
 <span id="cb20-8"><a href="basic-statistics.html#cb20-8" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
 <span id="cb20-9"><a href="basic-statistics.html#cb20-9" aria-hidden="true" tabindex="-1"></a>confidence <span class="ot">&lt;-</span> <span class="fu">c</span>(m<span class="sc">-</span>error, m<span class="sc">+</span>error)</span>
 <span id="cb20-10"><a href="basic-statistics.html#cb20-10" aria-hidden="true" tabindex="-1"></a>confidence</span></code></pre></div>
-<pre><code>## [1]  98.41735 100.70265</code></pre>
+<pre><code>## [1]  98.29271 100.38729</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-statistics.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval for t-distribution with p=0.95</span></span>
 <span id="cb22-2"><a href="basic-statistics.html#cb22-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb22-3"><a href="basic-statistics.html#cb22-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">2</span></span>
