@@ -8,6 +8,22 @@
 **cluster sample** - random choosing from several existing clusters  
 **variables** - discret, continuous, ordinal (ранговая)  
 
+## Probability
+A standard French-suited deck of playing cards contains 52 cards; 13 each of hearts (♥), spades (♠), clubs (♦), and diamonds (♣). Assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92%.  
+Calculate the probability of drawing any of the four aces! That is, calculate the probability of drawing 🂡 or 🂱 or 🃁 or 🃑 using the sum rule and assign it to prob_to_draw_ace.  
+
+```{r}
+# Calculate the probability of drawing any of the four aces
+prob_to_draw_ace <- 1/52 + 1/52 + 1/52 + 1/52
+```
+Cards and the product rule
+Again, assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92% . The probability of drawing any of the four aces is 1/52 + 1/52 + 1/52 + 1/52 = 4/52. Once an ace has been drawn, the probability of picking any of the remaining three is 3/51. If another ace is drawn the probability of picking any of the remaining two is 2/50, and so on.  
+Use the product rule to calculate the probability of picking the four aces in a row from the top of a well-shuffled deck and assign it to prob_to_draw_four_aces.  
+```{r}
+# Calculate the probability of picking four aces in a row
+prob_to_draw_four_aces <- 4/52 * 3/51 * 2/50 * 1/49
+```
+
 ## Analysis of sample distribution
 ### Histogram
 ```{r, eval=TRUE}

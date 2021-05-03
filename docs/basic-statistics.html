@@ -148,13 +148,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability"><i class="fa fa-check"></i><b>3.2</b> Probability</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.3</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
+<li class="chapter" data-level="3.3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.3.3</b> Normality</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>4</b> Primary data analysis - Case studies</a></li>
 <li class="chapter" data-level="5" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary data analysis</a>
@@ -282,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
 <li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+<li class="chapter" data-level="31.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#the-best-models"><i class="fa fa-check"></i><b>31.3</b> The BEST models</a></li>
 </ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
@@ -325,27 +327,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>cluster sample</strong> - random choosing from several existing clusters<br />
 <strong>variables</strong> - discret, continuous, ordinal (ранговая)</p>
 </div>
-<div id="analysis-of-sample-distribution" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Analysis of sample distribution</h2>
-<div id="histogram" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Histogram</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-statistics.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample of random integers</span></span>
-<span id="cb7-2"><a href="basic-statistics.html#cb7-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="at">sd=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>))</span>
-<span id="cb7-3"><a href="basic-statistics.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="basic-statistics.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb7-5"><a href="basic-statistics.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(v, <span class="at">method =</span> <span class="st">&quot;stack&quot;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">2</span>, <span class="at">offset=</span>.<span class="dv">5</span>, <span class="at">at=</span>.<span class="dv">15</span>,</span>
-<span id="cb7-6"><a href="basic-statistics.html#cb7-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Dotplot of random value&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Random value&quot;</span>)</span>
-<span id="cb7-7"><a href="basic-statistics.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="basic-statistics.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(v)</span>
-<span id="cb7-9"><a href="basic-statistics.html#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="basic-statistics.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add density</span></span>
-<span id="cb7-11"><a href="basic-statistics.html#cb7-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">density</span>(v)<span class="sc">$</span>x</span>
-<span id="cb7-12"><a href="basic-statistics.html#cb7-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> (<span class="dv">10</span><span class="sc">/</span><span class="fu">max</span>(<span class="fu">density</span>(v)<span class="sc">$</span>y))<span class="sc">*</span><span class="fu">density</span>(v)<span class="sc">$</span>y  <span class="co"># scale y to plot with histogram</span></span>
-<span id="cb7-13"><a href="basic-statistics.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div id="probability" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Probability</h2>
+<p>A standard French-suited deck of playing cards contains 52 cards; 13 each of hearts (♥), spades (♠), clubs (♦), and diamonds (♣). Assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92%.<br />
+Calculate the probability of drawing any of the four aces! That is, calculate the probability of drawing 🂡 or 🂱 or 🃁 or 🃑 using the sum rule and assign it to prob_to_draw_ace.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-statistics.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of drawing any of the four aces</span></span>
+<span id="cb7-2"><a href="basic-statistics.html#cb7-2" aria-hidden="true" tabindex="-1"></a>prob_to_draw_ace <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">52</span></span></code></pre></div>
+<p>Cards and the product rule
+Again, assuming that you have a well-shuffled deck in front of you, the probability of drawing any given card is 1/52 ≈ 1.92% . The probability of drawing any of the four aces is 1/52 + 1/52 + 1/52 + 1/52 = 4/52. Once an ace has been drawn, the probability of picking any of the remaining three is 3/51. If another ace is drawn the probability of picking any of the remaining two is 2/50, and so on.<br />
+Use the product rule to calculate the probability of picking the four aces in a row from the top of a well-shuffled deck and assign it to prob_to_draw_four_aces.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic-statistics.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of picking four aces in a row</span></span>
+<span id="cb8-2"><a href="basic-statistics.html#cb8-2" aria-hidden="true" tabindex="-1"></a>prob_to_draw_four_aces <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">/</span><span class="dv">52</span> <span class="sc">*</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">51</span> <span class="sc">*</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">50</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">49</span></span></code></pre></div>
 </div>
-<div id="outliers" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Outliers</h3>
+<div id="analysis-of-sample-distribution" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Analysis of sample distribution</h2>
+<div id="histogram" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Histogram</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-statistics.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample of random integers</span></span>
+<span id="cb9-2"><a href="basic-statistics.html#cb9-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="at">sd=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>))</span>
+<span id="cb9-3"><a href="basic-statistics.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="basic-statistics.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb9-5"><a href="basic-statistics.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(v, <span class="at">method =</span> <span class="st">&quot;stack&quot;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">2</span>, <span class="at">offset=</span>.<span class="dv">5</span>, <span class="at">at=</span>.<span class="dv">15</span>,</span>
+<span id="cb9-6"><a href="basic-statistics.html#cb9-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Dotplot of random value&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Random value&quot;</span>)</span>
+<span id="cb9-7"><a href="basic-statistics.html#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="basic-statistics.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(v)</span>
+<span id="cb9-9"><a href="basic-statistics.html#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="basic-statistics.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add density</span></span>
+<span id="cb9-11"><a href="basic-statistics.html#cb9-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">density</span>(v)<span class="sc">$</span>x</span>
+<span id="cb9-12"><a href="basic-statistics.html#cb9-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> (<span class="dv">10</span><span class="sc">/</span><span class="fu">max</span>(<span class="fu">density</span>(v)<span class="sc">$</span>y))<span class="sc">*</span><span class="fu">density</span>(v)<span class="sc">$</span>y  <span class="co"># scale y to plot with histogram</span></span>
+<span id="cb9-13"><a href="basic-statistics.html#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="outliers" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Outliers</h3>
 <p>Outliers are rare values that appear far away from the majority of the data.
 Outliers can bias the results and potentially lead to incorrect conclusions if not handled properly.
 One method for dealing with outliers is to simply remove them.
@@ -353,109 +367,109 @@ However, removing data points can introduce other types of bias into the results
 If outliers seem to have a lot of influence on the results, a nonparametric test such as the <strong>Wilcoxon Signed Rank Test</strong> may be appropriate to use instead.
 Outliers can be identified visually using a boxplot.</p>
 </div>
-<div id="normality" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Normality</h3>
+<div id="normality" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Normality</h3>
 <p>It is possible to use histogram to estimate normality of the distribution.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic-statistics.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ-plot - fit normal distibution</span></span>
-<span id="cb8-2"><a href="basic-statistics.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(v); <span class="fu">qqline</span>(v)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-statistics.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(v)     <span class="co"># variance: sd = sqrt(var)</span></span></code></pre></div>
-<pre><code>## [1] 19.39143</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-statistics.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)      <span class="co"># standard deviation</span></span></code></pre></div>
-<pre><code>## [1] 4.40357</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-statistics.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(v))  <span class="co"># standard error sd/sqrt(n)</span></span></code></pre></div>
-<pre><code>## [1] 0.6227588</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-statistics.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score (standartization)</span></span>
-<span id="cb15-2"><a href="basic-statistics.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># transform distribution to mean=0, variance=1</span></span>
-<span id="cb15-3"><a href="basic-statistics.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># z = (x - mean(n))/sd</span></span>
-<span id="cb15-4"><a href="basic-statistics.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(v)     <span class="co"># z-score</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic-statistics.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ-plot - fit normal distibution</span></span>
+<span id="cb10-2"><a href="basic-statistics.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(v); <span class="fu">qqline</span>(v)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-statistics.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(v)     <span class="co"># variance: sd = sqrt(var)</span></span></code></pre></div>
+<pre><code>## [1] 29.80449</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-statistics.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)      <span class="co"># standard deviation</span></span></code></pre></div>
+<pre><code>## [1] 5.459349</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-statistics.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(v)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(v))  <span class="co"># standard error sd/sqrt(n)</span></span></code></pre></div>
+<pre><code>## [1] 0.7720685</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-statistics.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score (standartization)</span></span>
+<span id="cb17-2"><a href="basic-statistics.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># transform distribution to mean=0, variance=1</span></span>
+<span id="cb17-3"><a href="basic-statistics.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># z = (x - mean(n))/sd</span></span>
+<span id="cb17-4"><a href="basic-statistics.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(v)     <span class="co"># z-score</span></span></code></pre></div>
 <pre><code>##              [,1]
-##  [1,] -1.45790802
-##  [2,]  1.49424218
-##  [3,] -2.13917345
-##  [4,] -0.54955411
-##  [5,] -0.77664259
-##  [6,] -1.23081955
-##  [7,] -1.45790802
-##  [8,]  0.58588827
-##  [9,]  0.35879979
-## [10,]  0.35879979
-## [11,]  0.35879979
-## [12,] -0.32246564
-## [13,]  1.04006522
-## [14,] -0.09537716
-## [15,] -0.77664259
-## [16,]  1.72133066
-## [17,]  0.13171132
-## [18,]  0.58588827
-## [19,] -0.09537716
-## [20,] -0.09537716
-## [21,] -1.91208498
-## [22,]  0.58588827
-## [23,] -1.00373107
-## [24,]  1.04006522
-## [25,] -1.68499650
-## [26,]  1.94841913
-## [27,]  1.49424218
-## [28,] -0.32246564
-## [29,] -0.77664259
-## [30,]  1.04006522
-## [31,] -0.77664259
-## [32,] -0.09537716
-## [33,]  1.04006522
-## [34,]  0.13171132
-## [35,]  2.17550761
-## [36,]  0.58588827
-## [37,] -1.00373107
-## [38,] -0.32246564
-## [39,]  0.35879979
-## [40,] -0.09537716
-## [41,] -0.09537716
-## [42,] -0.32246564
-## [43,] -1.23081955
-## [44,]  0.35879979
-## [45,]  0.81297675
-## [46,] -0.54955411
-## [47,] -0.32246564
-## [48,]  1.04006522
-## [49,] -0.54955411
-## [50,]  0.81297675
+##  [1,] -0.81694725
+##  [2,] -0.26743116
+##  [3,]  1.01477304
+##  [4,] -0.45060319
+##  [5,] -1.36646333
+##  [6,] -0.26743116
+##  [7,] -1.73280739
+##  [8,]  0.09891290
+##  [9,] -0.26743116
+## [10,] -0.63377522
+## [11,] -0.08425913
+## [12,]  0.09891290
+## [13,] -0.26743116
+## [14,] -0.08425913
+## [15,]  0.46525695
+## [16,]  0.83160101
+## [17,]  0.83160101
+## [18,]  0.46525695
+## [19,]  0.64842898
+## [20,]  1.56428912
+## [21,]  0.09891290
+## [22,]  0.64842898
+## [23,]  1.38111709
+## [24,] -0.08425913
+## [25,] -0.81694725
+## [26,] -1.18329130
+## [27,]  1.19794506
+## [28,] -2.09915144
+## [29,] -1.36646333
+## [30,]  1.56428912
+## [31,]  1.56428912
+## [32,]  1.01477304
+## [33,]  0.83160101
+## [34,] -0.81694725
+## [35,] -1.00011927
+## [36,]  0.46525695
+## [37,] -0.81694725
+## [38,]  0.64842898
+## [39,]  0.28208492
+## [40,]  0.64842898
+## [41,]  1.01477304
+## [42,] -1.36646333
+## [43,] -0.45060319
+## [44,] -0.63377522
+## [45,]  0.28208492
+## [46,] -0.81694725
+## [47,] -0.08425913
+## [48,] -1.36646333
+## [49,] -1.18329130
+## [50,]  2.66332129
 ## attr(,&quot;scaled:center&quot;)
-## [1] 100.42
+## [1] 100.46
 ## attr(,&quot;scaled:scale&quot;)
-## [1] 4.40357</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-statistics.html#cb17-1" aria-hidden="true" tabindex="-1"></a>vs <span class="ot">&lt;-</span> <span class="fu">scale</span>(v)[,<span class="dv">1</span>]</span>
-<span id="cb17-2"><a href="basic-statistics.html#cb17-2" aria-hidden="true" tabindex="-1"></a>vs</span></code></pre></div>
-<pre><code>##  [1] -1.45790802  1.49424218 -2.13917345 -0.54955411 -0.77664259 -1.23081955 -1.45790802  0.58588827  0.35879979  0.35879979  0.35879979 -0.32246564  1.04006522 -0.09537716
-## [15] -0.77664259  1.72133066  0.13171132  0.58588827 -0.09537716 -0.09537716 -1.91208498  0.58588827 -1.00373107  1.04006522 -1.68499650  1.94841913  1.49424218 -0.32246564
-## [29] -0.77664259  1.04006522 -0.77664259 -0.09537716  1.04006522  0.13171132  2.17550761  0.58588827 -1.00373107 -0.32246564  0.35879979 -0.09537716 -0.09537716 -0.32246564
-## [43] -1.23081955  0.35879979  0.81297675 -0.54955411 -0.32246564  1.04006522 -0.54955411  0.81297675</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-statistics.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb19-2"><a href="basic-statistics.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(v)</span>
-<span id="cb19-3"><a href="basic-statistics.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vs)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+## [1] 5.459349</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-statistics.html#cb19-1" aria-hidden="true" tabindex="-1"></a>vs <span class="ot">&lt;-</span> <span class="fu">scale</span>(v)[,<span class="dv">1</span>]</span>
+<span id="cb19-2"><a href="basic-statistics.html#cb19-2" aria-hidden="true" tabindex="-1"></a>vs</span></code></pre></div>
+<pre><code>##  [1] -0.81694725 -0.26743116  1.01477304 -0.45060319 -1.36646333 -0.26743116 -1.73280739  0.09891290 -0.26743116 -0.63377522 -0.08425913  0.09891290 -0.26743116 -0.08425913
+## [15]  0.46525695  0.83160101  0.83160101  0.46525695  0.64842898  1.56428912  0.09891290  0.64842898  1.38111709 -0.08425913 -0.81694725 -1.18329130  1.19794506 -2.09915144
+## [29] -1.36646333  1.56428912  1.56428912  1.01477304  0.83160101 -0.81694725 -1.00011927  0.46525695 -0.81694725  0.64842898  0.28208492  0.64842898  1.01477304 -1.36646333
+## [43] -0.45060319 -0.63377522  0.28208492 -0.81694725 -0.08425913 -1.36646333 -1.18329130  2.66332129</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="basic-statistics.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb21-2"><a href="basic-statistics.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(v)</span>
+<span id="cb21-3"><a href="basic-statistics.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vs)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
 </div>
 </div>
-<div id="confidence-interval" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Confidence interval</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="basic-statistics.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample of random integers</span></span>
-<span id="cb20-2"><a href="basic-statistics.html#cb20-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="at">sd=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>))</span>
-<span id="cb20-3"><a href="basic-statistics.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="basic-statistics.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval for normal distribution with p=0.95</span></span>
-<span id="cb20-5"><a href="basic-statistics.html#cb20-5" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb20-6"><a href="basic-statistics.html#cb20-6" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
-<span id="cb20-7"><a href="basic-statistics.html#cb20-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb20-8"><a href="basic-statistics.html#cb20-8" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb20-9"><a href="basic-statistics.html#cb20-9" aria-hidden="true" tabindex="-1"></a>confidence <span class="ot">&lt;-</span> <span class="fu">c</span>(m<span class="sc">-</span>error, m<span class="sc">+</span>error)</span>
-<span id="cb20-10"><a href="basic-statistics.html#cb20-10" aria-hidden="true" tabindex="-1"></a>confidence</span></code></pre></div>
-<pre><code>## [1]  98.29271 100.38729</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-statistics.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval for t-distribution with p=0.95</span></span>
-<span id="cb22-2"><a href="basic-statistics.html#cb22-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb22-3"><a href="basic-statistics.html#cb22-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb22-4"><a href="basic-statistics.html#cb22-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb22-5"><a href="basic-statistics.html#cb22-5" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="at">df=</span>n<span class="dv">-1</span>)<span class="sc">*</span>s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb22-6"><a href="basic-statistics.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval</span></span>
-<span id="cb22-7"><a href="basic-statistics.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">left=</span>a<span class="sc">-</span>error, <span class="at">right=</span>a<span class="sc">+</span>error)</span></code></pre></div>
+<div id="confidence-interval" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Confidence interval</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-statistics.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample of random integers</span></span>
+<span id="cb22-2"><a href="basic-statistics.html#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="at">sd=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>))</span>
+<span id="cb22-3"><a href="basic-statistics.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="basic-statistics.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval for normal distribution with p=0.95</span></span>
+<span id="cb22-5"><a href="basic-statistics.html#cb22-5" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb22-6"><a href="basic-statistics.html#cb22-6" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb22-7"><a href="basic-statistics.html#cb22-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb22-8"><a href="basic-statistics.html#cb22-8" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb22-9"><a href="basic-statistics.html#cb22-9" aria-hidden="true" tabindex="-1"></a>confidence <span class="ot">&lt;-</span> <span class="fu">c</span>(m<span class="sc">-</span>error, m<span class="sc">+</span>error)</span>
+<span id="cb22-10"><a href="basic-statistics.html#cb22-10" aria-hidden="true" tabindex="-1"></a>confidence</span></code></pre></div>
+<pre><code>## [1]  98.15343 100.32657</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-statistics.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval for t-distribution with p=0.95</span></span>
+<span id="cb24-2"><a href="basic-statistics.html#cb24-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb24-3"><a href="basic-statistics.html#cb24-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb24-4"><a href="basic-statistics.html#cb24-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb24-5"><a href="basic-statistics.html#cb24-5" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="at">df=</span>n<span class="dv">-1</span>)<span class="sc">*</span>s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb24-6"><a href="basic-statistics.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval</span></span>
+<span id="cb24-7"><a href="basic-statistics.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">left=</span>a<span class="sc">-</span>error, <span class="at">right=</span>a<span class="sc">+</span>error)</span></code></pre></div>
 <pre><code>##     left    right 
 ## 4.063971 5.936029</code></pre>
 

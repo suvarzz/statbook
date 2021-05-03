@@ -148,13 +148,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability"><i class="fa fa-check"></i><b>3.2</b> Probability</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.3</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
+<li class="chapter" data-level="3.3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.3.3</b> Normality</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>4</b> Primary data analysis - Case studies</a></li>
 <li class="chapter" data-level="5" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary data analysis</a>
@@ -282,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
 <li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+<li class="chapter" data-level="31.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#the-best-models"><i class="fa fa-check"></i><b>31.3</b> The BEST models</a></li>
 </ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
@@ -367,128 +369,128 @@ If p value is less than significance level alpha (0.05), the hull hypothesies is
 </li>
 <li>Difference of distribution parameters (are means different?)</li>
 </ol>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="hypothesis-testing.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="do">###. 1 Is distribution normal?</span></span>
-<span id="cb82-2"><a href="hypothesis-testing.html#cb82-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;~/DataAnalysis/DATA/town_1959_2.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
-<span id="cb82-3"><a href="hypothesis-testing.html#cb82-3" aria-hidden="true" tabindex="-1"></a>town</span>
-<span id="cb82-4"><a href="hypothesis-testing.html#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
-<span id="cb82-5"><a href="hypothesis-testing.html#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(town[,<span class="dv">3</span>])</span>
-<span id="cb82-6"><a href="hypothesis-testing.html#cb82-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-7"><a href="hypothesis-testing.html#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="co"># log scale</span></span>
-<span id="cb82-8"><a href="hypothesis-testing.html#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(town[,<span class="dv">3</span>]), <span class="at">breaks=</span><span class="dv">50</span>)</span>
-<span id="cb82-9"><a href="hypothesis-testing.html#cb82-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-10"><a href="hypothesis-testing.html#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ? Is log scaled number of sitizens per town is normally distributed?</span></span>
-<span id="cb82-11"><a href="hypothesis-testing.html#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="co"># test for normal distribution of dataset</span></span>
-<span id="cb82-12"><a href="hypothesis-testing.html#cb82-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">log</span>(town[,<span class="dv">3</span>])</span>
-<span id="cb82-13"><a href="hypothesis-testing.html#cb82-13" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(data)</span>
-<span id="cb82-14"><a href="hypothesis-testing.html#cb82-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-15"><a href="hypothesis-testing.html#cb82-15" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: data is normally distributed</span></span>
-<span id="cb82-16"><a href="hypothesis-testing.html#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="co"># W = 0.97467 - </span></span>
-<span id="cb82-17"><a href="hypothesis-testing.html#cb82-17" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 3.15e-12 -&gt; p &lt; alpha (0.01) - H0 is incorrect</span></span>
-<span id="cb82-18"><a href="hypothesis-testing.html#cb82-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Our distripution is not normal</span></span>
-<span id="cb82-19"><a href="hypothesis-testing.html#cb82-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-20"><a href="hypothesis-testing.html#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Different tests for normality in package &quot;nortest&quot;</span></span>
-<span id="cb82-21"><a href="hypothesis-testing.html#cb82-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
-<span id="cb82-22"><a href="hypothesis-testing.html#cb82-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
-<span id="cb82-23"><a href="hypothesis-testing.html#cb82-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ad.test</span>(data)   <span class="co"># Anderson-Darling test</span></span>
-<span id="cb82-24"><a href="hypothesis-testing.html#cb82-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lillie.test</span>(data) <span class="co"># Lilliefors (Kolmogorov-Smirnov) test</span></span>
-<span id="cb82-25"><a href="hypothesis-testing.html#cb82-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-26"><a href="hypothesis-testing.html#cb82-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if n &lt; 2000 -&gt; shapiro.test, else -&gt; lillie.test</span></span>
-<span id="cb82-27"><a href="hypothesis-testing.html#cb82-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-28"><a href="hypothesis-testing.html#cb82-28" aria-hidden="true" tabindex="-1"></a><span class="co"># In theory it is possible to use method for normally distributed data, </span></span>
-<span id="cb82-29"><a href="hypothesis-testing.html#cb82-29" aria-hidden="true" tabindex="-1"></a><span class="co"># even if they are not normal, but almost normal:</span></span>
-<span id="cb82-30"><a href="hypothesis-testing.html#cb82-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. No outlayers</span></span>
-<span id="cb82-31"><a href="hypothesis-testing.html#cb82-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Symmetry of histogram</span></span>
-<span id="cb82-32"><a href="hypothesis-testing.html#cb82-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bell-shaped form of histogram</span></span>
-<span id="cb82-33"><a href="hypothesis-testing.html#cb82-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-34"><a href="hypothesis-testing.html#cb82-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Method to make normal from not-normal distribution</span></span>
-<span id="cb82-35"><a href="hypothesis-testing.html#cb82-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Remove outlayers</span></span>
-<span id="cb82-36"><a href="hypothesis-testing.html#cb82-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Transform data to get symmetry: log, Boxcox</span></span>
-<span id="cb82-37"><a href="hypothesis-testing.html#cb82-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bimodality: split samples into groups</span></span>
-<span id="cb82-38"><a href="hypothesis-testing.html#cb82-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-39"><a href="hypothesis-testing.html#cb82-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxcox transformation</span></span>
-<span id="cb82-40"><a href="hypothesis-testing.html#cb82-40" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;AID&quot;</span>)</span>
-<span id="cb82-41"><a href="hypothesis-testing.html#cb82-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AID)</span>
-<span id="cb82-42"><a href="hypothesis-testing.html#cb82-42" aria-hidden="true" tabindex="-1"></a>bctr <span class="ot">=</span> <span class="fu">boxcoxnc</span>(data)</span>
-<span id="cb82-43"><a href="hypothesis-testing.html#cb82-43" aria-hidden="true" tabindex="-1"></a>bctr<span class="sc">$</span>results</span>
-<span id="cb82-44"><a href="hypothesis-testing.html#cb82-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-45"><a href="hypothesis-testing.html#cb82-45" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Compair centers of two distributions</span></span>
-<span id="cb82-46"><a href="hypothesis-testing.html#cb82-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if notmal -&gt; mean, else -&gt; median</span></span>
-<span id="cb82-47"><a href="hypothesis-testing.html#cb82-47" aria-hidden="true" tabindex="-1"></a><span class="co"># if median -&gt; Mann–Whitney-Wilcoxon (MWW) test</span></span>
-<span id="cb82-48"><a href="hypothesis-testing.html#cb82-48" aria-hidden="true" tabindex="-1"></a><span class="co"># if mean -&gt; one of Student&#39;s tests</span></span>
-<span id="cb82-49"><a href="hypothesis-testing.html#cb82-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-50"><a href="hypothesis-testing.html#cb82-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Student t-test</span></span>
-<span id="cb82-51"><a href="hypothesis-testing.html#cb82-51" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x,y, alternative=&quot;two.sided&quot;, paired=FALSE, var.equal=FALSE)</span></span>
-<span id="cb82-52"><a href="hypothesis-testing.html#cb82-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-53"><a href="hypothesis-testing.html#cb82-53" aria-hidden="true" tabindex="-1"></a><span class="co"># How to compair if dispersions are the same?</span></span>
-<span id="cb82-54"><a href="hypothesis-testing.html#cb82-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Fligner-Killeen test</span></span>
-<span id="cb82-55"><a href="hypothesis-testing.html#cb82-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Brown-Forsythe test</span></span>
-<span id="cb82-56"><a href="hypothesis-testing.html#cb82-56" aria-hidden="true" tabindex="-1"></a><span class="co">#fligner.test(x~g, data=data.table)</span></span>
-<span id="cb82-57"><a href="hypothesis-testing.html#cb82-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-58"><a href="hypothesis-testing.html#cb82-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
-<span id="cb82-59"><a href="hypothesis-testing.html#cb82-59" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">read.table</span> (<span class="st">&quot;~/DataAnalysis/R_data_analysis/DATA/Albuquerque Home Prices_data.txt&quot;</span>, <span class="at">header=</span>T)</span>
-<span id="cb82-60"><a href="hypothesis-testing.html#cb82-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-61"><a href="hypothesis-testing.html#cb82-61" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
-<span id="cb82-62"><a href="hypothesis-testing.html#cb82-62" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span>
-<span id="cb82-63"><a href="hypothesis-testing.html#cb82-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-64"><a href="hypothesis-testing.html#cb82-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Change -9999 to NA</span></span>
-<span id="cb82-65"><a href="hypothesis-testing.html#cb82-65" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>AGE[x<span class="sc">$</span>AGE<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb82-66"><a href="hypothesis-testing.html#cb82-66" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>TAX[x<span class="sc">$</span>TAX<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb82-67"><a href="hypothesis-testing.html#cb82-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-68"><a href="hypothesis-testing.html#cb82-68" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(PRICE<span class="sc">~</span>COR, <span class="at">data=</span>x)</span>
-<span id="cb82-69"><a href="hypothesis-testing.html#cb82-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Dispersion is the same for both distribution</span></span>
-<span id="cb82-70"><a href="hypothesis-testing.html#cb82-70" aria-hidden="true" tabindex="-1"></a><span class="co"># p &gt; alpha (0.01)</span></span>
-<span id="cb82-71"><a href="hypothesis-testing.html#cb82-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-72"><a href="hypothesis-testing.html#cb82-72" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">1</span>], x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">0</span>],</span>
-<span id="cb82-73"><a href="hypothesis-testing.html#cb82-73" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative=</span><span class="st">&quot;less&quot;</span>,</span>
-<span id="cb82-74"><a href="hypothesis-testing.html#cb82-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
-<span id="cb82-75"><a href="hypothesis-testing.html#cb82-75" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
-<span id="cb82-76"><a href="hypothesis-testing.html#cb82-76" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 0.1977 (H0 is true)</span></span>
-<span id="cb82-77"><a href="hypothesis-testing.html#cb82-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-78"><a href="hypothesis-testing.html#cb82-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Mood&#39;s median test</span></span>
-<span id="cb82-79"><a href="hypothesis-testing.html#cb82-79" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
-<span id="cb82-80"><a href="hypothesis-testing.html#cb82-80" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb82-81"><a href="hypothesis-testing.html#cb82-81" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">0</span>,<span class="dv">1</span>]</span>
-<span id="cb82-82"><a href="hypothesis-testing.html#cb82-82" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">c</span>(x1,x2))</span>
-<span id="cb82-83"><a href="hypothesis-testing.html#cb82-83" aria-hidden="true" tabindex="-1"></a>f11 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&gt;</span>m)</span>
-<span id="cb82-84"><a href="hypothesis-testing.html#cb82-84" aria-hidden="true" tabindex="-1"></a>f12 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&gt;</span>m)</span>
-<span id="cb82-85"><a href="hypothesis-testing.html#cb82-85" aria-hidden="true" tabindex="-1"></a>f21 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&lt;=</span>m)</span>
-<span id="cb82-86"><a href="hypothesis-testing.html#cb82-86" aria-hidden="true" tabindex="-1"></a>f22 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&lt;=</span>m)</span>
-<span id="cb82-87"><a href="hypothesis-testing.html#cb82-87" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(f11,f12, f21, f22), <span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
-<span id="cb82-88"><a href="hypothesis-testing.html#cb82-88" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table)</span>
-<span id="cb82-89"><a href="hypothesis-testing.html#cb82-89" aria-hidden="true" tabindex="-1"></a><span class="co"># p=0.47 &gt; alpha=0.05: H0 is true</span></span>
-<span id="cb82-90"><a href="hypothesis-testing.html#cb82-90" aria-hidden="true" tabindex="-1"></a><span class="co"># medians are the same</span></span>
-<span id="cb82-91"><a href="hypothesis-testing.html#cb82-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-92"><a href="hypothesis-testing.html#cb82-92" aria-hidden="true" tabindex="-1"></a><span class="do">## Mann–Whitney-Wilcoxon (MWW) test</span></span>
-<span id="cb82-93"><a href="hypothesis-testing.html#cb82-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if medians are the same</span></span>
-<span id="cb82-94"><a href="hypothesis-testing.html#cb82-94" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n1*(n1+1)/2 - T1}</span></span>
-<span id="cb82-95"><a href="hypothesis-testing.html#cb82-95" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n2*(n2+1)/2 - T2}</span></span>
-<span id="cb82-96"><a href="hypothesis-testing.html#cb82-96" aria-hidden="true" tabindex="-1"></a><span class="co"># U=min(U1,U2)</span></span>
-<span id="cb82-97"><a href="hypothesis-testing.html#cb82-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Ti - сумма рангов в объединенной выборке наблюдений из выборки i</span></span>
-<span id="cb82-98"><a href="hypothesis-testing.html#cb82-98" aria-hidden="true" tabindex="-1"></a><span class="co"># n1, n2 - размеры выборок</span></span>
-<span id="cb82-99"><a href="hypothesis-testing.html#cb82-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-100"><a href="hypothesis-testing.html#cb82-100" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(x,y,</span>
-<span id="cb82-101"><a href="hypothesis-testing.html#cb82-101" aria-hidden="true" tabindex="-1"></a>            <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>,</span>
-<span id="cb82-102"><a href="hypothesis-testing.html#cb82-102" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
-<span id="cb82-103"><a href="hypothesis-testing.html#cb82-103" aria-hidden="true" tabindex="-1"></a>            <span class="at">exact=</span><span class="cn">TRUE</span>,</span>
-<span id="cb82-104"><a href="hypothesis-testing.html#cb82-104" aria-hidden="true" tabindex="-1"></a>            <span class="at">correct=</span><span class="cn">FALSE</span>)</span>
-<span id="cb82-105"><a href="hypothesis-testing.html#cb82-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-106"><a href="hypothesis-testing.html#cb82-106" aria-hidden="true" tabindex="-1"></a><span class="do">###. 3. Dependency of variables</span></span>
-<span id="cb82-107"><a href="hypothesis-testing.html#cb82-107" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: x, y independent</span></span>
-<span id="cb82-108"><a href="hypothesis-testing.html#cb82-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation analysis</span></span>
-<span id="cb82-109"><a href="hypothesis-testing.html#cb82-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation (pearson) mesure linear dependency!</span></span>
-<span id="cb82-110"><a href="hypothesis-testing.html#cb82-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation k depends on outlayers (must be removed)</span></span>
-<span id="cb82-111"><a href="hypothesis-testing.html#cb82-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-112"><a href="hypothesis-testing.html#cb82-112" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX)</span>
-<span id="cb82-113"><a href="hypothesis-testing.html#cb82-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-114"><a href="hypothesis-testing.html#cb82-114" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span>
-<span id="cb82-115"><a href="hypothesis-testing.html#cb82-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-116"><a href="hypothesis-testing.html#cb82-116" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
-<span id="cb82-117"><a href="hypothesis-testing.html#cb82-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-118"><a href="hypothesis-testing.html#cb82-118" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
-<span id="cb82-119"><a href="hypothesis-testing.html#cb82-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-120"><a href="hypothesis-testing.html#cb82-120" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb82-121"><a href="hypothesis-testing.html#cb82-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-122"><a href="hypothesis-testing.html#cb82-122" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="hypothesis-testing.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="do">###. 1 Is distribution normal?</span></span>
+<span id="cb84-2"><a href="hypothesis-testing.html#cb84-2" aria-hidden="true" tabindex="-1"></a>town <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;~/DataAnalysis/DATA/town_1959_2.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb84-3"><a href="hypothesis-testing.html#cb84-3" aria-hidden="true" tabindex="-1"></a>town</span>
+<span id="cb84-4"><a href="hypothesis-testing.html#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
+<span id="cb84-5"><a href="hypothesis-testing.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb84-6"><a href="hypothesis-testing.html#cb84-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-7"><a href="hypothesis-testing.html#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="co"># log scale</span></span>
+<span id="cb84-8"><a href="hypothesis-testing.html#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(town[,<span class="dv">3</span>]), <span class="at">breaks=</span><span class="dv">50</span>)</span>
+<span id="cb84-9"><a href="hypothesis-testing.html#cb84-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-10"><a href="hypothesis-testing.html#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ? Is log scaled number of sitizens per town is normally distributed?</span></span>
+<span id="cb84-11"><a href="hypothesis-testing.html#cb84-11" aria-hidden="true" tabindex="-1"></a><span class="co"># test for normal distribution of dataset</span></span>
+<span id="cb84-12"><a href="hypothesis-testing.html#cb84-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">log</span>(town[,<span class="dv">3</span>])</span>
+<span id="cb84-13"><a href="hypothesis-testing.html#cb84-13" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(data)</span>
+<span id="cb84-14"><a href="hypothesis-testing.html#cb84-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-15"><a href="hypothesis-testing.html#cb84-15" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: data is normally distributed</span></span>
+<span id="cb84-16"><a href="hypothesis-testing.html#cb84-16" aria-hidden="true" tabindex="-1"></a><span class="co"># W = 0.97467 - </span></span>
+<span id="cb84-17"><a href="hypothesis-testing.html#cb84-17" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 3.15e-12 -&gt; p &lt; alpha (0.01) - H0 is incorrect</span></span>
+<span id="cb84-18"><a href="hypothesis-testing.html#cb84-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Our distripution is not normal</span></span>
+<span id="cb84-19"><a href="hypothesis-testing.html#cb84-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-20"><a href="hypothesis-testing.html#cb84-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Different tests for normality in package &quot;nortest&quot;</span></span>
+<span id="cb84-21"><a href="hypothesis-testing.html#cb84-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
+<span id="cb84-22"><a href="hypothesis-testing.html#cb84-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb84-23"><a href="hypothesis-testing.html#cb84-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ad.test</span>(data)   <span class="co"># Anderson-Darling test</span></span>
+<span id="cb84-24"><a href="hypothesis-testing.html#cb84-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lillie.test</span>(data) <span class="co"># Lilliefors (Kolmogorov-Smirnov) test</span></span>
+<span id="cb84-25"><a href="hypothesis-testing.html#cb84-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-26"><a href="hypothesis-testing.html#cb84-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if n &lt; 2000 -&gt; shapiro.test, else -&gt; lillie.test</span></span>
+<span id="cb84-27"><a href="hypothesis-testing.html#cb84-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-28"><a href="hypothesis-testing.html#cb84-28" aria-hidden="true" tabindex="-1"></a><span class="co"># In theory it is possible to use method for normally distributed data, </span></span>
+<span id="cb84-29"><a href="hypothesis-testing.html#cb84-29" aria-hidden="true" tabindex="-1"></a><span class="co"># even if they are not normal, but almost normal:</span></span>
+<span id="cb84-30"><a href="hypothesis-testing.html#cb84-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. No outlayers</span></span>
+<span id="cb84-31"><a href="hypothesis-testing.html#cb84-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Symmetry of histogram</span></span>
+<span id="cb84-32"><a href="hypothesis-testing.html#cb84-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bell-shaped form of histogram</span></span>
+<span id="cb84-33"><a href="hypothesis-testing.html#cb84-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-34"><a href="hypothesis-testing.html#cb84-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Method to make normal from not-normal distribution</span></span>
+<span id="cb84-35"><a href="hypothesis-testing.html#cb84-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Remove outlayers</span></span>
+<span id="cb84-36"><a href="hypothesis-testing.html#cb84-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Transform data to get symmetry: log, Boxcox</span></span>
+<span id="cb84-37"><a href="hypothesis-testing.html#cb84-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Bimodality: split samples into groups</span></span>
+<span id="cb84-38"><a href="hypothesis-testing.html#cb84-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-39"><a href="hypothesis-testing.html#cb84-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxcox transformation</span></span>
+<span id="cb84-40"><a href="hypothesis-testing.html#cb84-40" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;AID&quot;</span>)</span>
+<span id="cb84-41"><a href="hypothesis-testing.html#cb84-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AID)</span>
+<span id="cb84-42"><a href="hypothesis-testing.html#cb84-42" aria-hidden="true" tabindex="-1"></a>bctr <span class="ot">=</span> <span class="fu">boxcoxnc</span>(data)</span>
+<span id="cb84-43"><a href="hypothesis-testing.html#cb84-43" aria-hidden="true" tabindex="-1"></a>bctr<span class="sc">$</span>results</span>
+<span id="cb84-44"><a href="hypothesis-testing.html#cb84-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-45"><a href="hypothesis-testing.html#cb84-45" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Compair centers of two distributions</span></span>
+<span id="cb84-46"><a href="hypothesis-testing.html#cb84-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Emperical rule: if notmal -&gt; mean, else -&gt; median</span></span>
+<span id="cb84-47"><a href="hypothesis-testing.html#cb84-47" aria-hidden="true" tabindex="-1"></a><span class="co"># if median -&gt; Mann–Whitney-Wilcoxon (MWW) test</span></span>
+<span id="cb84-48"><a href="hypothesis-testing.html#cb84-48" aria-hidden="true" tabindex="-1"></a><span class="co"># if mean -&gt; one of Student&#39;s tests</span></span>
+<span id="cb84-49"><a href="hypothesis-testing.html#cb84-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-50"><a href="hypothesis-testing.html#cb84-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Student t-test</span></span>
+<span id="cb84-51"><a href="hypothesis-testing.html#cb84-51" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x,y, alternative=&quot;two.sided&quot;, paired=FALSE, var.equal=FALSE)</span></span>
+<span id="cb84-52"><a href="hypothesis-testing.html#cb84-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-53"><a href="hypothesis-testing.html#cb84-53" aria-hidden="true" tabindex="-1"></a><span class="co"># How to compair if dispersions are the same?</span></span>
+<span id="cb84-54"><a href="hypothesis-testing.html#cb84-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Fligner-Killeen test</span></span>
+<span id="cb84-55"><a href="hypothesis-testing.html#cb84-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Brown-Forsythe test</span></span>
+<span id="cb84-56"><a href="hypothesis-testing.html#cb84-56" aria-hidden="true" tabindex="-1"></a><span class="co">#fligner.test(x~g, data=data.table)</span></span>
+<span id="cb84-57"><a href="hypothesis-testing.html#cb84-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-58"><a href="hypothesis-testing.html#cb84-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb84-59"><a href="hypothesis-testing.html#cb84-59" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">read.table</span> (<span class="st">&quot;~/DataAnalysis/R_data_analysis/DATA/Albuquerque Home Prices_data.txt&quot;</span>, <span class="at">header=</span>T)</span>
+<span id="cb84-60"><a href="hypothesis-testing.html#cb84-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-61"><a href="hypothesis-testing.html#cb84-61" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
+<span id="cb84-62"><a href="hypothesis-testing.html#cb84-62" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span>
+<span id="cb84-63"><a href="hypothesis-testing.html#cb84-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-64"><a href="hypothesis-testing.html#cb84-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Change -9999 to NA</span></span>
+<span id="cb84-65"><a href="hypothesis-testing.html#cb84-65" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>AGE[x<span class="sc">$</span>AGE<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb84-66"><a href="hypothesis-testing.html#cb84-66" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>TAX[x<span class="sc">$</span>TAX<span class="sc">==-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb84-67"><a href="hypothesis-testing.html#cb84-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-68"><a href="hypothesis-testing.html#cb84-68" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(PRICE<span class="sc">~</span>COR, <span class="at">data=</span>x)</span>
+<span id="cb84-69"><a href="hypothesis-testing.html#cb84-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Dispersion is the same for both distribution</span></span>
+<span id="cb84-70"><a href="hypothesis-testing.html#cb84-70" aria-hidden="true" tabindex="-1"></a><span class="co"># p &gt; alpha (0.01)</span></span>
+<span id="cb84-71"><a href="hypothesis-testing.html#cb84-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-72"><a href="hypothesis-testing.html#cb84-72" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">1</span>], x<span class="sc">$</span>PRICE[x<span class="sc">$</span>COR<span class="sc">==</span><span class="dv">0</span>],</span>
+<span id="cb84-73"><a href="hypothesis-testing.html#cb84-73" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative=</span><span class="st">&quot;less&quot;</span>,</span>
+<span id="cb84-74"><a href="hypothesis-testing.html#cb84-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
+<span id="cb84-75"><a href="hypothesis-testing.html#cb84-75" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
+<span id="cb84-76"><a href="hypothesis-testing.html#cb84-76" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value = 0.1977 (H0 is true)</span></span>
+<span id="cb84-77"><a href="hypothesis-testing.html#cb84-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-78"><a href="hypothesis-testing.html#cb84-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Mood&#39;s median test</span></span>
+<span id="cb84-79"><a href="hypothesis-testing.html#cb84-79" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
+<span id="cb84-80"><a href="hypothesis-testing.html#cb84-80" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb84-81"><a href="hypothesis-testing.html#cb84-81" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> x[x<span class="sc">$</span>NE<span class="sc">==</span><span class="dv">0</span>,<span class="dv">1</span>]</span>
+<span id="cb84-82"><a href="hypothesis-testing.html#cb84-82" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">c</span>(x1,x2))</span>
+<span id="cb84-83"><a href="hypothesis-testing.html#cb84-83" aria-hidden="true" tabindex="-1"></a>f11 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&gt;</span>m)</span>
+<span id="cb84-84"><a href="hypothesis-testing.html#cb84-84" aria-hidden="true" tabindex="-1"></a>f12 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&gt;</span>m)</span>
+<span id="cb84-85"><a href="hypothesis-testing.html#cb84-85" aria-hidden="true" tabindex="-1"></a>f21 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x1<span class="sc">&lt;=</span>m)</span>
+<span id="cb84-86"><a href="hypothesis-testing.html#cb84-86" aria-hidden="true" tabindex="-1"></a>f22 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x2<span class="sc">&lt;=</span>m)</span>
+<span id="cb84-87"><a href="hypothesis-testing.html#cb84-87" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(f11,f12, f21, f22), <span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb84-88"><a href="hypothesis-testing.html#cb84-88" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table)</span>
+<span id="cb84-89"><a href="hypothesis-testing.html#cb84-89" aria-hidden="true" tabindex="-1"></a><span class="co"># p=0.47 &gt; alpha=0.05: H0 is true</span></span>
+<span id="cb84-90"><a href="hypothesis-testing.html#cb84-90" aria-hidden="true" tabindex="-1"></a><span class="co"># medians are the same</span></span>
+<span id="cb84-91"><a href="hypothesis-testing.html#cb84-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-92"><a href="hypothesis-testing.html#cb84-92" aria-hidden="true" tabindex="-1"></a><span class="do">## Mann–Whitney-Wilcoxon (MWW) test</span></span>
+<span id="cb84-93"><a href="hypothesis-testing.html#cb84-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if medians are the same</span></span>
+<span id="cb84-94"><a href="hypothesis-testing.html#cb84-94" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n1*(n1+1)/2 - T1}</span></span>
+<span id="cb84-95"><a href="hypothesis-testing.html#cb84-95" aria-hidden="true" tabindex="-1"></a><span class="co"># U1 = n1*n2+{n2*(n2+1)/2 - T2}</span></span>
+<span id="cb84-96"><a href="hypothesis-testing.html#cb84-96" aria-hidden="true" tabindex="-1"></a><span class="co"># U=min(U1,U2)</span></span>
+<span id="cb84-97"><a href="hypothesis-testing.html#cb84-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Ti - сумма рангов в объединенной выборке наблюдений из выборки i</span></span>
+<span id="cb84-98"><a href="hypothesis-testing.html#cb84-98" aria-hidden="true" tabindex="-1"></a><span class="co"># n1, n2 - размеры выборок</span></span>
+<span id="cb84-99"><a href="hypothesis-testing.html#cb84-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-100"><a href="hypothesis-testing.html#cb84-100" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(x,y,</span>
+<span id="cb84-101"><a href="hypothesis-testing.html#cb84-101" aria-hidden="true" tabindex="-1"></a>            <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb84-102"><a href="hypothesis-testing.html#cb84-102" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired=</span><span class="cn">FALSE</span>,</span>
+<span id="cb84-103"><a href="hypothesis-testing.html#cb84-103" aria-hidden="true" tabindex="-1"></a>            <span class="at">exact=</span><span class="cn">TRUE</span>,</span>
+<span id="cb84-104"><a href="hypothesis-testing.html#cb84-104" aria-hidden="true" tabindex="-1"></a>            <span class="at">correct=</span><span class="cn">FALSE</span>)</span>
+<span id="cb84-105"><a href="hypothesis-testing.html#cb84-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-106"><a href="hypothesis-testing.html#cb84-106" aria-hidden="true" tabindex="-1"></a><span class="do">###. 3. Dependency of variables</span></span>
+<span id="cb84-107"><a href="hypothesis-testing.html#cb84-107" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: x, y independent</span></span>
+<span id="cb84-108"><a href="hypothesis-testing.html#cb84-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation analysis</span></span>
+<span id="cb84-109"><a href="hypothesis-testing.html#cb84-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation (pearson) mesure linear dependency!</span></span>
+<span id="cb84-110"><a href="hypothesis-testing.html#cb84-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation k depends on outlayers (must be removed)</span></span>
+<span id="cb84-111"><a href="hypothesis-testing.html#cb84-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-112"><a href="hypothesis-testing.html#cb84-112" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX)</span>
+<span id="cb84-113"><a href="hypothesis-testing.html#cb84-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-114"><a href="hypothesis-testing.html#cb84-114" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span>
+<span id="cb84-115"><a href="hypothesis-testing.html#cb84-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-116"><a href="hypothesis-testing.html#cb84-116" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
+<span id="cb84-117"><a href="hypothesis-testing.html#cb84-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-118"><a href="hypothesis-testing.html#cb84-118" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
+<span id="cb84-119"><a href="hypothesis-testing.html#cb84-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-120"><a href="hypothesis-testing.html#cb84-120" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb84-121"><a href="hypothesis-testing.html#cb84-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-122"><a href="hypothesis-testing.html#cb84-122" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x<span class="sc">$</span>SQFT, x<span class="sc">$</span>TAX, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>

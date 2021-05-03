@@ -148,13 +148,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability"><i class="fa fa-check"></i><b>3.2</b> Probability</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.3</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
+<li class="chapter" data-level="3.3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.3.3</b> Normality</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>4</b> Primary data analysis - Case studies</a></li>
 <li class="chapter" data-level="5" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary data analysis</a>
@@ -282,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
 <li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+<li class="chapter" data-level="31.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#the-best-models"><i class="fa fa-check"></i><b>31.3</b> The BEST models</a></li>
 </ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
@@ -325,24 +327,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li><strong>Accept</strong>: Apply methods that are unaffected by the missing data.</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="primary-data-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
-<span id="cb26-2"><a href="primary-data-analysis.html#cb26-2" aria-hidden="true" tabindex="-1"></a>mammographic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./DATA/mammographic.data&#39;</span>)</span>
-<span id="cb26-3"><a href="primary-data-analysis.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">any_na</span>(mammographic)</span>
-<span id="cb26-4"><a href="primary-data-analysis.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace ? with NAs: bands</span></span>
-<span id="cb26-5"><a href="primary-data-analysis.html#cb26-5" aria-hidden="true" tabindex="-1"></a>mammographic <span class="ot">&lt;-</span> <span class="fu">replace_with_na_all</span>(mammographic, <span class="sc">~</span>.x <span class="sc">==</span> <span class="st">&#39;?&#39;</span>)</span>
-<span id="cb26-6"><a href="primary-data-analysis.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">any_na</span>(mammographic)</span>
-<span id="cb26-7"><a href="primary-data-analysis.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">miss_var_summary</span>(mammographic)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="primary-data-analysis.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
+<span id="cb28-2"><a href="primary-data-analysis.html#cb28-2" aria-hidden="true" tabindex="-1"></a>mammographic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./DATA/mammographic.data&#39;</span>)</span>
+<span id="cb28-3"><a href="primary-data-analysis.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">any_na</span>(mammographic)</span>
+<span id="cb28-4"><a href="primary-data-analysis.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace ? with NAs: bands</span></span>
+<span id="cb28-5"><a href="primary-data-analysis.html#cb28-5" aria-hidden="true" tabindex="-1"></a>mammographic <span class="ot">&lt;-</span> <span class="fu">replace_with_na_all</span>(mammographic, <span class="sc">~</span>.x <span class="sc">==</span> <span class="st">&#39;?&#39;</span>)</span>
+<span id="cb28-6"><a href="primary-data-analysis.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">any_na</span>(mammographic)</span>
+<span id="cb28-7"><a href="primary-data-analysis.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">miss_var_summary</span>(mammographic)</span></code></pre></div>
 <p><strong>Vizualysing missing data</strong></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="primary-data-analysis.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb27-2"><a href="primary-data-analysis.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="primary-data-analysis.html#cb27-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">vis_miss</span>(mammographic)</span>
-<span id="cb27-4"><a href="primary-data-analysis.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># comulative</span></span>
-<span id="cb27-5"><a href="primary-data-analysis.html#cb27-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">vis_miss</span>(mammographic, <span class="at">cluster=</span><span class="cn">TRUE</span>)</span>
-<span id="cb27-6"><a href="primary-data-analysis.html#cb27-6" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">gg_miss_case</span>(mammographic)</span>
-<span id="cb27-7"><a href="primary-data-analysis.html#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="primary-data-analysis.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, c <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), </span>
-<span id="cb27-9"><a href="primary-data-analysis.html#cb27-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;frame view&quot;</span>, <span class="st">&quot;cumulative&quot;</span>, <span class="st">&quot;missing&quot;</span>),</span>
-<span id="cb27-10"><a href="primary-data-analysis.html#cb27-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="primary-data-analysis.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb29-2"><a href="primary-data-analysis.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="primary-data-analysis.html#cb29-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">vis_miss</span>(mammographic)</span>
+<span id="cb29-4"><a href="primary-data-analysis.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># comulative</span></span>
+<span id="cb29-5"><a href="primary-data-analysis.html#cb29-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">vis_miss</span>(mammographic, <span class="at">cluster=</span><span class="cn">TRUE</span>)</span>
+<span id="cb29-6"><a href="primary-data-analysis.html#cb29-6" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">gg_miss_case</span>(mammographic)</span>
+<span id="cb29-7"><a href="primary-data-analysis.html#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="primary-data-analysis.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, c <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), </span>
+<span id="cb29-9"><a href="primary-data-analysis.html#cb29-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;frame view&quot;</span>, <span class="st">&quot;cumulative&quot;</span>, <span class="st">&quot;missing&quot;</span>),</span>
+<span id="cb29-10"><a href="primary-data-analysis.html#cb29-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><strong>Missing data types</strong><br />
 - <strong>MCAR</strong>: Missing Completely At Random<br />
 - <strong>MAR</strong>: Missing At Random<br />
@@ -406,28 +408,28 @@ Build ML models with/without imputated values and evaluate impact of imputation 
 </ul>
 <p>Ideally imputation should not bring big differences.</p>
 <p><strong>Mean and linear imputations</strong></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="primary-data-analysis.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
-<span id="cb28-2"><a href="primary-data-analysis.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(simputation)</span>
-<span id="cb28-3"><a href="primary-data-analysis.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="primary-data-analysis.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute with the mean</span></span>
-<span id="cb28-5"><a href="primary-data-analysis.html#cb28-5" aria-hidden="true" tabindex="-1"></a>imp_mean <span class="ot">&lt;-</span> bands <span class="sc">%&gt;%</span></span>
-<span id="cb28-6"><a href="primary-data-analysis.html#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_shadow</span>(<span class="at">only_miss =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-7"><a href="primary-data-analysis.html#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_label_shadow</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb28-8"><a href="primary-data-analysis.html#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_mean_all</span>()</span>
-<span id="cb28-9"><a href="primary-data-analysis.html#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="primary-data-analysis.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute with lm</span></span>
-<span id="cb28-11"><a href="primary-data-analysis.html#cb28-11" aria-hidden="true" tabindex="-1"></a>imp_lm <span class="ot">&lt;-</span> bands <span class="sc">%&gt;%</span></span>
-<span id="cb28-12"><a href="primary-data-analysis.html#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_shadow</span>(<span class="at">only_miss =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-13"><a href="primary-data-analysis.html#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_label_shadow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb28-14"><a href="primary-data-analysis.html#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_lm</span>(Blade_pressure <span class="sc">~</span> Ink_temperature) <span class="sc">%&gt;%</span></span>
-<span id="cb28-15"><a href="primary-data-analysis.html#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_lm</span>(Roughness <span class="sc">~</span> Ink_temperature) <span class="sc">%&gt;%</span></span>
-<span id="cb28-16"><a href="primary-data-analysis.html#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_lm</span>(Ink_pct <span class="sc">~</span> Ink_temperature)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="primary-data-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
+<span id="cb30-2"><a href="primary-data-analysis.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(simputation)</span>
+<span id="cb30-3"><a href="primary-data-analysis.html#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="primary-data-analysis.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute with the mean</span></span>
+<span id="cb30-5"><a href="primary-data-analysis.html#cb30-5" aria-hidden="true" tabindex="-1"></a>imp_mean <span class="ot">&lt;-</span> bands <span class="sc">%&gt;%</span></span>
+<span id="cb30-6"><a href="primary-data-analysis.html#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_shadow</span>(<span class="at">only_miss =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-7"><a href="primary-data-analysis.html#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_label_shadow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-8"><a href="primary-data-analysis.html#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_mean_all</span>()</span>
+<span id="cb30-9"><a href="primary-data-analysis.html#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="primary-data-analysis.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute with lm</span></span>
+<span id="cb30-11"><a href="primary-data-analysis.html#cb30-11" aria-hidden="true" tabindex="-1"></a>imp_lm <span class="ot">&lt;-</span> bands <span class="sc">%&gt;%</span></span>
+<span id="cb30-12"><a href="primary-data-analysis.html#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_shadow</span>(<span class="at">only_miss =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-13"><a href="primary-data-analysis.html#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_label_shadow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-14"><a href="primary-data-analysis.html#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_lm</span>(Blade_pressure <span class="sc">~</span> Ink_temperature) <span class="sc">%&gt;%</span></span>
+<span id="cb30-15"><a href="primary-data-analysis.html#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_lm</span>(Roughness <span class="sc">~</span> Ink_temperature) <span class="sc">%&gt;%</span></span>
+<span id="cb30-16"><a href="primary-data-analysis.html#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">impute_lm</span>(Ink_pct <span class="sc">~</span> Ink_temperature)</span></code></pre></div>
 <p><strong>Combining multiple imputation models</strong></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="primary-data-analysis.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the imputation models</span></span>
-<span id="cb29-2"><a href="primary-data-analysis.html#cb29-2" aria-hidden="true" tabindex="-1"></a>imp_models <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="at">mean =</span> imp_mean,</span>
-<span id="cb29-3"><a href="primary-data-analysis.html#cb29-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">lm =</span> lmp_lm,</span>
-<span id="cb29-4"><a href="primary-data-analysis.html#cb29-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">.id =</span> <span class="st">&quot;imp_model&quot;</span>)</span>
-<span id="cb29-5"><a href="primary-data-analysis.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(imp_models)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="primary-data-analysis.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the imputation models</span></span>
+<span id="cb31-2"><a href="primary-data-analysis.html#cb31-2" aria-hidden="true" tabindex="-1"></a>imp_models <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="at">mean =</span> imp_mean,</span>
+<span id="cb31-3"><a href="primary-data-analysis.html#cb31-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">lm =</span> lmp_lm,</span>
+<span id="cb31-4"><a href="primary-data-analysis.html#cb31-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">.id =</span> <span class="st">&quot;imp_model&quot;</span>)</span>
+<span id="cb31-5"><a href="primary-data-analysis.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(imp_models)</span></code></pre></div>
 </div>
 <div id="dealing-with-outliers" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Dealing with outliers</h2>
@@ -479,9 +481,9 @@ LOF(<span class="math inline">\(x\)</span>) &gt; 1 lower density than neighbors 
 - e.g. mode imputation, linear imputation, kNN imputation.<br />
 3. <strong>Capping</strong>: Replace them with the value of the 5-th percentile (lower limit) or 95-th percentile (upper limit).<br />
 4. <strong>Exclusion</strong>: Not recommended, especially in small datasets or those where a normal distribution cannot be assumed.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="primary-data-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./DATA/cars.csv&#39;</span>)</span>
-<span id="cb30-2"><a href="primary-data-analysis.html#cb30-2" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> cars[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb30-3"><a href="primary-data-analysis.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="primary-data-analysis.html#cb32-1" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./DATA/cars.csv&#39;</span>)</span>
+<span id="cb32-2"><a href="primary-data-analysis.html#cb32-2" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> cars[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb32-3"><a href="primary-data-analysis.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars)</span></code></pre></div>
 <pre><code>##   distance consume speed
 ## 1       28       5    26
 ## 2       12      42    30
@@ -489,61 +491,61 @@ LOF(<span class="math inline">\(x\)</span>) &gt; 1 lower density than neighbors 
 ## 4      129      39    36
 ## 5      185      45    46
 ## 6       83      64    50</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="primary-data-analysis.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(cars<span class="sc">$</span>consume)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="primary-data-analysis.html#cb33-1" aria-hidden="true" tabindex="-1"></a>consume_quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(cars<span class="sc">$</span>consume)</span>
-<span id="cb33-2"><a href="primary-data-analysis.html#cb33-2" aria-hidden="true" tabindex="-1"></a>consume_quartiles</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="primary-data-analysis.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(cars<span class="sc">$</span>consume)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="primary-data-analysis.html#cb35-1" aria-hidden="true" tabindex="-1"></a>consume_quartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(cars<span class="sc">$</span>consume)</span>
+<span id="cb35-2"><a href="primary-data-analysis.html#cb35-2" aria-hidden="true" tabindex="-1"></a>consume_quartiles</span></code></pre></div>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##    4   41   46   52  122</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="primary-data-analysis.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale data and create scatterplot: cars_scaled</span></span>
-<span id="cb35-2"><a href="primary-data-analysis.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
-<span id="cb35-3"><a href="primary-data-analysis.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="primary-data-analysis.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale data and create scatterplot: cars_scaled</span></span>
+<span id="cb37-2"><a href="primary-data-analysis.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb37-3"><a href="primary-data-analysis.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cars)</span></code></pre></div>
 <pre><code>## Rows: 388
 ## Columns: 3
 ## $ distance &lt;int&gt; 28, 12, 112, 129, 185, 83, 78, 123, 49, 119, 124, 118, 123, 247, 124, 173, 334, 118, 259, 118, 253, 142, 179, 118, 123, 124, 184, 184, 183, 184, 123, 118,…
 ## $ consume  &lt;int&gt; 5, 42, 55, 39, 45, 64, 44, 5, 64, 53, 56, 46, 59, 51, 47, 51, 56, 51, 49, 47, 55, 59, 57, 47, 59, 41, 57, 58, 55, 57, 53, 5, 56, 48, 43, 57, 52, 74, 48, 6…
 ## $ speed    &lt;int&gt; 26, 30, 38, 36, 46, 50, 43, 40, 26, 30, 42, 38, 59, 58, 46, 24, 36, 32, 39, 40, 32, 38, 37, 36, 62, 57, 21, 28, 29, 35, 51, 29, 58, 40, 36, 36, 37, 26, 23…</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="primary-data-analysis.html#cb37-1" aria-hidden="true" tabindex="-1"></a>cars_scaled <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">scale</span>(cars))</span>
-<span id="cb37-2"><a href="primary-data-analysis.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(distance <span class="sc">~</span> consume, <span class="at">data =</span> cars_scaled, </span>
-<span id="cb37-3"><a href="primary-data-analysis.html#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Fuel consumption vs. distance&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="primary-data-analysis.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate upper threshold: upper_th</span></span>
-<span id="cb38-2"><a href="primary-data-analysis.html#cb38-2" aria-hidden="true" tabindex="-1"></a>upper_th <span class="ot">&lt;-</span> consume_quartiles[<span class="dv">4</span>] <span class="sc">+</span> </span>
-<span id="cb38-3"><a href="primary-data-analysis.html#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.5</span> <span class="sc">*</span> (consume_quartiles[<span class="dv">4</span>] <span class="sc">-</span> consume_quartiles[<span class="dv">2</span>])</span>
-<span id="cb38-4"><a href="primary-data-analysis.html#cb38-4" aria-hidden="true" tabindex="-1"></a>upper_th</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="primary-data-analysis.html#cb39-1" aria-hidden="true" tabindex="-1"></a>cars_scaled <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">scale</span>(cars))</span>
+<span id="cb39-2"><a href="primary-data-analysis.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(distance <span class="sc">~</span> consume, <span class="at">data =</span> cars_scaled, </span>
+<span id="cb39-3"><a href="primary-data-analysis.html#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Fuel consumption vs. distance&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="primary-data-analysis.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate upper threshold: upper_th</span></span>
+<span id="cb40-2"><a href="primary-data-analysis.html#cb40-2" aria-hidden="true" tabindex="-1"></a>upper_th <span class="ot">&lt;-</span> consume_quartiles[<span class="dv">4</span>] <span class="sc">+</span> </span>
+<span id="cb40-3"><a href="primary-data-analysis.html#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.5</span> <span class="sc">*</span> (consume_quartiles[<span class="dv">4</span>] <span class="sc">-</span> consume_quartiles[<span class="dv">2</span>])</span>
+<span id="cb40-4"><a href="primary-data-analysis.html#cb40-4" aria-hidden="true" tabindex="-1"></a>upper_th</span></code></pre></div>
 <pre><code>##  75% 
 ## 68.5</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="primary-data-analysis.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the sorted vector of distinct potential outliers</span></span>
-<span id="cb40-2"><a href="primary-data-analysis.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(cars<span class="sc">$</span>consume[cars<span class="sc">$</span>consume <span class="sc">&gt;</span> upper_th]))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="primary-data-analysis.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the sorted vector of distinct potential outliers</span></span>
+<span id="cb42-2"><a href="primary-data-analysis.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(cars<span class="sc">$</span>consume[cars<span class="sc">$</span>consume <span class="sc">&gt;</span> upper_th]))</span></code></pre></div>
 <pre><code>##  [1]  69  71  74  79  81  87  99 108 115 122</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="primary-data-analysis.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FNN)</span>
-<span id="cb42-2"><a href="primary-data-analysis.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute KNN score</span></span>
-<span id="cb42-3"><a href="primary-data-analysis.html#cb42-3" aria-hidden="true" tabindex="-1"></a>cars_knn <span class="ot">&lt;-</span> <span class="fu">get.knn</span>(<span class="at">data =</span> cars_scaled, <span class="at">k =</span> <span class="dv">7</span>)</span>
-<span id="cb42-4"><a href="primary-data-analysis.html#cb42-4" aria-hidden="true" tabindex="-1"></a>cars1 <span class="ot">&lt;-</span> cars</span>
-<span id="cb42-5"><a href="primary-data-analysis.html#cb42-5" aria-hidden="true" tabindex="-1"></a>cars1<span class="sc">$</span>knn_score <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(cars_knn<span class="sc">$</span>nn.dist)</span>
-<span id="cb42-6"><a href="primary-data-analysis.html#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="primary-data-analysis.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 5 KNN scores and data point indices: top5_knn</span></span>
-<span id="cb42-8"><a href="primary-data-analysis.html#cb42-8" aria-hidden="true" tabindex="-1"></a>(top5_knn <span class="ot">&lt;-</span> <span class="fu">order</span>(cars1<span class="sc">$</span>knn_score, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="primary-data-analysis.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FNN)</span>
+<span id="cb44-2"><a href="primary-data-analysis.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute KNN score</span></span>
+<span id="cb44-3"><a href="primary-data-analysis.html#cb44-3" aria-hidden="true" tabindex="-1"></a>cars_knn <span class="ot">&lt;-</span> <span class="fu">get.knn</span>(<span class="at">data =</span> cars_scaled, <span class="at">k =</span> <span class="dv">7</span>)</span>
+<span id="cb44-4"><a href="primary-data-analysis.html#cb44-4" aria-hidden="true" tabindex="-1"></a>cars1 <span class="ot">&lt;-</span> cars</span>
+<span id="cb44-5"><a href="primary-data-analysis.html#cb44-5" aria-hidden="true" tabindex="-1"></a>cars1<span class="sc">$</span>knn_score <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(cars_knn<span class="sc">$</span>nn.dist)</span>
+<span id="cb44-6"><a href="primary-data-analysis.html#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="primary-data-analysis.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 5 KNN scores and data point indices: top5_knn</span></span>
+<span id="cb44-8"><a href="primary-data-analysis.html#cb44-8" aria-hidden="true" tabindex="-1"></a>(top5_knn <span class="ot">&lt;-</span> <span class="fu">order</span>(cars1<span class="sc">$</span>knn_score, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
 <pre><code>## [1] 320 107 335  56 190</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="primary-data-analysis.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cars1<span class="sc">$</span>knn_score[top5_knn])</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="primary-data-analysis.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cars1<span class="sc">$</span>knn_score[top5_knn])</span></code></pre></div>
 <pre><code>## [1] 4.472813 2.385471 2.246905 2.122242 1.740575</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="primary-data-analysis.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot variables using KNN score as size of points</span></span>
-<span id="cb46-2"><a href="primary-data-analysis.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(distance <span class="sc">~</span> consume, <span class="at">data =</span> cars1, <span class="at">cex =</span> knn_score, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-3.png" width="672" /></p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="primary-data-analysis.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbscan)</span>
-<span id="cb47-2"><a href="primary-data-analysis.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add lof_score column to cars1</span></span>
-<span id="cb47-3"><a href="primary-data-analysis.html#cb47-3" aria-hidden="true" tabindex="-1"></a>cars1 <span class="ot">&lt;-</span> cars</span>
-<span id="cb47-4"><a href="primary-data-analysis.html#cb47-4" aria-hidden="true" tabindex="-1"></a>cars1<span class="sc">$</span>lof_score <span class="ot">&lt;-</span> <span class="fu">lof</span>(cars_scaled, <span class="at">minPts =</span> <span class="dv">7</span>)</span>
-<span id="cb47-5"><a href="primary-data-analysis.html#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-6"><a href="primary-data-analysis.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 5 LOF scores and data point indices: top5_lof</span></span>
-<span id="cb47-7"><a href="primary-data-analysis.html#cb47-7" aria-hidden="true" tabindex="-1"></a>(top5_lof <span class="ot">&lt;-</span> <span class="fu">order</span>(cars1<span class="sc">$</span>lof_score, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="primary-data-analysis.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot variables using KNN score as size of points</span></span>
+<span id="cb48-2"><a href="primary-data-analysis.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(distance <span class="sc">~</span> consume, <span class="at">data =</span> cars1, <span class="at">cex =</span> knn_score, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-3.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="primary-data-analysis.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbscan)</span>
+<span id="cb49-2"><a href="primary-data-analysis.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add lof_score column to cars1</span></span>
+<span id="cb49-3"><a href="primary-data-analysis.html#cb49-3" aria-hidden="true" tabindex="-1"></a>cars1 <span class="ot">&lt;-</span> cars</span>
+<span id="cb49-4"><a href="primary-data-analysis.html#cb49-4" aria-hidden="true" tabindex="-1"></a>cars1<span class="sc">$</span>lof_score <span class="ot">&lt;-</span> <span class="fu">lof</span>(cars_scaled, <span class="at">minPts =</span> <span class="dv">7</span>)</span>
+<span id="cb49-5"><a href="primary-data-analysis.html#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="primary-data-analysis.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 5 LOF scores and data point indices: top5_lof</span></span>
+<span id="cb49-7"><a href="primary-data-analysis.html#cb49-7" aria-hidden="true" tabindex="-1"></a>(top5_lof <span class="ot">&lt;-</span> <span class="fu">order</span>(cars1<span class="sc">$</span>lof_score, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
 <pre><code>## [1] 165 186 161 228  52</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="primary-data-analysis.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cars1<span class="sc">$</span>lof_score[top5_lof])</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="primary-data-analysis.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cars1<span class="sc">$</span>lof_score[top5_lof])</span></code></pre></div>
 <pre><code>## [1] 2.606151 2.574906 2.328733 2.252610 2.027528</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="primary-data-analysis.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot variables using LOF score as size of points</span></span>
-<span id="cb51-2"><a href="primary-data-analysis.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(distance <span class="sc">~</span> consume, <span class="at">data =</span> cars1, </span>
-<span id="cb51-3"><a href="primary-data-analysis.html#cb51-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> lof_score, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-4.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="primary-data-analysis.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot variables using LOF score as size of points</span></span>
+<span id="cb53-2"><a href="primary-data-analysis.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(distance <span class="sc">~</span> consume, <span class="at">data =</span> cars1, </span>
+<span id="cb53-3"><a href="primary-data-analysis.html#cb53-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> lof_score, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-4.png" width="672" /></p>
 </div>
 </div>
             </section>

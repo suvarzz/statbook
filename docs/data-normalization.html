@@ -148,13 +148,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability"><i class="fa fa-check"></i><b>3.2</b> Probability</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.3</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
+<li class="chapter" data-level="3.3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.3.3</b> Normality</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>4</b> Primary data analysis - Case studies</a></li>
 <li class="chapter" data-level="5" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary data analysis</a>
@@ -282,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
 <li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+<li class="chapter" data-level="31.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#the-best-models"><i class="fa fa-check"></i><b>31.3</b> The BEST models</a></li>
 </ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
@@ -347,43 +349,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Normalized data may be on different scales.</li>
 </ul>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-normalization.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb52-2"><a href="data-normalization.html#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-3"><a href="data-normalization.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data with different ranges</span></span>
-<span id="cb52-4"><a href="data-normalization.html#cb52-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb52-5"><a href="data-normalization.html#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">length.out=</span><span class="dv">20</span>)),</span>
-<span id="cb52-6"><a href="data-normalization.html#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">500</span>, <span class="at">length.out=</span><span class="dv">20</span>)))</span>
-<span id="cb52-7"><a href="data-normalization.html#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># view data</span></span>
-<span id="cb52-8"><a href="data-normalization.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-normalization.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb54-2"><a href="data-normalization.html#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="data-normalization.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data with different ranges</span></span>
+<span id="cb54-4"><a href="data-normalization.html#cb54-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb54-5"><a href="data-normalization.html#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">length.out=</span><span class="dv">20</span>)),</span>
+<span id="cb54-6"><a href="data-normalization.html#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">500</span>, <span class="at">length.out=</span><span class="dv">20</span>)))</span>
+<span id="cb54-7"><a href="data-normalization.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># view data</span></span>
+<span id="cb54-8"><a href="data-normalization.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
 <pre><code>## Rows: 20
 ## Columns: 2
-## $ a &lt;dbl&gt; 2.0000000, 1.3684211, 1.2631579, 0.9473684, 0.2105263, 0.4210526, 1.6842105, 1.1578947, 1.8947368, 0.7368421, 1.4736842, 0.6315789, 0.8421053, 0.3157895, 1.57894…
-## $ b &lt;dbl&gt; 289.4737, 184.2105, 436.8421, 457.8947, 205.2632, 163.1579, 373.6842, 352.6316, 394.7368, 142.1053, 500.0000, 100.0000, 226.3158, 478.9474, 121.0526, 268.4211, 3…</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-normalization.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
-<span id="cb54-2"><a href="data-normalization.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
+## $ a &lt;dbl&gt; 0.1052632, 1.4736842, 0.5263158, 1.7894737, 0.2105263, 0.7368421, 0.8421053, 1.3684211, 0.0000000, 0.6315789, 0.9473684, 0.4210526, 1.6842105, 1.2631579, 1.57894…
+## $ b &lt;dbl&gt; 373.6842, 184.2105, 478.9474, 457.8947, 142.1053, 289.4737, 121.0526, 163.1579, 415.7895, 268.4211, 394.7368, 247.3684, 331.5789, 100.0000, 226.3158, 352.6316, 5…</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-normalization.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
+<span id="cb56-2"><a href="data-normalization.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
 <pre><code>##      a   b
 ## [1,] 0 100
 ## [2,] 2 500</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-normalization.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges are different =&gt; normalize</span></span>
-<span id="cb56-2"><a href="data-normalization.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply min-max and standardization</span></span>
-<span id="cb56-3"><a href="data-normalization.html#cb56-3" aria-hidden="true" tabindex="-1"></a>nrm <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb56-4"><a href="data-normalization.html#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">a_MinMax =</span> (a <span class="sc">-</span> <span class="fu">min</span>(a)) <span class="sc">/</span> (<span class="fu">max</span>(a) <span class="sc">-</span> <span class="fu">min</span>(a)), </span>
-<span id="cb56-5"><a href="data-normalization.html#cb56-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_MinMax =</span> (b <span class="sc">-</span> <span class="fu">min</span>(b)) <span class="sc">/</span> (<span class="fu">max</span>(b) <span class="sc">-</span> <span class="fu">min</span>(b)),</span>
-<span id="cb56-6"><a href="data-normalization.html#cb56-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">a_ZScore =</span> (a <span class="sc">-</span> <span class="fu">mean</span>(a)) <span class="sc">/</span> <span class="fu">sd</span>(a),</span>
-<span id="cb56-7"><a href="data-normalization.html#cb56-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_ZScore =</span> (b <span class="sc">-</span> <span class="fu">mean</span>(b)) <span class="sc">/</span> <span class="fu">sd</span>(b)</span>
-<span id="cb56-8"><a href="data-normalization.html#cb56-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb56-9"><a href="data-normalization.html#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-10"><a href="data-normalization.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges for normalized data</span></span>
-<span id="cb56-11"><a href="data-normalization.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(nrm, range)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-normalization.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges are different =&gt; normalize</span></span>
+<span id="cb58-2"><a href="data-normalization.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply min-max and standardization</span></span>
+<span id="cb58-3"><a href="data-normalization.html#cb58-3" aria-hidden="true" tabindex="-1"></a>nrm <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb58-4"><a href="data-normalization.html#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">a_MinMax =</span> (a <span class="sc">-</span> <span class="fu">min</span>(a)) <span class="sc">/</span> (<span class="fu">max</span>(a) <span class="sc">-</span> <span class="fu">min</span>(a)), </span>
+<span id="cb58-5"><a href="data-normalization.html#cb58-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_MinMax =</span> (b <span class="sc">-</span> <span class="fu">min</span>(b)) <span class="sc">/</span> (<span class="fu">max</span>(b) <span class="sc">-</span> <span class="fu">min</span>(b)),</span>
+<span id="cb58-6"><a href="data-normalization.html#cb58-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">a_ZScore =</span> (a <span class="sc">-</span> <span class="fu">mean</span>(a)) <span class="sc">/</span> <span class="fu">sd</span>(a),</span>
+<span id="cb58-7"><a href="data-normalization.html#cb58-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">b_ZScore =</span> (b <span class="sc">-</span> <span class="fu">mean</span>(b)) <span class="sc">/</span> <span class="fu">sd</span>(b)</span>
+<span id="cb58-8"><a href="data-normalization.html#cb58-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb58-9"><a href="data-normalization.html#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="data-normalization.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ranges for normalized data</span></span>
+<span id="cb58-11"><a href="data-normalization.html#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(nrm, range)</span></code></pre></div>
 <pre><code>##      a   b a_MinMax b_MinMax  a_ZScore  b_ZScore
 ## [1,] 0 100        0        0 -1.605793 -1.605793
 ## [2,] 2 500        1        1  1.605793  1.605793</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-normalization.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
-<span id="cb58-2"><a href="data-normalization.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb58-3"><a href="data-normalization.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">main =</span> <span class="st">&#39;Original&#39;</span>)</span>
-<span id="cb58-4"><a href="data-normalization.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&#39;Min-Max&#39;</span>)</span>
-<span id="cb58-5"><a href="data-normalization.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">main =</span> <span class="st">&#39;Z-Score&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-normalization.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb60-2"><a href="data-normalization.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb60-3"><a href="data-normalization.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">main =</span> <span class="st">&#39;Original&#39;</span>)</span>
+<span id="cb60-4"><a href="data-normalization.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&#39;Min-Max&#39;</span>)</span>
+<span id="cb60-5"><a href="data-normalization.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(nrm[, <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">main =</span> <span class="st">&#39;Z-Score&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p><strong>Sources</strong><br />
 <a href="https://learn.datacamp.com/courses/practicing-machine-learning-interview-questions-in-r">Practicing Machine Learning Interview Questions in R on DataCamp</a></p>
 

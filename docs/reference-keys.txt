@@ -9,6 +9,7 @@ t-test
 anova
 basic-statistics
 definitions
+probability
 analysis-of-sample-distribution
 histogram
 outliers
@@ -105,6 +106,7 @@ learning-vector-quantization
 bayesian-statistics
 simple-model-with-one-binary-parameter
 website-visitors-model
+the-best-models
 naive-bayes
 markov-chain-monte-carlo-mcmc
 simple-markov-process

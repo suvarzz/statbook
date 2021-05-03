@@ -148,13 +148,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability"><i class="fa fa-check"></i><b>3.2</b> Probability</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.3</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
+<li class="chapter" data-level="3.3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.3.3</b> Normality</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>4</b> Primary data analysis - Case studies</a></li>
 <li class="chapter" data-level="5" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary data analysis</a>
@@ -282,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
 <li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+<li class="chapter" data-level="31.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#the-best-models"><i class="fa fa-check"></i><b>31.3</b> The BEST models</a></li>
 </ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
@@ -341,8 +343,8 @@ Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided t
 <div id="practical-example-t-test-in-r" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Practical example: t-test in R</h2>
 <p>We want to test if <strong>N</strong> is different from given mean <strong>μ</strong>=0:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="t-procedures.html#cb83-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.01</span>, <span class="fl">0.65</span>, <span class="sc">-</span><span class="fl">0.17</span>, <span class="fl">1.77</span>, <span class="fl">0.76</span>, <span class="sc">-</span><span class="fl">0.16</span>, <span class="fl">0.88</span>, <span class="fl">1.09</span>, <span class="fl">0.96</span>, <span class="fl">0.25</span>)</span>
-<span id="cb83-2"><a href="t-procedures.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="t-procedures.html#cb85-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.01</span>, <span class="fl">0.65</span>, <span class="sc">-</span><span class="fl">0.17</span>, <span class="fl">1.77</span>, <span class="fl">0.76</span>, <span class="sc">-</span><span class="fl">0.16</span>, <span class="fl">0.88</span>, <span class="fl">1.09</span>, <span class="fl">0.96</span>, <span class="fl">0.25</span>)</span>
+<span id="cb85-2"><a href="t-procedures.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -354,7 +356,7 @@ Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided t
 ## sample estimates:
 ## mean of x 
 ##     0.602</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="t-procedures.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="t-procedures.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -366,7 +368,7 @@ Q: Show diagrams explaining why p-value of one-sided is smaller than two-sided t
 ## sample estimates:
 ## mean of x 
 ##     0.602</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="t-procedures.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="t-procedures.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(N, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -412,32 +414,32 @@ equal variance (homoscedastic). Type 3 means two samples, unequal variance (hete
 </div>
 <div id="compare-students-t-and-normal-distributions" class="section level2" number="9.5">
 <h2><span class="header-section-number">9.5</span> Compare Student’s t and normal distributions</h2>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="t-procedures.html#cb89-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length=</span><span class="dv">100</span>)</span>
-<span id="cb89-2"><a href="t-procedures.html#cb89-2" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
-<span id="cb89-3"><a href="t-procedures.html#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-4"><a href="t-procedures.html#cb89-4" aria-hidden="true" tabindex="-1"></a>degf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">30</span>)</span>
-<span id="cb89-5"><a href="t-procedures.html#cb89-5" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb89-6"><a href="t-procedures.html#cb89-6" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;df=1&quot;</span>, <span class="st">&quot;df=3&quot;</span>, <span class="st">&quot;df=8&quot;</span>, <span class="st">&quot;df=30&quot;</span>, <span class="st">&quot;normal&quot;</span>)</span>
-<span id="cb89-7"><a href="t-procedures.html#cb89-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-8"><a href="t-procedures.html#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, hx, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">xlab=</span><span class="st">&quot;x value&quot;</span>,</span>
-<span id="cb89-9"><a href="t-procedures.html#cb89-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Density&quot;</span>, <span class="at">main=</span><span class="st">&quot;Comparison of t Distributions&quot;</span>)</span>
-<span id="cb89-10"><a href="t-procedures.html#cb89-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-11"><a href="t-procedures.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
-<span id="cb89-12"><a href="t-procedures.html#cb89-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(x, <span class="fu">dt</span>(x,degf[i]), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span>colors[i])</span>
-<span id="cb89-13"><a href="t-procedures.html#cb89-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb89-14"><a href="t-procedures.html#cb89-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-15"><a href="t-procedures.html#cb89-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">inset=</span>.<span class="dv">05</span>, <span class="at">title=</span><span class="st">&quot;Distributions&quot;</span>,</span>
-<span id="cb89-16"><a href="t-procedures.html#cb89-16" aria-hidden="true" tabindex="-1"></a>       labels, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col=</span>colors)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="t-procedures.html#cb91-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length=</span><span class="dv">100</span>)</span>
+<span id="cb91-2"><a href="t-procedures.html#cb91-2" aria-hidden="true" tabindex="-1"></a>hx <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb91-3"><a href="t-procedures.html#cb91-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-4"><a href="t-procedures.html#cb91-4" aria-hidden="true" tabindex="-1"></a>degf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">30</span>)</span>
+<span id="cb91-5"><a href="t-procedures.html#cb91-5" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb91-6"><a href="t-procedures.html#cb91-6" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;df=1&quot;</span>, <span class="st">&quot;df=3&quot;</span>, <span class="st">&quot;df=8&quot;</span>, <span class="st">&quot;df=30&quot;</span>, <span class="st">&quot;normal&quot;</span>)</span>
+<span id="cb91-7"><a href="t-procedures.html#cb91-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="t-procedures.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, hx, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">xlab=</span><span class="st">&quot;x value&quot;</span>,</span>
+<span id="cb91-9"><a href="t-procedures.html#cb91-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Density&quot;</span>, <span class="at">main=</span><span class="st">&quot;Comparison of t Distributions&quot;</span>)</span>
+<span id="cb91-10"><a href="t-procedures.html#cb91-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-11"><a href="t-procedures.html#cb91-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
+<span id="cb91-12"><a href="t-procedures.html#cb91-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(x, <span class="fu">dt</span>(x,degf[i]), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span>colors[i])</span>
+<span id="cb91-13"><a href="t-procedures.html#cb91-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb91-14"><a href="t-procedures.html#cb91-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-15"><a href="t-procedures.html#cb91-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">inset=</span>.<span class="dv">05</span>, <span class="at">title=</span><span class="st">&quot;Distributions&quot;</span>,</span>
+<span id="cb91-16"><a href="t-procedures.html#cb91-16" aria-hidden="true" tabindex="-1"></a>       labels, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col=</span>colors)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>To generate data with known mean and sd:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="t-procedures.html#cb90-1" aria-hidden="true" tabindex="-1"></a>rnorm2 <span class="ot">&lt;-</span> <span class="cf">function</span>(n,mean,sd) { mean<span class="sc">+</span>sd<span class="sc">*</span><span class="fu">scale</span>(<span class="fu">rnorm</span>(n)) }</span>
-<span id="cb90-2"><a href="t-procedures.html#cb90-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rnorm2</span>(<span class="dv">100</span>,<span class="dv">4</span>,<span class="dv">1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="t-procedures.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="do">### t-test</span></span>
-<span id="cb91-2"><a href="t-procedures.html#cb91-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">175</span>, <span class="dv">168</span>, <span class="dv">168</span>, <span class="dv">190</span>, <span class="dv">156</span>, <span class="dv">181</span>, <span class="dv">182</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>)</span>
-<span id="cb91-3"><a href="t-procedures.html#cb91-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">185</span>, <span class="dv">169</span>, <span class="dv">173</span>, <span class="dv">173</span>, <span class="dv">188</span>, <span class="dv">186</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>, <span class="dv">180</span>)</span>
-<span id="cb91-4"><a href="t-procedures.html#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-5"><a href="t-procedures.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="co"># test homogeneity of variances using Fisher’s F-test</span></span>
-<span id="cb91-6"><a href="t-procedures.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(a,b)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="t-procedures.html#cb92-1" aria-hidden="true" tabindex="-1"></a>rnorm2 <span class="ot">&lt;-</span> <span class="cf">function</span>(n,mean,sd) { mean<span class="sc">+</span>sd<span class="sc">*</span><span class="fu">scale</span>(<span class="fu">rnorm</span>(n)) }</span>
+<span id="cb92-2"><a href="t-procedures.html#cb92-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rnorm2</span>(<span class="dv">100</span>,<span class="dv">4</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="t-procedures.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="do">### t-test</span></span>
+<span id="cb93-2"><a href="t-procedures.html#cb93-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">175</span>, <span class="dv">168</span>, <span class="dv">168</span>, <span class="dv">190</span>, <span class="dv">156</span>, <span class="dv">181</span>, <span class="dv">182</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>)</span>
+<span id="cb93-3"><a href="t-procedures.html#cb93-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">185</span>, <span class="dv">169</span>, <span class="dv">173</span>, <span class="dv">173</span>, <span class="dv">188</span>, <span class="dv">186</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">179</span>, <span class="dv">180</span>)</span>
+<span id="cb93-4"><a href="t-procedures.html#cb93-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-5"><a href="t-procedures.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="co"># test homogeneity of variances using Fisher’s F-test</span></span>
+<span id="cb93-6"><a href="t-procedures.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(a,b)</span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
@@ -449,12 +451,12 @@ equal variance (homoscedastic). Type 3 means two samples, unequal variance (hete
 ## sample estimates:
 ## ratio of variances 
 ##           2.102784</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="t-procedures.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance is homogene (can use var.equal=T in t.test)</span></span>
-<span id="cb93-2"><a href="t-procedures.html#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-3"><a href="t-procedures.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test</span></span>
-<span id="cb93-4"><a href="t-procedures.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(a,b, </span>
-<span id="cb93-5"><a href="t-procedures.html#cb93-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>,   <span class="co"># variance is homogene (tested by var.test(a,b)) </span></span>
-<span id="cb93-6"><a href="t-procedures.html#cb93-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">FALSE</span>)     <span class="co"># samples are independent</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="t-procedures.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance is homogene (can use var.equal=T in t.test)</span></span>
+<span id="cb95-2"><a href="t-procedures.html#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="t-procedures.html#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test</span></span>
+<span id="cb95-4"><a href="t-procedures.html#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(a,b, </span>
+<span id="cb95-5"><a href="t-procedures.html#cb95-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span>,   <span class="co"># variance is homogene (tested by var.test(a,b)) </span></span>
+<span id="cb95-6"><a href="t-procedures.html#cb95-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">FALSE</span>)     <span class="co"># samples are independent</span></span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 

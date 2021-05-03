@@ -148,13 +148,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability"><i class="fa fa-check"></i><b>3.2</b> Probability</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.3</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
+<li class="chapter" data-level="3.3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.3.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.3.3</b> Normality</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.4</b> Confidence interval</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>4</b> Primary data analysis - Case studies</a></li>
 <li class="chapter" data-level="5" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Primary data analysis</a>
@@ -282,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="31.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>31.1</b> Simple model with one binary parameter</a></li>
 <li class="chapter" data-level="31.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#website-visitors-model"><i class="fa fa-check"></i><b>31.2</b> Website visitors model</a></li>
+<li class="chapter" data-level="31.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#the-best-models"><i class="fa fa-check"></i><b>31.3</b> The BEST models</a></li>
 </ul></li>
 <li class="chapter" data-level="32" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>32</b> Naive Bayes</a></li>
 <li class="chapter" data-level="33" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>33</b> Markov Chain Monte Carlo (MCMC)</a></li>
@@ -320,19 +322,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="t-test-1" class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> t-test</h2>
 <p>The data set shows energy expend in two groups of women: stature</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="sources.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISwR)</span>
-<span id="cb103-2"><a href="sources.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(energy)</span>
-<span id="cb103-3"><a href="sources.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(energy)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="sources.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISwR)</span>
+<span id="cb105-2"><a href="sources.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(energy)</span>
+<span id="cb105-3"><a href="sources.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(energy)</span></code></pre></div>
 <pre><code>## The following objects are masked from energy (pos = 4):
 ## 
 ##     expend, stature</code></pre>
-<pre><code>## The following objects are masked from energy (pos = 6):
+<pre><code>## The following objects are masked from energy (pos = 9):
 ## 
 ##     expend, stature</code></pre>
-<pre><code>## The following objects are masked from energy (pos = 25):
+<pre><code>## The following objects are masked from energy (pos = 11):
 ## 
 ##     expend, stature</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="sources.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy)</span></code></pre></div>
+<pre><code>## The following objects are masked from energy (pos = 13):
+## 
+##     expend, stature</code></pre>
+<pre><code>## The following objects are masked from energy (pos = 32):
+## 
+##     expend, stature</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="sources.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy)</span></code></pre></div>
 <pre><code>##   expend stature
 ## 1   9.21   obese
 ## 2   7.53    lean
@@ -340,11 +348,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   8.08    lean
 ## 5   8.09    lean
 ## 6  10.15    lean</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="sources.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(expend, stature, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="sources.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(expend, stature, mean)</span></code></pre></div>
 <pre><code>##      lean     obese 
 ##  8.066154 10.297778</code></pre>
 <p>H<sub>0</sub>: there is no difference in averages between lean and obese.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="sources.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(expend <span class="sc">~</span> stature)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="sources.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(expend <span class="sc">~</span> stature)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -362,18 +370,24 @@ The risk of error is 0.15%</p>
 <div id="two-tailed-test" class="section level3" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> Two-tailed test</h3>
 <p>Compair two sets of variables.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="sources.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(intake) <span class="co"># from package ISwR</span></span>
-<span id="cb113-2"><a href="sources.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(intake)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="sources.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(intake) <span class="co"># from package ISwR</span></span>
+<span id="cb117-2"><a href="sources.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(intake)</span></code></pre></div>
 <pre><code>## The following objects are masked from intake (pos = 4):
 ## 
 ##     post, pre</code></pre>
-<pre><code>## The following objects are masked from intake (pos = 6):
+<pre><code>## The following objects are masked from intake (pos = 9):
 ## 
 ##     post, pre</code></pre>
-<pre><code>## The following objects are masked from intake (pos = 25):
+<pre><code>## The following objects are masked from intake (pos = 11):
 ## 
 ##     post, pre</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="sources.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(intake)</span></code></pre></div>
+<pre><code>## The following objects are masked from intake (pos = 13):
+## 
+##     post, pre</code></pre>
+<pre><code>## The following objects are masked from intake (pos = 32):
+## 
+##     post, pre</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="sources.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(intake)</span></code></pre></div>
 <pre><code>##    pre post
 ## 1 5260 3910
 ## 2 5470 4220
@@ -381,10 +395,10 @@ The risk of error is 0.15%</p>
 ## 4 6180 5160
 ## 5 6390 5645
 ## 6 6515 4680</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="sources.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(post <span class="sc">-</span> pre)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="sources.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(post <span class="sc">-</span> pre)</span></code></pre></div>
 <pre><code>## [1] -1320.455</code></pre>
 <p>Is difference of means significant?</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="sources.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pre, post, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="sources.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pre, post, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
