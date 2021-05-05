@@ -106,6 +106,8 @@ learning-vector-quantization
 bayesian-statistics
 simple-model-with-one-binary-parameter
 website-visitors-model
+model-of-birth-weights-using-normal-distribution
+a-bayesian-model-of-zombie-iq
 the-best-models
 naive-bayes
 markov-chain-monte-carlo-mcmc
