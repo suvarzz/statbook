@@ -330,10 +330,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from energy (pos = 4):
 ## 
 ##     expend, stature</code></pre>
-<pre><code>## The following objects are masked from energy (pos = 26):
+<pre><code>## The following objects are masked from energy (pos = 6):
 ## 
 ##     expend, stature</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="sources.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy)</span></code></pre></div>
+<pre><code>## The following objects are masked from energy (pos = 28):
+## 
+##     expend, stature</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="sources.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy)</span></code></pre></div>
 <pre><code>##   expend stature
 ## 1   9.21   obese
 ## 2   7.53    lean
@@ -341,11 +344,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   8.08    lean
 ## 5   8.09    lean
 ## 6  10.15    lean</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="sources.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(expend, stature, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="sources.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(expend, stature, mean)</span></code></pre></div>
 <pre><code>##      lean     obese 
 ##  8.066154 10.297778</code></pre>
 <p>H<sub>0</sub>: there is no difference in averages between lean and obese.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="sources.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(expend <span class="sc">~</span> stature)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="sources.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(expend <span class="sc">~</span> stature)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -363,15 +366,18 @@ The risk of error is 0.15%</p>
 <div id="two-tailed-test" class="section level3" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> Two-tailed test</h3>
 <p>Compair two sets of variables.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="sources.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(intake) <span class="co"># from package ISwR</span></span>
-<span id="cb114-2"><a href="sources.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(intake)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="sources.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(intake) <span class="co"># from package ISwR</span></span>
+<span id="cb115-2"><a href="sources.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(intake)</span></code></pre></div>
 <pre><code>## The following objects are masked from intake (pos = 4):
 ## 
 ##     post, pre</code></pre>
-<pre><code>## The following objects are masked from intake (pos = 26):
+<pre><code>## The following objects are masked from intake (pos = 6):
 ## 
 ##     post, pre</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="sources.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(intake)</span></code></pre></div>
+<pre><code>## The following objects are masked from intake (pos = 28):
+## 
+##     post, pre</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="sources.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(intake)</span></code></pre></div>
 <pre><code>##    pre post
 ## 1 5260 3910
 ## 2 5470 4220
@@ -379,10 +385,10 @@ The risk of error is 0.15%</p>
 ## 4 6180 5160
 ## 5 6390 5645
 ## 6 6515 4680</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="sources.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(post <span class="sc">-</span> pre)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="sources.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(post <span class="sc">-</span> pre)</span></code></pre></div>
 <pre><code>## [1] -1320.455</code></pre>
 <p>Is difference of means significant?</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="sources.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pre, post, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="sources.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pre, post, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 

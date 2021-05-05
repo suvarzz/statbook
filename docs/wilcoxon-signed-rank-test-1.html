@@ -333,8 +333,8 @@ identical without assuming them to follow the normal distribution.</p>
 <p>Example
 In the built-in data set named immer, the barley yield in years 1931 and 1932 of the same field are recorded.
 The yield data are presented in the data frame columns Y1 and Y2.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="wilcoxon-signed-rank-test-1.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb146-2"><a href="wilcoxon-signed-rank-test-1.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(immer)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="wilcoxon-signed-rank-test-1.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb148-2"><a href="wilcoxon-signed-rank-test-1.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(immer)</span></code></pre></div>
 <pre><code>##   Loc Var    Y1    Y2
 ## 1  UF   M  81.0  80.7
 ## 2  UF   S 105.4  82.3
@@ -349,7 +349,7 @@ The null hypothesis is that the barley yields of the two sample years are identi
 To test the hypothesis, we apply the wilcox.test function to compare the matched samples.
 For the paired test, we set the “paired” argument as TRUE. As the p-value turns out to be 0.005318,
 and is less than the .05 significance level, we reject the null hypothesis.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="wilcoxon-signed-rank-test-1.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(immer<span class="sc">$</span>Y1, immer<span class="sc">$</span>Y2, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="wilcoxon-signed-rank-test-1.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(immer<span class="sc">$</span>Y1, immer<span class="sc">$</span>Y2, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning in wilcox.test.default(immer$Y1, immer$Y2, paired = TRUE): cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
