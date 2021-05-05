@@ -335,26 +335,26 @@ where <span class="math inline">\(\beta\)</span><sub>0</sub> is an <strong>inter
 <p>Suppose we want to simulate from the following linear model:
 y = <span class="math inline">\(\beta\)</span><sub>0</sub> + <span class="math inline">\(\beta\)</span><sub>1</sub>x + <span class="math inline">\(\epsilon\)</span>,<br />
 where <span class="math inline">\(\epsilon\)</span> ~ N(0,2<sup>2</sup>). Assume x ~ N(0,1<sup>2</sup>), <span class="math inline">\(\beta\)</span><sub>0</sub> = 0.5, <span class="math inline">\(\beta\)</span><sub>1</sub> = 2.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="linear-regression-1.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
-<span id="cb156-2"><a href="linear-regression-1.html#cb156-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb156-3"><a href="linear-regression-1.html#cb156-3" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb156-4"><a href="linear-regression-1.html#cb156-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> e</span>
-<span id="cb156-5"><a href="linear-regression-1.html#cb156-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="linear-regression-1.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
+<span id="cb158-2"><a href="linear-regression-1.html#cb158-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb158-3"><a href="linear-regression-1.html#cb158-3" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb158-4"><a href="linear-regression-1.html#cb158-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> e</span>
+<span id="cb158-5"><a href="linear-regression-1.html#cb158-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(y)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## -6.4084 -1.5402  0.6789  0.6893  2.9303  6.5052</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="linear-regression-1.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="linear-regression-1.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 </div>
 <div id="practical-example" class="section level2" number="23.3">
 <h2><span class="header-section-number">23.3</span> Practical example</h2>
 <p>Practical example from <a href="https://en.wikipedia.org/wiki/Linear_least_squares_(mathematics)">Wikipedia</a><br />
 Set of data: (1,6), (2,5), (3, 7), (4,10)</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="linear-regression-1.html#cb159-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb159-2"><a href="linear-regression-1.html#cb159-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>)</span>
-<span id="cb159-3"><a href="linear-regression-1.html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">10</span>))</span>
-<span id="cb159-4"><a href="linear-regression-1.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fl">3.5</span>, <span class="fl">1.4</span>)</span>
-<span id="cb159-5"><a href="linear-regression-1.html#cb159-5" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x)</span>
-<span id="cb159-6"><a href="linear-regression-1.html#cb159-6" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(x, y, x, r<span class="sc">$</span>fitted.values, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="linear-regression-1.html#cb161-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb161-2"><a href="linear-regression-1.html#cb161-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>)</span>
+<span id="cb161-3"><a href="linear-regression-1.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">10</span>))</span>
+<span id="cb161-4"><a href="linear-regression-1.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fl">3.5</span>, <span class="fl">1.4</span>)</span>
+<span id="cb161-5"><a href="linear-regression-1.html#cb161-5" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x)</span>
+<span id="cb161-6"><a href="linear-regression-1.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(x, y, x, r<span class="sc">$</span>fitted.values, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>We have to find the line corresponding to the minimal sum of errors (distances from the each point to this line):
 1. For all points:<br />
@@ -383,21 +383,21 @@ All possible regression lines goes through the intersection point <span class="m
 </div>
 <div id="linear-model-in-r" class="section level2" number="23.5">
 <h2><span class="header-section-number">23.5</span> Linear model in R</h2>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="linear-regression-1.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Height and weight vectors for 19 children</span></span>
-<span id="cb160-2"><a href="linear-regression-1.html#cb160-2" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">69.1</span>,<span class="fl">56.4</span>,<span class="fl">65.3</span>,<span class="fl">62.8</span>,<span class="dv">63</span>,<span class="fl">57.3</span>,<span class="fl">59.8</span>,<span class="fl">62.5</span>,<span class="fl">62.5</span>,<span class="fl">59.0</span>,<span class="fl">51.3</span>,<span class="dv">64</span>,<span class="fl">56.4</span>,<span class="fl">66.5</span>,<span class="fl">72.2</span>,<span class="fl">65.0</span>,<span class="fl">67.0</span>,<span class="fl">57.6</span>,<span class="fl">66.6</span>)</span>
-<span id="cb160-3"><a href="linear-regression-1.html#cb160-3" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">113</span>,<span class="dv">84</span>,<span class="dv">99</span>,<span class="dv">103</span>,<span class="dv">102</span>,<span class="dv">83</span>,<span class="dv">85</span>,<span class="dv">113</span>,<span class="dv">84</span>,<span class="dv">99</span>,<span class="dv">51</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">112</span>,<span class="dv">150</span>,<span class="dv">128</span>,<span class="dv">133</span>,<span class="dv">85</span>,<span class="dv">112</span>)</span>
-<span id="cb160-4"><a href="linear-regression-1.html#cb160-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-5"><a href="linear-regression-1.html#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(height,weight)</span>
-<span id="cb160-6"><a href="linear-regression-1.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
-<span id="cb160-7"><a href="linear-regression-1.html#cb160-7" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> height) <span class="co"># weight = slope*weight + intercept</span></span>
-<span id="cb160-8"><a href="linear-regression-1.html#cb160-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model)   <span class="co"># Regression line</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="linear-regression-1.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Height and weight vectors for 19 children</span></span>
+<span id="cb162-2"><a href="linear-regression-1.html#cb162-2" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">69.1</span>,<span class="fl">56.4</span>,<span class="fl">65.3</span>,<span class="fl">62.8</span>,<span class="dv">63</span>,<span class="fl">57.3</span>,<span class="fl">59.8</span>,<span class="fl">62.5</span>,<span class="fl">62.5</span>,<span class="fl">59.0</span>,<span class="fl">51.3</span>,<span class="dv">64</span>,<span class="fl">56.4</span>,<span class="fl">66.5</span>,<span class="fl">72.2</span>,<span class="fl">65.0</span>,<span class="fl">67.0</span>,<span class="fl">57.6</span>,<span class="fl">66.6</span>)</span>
+<span id="cb162-3"><a href="linear-regression-1.html#cb162-3" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">113</span>,<span class="dv">84</span>,<span class="dv">99</span>,<span class="dv">103</span>,<span class="dv">102</span>,<span class="dv">83</span>,<span class="dv">85</span>,<span class="dv">113</span>,<span class="dv">84</span>,<span class="dv">99</span>,<span class="dv">51</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">112</span>,<span class="dv">150</span>,<span class="dv">128</span>,<span class="dv">133</span>,<span class="dv">85</span>,<span class="dv">112</span>)</span>
+<span id="cb162-4"><a href="linear-regression-1.html#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-5"><a href="linear-regression-1.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(height,weight)</span>
+<span id="cb162-6"><a href="linear-regression-1.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
+<span id="cb162-7"><a href="linear-regression-1.html#cb162-7" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> height) <span class="co"># weight = slope*weight + intercept</span></span>
+<span id="cb162-8"><a href="linear-regression-1.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model)   <span class="co"># Regression line</span></span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="linear-regression-1.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation between variables</span></span>
-<span id="cb161-2"><a href="linear-regression-1.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(height,weight)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="linear-regression-1.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation between variables</span></span>
+<span id="cb163-2"><a href="linear-regression-1.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(height,weight)</span></code></pre></div>
 <pre><code>## [1] 0.8848454</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="linear-regression-1.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data from the model</span></span>
-<span id="cb163-2"><a href="linear-regression-1.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="co">#get the intercept(b0) and the slope(b1) values</span></span>
-<span id="cb163-3"><a href="linear-regression-1.html#cb163-3" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="linear-regression-1.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data from the model</span></span>
+<span id="cb165-2"><a href="linear-regression-1.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="co">#get the intercept(b0) and the slope(b1) values</span></span>
+<span id="cb165-3"><a href="linear-regression-1.html#cb165-3" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ height)
@@ -405,8 +405,8 @@ All possible regression lines goes through the intersection point <span class="m
 ## Coefficients:
 ## (Intercept)       height  
 ##    -143.227        3.905</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="linear-regression-1.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># detailed information about the model</span></span>
-<span id="cb165-2"><a href="linear-regression-1.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="linear-regression-1.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># detailed information about the model</span></span>
+<span id="cb167-2"><a href="linear-regression-1.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ height)
@@ -425,35 +425,35 @@ All possible regression lines goes through the intersection point <span class="m
 ## Residual standard error: 10.89 on 17 degrees of freedom
 ## Multiple R-squared:  0.783,  Adjusted R-squared:  0.7702 
 ## F-statistic: 61.32 on 1 and 17 DF,  p-value: 4.876e-07</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="linear-regression-1.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all attributes calculated by lm</span></span>
-<span id="cb167-2"><a href="linear-regression-1.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="linear-regression-1.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all attributes calculated by lm</span></span>
+<span id="cb169-2"><a href="linear-regression-1.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(model)</span></code></pre></div>
 <pre><code>## $names
 ##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;          &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;   &quot;xlevels&quot;       &quot;call&quot;         
 ## [11] &quot;terms&quot;         &quot;model&quot;        
 ## 
 ## $class
 ## [1] &quot;lm&quot;</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="linear-regression-1.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getting only the intercept</span></span>
-<span id="cb169-2"><a href="linear-regression-1.html#cb169-2" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="co">#or model$coefficients[[1]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="linear-regression-1.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getting only the intercept</span></span>
+<span id="cb171-2"><a href="linear-regression-1.html#cb171-2" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="co">#or model$coefficients[[1]]</span></span></code></pre></div>
 <pre><code>## (Intercept) 
 ##   -143.2266</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="linear-regression-1.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getting only the slope</span></span>
-<span id="cb171-2"><a href="linear-regression-1.html#cb171-2" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="co">#or model$coefficients[[2]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="linear-regression-1.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getting only the slope</span></span>
+<span id="cb173-2"><a href="linear-regression-1.html#cb173-2" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="co">#or model$coefficients[[2]]</span></span></code></pre></div>
 <pre><code>##   height 
 ## 3.904675</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="linear-regression-1.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking the residuals</span></span>
-<span id="cb173-2"><a href="linear-regression-1.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">residuals</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="linear-regression-1.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking the residuals</span></span>
+<span id="cb175-2"><a href="linear-regression-1.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">residuals</span>(model)</span></code></pre></div>
 <pre><code>##             1             2             3             4             5             6             7             8             9            10            11            12 
 ## -13.586376027   7.002990499 -12.748612814   1.013073510  -0.767861396   2.488783423  -5.272902901  12.184475869 -16.815524131  11.850836722  -6.083169400 -16.672535926 
 ##            13            14            15            16            17            18            19 
 ##   0.002990499  -4.434222250  11.309132932  17.422789545  14.613440486   3.317381064  -4.824689703</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="linear-regression-1.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predict the weight for a given height, say 60 inches</span></span>
-<span id="cb175-2"><a href="linear-regression-1.html#cb175-2" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[[<span class="dv">2</span>]]<span class="sc">*</span><span class="dv">60</span> <span class="sc">+</span> model<span class="sc">$</span>coefficients[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="linear-regression-1.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predict the weight for a given height, say 60 inches</span></span>
+<span id="cb177-2"><a href="linear-regression-1.html#cb177-2" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>coefficients[[<span class="dv">2</span>]]<span class="sc">*</span><span class="dv">60</span> <span class="sc">+</span> model<span class="sc">$</span>coefficients[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] 91.05384</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="linear-regression-1.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean squared error (MSE)</span></span>
-<span id="cb177-2"><a href="linear-regression-1.html#cb177-2" aria-hidden="true" tabindex="-1"></a>predicted.weights <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata =</span> <span class="fu">as.data.frame</span>(weight))</span>
-<span id="cb177-3"><a href="linear-regression-1.html#cb177-3" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> <span class="fu">mean</span>(( weight <span class="sc">-</span> predicted.weights)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb177-4"><a href="linear-regression-1.html#cb177-4" aria-hidden="true" tabindex="-1"></a>mse</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="linear-regression-1.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean squared error (MSE)</span></span>
+<span id="cb179-2"><a href="linear-regression-1.html#cb179-2" aria-hidden="true" tabindex="-1"></a>predicted.weights <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata =</span> <span class="fu">as.data.frame</span>(weight))</span>
+<span id="cb179-3"><a href="linear-regression-1.html#cb179-3" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> <span class="fu">mean</span>(( weight <span class="sc">-</span> predicted.weights)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb179-4"><a href="linear-regression-1.html#cb179-4" aria-hidden="true" tabindex="-1"></a>mse</span></code></pre></div>
 <pre><code>## [1] 106.177</code></pre>
 </div>
 <div id="linear-regression-model-for-multiple-parameters" class="section level2" number="23.6">
@@ -472,8 +472,8 @@ to predict and choose the number of significant variables.</p>
 If difference is significant =&gt; use more variables.</li>
 </ol>
 <p>In the same way we can compair different models.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="linear-regression-1.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaicData)</span>
-<span id="cb179-2"><a href="linear-regression-1.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(CPS85)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="linear-regression-1.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaicData)</span>
+<span id="cb181-2"><a href="linear-regression-1.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(CPS85)</span></code></pre></div>
 <pre><code>##   wage educ race sex hispanic south married exper union age   sector
 ## 1  9.0   10    W   M       NH    NS Married    27   Not  43    const
 ## 2  5.5   12    W   M       NH    NS Married    20   Not  38    sales
@@ -481,32 +481,32 @@ If difference is significant =&gt; use more variables.</li>
 ## 4 10.5   12    W   F       NH    NS Married    29   Not  47 clerical
 ## 5 15.0   12    W   M       NH    NS Married    40 Union  58    const
 ## 6  9.0   16    W   F       NH    NS Married    27   Not  49 clerical</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="linear-regression-1.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># relation wage ~ education</span></span>
-<span id="cb181-2"><a href="linear-regression-1.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="co"># wage - response variable</span></span>
-<span id="cb181-3"><a href="linear-regression-1.html#cb181-3" aria-hidden="true" tabindex="-1"></a><span class="co"># educ, exper, age are explanatory variables</span></span>
-<span id="cb181-4"><a href="linear-regression-1.html#cb181-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-5"><a href="linear-regression-1.html#cb181-5" aria-hidden="true" tabindex="-1"></a><span class="co"># linear model</span></span>
-<span id="cb181-6"><a href="linear-regression-1.html#cb181-6" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> educ, <span class="at">data =</span> CPS85)</span>
-<span id="cb181-7"><a href="linear-regression-1.html#cb181-7" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> educ <span class="sc">+</span> age, <span class="at">data =</span> CPS85)</span>
-<span id="cb181-8"><a href="linear-regression-1.html#cb181-8" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> educ <span class="sc">+</span> age <span class="sc">+</span> exper, <span class="at">data =</span> CPS85)</span>
-<span id="cb181-9"><a href="linear-regression-1.html#cb181-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-10"><a href="linear-regression-1.html#cb181-10" aria-hidden="true" tabindex="-1"></a>pred1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata =</span> CPS85)</span>
-<span id="cb181-11"><a href="linear-regression-1.html#cb181-11" aria-hidden="true" tabindex="-1"></a>pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model2, <span class="at">newdata =</span> CPS85)</span>
-<span id="cb181-12"><a href="linear-regression-1.html#cb181-12" aria-hidden="true" tabindex="-1"></a>pred3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model3, <span class="at">newdata =</span> CPS85)</span>
-<span id="cb181-13"><a href="linear-regression-1.html#cb181-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-14"><a href="linear-regression-1.html#cb181-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Compair MSE</span></span>
-<span id="cb181-15"><a href="linear-regression-1.html#cb181-15" aria-hidden="true" tabindex="-1"></a>mse1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(( CPS85<span class="sc">$</span>wage <span class="sc">-</span> pred1)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb181-16"><a href="linear-regression-1.html#cb181-16" aria-hidden="true" tabindex="-1"></a>mse2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(( CPS85<span class="sc">$</span>wage <span class="sc">-</span> pred2)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb181-17"><a href="linear-regression-1.html#cb181-17" aria-hidden="true" tabindex="-1"></a>mse3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(( CPS85<span class="sc">$</span>wage <span class="sc">-</span> pred3)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb181-18"><a href="linear-regression-1.html#cb181-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-19"><a href="linear-regression-1.html#cb181-19" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">model_1 =</span> mse1,</span>
-<span id="cb181-20"><a href="linear-regression-1.html#cb181-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">model_2 =</span> mse2,</span>
-<span id="cb181-21"><a href="linear-regression-1.html#cb181-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">model_3 =</span> mse3)</span>
-<span id="cb181-22"><a href="linear-regression-1.html#cb181-22" aria-hidden="true" tabindex="-1"></a>mse</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="linear-regression-1.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># relation wage ~ education</span></span>
+<span id="cb183-2"><a href="linear-regression-1.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="co"># wage - response variable</span></span>
+<span id="cb183-3"><a href="linear-regression-1.html#cb183-3" aria-hidden="true" tabindex="-1"></a><span class="co"># educ, exper, age are explanatory variables</span></span>
+<span id="cb183-4"><a href="linear-regression-1.html#cb183-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-5"><a href="linear-regression-1.html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="co"># linear model</span></span>
+<span id="cb183-6"><a href="linear-regression-1.html#cb183-6" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> educ, <span class="at">data =</span> CPS85)</span>
+<span id="cb183-7"><a href="linear-regression-1.html#cb183-7" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> educ <span class="sc">+</span> age, <span class="at">data =</span> CPS85)</span>
+<span id="cb183-8"><a href="linear-regression-1.html#cb183-8" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> educ <span class="sc">+</span> age <span class="sc">+</span> exper, <span class="at">data =</span> CPS85)</span>
+<span id="cb183-9"><a href="linear-regression-1.html#cb183-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-10"><a href="linear-regression-1.html#cb183-10" aria-hidden="true" tabindex="-1"></a>pred1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata =</span> CPS85)</span>
+<span id="cb183-11"><a href="linear-regression-1.html#cb183-11" aria-hidden="true" tabindex="-1"></a>pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model2, <span class="at">newdata =</span> CPS85)</span>
+<span id="cb183-12"><a href="linear-regression-1.html#cb183-12" aria-hidden="true" tabindex="-1"></a>pred3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model3, <span class="at">newdata =</span> CPS85)</span>
+<span id="cb183-13"><a href="linear-regression-1.html#cb183-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-14"><a href="linear-regression-1.html#cb183-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Compair MSE</span></span>
+<span id="cb183-15"><a href="linear-regression-1.html#cb183-15" aria-hidden="true" tabindex="-1"></a>mse1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(( CPS85<span class="sc">$</span>wage <span class="sc">-</span> pred1)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb183-16"><a href="linear-regression-1.html#cb183-16" aria-hidden="true" tabindex="-1"></a>mse2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(( CPS85<span class="sc">$</span>wage <span class="sc">-</span> pred2)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb183-17"><a href="linear-regression-1.html#cb183-17" aria-hidden="true" tabindex="-1"></a>mse3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(( CPS85<span class="sc">$</span>wage <span class="sc">-</span> pred3)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb183-18"><a href="linear-regression-1.html#cb183-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-19"><a href="linear-regression-1.html#cb183-19" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">model_1 =</span> mse1,</span>
+<span id="cb183-20"><a href="linear-regression-1.html#cb183-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">model_2 =</span> mse2,</span>
+<span id="cb183-21"><a href="linear-regression-1.html#cb183-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">model_3 =</span> mse3)</span>
+<span id="cb183-22"><a href="linear-regression-1.html#cb183-22" aria-hidden="true" tabindex="-1"></a>mse</span></code></pre></div>
 <pre><code>##    model_1  model_2 model_3
 ## 1 22.51575 21.03578 21.0353</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="linear-regression-1.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using both educ and age variables reduese MSE =&gt; improve model, where</span></span>
-<span id="cb183-2"><a href="linear-regression-1.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adding exper does not improve model</span></span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="linear-regression-1.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using both educ and age variables reduese MSE =&gt; improve model, where</span></span>
+<span id="cb185-2"><a href="linear-regression-1.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adding exper does not improve model</span></span></code></pre></div>
 </div>
 <div id="assessment-of-model-performance-for-categorical-data." class="section level2" number="23.8">
 <h2><span class="header-section-number">23.8</span> Assessment of model performance for categorical data.</h2>
@@ -516,21 +516,21 @@ Likelihood: extract the probability that the model assigned to the observed outc
 </div>
 <div id="confidence-intervals-for-linear-model" class="section level2" number="23.9">
 <h2><span class="header-section-number">23.9</span> Confidence intervals for linear model</h2>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="linear-regression-1.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0. Build linear model </span></span>
-<span id="cb184-2"><a href="linear-regression-1.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cars&quot;</span>, <span class="at">package =</span> <span class="st">&quot;datasets&quot;</span>)</span>
-<span id="cb184-3"><a href="linear-regression-1.html#cb184-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb184-4"><a href="linear-regression-1.html#cb184-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Add predictions </span></span>
-<span id="cb184-5"><a href="linear-regression-1.html#cb184-5" aria-hidden="true" tabindex="-1"></a>pred.int <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="linear-regression-1.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0. Build linear model </span></span>
+<span id="cb186-2"><a href="linear-regression-1.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cars&quot;</span>, <span class="at">package =</span> <span class="st">&quot;datasets&quot;</span>)</span>
+<span id="cb186-3"><a href="linear-regression-1.html#cb186-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb186-4"><a href="linear-regression-1.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Add predictions </span></span>
+<span id="cb186-5"><a href="linear-regression-1.html#cb186-5" aria-hidden="true" tabindex="-1"></a>pred.int <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in predict.lm(model, interval = &quot;prediction&quot;): predictions on current data refer to _future_ responses</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="linear-regression-1.html#cb186-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">cbind</span>(cars, pred.int)</span>
-<span id="cb186-2"><a href="linear-regression-1.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Regression line + confidence intervals</span></span>
-<span id="cb186-3"><a href="linear-regression-1.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb186-4"><a href="linear-regression-1.html#cb186-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mydata, <span class="fu">aes</span>(speed, dist)) <span class="sc">+</span></span>
-<span id="cb186-5"><a href="linear-regression-1.html#cb186-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb186-6"><a href="linear-regression-1.html#cb186-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> lm)</span>
-<span id="cb186-7"><a href="linear-regression-1.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Add prediction intervals</span></span>
-<span id="cb186-8"><a href="linear-regression-1.html#cb186-8" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lwr), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>)<span class="sc">+</span></span>
-<span id="cb186-9"><a href="linear-regression-1.html#cb186-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> upr), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="linear-regression-1.html#cb188-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">cbind</span>(cars, pred.int)</span>
+<span id="cb188-2"><a href="linear-regression-1.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Regression line + confidence intervals</span></span>
+<span id="cb188-3"><a href="linear-regression-1.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb188-4"><a href="linear-regression-1.html#cb188-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mydata, <span class="fu">aes</span>(speed, dist)) <span class="sc">+</span></span>
+<span id="cb188-5"><a href="linear-regression-1.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb188-6"><a href="linear-regression-1.html#cb188-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> lm)</span>
+<span id="cb188-7"><a href="linear-regression-1.html#cb188-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Add prediction intervals</span></span>
+<span id="cb188-8"><a href="linear-regression-1.html#cb188-8" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lwr), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>)<span class="sc">+</span></span>
+<span id="cb188-9"><a href="linear-regression-1.html#cb188-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> upr), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is not supported on this device: reported only once per page</code></pre>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
@@ -540,9 +540,9 @@ Likelihood: extract the probability that the model assigned to the observed outc
 <h2><span class="header-section-number">23.10</span> Practical examples for linear model regression</h2>
 <p>In this simple example we have 6 persons (3 males and 3 femails) and their score from 0 to 10.<br />
 We want to build a model to see the dependence of score on gender: score ~ gender + <span class="math inline">\(\epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is an error</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="linear-regression-1.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data frame for the dataset</span></span>
-<span id="cb189-2"><a href="linear-regression-1.html#cb189-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">gender=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)), <span class="at">score=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">7</span>, <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb189-3"><a href="linear-regression-1.html#cb189-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="linear-regression-1.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data frame for the dataset</span></span>
+<span id="cb191-2"><a href="linear-regression-1.html#cb191-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">gender=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)), <span class="at">score=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">7</span>, <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb191-3"><a href="linear-regression-1.html#cb191-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   gender score
 ## 1      0    10
 ## 2      0     8
@@ -550,9 +550,9 @@ We want to build a model to see the dependence of score on gender: score ~ gende
 ## 4      1     1
 ## 5      1     3
 ## 6      1     2</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="linear-regression-1.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build linear model</span></span>
-<span id="cb191-2"><a href="linear-regression-1.html#cb191-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">lm</span>(score <span class="sc">~</span> gender, df)</span>
-<span id="cb191-3"><a href="linear-regression-1.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="linear-regression-1.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build linear model</span></span>
+<span id="cb193-2"><a href="linear-regression-1.html#cb193-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">lm</span>(score <span class="sc">~</span> gender, df)</span>
+<span id="cb193-3"><a href="linear-regression-1.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = score ~ gender, data = df)

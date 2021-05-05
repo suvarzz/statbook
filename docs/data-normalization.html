@@ -361,8 +361,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb54-8"><a href="data-normalization.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div>
 <pre><code>## Rows: 20
 ## Columns: 2
-## $ a &lt;dbl&gt; 1.0526316, 1.2631579, 1.3684211, 1.1578947, 0.3157895, 1.8947368, 0.0000000, 1.7894737, 1.6842105, 0.9473684, 0.7368421, 0.2105263, 0.6315789, 0.8421053, 1.57894…
-## $ b &lt;dbl&gt; 247.3684, 331.5789, 373.6842, 226.3158, 268.4211, 205.2632, 478.9474, 184.2105, 457.8947, 394.7368, 289.4737, 100.0000, 121.0526, 352.6316, 415.7895, 163.1579, 1…</code></pre>
+## $ a &lt;dbl&gt; 0.8421053, 1.4736842, 1.8947368, 0.0000000, 2.0000000, 1.1578947, 1.2631579, 0.4210526, 0.2105263, 0.9473684, 1.6842105, 0.1052632, 0.6315789, 0.5263158, 0.73684…
+## $ b &lt;dbl&gt; 415.7895, 457.8947, 331.5789, 478.9474, 436.8421, 289.4737, 205.2632, 142.1053, 121.0526, 100.0000, 226.3158, 184.2105, 394.7368, 352.6316, 500.0000, 373.6842, 2…</code></pre>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-normalization.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data ranges to see if normalization is needed</span></span>
 <span id="cb56-2"><a href="data-normalization.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, range)</span></code></pre></div>
 <pre><code>##      a   b
