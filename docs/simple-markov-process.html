@@ -370,38 +370,38 @@ So, at <span class="math inline">\(t+1\)</span>, there’s going to be 20-4+20 a
 </div>
 <p>The results of these calculations are exactly the proportions that we saw above: 36% alert student and 64% bored students.</p>
 <p>Now, you might ask yourself: What happens if this process continues? What happens at <span class="math inline">\(t+2\)</span>, <span class="math inline">\(t+3\)</span> etc.? Will it be the case that at one point there are no bored students any more? Let’s simulate this in R and find out! Let’s call this <strong>tpm</strong> for <strong>transition probability matrix</strong>:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="simple-markov-process.html#cb296-1" aria-hidden="true" tabindex="-1"></a>tpm <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">0.25</span>, <span class="fl">0.2</span>,<span class="fl">0.75</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb296-2"><a href="simple-markov-process.html#cb296-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tpm) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>)</span>
-<span id="cb296-3"><a href="simple-markov-process.html#cb296-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tpm) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;At+1&#39;</span>, <span class="st">&#39;Bt+1&#39;</span>)</span>
-<span id="cb296-4"><a href="simple-markov-process.html#cb296-4" aria-hidden="true" tabindex="-1"></a>tpm</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="simple-markov-process.html#cb298-1" aria-hidden="true" tabindex="-1"></a>tpm <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">0.25</span>, <span class="fl">0.2</span>,<span class="fl">0.75</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb298-2"><a href="simple-markov-process.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tpm) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>)</span>
+<span id="cb298-3"><a href="simple-markov-process.html#cb298-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tpm) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;At+1&#39;</span>, <span class="st">&#39;Bt+1&#39;</span>)</span>
+<span id="cb298-4"><a href="simple-markov-process.html#cb298-4" aria-hidden="true" tabindex="-1"></a>tpm</span></code></pre></div>
 <pre><code>##        A    B
 ## At+1 0.8 0.25
 ## Bt+1 0.2 0.75</code></pre>
 <p>Again this matrix shows that 0.8 students who were in state A at time point t will still be in state A at <span class="math inline">\(t+1\)</span>. And 0.25 students who were in state B at time point t will be in state A at <span class="math inline">\(t+1\)</span>. The second row has a similar interpretation for alert and bored students becoming bored at <span class="math inline">\(t+1\)</span>. Remember that Markov processes assume fixed transition probabilities. This means that in the simulation that we’ll be doing, we leave the transition probability matrix unchanged. However, we will define a vector of the actual proportions – and these are allowed to change. In time, we expect more and more students to become alert, because the transition probability from B to A (which, to remind you, was 0.25) is higher than from A to B (which was 0.2).</p>
 <p>Let’s start our simulation by setting the initial condition as 0.1 students are alert and 0.9 students are bored and define a matrix called <strong>sm</strong> (short for <strong>student matrix</strong>):</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="simple-markov-process.html#cb298-1" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">=</span> <span class="fu">as.matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>))</span>
-<span id="cb298-2"><a href="simple-markov-process.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(sm)<span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>)</span>
-<span id="cb298-3"><a href="simple-markov-process.html#cb298-3" aria-hidden="true" tabindex="-1"></a>sm</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="simple-markov-process.html#cb300-1" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">=</span> <span class="fu">as.matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>))</span>
+<span id="cb300-2"><a href="simple-markov-process.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(sm)<span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>)</span>
+<span id="cb300-3"><a href="simple-markov-process.html#cb300-3" aria-hidden="true" tabindex="-1"></a>sm</span></code></pre></div>
 <pre><code>##   [,1]
 ## A  0.1
 ## B  0.9</code></pre>
 <p>Now let’s repeat by looping:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="simple-markov-process.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb300-2"><a href="simple-markov-process.html#cb300-2" aria-hidden="true" tabindex="-1"></a>    sm <span class="ot">=</span> tpm <span class="sc">%*%</span> sm</span>
-<span id="cb300-3"><a href="simple-markov-process.html#cb300-3" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="simple-markov-process.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb302-2"><a href="simple-markov-process.html#cb302-2" aria-hidden="true" tabindex="-1"></a>    sm <span class="ot">=</span> tpm <span class="sc">%*%</span> sm</span>
+<span id="cb302-3"><a href="simple-markov-process.html#cb302-3" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
 <p>Here, we’re looping 10 times and on each iteration, we multiply the matrix <strong>tpm</strong> with the student matrix <strong>sm</strong>. We take this result and store it in <strong>sm</strong>. This means that at the next iteration, our fixed <strong>transition probability matrix</strong> will be multiplied by a different student matrix, allowing for the proportions to slowly change over time.<br />
 R operator ’%*%’ is used for matrix multiplication</p>
 <p>Outcome of our ten loop iterations:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="simple-markov-process.html#cb301-1" aria-hidden="true" tabindex="-1"></a>sm</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="simple-markov-process.html#cb303-1" aria-hidden="true" tabindex="-1"></a>sm</span></code></pre></div>
 <pre><code>##           [,1]
 ## At+1 0.5544017
 ## Bt+1 0.4455983</code></pre>
 <p>So, after 10 iterations of the Markov process, we now have about 55% alert students and 45% bored ones. What is interesting to me is that even though 80% of the people who are alert at one time point remain alert at the next time point, the process only converged on 55% alert and 45% bored after 10 iterations.</p>
 <p>Let’s reset our initial condition to (0.1 alert and 0.9 bored students) and run a thousand iterations.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="simple-markov-process.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb303-2"><a href="simple-markov-process.html#cb303-2" aria-hidden="true" tabindex="-1"></a>    sm <span class="ot">=</span> tpm <span class="sc">%*%</span> sm</span>
-<span id="cb303-3"><a href="simple-markov-process.html#cb303-3" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb303-4"><a href="simple-markov-process.html#cb303-4" aria-hidden="true" tabindex="-1"></a>sm</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="simple-markov-process.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb305-2"><a href="simple-markov-process.html#cb305-2" aria-hidden="true" tabindex="-1"></a>    sm <span class="ot">=</span> tpm <span class="sc">%*%</span> sm</span>
+<span id="cb305-3"><a href="simple-markov-process.html#cb305-3" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb305-4"><a href="simple-markov-process.html#cb305-4" aria-hidden="true" tabindex="-1"></a>sm</span></code></pre></div>
 <pre><code>##           [,1]
 ## At+1 0.5555556
 ## Bt+1 0.4444444</code></pre>
