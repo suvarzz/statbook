@@ -353,8 +353,8 @@ visited your site.
 pars is currently the joint distribution over all combinations of 
 proportion_clicks and n_visitors.  
 Condition on the data and keep only the rows in pars where n_visitors == 6. 
-Normalize pars$probability again, to make sure it sums to 1.0.
-Plot the posterior pars$probability using plot(x = , y = , type = "h") 
+Normalize `pars$probability` again, to make sure it sums to 1.0.
+Plot the posterior `pars$probability` using plot(x = , y = , type = "h") 
 with pars$proportion_clicks on the x-axis and pars$probability on the y-axis.  
 
 ```{r}
