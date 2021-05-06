@@ -837,7 +837,7 @@ Use Bayes Theorem to calculate these probabilities and assign them to
 <span id="cb301-3"><a href="bayesian-inference.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pars_sample<span class="sc">$</span>mu, <span class="dv">100</span>)</span>
 <span id="cb301-4"><a href="bayesian-inference.html#cb301-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize pred_iq</span></span>
 <span id="cb301-5"><a href="bayesian-inference.html#cb301-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pred_iq)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 </div>
 <div id="the-best-models" class="section level2" number="31.6">
 <h2><span class="header-section-number">31.6</span> The BEST models</h2>
@@ -861,7 +861,7 @@ the <strong>t</strong>-test).</p>
 <span id="cb304-5"><a href="bayesian-inference.html#cb304-5" aria-hidden="true" tabindex="-1"></a>best_posterior <span class="ot">&lt;-</span> BEST<span class="sc">::</span><span class="fu">BESTmcmc</span>(iq_b, iq_a)</span></code></pre></div>
 <div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="bayesian-inference.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the model result</span></span>
 <span id="cb305-2"><a href="bayesian-inference.html#cb305-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(best_posterior)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
 <p>The Bayesian model behind BEST assumes that the generative model for
 the data is a <strong>t-distribution</strong>; a more flexible distribution than the normal
 distribution as it assumes that data points might be outliers to some degree.

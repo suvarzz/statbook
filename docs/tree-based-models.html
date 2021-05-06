@@ -392,7 +392,7 @@ Here are some of the differences between CART and C4.5:</p>
 ## 2 0.019608      1   0.82353 1.3529 0.23872
 ## 3 0.010000      4   0.76471 1.3529 0.23872</code></pre>
 <div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="tree-based-models.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="tree-based-models.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
 <pre><code>## Call:
 ## rpart(formula = Kyphosis ~ Age + Number + Start, data = kyphosis, 
@@ -484,7 +484,7 @@ Here are some of the differences between CART and C4.5:</p>
 <span id="cb320-2"><a href="tree-based-models.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
 <span id="cb320-3"><a href="tree-based-models.html#cb320-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
 <span id="cb320-4"><a href="tree-based-models.html#cb320-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(fit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-104-2.png" width="672" /></p>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="tree-based-models.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create attractive postscript plot of tree</span></span>
 <span id="cb321-2"><a href="tree-based-models.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(fit, <span class="at">title =</span> <span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
 <span id="cb321-3"><a href="tree-based-models.html#cb321-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -528,7 +528,7 @@ Here are some of the differences between CART and C4.5:</p>
 ## 4 0.011604      3   0.21961 0.38576 0.079206
 ## 5 0.010000      4   0.20801 0.42680 0.084753</code></pre>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="tree-based-models.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="tree-based-models.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
 <pre><code>## Call:
 ## rpart(formula = Mileage ~ Price + Country + Reliability + Type, 
@@ -627,7 +627,7 @@ Here are some of the differences between CART and C4.5:</p>
 ## 3 0.025441      2   0.24505 0.38624 0.085277
 ## 4 0.011604      3   0.21961 0.38576 0.079206
 ## 5 0.010000      4   0.20801 0.42680 0.084753</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-106-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-2.png" width="672" /></p>
 <div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="tree-based-models.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tree</span></span>
 <span id="cb329-2"><a href="tree-based-models.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
 <span id="cb329-3"><a href="tree-based-models.html#cb329-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Regression Tree for Mileage &quot;</span>)</span>
@@ -644,7 +644,7 @@ Here are some of the differences between CART and C4.5:</p>
 <span id="cb329-14"><a href="tree-based-models.html#cb329-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pfit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
 <span id="cb329-15"><a href="tree-based-models.html#cb329-15" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span>
 <span id="cb329-16"><a href="tree-based-models.html#cb329-16" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(pfit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-106-3.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-3.png" width="672" /></p>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="tree-based-models.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(pfit, <span class="at">file =</span> <span class="st">&quot;ptree2.ps&quot;</span>,</span>
 <span id="cb330-2"><a href="tree-based-models.html#cb330-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span></code></pre></div>
 <p><strong>Sources</strong><br />
