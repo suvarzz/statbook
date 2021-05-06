@@ -103,13 +103,14 @@ next-part-4
 example
 next-part-5
 learning-vector-quantization
-bayesian-statistics
+bayesian-inference
 simple-model-with-one-binary-parameter
-website-visitors-model
+grid-approximation
+grid-approximation-1
 model-of-birth-weights-using-normal-distribution
 a-bayesian-model-of-zombie-iq
 the-best-models
-naive-bayes
+naive-bayes-classifiers
 markov-chain-monte-carlo-mcmc
 simple-markov-process
 sources-2

@@ -1,12 +1,40 @@
-# Bayesian Statistics
+# Bayesian inference
 
 **Bayesian data analysis** the use of Bayesian inference to learn from data.  
 
-**Bayesian inference** is a method for figuring out unobservable quantities given known facts that uses probability to describe the uncertainty over what the values of the unknown quantities could be.  
+**Bayesian inference** is a method for figuring out unobservable quantities 
+given known facts that uses probability to describe the uncertainty over what 
+the values of the unknown quantities could be.  
+
 **Bayesian inference** is  conditioning on data, in order to learn about parameter values.  
+
+**Bayesian inference** is a method of statistical inference in which Bayes' 
+theorem is used to update the probability for a hypothesis as more evidence or 
+information becomes available.  
+
+**Bayes' theorem**  
+$$P( \theta | D ) = frac{P( D | \theta) \pdot P( \theta)}{\sum{P( D | \theta) \pdot P( \theta ) }}$$
+
+$\theta$ - Parameter values  
+$D$ - New data  
+$P(D | \theta)$ - Likelihood (the relative) probability of the data given different parameter value.  
+$P( \theta )$ - Prior  
+$\sum{P( D | \theta) \pdot P( \theta ) }$ - The total sum of the likelihod weighted by the prior.  
 
 - A **prior** is a probability distribution that represents what the model knows before seeing the data.  
 - A **posterior** is a probability distribution that represents what the model knows after having seen the data.  
+
+**Bayesian inference components**:  
+
+- Data  
+- Bayesian Model:  
++ Generative model (`dbinom`, `dnorm`, `poisson` etc.)  
++ Priors  
+- Computational methods:  
++ Rejection sampling  
++ Grid approximation  
++ Markov Chain Monte Carlo (MCMC)  
+
 ```{r, message = FALSE}
 # Visualization function of Bayesian inference for binary data 
 library(ggjoy)
@@ -54,10 +82,12 @@ prop_model <- function(data = c(), prior_prop = c(1, 1), n_draws = 10000, show_p
 ```{r}
 # Generate 50 random binary data with P(1)=0.75
 data <- sample(c(1, 0), prob = c(0.75, 0.25), size = 10, replace = TRUE)
-head(posterior)
 
 # Visualize posteriors
 posterior <- prop_model(data)
+
+# View posterior
+head(posterior)
 
 # Center of the posterior
 median(posterior)
@@ -89,7 +119,7 @@ p = 0.42     # probability of success
 rbinom(n, size, p)
 ```
 
-## Website visitors model
+## Grid approximation
 
 To get more visitors to your website you are considering paying for an ad to be 
 **shown 100 times** on a popular social media site.  
@@ -98,6 +128,11 @@ How many visitors could your site get?
 
 We can fix % of clicks as 0.1 but we do not know exactly how many clicks people 
 do (uncertain). We suggest the % of clicks is uniformly distributed between 0 and 20.  
+
+Define model:  
+$n_{ads}  = 100$
+$p_{clicks} ~ Uniform(0.0, 0.2)$
+$p_{visitors} ~ Binomial(n_{ads}, p_{clicks})$
 
 ```{r}
 n <- 100000          # number of simulations
@@ -300,7 +335,7 @@ hist(prior$mean_clicks)
 hist(posterior$mean_clicks)
 ```
 
-**Conditional binomial model**  
+## Grid approximation  
 
 The following example shows how we can build the previous model more effective.  
 We calculating the **distribution** using `dbinom` instead of **simulating** 
@@ -331,7 +366,7 @@ n_ads_shown <- 100
 p_clicks <- seq(0, 1, by = 0.01)
 n_visitors <- seq(0, 100, by = 1)
 
-# grid for all possible combination of parameters
+# Define a grid over all the parameter combinations you need to evaluate
 pars <- expand.grid(proportion_clicks = p_clicks,
                     n_visitors = n_visitors)
 
@@ -341,11 +376,12 @@ pars$likelihood <- dbinom(pars$n_visitors,
                           size = n_ads_shown, 
                           prob = pars$proportion_clicks)
 
+### According to Bayes' theorem:
 # Combined probability by the rule of probabilities multiplication
 pars$probability <- pars$likelihood * pars$prior
-
 # normalize to the total number to get sum of all probabilities eq 1
 pars$probability <- pars$probability / sum(pars$probability)
+###
 
 # Conditioning on the data for n_visitors == 6  
 pars <- pars[pars$n_visitors == 6, ]
@@ -392,13 +428,52 @@ Here is a small data set with the birth weights of six newborn babies in grams.
 Mark: What to do with the data? Should we condition it to get posterior?  
 
 ## A Bayesian model of Zombie IQ
-Check video for the model of temperature but use zombies IQs instead. 
+Check video 
+```{r, bi-432}
+temp <- c(19, 23, 20, 17, 23)
+mu <- seq(8, 30, by = 0.5)
+sigma <- seq(0.1, 10, by = 0.3)
+pars <- expand.grid(mu = mu, sigma = sigma)
+
+pars$mu_prior    <- dnorm(pars$mu,    mean = 18, sd = 5)
+pars$sigma_prior <- dunif(pars$sigma, min = 0, max = 10)
+
+pars$prior <- pars$mu_prior * pars$sigma_prior
+
+for (i in 1:nrow(pars)) {
+    likelihoods <- dnorm(temp, pars$mu[i], pars$sigma[i])
+    pars$likelihood[i] <- prod(likelihoods)
+}
+
+pars$probability <- pars$likelihood * pars$prior
+pars$probability <- pars$probability / sum(pars$probability)
+
+sample_indices <- sample(1:nrow(pars), size = 10000, 
+                         replace = TRUE, prob = pars$probability)
+head(sample_indices)
+pars_sample <- pars[sample_indices, c("mu", "sigma")]
+head(pars_sample)
+
+hist(pars_sample$mu, 30)
+quantile(pars_sample$mu, c(0.05, 0.95))
+
+pred_temp <- rnorm(10000, mean = pars_sample$mu, sd = pars_sample$sigma)
+hist(pred_temp, 30)
+
+# Probability of 18C
+sum(pred_temp >= 18) / length(pred_temp)
+```
+for the model of temperature but use zombies IQs instead. 
+Define model:  
+$\mu = Normal(mean:18, sd:5)$
+$\sigma = Uniform(min:0, max:10)$
+$temp = 19,23,...$
 How much we can learn about the mean zombie IQ from this data. 
 We need to calculate the probability of each parameter combination in pars.  
 Use Bayes Theorem to calculate these probabilities and assign them to 
 `pars$probability` to complete the model.  
 
-```{r}
+```{r, bi-476}
 # The IQ of a bunch of zombies
 iq <- c(55, 44, 34, 18, 51, 40, 40, 49, 48, 46)
 
