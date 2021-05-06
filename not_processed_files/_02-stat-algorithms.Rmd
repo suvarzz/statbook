@@ -1,0 +1,93 @@
+---
+output:
+  bookdown::gitbook:
+    highlight: tango
+    toc: true
+---
+
+# Classification of machine learning algorithms  
+
+## Methods and algorithms of machine learning  
+**Regression Analysis**  
+* Ordinary Least Squares Regression (OLSR)  
+* Linear Regression  
+* Logistic Regression  
+* Stepwise Regression  
+* Polynomial Regression  
+* Locally Estimated Scatterplot Smoothing (LOESS)  
+  
+**Distance-based algorithms**  
+* k-Nearest Neighbor (kNN)  
+* Learning Vector Quantization (LVQ)  
+* Self-organizing Map (SOM)  
+  
+**Regularization Algorithms**  
+* Ridge Regression  
+* Least Absolute Shrinkage and Selection Operator (LASSO)  
+* Elastic Net  
+* Least-Angle Regression (LARS)  
+  
+**Decision Tree Algorithms**  
+* Classification and Regression Tree (CART)  
+* Iterative Dichotomiser 3 (ID3)  
+* C4.5 and C5.0  
+* Chi-squared Automatic Interation Detection (CHAID)  
+* Random Forest  
+* Conditional Decision Trees  
+  
+**Bayesian Algorithms**  
+* Naive Bayes  
+* Gaussian Naive Bayes  
+* Multinomial Naive Bayes  
+* Bayesian Belief Network (BBN)  
+* Bayesian Network (BN)  
+  
+**Clustering Algorithms**  
+* k-Means  
+* k-Medians  
+* Partitioning Around MEdoids (PAM)  
+* Hierarchical Clustering  
+  
+**Association Rule Mining Algorithms**  
+* Apriori algorithm  
+* Eclat algorithm  
+* FP-growth algorithm  
+* Context Based Rule Mining  
+  
+**Artifical Neural Network Algorithms**  
+* Perceptron  
+* Back-Propagation  
+* Hopfield Network  
+* Radial Basis Function Network (RBFN)  
+  
+**Deep Learining Algorithms**  
+* Deep Boltzmann Machine (DBM)  
+* Deep Belief Networks (DBN)  
+* Convolutional NEural Network (CNN)  
+* Stacked Auto-Encoders  
+  
+**Dimensionality Reduction Algorithms**  
+* Principal Component Analysis (PCA)  
+* Principal Compnent Regression (PCR)  
+* Partial LEast Squares Regression (PLSR)  
+* Multidimensional Scaling (MDS)  
+* Linear Discriminant Analysis (LDA)  
+* Mixtrue Discriminant Analysis (MDA)  
+* Quadratic Discriminant Analysis (QDA)
+  
+**Ensemble Algorithms**  
+* Boosting  
+* Bagging  
+* AdaBoost  
+* Stacked Generalization (blending)  
+* Gradient Boosting Machines (GBM)  
+  
+**Text Mining**  
+* Automatic summarization  
+* Named entity recognition (NER)  
+* Optical character recognition (OCR)  
+* Part-of-speech tagging  
+* Sentiment analysis  
+* Speech recognition  
+* Topic Modeling  
+

@@ -65,13 +65,12 @@ sd(v)/sqrt(length(v))  # standard error sd/sqrt(n)
 # Z-score (standartization)
 # transform distribution to mean=0, variance=1
 # z = (x - mean(n))/sd
-scale(v)     # z-score
 vs <- scale(v)[,1]
 vs
 
 par(mfrow=c(1,2))
-hist(v)
-hist(vs)
+hist(v, breaks=10)
+hist(vs, breaks=10)
 ```
 
 ## Confidence interval
