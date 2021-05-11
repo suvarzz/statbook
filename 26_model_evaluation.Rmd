@@ -1,0 +1,39 @@
+# Model evaluation
+
+bias and variance are two sources of error in Machine Learning.  
+
+- **Bias**: error from incorrect model assumptions.
++ Err(Training)  
+- High bias means **underfitting**  
+
+- **Variance**: error from sensitivity to small fluctuations in the training set  
++ Err(Testing) - Err(Training)
++ High variance means **overfitting**  
+
+**Bias-variance tradeoff** - Finding an adequate balance between model learning and model generalization.  
+
+To reduce model bias:  
+1. Increase the model size.  
+2. Modify input features using error analysis.
+3. Reduce or eliminate regularization.  
+4. Modify model architecture.   
+
+To reduce model variance:  
+1. Add more training data.  
+2. Add regularization (this reduce variance but increase bias).  
+3. Peform feature selection.  
+4. Decrease model size.  
+
+Strategies to build ensemble model:  
+- Bagging (Bootstrap AGGregatING) (Random Forests)
+- Boosting (AdaBoost, Gradient Boosted Trees)  
+- Stacking (Linear regression, elastic net regression)  
+
+```{r, eval=FALSE}
+library(caret)
+# Calculates performance metrics across all resamples
+resamples()
+
+# Correlation among the base learners' predictions
+modelCor()
+```

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 15 Wilcoxon signed-rank test | R statistics</title>
+  <title>Chapter 16 Wilcoxon signed-rank test | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 15 Wilcoxon signed-rank test | R statistics" />
+  <meta property="og:title" content="Chapter 16 Wilcoxon signed-rank test | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 Wilcoxon signed-rank test | R statistics" />
+  <meta name="twitter:title" content="Chapter 16 Wilcoxon signed-rank test | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-04-19" />
+<meta name="date" content="2021-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="non-parametric-methods.html"/>
-<link rel="next" href="support-vector-machine.html"/>
+<link rel="prev" href="sources.html"/>
+<link rel="next" href="analysis-of-variance-anova.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,127 +144,172 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#distributions"><i class="fa fa-check"></i><b>2.5</b> Distributions</a></li>
 <li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
 <li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>3</b> Basic Statistics</a>
+<li class="chapter" data-level="2.8" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#machine-learning-functions-reference"><i class="fa fa-check"></i><b>2.8</b> Machine Learning Functions Reference</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-statistics.html"><a href="basic-statistics.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>3.2</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="2.8.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>2.8.1</b> Linear Regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="combinatorics.html"><a href="combinatorics.html"><i class="fa fa-check"></i><b>3</b> Combinatorics</a></li>
+<li class="chapter" data-level="4" data-path="regularization.html"><a href="regularization.html"><i class="fa fa-check"></i><b>4</b> Regularization</a></li>
+<li class="chapter" data-level="5" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>5</b> Probability</a></li>
+<li class="chapter" data-level="6" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>6</b> Basic Statistics</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="basic-statistics.html"><a href="basic-statistics.html#histogram"><i class="fa fa-check"></i><b>3.2.1</b> Histogram</a></li>
-<li class="chapter" data-level="3.2.2" data-path="basic-statistics.html"><a href="basic-statistics.html#outliers"><i class="fa fa-check"></i><b>3.2.2</b> Outliers</a></li>
-<li class="chapter" data-level="3.2.3" data-path="basic-statistics.html"><a href="basic-statistics.html#normality"><i class="fa fa-check"></i><b>3.2.3</b> Normality</a></li>
+<li class="chapter" data-level="6.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>6.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability-1"><i class="fa fa-check"></i><b>6.2</b> Probability</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="basic-statistics.html"><a href="basic-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>3.3</b> Confidence interval</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="primary-analysis.html"><a href="primary-analysis.html"><i class="fa fa-check"></i><b>4</b> Primary analysis</a></li>
-<li class="chapter" data-level="5" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>5</b> Statistical distributions</a>
+<li class="chapter" data-level="7" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>7</b> Statistical distributions</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>5.1</b> Normal Distribution</a></li>
-<li class="chapter" data-level="5.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>5.2</b> Bernoulli Distribution</a></li>
-<li class="chapter" data-level="5.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>5.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>5.4</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="5.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>5.5</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="5.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>5.6</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="5.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>5.7</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="5.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>5.8</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
+<li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
+<li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing</a>
+<li class="chapter" data-level="8" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Primary data analysis</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>6.1</b> Hypothesis testing theory</a></li>
-<li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>6.2</b> Hypothesis test (Practice)</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>7</b> t-Procedures</a>
+<li class="chapter" data-level="8.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>8.1</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>7.1</b> t-test and normal distribution</a></li>
-<li class="chapter" data-level="7.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>7.2</b> One-sample t-test</a></li>
-<li class="chapter" data-level="7.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>7.3</b> Practical example: t-test in R</a></li>
-<li class="chapter" data-level="7.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>7.4</b> Two samples t-test</a></li>
-<li class="chapter" data-level="7.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>7.5</b> Compare Student’s t and normal distributions</a></li>
-<li class="chapter" data-level="7.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>7.6</b> Non-parametric tests</a></li>
-<li class="chapter" data-level="7.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>7.7</b> Mann-Whitney U Rank Sum Test</a></li>
-<li class="chapter" data-level="7.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>7.8</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="8.1.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#histogram"><i class="fa fa-check"></i><b>8.1.1</b> Histogram</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>8</b> Tests for categorical variables</a>
+<li class="chapter" data-level="8.2" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#handling-missing-data"><i class="fa fa-check"></i><b>8.2</b> Handling missing data</a></li>
+<li class="chapter" data-level="8.3" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#dealing-with-outliers"><i class="fa fa-check"></i><b>8.3</b> Dealing with outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="data-normalization.html"><a href="data-normalization.html"><i class="fa fa-check"></i><b>9</b> Data normalization</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>8.1</b> Chi-squared tests</a></li>
+<li class="chapter" data-level="9.1" data-path="data-normalization.html"><a href="data-normalization.html#normality-test"><i class="fa fa-check"></i><b>9.1</b> Normality test</a></li>
+<li class="chapter" data-level="9.2" data-path="data-normalization.html"><a href="data-normalization.html#finding-confidence-intervals"><i class="fa fa-check"></i><b>9.2</b> Finding Confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>9</b> Multiple testing</a>
+<li class="chapter" data-level="10" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>10</b> Primary data analysis - Case studies</a></li>
+<li class="chapter" data-level="11" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>11</b> Hypothesis testing</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>9.1</b> The Bonferroni correction</a></li>
+<li class="chapter" data-level="11.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>11.1</b> Hypothesis testing theory</a></li>
+<li class="chapter" data-level="11.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>11.2</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>10</b> Sources</a>
+<li class="chapter" data-level="12" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>12</b> t-Procedures</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>10.1</b> t-test</a>
+<li class="chapter" data-level="12.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>12.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="12.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>12.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="12.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>12.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="12.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>12.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="12.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>12.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="12.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>12.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="12.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>12.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="12.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>12.8</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>13</b> Tests for categorical variables</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>10.1.1</b> Two-tailed test</a></li>
+<li class="chapter" data-level="13.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>13.1</b> Chi-squared tests</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>11</b> Analysis of Variance (ANOVA)</a>
+<li class="chapter" data-level="14" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>14</b> Multiple testing</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>11.1</b> One-way ANOVA</a></li>
-<li class="chapter" data-level="11.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>11.2</b> Sources</a></li>
+<li class="chapter" data-level="14.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>14.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>12</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="13" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>13</b> Chi-squared test</a>
+<li class="chapter" data-level="15" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>15</b> Sources</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>13.1</b> Multinomial Goodness of Fit</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>14</b> Non-parametric Methods</a></li>
-<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
-<li class="chapter" data-level="16" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>16</b> Support Vector Machine</a></li>
-<li class="chapter" data-level="17" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>17</b> Correlation</a></li>
-<li class="chapter" data-level="18" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>18</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="19" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html"><i class="fa fa-check"></i><b>19</b> Machine Learning Functions Reference</a>
+<li class="chapter" data-level="15.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>15.1</b> t-test</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="machine-learning-functions-reference.html"><a href="machine-learning-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>19.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="15.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>15.1.1</b> Two-tailed test</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>20</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="21" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>21</b> Linear Regression</a>
+</ul></li>
+<li class="chapter" data-level="16" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>16</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="17" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>17</b> Analysis of Variance (ANOVA)</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-a-linear-model"><i class="fa fa-check"></i><b>21.1</b> Generate Random Data Set a Linear Model</a></li>
-<li class="chapter" data-level="21.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>21.2</b> Linear regression - theory</a></li>
-<li class="chapter" data-level="21.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>21.3</b> Practical example</a></li>
-<li class="chapter" data-level="21.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>21.4</b> Linear model in R</a></li>
-<li class="chapter" data-level="21.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-train-data"><i class="fa fa-check"></i><b>21.5</b> Standard error of train data</a></li>
-<li class="chapter" data-level="21.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#standard-error-of-learn-data"><i class="fa fa-check"></i><b>21.6</b> Standard error of learn data</a></li>
-<li class="chapter" data-level="21.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>21.7</b> Practical examples for linear model regression</a></li>
-<li class="chapter" data-level="21.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#another-example"><i class="fa fa-check"></i><b>21.8</b> Another example</a></li>
-<li class="chapter" data-level="21.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>21.9</b> Linear regression modeling, compair with kNN</a></li>
-<li class="chapter" data-level="21.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#more-complex-example"><i class="fa fa-check"></i><b>21.10</b> More complex example</a></li>
-<li class="chapter" data-level="21.11" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part"><i class="fa fa-check"></i><b>21.11</b> NEXT part</a></li>
-<li class="chapter" data-level="21.12" data-path="linear-regression-1.html"><a href="linear-regression-1.html#next-part-1"><i class="fa fa-check"></i><b>21.12</b> NEXT Part</a></li>
+<li class="chapter" data-level="17.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>17.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="17.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>17.2</b> Sources</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>22</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="23" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>23</b> Logistic Regression</a>
+<li class="chapter" data-level="18" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>18</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="19" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>19</b> Chi-squared test</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>23.1</b> Next part</a></li>
-<li class="chapter" data-level="23.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>23.2</b> NEXT Part</a></li>
-<li class="chapter" data-level="23.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-4"><i class="fa fa-check"></i><b>23.3</b> NExt part</a></li>
+<li class="chapter" data-level="19.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>19.1</b> Multinomial Goodness of Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>24</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="25" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>25</b> Spline model</a>
+<li class="chapter" data-level="20" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>20</b> Non-parametric Methods</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>25.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="25.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>25.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="25.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>25.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="25.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>25.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="25.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>25.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="25.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>25.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="25.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>25.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="20.1" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#sign-test"><i class="fa fa-check"></i><b>20.1</b> Sign Test</a></li>
+<li class="chapter" data-level="20.2" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#wilcoxon-signed-rank-test-1"><i class="fa fa-check"></i><b>20.2</b> Wilcoxon Signed-Rank Test</a></li>
+<li class="chapter" data-level="20.3" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#mann-whitney-wilcoxon-test"><i class="fa fa-check"></i><b>20.3</b> Mann-Whitney-Wilcoxon Test</a></li>
+<li class="chapter" data-level="20.4" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#kruskal-wallis-test"><i class="fa fa-check"></i><b>20.4</b> Kruskal-Wallis Test</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>26</b> Clustering</a>
+<li class="chapter" data-level="21" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>21</b> Correlation</a></li>
+<li class="chapter" data-level="22" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>22</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="23" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>23</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="24" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>24</b> Linear Regression</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="clustering.html"><a href="clustering.html#next-part-5"><i class="fa fa-check"></i><b>26.1</b> Next part</a></li>
-<li class="chapter" data-level="26.2" data-path="clustering.html"><a href="clustering.html#example"><i class="fa fa-check"></i><b>26.2</b> Example</a></li>
-<li class="chapter" data-level="26.3" data-path="clustering.html"><a href="clustering.html#next-part-6"><i class="fa fa-check"></i><b>26.3</b> NEXT PART</a></li>
+<li class="chapter" data-level="24.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>24.1</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="24.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>24.2</b> Generate random data set for the linear model</a></li>
+<li class="chapter" data-level="24.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>24.3</b> Practical example</a></li>
+<li class="chapter" data-level="24.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>24.4</b> Mean squared error (MSE)</a></li>
+<li class="chapter" data-level="24.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>24.5</b> Linear model in R</a></li>
+<li class="chapter" data-level="24.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>24.6</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="24.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>24.7</b> Choosing explanatory variables for the model</a></li>
+<li class="chapter" data-level="24.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>24.8</b> Assessment of model performance for categorical data.</a></li>
+<li class="chapter" data-level="24.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>24.9</b> Confidence intervals for linear model</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>27</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="28" data-path="naive-bayes.html"><a href="naive-bayes.html"><i class="fa fa-check"></i><b>28</b> Naive Bayes</a></li>
-<li class="chapter" data-level="29" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>29</b> Markov Chain Monte Carlo (MCMC)</a></li>
-<li class="chapter" data-level="30" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>30</b> Simple Markov process</a>
+<li class="chapter" data-level="25" data-path="model-evaluation.html"><a href="model-evaluation.html"><i class="fa fa-check"></i><b>25</b> Model evaluation</a>
 <ul>
-<li class="chapter" data-level="30.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>30.0.1</b> Sources</a></li>
+<li class="chapter" data-level="25.1" data-path="model-evaluation.html"><a href="model-evaluation.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>25.1</b> Practical examples for linear model regression</a></li>
 </ul></li>
+<li class="chapter" data-level="26" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>26</b> Linear regression complex cases</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>26.1</b> Cars</a></li>
+<li class="chapter" data-level="26.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>26.2</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="26.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>26.3</b> More complex example</a></li>
+<li class="chapter" data-level="26.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>26.4</b> NEXT part</a></li>
+<li class="chapter" data-level="26.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>26.5</b> NEXT Part</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>27</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="28" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>28</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="29" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>29</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>29.1</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="29.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>29.2</b> Split data for train and test</a></li>
+<li class="chapter" data-level="29.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>29.3</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="29.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>29.4</b> Build a model using splines</a></li>
+<li class="chapter" data-level="29.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>29.5</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="29.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>29.6</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="29.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>29.7</b> Bibliograpy</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>30</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>30.1</b> Confusion matrix</a></li>
+<li class="chapter" data-level="30.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>30.2</b> Next part</a></li>
+<li class="chapter" data-level="30.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>30.3</b> NExt part</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="models-for-binary-data.html"><a href="models-for-binary-data.html"><i class="fa fa-check"></i><b>31</b> Models for binary Data</a></li>
+<li class="chapter" data-level="32" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>32</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="33" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>33</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="clustering.html"><a href="clustering.html#finding-distances-using-factoextra"><i class="fa fa-check"></i><b>33.1</b> Finding distances using factoextra</a></li>
+<li class="chapter" data-level="33.2" data-path="clustering.html"><a href="clustering.html#example-of-choosing-clustering-model"><i class="fa fa-check"></i><b>33.2</b> Example of choosing clustering model</a></li>
+<li class="chapter" data-level="33.3" data-path="clustering.html"><a href="clustering.html#k-means-clustering"><i class="fa fa-check"></i><b>33.3</b> K-means clustering</a></li>
+<li class="chapter" data-level="33.4" data-path="clustering.html"><a href="clustering.html#k-means"><i class="fa fa-check"></i><b>33.4</b> k-Means</a></li>
+<li class="chapter" data-level="33.5" data-path="clustering.html"><a href="clustering.html#hierarchical-clustering"><i class="fa fa-check"></i><b>33.5</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="33.6" data-path="clustering.html"><a href="clustering.html#knn"><i class="fa fa-check"></i><b>33.6</b> KNN</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>34</b> Learning Vector Quantization</a></li>
+<li class="chapter" data-level="35" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>35</b> Tree-based models</a>
+<ul>
+<li class="chapter" data-level="35.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>35.1</b> Classification Tree example</a></li>
+<li class="chapter" data-level="35.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>35.2</b> Regression Tree example</a></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>36</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="37" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>37</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="37.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>37.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="bayesian-inference.html"><a href="bayesian-inference.html"><i class="fa fa-check"></i><b>38</b> Bayesian inference</a>
+<ul>
+<li class="chapter" data-level="38.1" data-path="bayesian-inference.html"><a href="bayesian-inference.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>38.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="38.2" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation"><i class="fa fa-check"></i><b>38.2</b> Grid approximation</a></li>
+<li class="chapter" data-level="38.3" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation-1"><i class="fa fa-check"></i><b>38.3</b> Grid approximation</a></li>
+<li class="chapter" data-level="38.4" data-path="bayesian-inference.html"><a href="bayesian-inference.html#model-of-birth-weights-using-normal-distribution"><i class="fa fa-check"></i><b>38.4</b> Model of birth weights using normal distribution</a></li>
+<li class="chapter" data-level="38.5" data-path="bayesian-inference.html"><a href="bayesian-inference.html#a-bayesian-model-of-zombie-iq"><i class="fa fa-check"></i><b>38.5</b> A Bayesian model of Zombie IQ</a></li>
+<li class="chapter" data-level="38.6" data-path="bayesian-inference.html"><a href="bayesian-inference.html#the-best-models"><i class="fa fa-check"></i><b>38.6</b> The BEST models</a></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="naive-bayes-classifiers.html"><a href="naive-bayes-classifiers.html"><i class="fa fa-check"></i><b>39</b> Naive Bayes classifiers</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -285,8 +330,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="wilcoxon-signed-rank-test" class="section level1" number="15">
-<h1><span class="header-section-number">Chapter 15</span> Wilcoxon signed-rank test</h1>
+<div id="wilcoxon-signed-rank-test" class="section level1" number="16">
+<h1><span class="header-section-number">Chapter 16</span> Wilcoxon signed-rank test</h1>
 <p>The Wilcoxon signed-rank test is a non-parametric statistical hypothesis test used to compare two related samples,
 matched samples, or repeated measurements on a single sample to assess whether their population mean ranks differ
 (i.e. it is a paired difference test). It can be used as an alternative to the paired Student’s t-test
@@ -300,8 +345,8 @@ identical without assuming them to follow the normal distribution.</p>
 <p>Example
 In the built-in data set named immer, the barley yield in years 1931 and 1932 of the same field are recorded.
 The yield data are presented in the data frame columns Y1 and Y2.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="wilcoxon-signed-rank-test.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb100-2"><a href="wilcoxon-signed-rank-test.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(immer)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="wilcoxon-signed-rank-test.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb126-2"><a href="wilcoxon-signed-rank-test.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(immer)</span></code></pre></div>
 <pre><code>##   Loc Var    Y1    Y2
 ## 1  UF   M  81.0  80.7
 ## 2  UF   S 105.4  82.3
@@ -316,8 +361,9 @@ The null hypothesis is that the barley yields of the two sample years are identi
 To test the hypothesis, we apply the wilcox.test function to compare the matched samples.
 For the paired test, we set the “paired” argument as TRUE. As the p-value turns out to be 0.005318,
 and is less than the .05 significance level, we reject the null hypothesis.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="wilcoxon-signed-rank-test.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(immer<span class="sc">$</span>Y1, immer<span class="sc">$</span>Y2, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in wilcox.test.default(immer$Y1, immer$Y2, paired = TRUE): cannot compute exact p-value with ties</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="wilcoxon-signed-rank-test.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(immer<span class="sc">$</span>Y1, immer<span class="sc">$</span>Y2, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning in wilcox.test.default(immer$Y1, immer$Y2, paired = TRUE): cannot compute exact p-
+## value with ties</code></pre>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
 ## 
@@ -335,8 +381,8 @@ At .05 significance level, we conclude that the barley yields of 1931 and 1932 f
           </div>
         </div>
       </div>
-<a href="non-parametric-methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="support-vector-machine.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sources.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis-of-variance-anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -367,7 +413,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/09_wilcoxon_signed-rank_test.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12_wilcoxon_signed-rank_test.Rmd",
 "text": "Edit"
 },
 "history": {

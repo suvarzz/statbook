@@ -1,0 +1,51 @@
+# Regularization
+
+Regularization is a technique to discourage learning complex models, thus helping to avoid overfitting.
+Idea is to shrink the coefficient estimates towards zero.
+
+Three major types of regularization:
+
+- L1 regularization (lasso regression)
+- L2 regularization (ridge regression)
+- Elastic net (combines lasso and ridge regression)
+
+**Ridge regression** adds fa **shrinkage term** to the RSS (Residual sum of squares) objective function.  
+
+$$RSS + ||\overrightarrow{\beta}||_2 = RSS + \lambda \sum_j \beta_j^2$$  
+
+- Shrinkage term uses the L2 norm of the coefficient vector.  
+- $\lambda$ regularization parameter (how much should model complexity be penalized?)
+$\labda = 0$ -  original RSS function  
+- Need to standardize regressors before applying ridge regression  
+
+
+**Lasso regression**
+LASSO = **L**east **A**bsolute **S**hrinkage and **S**election **O**perator  
+
+$$RSS + ||\overrightarrow{\beta}||_1 = RSS + \lambda \sum_j |\beta_j|$$  
+
+- Shrinkage term uses the L1 norm of the coefficient vector.  
+- Penalizes large coefficients more severely.  
+- More coefficients are likely becoming zero.  
+
+**Elastic net**
+
+$$RSS + \lambda _1 ||\overrightarrow{\beta}||_1 + \lambda _2 \overrightarrow{\beta} ||_2$$  
+
+Special cases:  
+- $\lambda _1 = lambda, \lambda _2 = 0$ - lasso regression  
+- $\lambda _1 = 0, \lambda _2 = \lambda - ridge regression  
+- $\lambda _1 = lambda _2 = 0$ - ordinary least squares (OLS)  
+
+Boss lasso and ridge regression:  
+
+- Both methods improve generalization by penalizing model complexity.  
+- Their computational complexity is quite similar.  
+- Penalization hyperparameter $\lambda$ must be carefully set.  
+
+Differences between **lasso** and **ridge** regressions:  
+
+- Ridge regression shrinks large coefficients but does not perform feature selection.  
+- Lasso regression performs both shrinkage and selection.  
++ L1 norm turns some coefficients to zero.  
++ Produces a *more interpretable* model.  
