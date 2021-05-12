@@ -1,0 +1,48 @@
+# Modeling with R caret
+
+```{r, eval=FALSE}
+library(caret)
+library('ISLR')
+df <- Default
+head(df)
+
+# Check for parameters of model to test
+modelLookup('c5.0')
+
+# Test parameters of models
+set.seed(123)
+m <- caret::train(default ~ ., data = df, method = "C5.0")
+
+p <- predict(m, df)
+
+table(p, df$default)
+
+head(predict(m, df, type = "prob"))
+
+# Resampling methods
+?trainControl()
+
+## TUNING PARAMETERS OF THE MODEL
+# example
+ctrl <- trainControl(method = "cv", number = 10, selectionFunction = "oneSE")
+
+# grid to test several parameters
+grid <- expand.grid(.model = "tree",
+                    .trials = c(1, 5, 10, 15, 20, 25, 30, 35),
+                    .winnow = "FALSE")
+
+set.seed(300)
+m <- train(default ~ ., data = credit, method = "C5.0",
+           metric = "Kappa",
+           trControl = ctrl,
+           tuneGrid = grid)
+
+PCA
+The predictors should be centered and scaled before applying this transformation.
+
+# See available algorithms in caret
+modelnames <- paste(names(getModelInfo()), collapse=',  ')
+modelnames
+
+modelLookup(algo)
+```

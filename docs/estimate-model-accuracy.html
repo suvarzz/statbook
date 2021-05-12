@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 23 Estimate model accuracy | R statistics</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 23 Estimate model accuracy | R statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 23 Estimate model accuracy | R statistics" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Mark Goldberg" />
+
+
+<meta name="date" content="2021-05-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="split-data-into-train-and-test-subsets.html"/>
+<link rel="next" href="model-evaluation.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#get-data"><i class="fa fa-check"></i><b>2.1</b> Get data</a></li>
+<li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
+<li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
+<li class="chapter" data-level="2.4" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#analysis-of-the-distribution"><i class="fa fa-check"></i><b>2.4</b> Analysis of the distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#distributions"><i class="fa fa-check"></i><b>2.5</b> Distributions</a></li>
+<li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
+<li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
+<li class="chapter" data-level="2.8" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#machine-learning-functions-reference"><i class="fa fa-check"></i><b>2.8</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>2.8.1</b> Linear Regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="combinatorics.html"><a href="combinatorics.html"><i class="fa fa-check"></i><b>3</b> Combinatorics</a></li>
+<li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a></li>
+<li class="chapter" data-level="5" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>5</b> Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>5.1</b> Definitions</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability-1"><i class="fa fa-check"></i><b>5.2</b> Probability</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>6</b> Statistical distributions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>6.1</b> Normal Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>6.2</b> Bernoulli Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>6.3</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>6.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>6.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>6.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>6.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>6.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>6.9</b> Chi-squared Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary data analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>7.1</b> Analysis of sample distribution</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#histogram"><i class="fa fa-check"></i><b>7.1.1</b> Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#handling-missing-data"><i class="fa fa-check"></i><b>7.2</b> Handling missing data</a></li>
+<li class="chapter" data-level="7.3" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#dealing-with-outliers"><i class="fa fa-check"></i><b>7.3</b> Dealing with outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-normalization.html"><a href="data-normalization.html"><i class="fa fa-check"></i><b>8</b> Data normalization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-normalization.html"><a href="data-normalization.html#normality-test"><i class="fa fa-check"></i><b>8.1</b> Normality test</a></li>
+<li class="chapter" data-level="8.2" data-path="data-normalization.html"><a href="data-normalization.html#finding-confidence-intervals"><i class="fa fa-check"></i><b>8.2</b> Finding Confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>9</b> Primary data analysis - Case studies</a></li>
+<li class="chapter" data-level="10" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>10.1</b> Hypothesis testing theory</a></li>
+<li class="chapter" data-level="10.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>10.2</b> Hypothesis test (Practice)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>11</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>11.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="11.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>11.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="11.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>11.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="11.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>11.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="11.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>11.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="11.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>11.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="11.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>11.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="11.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>11.8</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>12</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>12.1</b> Chi-squared tests</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>13</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>13.1</b> The Bonferroni correction</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>14</b> Sources</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>14.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>14.1.1</b> Two-tailed test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="16" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>16</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>16.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="16.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>16.2</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>17</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="18" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>18</b> Chi-squared test</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>18.1</b> Multinomial Goodness of Fit</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>19</b> Non-parametric Methods</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#sign-test"><i class="fa fa-check"></i><b>19.1</b> Sign Test</a></li>
+<li class="chapter" data-level="19.2" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#wilcoxon-signed-rank-test-1"><i class="fa fa-check"></i><b>19.2</b> Wilcoxon Signed-Rank Test</a></li>
+<li class="chapter" data-level="19.3" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#mann-whitney-wilcoxon-test"><i class="fa fa-check"></i><b>19.3</b> Mann-Whitney-Wilcoxon Test</a></li>
+<li class="chapter" data-level="19.4" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#kruskal-wallis-test"><i class="fa fa-check"></i><b>19.4</b> Kruskal-Wallis Test</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>20</b> Correlation</a></li>
+<li class="chapter" data-level="21" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>21</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="22" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>22</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="23" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html"><i class="fa fa-check"></i><b>23</b> Estimate model accuracy</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#continuous-variables"><i class="fa fa-check"></i><b>23.1</b> Continuous variables</a></li>
+<li class="chapter" data-level="23.2" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#discret-variables"><i class="fa fa-check"></i><b>23.2</b> Discret variables</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="model-evaluation.html"><a href="model-evaluation.html"><i class="fa fa-check"></i><b>24</b> Model evaluation</a></li>
+<li class="chapter" data-level="25" data-path="cross-validation-and-bootstrep.html"><a href="cross-validation-and-bootstrep.html"><i class="fa fa-check"></i><b>25</b> Cross-validation and Bootstrep</a></li>
+<li class="chapter" data-level="26" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>26</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>26.1</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="26.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>26.2</b> Generate random data set for the linear model</a></li>
+<li class="chapter" data-level="26.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>26.3</b> Practical example</a></li>
+<li class="chapter" data-level="26.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>26.4</b> Mean squared error (MSE)</a></li>
+<li class="chapter" data-level="26.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>26.5</b> Linear model in R</a></li>
+<li class="chapter" data-level="26.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>26.6</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="26.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>26.7</b> Choosing explanatory variables for the model</a></li>
+<li class="chapter" data-level="26.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>26.8</b> Assessment of model performance for categorical data.</a></li>
+<li class="chapter" data-level="26.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>26.9</b> Confidence intervals for linear model</a></li>
+<li class="chapter" data-level="26.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>26.10</b> Practical examples for linear model regression</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>27</b> Linear regression complex cases</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>27.1</b> Cars</a></li>
+<li class="chapter" data-level="27.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>27.2</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="27.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>27.3</b> More complex example</a></li>
+<li class="chapter" data-level="27.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>27.4</b> NEXT part</a></li>
+<li class="chapter" data-level="27.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>27.5</b> NEXT Part</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>28</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="29" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>29</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="30" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>30</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="spline-model.html"><a href="spline-model.html#splines"><i class="fa fa-check"></i><b>30.1</b> Splines</a></li>
+<li class="chapter" data-level="30.2" data-path="spline-model.html"><a href="spline-model.html#area-under-the-curve-using-spline-method"><i class="fa fa-check"></i><b>30.2</b> Area under the curve using spline method</a></li>
+<li class="chapter" data-level="30.3" data-path="spline-model.html"><a href="spline-model.html#set-data-using-given-function-and-predict-curve-using-spline-method"><i class="fa fa-check"></i><b>30.3</b> Set data using given function and predict curve using spline method</a></li>
+<li class="chapter" data-level="30.4" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>30.4</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="30.5" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>30.5</b> Split data for train and test</a></li>
+<li class="chapter" data-level="30.6" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>30.6</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="30.7" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>30.7</b> Build a model using splines</a></li>
+<li class="chapter" data-level="30.8" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>30.8</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="30.9" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>30.9</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="30.10" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>30.10</b> Bibliograpy</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>31.1</b> Confusion matrix</a></li>
+<li class="chapter" data-level="31.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>31.2</b> Next part</a></li>
+<li class="chapter" data-level="31.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>31.3</b> NExt part</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="models-for-binary-data.html"><a href="models-for-binary-data.html"><i class="fa fa-check"></i><b>32</b> Models for binary Data</a></li>
+<li class="chapter" data-level="33" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>33</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="34" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>34</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="clustering.html"><a href="clustering.html#finding-distances-using-factoextra"><i class="fa fa-check"></i><b>34.1</b> Finding distances using factoextra</a></li>
+<li class="chapter" data-level="34.2" data-path="clustering.html"><a href="clustering.html#example-of-choosing-clustering-model"><i class="fa fa-check"></i><b>34.2</b> Example of choosing clustering model</a></li>
+<li class="chapter" data-level="34.3" data-path="clustering.html"><a href="clustering.html#k-means-clustering"><i class="fa fa-check"></i><b>34.3</b> K-means clustering</a></li>
+<li class="chapter" data-level="34.4" data-path="clustering.html"><a href="clustering.html#k-means"><i class="fa fa-check"></i><b>34.4</b> k-Means</a></li>
+<li class="chapter" data-level="34.5" data-path="clustering.html"><a href="clustering.html#hierarchical-clustering"><i class="fa fa-check"></i><b>34.5</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="34.6" data-path="clustering.html"><a href="clustering.html#knn"><i class="fa fa-check"></i><b>34.6</b> KNN</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="regularization.html"><a href="regularization.html"><i class="fa fa-check"></i><b>35</b> Regularization</a></li>
+<li class="chapter" data-level="36" data-path="factor-analysis.html"><a href="factor-analysis.html"><i class="fa fa-check"></i><b>36</b> Factor analysis</a></li>
+<li class="chapter" data-level="37" data-path="principal-component-analysis.html"><a href="principal-component-analysis.html"><i class="fa fa-check"></i><b>37</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="38" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html"><i class="fa fa-check"></i><b>38</b> Principal component analysis</a>
+<ul>
+<li class="chapter" data-level="38.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-statistics-1"><i class="fa fa-check"></i><b>38.1</b> Basic statistics</a></li>
+<li class="chapter" data-level="38.2" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-linear-algebra-matrices"><i class="fa fa-check"></i><b>38.2</b> Basic linear algebra (matrices)</a>
+<ul>
+<li class="chapter" data-level="38.2.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#t-sne---stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>38.2.1</b> t-SNE - Stochastic Neighbor Embedding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>39</b> Learning Vector Quantization</a></li>
+<li class="chapter" data-level="40" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>40</b> Tree-based models</a>
+<ul>
+<li class="chapter" data-level="40.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>40.1</b> Classification Tree example</a></li>
+<li class="chapter" data-level="40.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>40.2</b> Regression Tree example</a></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i><b>41</b> Random forest</a></li>
+<li class="chapter" data-level="42" data-path="gradient-boosted-trees.html"><a href="gradient-boosted-trees.html"><i class="fa fa-check"></i><b>42</b> Gradient boosted trees</a></li>
+<li class="chapter" data-level="43" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>43</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="44" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>44</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="44.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>44.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="bayesian-inference.html"><a href="bayesian-inference.html"><i class="fa fa-check"></i><b>45</b> Bayesian inference</a>
+<ul>
+<li class="chapter" data-level="45.1" data-path="bayesian-inference.html"><a href="bayesian-inference.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>45.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="45.2" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation"><i class="fa fa-check"></i><b>45.2</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.3" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation-1"><i class="fa fa-check"></i><b>45.3</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.4" data-path="bayesian-inference.html"><a href="bayesian-inference.html#model-of-birth-weights-using-normal-distribution"><i class="fa fa-check"></i><b>45.4</b> Model of birth weights using normal distribution</a></li>
+<li class="chapter" data-level="45.5" data-path="bayesian-inference.html"><a href="bayesian-inference.html#a-bayesian-model-of-zombie-iq"><i class="fa fa-check"></i><b>45.5</b> A Bayesian model of Zombie IQ</a></li>
+<li class="chapter" data-level="45.6" data-path="bayesian-inference.html"><a href="bayesian-inference.html#the-best-models"><i class="fa fa-check"></i><b>45.6</b> The BEST models</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="naive-bayes-classifiers.html"><a href="naive-bayes-classifiers.html"><i class="fa fa-check"></i><b>46</b> Naive Bayes classifiers</a></li>
+<li class="chapter" data-level="47" data-path="modeling-with-r-caret.html"><a href="modeling-with-r-caret.html"><i class="fa fa-check"></i><b>47</b> Modeling with R caret</a></li>
+<li class="chapter" data-level="48" data-path="modeling-with-r-tensorflow.html"><a href="modeling-with-r-tensorflow.html"><i class="fa fa-check"></i><b>48</b> Modeling with R Tensorflow</a></li>
+<li class="chapter" data-level="49" data-path="perceptron.html"><a href="perceptron.html"><i class="fa fa-check"></i><b>49</b> Perceptron</a></li>
+<li class="chapter" data-level="50" data-path="deeplearning-r-h2o.html"><a href="deeplearning-r-h2o.html"><i class="fa fa-check"></i><b>50</b> Deeplearning R H2O</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estimate-model-accuracy" class="section level1" number="23">
+<h1><span class="header-section-number">Chapter 23</span> Estimate model accuracy</h1>
+<div id="continuous-variables" class="section level2" number="23.1">
+<h2><span class="header-section-number">23.1</span> Continuous variables</h2>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="estimate-model-accuracy.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model precision for one continious dependent variable (Y)</span></span>
+<span id="cb154-2"><a href="estimate-model-accuracy.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: Course &#39;Math modeling&#39; practical work, State University of Management, Moscow</span></span>
+<span id="cb154-3"><a href="estimate-model-accuracy.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="co"># link: https://sites.google.com/a/kiber-guu.ru/r-practice/home</span></span>
+<span id="cb154-4"><a href="estimate-model-accuracy.html#cb154-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-5"><a href="estimate-model-accuracy.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="do">### GENERATE DATA</span></span>
+<span id="cb154-6"><a href="estimate-model-accuracy.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate data for given function</span></span>
+<span id="cb154-7"><a href="estimate-model-accuracy.html#cb154-7" aria-hidden="true" tabindex="-1"></a>y.func <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">4</span> <span class="sc">-</span> <span class="fl">2e-02</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">5.5e-03</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">4.9e-05</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span>}</span>
+<span id="cb154-8"><a href="estimate-model-accuracy.html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-9"><a href="estimate-model-accuracy.html#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="do">### Parameters for data generation</span></span>
+<span id="cb154-10"><a href="estimate-model-accuracy.html#cb154-10" aria-hidden="true" tabindex="-1"></a>my.seed <span class="ot">&lt;-</span> <span class="dv">123</span>         <span class="co"># set seed</span></span>
+<span id="cb154-11"><a href="estimate-model-accuracy.html#cb154-11" aria-hidden="true" tabindex="-1"></a>n.all <span class="ot">&lt;-</span> <span class="dv">100</span>           <span class="co"># number of samples </span></span>
+<span id="cb154-12"><a href="estimate-model-accuracy.html#cb154-12" aria-hidden="true" tabindex="-1"></a>train.percent <span class="ot">&lt;-</span> <span class="fl">0.85</span>  <span class="co"># percent of train data</span></span>
+<span id="cb154-13"><a href="estimate-model-accuracy.html#cb154-13" aria-hidden="true" tabindex="-1"></a>res.sd <span class="ot">&lt;-</span> <span class="dv">1</span>            <span class="co"># standard deviation of noise </span></span>
+<span id="cb154-14"><a href="estimate-model-accuracy.html#cb154-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-15"><a href="estimate-model-accuracy.html#cb154-15" aria-hidden="true" tabindex="-1"></a>x.min <span class="ot">&lt;-</span> <span class="dv">5</span>             <span class="co"># minimal value</span></span>
+<span id="cb154-16"><a href="estimate-model-accuracy.html#cb154-16" aria-hidden="true" tabindex="-1"></a>x.max <span class="ot">&lt;-</span> <span class="dv">104</span>           <span class="co"># maximal value</span></span>
+<span id="cb154-17"><a href="estimate-model-accuracy.html#cb154-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-18"><a href="estimate-model-accuracy.html#cb154-18" aria-hidden="true" tabindex="-1"></a><span class="co"># generate random x values</span></span>
+<span id="cb154-19"><a href="estimate-model-accuracy.html#cb154-19" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb154-20"><a href="estimate-model-accuracy.html#cb154-20" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(x.min, x.max, <span class="at">n =</span> n.all)</span>
+<span id="cb154-21"><a href="estimate-model-accuracy.html#cb154-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-22"><a href="estimate-model-accuracy.html#cb154-22" aria-hidden="true" tabindex="-1"></a><span class="co"># set normally distributed noise for each value</span></span>
+<span id="cb154-23"><a href="estimate-model-accuracy.html#cb154-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb154-24"><a href="estimate-model-accuracy.html#cb154-24" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> res.sd, <span class="at">n =</span> n.all)</span>
+<span id="cb154-25"><a href="estimate-model-accuracy.html#cb154-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-26"><a href="estimate-model-accuracy.html#cb154-26" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate y values using funcion and add noise</span></span>
+<span id="cb154-27"><a href="estimate-model-accuracy.html#cb154-27" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">y.func</span>(x) <span class="sc">+</span> res</span>
+<span id="cb154-28"><a href="estimate-model-accuracy.html#cb154-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-29"><a href="estimate-model-accuracy.html#cb154-29" aria-hidden="true" tabindex="-1"></a><span class="co"># vector for subseting train data (contains numbers of selected elements in x)</span></span>
+<span id="cb154-30"><a href="estimate-model-accuracy.html#cb154-30" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb154-31"><a href="estimate-model-accuracy.html#cb154-31" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_along</span>(x), <span class="at">size =</span> train.percent<span class="sc">*</span>n.all)</span>
+<span id="cb154-32"><a href="estimate-model-accuracy.html#cb154-32" aria-hidden="true" tabindex="-1"></a>inTrain</span>
+<span id="cb154-33"><a href="estimate-model-accuracy.html#cb154-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-34"><a href="estimate-model-accuracy.html#cb154-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset vectors with train and test data subsets</span></span>
+<span id="cb154-35"><a href="estimate-model-accuracy.html#cb154-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Train data</span></span>
+<span id="cb154-36"><a href="estimate-model-accuracy.html#cb154-36" aria-hidden="true" tabindex="-1"></a>x.train <span class="ot">&lt;-</span> x[inTrain]</span>
+<span id="cb154-37"><a href="estimate-model-accuracy.html#cb154-37" aria-hidden="true" tabindex="-1"></a>y.train <span class="ot">&lt;-</span> y[inTrain]</span>
+<span id="cb154-38"><a href="estimate-model-accuracy.html#cb154-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-39"><a href="estimate-model-accuracy.html#cb154-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Test data</span></span>
+<span id="cb154-40"><a href="estimate-model-accuracy.html#cb154-40" aria-hidden="true" tabindex="-1"></a>x.test <span class="ot">&lt;-</span> x[<span class="sc">-</span>inTrain]</span>
+<span id="cb154-41"><a href="estimate-model-accuracy.html#cb154-41" aria-hidden="true" tabindex="-1"></a>y.test <span class="ot">&lt;-</span> y[<span class="sc">-</span>inTrain]</span>
+<span id="cb154-42"><a href="estimate-model-accuracy.html#cb154-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-43"><a href="estimate-model-accuracy.html#cb154-43" aria-hidden="true" tabindex="-1"></a><span class="co"># x and y to display given function &#39;y.func&#39;</span></span>
+<span id="cb154-44"><a href="estimate-model-accuracy.html#cb154-44" aria-hidden="true" tabindex="-1"></a>x.line <span class="ot">&lt;-</span> <span class="fu">seq</span>(x.min, x.max, <span class="at">length =</span> n.all)</span>
+<span id="cb154-45"><a href="estimate-model-accuracy.html#cb154-45" aria-hidden="true" tabindex="-1"></a>y.line <span class="ot">&lt;-</span> <span class="fu">y.func</span>(x.line)</span>
+<span id="cb154-46"><a href="estimate-model-accuracy.html#cb154-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-47"><a href="estimate-model-accuracy.html#cb154-47" aria-hidden="true" tabindex="-1"></a>x.line</span>
+<span id="cb154-48"><a href="estimate-model-accuracy.html#cb154-48" aria-hidden="true" tabindex="-1"></a>y.line</span>
+<span id="cb154-49"><a href="estimate-model-accuracy.html#cb154-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-50"><a href="estimate-model-accuracy.html#cb154-50" aria-hidden="true" tabindex="-1"></a><span class="do">### PLOT PRIMARY DATA</span></span>
+<span id="cb154-51"><a href="estimate-model-accuracy.html#cb154-51" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb154-52"><a href="estimate-model-accuracy.html#cb154-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot parameters</span></span>
+<span id="cb154-53"><a href="estimate-model-accuracy.html#cb154-53" aria-hidden="true" tabindex="-1"></a>x.lim <span class="ot">&lt;-</span> <span class="fu">c</span>(x.min, x.max)</span>
+<span id="cb154-54"><a href="estimate-model-accuracy.html#cb154-54" aria-hidden="true" tabindex="-1"></a>y.lim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(y), <span class="fu">max</span>(y))</span>
+<span id="cb154-55"><a href="estimate-model-accuracy.html#cb154-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-56"><a href="estimate-model-accuracy.html#cb154-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot generated train data</span></span>
+<span id="cb154-57"><a href="estimate-model-accuracy.html#cb154-57" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.train, y.train, </span>
+<span id="cb154-58"><a href="estimate-model-accuracy.html#cb154-58" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">bg =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb154-59"><a href="estimate-model-accuracy.html#cb154-59" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Y&#39;</span>, </span>
+<span id="cb154-60"><a href="estimate-model-accuracy.html#cb154-60" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> x.lim, <span class="at">ylim =</span> y.lim, </span>
+<span id="cb154-61"><a href="estimate-model-accuracy.html#cb154-61" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">cex.axis =</span> <span class="fl">1.2</span>)</span>
+<span id="cb154-62"><a href="estimate-model-accuracy.html#cb154-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-63"><a href="estimate-model-accuracy.html#cb154-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Header</span></span>
+<span id="cb154-64"><a href="estimate-model-accuracy.html#cb154-64" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&#39;Initial train data and real function&#39;</span>, <span class="at">side =</span> <span class="dv">3</span>)</span>
+<span id="cb154-65"><a href="estimate-model-accuracy.html#cb154-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-66"><a href="estimate-model-accuracy.html#cb154-66" aria-hidden="true" tabindex="-1"></a><span class="co"># test values</span></span>
+<span id="cb154-67"><a href="estimate-model-accuracy.html#cb154-67" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x.test, y.test, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">bg =</span> <span class="st">&#39;red&#39;</span>, <span class="at">pch =</span> <span class="dv">21</span>)</span>
+<span id="cb154-68"><a href="estimate-model-accuracy.html#cb154-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-69"><a href="estimate-model-accuracy.html#cb154-69" aria-hidden="true" tabindex="-1"></a><span class="co"># true function</span></span>
+<span id="cb154-70"><a href="estimate-model-accuracy.html#cb154-70" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.line, y.line, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb154-71"><a href="estimate-model-accuracy.html#cb154-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-72"><a href="estimate-model-accuracy.html#cb154-72" aria-hidden="true" tabindex="-1"></a><span class="co"># legend</span></span>
+<span id="cb154-73"><a href="estimate-model-accuracy.html#cb154-73" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;train data&#39;</span>, <span class="st">&#39;test data&#39;</span>, <span class="st">&#39;f(X)=4 - 2e-02*x + 5.5e-03*x^2 - 4.9e-05*x^3&#39;</span>),</span>
+<span id="cb154-74"><a href="estimate-model-accuracy.html#cb154-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>, <span class="cn">NA</span>), </span>
+<span id="cb154-75"><a href="estimate-model-accuracy.html#cb154-75" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>, <span class="st">&#39;black&#39;</span>),  </span>
+<span id="cb154-76"><a href="estimate-model-accuracy.html#cb154-76" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb154-77"><a href="estimate-model-accuracy.html#cb154-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-78"><a href="estimate-model-accuracy.html#cb154-78" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb154-79"><a href="estimate-model-accuracy.html#cb154-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-80"><a href="estimate-model-accuracy.html#cb154-80" aria-hidden="true" tabindex="-1"></a><span class="do">### MODEL</span></span>
+<span id="cb154-81"><a href="estimate-model-accuracy.html#cb154-81" aria-hidden="true" tabindex="-1"></a><span class="co"># For modeling spline with degree of freedoms from 2 (straight line) to 50 (1/2 of N)</span></span>
+<span id="cb154-82"><a href="estimate-model-accuracy.html#cb154-82" aria-hidden="true" tabindex="-1"></a><span class="co"># To demonstrate spline with df = 6</span></span>
+<span id="cb154-83"><a href="estimate-model-accuracy.html#cb154-83" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> x.train, <span class="at">y =</span> y.train, <span class="at">df =</span> <span class="dv">6</span>)</span>
+<span id="cb154-84"><a href="estimate-model-accuracy.html#cb154-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-85"><a href="estimate-model-accuracy.html#cb154-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Model data for error estimation</span></span>
+<span id="cb154-86"><a href="estimate-model-accuracy.html#cb154-86" aria-hidden="true" tabindex="-1"></a>y.model.train <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod, <span class="fu">data.frame</span>(<span class="at">x =</span> x.train))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
+<span id="cb154-87"><a href="estimate-model-accuracy.html#cb154-87" aria-hidden="true" tabindex="-1"></a>y.model.test <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod, <span class="fu">data.frame</span>(<span class="at">x =</span> x.test))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
+<span id="cb154-88"><a href="estimate-model-accuracy.html#cb154-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-89"><a href="estimate-model-accuracy.html#cb154-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean squared errors for test and model data</span></span>
+<span id="cb154-90"><a href="estimate-model-accuracy.html#cb154-90" aria-hidden="true" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">sum</span>((y.train <span class="sc">-</span> y.model.train)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(x.train),</span>
+<span id="cb154-91"><a href="estimate-model-accuracy.html#cb154-91" aria-hidden="true" tabindex="-1"></a>         <span class="fu">sum</span>((y.test <span class="sc">-</span> y.model.test)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(x.test))</span>
+<span id="cb154-92"><a href="estimate-model-accuracy.html#cb154-92" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(MSE) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>)</span>
+<span id="cb154-93"><a href="estimate-model-accuracy.html#cb154-93" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(MSE, <span class="dv">2</span>)</span>
+<span id="cb154-94"><a href="estimate-model-accuracy.html#cb154-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-95"><a href="estimate-model-accuracy.html#cb154-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Now let&#39;s make splines for all degrees of freedoms (2-50)</span></span>
+<span id="cb154-96"><a href="estimate-model-accuracy.html#cb154-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Max degrees of fredom for spline model</span></span>
+<span id="cb154-97"><a href="estimate-model-accuracy.html#cb154-97" aria-hidden="true" tabindex="-1"></a>max.df <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb154-98"><a href="estimate-model-accuracy.html#cb154-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-99"><a href="estimate-model-accuracy.html#cb154-99" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">df =</span> <span class="dv">2</span><span class="sc">:</span>max.df)   <span class="co"># Create result table for recording calculated MSE </span></span>
+<span id="cb154-100"><a href="estimate-model-accuracy.html#cb154-100" aria-hidden="true" tabindex="-1"></a>tbl<span class="sc">$</span>MSE.train <span class="ot">&lt;-</span> <span class="dv">0</span>                 <span class="co"># Column for train data</span></span>
+<span id="cb154-101"><a href="estimate-model-accuracy.html#cb154-101" aria-hidden="true" tabindex="-1"></a>tbl<span class="sc">$</span>MSE.test <span class="ot">&lt;-</span> <span class="dv">0</span>                  <span class="co"># Column for test data</span></span>
+<span id="cb154-102"><a href="estimate-model-accuracy.html#cb154-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-103"><a href="estimate-model-accuracy.html#cb154-103" aria-hidden="true" tabindex="-1"></a><span class="co"># For all degrees of freedoms</span></span>
+<span id="cb154-104"><a href="estimate-model-accuracy.html#cb154-104" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>max.df) {</span>
+<span id="cb154-105"><a href="estimate-model-accuracy.html#cb154-105" aria-hidden="true" tabindex="-1"></a>    <span class="co"># build model</span></span>
+<span id="cb154-106"><a href="estimate-model-accuracy.html#cb154-106" aria-hidden="true" tabindex="-1"></a>    mod <span class="ot">&lt;-</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> x.train, <span class="at">y =</span> y.train, <span class="at">df =</span> i)</span>
+<span id="cb154-107"><a href="estimate-model-accuracy.html#cb154-107" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb154-108"><a href="estimate-model-accuracy.html#cb154-108" aria-hidden="true" tabindex="-1"></a>    <span class="co"># model values from calculaton of errors</span></span>
+<span id="cb154-109"><a href="estimate-model-accuracy.html#cb154-109" aria-hidden="true" tabindex="-1"></a>    y.model.train <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod, <span class="fu">data.frame</span>(<span class="at">x =</span> x.train))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
+<span id="cb154-110"><a href="estimate-model-accuracy.html#cb154-110" aria-hidden="true" tabindex="-1"></a>    y.model.test <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod, <span class="fu">data.frame</span>(<span class="at">x =</span> x.test))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
+<span id="cb154-111"><a href="estimate-model-accuracy.html#cb154-111" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb154-112"><a href="estimate-model-accuracy.html#cb154-112" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate MSE for predicted and train data sets</span></span>
+<span id="cb154-113"><a href="estimate-model-accuracy.html#cb154-113" aria-hidden="true" tabindex="-1"></a>    MSE <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">sum</span>((y.train <span class="sc">-</span> y.model.train)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(x.train),</span>
+<span id="cb154-114"><a href="estimate-model-accuracy.html#cb154-114" aria-hidden="true" tabindex="-1"></a>             <span class="fu">sum</span>((y.test <span class="sc">-</span> y.model.test)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">length</span>(x.test))</span>
+<span id="cb154-115"><a href="estimate-model-accuracy.html#cb154-115" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb154-116"><a href="estimate-model-accuracy.html#cb154-116" aria-hidden="true" tabindex="-1"></a>    <span class="co"># record errors into the table</span></span>
+<span id="cb154-117"><a href="estimate-model-accuracy.html#cb154-117" aria-hidden="true" tabindex="-1"></a>    tbl[tbl<span class="sc">$</span>df <span class="sc">==</span> i, <span class="fu">c</span>(<span class="st">&#39;MSE.train&#39;</span>, <span class="st">&#39;MSE.test&#39;</span>)] <span class="ot">&lt;-</span> MSE</span>
+<span id="cb154-118"><a href="estimate-model-accuracy.html#cb154-118" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb154-119"><a href="estimate-model-accuracy.html#cb154-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-120"><a href="estimate-model-accuracy.html#cb154-120" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl)</span>
+<span id="cb154-121"><a href="estimate-model-accuracy.html#cb154-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-122"><a href="estimate-model-accuracy.html#cb154-122" aria-hidden="true" tabindex="-1"></a><span class="do">### PLOT - Dependency of MSEs from model flexibility (degree of freedoms)</span></span>
+<span id="cb154-123"><a href="estimate-model-accuracy.html#cb154-123" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb154-124"><a href="estimate-model-accuracy.html#cb154-124" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> tbl<span class="sc">$</span>df, <span class="at">y =</span> tbl<span class="sc">$</span>MSE.test, </span>
+<span id="cb154-125"><a href="estimate-model-accuracy.html#cb154-125" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb154-126"><a href="estimate-model-accuracy.html#cb154-126" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Degree of freedoms&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;MSE&#39;</span>,</span>
+<span id="cb154-127"><a href="estimate-model-accuracy.html#cb154-127" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(tbl<span class="sc">$</span>MSE.train, tbl<span class="sc">$</span>MSE.test), </span>
+<span id="cb154-128"><a href="estimate-model-accuracy.html#cb154-128" aria-hidden="true" tabindex="-1"></a>              <span class="fu">max</span>(tbl<span class="sc">$</span>MSE.train, tbl<span class="sc">$</span>MSE.test)),</span>
+<span id="cb154-129"><a href="estimate-model-accuracy.html#cb154-129" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">cex.axis =</span> <span class="fl">1.2</span>)</span>
+<span id="cb154-130"><a href="estimate-model-accuracy.html#cb154-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-131"><a href="estimate-model-accuracy.html#cb154-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Header</span></span>
+<span id="cb154-132"><a href="estimate-model-accuracy.html#cb154-132" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&#39;MSE dependency from degree of freedoms&#39;</span>, <span class="at">side =</span> <span class="dv">3</span>)</span>
+<span id="cb154-133"><a href="estimate-model-accuracy.html#cb154-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-134"><a href="estimate-model-accuracy.html#cb154-134" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> tbl<span class="sc">$</span>df, <span class="at">y =</span> tbl<span class="sc">$</span>MSE.test,</span>
+<span id="cb154-135"><a href="estimate-model-accuracy.html#cb154-135" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">bg =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb154-136"><a href="estimate-model-accuracy.html#cb154-136" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> tbl<span class="sc">$</span>df, <span class="at">y =</span> tbl<span class="sc">$</span>MSE.train, <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.3</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb154-137"><a href="estimate-model-accuracy.html#cb154-137" aria-hidden="true" tabindex="-1"></a><span class="co"># unrecoverable error</span></span>
+<span id="cb154-138"><a href="estimate-model-accuracy.html#cb154-138" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> res.sd, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.4</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb154-139"><a href="estimate-model-accuracy.html#cb154-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-140"><a href="estimate-model-accuracy.html#cb154-140" aria-hidden="true" tabindex="-1"></a><span class="co"># legend</span></span>
+<span id="cb154-141"><a href="estimate-model-accuracy.html#cb154-141" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>),</span>
+<span id="cb154-142"><a href="estimate-model-accuracy.html#cb154-142" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">16</span>), </span>
+<span id="cb154-143"><a href="estimate-model-accuracy.html#cb154-143" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>),  </span>
+<span id="cb154-144"><a href="estimate-model-accuracy.html#cb154-144" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb154-145"><a href="estimate-model-accuracy.html#cb154-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-146"><a href="estimate-model-accuracy.html#cb154-146" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb154-147"><a href="estimate-model-accuracy.html#cb154-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-148"><a href="estimate-model-accuracy.html#cb154-148" aria-hidden="true" tabindex="-1"></a><span class="co"># Detect degree of freedom with minimal error for test data</span></span>
+<span id="cb154-149"><a href="estimate-model-accuracy.html#cb154-149" aria-hidden="true" tabindex="-1"></a>min.MSE.test <span class="ot">&lt;-</span> <span class="fu">min</span>(tbl<span class="sc">$</span>MSE.test)</span>
+<span id="cb154-150"><a href="estimate-model-accuracy.html#cb154-150" aria-hidden="true" tabindex="-1"></a>df.min.MSE.test <span class="ot">&lt;-</span> tbl[tbl<span class="sc">$</span>MSE.test <span class="sc">==</span> min.MSE.test, <span class="st">&#39;df&#39;</span>]</span>
+<span id="cb154-151"><a href="estimate-model-accuracy.html#cb154-151" aria-hidden="true" tabindex="-1"></a>df.min.MSE.test</span>
+<span id="cb154-152"><a href="estimate-model-accuracy.html#cb154-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-153"><a href="estimate-model-accuracy.html#cb154-153" aria-hidden="true" tabindex="-1"></a><span class="co"># Compromize for flexibility and pricision of model</span></span>
+<span id="cb154-154"><a href="estimate-model-accuracy.html#cb154-154" aria-hidden="true" tabindex="-1"></a>df.my.MSE.test <span class="ot">&lt;-</span> df.min.MSE.test</span>
+<span id="cb154-155"><a href="estimate-model-accuracy.html#cb154-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-156"><a href="estimate-model-accuracy.html#cb154-156" aria-hidden="true" tabindex="-1"></a>my.MSE.test <span class="ot">&lt;-</span> tbl[tbl<span class="sc">$</span>df <span class="sc">==</span> df.my.MSE.test, <span class="st">&#39;MSE.test&#39;</span>]</span>
+<span id="cb154-157"><a href="estimate-model-accuracy.html#cb154-157" aria-hidden="true" tabindex="-1"></a>my.MSE.test</span>
+<span id="cb154-158"><a href="estimate-model-accuracy.html#cb154-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-159"><a href="estimate-model-accuracy.html#cb154-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Display optimal df</span></span>
+<span id="cb154-160"><a href="estimate-model-accuracy.html#cb154-160" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> df.my.MSE.test, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb154-161"><a href="estimate-model-accuracy.html#cb154-161" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> df.my.MSE.test, <span class="at">y =</span> my.MSE.test, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb154-162"><a href="estimate-model-accuracy.html#cb154-162" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(df.my.MSE.test, <span class="at">side =</span> <span class="dv">1</span>, <span class="at">line =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">at =</span> df.my.MSE.test, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb154-163"><a href="estimate-model-accuracy.html#cb154-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-164"><a href="estimate-model-accuracy.html#cb154-164" aria-hidden="true" tabindex="-1"></a><span class="do">### PLOT OPTIMAL MODEL</span></span>
+<span id="cb154-165"><a href="estimate-model-accuracy.html#cb154-165" aria-hidden="true" tabindex="-1"></a>mod.MSE.test <span class="ot">&lt;-</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> x.train, <span class="at">y =</span> y.train, <span class="at">df =</span> df.my.MSE.test)</span>
+<span id="cb154-166"><a href="estimate-model-accuracy.html#cb154-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-167"><a href="estimate-model-accuracy.html#cb154-167" aria-hidden="true" tabindex="-1"></a><span class="co"># for smoothed curves of model</span></span>
+<span id="cb154-168"><a href="estimate-model-accuracy.html#cb154-168" aria-hidden="true" tabindex="-1"></a>x.model.plot <span class="ot">&lt;-</span> <span class="fu">seq</span>(x.min, x.max, <span class="at">length =</span> <span class="dv">250</span>)</span>
+<span id="cb154-169"><a href="estimate-model-accuracy.html#cb154-169" aria-hidden="true" tabindex="-1"></a>y.model.plot <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.MSE.test, <span class="fu">data.frame</span>(<span class="at">x =</span> x.model.plot))<span class="sc">$</span>y[, <span class="dv">1</span>]</span>
+<span id="cb154-170"><a href="estimate-model-accuracy.html#cb154-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-171"><a href="estimate-model-accuracy.html#cb154-171" aria-hidden="true" tabindex="-1"></a>x.lim <span class="ot">&lt;-</span> <span class="fu">c</span>(x.min, x.max)</span>
+<span id="cb154-172"><a href="estimate-model-accuracy.html#cb154-172" aria-hidden="true" tabindex="-1"></a>y.lim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(y), <span class="fu">max</span>(y))</span>
+<span id="cb154-173"><a href="estimate-model-accuracy.html#cb154-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-174"><a href="estimate-model-accuracy.html#cb154-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot train data with noise</span></span>
+<span id="cb154-175"><a href="estimate-model-accuracy.html#cb154-175" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb154-176"><a href="estimate-model-accuracy.html#cb154-176" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.train, y.train, </span>
+<span id="cb154-177"><a href="estimate-model-accuracy.html#cb154-177" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">bg =</span> <span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb154-178"><a href="estimate-model-accuracy.html#cb154-178" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;X&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Y&#39;</span>, </span>
+<span id="cb154-179"><a href="estimate-model-accuracy.html#cb154-179" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> x.lim, <span class="at">ylim =</span> y.lim, </span>
+<span id="cb154-180"><a href="estimate-model-accuracy.html#cb154-180" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">cex.axis =</span> <span class="fl">1.2</span>)</span>
+<span id="cb154-181"><a href="estimate-model-accuracy.html#cb154-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-182"><a href="estimate-model-accuracy.html#cb154-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Header</span></span>
+<span id="cb154-183"><a href="estimate-model-accuracy.html#cb154-183" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&#39;Given data and optimal model&#39;</span>, <span class="at">side =</span> <span class="dv">3</span>)</span>
+<span id="cb154-184"><a href="estimate-model-accuracy.html#cb154-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-185"><a href="estimate-model-accuracy.html#cb154-185" aria-hidden="true" tabindex="-1"></a><span class="co"># Test data</span></span>
+<span id="cb154-186"><a href="estimate-model-accuracy.html#cb154-186" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x.test, y.test, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">bg =</span> <span class="st">&#39;red&#39;</span>, <span class="at">pch =</span> <span class="dv">21</span>)</span>
+<span id="cb154-187"><a href="estimate-model-accuracy.html#cb154-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-188"><a href="estimate-model-accuracy.html#cb154-188" aria-hidden="true" tabindex="-1"></a><span class="co"># True function</span></span>
+<span id="cb154-189"><a href="estimate-model-accuracy.html#cb154-189" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.line, y.line, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb154-190"><a href="estimate-model-accuracy.html#cb154-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-191"><a href="estimate-model-accuracy.html#cb154-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
+<span id="cb154-192"><a href="estimate-model-accuracy.html#cb154-192" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.model.plot, y.model.plot, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb154-193"><a href="estimate-model-accuracy.html#cb154-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-194"><a href="estimate-model-accuracy.html#cb154-194" aria-hidden="true" tabindex="-1"></a><span class="co"># legend</span></span>
+<span id="cb154-195"><a href="estimate-model-accuracy.html#cb154-195" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;train&#39;</span>, <span class="st">&#39;test&#39;</span>, <span class="st">&#39;f(X)&#39;</span>, <span class="st">&#39;model&#39;</span>),</span>
+<span id="cb154-196"><a href="estimate-model-accuracy.html#cb154-196" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>, <span class="cn">NA</span>, <span class="cn">NA</span>), </span>
+<span id="cb154-197"><a href="estimate-model-accuracy.html#cb154-197" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">grey</span>(<span class="fl">0.2</span>), <span class="st">&#39;red&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;blue&#39;</span>),  </span>
+<span id="cb154-198"><a href="estimate-model-accuracy.html#cb154-198" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb154-199"><a href="estimate-model-accuracy.html#cb154-199" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span></code></pre></div>
+</div>
+<div id="discret-variables" class="section level2" number="23.2">
+<h2><span class="header-section-number">23.2</span> Discret variables</h2>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="estimate-model-accuracy.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model precision for one descrete dependent variable (Y)</span></span>
+<span id="cb155-2"><a href="estimate-model-accuracy.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: Course &#39;Math modeling&#39; practical work, State University of Management, Moscow</span></span>
+<span id="cb155-3"><a href="estimate-model-accuracy.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="co"># link: https://sites.google.com/a/kiber-guu.ru/r-practice/home</span></span>
+<span id="cb155-4"><a href="estimate-model-accuracy.html#cb155-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-5"><a href="estimate-model-accuracy.html#cb155-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;mlbench&#39;</span>)</span>
+<span id="cb155-6"><a href="estimate-model-accuracy.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;class&#39;</span>)</span>
+<span id="cb155-7"><a href="estimate-model-accuracy.html#cb155-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;car&#39;</span>)</span>
+<span id="cb155-8"><a href="estimate-model-accuracy.html#cb155-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;class&#39;</span>)</span>
+<span id="cb155-9"><a href="estimate-model-accuracy.html#cb155-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;e1071&#39;</span>)</span>
+<span id="cb155-10"><a href="estimate-model-accuracy.html#cb155-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;MASS&#39;</span>)</span>
+<span id="cb155-11"><a href="estimate-model-accuracy.html#cb155-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-12"><a href="estimate-model-accuracy.html#cb155-12" aria-hidden="true" tabindex="-1"></a><span class="co"># discrete function</span></span>
+<span id="cb155-13"><a href="estimate-model-accuracy.html#cb155-13" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2){ <span class="fu">ifelse</span>((x1 <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> x2 <span class="sc">&lt;</span> <span class="dv">50</span>) <span class="sc">|</span> (x1 <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">&amp;</span> x2 <span class="sc">&gt;</span> <span class="dv">52</span>), <span class="dv">1</span>, <span class="dv">0</span>) }</span>
+<span id="cb155-14"><a href="estimate-model-accuracy.html#cb155-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-15"><a href="estimate-model-accuracy.html#cb155-15" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters</span></span>
+<span id="cb155-16"><a href="estimate-model-accuracy.html#cb155-16" aria-hidden="true" tabindex="-1"></a>my.seed <span class="ot">&lt;-</span> <span class="dv">123</span></span>
+<span id="cb155-17"><a href="estimate-model-accuracy.html#cb155-17" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb155-18"><a href="estimate-model-accuracy.html#cb155-18" aria-hidden="true" tabindex="-1"></a>train.percent <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
+<span id="cb155-19"><a href="estimate-model-accuracy.html#cb155-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-20"><a href="estimate-model-accuracy.html#cb155-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate data set</span></span>
+<span id="cb155-21"><a href="estimate-model-accuracy.html#cb155-21" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb155-22"><a href="estimate-model-accuracy.html#cb155-22" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">3.7</span>, <span class="at">n =</span> n)</span>
+<span id="cb155-23"><a href="estimate-model-accuracy.html#cb155-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb155-24"><a href="estimate-model-accuracy.html#cb155-24" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="fl">3.3</span>, <span class="at">n =</span> n)</span>
+<span id="cb155-25"><a href="estimate-model-accuracy.html#cb155-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-26"><a href="estimate-model-accuracy.html#cb155-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector to subset train and test data</span></span>
+<span id="cb155-27"><a href="estimate-model-accuracy.html#cb155-27" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb155-28"><a href="estimate-model-accuracy.html#cb155-28" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_along</span>(x1), train.percent<span class="sc">*</span>n)</span>
+<span id="cb155-29"><a href="estimate-model-accuracy.html#cb155-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-30"><a href="estimate-model-accuracy.html#cb155-30" aria-hidden="true" tabindex="-1"></a>x1.train <span class="ot">&lt;-</span> x1[inTrain]</span>
+<span id="cb155-31"><a href="estimate-model-accuracy.html#cb155-31" aria-hidden="true" tabindex="-1"></a>x2.train <span class="ot">&lt;-</span> x2[inTrain]</span>
+<span id="cb155-32"><a href="estimate-model-accuracy.html#cb155-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-33"><a href="estimate-model-accuracy.html#cb155-33" aria-hidden="true" tabindex="-1"></a>x1.test <span class="ot">&lt;-</span> x1[<span class="sc">-</span>inTrain]</span>
+<span id="cb155-34"><a href="estimate-model-accuracy.html#cb155-34" aria-hidden="true" tabindex="-1"></a>x2.test <span class="ot">&lt;-</span> x2[<span class="sc">-</span>inTrain]</span>
+<span id="cb155-35"><a href="estimate-model-accuracy.html#cb155-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-36"><a href="estimate-model-accuracy.html#cb155-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Create descrete parameter according to given function</span></span>
+<span id="cb155-37"><a href="estimate-model-accuracy.html#cb155-37" aria-hidden="true" tabindex="-1"></a>y.train <span class="ot">&lt;-</span> <span class="fu">rules</span>(x1.train, x2.train)</span>
+<span id="cb155-38"><a href="estimate-model-accuracy.html#cb155-38" aria-hidden="true" tabindex="-1"></a>y.test <span class="ot">&lt;-</span> <span class="fu">rules</span>(x1.test, x2.test)</span>
+<span id="cb155-39"><a href="estimate-model-accuracy.html#cb155-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Table with train data</span></span>
+<span id="cb155-40"><a href="estimate-model-accuracy.html#cb155-40" aria-hidden="true" tabindex="-1"></a>df.train<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> x1.train, <span class="at">x2 =</span> x2.train, <span class="at">y =</span> y.train)</span>
+<span id="cb155-41"><a href="estimate-model-accuracy.html#cb155-41" aria-hidden="true" tabindex="-1"></a>df.train<span class="fl">.1</span></span>
+<span id="cb155-42"><a href="estimate-model-accuracy.html#cb155-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Table with test data</span></span>
+<span id="cb155-43"><a href="estimate-model-accuracy.html#cb155-43" aria-hidden="true" tabindex="-1"></a>df.test<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> x1.test, <span class="at">x2 =</span> x2.test)</span>
+<span id="cb155-44"><a href="estimate-model-accuracy.html#cb155-44" aria-hidden="true" tabindex="-1"></a>df.test<span class="fl">.1</span></span>
+<span id="cb155-45"><a href="estimate-model-accuracy.html#cb155-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-46"><a href="estimate-model-accuracy.html#cb155-46" aria-hidden="true" tabindex="-1"></a><span class="do">### PLOT </span><span class="al">TEST</span><span class="do"> DATA</span></span>
+<span id="cb155-47"><a href="estimate-model-accuracy.html#cb155-47" aria-hidden="true" tabindex="-1"></a>x1.grid <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="fu">floor</span>(<span class="fu">min</span>(x1)), <span class="fu">ceiling</span>(<span class="fu">max</span>(x1)), <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb155-48"><a href="estimate-model-accuracy.html#cb155-48" aria-hidden="true" tabindex="-1"></a>               <span class="fu">ceiling</span>(<span class="fu">max</span>(x2)) <span class="sc">-</span> <span class="fu">floor</span>(<span class="fu">min</span>(x2)) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb155-49"><a href="estimate-model-accuracy.html#cb155-49" aria-hidden="true" tabindex="-1"></a>x2.grid <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="fu">floor</span>(<span class="fu">min</span>(x2)), <span class="fu">ceiling</span>(<span class="fu">max</span>(x2)), <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb155-50"><a href="estimate-model-accuracy.html#cb155-50" aria-hidden="true" tabindex="-1"></a>               <span class="at">each =</span> <span class="fu">ceiling</span>(<span class="fu">max</span>(x1)) <span class="sc">-</span> <span class="fu">floor</span>(<span class="fu">min</span>(x1)) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb155-51"><a href="estimate-model-accuracy.html#cb155-51" aria-hidden="true" tabindex="-1"></a><span class="co"># классы для наблюдений сетки</span></span>
+<span id="cb155-52"><a href="estimate-model-accuracy.html#cb155-52" aria-hidden="true" tabindex="-1"></a>y.grid <span class="ot">&lt;-</span> <span class="fu">rules</span>(x1.grid, x2.grid)</span>
+<span id="cb155-53"><a href="estimate-model-accuracy.html#cb155-53" aria-hidden="true" tabindex="-1"></a><span class="co"># фрейм для сетки</span></span>
+<span id="cb155-54"><a href="estimate-model-accuracy.html#cb155-54" aria-hidden="true" tabindex="-1"></a>df.grid<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> x1.grid, <span class="at">x2 =</span> x2.grid, <span class="at">y =</span> y.grid)</span>
+<span id="cb155-55"><a href="estimate-model-accuracy.html#cb155-55" aria-hidden="true" tabindex="-1"></a><span class="co"># цвета для графиков</span></span>
+<span id="cb155-56"><a href="estimate-model-accuracy.html#cb155-56" aria-hidden="true" tabindex="-1"></a>cls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;orange&#39;</span>)</span>
+<span id="cb155-57"><a href="estimate-model-accuracy.html#cb155-57" aria-hidden="true" tabindex="-1"></a>cls.t <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>), <span class="fu">rgb</span>(<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>))</span>
+<span id="cb155-58"><a href="estimate-model-accuracy.html#cb155-58" aria-hidden="true" tabindex="-1"></a><span class="co"># график истинных классов</span></span>
+<span id="cb155-59"><a href="estimate-model-accuracy.html#cb155-59" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df.grid<span class="fl">.1</span><span class="sc">$</span>x1, df.grid<span class="fl">.1</span><span class="sc">$</span>x2, </span>
+<span id="cb155-60"><a href="estimate-model-accuracy.html#cb155-60" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="st">&#39;·&#39;</span>, <span class="at">col =</span> cls[df.grid<span class="fl">.1</span>[, <span class="st">&#39;y&#39;</span>] <span class="sc">+</span> <span class="dv">1</span>],</span>
+<span id="cb155-61"><a href="estimate-model-accuracy.html#cb155-61" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;X1&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Y1&#39;</span>,</span>
+<span id="cb155-62"><a href="estimate-model-accuracy.html#cb155-62" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Обучающая выборка, факт&#39;</span>)</span>
+<span id="cb155-63"><a href="estimate-model-accuracy.html#cb155-63" aria-hidden="true" tabindex="-1"></a><span class="co"># точки фактических наблюдений</span></span>
+<span id="cb155-64"><a href="estimate-model-accuracy.html#cb155-64" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df.train<span class="fl">.1</span><span class="sc">$</span>x1, df.train<span class="fl">.1</span><span class="sc">$</span>x2,</span>
+<span id="cb155-65"><a href="estimate-model-accuracy.html#cb155-65" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> cls.t[df.train<span class="fl">.1</span>[, <span class="st">&#39;y&#39;</span>] <span class="sc">+</span> <span class="dv">1</span>], </span>
+<span id="cb155-66"><a href="estimate-model-accuracy.html#cb155-66" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> cls.t[df.train<span class="fl">.1</span>[, <span class="st">&#39;y&#39;</span>] <span class="sc">+</span> <span class="dv">1</span>])</span>
+<span id="cb155-67"><a href="estimate-model-accuracy.html#cb155-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-68"><a href="estimate-model-accuracy.html#cb155-68" aria-hidden="true" tabindex="-1"></a><span class="do">### 1. Build a model using Naive Bayess classifier</span></span>
+<span id="cb155-69"><a href="estimate-model-accuracy.html#cb155-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-70"><a href="estimate-model-accuracy.html#cb155-70" aria-hidden="true" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">naiveBayes</span>(y <span class="sc">~</span> ., <span class="at">data =</span> df.train<span class="fl">.1</span>)</span>
+<span id="cb155-71"><a href="estimate-model-accuracy.html#cb155-71" aria-hidden="true" tabindex="-1"></a><span class="co"># получаем модельные значения на обучающей выборке как классы</span></span>
+<span id="cb155-72"><a href="estimate-model-accuracy.html#cb155-72" aria-hidden="true" tabindex="-1"></a>y.nb.train <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">predict</span>(nb, df.train<span class="fl">.1</span>[, <span class="sc">-</span><span class="dv">3</span>], </span>
+<span id="cb155-73"><a href="estimate-model-accuracy.html#cb155-73" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">&quot;raw&quot;</span>)[, <span class="dv">2</span>] <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb155-74"><a href="estimate-model-accuracy.html#cb155-74" aria-hidden="true" tabindex="-1"></a><span class="co"># график истинных классов</span></span>
+<span id="cb155-75"><a href="estimate-model-accuracy.html#cb155-75" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df.grid<span class="fl">.1</span><span class="sc">$</span>x1, df.grid<span class="fl">.1</span><span class="sc">$</span>x2, </span>
+<span id="cb155-76"><a href="estimate-model-accuracy.html#cb155-76" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="st">&#39;·&#39;</span>,  <span class="at">col =</span> cls[df.grid<span class="fl">.1</span>[, <span class="st">&#39;y&#39;</span>] <span class="sc">+</span> <span class="dv">1</span>], </span>
+<span id="cb155-77"><a href="estimate-model-accuracy.html#cb155-77" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;X1&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Y1&#39;</span>,</span>
+<span id="cb155-78"><a href="estimate-model-accuracy.html#cb155-78" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Обучающая выборка, модель naiveBayes&#39;</span>)</span>
+<span id="cb155-79"><a href="estimate-model-accuracy.html#cb155-79" aria-hidden="true" tabindex="-1"></a><span class="co"># точки наблюдений, предсказанных по модели</span></span>
+<span id="cb155-80"><a href="estimate-model-accuracy.html#cb155-80" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df.train<span class="fl">.1</span><span class="sc">$</span>x1, df.train<span class="fl">.1</span><span class="sc">$</span>x2, </span>
+<span id="cb155-81"><a href="estimate-model-accuracy.html#cb155-81" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> cls.t[y.nb.train <span class="sc">+</span> <span class="dv">1</span>], </span>
+<span id="cb155-82"><a href="estimate-model-accuracy.html#cb155-82" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> cls.t[y.nb.train <span class="sc">+</span> <span class="dv">1</span>])</span>
+<span id="cb155-83"><a href="estimate-model-accuracy.html#cb155-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-84"><a href="estimate-model-accuracy.html#cb155-84" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица неточностей на обучающей выборке</span></span>
+<span id="cb155-85"><a href="estimate-model-accuracy.html#cb155-85" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(y.train, y.nb.train)</span>
+<span id="cb155-86"><a href="estimate-model-accuracy.html#cb155-86" aria-hidden="true" tabindex="-1"></a>tbl</span>
+<span id="cb155-87"><a href="estimate-model-accuracy.html#cb155-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-88"><a href="estimate-model-accuracy.html#cb155-88" aria-hidden="true" tabindex="-1"></a>Acc <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(tbl)) <span class="sc">/</span> <span class="fu">sum</span>(tbl)</span>
+<span id="cb155-89"><a href="estimate-model-accuracy.html#cb155-89" aria-hidden="true" tabindex="-1"></a>Acc</span>
+<span id="cb155-90"><a href="estimate-model-accuracy.html#cb155-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-91"><a href="estimate-model-accuracy.html#cb155-91" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&#39;Как можно видеть на графике, ту часть жёлтого класса, которая расположена в левой верхней области пространства координат, модель классифицирует неверно. Таким образом, байесовская решающая граница не моделирует разрыв жёлтого класса синим. Это происходит потому, что в непрерывном случае наивный байесовский метод исходит из допущения о линейной разделимости двух классов и нормальности распределения объясняющих переменных в них. Однако в этом примере это допущение не выполняется.</span></span>
+<span id="cb155-92"><a href="estimate-model-accuracy.html#cb155-92" aria-hidden="true" tabindex="-1"></a><span class="st">Сделаем прогноз классов Y на тестовую выборку и оценим точность модели. Как можно убедиться, точность на тестовой оказывается ниже, чем на обучающей выборке. Учитывая, как ведёт себя классификатор на обучающей выборке, такой модели доверять не стоит.&#39;</span>)</span>
+<span id="cb155-93"><a href="estimate-model-accuracy.html#cb155-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-94"><a href="estimate-model-accuracy.html#cb155-94" aria-hidden="true" tabindex="-1"></a><span class="co"># прогноз на тестовую выборку</span></span>
+<span id="cb155-95"><a href="estimate-model-accuracy.html#cb155-95" aria-hidden="true" tabindex="-1"></a>y.nb.test <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">predict</span>(nb, df.test<span class="fl">.1</span>, <span class="at">type =</span> <span class="st">&quot;raw&quot;</span>)[, <span class="dv">2</span>] <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb155-96"><a href="estimate-model-accuracy.html#cb155-96" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица неточностей на тестовой выборке</span></span>
+<span id="cb155-97"><a href="estimate-model-accuracy.html#cb155-97" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(y.test, y.nb.test)</span>
+<span id="cb155-98"><a href="estimate-model-accuracy.html#cb155-98" aria-hidden="true" tabindex="-1"></a>tbl</span>
+<span id="cb155-99"><a href="estimate-model-accuracy.html#cb155-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-100"><a href="estimate-model-accuracy.html#cb155-100" aria-hidden="true" tabindex="-1"></a><span class="co"># точность, или верность (Accuracy)</span></span>
+<span id="cb155-101"><a href="estimate-model-accuracy.html#cb155-101" aria-hidden="true" tabindex="-1"></a>Acc <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(tbl)) <span class="sc">/</span> <span class="fu">sum</span>(tbl)</span>
+<span id="cb155-102"><a href="estimate-model-accuracy.html#cb155-102" aria-hidden="true" tabindex="-1"></a>Acc</span>
+<span id="cb155-103"><a href="estimate-model-accuracy.html#cb155-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-104"><a href="estimate-model-accuracy.html#cb155-104" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Build kNN model for k=3</span></span>
+<span id="cb155-105"><a href="estimate-model-accuracy.html#cb155-105" aria-hidden="true" tabindex="-1"></a>y.knn.train <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> <span class="fu">scale</span>(df.train<span class="fl">.1</span>[, <span class="sc">-</span><span class="dv">3</span>]), </span>
+<span id="cb155-106"><a href="estimate-model-accuracy.html#cb155-106" aria-hidden="true" tabindex="-1"></a>                   <span class="at">test =</span> <span class="fu">scale</span>(df.train<span class="fl">.1</span>[, <span class="sc">-</span><span class="dv">3</span>]),</span>
+<span id="cb155-107"><a href="estimate-model-accuracy.html#cb155-107" aria-hidden="true" tabindex="-1"></a>                   <span class="at">cl =</span> df.train<span class="fl">.1</span><span class="sc">$</span>y, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb155-108"><a href="estimate-model-accuracy.html#cb155-108" aria-hidden="true" tabindex="-1"></a><span class="co"># график истинных классов</span></span>
+<span id="cb155-109"><a href="estimate-model-accuracy.html#cb155-109" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df.grid<span class="fl">.1</span><span class="sc">$</span>x1, df.grid<span class="fl">.1</span><span class="sc">$</span>x2, </span>
+<span id="cb155-110"><a href="estimate-model-accuracy.html#cb155-110" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="st">&#39;·&#39;</span>, <span class="at">col =</span> cls[df.grid<span class="fl">.1</span>[, <span class="st">&#39;y&#39;</span>] <span class="sc">+</span> <span class="dv">1</span>],</span>
+<span id="cb155-111"><a href="estimate-model-accuracy.html#cb155-111" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;X1&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Y1&#39;</span>,</span>
+<span id="cb155-112"><a href="estimate-model-accuracy.html#cb155-112" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Обучающая выборка, модель kNN&#39;</span>)</span>
+<span id="cb155-113"><a href="estimate-model-accuracy.html#cb155-113" aria-hidden="true" tabindex="-1"></a><span class="co"># точки наблюдений, предсказанных по модели</span></span>
+<span id="cb155-114"><a href="estimate-model-accuracy.html#cb155-114" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(df.train<span class="fl">.1</span><span class="sc">$</span>x1, df.train<span class="fl">.1</span><span class="sc">$</span>x2, </span>
+<span id="cb155-115"><a href="estimate-model-accuracy.html#cb155-115" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> cls.t[<span class="fu">as.numeric</span>(y.knn.train)], </span>
+<span id="cb155-116"><a href="estimate-model-accuracy.html#cb155-116" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> cls.t[<span class="fu">as.numeric</span>(y.knn.train)])</span>
+<span id="cb155-117"><a href="estimate-model-accuracy.html#cb155-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-118"><a href="estimate-model-accuracy.html#cb155-118" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица неточностей на обучающей выборке</span></span>
+<span id="cb155-119"><a href="estimate-model-accuracy.html#cb155-119" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(y.train, y.knn.train)</span>
+<span id="cb155-120"><a href="estimate-model-accuracy.html#cb155-120" aria-hidden="true" tabindex="-1"></a>tbl</span>
+<span id="cb155-121"><a href="estimate-model-accuracy.html#cb155-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-122"><a href="estimate-model-accuracy.html#cb155-122" aria-hidden="true" tabindex="-1"></a><span class="co"># точность (Accuracy)</span></span>
+<span id="cb155-123"><a href="estimate-model-accuracy.html#cb155-123" aria-hidden="true" tabindex="-1"></a>Acc <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(tbl)) <span class="sc">/</span> <span class="fu">sum</span>(tbl)</span>
+<span id="cb155-124"><a href="estimate-model-accuracy.html#cb155-124" aria-hidden="true" tabindex="-1"></a>Acc</span>
+<span id="cb155-125"><a href="estimate-model-accuracy.html#cb155-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-126"><a href="estimate-model-accuracy.html#cb155-126" aria-hidden="true" tabindex="-1"></a><span class="co"># прогноз на тестовую выборку</span></span>
+<span id="cb155-127"><a href="estimate-model-accuracy.html#cb155-127" aria-hidden="true" tabindex="-1"></a>y.knn.test <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> <span class="fu">scale</span>(df.train<span class="fl">.1</span>[, <span class="sc">-</span><span class="dv">3</span>]), </span>
+<span id="cb155-128"><a href="estimate-model-accuracy.html#cb155-128" aria-hidden="true" tabindex="-1"></a>                  <span class="at">test =</span> <span class="fu">scale</span>(df.test<span class="fl">.1</span>[, <span class="sc">-</span><span class="dv">3</span>]),</span>
+<span id="cb155-129"><a href="estimate-model-accuracy.html#cb155-129" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cl =</span> df.train<span class="fl">.1</span><span class="sc">$</span>y, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb155-130"><a href="estimate-model-accuracy.html#cb155-130" aria-hidden="true" tabindex="-1"></a><span class="co"># матрица неточностей на тестовой выборке</span></span>
+<span id="cb155-131"><a href="estimate-model-accuracy.html#cb155-131" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(y.test, y.knn.test)</span>
+<span id="cb155-132"><a href="estimate-model-accuracy.html#cb155-132" aria-hidden="true" tabindex="-1"></a>tbl</span>
+<span id="cb155-133"><a href="estimate-model-accuracy.html#cb155-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-134"><a href="estimate-model-accuracy.html#cb155-134" aria-hidden="true" tabindex="-1"></a><span class="co"># точность (Accuracy)</span></span>
+<span id="cb155-135"><a href="estimate-model-accuracy.html#cb155-135" aria-hidden="true" tabindex="-1"></a>Acc <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(tbl)) <span class="sc">/</span> <span class="fu">sum</span>(tbl)</span>
+<span id="cb155-136"><a href="estimate-model-accuracy.html#cb155-136" aria-hidden="true" tabindex="-1"></a>Acc</span>
+<span id="cb155-137"><a href="estimate-model-accuracy.html#cb155-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-138"><a href="estimate-model-accuracy.html#cb155-138" aria-hidden="true" tabindex="-1"></a><span class="co"># As we can see, kNN method is more accurate than Naive Bayes for this case.</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="split-data-into-train-and-test-subsets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-evaluation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/29_estimate_model_accuracy.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

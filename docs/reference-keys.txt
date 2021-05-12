@@ -10,7 +10,6 @@ anova
 machine-learning-functions-reference
 linear-regression
 combinatorics
-regularization
 probability
 basic-statistics
 definitions
@@ -68,6 +67,11 @@ kruskal-wallis-test
 correlation
 methods-and-algorithms-of-machine-learning
 split-data-into-train-and-test-subsets
+estimate-model-accuracy
+continuous-variables
+discret-variables
+model-evaluation
+cross-validation-and-bootstrep
 linear-regression-1
 linear-regression---theory
 generate-random-data-set-for-the-linear-model
@@ -78,7 +82,6 @@ linear-regression-model-for-multiple-parameters
 choosing-explanatory-variables-for-the-model
 assessment-of-model-performance-for-categorical-data.
 confidence-intervals-for-linear-model
-model-evaluation
 practical-examples-for-linear-model-regression
 linear-regression-complex-cases
 cars
@@ -89,6 +92,9 @@ next-part-1
 nonlinear-regression
 multiple-linear-regression
 spline-model
+splines
+area-under-the-curve-using-spline-method
+set-data-using-given-function-and-predict-curve-using-spline-method
 generate-dataset-from-a-given-function
 split-data-for-train-and-test
 diagram-of-the-given-function-and-generated-datasets
@@ -109,10 +115,19 @@ k-means-clustering
 k-means
 hierarchical-clustering
 knn
+regularization
+factor-analysis
+principal-component-analysis
+principal-component-analysis-1
+basic-statistics-1
+basic-linear-algebra-matrices
+t-sne---stochastic-neighbor-embedding
 learning-vector-quantization
 tree-based-models
 classification-tree-example
 regression-tree-example
+random-forest
+gradient-boosted-trees
 markov-chain-monte-carlo-mcmc
 simple-markov-process
 sources-2
@@ -124,3 +139,7 @@ model-of-birth-weights-using-normal-distribution
 a-bayesian-model-of-zombie-iq
 the-best-models
 naive-bayes-classifiers
+modeling-with-r-caret
+modeling-with-r-tensorflow
+perceptron
+deeplearning-r-h2o

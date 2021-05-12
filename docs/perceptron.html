@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 49 Perceptron | R statistics</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 49 Perceptron | R statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 49 Perceptron | R statistics" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Mark Goldberg" />
+
+
+<meta name="date" content="2021-05-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modeling-with-r-tensorflow.html"/>
+<link rel="next" href="deeplearning-r-h2o.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#get-data"><i class="fa fa-check"></i><b>2.1</b> Get data</a></li>
+<li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
+<li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
+<li class="chapter" data-level="2.4" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#analysis-of-the-distribution"><i class="fa fa-check"></i><b>2.4</b> Analysis of the distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#distributions"><i class="fa fa-check"></i><b>2.5</b> Distributions</a></li>
+<li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
+<li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
+<li class="chapter" data-level="2.8" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#machine-learning-functions-reference"><i class="fa fa-check"></i><b>2.8</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>2.8.1</b> Linear Regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="combinatorics.html"><a href="combinatorics.html"><i class="fa fa-check"></i><b>3</b> Combinatorics</a></li>
+<li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a></li>
+<li class="chapter" data-level="5" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>5</b> Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>5.1</b> Definitions</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability-1"><i class="fa fa-check"></i><b>5.2</b> Probability</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>6</b> Statistical distributions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>6.1</b> Normal Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>6.2</b> Bernoulli Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>6.3</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>6.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>6.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>6.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>6.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>6.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>6.9</b> Chi-squared Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary data analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>7.1</b> Analysis of sample distribution</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#histogram"><i class="fa fa-check"></i><b>7.1.1</b> Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#handling-missing-data"><i class="fa fa-check"></i><b>7.2</b> Handling missing data</a></li>
+<li class="chapter" data-level="7.3" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#dealing-with-outliers"><i class="fa fa-check"></i><b>7.3</b> Dealing with outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-normalization.html"><a href="data-normalization.html"><i class="fa fa-check"></i><b>8</b> Data normalization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-normalization.html"><a href="data-normalization.html#normality-test"><i class="fa fa-check"></i><b>8.1</b> Normality test</a></li>
+<li class="chapter" data-level="8.2" data-path="data-normalization.html"><a href="data-normalization.html#finding-confidence-intervals"><i class="fa fa-check"></i><b>8.2</b> Finding Confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>9</b> Primary data analysis - Case studies</a></li>
+<li class="chapter" data-level="10" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>10.1</b> Hypothesis testing theory</a></li>
+<li class="chapter" data-level="10.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>10.2</b> Hypothesis test (Practice)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>11</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>11.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="11.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>11.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="11.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>11.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="11.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>11.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="11.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>11.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="11.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>11.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="11.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>11.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="11.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>11.8</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>12</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>12.1</b> Chi-squared tests</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>13</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>13.1</b> The Bonferroni correction</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>14</b> Sources</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>14.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>14.1.1</b> Two-tailed test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="16" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>16</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>16.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="16.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>16.2</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>17</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="18" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>18</b> Chi-squared test</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>18.1</b> Multinomial Goodness of Fit</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>19</b> Non-parametric Methods</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#sign-test"><i class="fa fa-check"></i><b>19.1</b> Sign Test</a></li>
+<li class="chapter" data-level="19.2" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#wilcoxon-signed-rank-test-1"><i class="fa fa-check"></i><b>19.2</b> Wilcoxon Signed-Rank Test</a></li>
+<li class="chapter" data-level="19.3" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#mann-whitney-wilcoxon-test"><i class="fa fa-check"></i><b>19.3</b> Mann-Whitney-Wilcoxon Test</a></li>
+<li class="chapter" data-level="19.4" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#kruskal-wallis-test"><i class="fa fa-check"></i><b>19.4</b> Kruskal-Wallis Test</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>20</b> Correlation</a></li>
+<li class="chapter" data-level="21" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>21</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="22" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>22</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="23" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html"><i class="fa fa-check"></i><b>23</b> Estimate model accuracy</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#continuous-variables"><i class="fa fa-check"></i><b>23.1</b> Continuous variables</a></li>
+<li class="chapter" data-level="23.2" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#discret-variables"><i class="fa fa-check"></i><b>23.2</b> Discret variables</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="model-evaluation.html"><a href="model-evaluation.html"><i class="fa fa-check"></i><b>24</b> Model evaluation</a></li>
+<li class="chapter" data-level="25" data-path="cross-validation-and-bootstrep.html"><a href="cross-validation-and-bootstrep.html"><i class="fa fa-check"></i><b>25</b> Cross-validation and Bootstrep</a></li>
+<li class="chapter" data-level="26" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>26</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>26.1</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="26.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>26.2</b> Generate random data set for the linear model</a></li>
+<li class="chapter" data-level="26.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>26.3</b> Practical example</a></li>
+<li class="chapter" data-level="26.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>26.4</b> Mean squared error (MSE)</a></li>
+<li class="chapter" data-level="26.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>26.5</b> Linear model in R</a></li>
+<li class="chapter" data-level="26.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>26.6</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="26.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>26.7</b> Choosing explanatory variables for the model</a></li>
+<li class="chapter" data-level="26.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>26.8</b> Assessment of model performance for categorical data.</a></li>
+<li class="chapter" data-level="26.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>26.9</b> Confidence intervals for linear model</a></li>
+<li class="chapter" data-level="26.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>26.10</b> Practical examples for linear model regression</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>27</b> Linear regression complex cases</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>27.1</b> Cars</a></li>
+<li class="chapter" data-level="27.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>27.2</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="27.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>27.3</b> More complex example</a></li>
+<li class="chapter" data-level="27.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>27.4</b> NEXT part</a></li>
+<li class="chapter" data-level="27.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>27.5</b> NEXT Part</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>28</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="29" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>29</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="30" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>30</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="spline-model.html"><a href="spline-model.html#splines"><i class="fa fa-check"></i><b>30.1</b> Splines</a></li>
+<li class="chapter" data-level="30.2" data-path="spline-model.html"><a href="spline-model.html#area-under-the-curve-using-spline-method"><i class="fa fa-check"></i><b>30.2</b> Area under the curve using spline method</a></li>
+<li class="chapter" data-level="30.3" data-path="spline-model.html"><a href="spline-model.html#set-data-using-given-function-and-predict-curve-using-spline-method"><i class="fa fa-check"></i><b>30.3</b> Set data using given function and predict curve using spline method</a></li>
+<li class="chapter" data-level="30.4" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>30.4</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="30.5" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>30.5</b> Split data for train and test</a></li>
+<li class="chapter" data-level="30.6" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>30.6</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="30.7" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>30.7</b> Build a model using splines</a></li>
+<li class="chapter" data-level="30.8" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>30.8</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="30.9" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>30.9</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="30.10" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>30.10</b> Bibliograpy</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>31.1</b> Confusion matrix</a></li>
+<li class="chapter" data-level="31.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>31.2</b> Next part</a></li>
+<li class="chapter" data-level="31.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>31.3</b> NExt part</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="models-for-binary-data.html"><a href="models-for-binary-data.html"><i class="fa fa-check"></i><b>32</b> Models for binary Data</a></li>
+<li class="chapter" data-level="33" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>33</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="34" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>34</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="clustering.html"><a href="clustering.html#finding-distances-using-factoextra"><i class="fa fa-check"></i><b>34.1</b> Finding distances using factoextra</a></li>
+<li class="chapter" data-level="34.2" data-path="clustering.html"><a href="clustering.html#example-of-choosing-clustering-model"><i class="fa fa-check"></i><b>34.2</b> Example of choosing clustering model</a></li>
+<li class="chapter" data-level="34.3" data-path="clustering.html"><a href="clustering.html#k-means-clustering"><i class="fa fa-check"></i><b>34.3</b> K-means clustering</a></li>
+<li class="chapter" data-level="34.4" data-path="clustering.html"><a href="clustering.html#k-means"><i class="fa fa-check"></i><b>34.4</b> k-Means</a></li>
+<li class="chapter" data-level="34.5" data-path="clustering.html"><a href="clustering.html#hierarchical-clustering"><i class="fa fa-check"></i><b>34.5</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="34.6" data-path="clustering.html"><a href="clustering.html#knn"><i class="fa fa-check"></i><b>34.6</b> KNN</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="regularization.html"><a href="regularization.html"><i class="fa fa-check"></i><b>35</b> Regularization</a></li>
+<li class="chapter" data-level="36" data-path="factor-analysis.html"><a href="factor-analysis.html"><i class="fa fa-check"></i><b>36</b> Factor analysis</a></li>
+<li class="chapter" data-level="37" data-path="principal-component-analysis.html"><a href="principal-component-analysis.html"><i class="fa fa-check"></i><b>37</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="38" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html"><i class="fa fa-check"></i><b>38</b> Principal component analysis</a>
+<ul>
+<li class="chapter" data-level="38.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-statistics-1"><i class="fa fa-check"></i><b>38.1</b> Basic statistics</a></li>
+<li class="chapter" data-level="38.2" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-linear-algebra-matrices"><i class="fa fa-check"></i><b>38.2</b> Basic linear algebra (matrices)</a>
+<ul>
+<li class="chapter" data-level="38.2.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#t-sne---stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>38.2.1</b> t-SNE - Stochastic Neighbor Embedding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>39</b> Learning Vector Quantization</a></li>
+<li class="chapter" data-level="40" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>40</b> Tree-based models</a>
+<ul>
+<li class="chapter" data-level="40.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>40.1</b> Classification Tree example</a></li>
+<li class="chapter" data-level="40.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>40.2</b> Regression Tree example</a></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i><b>41</b> Random forest</a></li>
+<li class="chapter" data-level="42" data-path="gradient-boosted-trees.html"><a href="gradient-boosted-trees.html"><i class="fa fa-check"></i><b>42</b> Gradient boosted trees</a></li>
+<li class="chapter" data-level="43" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>43</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="44" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>44</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="44.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>44.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="bayesian-inference.html"><a href="bayesian-inference.html"><i class="fa fa-check"></i><b>45</b> Bayesian inference</a>
+<ul>
+<li class="chapter" data-level="45.1" data-path="bayesian-inference.html"><a href="bayesian-inference.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>45.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="45.2" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation"><i class="fa fa-check"></i><b>45.2</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.3" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation-1"><i class="fa fa-check"></i><b>45.3</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.4" data-path="bayesian-inference.html"><a href="bayesian-inference.html#model-of-birth-weights-using-normal-distribution"><i class="fa fa-check"></i><b>45.4</b> Model of birth weights using normal distribution</a></li>
+<li class="chapter" data-level="45.5" data-path="bayesian-inference.html"><a href="bayesian-inference.html#a-bayesian-model-of-zombie-iq"><i class="fa fa-check"></i><b>45.5</b> A Bayesian model of Zombie IQ</a></li>
+<li class="chapter" data-level="45.6" data-path="bayesian-inference.html"><a href="bayesian-inference.html#the-best-models"><i class="fa fa-check"></i><b>45.6</b> The BEST models</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="naive-bayes-classifiers.html"><a href="naive-bayes-classifiers.html"><i class="fa fa-check"></i><b>46</b> Naive Bayes classifiers</a></li>
+<li class="chapter" data-level="47" data-path="modeling-with-r-caret.html"><a href="modeling-with-r-caret.html"><i class="fa fa-check"></i><b>47</b> Modeling with R caret</a></li>
+<li class="chapter" data-level="48" data-path="modeling-with-r-tensorflow.html"><a href="modeling-with-r-tensorflow.html"><i class="fa fa-check"></i><b>48</b> Modeling with R Tensorflow</a></li>
+<li class="chapter" data-level="49" data-path="perceptron.html"><a href="perceptron.html"><i class="fa fa-check"></i><b>49</b> Perceptron</a></li>
+<li class="chapter" data-level="50" data-path="deeplearning-r-h2o.html"><a href="deeplearning-r-h2o.html"><i class="fa fa-check"></i><b>50</b> Deeplearning R H2O</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="perceptron" class="section level1" number="49">
+<h1><span class="header-section-number">Chapter 49</span> Perceptron</h1>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="perceptron.html#cb357-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">30</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) </span>
+<span id="cb357-2"><a href="perceptron.html#cb357-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">30</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb357-3"><a href="perceptron.html#cb357-3" aria-hidden="true" tabindex="-1"></a><span class="co">#form the input vector x</span></span>
+<span id="cb357-4"><a href="perceptron.html#cb357-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x1,x2)</span>
+<span id="cb357-5"><a href="perceptron.html#cb357-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-6"><a href="perceptron.html#cb357-6" aria-hidden="true" tabindex="-1"></a><span class="co">#helper function to calculate distance from hyperplane</span></span>
+<span id="cb357-7"><a href="perceptron.html#cb357-7" aria-hidden="true" tabindex="-1"></a>calculate_distance <span class="ot">=</span> <span class="cf">function</span>(x,w,b) {</span>
+<span id="cb357-8"><a href="perceptron.html#cb357-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(x<span class="sc">*</span>w) <span class="sc">+</span> b</span>
+<span id="cb357-9"><a href="perceptron.html#cb357-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb357-10"><a href="perceptron.html#cb357-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-11"><a href="perceptron.html#cb357-11" aria-hidden="true" tabindex="-1"></a><span class="co">#linear classifier</span></span>
+<span id="cb357-12"><a href="perceptron.html#cb357-12" aria-hidden="true" tabindex="-1"></a>linear_classifier <span class="ot">=</span> <span class="cf">function</span>(x,w,b) {</span>
+<span id="cb357-13"><a href="perceptron.html#cb357-13" aria-hidden="true" tabindex="-1"></a>    distances <span class="ot">=</span><span class="fu">apply</span>(x, <span class="dv">1</span>, calculate_distance, w, b)</span>
+<span id="cb357-14"><a href="perceptron.html#cb357-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">ifelse</span>(distances <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">+</span><span class="dv">1</span>))</span>
+<span id="cb357-15"><a href="perceptron.html#cb357-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb357-16"><a href="perceptron.html#cb357-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-17"><a href="perceptron.html#cb357-17" aria-hidden="true" tabindex="-1"></a><span class="co">#function to calculate 2nd norm</span></span>
+<span id="cb357-18"><a href="perceptron.html#cb357-18" aria-hidden="true" tabindex="-1"></a>second_norm <span class="ot">=</span> <span class="cf">function</span>(x) {<span class="fu">sqrt</span>(<span class="fu">sum</span>(x <span class="sc">*</span> x))}</span>
+<span id="cb357-19"><a href="perceptron.html#cb357-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-20"><a href="perceptron.html#cb357-20" aria-hidden="true" tabindex="-1"></a><span class="co">#perceptron training algorithm</span></span>
+<span id="cb357-21"><a href="perceptron.html#cb357-21" aria-hidden="true" tabindex="-1"></a>perceptron <span class="ot">=</span> <span class="cf">function</span>(x, y, <span class="at">learning_rate=</span><span class="dv">1</span>) {</span>
+<span id="cb357-22"><a href="perceptron.html#cb357-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-23"><a href="perceptron.html#cb357-23" aria-hidden="true" tabindex="-1"></a>    w <span class="ot">=</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="fu">ncol</span>(x)) <span class="co"># initialize w</span></span>
+<span id="cb357-24"><a href="perceptron.html#cb357-24" aria-hidden="true" tabindex="-1"></a>    b <span class="ot">=</span> <span class="dv">0</span> <span class="co"># Initialize b</span></span>
+<span id="cb357-25"><a href="perceptron.html#cb357-25" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">=</span> <span class="dv">0</span> <span class="co"># count iterations</span></span>
+<span id="cb357-26"><a href="perceptron.html#cb357-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-27"><a href="perceptron.html#cb357-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#constant with value greater than distance of furthest point</span></span>
+<span id="cb357-28"><a href="perceptron.html#cb357-28" aria-hidden="true" tabindex="-1"></a>    R <span class="ot">=</span> <span class="fu">max</span>(<span class="fu">apply</span>(x, <span class="dv">1</span>, second_norm)) </span>
+<span id="cb357-29"><a href="perceptron.html#cb357-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-30"><a href="perceptron.html#cb357-30" aria-hidden="true" tabindex="-1"></a>    incorrect <span class="ot">=</span> <span class="cn">TRUE</span> <span class="co"># flag to identify classifier</span></span>
+<span id="cb357-31"><a href="perceptron.html#cb357-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-32"><a href="perceptron.html#cb357-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">#initialize plot</span></span>
+<span id="cb357-33"><a href="perceptron.html#cb357-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(x,<span class="at">cex=</span><span class="fl">0.2</span>)</span>
+<span id="cb357-34"><a href="perceptron.html#cb357-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-35"><a href="perceptron.html#cb357-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">#loop till correct classifier is not found</span></span>
+<span id="cb357-36"><a href="perceptron.html#cb357-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (incorrect ) {</span>
+<span id="cb357-37"><a href="perceptron.html#cb357-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb357-38"><a href="perceptron.html#cb357-38" aria-hidden="true" tabindex="-1"></a>        incorrect <span class="ot">=</span> <span class="cn">FALSE</span> </span>
+<span id="cb357-39"><a href="perceptron.html#cb357-39" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb357-40"><a href="perceptron.html#cb357-40" aria-hidden="true" tabindex="-1"></a>        <span class="co">#classify with current weights</span></span>
+<span id="cb357-41"><a href="perceptron.html#cb357-41" aria-hidden="true" tabindex="-1"></a>        yc <span class="ot">&lt;-</span> <span class="fu">linear_classifier</span>(x,w,b)</span>
+<span id="cb357-42"><a href="perceptron.html#cb357-42" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Loop over each point in the input x</span></span>
+<span id="cb357-43"><a href="perceptron.html#cb357-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)) {</span>
+<span id="cb357-44"><a href="perceptron.html#cb357-44" aria-hidden="true" tabindex="-1"></a>            <span class="co">#update weights if point not classified correctly</span></span>
+<span id="cb357-45"><a href="perceptron.html#cb357-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (y[i] <span class="sc">!=</span> yc[i]) {</span>
+<span id="cb357-46"><a href="perceptron.html#cb357-46" aria-hidden="true" tabindex="-1"></a>                w <span class="ot">&lt;-</span> w <span class="sc">+</span> learning_rate <span class="sc">*</span> y[i]<span class="sc">*</span>x[i,]</span>
+<span id="cb357-47"><a href="perceptron.html#cb357-47" aria-hidden="true" tabindex="-1"></a>                b <span class="ot">&lt;-</span> b <span class="sc">+</span> learning_rate <span class="sc">*</span> y[i]<span class="sc">*</span>R<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb357-48"><a href="perceptron.html#cb357-48" aria-hidden="true" tabindex="-1"></a>                k <span class="ot">&lt;-</span> k<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb357-49"><a href="perceptron.html#cb357-49" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb357-50"><a href="perceptron.html#cb357-50" aria-hidden="true" tabindex="-1"></a>                <span class="co">#currect classifier&#39;s components</span></span>
+<span id="cb357-51"><a href="perceptron.html#cb357-51" aria-hidden="true" tabindex="-1"></a>                <span class="co"># update plot after ever 5 iterations</span></span>
+<span id="cb357-52"><a href="perceptron.html#cb357-52" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span>(k<span class="sc">%%</span><span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb357-53"><a href="perceptron.html#cb357-53" aria-hidden="true" tabindex="-1"></a>                    intercept <span class="ot">&lt;-</span> <span class="sc">-</span> b <span class="sc">/</span> w[[<span class="dv">2</span>]]</span>
+<span id="cb357-54"><a href="perceptron.html#cb357-54" aria-hidden="true" tabindex="-1"></a>                    slope <span class="ot">&lt;-</span> <span class="sc">-</span> w[[<span class="dv">1</span>]] <span class="sc">/</span> w[[<span class="dv">2</span>]]</span>
+<span id="cb357-55"><a href="perceptron.html#cb357-55" aria-hidden="true" tabindex="-1"></a>                    <span class="co">#plot the classifier hyper plane</span></span>
+<span id="cb357-56"><a href="perceptron.html#cb357-56" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">abline</span>(intercept,slope,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb357-57"><a href="perceptron.html#cb357-57" aria-hidden="true" tabindex="-1"></a>                    <span class="co">#wait for user input</span></span>
+<span id="cb357-58"><a href="perceptron.html#cb357-58" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">cat</span> (<span class="st">&quot;Iteration # &quot;</span>,k,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb357-59"><a href="perceptron.html#cb357-59" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">cat</span> (<span class="st">&quot;Press [enter] to continue&quot;</span>)</span>
+<span id="cb357-60"><a href="perceptron.html#cb357-60" aria-hidden="true" tabindex="-1"></a>                    line <span class="ot">&lt;-</span> <span class="fu">readline</span>()</span>
+<span id="cb357-61"><a href="perceptron.html#cb357-61" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb357-62"><a href="perceptron.html#cb357-62" aria-hidden="true" tabindex="-1"></a>                incorrect <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb357-63"><a href="perceptron.html#cb357-63" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb357-64"><a href="perceptron.html#cb357-64" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb357-65"><a href="perceptron.html#cb357-65" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb357-66"><a href="perceptron.html#cb357-66" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-67"><a href="perceptron.html#cb357-67" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">=</span> <span class="fu">second_norm</span>(w)</span>
+<span id="cb357-68"><a href="perceptron.html#cb357-68" aria-hidden="true" tabindex="-1"></a>    <span class="co">#scale the classifier with unit vector</span></span>
+<span id="cb357-69"><a href="perceptron.html#cb357-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">w=</span>w<span class="sc">/</span>s,<span class="at">b=</span>b<span class="sc">/</span>s,<span class="at">updates=</span>k))</span>
+<span id="cb357-70"><a href="perceptron.html#cb357-70" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb357-71"><a href="perceptron.html#cb357-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-72"><a href="perceptron.html#cb357-72" aria-hidden="true" tabindex="-1"></a><span class="co">#train the perceptron</span></span>
+<span id="cb357-73"><a href="perceptron.html#cb357-73" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">perceptron</span>(x,Y)</span>
+<span id="cb357-74"><a href="perceptron.html#cb357-74" aria-hidden="true" tabindex="-1"></a><span class="co">#classify based on calculated </span></span>
+<span id="cb357-75"><a href="perceptron.html#cb357-75" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">linear_classifier</span>(x,p<span class="sc">$</span>w,p<span class="sc">$</span>b)</span>
+<span id="cb357-76"><a href="perceptron.html#cb357-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-77"><a href="perceptron.html#cb357-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-78"><a href="perceptron.html#cb357-78" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="at">cex=</span><span class="fl">0.2</span>)</span>
+<span id="cb357-79"><a href="perceptron.html#cb357-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-80"><a href="perceptron.html#cb357-80" aria-hidden="true" tabindex="-1"></a><span class="co">#zoom into points near the separator and color code them</span></span>
+<span id="cb357-81"><a href="perceptron.html#cb357-81" aria-hidden="true" tabindex="-1"></a><span class="co">#marking data points as + which have y=1 and – for others</span></span>
+<span id="cb357-82"><a href="perceptron.html#cb357-82" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">subset</span>(x,Y<span class="sc">==</span><span class="dv">1</span>),<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">pch=</span><span class="st">&quot;+&quot;</span>,<span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb357-83"><a href="perceptron.html#cb357-83" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">subset</span>(x,Y<span class="sc">==-</span><span class="dv">1</span>),<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pch=</span><span class="st">&quot;-&quot;</span>,<span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb357-84"><a href="perceptron.html#cb357-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-85"><a href="perceptron.html#cb357-85" aria-hidden="true" tabindex="-1"></a><span class="co"># compute intercept on y axis of separator</span></span>
+<span id="cb357-86"><a href="perceptron.html#cb357-86" aria-hidden="true" tabindex="-1"></a><span class="co"># from w and b</span></span>
+<span id="cb357-87"><a href="perceptron.html#cb357-87" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="sc">-</span> p<span class="sc">$</span>b <span class="sc">/</span> p<span class="sc">$</span>w[[<span class="dv">2</span>]]</span>
+<span id="cb357-88"><a href="perceptron.html#cb357-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-89"><a href="perceptron.html#cb357-89" aria-hidden="true" tabindex="-1"></a><span class="co"># compute slope of separator from w</span></span>
+<span id="cb357-90"><a href="perceptron.html#cb357-90" aria-hidden="true" tabindex="-1"></a>slope <span class="ot">&lt;-</span> <span class="sc">-</span> p<span class="sc">$</span>w[[<span class="dv">1</span>]] <span class="sc">/</span>p<span class="sc">$</span> w[[<span class="dv">2</span>]]</span>
+<span id="cb357-91"><a href="perceptron.html#cb357-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-92"><a href="perceptron.html#cb357-92" aria-hidden="true" tabindex="-1"></a><span class="co"># draw separating boundary</span></span>
+<span id="cb357-93"><a href="perceptron.html#cb357-93" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(intercept,slope,<span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modeling-with-r-tensorflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="deeplearning-r-h2o.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/74_perceptron.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

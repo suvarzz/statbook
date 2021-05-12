@@ -37,7 +37,7 @@ $\sum{P( D | \theta) \pdot P( \theta ) }$ - The total sum of the likelihod weigh
 
 ```{r, message = FALSE}
 # Visualization function of Bayesian inference for binary data 
-#library(ggjoy) depreciated use ggridges instead
+library(ggjoy)
 library(ggridges)
 library(ggExtra)
 library(tidyverse)

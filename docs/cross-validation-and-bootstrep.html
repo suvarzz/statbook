@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 25 Cross-validation and Bootstrep | R statistics</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 25 Cross-validation and Bootstrep | R statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 25 Cross-validation and Bootstrep | R statistics" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Mark Goldberg" />
+
+
+<meta name="date" content="2021-05-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="model-evaluation.html"/>
+<link rel="next" href="linear-regression-1.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html"><i class="fa fa-check"></i><b>2</b> Statistics R functions reference</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#get-data"><i class="fa fa-check"></i><b>2.1</b> Get data</a></li>
+<li class="chapter" data-level="2.2" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#data-inspection"><i class="fa fa-check"></i><b>2.2</b> Data inspection</a></li>
+<li class="chapter" data-level="2.3" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#plots"><i class="fa fa-check"></i><b>2.3</b> Plots</a></li>
+<li class="chapter" data-level="2.4" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#analysis-of-the-distribution"><i class="fa fa-check"></i><b>2.4</b> Analysis of the distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#distributions"><i class="fa fa-check"></i><b>2.5</b> Distributions</a></li>
+<li class="chapter" data-level="2.6" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#t-test"><i class="fa fa-check"></i><b>2.6</b> t-Test</a></li>
+<li class="chapter" data-level="2.7" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#anova"><i class="fa fa-check"></i><b>2.7</b> ANOVA</a></li>
+<li class="chapter" data-level="2.8" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#machine-learning-functions-reference"><i class="fa fa-check"></i><b>2.8</b> Machine Learning Functions Reference</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="statistics-r-functions-reference.html"><a href="statistics-r-functions-reference.html#linear-regression"><i class="fa fa-check"></i><b>2.8.1</b> Linear Regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="combinatorics.html"><a href="combinatorics.html"><i class="fa fa-check"></i><b>3</b> Combinatorics</a></li>
+<li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a></li>
+<li class="chapter" data-level="5" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>5</b> Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>5.1</b> Definitions</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability-1"><i class="fa fa-check"></i><b>5.2</b> Probability</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>6</b> Statistical distributions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>6.1</b> Normal Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>6.2</b> Bernoulli Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>6.3</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>6.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>6.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>6.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>6.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>6.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>6.9</b> Chi-squared Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary data analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>7.1</b> Analysis of sample distribution</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#histogram"><i class="fa fa-check"></i><b>7.1.1</b> Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#handling-missing-data"><i class="fa fa-check"></i><b>7.2</b> Handling missing data</a></li>
+<li class="chapter" data-level="7.3" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#dealing-with-outliers"><i class="fa fa-check"></i><b>7.3</b> Dealing with outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-normalization.html"><a href="data-normalization.html"><i class="fa fa-check"></i><b>8</b> Data normalization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-normalization.html"><a href="data-normalization.html#normality-test"><i class="fa fa-check"></i><b>8.1</b> Normality test</a></li>
+<li class="chapter" data-level="8.2" data-path="data-normalization.html"><a href="data-normalization.html#finding-confidence-intervals"><i class="fa fa-check"></i><b>8.2</b> Finding Confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>9</b> Primary data analysis - Case studies</a></li>
+<li class="chapter" data-level="10" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>10.1</b> Hypothesis testing theory</a></li>
+<li class="chapter" data-level="10.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>10.2</b> Hypothesis test (Practice)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>11</b> t-Procedures</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>11.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="11.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>11.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="11.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>11.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="11.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>11.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="11.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>11.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="11.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>11.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="11.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>11.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="11.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>11.8</b> Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>12</b> Tests for categorical variables</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>12.1</b> Chi-squared tests</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>13</b> Multiple testing</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>13.1</b> The Bonferroni correction</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>14</b> Sources</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>14.1</b> t-test</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>14.1.1</b> Two-tailed test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="16" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>16</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>16.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="16.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>16.2</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>17</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="18" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>18</b> Chi-squared test</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>18.1</b> Multinomial Goodness of Fit</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>19</b> Non-parametric Methods</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#sign-test"><i class="fa fa-check"></i><b>19.1</b> Sign Test</a></li>
+<li class="chapter" data-level="19.2" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#wilcoxon-signed-rank-test-1"><i class="fa fa-check"></i><b>19.2</b> Wilcoxon Signed-Rank Test</a></li>
+<li class="chapter" data-level="19.3" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#mann-whitney-wilcoxon-test"><i class="fa fa-check"></i><b>19.3</b> Mann-Whitney-Wilcoxon Test</a></li>
+<li class="chapter" data-level="19.4" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#kruskal-wallis-test"><i class="fa fa-check"></i><b>19.4</b> Kruskal-Wallis Test</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>20</b> Correlation</a></li>
+<li class="chapter" data-level="21" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>21</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="22" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>22</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="23" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html"><i class="fa fa-check"></i><b>23</b> Estimate model accuracy</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#continuous-variables"><i class="fa fa-check"></i><b>23.1</b> Continuous variables</a></li>
+<li class="chapter" data-level="23.2" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#discret-variables"><i class="fa fa-check"></i><b>23.2</b> Discret variables</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="model-evaluation.html"><a href="model-evaluation.html"><i class="fa fa-check"></i><b>24</b> Model evaluation</a></li>
+<li class="chapter" data-level="25" data-path="cross-validation-and-bootstrep.html"><a href="cross-validation-and-bootstrep.html"><i class="fa fa-check"></i><b>25</b> Cross-validation and Bootstrep</a></li>
+<li class="chapter" data-level="26" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>26</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>26.1</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="26.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>26.2</b> Generate random data set for the linear model</a></li>
+<li class="chapter" data-level="26.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>26.3</b> Practical example</a></li>
+<li class="chapter" data-level="26.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>26.4</b> Mean squared error (MSE)</a></li>
+<li class="chapter" data-level="26.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>26.5</b> Linear model in R</a></li>
+<li class="chapter" data-level="26.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>26.6</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="26.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>26.7</b> Choosing explanatory variables for the model</a></li>
+<li class="chapter" data-level="26.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>26.8</b> Assessment of model performance for categorical data.</a></li>
+<li class="chapter" data-level="26.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>26.9</b> Confidence intervals for linear model</a></li>
+<li class="chapter" data-level="26.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>26.10</b> Practical examples for linear model regression</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>27</b> Linear regression complex cases</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>27.1</b> Cars</a></li>
+<li class="chapter" data-level="27.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>27.2</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="27.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>27.3</b> More complex example</a></li>
+<li class="chapter" data-level="27.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>27.4</b> NEXT part</a></li>
+<li class="chapter" data-level="27.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>27.5</b> NEXT Part</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>28</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="29" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>29</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="30" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>30</b> Spline model</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="spline-model.html"><a href="spline-model.html#splines"><i class="fa fa-check"></i><b>30.1</b> Splines</a></li>
+<li class="chapter" data-level="30.2" data-path="spline-model.html"><a href="spline-model.html#area-under-the-curve-using-spline-method"><i class="fa fa-check"></i><b>30.2</b> Area under the curve using spline method</a></li>
+<li class="chapter" data-level="30.3" data-path="spline-model.html"><a href="spline-model.html#set-data-using-given-function-and-predict-curve-using-spline-method"><i class="fa fa-check"></i><b>30.3</b> Set data using given function and predict curve using spline method</a></li>
+<li class="chapter" data-level="30.4" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>30.4</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="30.5" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>30.5</b> Split data for train and test</a></li>
+<li class="chapter" data-level="30.6" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>30.6</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="30.7" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>30.7</b> Build a model using splines</a></li>
+<li class="chapter" data-level="30.8" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>30.8</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="30.9" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>30.9</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="30.10" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>30.10</b> Bibliograpy</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>31.1</b> Confusion matrix</a></li>
+<li class="chapter" data-level="31.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>31.2</b> Next part</a></li>
+<li class="chapter" data-level="31.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>31.3</b> NExt part</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="models-for-binary-data.html"><a href="models-for-binary-data.html"><i class="fa fa-check"></i><b>32</b> Models for binary Data</a></li>
+<li class="chapter" data-level="33" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>33</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="34" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>34</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="clustering.html"><a href="clustering.html#finding-distances-using-factoextra"><i class="fa fa-check"></i><b>34.1</b> Finding distances using factoextra</a></li>
+<li class="chapter" data-level="34.2" data-path="clustering.html"><a href="clustering.html#example-of-choosing-clustering-model"><i class="fa fa-check"></i><b>34.2</b> Example of choosing clustering model</a></li>
+<li class="chapter" data-level="34.3" data-path="clustering.html"><a href="clustering.html#k-means-clustering"><i class="fa fa-check"></i><b>34.3</b> K-means clustering</a></li>
+<li class="chapter" data-level="34.4" data-path="clustering.html"><a href="clustering.html#k-means"><i class="fa fa-check"></i><b>34.4</b> k-Means</a></li>
+<li class="chapter" data-level="34.5" data-path="clustering.html"><a href="clustering.html#hierarchical-clustering"><i class="fa fa-check"></i><b>34.5</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="34.6" data-path="clustering.html"><a href="clustering.html#knn"><i class="fa fa-check"></i><b>34.6</b> KNN</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="regularization.html"><a href="regularization.html"><i class="fa fa-check"></i><b>35</b> Regularization</a></li>
+<li class="chapter" data-level="36" data-path="factor-analysis.html"><a href="factor-analysis.html"><i class="fa fa-check"></i><b>36</b> Factor analysis</a></li>
+<li class="chapter" data-level="37" data-path="principal-component-analysis.html"><a href="principal-component-analysis.html"><i class="fa fa-check"></i><b>37</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="38" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html"><i class="fa fa-check"></i><b>38</b> Principal component analysis</a>
+<ul>
+<li class="chapter" data-level="38.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-statistics-1"><i class="fa fa-check"></i><b>38.1</b> Basic statistics</a></li>
+<li class="chapter" data-level="38.2" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-linear-algebra-matrices"><i class="fa fa-check"></i><b>38.2</b> Basic linear algebra (matrices)</a>
+<ul>
+<li class="chapter" data-level="38.2.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#t-sne---stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>38.2.1</b> t-SNE - Stochastic Neighbor Embedding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>39</b> Learning Vector Quantization</a></li>
+<li class="chapter" data-level="40" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>40</b> Tree-based models</a>
+<ul>
+<li class="chapter" data-level="40.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>40.1</b> Classification Tree example</a></li>
+<li class="chapter" data-level="40.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>40.2</b> Regression Tree example</a></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i><b>41</b> Random forest</a></li>
+<li class="chapter" data-level="42" data-path="gradient-boosted-trees.html"><a href="gradient-boosted-trees.html"><i class="fa fa-check"></i><b>42</b> Gradient boosted trees</a></li>
+<li class="chapter" data-level="43" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>43</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="44" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>44</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="44.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>44.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="bayesian-inference.html"><a href="bayesian-inference.html"><i class="fa fa-check"></i><b>45</b> Bayesian inference</a>
+<ul>
+<li class="chapter" data-level="45.1" data-path="bayesian-inference.html"><a href="bayesian-inference.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>45.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="45.2" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation"><i class="fa fa-check"></i><b>45.2</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.3" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation-1"><i class="fa fa-check"></i><b>45.3</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.4" data-path="bayesian-inference.html"><a href="bayesian-inference.html#model-of-birth-weights-using-normal-distribution"><i class="fa fa-check"></i><b>45.4</b> Model of birth weights using normal distribution</a></li>
+<li class="chapter" data-level="45.5" data-path="bayesian-inference.html"><a href="bayesian-inference.html#a-bayesian-model-of-zombie-iq"><i class="fa fa-check"></i><b>45.5</b> A Bayesian model of Zombie IQ</a></li>
+<li class="chapter" data-level="45.6" data-path="bayesian-inference.html"><a href="bayesian-inference.html#the-best-models"><i class="fa fa-check"></i><b>45.6</b> The BEST models</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="naive-bayes-classifiers.html"><a href="naive-bayes-classifiers.html"><i class="fa fa-check"></i><b>46</b> Naive Bayes classifiers</a></li>
+<li class="chapter" data-level="47" data-path="modeling-with-r-caret.html"><a href="modeling-with-r-caret.html"><i class="fa fa-check"></i><b>47</b> Modeling with R caret</a></li>
+<li class="chapter" data-level="48" data-path="modeling-with-r-tensorflow.html"><a href="modeling-with-r-tensorflow.html"><i class="fa fa-check"></i><b>48</b> Modeling with R Tensorflow</a></li>
+<li class="chapter" data-level="49" data-path="perceptron.html"><a href="perceptron.html"><i class="fa fa-check"></i><b>49</b> Perceptron</a></li>
+<li class="chapter" data-level="50" data-path="deeplearning-r-h2o.html"><a href="deeplearning-r-h2o.html"><i class="fa fa-check"></i><b>50</b> Deeplearning R H2O</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cross-validation-and-bootstrep" class="section level1" number="25">
+<h1><span class="header-section-number">Chapter 25</span> Cross-validation and Bootstrep</h1>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="cross-validation-and-bootstrep.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validation and bootstep</span></span>
+<span id="cb157-2"><a href="cross-validation-and-bootstrep.html#cb157-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-3"><a href="cross-validation-and-bootstrep.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: Course &#39;Math modeling&#39; practical work, State University of Management, Moscow</span></span>
+<span id="cb157-4"><a href="cross-validation-and-bootstrep.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># link: https://sites.google.com/a/kiber-guu.ru/r-practice/home</span></span>
+<span id="cb157-5"><a href="cross-validation-and-bootstrep.html#cb157-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-6"><a href="cross-validation-and-bootstrep.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;ISLR&#39;</span>)              <span class="co"># набор данных Auto</span></span>
+<span id="cb157-7"><a href="cross-validation-and-bootstrep.html#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;GGally&#39;</span>)            <span class="co"># матричные графики</span></span>
+<span id="cb157-8"><a href="cross-validation-and-bootstrep.html#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;boot&#39;</span>)              <span class="co"># расчёт ошибки с кросс-валидацией</span></span>
+<span id="cb157-9"><a href="cross-validation-and-bootstrep.html#cb157-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-10"><a href="cross-validation-and-bootstrep.html#cb157-10" aria-hidden="true" tabindex="-1"></a>my.seed <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb157-11"><a href="cross-validation-and-bootstrep.html#cb157-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-12"><a href="cross-validation-and-bootstrep.html#cb157-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data and do primary visual inspection</span></span>
+<span id="cb157-13"><a href="cross-validation-and-bootstrep.html#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Auto)</span>
+<span id="cb157-14"><a href="cross-validation-and-bootstrep.html#cb157-14" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Auto)</span>
+<span id="cb157-15"><a href="cross-validation-and-bootstrep.html#cb157-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(Auto[, <span class="sc">-</span><span class="dv">9</span>])</span>
+<span id="cb157-16"><a href="cross-validation-and-bootstrep.html#cb157-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-17"><a href="cross-validation-and-bootstrep.html#cb157-17" aria-hidden="true" tabindex="-1"></a><span class="co"># только mpg ~ horsepower</span></span>
+<span id="cb157-18"><a href="cross-validation-and-bootstrep.html#cb157-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Auto<span class="sc">$</span>horsepower, Auto<span class="sc">$</span>mpg,</span>
+<span id="cb157-19"><a href="cross-validation-and-bootstrep.html#cb157-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;horsepower&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mpg&#39;</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb157-20"><a href="cross-validation-and-bootstrep.html#cb157-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>), <span class="at">bg =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>))</span>
+<span id="cb157-21"><a href="cross-validation-and-bootstrep.html#cb157-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-22"><a href="cross-validation-and-bootstrep.html#cb157-22" aria-hidden="true" tabindex="-1"></a><span class="co"># общее число наблюдений</span></span>
+<span id="cb157-23"><a href="cross-validation-and-bootstrep.html#cb157-23" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(Auto)</span>
+<span id="cb157-24"><a href="cross-validation-and-bootstrep.html#cb157-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-25"><a href="cross-validation-and-bootstrep.html#cb157-25" aria-hidden="true" tabindex="-1"></a><span class="co"># доля обучающей выборки</span></span>
+<span id="cb157-26"><a href="cross-validation-and-bootstrep.html#cb157-26" aria-hidden="true" tabindex="-1"></a>train.percent <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb157-27"><a href="cross-validation-and-bootstrep.html#cb157-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-28"><a href="cross-validation-and-bootstrep.html#cb157-28" aria-hidden="true" tabindex="-1"></a><span class="co"># выбрать наблюдения в обучающую выборку</span></span>
+<span id="cb157-29"><a href="cross-validation-and-bootstrep.html#cb157-29" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb157-30"><a href="cross-validation-and-bootstrep.html#cb157-30" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(n, n <span class="sc">*</span> train.percent)</span>
+<span id="cb157-31"><a href="cross-validation-and-bootstrep.html#cb157-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-32"><a href="cross-validation-and-bootstrep.html#cb157-32" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Auto<span class="sc">$</span>horsepower[inTrain], Auto<span class="sc">$</span>mpg[inTrain],</span>
+<span id="cb157-33"><a href="cross-validation-and-bootstrep.html#cb157-33" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;horsepower&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;mpg&#39;</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb157-34"><a href="cross-validation-and-bootstrep.html#cb157-34" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>), <span class="at">bg =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>))</span>
+<span id="cb157-35"><a href="cross-validation-and-bootstrep.html#cb157-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-36"><a href="cross-validation-and-bootstrep.html#cb157-36" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Auto<span class="sc">$</span>horsepower[<span class="sc">-</span>inTrain], Auto<span class="sc">$</span>mpg[<span class="sc">-</span>inTrain],</span>
+<span id="cb157-37"><a href="cross-validation-and-bootstrep.html#cb157-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>), <span class="at">bg =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>))</span>
+<span id="cb157-38"><a href="cross-validation-and-bootstrep.html#cb157-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-39"><a href="cross-validation-and-bootstrep.html#cb157-39" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topright&#39;</span>, </span>
+<span id="cb157-40"><a href="cross-validation-and-bootstrep.html#cb157-40" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;test&#39;</span>, <span class="st">&#39;train&#39;</span>))</span>
+<span id="cb157-41"><a href="cross-validation-and-bootstrep.html#cb157-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-42"><a href="cross-validation-and-bootstrep.html#cb157-42" aria-hidden="true" tabindex="-1"></a><span class="do">### Build different types of models</span></span>
+<span id="cb157-43"><a href="cross-validation-and-bootstrep.html#cb157-43" aria-hidden="true" tabindex="-1"></a><span class="do">## 1. Linear model mpg = a+b*horsepower</span></span>
+<span id="cb157-44"><a href="cross-validation-and-bootstrep.html#cb157-44" aria-hidden="true" tabindex="-1"></a><span class="co"># присоединить таблицу с данными: названия стоблцов будут доступны напрямую</span></span>
+<span id="cb157-45"><a href="cross-validation-and-bootstrep.html#cb157-45" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Auto)</span>
+<span id="cb157-46"><a href="cross-validation-and-bootstrep.html#cb157-46" aria-hidden="true" tabindex="-1"></a><span class="co"># подгонка линейной модели на обучающей выборке</span></span>
+<span id="cb157-47"><a href="cross-validation-and-bootstrep.html#cb157-47" aria-hidden="true" tabindex="-1"></a>fit.lm<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower, <span class="at">subset =</span> inTrain)</span>
+<span id="cb157-48"><a href="cross-validation-and-bootstrep.html#cb157-48" aria-hidden="true" tabindex="-1"></a><span class="co"># считаем MSE на тестовой выборке</span></span>
+<span id="cb157-49"><a href="cross-validation-and-bootstrep.html#cb157-49" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((mpg[<span class="sc">-</span>inTrain] <span class="sc">-</span> <span class="fu">predict</span>(fit.lm<span class="fl">.1</span>, Auto[<span class="sc">-</span>inTrain, ]))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb157-50"><a href="cross-validation-and-bootstrep.html#cb157-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-51"><a href="cross-validation-and-bootstrep.html#cb157-51" aria-hidden="true" tabindex="-1"></a><span class="co"># отсоединить таблицу с данными</span></span>
+<span id="cb157-52"><a href="cross-validation-and-bootstrep.html#cb157-52" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Auto)</span>
+<span id="cb157-53"><a href="cross-validation-and-bootstrep.html#cb157-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-54"><a href="cross-validation-and-bootstrep.html#cb157-54" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb157-55"><a href="cross-validation-and-bootstrep.html#cb157-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-56"><a href="cross-validation-and-bootstrep.html#cb157-56" aria-hidden="true" tabindex="-1"></a><span class="do">## 2. Square Model mpg = a + b*horsepower + c*horsepower^2</span></span>
+<span id="cb157-57"><a href="cross-validation-and-bootstrep.html#cb157-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-58"><a href="cross-validation-and-bootstrep.html#cb157-58" aria-hidden="true" tabindex="-1"></a><span class="co"># присоединить таблицу с данными: названия стоблцов будут доступны напрямую</span></span>
+<span id="cb157-59"><a href="cross-validation-and-bootstrep.html#cb157-59" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Auto)</span>
+<span id="cb157-60"><a href="cross-validation-and-bootstrep.html#cb157-60" aria-hidden="true" tabindex="-1"></a><span class="co"># подгонка линейной модели на обучающей выборке</span></span>
+<span id="cb157-61"><a href="cross-validation-and-bootstrep.html#cb157-61" aria-hidden="true" tabindex="-1"></a>fit.lm<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="fu">poly</span>(horsepower, <span class="dv">2</span>), <span class="at">subset =</span> inTrain)</span>
+<span id="cb157-62"><a href="cross-validation-and-bootstrep.html#cb157-62" aria-hidden="true" tabindex="-1"></a><span class="co"># считаем MSE на тестовой выборке</span></span>
+<span id="cb157-63"><a href="cross-validation-and-bootstrep.html#cb157-63" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((mpg[<span class="sc">-</span>inTrain] <span class="sc">-</span> <span class="fu">predict</span>(fit.lm<span class="fl">.2</span>, Auto[<span class="sc">-</span>inTrain, ]))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb157-64"><a href="cross-validation-and-bootstrep.html#cb157-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-65"><a href="cross-validation-and-bootstrep.html#cb157-65" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Auto)</span>
+<span id="cb157-66"><a href="cross-validation-and-bootstrep.html#cb157-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-67"><a href="cross-validation-and-bootstrep.html#cb157-67" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb157-68"><a href="cross-validation-and-bootstrep.html#cb157-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-69"><a href="cross-validation-and-bootstrep.html#cb157-69" aria-hidden="true" tabindex="-1"></a><span class="do">## 3. Qubiq Model mpg = a + b*horsepower + c*horsepower^2 + d*horsepower^3</span></span>
+<span id="cb157-70"><a href="cross-validation-and-bootstrep.html#cb157-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-71"><a href="cross-validation-and-bootstrep.html#cb157-71" aria-hidden="true" tabindex="-1"></a><span class="co"># присоединить таблицу с данными: названия стоблцов будут доступны напрямую</span></span>
+<span id="cb157-72"><a href="cross-validation-and-bootstrep.html#cb157-72" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Auto)</span>
+<span id="cb157-73"><a href="cross-validation-and-bootstrep.html#cb157-73" aria-hidden="true" tabindex="-1"></a><span class="co"># подгонка линейной модели на обучающей выборке</span></span>
+<span id="cb157-74"><a href="cross-validation-and-bootstrep.html#cb157-74" aria-hidden="true" tabindex="-1"></a>fit.lm<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="fu">poly</span>(horsepower, <span class="dv">3</span>), <span class="at">subset =</span> inTrain)</span>
+<span id="cb157-75"><a href="cross-validation-and-bootstrep.html#cb157-75" aria-hidden="true" tabindex="-1"></a><span class="co"># считаем MSE на тестовой выборке</span></span>
+<span id="cb157-76"><a href="cross-validation-and-bootstrep.html#cb157-76" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((mpg[<span class="sc">-</span>inTrain] <span class="sc">-</span> <span class="fu">predict</span>(fit.lm<span class="fl">.3</span>, Auto[<span class="sc">-</span>inTrain, ]))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb157-77"><a href="cross-validation-and-bootstrep.html#cb157-77" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Auto)</span>
+<span id="cb157-78"><a href="cross-validation-and-bootstrep.html#cb157-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-79"><a href="cross-validation-and-bootstrep.html#cb157-79" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb157-80"><a href="cross-validation-and-bootstrep.html#cb157-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-81"><a href="cross-validation-and-bootstrep.html#cb157-81" aria-hidden="true" tabindex="-1"></a><span class="do">## LOOCV - Cross validation</span></span>
+<span id="cb157-82"><a href="cross-validation-and-bootstrep.html#cb157-82" aria-hidden="true" tabindex="-1"></a><span class="co"># подгонка линейной модели на обучающей выборке</span></span>
+<span id="cb157-83"><a href="cross-validation-and-bootstrep.html#cb157-83" aria-hidden="true" tabindex="-1"></a>fit.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(mpg <span class="sc">~</span> horsepower, <span class="at">data =</span> Auto)</span>
+<span id="cb157-84"><a href="cross-validation-and-bootstrep.html#cb157-84" aria-hidden="true" tabindex="-1"></a><span class="co"># считаем LOOCV-ошибку</span></span>
+<span id="cb157-85"><a href="cross-validation-and-bootstrep.html#cb157-85" aria-hidden="true" tabindex="-1"></a>cv.err <span class="ot">&lt;-</span> <span class="fu">cv.glm</span>(Auto, fit.glm)</span>
+<span id="cb157-86"><a href="cross-validation-and-bootstrep.html#cb157-86" aria-hidden="true" tabindex="-1"></a><span class="co"># результат: первое число -- по формуле LOOCV-ошибки,</span></span>
+<span id="cb157-87"><a href="cross-validation-and-bootstrep.html#cb157-87" aria-hidden="true" tabindex="-1"></a><span class="co">#  второе -- с поправкой на смещение</span></span>
+<span id="cb157-88"><a href="cross-validation-and-bootstrep.html#cb157-88" aria-hidden="true" tabindex="-1"></a>cv.err<span class="sc">$</span>delta[<span class="dv">1</span>]</span>
+<span id="cb157-89"><a href="cross-validation-and-bootstrep.html#cb157-89" aria-hidden="true" tabindex="-1"></a><span class="co"># вектор с LOOCV-ошибками</span></span>
+<span id="cb157-90"><a href="cross-validation-and-bootstrep.html#cb157-90" aria-hidden="true" tabindex="-1"></a>cv.err.loocv <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb157-91"><a href="cross-validation-and-bootstrep.html#cb157-91" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cv.err.loocv) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb157-92"><a href="cross-validation-and-bootstrep.html#cb157-92" aria-hidden="true" tabindex="-1"></a><span class="co"># цикл по степеням полиномов</span></span>
+<span id="cb157-93"><a href="cross-validation-and-bootstrep.html#cb157-93" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb157-94"><a href="cross-validation-and-bootstrep.html#cb157-94" aria-hidden="true" tabindex="-1"></a>    fit.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(mpg <span class="sc">~</span> <span class="fu">poly</span>(horsepower, i), <span class="at">data =</span> Auto)</span>
+<span id="cb157-95"><a href="cross-validation-and-bootstrep.html#cb157-95" aria-hidden="true" tabindex="-1"></a>    cv.err.loocv[i] <span class="ot">&lt;-</span> <span class="fu">cv.glm</span>(Auto, fit.glm)<span class="sc">$</span>delta[<span class="dv">1</span>]</span>
+<span id="cb157-96"><a href="cross-validation-and-bootstrep.html#cb157-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb157-97"><a href="cross-validation-and-bootstrep.html#cb157-97" aria-hidden="true" tabindex="-1"></a><span class="co"># результат</span></span>
+<span id="cb157-98"><a href="cross-validation-and-bootstrep.html#cb157-98" aria-hidden="true" tabindex="-1"></a>cv.err.loocv</span>
+<span id="cb157-99"><a href="cross-validation-and-bootstrep.html#cb157-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-100"><a href="cross-validation-and-bootstrep.html#cb157-100" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------------</span></span>
+<span id="cb157-101"><a href="cross-validation-and-bootstrep.html#cb157-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-102"><a href="cross-validation-and-bootstrep.html#cb157-102" aria-hidden="true" tabindex="-1"></a><span class="do">## k-something cross-validation k-кратная перекрёстная проверка</span></span>
+<span id="cb157-103"><a href="cross-validation-and-bootstrep.html#cb157-103" aria-hidden="true" tabindex="-1"></a><span class="co"># оценим точность полиномиальных моделей, меняя степень</span></span>
+<span id="cb157-104"><a href="cross-validation-and-bootstrep.html#cb157-104" aria-hidden="true" tabindex="-1"></a><span class="co"># вектор с ошибками по 10-кратной кросс-валидации</span></span>
+<span id="cb157-105"><a href="cross-validation-and-bootstrep.html#cb157-105" aria-hidden="true" tabindex="-1"></a>cv.err.k.fold <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb157-106"><a href="cross-validation-and-bootstrep.html#cb157-106" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cv.err.k.fold) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb157-107"><a href="cross-validation-and-bootstrep.html#cb157-107" aria-hidden="true" tabindex="-1"></a><span class="co"># цикл по степеням полиномов</span></span>
+<span id="cb157-108"><a href="cross-validation-and-bootstrep.html#cb157-108" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb157-109"><a href="cross-validation-and-bootstrep.html#cb157-109" aria-hidden="true" tabindex="-1"></a>    fit.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(mpg <span class="sc">~</span> <span class="fu">poly</span>(horsepower, i), <span class="at">data =</span> Auto)</span>
+<span id="cb157-110"><a href="cross-validation-and-bootstrep.html#cb157-110" aria-hidden="true" tabindex="-1"></a>    cv.err.k.fold[i] <span class="ot">&lt;-</span> <span class="fu">cv.glm</span>(Auto, fit.glm,</span>
+<span id="cb157-111"><a href="cross-validation-and-bootstrep.html#cb157-111" aria-hidden="true" tabindex="-1"></a>                               <span class="at">K =</span> <span class="dv">10</span>)<span class="sc">$</span>delta[<span class="dv">1</span>]</span>
+<span id="cb157-112"><a href="cross-validation-and-bootstrep.html#cb157-112" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb157-113"><a href="cross-validation-and-bootstrep.html#cb157-113" aria-hidden="true" tabindex="-1"></a><span class="co"># result</span></span>
+<span id="cb157-114"><a href="cross-validation-and-bootstrep.html#cb157-114" aria-hidden="true" tabindex="-1"></a>cv.err.k.fold</span>
+<span id="cb157-115"><a href="cross-validation-and-bootstrep.html#cb157-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-116"><a href="cross-validation-and-bootstrep.html#cb157-116" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare with MSE</span></span>
+<span id="cb157-117"><a href="cross-validation-and-bootstrep.html#cb157-117" aria-hidden="true" tabindex="-1"></a>err.test</span>
+<span id="cb157-118"><a href="cross-validation-and-bootstrep.html#cb157-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-119"><a href="cross-validation-and-bootstrep.html#cb157-119" aria-hidden="true" tabindex="-1"></a><span class="do">##### BOOTSTREP</span></span>
+<span id="cb157-120"><a href="cross-validation-and-bootstrep.html#cb157-120" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Portfolio)</span>
+<span id="cb157-121"><a href="cross-validation-and-bootstrep.html#cb157-121" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Portfolio)</span>
+<span id="cb157-122"><a href="cross-validation-and-bootstrep.html#cb157-122" aria-hidden="true" tabindex="-1"></a><span class="co"># функция для вычисления искомого параметра</span></span>
+<span id="cb157-123"><a href="cross-validation-and-bootstrep.html#cb157-123" aria-hidden="true" tabindex="-1"></a>alpha.fn <span class="ot">&lt;-</span> <span class="cf">function</span>(data, index){</span>
+<span id="cb157-124"><a href="cross-validation-and-bootstrep.html#cb157-124" aria-hidden="true" tabindex="-1"></a>    X <span class="ot">=</span> data<span class="sc">$</span>X[index]</span>
+<span id="cb157-125"><a href="cross-validation-and-bootstrep.html#cb157-125" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">=</span> data<span class="sc">$</span>Y[index]</span>
+<span id="cb157-126"><a href="cross-validation-and-bootstrep.html#cb157-126" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">var</span>(Y) <span class="sc">-</span> <span class="fu">cov</span>(X, Y)) <span class="sc">/</span> (<span class="fu">var</span>(X) <span class="sc">+</span> <span class="fu">var</span>(Y) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cov</span>(X, Y))</span>
+<span id="cb157-127"><a href="cross-validation-and-bootstrep.html#cb157-127" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb157-128"><a href="cross-validation-and-bootstrep.html#cb157-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-129"><a href="cross-validation-and-bootstrep.html#cb157-129" aria-hidden="true" tabindex="-1"></a><span class="co"># рассчитать alpha по всем 100 наблюдениям</span></span>
+<span id="cb157-130"><a href="cross-validation-and-bootstrep.html#cb157-130" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha.fn</span>(Portfolio, <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
+<span id="cb157-131"><a href="cross-validation-and-bootstrep.html#cb157-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-132"><a href="cross-validation-and-bootstrep.html#cb157-132" aria-hidden="true" tabindex="-1"></a><span class="co"># создать бутстреп-выборку и повторно вычислить alpha</span></span>
+<span id="cb157-133"><a href="cross-validation-and-bootstrep.html#cb157-133" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb157-134"><a href="cross-validation-and-bootstrep.html#cb157-134" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha.fn</span>(Portfolio, <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">100</span>, <span class="at">replace =</span> T))</span>
+<span id="cb157-135"><a href="cross-validation-and-bootstrep.html#cb157-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-136"><a href="cross-validation-and-bootstrep.html#cb157-136" aria-hidden="true" tabindex="-1"></a><span class="co"># теперь -- многократное повторение предыдущей операции</span></span>
+<span id="cb157-137"><a href="cross-validation-and-bootstrep.html#cb157-137" aria-hidden="true" tabindex="-1"></a><span class="fu">boot</span>(Portfolio, alpha.fn, <span class="at">R =</span> <span class="dv">1000</span>)</span>
+<span id="cb157-138"><a href="cross-validation-and-bootstrep.html#cb157-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-139"><a href="cross-validation-and-bootstrep.html#cb157-139" aria-hidden="true" tabindex="-1"></a><span class="co">#Бутстреп повторяет расчёт параметра много раз, делая повторные выборки из наших 100 наблюдений. В итоге этим методом можно вычислить стандартную ошибку параметра, не опираясь на допущения о законе распределении параметра. В нашем случае α=0.576 со стандартной ошибкой sα^=0.089.</span></span>
+<span id="cb157-140"><a href="cross-validation-and-bootstrep.html#cb157-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-141"><a href="cross-validation-and-bootstrep.html#cb157-141" aria-hidden="true" tabindex="-1"></a><span class="co">#Tочность оценки параметра регрессии</span></span>
+<span id="cb157-142"><a href="cross-validation-and-bootstrep.html#cb157-142" aria-hidden="true" tabindex="-1"></a><span class="co"># При построении модели регрессии проблемы в остатках приводят к неверной оценке ошибок параметров. Обойти эту проблему можно, применив для расчёта этих ошибок бутстреп.</span></span>
+<span id="cb157-143"><a href="cross-validation-and-bootstrep.html#cb157-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-144"><a href="cross-validation-and-bootstrep.html#cb157-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Оценивание точности линейной регрессионной модели ----------------------------</span></span>
+<span id="cb157-145"><a href="cross-validation-and-bootstrep.html#cb157-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-146"><a href="cross-validation-and-bootstrep.html#cb157-146" aria-hidden="true" tabindex="-1"></a><span class="co"># оценить стандартные ошибки параметров модели </span></span>
+<span id="cb157-147"><a href="cross-validation-and-bootstrep.html#cb157-147" aria-hidden="true" tabindex="-1"></a><span class="co">#  mpg = beta_0 + beta_1 * horsepower с помощью бутстрепа,</span></span>
+<span id="cb157-148"><a href="cross-validation-and-bootstrep.html#cb157-148" aria-hidden="true" tabindex="-1"></a><span class="co">#  сравнить с оценками ошибок по МНК</span></span>
+<span id="cb157-149"><a href="cross-validation-and-bootstrep.html#cb157-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-150"><a href="cross-validation-and-bootstrep.html#cb157-150" aria-hidden="true" tabindex="-1"></a><span class="co"># функция для расчёта коэффициентов ПЛР по выборке из данных</span></span>
+<span id="cb157-151"><a href="cross-validation-and-bootstrep.html#cb157-151" aria-hidden="true" tabindex="-1"></a>boot.fn <span class="ot">&lt;-</span> <span class="cf">function</span>(data, index){</span>
+<span id="cb157-152"><a href="cross-validation-and-bootstrep.html#cb157-152" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coef</span>(<span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower, <span class="at">data =</span> data, <span class="at">subset =</span> index))</span>
+<span id="cb157-153"><a href="cross-validation-and-bootstrep.html#cb157-153" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb157-154"><a href="cross-validation-and-bootstrep.html#cb157-154" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.fn</span>(Auto, <span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb157-155"><a href="cross-validation-and-bootstrep.html#cb157-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-156"><a href="cross-validation-and-bootstrep.html#cb157-156" aria-hidden="true" tabindex="-1"></a><span class="co"># пример применения функции к бутстреп-выборке</span></span>
+<span id="cb157-157"><a href="cross-validation-and-bootstrep.html#cb157-157" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb157-158"><a href="cross-validation-and-bootstrep.html#cb157-158" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.fn</span>(Auto, <span class="fu">sample</span>(n, n, <span class="at">replace =</span> T))</span>
+<span id="cb157-159"><a href="cross-validation-and-bootstrep.html#cb157-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-160"><a href="cross-validation-and-bootstrep.html#cb157-160" aria-hidden="true" tabindex="-1"></a><span class="co"># применяем функцию boot для вычисления стандартных ошибок параметров</span></span>
+<span id="cb157-161"><a href="cross-validation-and-bootstrep.html#cb157-161" aria-hidden="true" tabindex="-1"></a><span class="co">#  (1000 выборок с повторами)</span></span>
+<span id="cb157-162"><a href="cross-validation-and-bootstrep.html#cb157-162" aria-hidden="true" tabindex="-1"></a><span class="fu">boot</span>(Auto, boot.fn, <span class="dv">1000</span>)</span>
+<span id="cb157-163"><a href="cross-validation-and-bootstrep.html#cb157-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-164"><a href="cross-validation-and-bootstrep.html#cb157-164" aria-hidden="true" tabindex="-1"></a><span class="co"># сравним с МНК</span></span>
+<span id="cb157-165"><a href="cross-validation-and-bootstrep.html#cb157-165" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Auto)</span>
+<span id="cb157-166"><a href="cross-validation-and-bootstrep.html#cb157-166" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower))<span class="sc">$</span>coef</span>
+<span id="cb157-167"><a href="cross-validation-and-bootstrep.html#cb157-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-168"><a href="cross-validation-and-bootstrep.html#cb157-168" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Auto)</span>
+<span id="cb157-169"><a href="cross-validation-and-bootstrep.html#cb157-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-170"><a href="cross-validation-and-bootstrep.html#cb157-170" aria-hidden="true" tabindex="-1"></a><span class="co"># оценки отличаются из-за того, что МНК -- параметрический метод с допущениями</span></span>
+<span id="cb157-171"><a href="cross-validation-and-bootstrep.html#cb157-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-172"><a href="cross-validation-and-bootstrep.html#cb157-172" aria-hidden="true" tabindex="-1"></a><span class="co"># вычислим оценки параметров квадратичной модели регрессии</span></span>
+<span id="cb157-173"><a href="cross-validation-and-bootstrep.html#cb157-173" aria-hidden="true" tabindex="-1"></a>boot.fn<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(data, index){</span>
+<span id="cb157-174"><a href="cross-validation-and-bootstrep.html#cb157-174" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coef</span>(<span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="fu">poly</span>(horsepower, <span class="dv">2</span>), <span class="at">data =</span> data, <span class="at">subset =</span> index))</span>
+<span id="cb157-175"><a href="cross-validation-and-bootstrep.html#cb157-175" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb157-176"><a href="cross-validation-and-bootstrep.html#cb157-176" aria-hidden="true" tabindex="-1"></a><span class="co"># применим функцию к 1000 бутсреп-выборкам</span></span>
+<span id="cb157-177"><a href="cross-validation-and-bootstrep.html#cb157-177" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(my.seed)</span>
+<span id="cb157-178"><a href="cross-validation-and-bootstrep.html#cb157-178" aria-hidden="true" tabindex="-1"></a><span class="fu">boot</span>(Auto, boot.fn, <span class="dv">1000</span>)</span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="model-evaluation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-regression-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/31_crossvalidataion_bootstrep.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

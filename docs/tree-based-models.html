@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 35 Tree-based models | R statistics</title>
+  <title>Chapter 40 Tree-based models | R statistics</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 35 Tree-based models | R statistics" />
+  <meta property="og:title" content="Chapter 40 Tree-based models | R statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 35 Tree-based models | R statistics" />
+  <meta name="twitter:title" content="Chapter 40 Tree-based models | R statistics" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Goldberg" />
 
 
-<meta name="date" content="2021-05-11" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="learning-vector-quantization.html"/>
-<link rel="next" href="markov-chain-monte-carlo-mcmc.html"/>
+<link rel="next" href="random-forest.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -150,166 +150,189 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="combinatorics.html"><a href="combinatorics.html"><i class="fa fa-check"></i><b>3</b> Combinatorics</a></li>
-<li class="chapter" data-level="4" data-path="regularization.html"><a href="regularization.html"><i class="fa fa-check"></i><b>4</b> Regularization</a></li>
-<li class="chapter" data-level="5" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>5</b> Probability</a></li>
-<li class="chapter" data-level="6" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>6</b> Basic Statistics</a>
+<li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a></li>
+<li class="chapter" data-level="5" data-path="basic-statistics.html"><a href="basic-statistics.html"><i class="fa fa-check"></i><b>5</b> Basic Statistics</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>6.1</b> Definitions</a></li>
-<li class="chapter" data-level="6.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability-1"><i class="fa fa-check"></i><b>6.2</b> Probability</a></li>
+<li class="chapter" data-level="5.1" data-path="basic-statistics.html"><a href="basic-statistics.html#definitions"><i class="fa fa-check"></i><b>5.1</b> Definitions</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-statistics.html"><a href="basic-statistics.html#probability-1"><i class="fa fa-check"></i><b>5.2</b> Probability</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>7</b> Statistical distributions</a>
+<li class="chapter" data-level="6" data-path="statistical-distributions.html"><a href="statistical-distributions.html"><i class="fa fa-check"></i><b>6</b> Statistical distributions</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>7.1</b> Normal Distribution</a></li>
-<li class="chapter" data-level="7.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>7.2</b> Bernoulli Distribution</a></li>
-<li class="chapter" data-level="7.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>7.4</b> Beta distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>7.5</b> Geometric Distribution</a></li>
-<li class="chapter" data-level="7.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>7.6</b> Uniform Distributions</a></li>
-<li class="chapter" data-level="7.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>7.7</b> Poisson Distribution</a></li>
-<li class="chapter" data-level="7.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>7.8</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="7.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.9</b> Chi-squared Distribution</a></li>
+<li class="chapter" data-level="6.1" data-path="statistical-distributions.html"><a href="statistical-distributions.html#normal-distribution"><i class="fa fa-check"></i><b>6.1</b> Normal Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-distributions.html"><a href="statistical-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>6.2</b> Bernoulli Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-distributions.html"><a href="statistical-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>6.3</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="statistical-distributions.html"><a href="statistical-distributions.html#beta-distribution"><i class="fa fa-check"></i><b>6.4</b> Beta distribution</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-distributions.html"><a href="statistical-distributions.html#geometric-distribution"><i class="fa fa-check"></i><b>6.5</b> Geometric Distribution</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-distributions.html"><a href="statistical-distributions.html#uniform-distributions"><i class="fa fa-check"></i><b>6.6</b> Uniform Distributions</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-distributions.html"><a href="statistical-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>6.7</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-distributions.html"><a href="statistical-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>6.8</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-distributions.html"><a href="statistical-distributions.html#chi-squared-distribution"><i class="fa fa-check"></i><b>6.9</b> Chi-squared Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Primary data analysis</a>
+<li class="chapter" data-level="7" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary data analysis</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>8.1</b> Analysis of sample distribution</a>
+<li class="chapter" data-level="7.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#analysis-of-sample-distribution"><i class="fa fa-check"></i><b>7.1</b> Analysis of sample distribution</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#histogram"><i class="fa fa-check"></i><b>8.1.1</b> Histogram</a></li>
+<li class="chapter" data-level="7.1.1" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#histogram"><i class="fa fa-check"></i><b>7.1.1</b> Histogram</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#handling-missing-data"><i class="fa fa-check"></i><b>8.2</b> Handling missing data</a></li>
-<li class="chapter" data-level="8.3" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#dealing-with-outliers"><i class="fa fa-check"></i><b>8.3</b> Dealing with outliers</a></li>
+<li class="chapter" data-level="7.2" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#handling-missing-data"><i class="fa fa-check"></i><b>7.2</b> Handling missing data</a></li>
+<li class="chapter" data-level="7.3" data-path="primary-data-analysis.html"><a href="primary-data-analysis.html#dealing-with-outliers"><i class="fa fa-check"></i><b>7.3</b> Dealing with outliers</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="data-normalization.html"><a href="data-normalization.html"><i class="fa fa-check"></i><b>9</b> Data normalization</a>
+<li class="chapter" data-level="8" data-path="data-normalization.html"><a href="data-normalization.html"><i class="fa fa-check"></i><b>8</b> Data normalization</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="data-normalization.html"><a href="data-normalization.html#normality-test"><i class="fa fa-check"></i><b>9.1</b> Normality test</a></li>
-<li class="chapter" data-level="9.2" data-path="data-normalization.html"><a href="data-normalization.html#finding-confidence-intervals"><i class="fa fa-check"></i><b>9.2</b> Finding Confidence intervals</a></li>
+<li class="chapter" data-level="8.1" data-path="data-normalization.html"><a href="data-normalization.html#normality-test"><i class="fa fa-check"></i><b>8.1</b> Normality test</a></li>
+<li class="chapter" data-level="8.2" data-path="data-normalization.html"><a href="data-normalization.html#finding-confidence-intervals"><i class="fa fa-check"></i><b>8.2</b> Finding Confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>10</b> Primary data analysis - Case studies</a></li>
-<li class="chapter" data-level="11" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>11</b> Hypothesis testing</a>
+<li class="chapter" data-level="9" data-path="primary-data-analysis-case-studies.html"><a href="primary-data-analysis-case-studies.html"><i class="fa fa-check"></i><b>9</b> Primary data analysis - Case studies</a></li>
+<li class="chapter" data-level="10" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis testing</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>11.1</b> Hypothesis testing theory</a></li>
-<li class="chapter" data-level="11.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>11.2</b> Hypothesis test (Practice)</a></li>
+<li class="chapter" data-level="10.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-theory"><i class="fa fa-check"></i><b>10.1</b> Hypothesis testing theory</a></li>
+<li class="chapter" data-level="10.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-test-practice"><i class="fa fa-check"></i><b>10.2</b> Hypothesis test (Practice)</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>12</b> t-Procedures</a>
+<li class="chapter" data-level="11" data-path="t-procedures.html"><a href="t-procedures.html"><i class="fa fa-check"></i><b>11</b> t-Procedures</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>12.1</b> t-test and normal distribution</a></li>
-<li class="chapter" data-level="12.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>12.2</b> One-sample t-test</a></li>
-<li class="chapter" data-level="12.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>12.3</b> Practical example: t-test in R</a></li>
-<li class="chapter" data-level="12.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>12.4</b> Two samples t-test</a></li>
-<li class="chapter" data-level="12.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>12.5</b> Compare Student’s t and normal distributions</a></li>
-<li class="chapter" data-level="12.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>12.6</b> Non-parametric tests</a></li>
-<li class="chapter" data-level="12.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>12.7</b> Mann-Whitney U Rank Sum Test</a></li>
-<li class="chapter" data-level="12.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>12.8</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="11.1" data-path="t-procedures.html"><a href="t-procedures.html#t-test-and-normal-distribution"><i class="fa fa-check"></i><b>11.1</b> t-test and normal distribution</a></li>
+<li class="chapter" data-level="11.2" data-path="t-procedures.html"><a href="t-procedures.html#one-sample-t-test"><i class="fa fa-check"></i><b>11.2</b> One-sample t-test</a></li>
+<li class="chapter" data-level="11.3" data-path="t-procedures.html"><a href="t-procedures.html#practical-example-t-test-in-r"><i class="fa fa-check"></i><b>11.3</b> Practical example: t-test in R</a></li>
+<li class="chapter" data-level="11.4" data-path="t-procedures.html"><a href="t-procedures.html#two-samples-t-test"><i class="fa fa-check"></i><b>11.4</b> Two samples t-test</a></li>
+<li class="chapter" data-level="11.5" data-path="t-procedures.html"><a href="t-procedures.html#compare-students-t-and-normal-distributions"><i class="fa fa-check"></i><b>11.5</b> Compare Student’s t and normal distributions</a></li>
+<li class="chapter" data-level="11.6" data-path="t-procedures.html"><a href="t-procedures.html#non-parametric-tests"><i class="fa fa-check"></i><b>11.6</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="11.7" data-path="t-procedures.html"><a href="t-procedures.html#mann-whitney-u-rank-sum-test"><i class="fa fa-check"></i><b>11.7</b> Mann-Whitney U Rank Sum Test</a></li>
+<li class="chapter" data-level="11.8" data-path="t-procedures.html"><a href="t-procedures.html#wilcoxon-test"><i class="fa fa-check"></i><b>11.8</b> Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>13</b> Tests for categorical variables</a>
+<li class="chapter" data-level="12" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html"><i class="fa fa-check"></i><b>12</b> Tests for categorical variables</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>13.1</b> Chi-squared tests</a></li>
+<li class="chapter" data-level="12.1" data-path="tests-for-categorical-variables.html"><a href="tests-for-categorical-variables.html#chi-squared-tests"><i class="fa fa-check"></i><b>12.1</b> Chi-squared tests</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>14</b> Multiple testing</a>
+<li class="chapter" data-level="13" data-path="multiple-testing.html"><a href="multiple-testing.html"><i class="fa fa-check"></i><b>13</b> Multiple testing</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>14.1</b> The Bonferroni correction</a></li>
+<li class="chapter" data-level="13.1" data-path="multiple-testing.html"><a href="multiple-testing.html#the-bonferroni-correction"><i class="fa fa-check"></i><b>13.1</b> The Bonferroni correction</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>15</b> Sources</a>
+<li class="chapter" data-level="14" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>14</b> Sources</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>15.1</b> t-test</a>
+<li class="chapter" data-level="14.1" data-path="sources.html"><a href="sources.html#t-test-1"><i class="fa fa-check"></i><b>14.1</b> t-test</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>15.1.1</b> Two-tailed test</a></li>
+<li class="chapter" data-level="14.1.1" data-path="sources.html"><a href="sources.html#two-tailed-test"><i class="fa fa-check"></i><b>14.1.1</b> Two-tailed test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>16</b> Wilcoxon signed-rank test</a></li>
-<li class="chapter" data-level="17" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>17</b> Analysis of Variance (ANOVA)</a>
+<li class="chapter" data-level="15" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>15</b> Wilcoxon signed-rank test</a></li>
+<li class="chapter" data-level="16" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>16</b> Analysis of Variance (ANOVA)</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>17.1</b> One-way ANOVA</a></li>
-<li class="chapter" data-level="17.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>17.2</b> Sources</a></li>
+<li class="chapter" data-level="16.1" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#one-way-anova"><i class="fa fa-check"></i><b>16.1</b> One-way ANOVA</a></li>
+<li class="chapter" data-level="16.2" data-path="analysis-of-variance-anova.html"><a href="analysis-of-variance-anova.html#sources-1"><i class="fa fa-check"></i><b>16.2</b> Sources</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>18</b> t-test ANOVA difference</a></li>
-<li class="chapter" data-level="19" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>19</b> Chi-squared test</a>
+<li class="chapter" data-level="17" data-path="t-test-anova-difference.html"><a href="t-test-anova-difference.html"><i class="fa fa-check"></i><b>17</b> t-test ANOVA difference</a></li>
+<li class="chapter" data-level="18" data-path="chi-squared-test.html"><a href="chi-squared-test.html"><i class="fa fa-check"></i><b>18</b> Chi-squared test</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>19.1</b> Multinomial Goodness of Fit</a></li>
+<li class="chapter" data-level="18.1" data-path="chi-squared-test.html"><a href="chi-squared-test.html#multinomial-goodness-of-fit"><i class="fa fa-check"></i><b>18.1</b> Multinomial Goodness of Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>20</b> Non-parametric Methods</a>
+<li class="chapter" data-level="19" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html"><i class="fa fa-check"></i><b>19</b> Non-parametric Methods</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#sign-test"><i class="fa fa-check"></i><b>20.1</b> Sign Test</a></li>
-<li class="chapter" data-level="20.2" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#wilcoxon-signed-rank-test-1"><i class="fa fa-check"></i><b>20.2</b> Wilcoxon Signed-Rank Test</a></li>
-<li class="chapter" data-level="20.3" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#mann-whitney-wilcoxon-test"><i class="fa fa-check"></i><b>20.3</b> Mann-Whitney-Wilcoxon Test</a></li>
-<li class="chapter" data-level="20.4" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#kruskal-wallis-test"><i class="fa fa-check"></i><b>20.4</b> Kruskal-Wallis Test</a></li>
+<li class="chapter" data-level="19.1" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#sign-test"><i class="fa fa-check"></i><b>19.1</b> Sign Test</a></li>
+<li class="chapter" data-level="19.2" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#wilcoxon-signed-rank-test-1"><i class="fa fa-check"></i><b>19.2</b> Wilcoxon Signed-Rank Test</a></li>
+<li class="chapter" data-level="19.3" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#mann-whitney-wilcoxon-test"><i class="fa fa-check"></i><b>19.3</b> Mann-Whitney-Wilcoxon Test</a></li>
+<li class="chapter" data-level="19.4" data-path="non-parametric-methods.html"><a href="non-parametric-methods.html#kruskal-wallis-test"><i class="fa fa-check"></i><b>19.4</b> Kruskal-Wallis Test</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>21</b> Correlation</a></li>
-<li class="chapter" data-level="22" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>22</b> Methods and algorithms of machine learning</a></li>
-<li class="chapter" data-level="23" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>23</b> Split data into train and test subsets</a></li>
-<li class="chapter" data-level="24" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>24</b> Linear Regression</a>
+<li class="chapter" data-level="20" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>20</b> Correlation</a></li>
+<li class="chapter" data-level="21" data-path="methods-and-algorithms-of-machine-learning.html"><a href="methods-and-algorithms-of-machine-learning.html"><i class="fa fa-check"></i><b>21</b> Methods and algorithms of machine learning</a></li>
+<li class="chapter" data-level="22" data-path="split-data-into-train-and-test-subsets.html"><a href="split-data-into-train-and-test-subsets.html"><i class="fa fa-check"></i><b>22</b> Split data into train and test subsets</a></li>
+<li class="chapter" data-level="23" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html"><i class="fa fa-check"></i><b>23</b> Estimate model accuracy</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>24.1</b> Linear regression - theory</a></li>
-<li class="chapter" data-level="24.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>24.2</b> Generate random data set for the linear model</a></li>
-<li class="chapter" data-level="24.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>24.3</b> Practical example</a></li>
-<li class="chapter" data-level="24.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>24.4</b> Mean squared error (MSE)</a></li>
-<li class="chapter" data-level="24.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>24.5</b> Linear model in R</a></li>
-<li class="chapter" data-level="24.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>24.6</b> Linear regression model for multiple parameters</a></li>
-<li class="chapter" data-level="24.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>24.7</b> Choosing explanatory variables for the model</a></li>
-<li class="chapter" data-level="24.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>24.8</b> Assessment of model performance for categorical data.</a></li>
-<li class="chapter" data-level="24.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>24.9</b> Confidence intervals for linear model</a></li>
+<li class="chapter" data-level="23.1" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#continuous-variables"><i class="fa fa-check"></i><b>23.1</b> Continuous variables</a></li>
+<li class="chapter" data-level="23.2" data-path="estimate-model-accuracy.html"><a href="estimate-model-accuracy.html#discret-variables"><i class="fa fa-check"></i><b>23.2</b> Discret variables</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="model-evaluation.html"><a href="model-evaluation.html"><i class="fa fa-check"></i><b>25</b> Model evaluation</a>
+<li class="chapter" data-level="24" data-path="model-evaluation.html"><a href="model-evaluation.html"><i class="fa fa-check"></i><b>24</b> Model evaluation</a></li>
+<li class="chapter" data-level="25" data-path="cross-validation-and-bootstrep.html"><a href="cross-validation-and-bootstrep.html"><i class="fa fa-check"></i><b>25</b> Cross-validation and Bootstrep</a></li>
+<li class="chapter" data-level="26" data-path="linear-regression-1.html"><a href="linear-regression-1.html"><i class="fa fa-check"></i><b>26</b> Linear Regression</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="model-evaluation.html"><a href="model-evaluation.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>25.1</b> Practical examples for linear model regression</a></li>
+<li class="chapter" data-level="26.1" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression---theory"><i class="fa fa-check"></i><b>26.1</b> Linear regression - theory</a></li>
+<li class="chapter" data-level="26.2" data-path="linear-regression-1.html"><a href="linear-regression-1.html#generate-random-data-set-for-the-linear-model"><i class="fa fa-check"></i><b>26.2</b> Generate random data set for the linear model</a></li>
+<li class="chapter" data-level="26.3" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-example"><i class="fa fa-check"></i><b>26.3</b> Practical example</a></li>
+<li class="chapter" data-level="26.4" data-path="linear-regression-1.html"><a href="linear-regression-1.html#mean-squared-error-mse"><i class="fa fa-check"></i><b>26.4</b> Mean squared error (MSE)</a></li>
+<li class="chapter" data-level="26.5" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-model-in-r"><i class="fa fa-check"></i><b>26.5</b> Linear model in R</a></li>
+<li class="chapter" data-level="26.6" data-path="linear-regression-1.html"><a href="linear-regression-1.html#linear-regression-model-for-multiple-parameters"><i class="fa fa-check"></i><b>26.6</b> Linear regression model for multiple parameters</a></li>
+<li class="chapter" data-level="26.7" data-path="linear-regression-1.html"><a href="linear-regression-1.html#choosing-explanatory-variables-for-the-model"><i class="fa fa-check"></i><b>26.7</b> Choosing explanatory variables for the model</a></li>
+<li class="chapter" data-level="26.8" data-path="linear-regression-1.html"><a href="linear-regression-1.html#assessment-of-model-performance-for-categorical-data."><i class="fa fa-check"></i><b>26.8</b> Assessment of model performance for categorical data.</a></li>
+<li class="chapter" data-level="26.9" data-path="linear-regression-1.html"><a href="linear-regression-1.html#confidence-intervals-for-linear-model"><i class="fa fa-check"></i><b>26.9</b> Confidence intervals for linear model</a></li>
+<li class="chapter" data-level="26.10" data-path="linear-regression-1.html"><a href="linear-regression-1.html#practical-examples-for-linear-model-regression"><i class="fa fa-check"></i><b>26.10</b> Practical examples for linear model regression</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>26</b> Linear regression complex cases</a>
+<li class="chapter" data-level="27" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html"><i class="fa fa-check"></i><b>27</b> Linear regression complex cases</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>26.1</b> Cars</a></li>
-<li class="chapter" data-level="26.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>26.2</b> Linear regression modeling, compair with kNN</a></li>
-<li class="chapter" data-level="26.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>26.3</b> More complex example</a></li>
-<li class="chapter" data-level="26.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>26.4</b> NEXT part</a></li>
-<li class="chapter" data-level="26.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>26.5</b> NEXT Part</a></li>
+<li class="chapter" data-level="27.1" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#cars"><i class="fa fa-check"></i><b>27.1</b> Cars</a></li>
+<li class="chapter" data-level="27.2" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#linear-regression-modeling-compair-with-knn"><i class="fa fa-check"></i><b>27.2</b> Linear regression modeling, compair with kNN</a></li>
+<li class="chapter" data-level="27.3" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#more-complex-example"><i class="fa fa-check"></i><b>27.3</b> More complex example</a></li>
+<li class="chapter" data-level="27.4" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part"><i class="fa fa-check"></i><b>27.4</b> NEXT part</a></li>
+<li class="chapter" data-level="27.5" data-path="linear-regression-complex-cases.html"><a href="linear-regression-complex-cases.html#next-part-1"><i class="fa fa-check"></i><b>27.5</b> NEXT Part</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>27</b> Nonlinear regression</a></li>
-<li class="chapter" data-level="28" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>28</b> Multiple linear regression</a></li>
-<li class="chapter" data-level="29" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>29</b> Spline model</a>
+<li class="chapter" data-level="28" data-path="nonlinear-regression.html"><a href="nonlinear-regression.html"><i class="fa fa-check"></i><b>28</b> Nonlinear regression</a></li>
+<li class="chapter" data-level="29" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>29</b> Multiple linear regression</a></li>
+<li class="chapter" data-level="30" data-path="spline-model.html"><a href="spline-model.html"><i class="fa fa-check"></i><b>30</b> Spline model</a>
 <ul>
-<li class="chapter" data-level="29.1" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>29.1</b> Generate dataset from a given function</a></li>
-<li class="chapter" data-level="29.2" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>29.2</b> Split data for train and test</a></li>
-<li class="chapter" data-level="29.3" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>29.3</b> Diagram of the given function and generated datasets</a></li>
-<li class="chapter" data-level="29.4" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>29.4</b> Build a model using splines</a></li>
-<li class="chapter" data-level="29.5" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>29.5</b> Diagram of MSE for train and test data</a></li>
-<li class="chapter" data-level="29.6" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>29.6</b> Build optimal model and plot for the model</a></li>
-<li class="chapter" data-level="29.7" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>29.7</b> Bibliograpy</a></li>
+<li class="chapter" data-level="30.1" data-path="spline-model.html"><a href="spline-model.html#splines"><i class="fa fa-check"></i><b>30.1</b> Splines</a></li>
+<li class="chapter" data-level="30.2" data-path="spline-model.html"><a href="spline-model.html#area-under-the-curve-using-spline-method"><i class="fa fa-check"></i><b>30.2</b> Area under the curve using spline method</a></li>
+<li class="chapter" data-level="30.3" data-path="spline-model.html"><a href="spline-model.html#set-data-using-given-function-and-predict-curve-using-spline-method"><i class="fa fa-check"></i><b>30.3</b> Set data using given function and predict curve using spline method</a></li>
+<li class="chapter" data-level="30.4" data-path="spline-model.html"><a href="spline-model.html#generate-dataset-from-a-given-function"><i class="fa fa-check"></i><b>30.4</b> Generate dataset from a given function</a></li>
+<li class="chapter" data-level="30.5" data-path="spline-model.html"><a href="spline-model.html#split-data-for-train-and-test"><i class="fa fa-check"></i><b>30.5</b> Split data for train and test</a></li>
+<li class="chapter" data-level="30.6" data-path="spline-model.html"><a href="spline-model.html#diagram-of-the-given-function-and-generated-datasets"><i class="fa fa-check"></i><b>30.6</b> Diagram of the given function and generated datasets</a></li>
+<li class="chapter" data-level="30.7" data-path="spline-model.html"><a href="spline-model.html#build-a-model-using-splines"><i class="fa fa-check"></i><b>30.7</b> Build a model using splines</a></li>
+<li class="chapter" data-level="30.8" data-path="spline-model.html"><a href="spline-model.html#diagram-of-mse-for-train-and-test-data"><i class="fa fa-check"></i><b>30.8</b> Diagram of MSE for train and test data</a></li>
+<li class="chapter" data-level="30.9" data-path="spline-model.html"><a href="spline-model.html#build-optimal-model-and-plot-for-the-model"><i class="fa fa-check"></i><b>30.9</b> Build optimal model and plot for the model</a></li>
+<li class="chapter" data-level="30.10" data-path="spline-model.html"><a href="spline-model.html#bibliograpy"><i class="fa fa-check"></i><b>30.10</b> Bibliograpy</a></li>
 </ul></li>
-<li class="chapter" data-level="30" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>30</b> Logistic Regression</a>
+<li class="chapter" data-level="31" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>30.1</b> Confusion matrix</a></li>
-<li class="chapter" data-level="30.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>30.2</b> Next part</a></li>
-<li class="chapter" data-level="30.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>30.3</b> NExt part</a></li>
+<li class="chapter" data-level="31.1" data-path="logistic-regression.html"><a href="logistic-regression.html#confusion-matrix"><i class="fa fa-check"></i><b>31.1</b> Confusion matrix</a></li>
+<li class="chapter" data-level="31.2" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-2"><i class="fa fa-check"></i><b>31.2</b> Next part</a></li>
+<li class="chapter" data-level="31.3" data-path="logistic-regression.html"><a href="logistic-regression.html#next-part-3"><i class="fa fa-check"></i><b>31.3</b> NExt part</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="models-for-binary-data.html"><a href="models-for-binary-data.html"><i class="fa fa-check"></i><b>31</b> Models for binary Data</a></li>
-<li class="chapter" data-level="32" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>32</b> Support Vector Machine</a></li>
-<li class="chapter" data-level="33" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>33</b> Clustering</a>
+<li class="chapter" data-level="32" data-path="models-for-binary-data.html"><a href="models-for-binary-data.html"><i class="fa fa-check"></i><b>32</b> Models for binary Data</a></li>
+<li class="chapter" data-level="33" data-path="support-vector-machine.html"><a href="support-vector-machine.html"><i class="fa fa-check"></i><b>33</b> Support Vector Machine</a></li>
+<li class="chapter" data-level="34" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>34</b> Clustering</a>
 <ul>
-<li class="chapter" data-level="33.1" data-path="clustering.html"><a href="clustering.html#finding-distances-using-factoextra"><i class="fa fa-check"></i><b>33.1</b> Finding distances using factoextra</a></li>
-<li class="chapter" data-level="33.2" data-path="clustering.html"><a href="clustering.html#example-of-choosing-clustering-model"><i class="fa fa-check"></i><b>33.2</b> Example of choosing clustering model</a></li>
-<li class="chapter" data-level="33.3" data-path="clustering.html"><a href="clustering.html#k-means-clustering"><i class="fa fa-check"></i><b>33.3</b> K-means clustering</a></li>
-<li class="chapter" data-level="33.4" data-path="clustering.html"><a href="clustering.html#k-means"><i class="fa fa-check"></i><b>33.4</b> k-Means</a></li>
-<li class="chapter" data-level="33.5" data-path="clustering.html"><a href="clustering.html#hierarchical-clustering"><i class="fa fa-check"></i><b>33.5</b> Hierarchical clustering</a></li>
-<li class="chapter" data-level="33.6" data-path="clustering.html"><a href="clustering.html#knn"><i class="fa fa-check"></i><b>33.6</b> KNN</a></li>
+<li class="chapter" data-level="34.1" data-path="clustering.html"><a href="clustering.html#finding-distances-using-factoextra"><i class="fa fa-check"></i><b>34.1</b> Finding distances using factoextra</a></li>
+<li class="chapter" data-level="34.2" data-path="clustering.html"><a href="clustering.html#example-of-choosing-clustering-model"><i class="fa fa-check"></i><b>34.2</b> Example of choosing clustering model</a></li>
+<li class="chapter" data-level="34.3" data-path="clustering.html"><a href="clustering.html#k-means-clustering"><i class="fa fa-check"></i><b>34.3</b> K-means clustering</a></li>
+<li class="chapter" data-level="34.4" data-path="clustering.html"><a href="clustering.html#k-means"><i class="fa fa-check"></i><b>34.4</b> k-Means</a></li>
+<li class="chapter" data-level="34.5" data-path="clustering.html"><a href="clustering.html#hierarchical-clustering"><i class="fa fa-check"></i><b>34.5</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="34.6" data-path="clustering.html"><a href="clustering.html#knn"><i class="fa fa-check"></i><b>34.6</b> KNN</a></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>34</b> Learning Vector Quantization</a></li>
-<li class="chapter" data-level="35" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>35</b> Tree-based models</a>
+<li class="chapter" data-level="35" data-path="regularization.html"><a href="regularization.html"><i class="fa fa-check"></i><b>35</b> Regularization</a></li>
+<li class="chapter" data-level="36" data-path="factor-analysis.html"><a href="factor-analysis.html"><i class="fa fa-check"></i><b>36</b> Factor analysis</a></li>
+<li class="chapter" data-level="37" data-path="principal-component-analysis.html"><a href="principal-component-analysis.html"><i class="fa fa-check"></i><b>37</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="38" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html"><i class="fa fa-check"></i><b>38</b> Principal component analysis</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>35.1</b> Classification Tree example</a></li>
-<li class="chapter" data-level="35.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>35.2</b> Regression Tree example</a></li>
-</ul></li>
-<li class="chapter" data-level="36" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>36</b> Markov Chain Monte Carlo (MCMC)</a></li>
-<li class="chapter" data-level="37" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>37</b> Simple Markov process</a>
+<li class="chapter" data-level="38.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-statistics-1"><i class="fa fa-check"></i><b>38.1</b> Basic statistics</a></li>
+<li class="chapter" data-level="38.2" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#basic-linear-algebra-matrices"><i class="fa fa-check"></i><b>38.2</b> Basic linear algebra (matrices)</a>
 <ul>
-<li class="chapter" data-level="37.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>37.0.1</b> Sources</a></li>
+<li class="chapter" data-level="38.2.1" data-path="principal-component-analysis-1.html"><a href="principal-component-analysis-1.html#t-sne---stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>38.2.1</b> t-SNE - Stochastic Neighbor Embedding</a></li>
 </ul></li>
-<li class="chapter" data-level="38" data-path="bayesian-inference.html"><a href="bayesian-inference.html"><i class="fa fa-check"></i><b>38</b> Bayesian inference</a>
+</ul></li>
+<li class="chapter" data-level="39" data-path="learning-vector-quantization.html"><a href="learning-vector-quantization.html"><i class="fa fa-check"></i><b>39</b> Learning Vector Quantization</a></li>
+<li class="chapter" data-level="40" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>40</b> Tree-based models</a>
 <ul>
-<li class="chapter" data-level="38.1" data-path="bayesian-inference.html"><a href="bayesian-inference.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>38.1</b> Simple model with one binary parameter</a></li>
-<li class="chapter" data-level="38.2" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation"><i class="fa fa-check"></i><b>38.2</b> Grid approximation</a></li>
-<li class="chapter" data-level="38.3" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation-1"><i class="fa fa-check"></i><b>38.3</b> Grid approximation</a></li>
-<li class="chapter" data-level="38.4" data-path="bayesian-inference.html"><a href="bayesian-inference.html#model-of-birth-weights-using-normal-distribution"><i class="fa fa-check"></i><b>38.4</b> Model of birth weights using normal distribution</a></li>
-<li class="chapter" data-level="38.5" data-path="bayesian-inference.html"><a href="bayesian-inference.html#a-bayesian-model-of-zombie-iq"><i class="fa fa-check"></i><b>38.5</b> A Bayesian model of Zombie IQ</a></li>
-<li class="chapter" data-level="38.6" data-path="bayesian-inference.html"><a href="bayesian-inference.html#the-best-models"><i class="fa fa-check"></i><b>38.6</b> The BEST models</a></li>
+<li class="chapter" data-level="40.1" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-tree-example"><i class="fa fa-check"></i><b>40.1</b> Classification Tree example</a></li>
+<li class="chapter" data-level="40.2" data-path="tree-based-models.html"><a href="tree-based-models.html#regression-tree-example"><i class="fa fa-check"></i><b>40.2</b> Regression Tree example</a></li>
 </ul></li>
-<li class="chapter" data-level="39" data-path="naive-bayes-classifiers.html"><a href="naive-bayes-classifiers.html"><i class="fa fa-check"></i><b>39</b> Naive Bayes classifiers</a></li>
+<li class="chapter" data-level="41" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i><b>41</b> Random forest</a></li>
+<li class="chapter" data-level="42" data-path="gradient-boosted-trees.html"><a href="gradient-boosted-trees.html"><i class="fa fa-check"></i><b>42</b> Gradient boosted trees</a></li>
+<li class="chapter" data-level="43" data-path="markov-chain-monte-carlo-mcmc.html"><a href="markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>43</b> Markov Chain Monte Carlo (MCMC)</a></li>
+<li class="chapter" data-level="44" data-path="simple-markov-process.html"><a href="simple-markov-process.html"><i class="fa fa-check"></i><b>44</b> Simple Markov process</a>
+<ul>
+<li class="chapter" data-level="44.0.1" data-path="simple-markov-process.html"><a href="simple-markov-process.html#sources-2"><i class="fa fa-check"></i><b>44.0.1</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="bayesian-inference.html"><a href="bayesian-inference.html"><i class="fa fa-check"></i><b>45</b> Bayesian inference</a>
+<ul>
+<li class="chapter" data-level="45.1" data-path="bayesian-inference.html"><a href="bayesian-inference.html#simple-model-with-one-binary-parameter"><i class="fa fa-check"></i><b>45.1</b> Simple model with one binary parameter</a></li>
+<li class="chapter" data-level="45.2" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation"><i class="fa fa-check"></i><b>45.2</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.3" data-path="bayesian-inference.html"><a href="bayesian-inference.html#grid-approximation-1"><i class="fa fa-check"></i><b>45.3</b> Grid approximation</a></li>
+<li class="chapter" data-level="45.4" data-path="bayesian-inference.html"><a href="bayesian-inference.html#model-of-birth-weights-using-normal-distribution"><i class="fa fa-check"></i><b>45.4</b> Model of birth weights using normal distribution</a></li>
+<li class="chapter" data-level="45.5" data-path="bayesian-inference.html"><a href="bayesian-inference.html#a-bayesian-model-of-zombie-iq"><i class="fa fa-check"></i><b>45.5</b> A Bayesian model of Zombie IQ</a></li>
+<li class="chapter" data-level="45.6" data-path="bayesian-inference.html"><a href="bayesian-inference.html#the-best-models"><i class="fa fa-check"></i><b>45.6</b> The BEST models</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="naive-bayes-classifiers.html"><a href="naive-bayes-classifiers.html"><i class="fa fa-check"></i><b>46</b> Naive Bayes classifiers</a></li>
+<li class="chapter" data-level="47" data-path="modeling-with-r-caret.html"><a href="modeling-with-r-caret.html"><i class="fa fa-check"></i><b>47</b> Modeling with R caret</a></li>
+<li class="chapter" data-level="48" data-path="modeling-with-r-tensorflow.html"><a href="modeling-with-r-tensorflow.html"><i class="fa fa-check"></i><b>48</b> Modeling with R Tensorflow</a></li>
+<li class="chapter" data-level="49" data-path="perceptron.html"><a href="perceptron.html"><i class="fa fa-check"></i><b>49</b> Perceptron</a></li>
+<li class="chapter" data-level="50" data-path="deeplearning-r-h2o.html"><a href="deeplearning-r-h2o.html"><i class="fa fa-check"></i><b>50</b> Deeplearning R H2O</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -330,8 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tree-based-models" class="section level1" number="35">
-<h1><span class="header-section-number">Chapter 35</span> Tree-based models</h1>
+<div id="tree-based-models" class="section level1" number="40">
+<h1><span class="header-section-number">Chapter 40</span> Tree-based models</h1>
 <p>Classification and regression trees (CART) are a non-parametric decision tree learning technique that produces either classification or regression trees, depending on whether the dependent variable is categorical or numeric, respectively.</p>
 <p>CART is both a generic term to describe tree algorithms and also a specific name for Breiman’s original algorithm for constructing classification and regression trees.</p>
 <ul>
@@ -375,17 +398,17 @@ Here are some of the differences between CART and C4.5:</p>
 <li>Splitting stops when CART detects no further gain can be made, or some pre-set stopping rules are met. (Alternatively, the data are split as much as possible and then the tree is later pruned.)</li>
 </ol>
 <p>Each branch of the tree ends in a terminal node. Each observation falls into one and exactly one terminal node, and each terminal node is uniquely defined by a set of rules.</p>
-<div id="classification-tree-example" class="section level2" number="35.1">
-<h2><span class="header-section-number">35.1</span> Classification Tree example</h2>
+<div id="classification-tree-example" class="section level2" number="40.1">
+<h2><span class="header-section-number">40.1</span> Classification Tree example</h2>
 <p>Let’s use the data frame kyphosis to predict a type of deformation (kyphosis) after surgery, from age in months (Age), number of vertebrae involved (Number), and the highest vertebrae operated on (Start).</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="tree-based-models.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification Tree with rpart</span></span>
-<span id="cb239-2"><a href="tree-based-models.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
-<span id="cb239-3"><a href="tree-based-models.html#cb239-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb239-4"><a href="tree-based-models.html#cb239-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grow tree</span></span>
-<span id="cb239-5"><a href="tree-based-models.html#cb239-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Kyphosis <span class="sc">~</span> Age <span class="sc">+</span> Number <span class="sc">+</span> Start,</span>
-<span id="cb239-6"><a href="tree-based-models.html#cb239-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">method=</span><span class="st">&quot;class&quot;</span>, <span class="at">data=</span>kyphosis)</span>
-<span id="cb239-7"><a href="tree-based-models.html#cb239-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb239-8"><a href="tree-based-models.html#cb239-8" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(fit) <span class="co"># display the results</span></span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="tree-based-models.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification Tree with rpart</span></span>
+<span id="cb258-2"><a href="tree-based-models.html#cb258-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb258-3"><a href="tree-based-models.html#cb258-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-4"><a href="tree-based-models.html#cb258-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grow tree</span></span>
+<span id="cb258-5"><a href="tree-based-models.html#cb258-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Kyphosis <span class="sc">~</span> Age <span class="sc">+</span> Number <span class="sc">+</span> Start,</span>
+<span id="cb258-6"><a href="tree-based-models.html#cb258-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">method=</span><span class="st">&quot;class&quot;</span>, <span class="at">data=</span>kyphosis)</span>
+<span id="cb258-7"><a href="tree-based-models.html#cb258-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-8"><a href="tree-based-models.html#cb258-8" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(fit) <span class="co"># display the results</span></span></code></pre></div>
 <pre><code>## 
 ## Classification tree:
 ## rpart(formula = Kyphosis ~ Age + Number + Start, data = kyphosis, 
@@ -402,9 +425,9 @@ Here are some of the differences between CART and C4.5:</p>
 ## 1 0.176471      0   1.00000 1.0000 0.21559
 ## 2 0.019608      1   0.82353 1.1176 0.22433
 ## 3 0.010000      4   0.76471 1.1176 0.22433</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="tree-based-models.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="tree-based-models.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="tree-based-models.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="tree-based-models.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
 <pre><code>## Call:
 ## rpart(formula = Kyphosis ~ Age + Number + Start, data = kyphosis, 
 ##     method = &quot;class&quot;)
@@ -491,35 +514,35 @@ Here are some of the differences between CART and C4.5:</p>
 ##   predicted class=present  expected loss=0.4285714  P(node) =0.08641975
 ##     class counts:     3     4
 ##    probabilities: 0.429 0.571</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="tree-based-models.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tree</span></span>
-<span id="cb244-2"><a href="tree-based-models.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
-<span id="cb244-3"><a href="tree-based-models.html#cb244-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
-<span id="cb244-4"><a href="tree-based-models.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(fit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-2.png" width="672" /></p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="tree-based-models.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create attractive postscript plot of tree</span></span>
-<span id="cb245-2"><a href="tree-based-models.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(fit, <span class="at">title =</span> <span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
-<span id="cb245-3"><a href="tree-based-models.html#cb245-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb245-4"><a href="tree-based-models.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co"># prune the tree</span></span>
-<span id="cb245-5"><a href="tree-based-models.html#cb245-5" aria-hidden="true" tabindex="-1"></a>pfit<span class="ot">&lt;-</span> <span class="fu">prune</span>(fit, <span class="at">cp=</span>fit<span class="sc">$</span>cptable[<span class="fu">which.min</span>(fit<span class="sc">$</span>cptable[,<span class="st">&quot;xerror&quot;</span>]),<span class="st">&quot;CP&quot;</span>])</span>
-<span id="cb245-6"><a href="tree-based-models.html#cb245-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb245-7"><a href="tree-based-models.html#cb245-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the pruned tree</span></span>
-<span id="cb245-8"><a href="tree-based-models.html#cb245-8" aria-hidden="true" tabindex="-1"></a><span class="co">#FIXME: pfit is not a tree just a root error</span></span>
-<span id="cb245-9"><a href="tree-based-models.html#cb245-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(pfit, uniform=TRUE,</span></span>
-<span id="cb245-10"><a href="tree-based-models.html#cb245-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   main=&quot;Pruned Classification Tree for Kyphosis&quot;)</span></span>
-<span id="cb245-11"><a href="tree-based-models.html#cb245-11" aria-hidden="true" tabindex="-1"></a><span class="co">#text(pfit, use.n=TRUE, all=TRUE, cex=.8)</span></span>
-<span id="cb245-12"><a href="tree-based-models.html#cb245-12" aria-hidden="true" tabindex="-1"></a><span class="co">#post(pfit, file = &quot;c:/ptree.ps&quot;,</span></span>
-<span id="cb245-13"><a href="tree-based-models.html#cb245-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   title = &quot;Pruned Classification Tree for Kyphosis&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="tree-based-models.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tree</span></span>
+<span id="cb263-2"><a href="tree-based-models.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
+<span id="cb263-3"><a href="tree-based-models.html#cb263-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
+<span id="cb263-4"><a href="tree-based-models.html#cb263-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(fit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-94-2.png" width="672" /></p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="tree-based-models.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create attractive postscript plot of tree</span></span>
+<span id="cb264-2"><a href="tree-based-models.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(fit, <span class="at">title =</span> <span class="st">&quot;Classification Tree for Kyphosis&quot;</span>)</span>
+<span id="cb264-3"><a href="tree-based-models.html#cb264-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-4"><a href="tree-based-models.html#cb264-4" aria-hidden="true" tabindex="-1"></a><span class="co"># prune the tree</span></span>
+<span id="cb264-5"><a href="tree-based-models.html#cb264-5" aria-hidden="true" tabindex="-1"></a>pfit<span class="ot">&lt;-</span> <span class="fu">prune</span>(fit, <span class="at">cp=</span>fit<span class="sc">$</span>cptable[<span class="fu">which.min</span>(fit<span class="sc">$</span>cptable[,<span class="st">&quot;xerror&quot;</span>]),<span class="st">&quot;CP&quot;</span>])</span>
+<span id="cb264-6"><a href="tree-based-models.html#cb264-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-7"><a href="tree-based-models.html#cb264-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the pruned tree</span></span>
+<span id="cb264-8"><a href="tree-based-models.html#cb264-8" aria-hidden="true" tabindex="-1"></a><span class="co">#FIXME: pfit is not a tree just a root error</span></span>
+<span id="cb264-9"><a href="tree-based-models.html#cb264-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(pfit, uniform=TRUE,</span></span>
+<span id="cb264-10"><a href="tree-based-models.html#cb264-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   main=&quot;Pruned Classification Tree for Kyphosis&quot;)</span></span>
+<span id="cb264-11"><a href="tree-based-models.html#cb264-11" aria-hidden="true" tabindex="-1"></a><span class="co">#text(pfit, use.n=TRUE, all=TRUE, cex=.8)</span></span>
+<span id="cb264-12"><a href="tree-based-models.html#cb264-12" aria-hidden="true" tabindex="-1"></a><span class="co">#post(pfit, file = &quot;c:/ptree.ps&quot;,</span></span>
+<span id="cb264-13"><a href="tree-based-models.html#cb264-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   title = &quot;Pruned Classification Tree for Kyphosis&quot;)</span></span></code></pre></div>
 </div>
-<div id="regression-tree-example" class="section level2" number="35.2">
-<h2><span class="header-section-number">35.2</span> Regression Tree example</h2>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="tree-based-models.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression Tree Example</span></span>
-<span id="cb246-2"><a href="tree-based-models.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
-<span id="cb246-3"><a href="tree-based-models.html#cb246-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-4"><a href="tree-based-models.html#cb246-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grow tree</span></span>
-<span id="cb246-5"><a href="tree-based-models.html#cb246-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Mileage<span class="sc">~</span>Price <span class="sc">+</span> Country <span class="sc">+</span> Reliability <span class="sc">+</span> Type,</span>
-<span id="cb246-6"><a href="tree-based-models.html#cb246-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">method=</span><span class="st">&quot;anova&quot;</span>, <span class="at">data=</span>cu.summary)</span>
-<span id="cb246-7"><a href="tree-based-models.html#cb246-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-8"><a href="tree-based-models.html#cb246-8" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(fit) <span class="co"># display the results</span></span></code></pre></div>
+<div id="regression-tree-example" class="section level2" number="40.2">
+<h2><span class="header-section-number">40.2</span> Regression Tree example</h2>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="tree-based-models.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression Tree Example</span></span>
+<span id="cb265-2"><a href="tree-based-models.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb265-3"><a href="tree-based-models.html#cb265-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb265-4"><a href="tree-based-models.html#cb265-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grow tree</span></span>
+<span id="cb265-5"><a href="tree-based-models.html#cb265-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Mileage<span class="sc">~</span>Price <span class="sc">+</span> Country <span class="sc">+</span> Reliability <span class="sc">+</span> Type,</span>
+<span id="cb265-6"><a href="tree-based-models.html#cb265-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">method=</span><span class="st">&quot;anova&quot;</span>, <span class="at">data=</span>cu.summary)</span>
+<span id="cb265-7"><a href="tree-based-models.html#cb265-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb265-8"><a href="tree-based-models.html#cb265-8" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(fit) <span class="co"># display the results</span></span></code></pre></div>
 <pre><code>## 
 ## Regression tree:
 ## rpart(formula = Mileage ~ Price + Country + Reliability + Type, 
@@ -538,9 +561,9 @@ Here are some of the differences between CART and C4.5:</p>
 ## 3 0.025441      2   0.24505 0.36948 0.082559
 ## 4 0.011604      3   0.21961 0.36433 0.077849
 ## 5 0.010000      4   0.20801 0.37518 0.080670</code></pre>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="tree-based-models.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="tree-based-models.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="tree-based-models.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(fit) <span class="co"># visualize cross-validation results</span></span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="tree-based-models.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="co"># detailed summary of splits</span></span></code></pre></div>
 <pre><code>## Call:
 ## rpart(formula = Mileage ~ Price + Country + Reliability + Type, 
 ##     data = cu.summary, method = &quot;anova&quot;)
@@ -617,9 +640,9 @@ Here are some of the differences between CART and C4.5:</p>
 ## 
 ## Node number 11: 11 observations
 ##   mean=25.45455, MSE=3.520661</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="tree-based-models.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create additional plots</span></span>
-<span id="cb251-2"><a href="tree-based-models.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># two plots on one page</span></span>
-<span id="cb251-3"><a href="tree-based-models.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rsq.rpart</span>(fit) <span class="co"># visualize cross-validation results  </span></span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="tree-based-models.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create additional plots</span></span>
+<span id="cb270-2"><a href="tree-based-models.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># two plots on one page</span></span>
+<span id="cb270-3"><a href="tree-based-models.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rsq.rpart</span>(fit) <span class="co"># visualize cross-validation results  </span></span></code></pre></div>
 <pre><code>## 
 ## Regression tree:
 ## rpart(formula = Mileage ~ Price + Country + Reliability + Type, 
@@ -638,26 +661,26 @@ Here are some of the differences between CART and C4.5:</p>
 ## 3 0.025441      2   0.24505 0.36948 0.082559
 ## 4 0.011604      3   0.21961 0.36433 0.077849
 ## 5 0.010000      4   0.20801 0.37518 0.080670</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-2.png" width="672" /></p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="tree-based-models.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tree</span></span>
-<span id="cb253-2"><a href="tree-based-models.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
-<span id="cb253-3"><a href="tree-based-models.html#cb253-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Regression Tree for Mileage &quot;</span>)</span>
-<span id="cb253-4"><a href="tree-based-models.html#cb253-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(fit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span>
-<span id="cb253-5"><a href="tree-based-models.html#cb253-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-6"><a href="tree-based-models.html#cb253-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create attractive postcript plot of tree</span></span>
-<span id="cb253-7"><a href="tree-based-models.html#cb253-7" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(fit, <span class="at">file =</span> <span class="st">&quot;tree2.ps&quot;</span>,</span>
-<span id="cb253-8"><a href="tree-based-models.html#cb253-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Regression Tree for Mileage &quot;</span>)</span>
-<span id="cb253-9"><a href="tree-based-models.html#cb253-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-10"><a href="tree-based-models.html#cb253-10" aria-hidden="true" tabindex="-1"></a><span class="co"># prune the tree</span></span>
-<span id="cb253-11"><a href="tree-based-models.html#cb253-11" aria-hidden="true" tabindex="-1"></a>pfit<span class="ot">&lt;-</span> <span class="fu">prune</span>(fit, <span class="at">cp=</span><span class="fl">0.01160389</span>) <span class="co"># from cptable   </span></span>
-<span id="cb253-12"><a href="tree-based-models.html#cb253-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-13"><a href="tree-based-models.html#cb253-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the pruned tree</span></span>
-<span id="cb253-14"><a href="tree-based-models.html#cb253-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pfit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
-<span id="cb253-15"><a href="tree-based-models.html#cb253-15" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span>
-<span id="cb253-16"><a href="tree-based-models.html#cb253-16" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(pfit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-3.png" width="672" /></p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="tree-based-models.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(pfit, <span class="at">file =</span> <span class="st">&quot;ptree2.ps&quot;</span>,</span>
-<span id="cb254-2"><a href="tree-based-models.html#cb254-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-2.png" width="672" /></p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="tree-based-models.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tree</span></span>
+<span id="cb272-2"><a href="tree-based-models.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
+<span id="cb272-3"><a href="tree-based-models.html#cb272-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Regression Tree for Mileage &quot;</span>)</span>
+<span id="cb272-4"><a href="tree-based-models.html#cb272-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(fit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb272-5"><a href="tree-based-models.html#cb272-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-6"><a href="tree-based-models.html#cb272-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create attractive postcript plot of tree</span></span>
+<span id="cb272-7"><a href="tree-based-models.html#cb272-7" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(fit, <span class="at">file =</span> <span class="st">&quot;tree2.ps&quot;</span>,</span>
+<span id="cb272-8"><a href="tree-based-models.html#cb272-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Regression Tree for Mileage &quot;</span>)</span>
+<span id="cb272-9"><a href="tree-based-models.html#cb272-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-10"><a href="tree-based-models.html#cb272-10" aria-hidden="true" tabindex="-1"></a><span class="co"># prune the tree</span></span>
+<span id="cb272-11"><a href="tree-based-models.html#cb272-11" aria-hidden="true" tabindex="-1"></a>pfit<span class="ot">&lt;-</span> <span class="fu">prune</span>(fit, <span class="at">cp=</span><span class="fl">0.01160389</span>) <span class="co"># from cptable   </span></span>
+<span id="cb272-12"><a href="tree-based-models.html#cb272-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-13"><a href="tree-based-models.html#cb272-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the pruned tree</span></span>
+<span id="cb272-14"><a href="tree-based-models.html#cb272-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pfit, <span class="at">uniform=</span><span class="cn">TRUE</span>,</span>
+<span id="cb272-15"><a href="tree-based-models.html#cb272-15" aria-hidden="true" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span>
+<span id="cb272-16"><a href="tree-based-models.html#cb272-16" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(pfit, <span class="at">use.n=</span><span class="cn">TRUE</span>, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-3.png" width="672" /></p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="tree-based-models.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">post</span>(pfit, <span class="at">file =</span> <span class="st">&quot;ptree2.ps&quot;</span>,</span>
+<span id="cb273-2"><a href="tree-based-models.html#cb273-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Pruned Regression Tree for Mileage&quot;</span>)</span></code></pre></div>
 <p><strong>Sources</strong><br />
 <a href="https://www.statmethods.net/advstats/cart.html">Tree-Based Models at Quick-R by datacamp</a><br />
 <a href="https://koalaverse.github.io/machine-learning-in-R/decision-trees.html">UseR! Machine Learnign Turorial</a></p>
@@ -670,7 +693,7 @@ Here are some of the differences between CART and C4.5:</p>
         </div>
       </div>
 <a href="learning-vector-quantization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="markov-chain-monte-carlo-mcmc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="random-forest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -701,7 +724,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/45_tree-based_models.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/50_tree-based_models.Rmd",
 "text": "Edit"
 },
 "history": {
